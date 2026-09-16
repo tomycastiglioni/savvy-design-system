@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,105 +12,94 @@
   :root {
     color-scheme: light;
 
-    /* Brand — primary */
+    /* Neutrals */
     --c-black: #000000;
     --c-white: #FFFFFF;
-    --c-vanilla: #FFF8F1;
+    --c-cream: #F5F2EC;
+    --c-surface: #FCFBF9;
+    --c-warm-gray: #B2AAA1;
+
+    /* Accents */
     --c-ecru: #C7BCA1;
     --c-gold: #8E7E57;
-
-    /* Brand — secondary */
-    --c-deep-green: #175242;
     --c-teal: #095972;
-    --c-golden-yellow: #D79F32;
-    --c-maroon: #6B484D;
-    --c-lavender: #A98EB1;
-    --c-red: #B63D35;
-    --c-peach: #F19E70;
-    --c-dusty-rose: #C06F74;
+    --c-deep-green: #08261E;
+    --c-terracotta: #D16F39;
 
-    /* Product grays */
-    --c-cool-1: #767676; --c-cool-2: #A3A3A3; --c-cool-3: #D0D0D0; --c-cool-4: #ECECEC;
-    --c-warm-1: #89837C; --c-warm-2: #B2AAA1; --c-warm-3: #D3CDC4; --c-warm-4: #F5F2EC;
+    /* Trust-badge gradients (semantic, not decorative) */
+    --grad-gold:  linear-gradient(155deg, #C4963D 12%, #9B7428 71%);
+    --grad-stone: linear-gradient(152deg, #C3BDAF 12%, #9D9688 71%);
+    --grad-green: linear-gradient(157deg, #567E73 12%, #2A5146 71%);
+    --grad-on-dark: linear-gradient(167deg, #FFFFFF 17%, #C7BCA1 102%);
+    --grad-warm: linear-gradient(-77deg, #D16F39 6%, #F19E70 91%);
 
     /* Typography */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-serif: 'Big Caslon', 'Book Antiqua', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* ABC Diatype substitute */
+    --font-serif: 'Big Caslon', 'Book Antiqua', Georgia, serif; /* Big Caslon CC substitute */
 
-    /* Spacing scale */
-    --space-xs: 8px;
-    --space-sm: 16px;
-    --space-md: 32px;
-    --space-lg: 64px;
-    --space-xl: 120px;
-    --space-2xl: 160px;
-
-    /* Semantic — light theme (Warm/Human story) */
-    --bg: var(--c-vanilla);
+    /* Semantic surfaces — light (cream) */
+    --bg: var(--c-cream);
     --bg-raised: var(--c-white);
-    --bg-alt: var(--c-warm-4);
-    --ink: var(--c-black);
-    --ink-muted: var(--c-warm-1);
-    --line: rgba(199, 188, 161, 0.45);
+    --bg-surface: var(--c-surface);
+    --ink-rgb: 0, 0, 0;
+    --line: rgba(0, 0, 0, 0.12);
     --accent: var(--c-gold);
-    --wordmark: url('./assets/logos/wordmark-black.png');
-    --circle-stroke: rgba(199, 188, 161, 0.55);
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       color-scheme: dark;
       --bg: var(--c-black);
-      --bg-raised: #0D0D0D;
-      --bg-alt: #141414;
-      --ink: var(--c-white);
-      --ink-muted: var(--c-ecru);
-      --line: rgba(255, 255, 255, 0.16);
-      --accent: var(--c-golden-yellow);
-      --wordmark: url('./assets/logos/wordmark-white.png');
-      --circle-stroke: rgba(255, 255, 255, 0.28);
+      --bg-raised: #0C0C0C;
+      --bg-surface: #141414;
+      --ink-rgb: 255, 255, 255;
+      --line: rgba(255, 255, 255, 0.14);
     }
   }
   :root[data-theme="dark"] {
     color-scheme: dark;
     --bg: var(--c-black);
-    --bg-raised: #0D0D0D;
-    --bg-alt: #141414;
-    --ink: var(--c-white);
-    --ink-muted: var(--c-ecru);
-    --line: rgba(255, 255, 255, 0.16);
-    --accent: var(--c-golden-yellow);
-    --wordmark: url('./assets/logos/wordmark-white.png');
-    --circle-stroke: rgba(255, 255, 255, 0.28);
+    --bg-raised: #0C0C0C;
+    --bg-surface: #141414;
+    --ink-rgb: 255, 255, 255;
+    --line: rgba(255, 255, 255, 0.14);
   }
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
     background: var(--bg);
-    color: var(--ink);
+    color: rgb(var(--ink-rgb));
     font-family: var(--font-sans);
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     padding-inline: clamp(20px, 5vw, 64px);
-    transition: background .25s ease, color .25s ease;
   }
   .wrap { max-width: 1280px; margin: 0 auto; }
-  section { padding-block: clamp(56px, 9vw, var(--space-xl)); position: relative; }
+  section { padding-block: clamp(48px, 8vw, 108px); position: relative; }
   section + section { border-top: 1px solid var(--line); }
   h1, h2, h3, p { margin: 0; }
   h2 { text-wrap: balance; }
-  em.serif { font-family: var(--font-serif); font-style: normal; font-weight: 700; }
+  em.serif { font-family: var(--font-serif); font-style: normal; }
   a { color: inherit; }
 
+  .ink-100 { color: rgb(var(--ink-rgb)); }
+  .ink-80  { color: rgba(var(--ink-rgb), .8); }
+  .ink-70  { color: rgba(var(--ink-rgb), .7); }
+  .ink-60  { color: rgba(var(--ink-rgb), .6); }
+  .ink-50  { color: rgba(var(--ink-rgb), .5); }
+  .ink-40  { color: rgba(var(--ink-rgb), .4); }
+
   .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.07em;
+    font-size: 11px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--ink-muted);
+    font-weight: 500;
     display: block;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 10px;
   }
+
+  code.tok { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; }
 
   /* ============ NAV ============ */
   header.nav {
@@ -119,192 +108,207 @@
     z-index: 20;
     background: var(--bg);
     border-bottom: 1px solid var(--line);
-    padding-block: 18px;
+    padding-block: 16px;
   }
   .nav-row {
     max-width: 1280px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    gap: var(--space-md); flex-wrap: wrap;
+    gap: 24px; flex-wrap: wrap;
   }
+  .nav-left { display: flex; align-items: center; gap: 20px; }
   .wordmark {
-    -webkit-mask: var(--wordmark) center / contain no-repeat;
-    mask: var(--wordmark) center / contain no-repeat;
-    background-color: var(--ink);
-    width: 92px; height: 30px;
+    -webkit-mask: url('./assets/logos/wordmark-black.png') center / contain no-repeat;
+    mask: url('./assets/logos/wordmark-black.png') center / contain no-repeat;
+    background-color: rgb(var(--ink-rgb));
+    width: 76px; height: 26px;
     flex-shrink: 0;
   }
-  .nav-links { display: flex; gap: var(--space-md); flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
-  .nav-links a {
-    text-decoration: none; font-size: 14px; color: var(--ink-muted);
-    letter-spacing: 0.01em;
+  .seg {
+    display: flex; gap: 4px; padding: 4px;
+    border: 0.8px solid rgba(142,126,87,0.3);
+    border-radius: 8px;
   }
-  .nav-links a:hover { color: var(--ink); }
+  .seg button {
+    font-family: var(--font-sans); font-size: 13px; border: none; cursor: pointer;
+    padding: 7px 14px; border-radius: 5px; background: transparent; color: rgba(var(--ink-rgb),.6);
+  }
+  .seg button.active { background: rgba(142,126,87,0.15); color: var(--c-gold); font-weight: 500; }
+  .nav-links { display: flex; gap: 26px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { text-decoration: none; font-size: 13px; color: rgba(var(--ink-rgb),.7); }
+  .nav-links a:hover { color: rgb(var(--ink-rgb)); }
   .theme-toggle {
-    font-family: var(--font-sans); font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase;
-    border: 1px solid var(--line); background: transparent; color: var(--ink);
-    border-radius: 999px; padding: 8px 16px; cursor: pointer;
+    font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+    border: 1px solid var(--line); background: transparent; color: rgb(var(--ink-rgb));
+    border-radius: 999px; padding: 7px 14px; cursor: pointer;
   }
-  .theme-toggle:hover { border-color: var(--accent); }
 
   /* ============ HERO ============ */
-  .hero { padding-top: clamp(64px, 10vw, 140px); overflow: hidden; }
-  .hero-circles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-  .circle { position: absolute; border-radius: 50%; border: 1.5px solid var(--circle-stroke); }
+  .hero { padding-top: clamp(56px, 9vw, 120px); }
   h1.display {
     font-family: var(--font-sans);
     font-weight: 300;
-    font-size: clamp(44px, 8vw, 104px);
-    letter-spacing: -0.03em;
-    line-height: 0.98;
-    max-width: 16ch;
-    position: relative;
+    font-size: clamp(40px, 7vw, 78px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    max-width: 15ch;
   }
   .hero p.lede {
-    margin-top: var(--space-md);
+    margin-top: 28px;
     font-size: clamp(16px, 2vw, 19px);
-    line-height: 1.6;
-    max-width: 62ch;
-    color: var(--ink-muted);
-    position: relative;
+    line-height: 1.5;
+    max-width: 58ch;
+    letter-spacing: -0.01em;
   }
-  .meta-row { display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-top: var(--space-lg); position: relative; }
-  .meta-item .eyebrow { margin-bottom: 4px; }
-  .meta-item strong { font-weight: 500; font-size: 15px; }
+  .meta-row { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 48px; }
+  .meta-item strong { font-weight: 500; font-size: 14px; }
+  .source-note {
+    margin-top: 40px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px;
+    font-size: 13px; line-height: 1.6; max-width: 62ch;
+  }
 
   /* ============ SECTION HEADS ============ */
-  .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-lg); }
-  .section-head h2 {
-    font-weight: 300; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.01em; line-height: 1.05;
-  }
-  .section-head .count { font-size: 13px; color: var(--ink-muted); letter-spacing: 0.03em; white-space: nowrap; }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+  .section-head h2 { font-weight: 300; font-size: clamp(26px, 3.6vw, 40px); letter-spacing: -0.02em; line-height: 1.1; }
+  .section-head .count { font-size: 12px; color: rgba(var(--ink-rgb),.5); white-space: nowrap; }
 
   /* ============ COLOR SWATCHES ============ */
-  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-sm); }
-  .swatch { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--bg-raised); }
-  .swatch-fill { height: 96px; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .swatch { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg-raised); }
+  .swatch-fill { height: 88px; }
   .swatch-info { padding: 12px 14px; }
-  .swatch-name { font-size: 14px; font-weight: 500; }
-  .swatch-hex { font-size: 12px; color: var(--ink-muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
-  .swatch-use { font-size: 12px; color: var(--ink-muted); margin-top: 6px; line-height: 1.4; }
+  .swatch-name { font-size: 13px; font-weight: 500; }
+  .swatch-hex { font-size: 11px; color: rgba(var(--ink-rgb),.5); font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .swatch-use { font-size: 11px; color: rgba(var(--ink-rgb),.5); margin-top: 6px; line-height: 1.4; }
+  .swatch.was-wrong .swatch-info::after { content: "v1 had #175242"; display:block; font-size:10px; color:#B63D35; margin-top:4px; }
 
-  .subhead { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); margin: var(--space-lg) 0 var(--space-sm); }
+  .subhead { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; color: rgba(var(--ink-rgb),.55); margin: 40px 0 14px; }
   .subhead:first-child { margin-top: 0; }
 
-  .gray-row { display: flex; gap: 2px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
-  .gray-chip { flex: 1; height: 64px; display: flex; align-items: flex-end; padding: 8px; font-size: 11px; font-variant-numeric: tabular-nums; }
-
-  .story-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-sm); }
-  .story-card { border-radius: 6px; padding: 20px; min-height: 120px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); }
-  .story-card .story-name { font-size: 15px; font-weight: 500; }
-  .story-card .story-mix { font-size: 12px; opacity: 0.85; margin-top: 8px; line-height: 1.5; }
+  .grad-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 14px; }
+  .grad-chip { height: 88px; border-radius: 8px; display:flex; align-items:flex-end; padding:10px 12px; color:#fff; font-size:11px; font-variant-numeric:tabular-nums; }
 
   /* ============ TYPE SPECIMENS ============ */
-  .type-row { display: grid; grid-template-columns: 140px 1fr; gap: var(--space-md); padding-block: var(--space-md); border-top: 1px solid var(--line); align-items: baseline; }
+  .type-row { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding-block: 24px; border-top: 1px solid var(--line); align-items: baseline; }
   .type-row:first-of-type { border-top: none; }
-  .type-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
-  .type-spec { font-size: 11px; color: var(--ink-muted); margin-top: 6px; line-height: 1.5; }
+  .type-label { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(var(--ink-rgb),.5); }
+  .type-spec { font-size: 11px; color: rgba(var(--ink-rgb),.45); margin-top: 6px; line-height: 1.5; }
   .type-sample { line-height: 1.1; }
-  .t-display { font-family: var(--font-sans); font-weight: 300; font-size: clamp(32px, 5vw, 64px); letter-spacing: -0.03em; }
-  .t-headline-sans { font-family: var(--font-sans); font-weight: 300; font-size: clamp(24px, 3.2vw, 36px); letter-spacing: -0.008em; line-height: 1.05; }
-  .t-headline-serif { font-family: var(--font-serif); font-weight: 700; font-size: clamp(24px, 3.2vw, 36px); letter-spacing: 0.015em; line-height: 1.05; }
-  .t-body { font-family: var(--font-sans); font-weight: 400; font-size: 18px; line-height: 1.6; max-width: 58ch; }
-  .t-caption { font-family: var(--font-sans); font-weight: 400; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; }
-  .t-cta { font-family: var(--font-sans); font-weight: 400; font-size: 17px; letter-spacing: 0.02em; }
+  .t-hero { font-family: var(--font-sans); font-weight: 300; font-size: clamp(28px, 4.5vw, 52px); letter-spacing: -0.022em; line-height: 1.1; }
+  .t-section { font-family: var(--font-sans); font-weight: 300; font-size: clamp(24px, 3.5vw, 40px); letter-spacing: -0.02em; line-height: 1.1; }
+  .t-card { font-family: var(--font-sans); font-weight: 300; font-size: 28px; letter-spacing: -0.02em; }
+  .t-body { font-family: var(--font-sans); font-weight: 400; font-size: 18px; line-height: 1.5; max-width: 58ch; letter-spacing: -0.01em; }
+  .t-caption { font-family: var(--font-sans); font-weight: 500; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .t-cta { font-family: var(--font-sans); font-weight: 500; font-size: 16px; letter-spacing: 0.015em; }
+  .t-stat { font-family: var(--font-serif); font-weight: 700; font-size: clamp(48px, 7vw, 80px); color: var(--c-gold); letter-spacing: 0.01em; line-height: 1; }
 
   /* ============ SPACING ============ */
-  .space-row { display: grid; grid-template-columns: 90px 1fr 70px; align-items: center; gap: var(--space-sm); padding-block: 10px; }
-  .space-bar { height: 10px; background: var(--accent); border-radius: 2px; }
-  .space-token { font-size: 13px; font-variant-numeric: tabular-nums; }
-  .space-px { font-size: 12px; color: var(--ink-muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .space-row { display: grid; grid-template-columns: 60px 1fr; align-items: center; gap: 14px; padding-block: 8px; }
+  .space-bar { height: 8px; background: var(--accent); border-radius: 2px; }
+  .space-px { font-size: 12px; color: rgba(var(--ink-rgb),.5); font-variant-numeric: tabular-nums; }
 
   /* ============ BUTTONS ============ */
-  .row { display: flex; gap: var(--space-sm); flex-wrap: wrap; align-items: center; }
-  .btn-primary {
-    font-family: var(--font-sans); font-size: 16px; letter-spacing: 0.02em;
-    background: var(--c-deep-green); color: var(--c-white);
-    border: none; border-radius: 999px; padding: 14px 30px; cursor: pointer;
-  }
-  .btn-secondary {
-    font-family: var(--font-sans); font-size: 16px; letter-spacing: 0.02em;
-    background: transparent; color: var(--ink);
-    border: 1.5px solid var(--ink); border-radius: 999px; padding: 13px 29px; cursor: pointer;
-  }
-  .btn-primary:hover { background: #0f382d; }
-  .btn-secondary:hover { background: var(--ink); color: var(--bg); }
-  .comp-card { border: 1px solid var(--line); border-radius: 8px; padding: var(--space-md); background: var(--bg-raised); }
-  .comp-label { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: var(--space-sm); display: block; }
-  .comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-sm); }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn { font-family: var(--font-sans); font-size: 15px; font-weight: 500; letter-spacing: 0.015em; border-radius: 5px; padding: 14px 26px; cursor: pointer; border: none; display: inline-block; }
+  .btn-gold { background: var(--c-gold); color: #fff; }
+  .btn-black { background: #000; color: #fff; }
+  .btn-outline { background: transparent; border: 1px solid rgb(var(--ink-rgb)); color: rgb(var(--ink-rgb)); }
+  .btn-on-dark { background: var(--grad-on-dark); color: #000; }
+  .btn-warm { background: var(--grad-warm); color: #fff; }
+  .dark-chip { background: var(--c-deep-green); border-radius: 8px; padding: 28px; display:flex; align-items:center; justify-content:center; }
 
-  /* ============ FORMS ============ */
-  .field { margin-bottom: var(--space-md); max-width: 380px; }
-  .field label { display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
-  .field input[type="text"], .field select {
-    width: 100%; font-family: var(--font-sans); font-size: 15px; color: var(--ink);
-    background: var(--bg-raised); border: 1px solid var(--line); border-radius: 6px;
-    padding: 12px 14px;
-  }
-  .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
-  .check-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 14px; }
-  .check-row input { accent-color: var(--c-deep-green); width: 16px; height: 16px; }
+  .comp-card { border: 1px solid var(--line); border-radius: 10px; padding: 28px; background: var(--bg-raised); }
+  .comp-label { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(var(--ink-rgb),.5); margin-bottom: 12px; display: block; }
 
-  /* ============ CARDS ============ */
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-sm); }
-  .stat-card { background: var(--c-deep-green); color: var(--c-white); border-radius: 8px; padding: var(--space-lg) var(--space-md); position: relative; overflow: hidden; }
-  .stat-number { font-family: var(--font-sans); font-weight: 300; font-size: 56px; letter-spacing: -0.02em; }
-  .stat-desc { font-size: 14px; opacity: 0.85; margin-top: 8px; }
-  .sample-tag { position: absolute; top: 16px; right: 16px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; }
-  .quote-card { background: var(--bg-alt); border-radius: 8px; padding: var(--space-lg) var(--space-md); border: 1px solid var(--line); }
-  .quote-text { font-family: var(--font-serif); font-size: 22px; line-height: 1.4; }
-  .quote-attr { margin-top: var(--space-md); font-size: 13px; }
-  .quote-attr .name { font-weight: 500; }
-  .quote-attr .title { color: var(--ink-muted); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
-
-  /* ============ BADGES ============ */
-  .badge-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .badge {
-    font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
-    padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line);
-    display: inline-flex; align-items: center; gap: 7px;
+  /* ============ FORM / SEARCH BAR ============ */
+  .filter-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+  .filter-field {
+    background: var(--c-surface); border-radius: 6px; padding: 14px 18px;
+    font-size: 14px; color: rgba(0,0,0,.5); display: flex; align-items: center; gap: 10px; flex: 1; min-width: 140px;
   }
-  .badge .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .filter-field.reset { background: transparent; color: #000; flex: 0; white-space: nowrap; }
+
+  /* ============ ADVISOR CARD ============ */
+  .advisor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; }
+  .advisor-card { display: flex; flex-direction: column; gap: 16px; }
+  .advisor-photo { aspect-ratio: 4/3.3; background: var(--c-warm-gray); border-radius: 10px; overflow: hidden; }
+  .advisor-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .advisor-name { font-family: var(--font-sans); font-weight: 300; font-size: 26px; letter-spacing: -0.02em; color: #000; }
+  .advisor-loc { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(0,0,0,.7); }
+  .cred-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cred-pill {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: -0.01em; text-transform: uppercase;
+    padding: 7px 12px; border-radius: 999px; color: rgba(0,0,0,.8);
+    background: linear-gradient(90deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.55) 100%), rgb(199,188,161);
+    backdrop-filter: blur(4px);
+  }
+
+  /* ============ TRUST BADGES ============ */
+  .trust-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .trust-badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px 10px 10px; border-radius: 999px; color: #fff; font-family: var(--font-sans); font-weight: 500; font-size: 14px; }
+  .trust-badge svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  /* ============ STATS ============ */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 32px; }
+  .stat-item { display: flex; flex-direction: column; gap: 14px; }
+  .stat-rule { height: 1px; background: rgba(var(--ink-rgb),.2); width: 100%; }
+  .stat-label { font-size: 15px; }
+
+  /* ============ SERVICE TILES ============ */
+  .tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 10px; overflow: hidden; }
+  .tile { aspect-ratio: 1.3/1; position: relative; overflow: hidden; }
+  .tile.photo { background: var(--c-warm-gray); }
+  .tile.photo img { width:100%; height:100%; object-fit:cover; display:block; }
+  .tile.text { background: var(--c-surface); padding: 22px; display:flex; flex-direction:column; justify-content:flex-end; }
+  .tile.text .ring { position:absolute; top:-40px; right:-40px; width:180px; height:180px; }
+  .tile-title { font-size: 17px; font-weight: 500; position: relative; }
+  .tile-desc { font-size: 12px; color: rgba(0,0,0,.6); margin-top: 6px; position: relative; max-width: 22ch; }
+
+  /* ============ TEXTURE SWATCHES ============ */
+  .texture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; }
+  .texture-card { border-radius: 10px; height: 200px; position: relative; overflow: hidden; border: 1px solid var(--line); }
+  .texture-label { position: absolute; bottom: 12px; left: 14px; font-size: 12px; color: #fff; z-index: 2; }
+  .texture-label.dark-on-light { color: #000; }
+  .tex-gradient { background: linear-gradient(180deg, var(--c-cream) 0%, #fff 100%); }
+  .tex-glow { background: radial-gradient(120% 100% at 30% 10%, #123d31 0%, var(--c-deep-green) 45%, #04120d 100%); }
+  .tex-map { background: var(--c-surface); }
+  .tex-ring { background: var(--c-surface); }
+
+  /* ============ MAP COMPONENT ============ */
+  .map-wrap { position: relative; border-radius: 10px; overflow: hidden; background: var(--c-surface); padding: 32px; }
+  .map-pin {
+    position: absolute; display: flex; align-items: center; gap: 10px;
+    background: #fff; border-radius: 999px; padding: 6px 16px 6px 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.12); font-size: 13px;
+  }
+  .map-pin .avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--c-warm-gray); flex-shrink: 0; }
+  .map-pin .pin-state { font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(0,0,0,.5); display:block; }
+  .map-pin .pin-name { font-size: 12px; color: rgba(0,0,0,.85); }
 
   /* ============ ICONS ============ */
-  .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--space-sm); }
-  .icon-tile { border: 1px solid var(--line); border-radius: 6px; padding: var(--space-sm); text-align: center; background: var(--bg-raised); }
-  .icon-tile img { width: 56px; height: 56px; object-fit: contain; }
-  .icon-tile .icon-name { font-size: 11px; color: var(--ink-muted); margin-top: 10px; letter-spacing: 0.02em; }
+  .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
+  .icon-tile { border: 1px solid var(--line); border-radius: 8px; padding: 18px; text-align: center; background: var(--bg-raised); }
+  .icon-tile svg { width: 26px; height: 26px; }
+  .icon-tile .icon-name { font-size: 11px; color: rgba(var(--ink-rgb),.55); margin-top: 10px; }
 
-  /* ============ MOTIF DEMO ============ */
-  .motif-demo { position: relative; height: 340px; border-radius: 8px; border: 1px solid var(--line); overflow: hidden; background: var(--c-black); }
-  .motif-demo .circle { border-color: rgba(255,255,255,0.35); }
-  .motif-caption { position: absolute; bottom: var(--space-sm); left: var(--space-sm); color: var(--c-white); font-size: 12px; letter-spacing: 0.03em; max-width: 60%; }
+  /* ============ STACKED SHEETS ============ */
+  .sheet-demo { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+  .sheet { padding: 28px; }
+  .sheet.cream { background: var(--c-cream); }
+  .sheet.black { background: #000; color: #fff; border-radius: 20px 20px 0 0; margin-top: -20px; position: relative; }
+  .sheet-caption { font-size: 12px; opacity: .6; }
 
-  .photo-frame { border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  /* ============ PHOTOGRAPHY ============ */
+  .photo-with-text { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+  .photo-frame { border-radius: 10px; overflow: hidden; }
   .photo-frame img { width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover; }
-  .photo-with-text { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-lg); align-items: start; }
 
-  /* ============ VOICE TABLES ============ */
-  .voice-table-wrap { overflow-x: auto; }
-  table.voice { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
-  table.voice th { text-align: left; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); padding-bottom: 10px; border-bottom: 1px solid var(--line); }
-  table.voice td { padding: 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  table.voice td:first-child { font-weight: 500; padding-right: var(--space-md); white-space: nowrap; }
-  .pillars { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-sm); counter-reset: pillar; }
-  .pillars li { counter-increment: pillar; display: grid; grid-template-columns: 40px 1fr; gap: var(--space-sm); padding-block: 14px; border-top: 1px solid var(--line); }
-  .pillars li:first-child { border-top: none; }
-  .pillars li::before { content: counter(pillar, decimal-leading-zero); font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; }
-  .pillars .pillar-title { font-weight: 500; font-size: 15px; }
-  .pillars .pillar-desc { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
-
-  .signoffs { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-sm); }
-  .signoff { font-family: var(--font-serif); font-size: 16px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 6px; }
-
-  footer { padding-block: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); font-size: 12px; color: var(--ink-muted); }
+  footer { padding-block: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(var(--ink-rgb),.5); }
 
   @media (max-width: 640px) {
-    .type-row { grid-template-columns: 1fr; gap: 10px; }
+    .type-row { grid-template-columns: 1fr; gap: 8px; }
     .photo-with-text { grid-template-columns: 1fr; }
-    .space-row { grid-template-columns: 70px 1fr 56px; }
+    .tile-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-row { gap: 24px; }
   }
 </style>
 </head>
@@ -313,298 +317,383 @@
 
   <header class="nav">
     <div class="nav-row">
-      <span class="wordmark" role="img" aria-label="Savvy"></span>
+      <div class="nav-left">
+        <span class="wordmark" role="img" aria-label="Savvy"></span>
+        <div class="seg" role="tablist" aria-label="Audience">
+          <button class="active" type="button">Advisors</button>
+          <button type="button">Clients</button>
+        </div>
+      </div>
       <ul class="nav-links">
-        <li><a href="#colores">Color</a></li>
-        <li><a href="#tipografia">Tipografía</a></li>
-        <li><a href="#espaciado">Espaciado</a></li>
-        <li><a href="#componentes">Componentes</a></li>
-        <li><a href="#motivo">Motivo circular</a></li>
-        <li><a href="#voz">Voz &amp; tono</a></li>
+        <li><a href="#colors">Color</a></li>
+        <li><a href="#type">Type</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#texture">Texture</a></li>
+        <li><a href="#structure">Structure</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" type="button">Modo oscuro</button>
+      <button class="theme-toggle" id="themeToggle" type="button">Dark mode</button>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="overview">
-    <div class="hero-circles" aria-hidden="true">
-      <div class="circle" style="width:520px;height:520px;top:-260px;right:-160px;"></div>
-      <div class="circle" style="width:340px;height:340px;top:-60px;right:60px;"></div>
-      <div class="circle" style="width:220px;height:220px;top:120px;right:-40px;"></div>
-    </div>
-    <span class="eyebrow">Sistema de diseño · v1</span>
-    <h1 class="display">Independencia, <em class="serif">reinventada</em>.</h1>
-    <p class="lede">Referencia visual del sistema de marca de Savvy Wealth: paleta, tipografía, espaciado, componentes de UI y el motivo circular que atraviesa cada pieza. Editorial, mínimo, premium — nunca genérico.</p>
+    <span class="eyebrow ink-50">Design system reference · rebuilt from the 2026 site redesign</span>
+    <h1 class="display">Design, <em class="serif">reinvented</em>.</h1>
+    <p class="lede ink-70">A visual audit of Savvy's current design system, pulled directly from the <strong>2026 Website Redesign</strong> Figma file — colors, type, buttons, cards, badges, imagery and background texture as they actually ship today, not as they were documented before.</p>
     <div class="meta-row">
-      <div class="meta-item"><span class="eyebrow">Tipografía primaria</span><strong>Diatype (web: Inter)</strong></div>
-      <div class="meta-item"><span class="eyebrow">Tipografía secundaria</span><strong>Big Caslon (web: Georgia)</strong></div>
-      <div class="meta-item"><span class="eyebrow">Audiencia</span><strong>Advisor-facing · End-client</strong></div>
-      <div class="meta-item"><span class="eyebrow">Motivo</span><strong>Círculos superpuestos, trazo fino</strong></div>
+      <div class="meta-item"><span class="eyebrow ink-50">Primary typeface</span><strong>ABC Diatype (web: Inter)</strong></div>
+      <div class="meta-item"><span class="eyebrow ink-50">Serif accent</span><strong>Big Caslon CC (web: Georgia)</strong></div>
+      <div class="meta-item"><span class="eyebrow ink-50">Source</span><strong>2026 Website Redesign, Figma</strong></div>
+      <div class="meta-item"><span class="eyebrow ink-50">Corner radius</span><strong>5–12px controls · 999px pills</strong></div>
     </div>
+    <p class="source-note ink-70">This replaces an earlier v1 of this reference that leaned on outdated brand guidelines — most notably a pill-shaped button system and a bright <code class="tok">#175242</code> green that the current site no longer uses. Everything below was read out of the live redesign file, section by section.</p>
   </section>
 
   <!-- COLORS -->
-  <section id="colores">
+  <section id="colors">
     <div class="section-head">
-      <h2>Paleta de <em class="serif">color</em></h2>
-      <span class="count">5 primarios · 8 secundarios · 8 grises de producto</span>
+      <h2>Color, <em class="serif">corrected</em></h2>
+      <span class="count">Neutrals · accents · semantic gradients</span>
     </div>
 
-    <p class="subhead">Primarios — la base, hacen la mayor parte del trabajo</p>
+    <p class="subhead">Neutrals — carry most of the page</p>
     <div class="swatch-grid">
-      <div class="swatch"><div class="swatch-fill" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-use">Fondos, texto sobre oscuro</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#FFF8F1;"></div><div class="swatch-info"><div class="swatch-name">Vanilla</div><div class="swatch-hex">#FFF8F1</div><div class="swatch-use">Fondos cálidos, cards</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#C7BCA1;"></div><div class="swatch-info"><div class="swatch-name">Ecru</div><div class="swatch-hex">#C7BCA1</div><div class="swatch-use">Acentos sutiles, motivo circular sobre claro</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#8E7E57;"></div><div class="swatch-info"><div class="swatch-name">Savvy Gold</div><div class="swatch-hex">#8E7E57</div><div class="swatch-use">Acento, texto secundario, CTAs sobre claro</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div><div class="swatch-use">Fondos hero, texto primario</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div><div class="swatch-use">Nav CTA, hero/footer surfaces, primary text</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-use">Cards, advisor photo tiles</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#F5F2EC;"></div><div class="swatch-info"><div class="swatch-name">Cream</div><div class="swatch-hex">#F5F2EC</div><div class="swatch-use">Default page background (replaces the old warmer vanilla #FFF8F1)</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#FCFBF9;"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#FCFBF9</div><div class="swatch-use">Input fields, filter bars, tile backgrounds</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#B2AAA1;"></div><div class="swatch-info"><div class="swatch-name">Warm gray</div><div class="swatch-hex">#B2AAA1</div><div class="swatch-use">Photo placeholder / loading fill</div></div></div>
     </div>
 
-    <p class="subhead">Secundarios — vibrantes, uso selectivo</p>
+    <p class="subhead">Accents — used with intent, not decoration</p>
     <div class="swatch-grid">
-      <div class="swatch"><div class="swatch-fill" style="background:#175242;"></div><div class="swatch-info"><div class="swatch-name">Deep Green</div><div class="swatch-hex">#175242</div><div class="swatch-use">Advisor-facing, confianza, autoridad</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#095972;"></div><div class="swatch-info"><div class="swatch-name">Deep Blue / Teal</div><div class="swatch-hex">#095972</div><div class="swatch-use">Momentos de plataforma / tech</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#D79F32;"></div><div class="swatch-info"><div class="swatch-name">Golden Yellow</div><div class="swatch-hex">#D79F32</div><div class="swatch-use">Calidez end-client, stats</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#6B484D;"></div><div class="swatch-info"><div class="swatch-name">Maroon</div><div class="swatch-hex">#6B484D</div><div class="swatch-use">Editorial, thought leadership</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#A98EB1;"></div><div class="swatch-info"><div class="swatch-name">Lavender</div><div class="swatch-hex">#A98EB1</div><div class="swatch-use">Momentos de marca más suaves</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#B63D35;"></div><div class="swatch-info"><div class="swatch-name">Red</div><div class="swatch-hex">#B63D35</div><div class="swatch-use">Alertas, CTAs urgentes (uso limitado)</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#F19E70;"></div><div class="swatch-info"><div class="swatch-name">Peach</div><div class="swatch-hex">#F19E70</div><div class="swatch-use">Acentos editoriales cálidos</div></div></div>
-      <div class="swatch"><div class="swatch-fill" style="background:#C06F74;"></div><div class="swatch-info"><div class="swatch-name">Dusty Rose</div><div class="swatch-hex">#C06F74</div><div class="swatch-use">Slides narrativos secundarios</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#8E7E57;"></div><div class="swatch-info"><div class="swatch-name">Savvy Gold</div><div class="swatch-hex">#8E7E57</div><div class="swatch-use">Primary button, stat numerals, active nav state</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#C7BCA1;"></div><div class="swatch-info"><div class="swatch-name">Ecru</div><div class="swatch-hex">#C7BCA1</div><div class="swatch-use">Footer category labels, credential-pill tint</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#095972;"></div><div class="swatch-info"><div class="swatch-name">Teal</div><div class="swatch-hex">#095972</div><div class="swatch-use">Active-item accent border in service lists</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:#D16F39;"></div><div class="swatch-info"><div class="swatch-name">Terracotta</div><div class="swatch-hex">#D16F39</div><div class="swatch-use">Warm gradient CTA on advisor-matching flows</div></div></div>
+      <div class="swatch was-wrong"><div class="swatch-fill" style="background:#08261E;"></div><div class="swatch-info"><div class="swatch-name">Deep Green</div><div class="swatch-hex">#08261E</div><div class="swatch-use">Full-bleed CTA bands ("See if Savvy is the right fit")</div></div></div>
     </div>
 
-    <p class="subhead">Grises de producto — solo UI, nunca marketing</p>
-    <div class="gray-row" style="margin-bottom:10px;">
-      <div class="gray-chip" style="background:#767676;color:#fff;">#767676</div>
-      <div class="gray-chip" style="background:#A3A3A3;color:#000;">#A3A3A3</div>
-      <div class="gray-chip" style="background:#D0D0D0;color:#000;">#D0D0D0</div>
-      <div class="gray-chip" style="background:#ECECEC;color:#000;">#ECECEC</div>
-    </div>
-    <div class="gray-row">
-      <div class="gray-chip" style="background:#89837C;color:#fff;">#89837C</div>
-      <div class="gray-chip" style="background:#B2AAA1;color:#000;">#B2AAA1</div>
-      <div class="gray-chip" style="background:#D3CDC4;color:#000;">#D3CDC4</div>
-      <div class="gray-chip" style="background:#F5F2EC;color:#000;">#F5F2EC</div>
+    <p class="subhead">Text — opacity on black/white, not a gray ramp</p>
+    <p class="t-body ink-70" style="margin-bottom:16px;">The redesign doesn't keep a separate set of gray hex values for copy hierarchy. Every text color is black (or white, in dark sections) at a fixed opacity — it inverts cleanly and there's one fewer set of tokens to maintain.</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-fill" style="background:#000;"></div><div class="swatch-info"><div class="swatch-name">100%</div><div class="swatch-hex">headlines</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:rgba(0,0,0,.8);"></div><div class="swatch-info"><div class="swatch-name">80%</div><div class="swatch-hex">credential text</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:rgba(0,0,0,.7);"></div><div class="swatch-info"><div class="swatch-name">70%</div><div class="swatch-hex">body copy</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:rgba(0,0,0,.5);"></div><div class="swatch-info"><div class="swatch-name">50%</div><div class="swatch-hex">placeholders</div></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:rgba(0,0,0,.4);"></div><div class="swatch-info"><div class="swatch-name">40%</div><div class="swatch-hex">inactive list items</div></div></div>
     </div>
 
-    <p class="subhead">Color stories — mood → paleta</p>
-    <div class="story-grid">
-      <div class="story-card" style="background:#000;color:#fff;"><div class="story-name">Premium / Editorial</div><div class="story-mix">Fondo negro + texto blanco + círculos ecru</div></div>
-      <div class="story-card" style="background:#FFF8F1;color:#000;"><div class="story-name">Warm / Human</div><div class="story-mix">Fondo vanilla + texto negro + acentos gold</div></div>
-      <div class="story-card" style="background:#175242;color:#fff;"><div class="story-name">Authoritative / Advisor</div><div class="story-mix">Fondo deep green + texto blanco + acentos ecru</div></div>
-      <div class="story-card" style="background:#095972;color:#fff;"><div class="story-name">Platform / Tech</div><div class="story-mix">Fondo teal + texto blanco + círculos claros</div></div>
-      <div class="story-card" style="background:#D79F32;color:#000;"><div class="story-name">End-Client Warmth</div><div class="story-mix">Fondo golden yellow + texto negro/blanco</div></div>
-      <div class="story-card" style="background:#6B484D;color:#fff;"><div class="story-name">Thought Leadership</div><div class="story-mix">Fondo maroon + texto blanco</div></div>
+    <p class="subhead">Semantic gradients — trust badges, not mood boards</p>
+    <p class="t-body ink-70" style="margin-bottom:16px;">The one place the redesign uses gradients purposefully: diagonal two-tone pills that carry a specific meaning (fiduciary status, vetting, fee structure) on advisor cards — not a decorative "color story" per audience.</p>
+    <div class="grad-row">
+      <div class="grad-chip" style="background:var(--grad-gold);">Fiduciary</div>
+      <div class="grad-chip" style="background:var(--grad-stone);">Vetted</div>
+      <div class="grad-chip" style="background:var(--grad-green);">Fee-based</div>
+      <div class="grad-chip" style="background:var(--grad-warm); color:#fff;">Find an advisor (CTA)</div>
+      <div class="grad-chip" style="background:var(--grad-on-dark); color:#000;">Primary CTA, on dark</div>
     </div>
   </section>
 
   <!-- TYPOGRAPHY -->
-  <section id="tipografia">
+  <section id="type">
     <div class="section-head">
-      <h2>Escala <em class="serif">tipográfica</em></h2>
-      <span class="count">Diatype (Inter) + Big Caslon (Georgia)</span>
+      <h2>Typography <em class="serif">held</em></h2>
+      <span class="count">This part of the old doc was right</span>
     </div>
+    <p class="t-body ink-70" style="margin-bottom:32px;">Diatype + Big Caslon, mixed inside a single headline, is still exactly how Savvy sets type — the pairing survived the redesign untouched. What changed is scale and how tightly it tracks.</p>
 
     <div class="type-row">
-      <div><div class="type-label">Display</div><div class="type-spec">Light · -4% tracking · 100% leading</div></div>
-      <div class="type-sample t-display">Your real-time picture.</div>
+      <div><div class="type-label">Hero headline</div><div class="type-spec">Light · 45–60px · -1.2px tracking · 1.1 leading</div></div>
+      <div class="type-sample t-hero">Unlock your personalized path to <em class="serif">lasting wealth</em></div>
     </div>
     <div class="type-row">
-      <div><div class="type-label">Headline sans</div><div class="type-spec">Light · -1% tracking · 105% leading</div></div>
-      <div class="type-sample t-headline-sans">Independence, reinvented.</div>
+      <div><div class="type-label">Section headline</div><div class="type-spec">Light · 54px · -1.08px tracking</div></div>
+      <div class="type-sample t-section">A complete approach <em class="serif">to your wealth</em></div>
     </div>
     <div class="type-row">
-      <div><div class="type-label">Headline serif</div><div class="type-spec">Bold · +2% tracking · 105% leading</div></div>
-      <div class="type-sample t-headline-serif">Independence, reinvented.</div>
+      <div><div class="type-label">Card headline</div><div class="type-spec">Light · 26–36px · -1.08px tracking</div></div>
+      <div class="type-sample t-card">Cindy Alvarez</div>
     </div>
     <div class="type-row">
-      <div><div class="type-label">Body copy</div><div class="type-spec">Regular · 18pt · 150% leading</div></div>
-      <div class="type-sample t-body">Un socio de confianza para asesores financieros independientes — combinando infraestructura, servicio excepcional y herramientas inteligentes.</div>
+      <div><div class="type-label">Body copy</div><div class="type-spec">Regular · 18–20px · 1.45 leading · black @ 70%</div></div>
+      <div class="type-sample t-body ink-70">Find an independent fiduciary advisor with the resources, technology, and support to give your financial goals the attention they deserve.</div>
     </div>
     <div class="type-row">
-      <div><div class="type-label">Caption</div><div class="type-spec">Regular · 12pt · +7% tracking · ALL CAPS</div></div>
-      <div class="type-sample t-caption">Advisor-facing · Powered by Savvy</div>
+      <div><div class="type-label">Caption / eyebrow</div><div class="type-spec">Medium · 10–12px · uppercase, wide tracking</div></div>
+      <div class="type-sample t-caption ink-60">Our custodians</div>
     </div>
     <div class="type-row">
-      <div><div class="type-label">CTA</div><div class="type-spec">Regular · 18pt · +2% tracking</div></div>
-      <div class="type-sample t-cta">Book a demo</div>
+      <div><div class="type-label">Button label</div><div class="type-spec">Medium · 14–18px · +0.36px tracking</div></div>
+      <div class="type-sample t-cta">Find an advisor</div>
     </div>
-
-    <p class="subhead">Firma tipográfica</p>
-    <p class="t-body" style="max-width:44ch;">El movimiento característico de Savvy: mezclar Diatype Light (sans) y Big Caslon Bold (serif) <em class="serif">dentro del mismo titular</em> — una palabra clave en serif, el resto en sans. Siempre en minúsculas de oración, nunca en Title Case.</p>
+    <div class="type-row">
+      <div><div class="type-label">Stat numeral</div><div class="type-spec">Big Caslon Bold · 75–95px · gold, thin rule above</div></div>
+      <div class="type-sample t-stat">100+</div>
+    </div>
   </section>
 
   <!-- SPACING -->
-  <section id="espaciado">
+  <section id="spacing">
     <div class="section-head">
-      <h2>Escala de <em class="serif">espaciado</em></h2>
-      <span class="count">6 pasos</span>
+      <h2>Spacing is <em class="serif">organic</em></h2>
+      <span class="count">Not a strict 8pt grid</span>
     </div>
-    <div class="space-row"><div class="space-token">--space-xs</div><div class="space-bar" style="width:8px;"></div><div class="space-px">8px</div></div>
-    <div class="space-row"><div class="space-token">--space-sm</div><div class="space-bar" style="width:16px;"></div><div class="space-px">16px</div></div>
-    <div class="space-row"><div class="space-token">--space-md</div><div class="space-bar" style="width:32px;"></div><div class="space-px">32px</div></div>
-    <div class="space-row"><div class="space-token">--space-lg</div><div class="space-bar" style="width:64px;"></div><div class="space-px">64px</div></div>
-    <div class="space-row"><div class="space-token">--space-xl</div><div class="space-bar" style="width:120px;"></div><div class="space-px">120px</div></div>
-    <div class="space-row"><div class="space-token">--space-2xl</div><div class="space-bar" style="width:160px;max-width:100%;"></div><div class="space-px">160px</div></div>
-    <p class="t-body" style="margin-top:var(--space-md); font-size:14px; color:var(--ink-muted);">Padding vertical de sección: 120–160px en desktop, reducido a 48–64px en mobile. El espacio es un elemento de diseño — nunca llenar cada pixel.</p>
+    <p class="t-body ink-70" style="margin-bottom:28px;">The v1 doc claimed a clean 8/16/32/64/120/160 scale. The actual file doesn't hold to one — gaps are tuned per component (8, 12, 14, 17, 21, 26, 30, 38, 41, 48, 60, 77, 94px all show up). What's consistent is the effect, not the numbers: generous, uneven, hand-tuned spacing rather than a rigid token ramp.</p>
+    <div class="space-row"><div class="space-px">8px</div><div class="space-bar" style="width:8px;"></div></div>
+    <div class="space-row"><div class="space-px">14px</div><div class="space-bar" style="width:14px;"></div></div>
+    <div class="space-row"><div class="space-px">21px</div><div class="space-bar" style="width:21px;"></div></div>
+    <div class="space-row"><div class="space-px">30px</div><div class="space-bar" style="width:30px;"></div></div>
+    <div class="space-row"><div class="space-px">48px</div><div class="space-bar" style="width:48px;"></div></div>
+    <div class="space-row"><div class="space-px">77px</div><div class="space-bar" style="width:77px;"></div></div>
+    <div class="space-row"><div class="space-px">94px</div><div class="space-bar" style="width:94px; max-width:100%;"></div></div>
+  </section>
+
+  <!-- BUTTONS -->
+  <section id="buttons">
+    <div class="section-head">
+      <h2><em class="serif">Buttons</em>, not pills</h2>
+      <span class="count">5px radius, five variants</span>
+    </div>
+    <p class="t-body ink-70" style="margin-bottom:28px;">The v1 doc specified full pill buttons. The real system uses a tight 5px corner radius everywhere, and picks between five treatments depending on what sits behind the button.</p>
+    <div class="comp-card">
+      <span class="comp-label">Primary — flat gold, on cream/white</span>
+      <div class="row" style="margin-bottom:24px;">
+        <button class="btn btn-gold">Find an advisor</button>
+        <button class="btn btn-gold">Explore all services</button>
+      </div>
+      <span class="comp-label">Nav / high-emphasis — flat black</span>
+      <div class="row" style="margin-bottom:24px;">
+        <button class="btn btn-black">See if you're a fit</button>
+      </div>
+      <span class="comp-label">Secondary — outline</span>
+      <div class="row" style="margin-bottom:24px;">
+        <button class="btn btn-outline">Log in</button>
+      </div>
+      <span class="comp-label">On dark surfaces — white → ecru gradient, black text</span>
+      <div class="dark-chip" style="margin-bottom:24px;">
+        <button class="btn btn-on-dark">Explore SWIM</button>
+      </div>
+      <span class="comp-label">Advisor-matching — terracotta gradient, white text</span>
+      <div class="row">
+        <button class="btn btn-warm">Find an advisor</button>
+      </div>
+    </div>
   </section>
 
   <!-- COMPONENTS -->
-  <section id="componentes">
+  <section id="components">
     <div class="section-head">
-      <h2><em class="serif">Componentes</em> de UI</h2>
-      <span class="count">Botones · formularios · cards · badges</span>
+      <h2>Real <em class="serif">components</em></h2>
+      <span class="count">Filter bar · advisor card · trust badges · stats</span>
     </div>
 
-    <p class="subhead">Botones</p>
-    <div class="comp-card" style="margin-bottom:var(--space-md);">
-      <span class="comp-label">Primario — pill rellena, deep green + blanco</span>
-      <div class="row" style="margin-bottom:var(--space-md);">
-        <button class="btn-primary">Book a demo</button>
-        <button class="btn-primary">Get started</button>
-      </div>
-      <span class="comp-label">Secundario — pill outline, negro/blanco según tema</span>
-      <div class="row">
-        <button class="btn-secondary">Learn more</button>
-        <button class="btn-secondary">Partner with Savvy</button>
-      </div>
-    </div>
-
-    <p class="subhead">Formulario</p>
-    <div class="comp-card" style="margin-bottom:var(--space-md);">
-      <div class="comp-grid">
-        <div>
-          <div class="field">
-            <label for="fname">Nombre</label>
-            <input type="text" id="fname" placeholder="Jordan Ellis">
-          </div>
-          <div class="field">
-            <label for="ftype">Tipo de asesor</label>
-            <select id="ftype">
-              <option>Independent RIA</option>
-              <option>Wirehouse breakaway</option>
-              <option>Hybrid advisor</option>
-            </select>
-          </div>
+    <p class="subhead">Filter / search bar</p>
+    <div class="comp-card" style="margin-bottom:24px;">
+      <div class="filter-bar">
+        <div class="filter-field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Search by name
         </div>
-        <div>
-          <div class="check-row"><input type="checkbox" id="c1" checked><label for="c1">Recibir el newsletter de advisors</label></div>
-          <div class="check-row"><input type="checkbox" id="c2"><label for="c2">Suscribirse a novedades de producto</label></div>
-          <button class="btn-primary" style="margin-top:var(--space-sm);">Enviar</button>
+        <div class="filter-field">All states ⌄</div>
+        <div class="filter-field">Focus area ⌄</div>
+        <div class="filter-field">Gender ⌄</div>
+        <div class="filter-field reset">Reset all</div>
+      </div>
+    </div>
+
+    <p class="subhead">Advisor card</p>
+    <div class="comp-card" style="margin-bottom:24px;">
+      <div class="advisor-grid">
+        <div class="advisor-card">
+          <div class="advisor-photo" style="background:linear-gradient(160deg,#c9c1b4,#a89f92);"></div>
+          <div class="advisor-name">Jordan Ellis</div>
+          <div class="advisor-loc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Denver, CO
+          </div>
+          <div class="cred-row"><span class="cred-pill">CFP®</span><span class="cred-pill">CIMA®</span></div>
+        </div>
+        <div class="advisor-card">
+          <div class="advisor-photo" style="background:linear-gradient(160deg,#b7c2c1,#8fa19f);"></div>
+          <div class="advisor-name">Alex Barnes</div>
+          <div class="advisor-loc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Charlotte, NC
+          </div>
+          <div class="cred-row"><span class="cred-pill">CFP®</span></div>
+        </div>
+        <div class="advisor-card">
+          <div class="advisor-photo" style="background:linear-gradient(160deg,#cdbfae,#a48e78);"></div>
+          <div class="advisor-name">Robin Cole</div>
+          <div class="advisor-loc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Reno, NV
+          </div>
+          <div class="cred-row"><span class="cred-pill">CLU</span><span class="cred-pill">CFP®</span></div>
+        </div>
+        <div class="advisor-card">
+          <div class="advisor-photo" style="background:linear-gradient(160deg,#c2bdb0,#96897a);"></div>
+          <div class="advisor-name">Sam Reyes</div>
+          <div class="advisor-loc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Reston, VA
+          </div>
+          <div class="cred-row"><span class="cred-pill">CFP®</span></div>
         </div>
       </div>
+      <p class="t-body ink-50" style="font-size:12px; margin-top:18px;">Illustrative example cards — names and photos are placeholders, not real advisors.</p>
     </div>
 
-    <p class="subhead">Cards</p>
-    <div class="card-grid" style="margin-bottom:var(--space-md);">
-      <div class="stat-card">
-        <span class="sample-tag">Dato de ejemplo</span>
-        <div class="stat-number">2.4x</div>
-        <div class="stat-desc">Crecimiento promedio de AUM en el primer año — patrón "Stat Post"</div>
+    <p class="subhead">Trust badges</p>
+    <div class="comp-card" style="margin-bottom:24px;">
+      <div class="trust-row">
+        <span class="trust-badge" style="background:var(--grad-gold);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.1-6.5 7-6.5S19 17 19 21"/></svg>
+          Fiduciary
+        </span>
+        <span class="trust-badge" style="background:var(--grad-stone);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M5 12l4.5 4.5L19 7"/></svg>
+          Vetted
+        </span>
+        <span class="trust-badge" style="background:var(--grad-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/></svg>
+          Fee-based
+        </span>
       </div>
-      <div class="quote-card">
-        <span class="sample-tag" style="color:var(--ink-muted);">Contenido de ejemplo, no un testimonio real</span>
-        <div class="quote-text">"Recuperé el tiempo que antes perdía en operaciones — ahora lo paso con mis clientes."</div>
-        <div class="quote-attr"><div class="name">Advisor de ejemplo</div><div class="title">Independent RIA</div></div>
+    </div>
+
+    <p class="subhead">Stat numerals</p>
+    <div class="comp-card">
+      <div class="stat-row">
+        <div class="stat-item"><div class="stat-rule"></div><div class="t-stat">$10B</div><div class="stat-label ink-100">in recruited assets</div></div>
+        <div class="stat-item"><div class="stat-rule"></div><div class="t-stat">100+</div><div class="stat-label ink-100">experienced advisors</div></div>
+        <div class="stat-item"><div class="stat-rule"></div><div class="t-stat">6,000+</div><div class="stat-label ink-100">households serviced</div></div>
       </div>
-    </div>
-
-    <p class="subhead">Badges / etiquetas</p>
-    <div class="badge-row">
-      <span class="badge"><span class="dot" style="background:#175242;"></span>Advisor-facing</span>
-      <span class="badge"><span class="dot" style="background:#D79F32;"></span>End-client</span>
-      <span class="badge"><span class="dot" style="background:#095972;"></span>Platform</span>
-      <span class="badge"><span class="dot" style="background:#6B484D;"></span>Editorial</span>
-      <span class="badge"><span class="dot" style="background:#B63D35;"></span>Urgente</span>
-    </div>
-
-    <p class="subhead">Iconografía</p>
-    <p class="t-body" style="font-size:14px; color:var(--ink-muted); max-width:60ch; margin-bottom:var(--space-sm);">Simple, abstracta, basada en geometría circular. Trazo fino (1–2pt), nunca rellenos decorativos. Assets reales del sistema de marca:</p>
-    <div class="icon-grid">
-      <div class="icon-tile"><img src="./assets/icons/icon-circles-overlap.png" alt="Ícono de círculos superpuestos"><div class="icon-name">Círculos superpuestos</div></div>
-      <div class="icon-tile"><img src="./assets/icons/icon-orbit.png" alt="Ícono de órbita"><div class="icon-name">Órbita</div></div>
-      <div class="icon-tile"><img src="./assets/icons/icon-network.png" alt="Ícono de red / conexión"><div class="icon-name">Red / conexión</div></div>
-      <div class="icon-tile"><img src="./assets/icons/icon-target.png" alt="Ícono de círculos concéntricos"><div class="icon-name">Concéntrico</div></div>
     </div>
   </section>
 
-  <!-- CIRCLE MOTIF -->
-  <section id="motivo">
+  <!-- MAP -->
+  <section id="map">
     <div class="section-head">
-      <h2>Motivo <em class="serif">circular</em></h2>
-      <span class="count">Elemento decorativo primario</span>
+      <h2>Map <em class="serif">+ avatar pins</em></h2>
+      <span class="count">"Coast to coast" coverage component</span>
     </div>
-    <div class="motif-demo">
-      <div class="circle" style="width:420px;height:420px;top:-140px;right:-100px;"></div>
-      <div class="circle" style="width:280px;height:280px;top:60px;right:180px;"></div>
-      <div class="circle" style="width:180px;height:180px;top:180px;right:40px;"></div>
-      <div class="motif-caption">Círculos superpuestos, trazo 1–2pt, solo contorno — nunca relleno. Escala grande, a menudo recortados fuera del canvas.</div>
+    <div class="map-wrap">
+      <div id="dotmap"></div>
+      <div class="map-pin" style="top:18px; left:58%;"><div class="avatar" style="background:linear-gradient(160deg,#cdbfae,#a48e78);"></div><span><span class="pin-state">Idaho</span><span class="pin-name">Frank R.</span></span></div>
+      <div class="map-pin" style="top:70px; left:44%;"><div class="avatar" style="background:linear-gradient(160deg,#c9c1b4,#a89f92);"></div><span><span class="pin-state">Minnesota</span><span class="pin-name">Aaron P.</span></span></div>
+      <div class="map-pin" style="top:120px; left:70%;"><div class="avatar" style="background:linear-gradient(160deg,#b7c2c1,#8fa19f);"></div><span><span class="pin-state">Arkansas</span><span class="pin-name">Dustin P.</span></span></div>
     </div>
-    <p class="t-body" style="margin-top:var(--space-md); font-size:14px; color:var(--ink-muted); max-width:60ch;">Color: coincide con el tono del fondo (círculos blancos sobre oscuro, círculos ecru sobre vanilla). Posición: típicamente alineado a la derecha, parcialmente recortado. Múltiples tamaños pueden superponerse para sugerir profundidad y conexión.</p>
+    <p class="t-body ink-50" style="font-size:12px; margin-top:14px;">Simplified reconstruction — a dot-grid US outline with floating white pill markers, each carrying a small avatar. First names shown are placeholders.</p>
+  </section>
 
-    <div class="photo-with-text" style="margin-top:var(--space-xl);">
+  <!-- TEXTURE -->
+  <section id="texture">
+    <div class="section-head">
+      <h2>Background <em class="serif">texture</em></h2>
+      <span class="count">Four recurring treatments</span>
+    </div>
+    <div class="texture-grid">
+      <div class="texture-card tex-gradient"><span class="texture-label dark-on-light">Cream → white vertical gradient (section fades)</span></div>
+      <div class="texture-card tex-glow"><span class="texture-label">Soft radial glow on deep-green CTA bands</span></div>
+      <div class="texture-card tex-map" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="90%" height="70%" viewBox="0 0 200 100"><g fill="rgba(0,0,0,.18)"><!-- dots injected --></g></svg>
+        <span class="texture-label dark-on-light">Dot-grid map fill</span>
+      </div>
+      <div class="texture-card tex-ring" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="140" height="140" viewBox="0 0 140 140" style="position:absolute; top:-20px; right:-20px;"><circle cx="90" cy="50" r="60" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="1"/><circle cx="90" cy="50" r="42" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="1"/><circle cx="90" cy="50" r="24" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="1"/></svg>
+        <span class="texture-label dark-on-light">Faint concentric rings inside service tiles</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE TILES -->
+  <section id="tiles">
+    <div class="section-head">
+      <h2>Service <em class="serif">tiles</em></h2>
+      <span class="count">Photo + text alternating grid</span>
+    </div>
+    <div class="tile-grid">
+      <div class="tile photo" style="background:linear-gradient(150deg,#8a8072,#4d453b);"></div>
+      <div class="tile text">
+        <svg class="ring" viewBox="0 0 180 180" style="position:absolute; top:-40px; right:-40px;"><circle cx="90" cy="90" r="70" fill="none" stroke="rgba(0,0,0,.08)"/><circle cx="90" cy="90" r="50" fill="none" stroke="rgba(0,0,0,.08)"/><circle cx="90" cy="90" r="30" fill="none" stroke="rgba(0,0,0,.08)"/></svg>
+        <div class="tile-title">Transition support</div>
+        <div class="tile-desc">Strategic, data-driven investing that seeks ambitious results.</div>
+      </div>
+      <div class="tile text">
+        <svg class="ring" viewBox="0 0 180 180" style="position:absolute; top:-40px; right:-40px;"><circle cx="90" cy="90" r="70" fill="none" stroke="rgba(0,0,0,.08)"/><circle cx="90" cy="90" r="50" fill="none" stroke="rgba(0,0,0,.08)"/><circle cx="90" cy="90" r="30" fill="none" stroke="rgba(0,0,0,.08)"/></svg>
+        <div class="tile-title">Operations</div>
+        <div class="tile-desc">Minimize your tax burden to help you optimize your wealth.</div>
+      </div>
+      <div class="tile text">
+        <svg class="ring" viewBox="0 0 180 180" style="position:absolute; top:-40px; right:-40px;"><circle cx="90" cy="90" r="70" fill="none" stroke="rgba(0,0,0,.08)"/><circle cx="90" cy="90" r="50" fill="none" stroke="rgba(0,0,0,.08)"/><circle cx="90" cy="90" r="30" fill="none" stroke="rgba(0,0,0,.08)"/></svg>
+        <div class="tile-title">Compliance</div>
+        <div class="tile-desc">Boost potential after-tax returns with personalized loss harvesting.</div>
+      </div>
+      <div class="tile photo" style="background:linear-gradient(150deg,#7c8a86,#3c4a45);"></div>
+      <div class="tile photo" style="background:linear-gradient(150deg,#a08f76,#5a4c38);"></div>
+    </div>
+    <p class="t-body ink-70" style="margin-top:20px; font-size:14px;">The v1 circle motif — bold, overlapping outline circles floating off-canvas — mostly disappears. What's left is this: a faint concentric-ring watermark tucked into the corner of text tiles, barely above the background color.</p>
+  </section>
+
+  <!-- ICONS -->
+  <section id="icons">
+    <div class="section-head">
+      <h2><em class="serif">Interface</em> icons</h2>
+      <span class="count">A standard line-icon set, not a custom brand mark</span>
+    </div>
+    <p class="t-body ink-70" style="margin-bottom:24px;">Icon layer names in the file (MagnifyingGlass, MapPin, Shield, UserCircle, CheckCircle) point to a standard thin-line icon library rather than the old bespoke "everything derives from a circle" system. Redrawn here at the same weight for reference:</p>
+    <div class="icon-grid">
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div class="icon-name">Search</div></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><div class="icon-name">Map pin</div></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/></svg><div class="icon-name">Shield</div></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3.2"/><path d="M6 19c1.2-2.6 3.4-4 6-4s4.8 1.4 6 4"/></svg><div class="icon-name">User circle</div></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><div class="icon-name">Check circle</div></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg><div class="icon-name">Caret</div></div>
+    </div>
+  </section>
+
+  <!-- STRUCTURE -->
+  <section id="structure">
+    <div class="section-head">
+      <h2>Stacked <em class="serif">sheets</em></h2>
+      <span class="count">How sections meet</span>
+    </div>
+    <p class="t-body ink-70" style="margin-bottom:24px;">Full-bleed sections don't just butt up against each other — a dark section landing on a light one gets its own top corners rounded (20px), so it reads as a sheet laid over the page rather than a flat color change.</p>
+    <div class="sheet-demo">
+      <div class="sheet cream">
+        <div class="t-card">Meet the advisors behind Savvy</div>
+        <p class="t-body ink-70" style="margin-top:8px; font-size:14px;">Cream section, flush edges.</p>
+      </div>
+      <div class="sheet black">
+        <div class="t-card" style="color:#fff;">© Savvy Wealth, Inc.</div>
+        <p class="sheet-caption">Footer sheet — note the rounded top corners against the section above.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOGRAPHY -->
+  <section id="photography">
+    <div class="section-head">
+      <h2><em class="serif">Photography</em> direction</h2>
+      <span class="count">Candid, mixed with real product UI</span>
+    </div>
+    <div class="photo-with-text">
       <div class="photo-frame">
-        <img src="./assets/photography/photo-sample.jpg" alt="Fotografía de marca Savvy, luz cálida, tono película">
+        <img src="./assets/photography/photo-sample.jpg" alt="Savvy brand photography, warm and candid">
       </div>
       <div>
-        <p class="subhead" style="margin-top:0;">Dirección fotográfica</p>
-        <p class="t-body">Calidez, calidad tipo película. Locaciones mínimas y despejadas. Sujetos sobre fondos de tonos madera cálidos. Retratos de advisors: casuales, con confianza. Nunca energía de stock photo.</p>
+        <p class="t-body ink-70">Hero sections now run a mosaic of small square tiles that mix candid, golden-hour lifestyle photography with real screenshots of the Savvy product — a net-worth chart, an asset-allocation table — tinted with a soft color wash. It's less posed-portrait, more "here's actually what using this looks like."</p>
+        <p class="t-body ink-70" style="margin-top:14px;">Where a single portrait is needed — leadership team, "meet the advisor" — the crop goes circular; the advisor-directory grid keeps square crops instead.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- VOICE & VOCABULARY -->
-  <section id="voz">
-    <div class="section-head">
-      <h2>Voz &amp; <em class="serif">vocabulario</em></h2>
-      <span class="count">6 pilares de mensajería</span>
-    </div>
-
-    <p class="subhead">Pilares de mensajería</p>
-    <ol class="pillars">
-      <li><div><div class="pillar-title">Independencia con propiedad</div><div class="pillar-desc">Propiedad real del negocio, los clientes y el futuro económico</div></div></li>
-      <li><div><div class="pillar-title">Más tiempo para lo que importa</div><div class="pillar-desc">Recuperar tiempo; una plataforma reemplaza un mosaico de herramientas</div></div></li>
-      <li><div><div class="pillar-title">Personas de clase mundial, herramientas inteligentes</div><div class="pillar-desc">Expertise humano + IA moderna</div></div></li>
-      <li><div><div class="pillar-title">Base de confianza para tus clientes</div><div class="pillar-desc">Custodia de nivel institucional, Fidelity/Schwab</div></div></li>
-      <li><div><div class="pillar-title">Comunidad de advisors excepcionales</div><div class="pillar-desc">Red colaborativa, éxitos compartidos</div></div></li>
-      <li><div><div class="pillar-title">Ecosistema financiero conectado</div><div class="pillar-desc">Visión: una plataforma unificada a futuro</div></div></li>
-    </ol>
-
-    <p class="subhead">Vocabulario</p>
-    <div class="voice-table-wrap">
-      <table class="voice">
-        <thead><tr><th>Usar</th><th>Por qué</th></tr></thead>
-        <tbody>
-          <tr><td>Powered by Savvy</td><td>Co-marca suave, no eclipsa al advisor</td></tr>
-          <tr><td>Partner with Savvy</td><td>Enfatiza la independencia del advisor</td></tr>
-          <tr><td>Technology-enabled RIA</td><td>Explicación introductoria de qué es Savvy</td></tr>
-          <tr><td>End-client</td><td>Etiqueta correcta para los clientes del advisor</td></tr>
-          <tr><td>AI-native</td><td>IA de fondo que da leverage a los advisors</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="voice-table-wrap" style="margin-top:var(--space-md);">
-      <table class="voice">
-        <thead><tr><th>Evitar</th><th>Por qué no</th></tr></thead>
-        <tbody>
-          <tr><td>Savvy clients</td><td>Incorrecto — los advisors son dueños de la relación</td></tr>
-          <tr><td>Fully automated advice</td><td>Contradice el valor humano + tech</td></tr>
-          <tr><td>Disruption / disruptive</td><td>Desalineado con el tono advisor-first</td></tr>
-          <tr><td>Software company</td><td>Presenta a Savvy como una empresa SaaS</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="subhead">Frases de cierre</p>
-    <div class="signoffs">
-      <span class="signoff">Onward and upward.</span>
-      <span class="signoff">Grateful to be your trusted partner.</span>
-      <span class="signoff">Let's build the future advisors deserve.</span>
     </div>
   </section>
 
   <footer>
-    <span>Savvy Wealth, Inc. — referencia interna de sistema de diseño</span>
-    <span>Independence, reinvented.</span>
+    <span>Savvy Wealth, Inc. — internal design system reference</span>
+    <span>Source: 2026 Website Redesign, Figma</span>
   </footer>
 
 </div>
@@ -614,9 +703,9 @@
   var btn = document.getElementById('themeToggle');
   var root = document.documentElement;
   function label(theme) {
-    if (theme === 'dark') return 'Modo claro';
-    if (theme === 'light') return 'Modo oscuro';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Modo claro' : 'Modo oscuro';
+    if (theme === 'dark') return 'Light mode';
+    if (theme === 'light') return 'Dark mode';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Light mode' : 'Dark mode';
   }
   function apply(theme) {
     if (theme === 'dark' || theme === 'light') {
@@ -637,6 +726,38 @@
     apply(next);
     try { localStorage.setItem('savvy-ds-theme', next); } catch (e) {}
   });
+
+  var seg = document.querySelectorAll('.seg button');
+  seg.forEach(function (b) {
+    b.addEventListener('click', function () {
+      seg.forEach(function (o) { o.classList.remove('active'); });
+      b.classList.add('active');
+    });
+  });
+
+  // Dot-grid US map texture (stand-in for the real point-map asset)
+  function scatterDots(container, count, w, h) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('width', '100%');
+    svg.style.display = 'block';
+    var seed = 42;
+    function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    for (var i = 0; i < count; i++) {
+      var cx = 40 + rand() * (w - 80);
+      var cy = 20 + rand() * (h - 40);
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', cx.toFixed(1));
+      c.setAttribute('cy', cy.toFixed(1));
+      c.setAttribute('r', 1.6);
+      c.setAttribute('fill', 'rgba(0,0,0,0.18)');
+      svg.appendChild(c);
+    }
+    container.innerHTML = '';
+    container.appendChild(svg);
+  }
+  var dotmap = document.getElementById('dotmap');
+  if (dotmap) scatterDots(dotmap, 260, 800, 340);
 })();
 </script>
 </body>
