@@ -1,0 +1,509 @@
+<title>Series C Tower</title>
+<meta name="description" content="Savvy Wealth Series C announcement for the Nasdaq tower, 1568 × 2000.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Libre+Caslon+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Single dark look on purpose: the tower asset is dark, so the page stays dark in both themes. */
+  :root {
+    color-scheme: dark;
+    --page: #010c09;
+    --panel: #06191400;
+    --ink: #EDE6D8;
+    --ink-dim: #8E9A93;
+    --ecru: #C7BCA1;
+    --line: rgba(199, 188, 161, 0.18);
+    --deep-green: #175242;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: 'Libre Caslon Text', 'Big Caslon', Georgia, serif;
+  }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    padding-inline: 16px;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-block: 20px 28px;
+    display: grid;
+    gap: 16px;
+    justify-items: center;
+  }
+  header {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-family: var(--serif); font-style: normal; }
+  .spec {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .stage {
+    display: block;
+    height: min(76vh, 1000px);
+    aspect-ratio: 1568 / 2000;
+    max-width: 100%;
+    background: #021511;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .controls {
+    width: min(100%, 620px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  button {
+    font: inherit;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid rgba(237, 230, 216, 0.4);
+    border-radius: 999px;
+    padding: 7px 16px;
+    cursor: pointer;
+  }
+  button:hover { border-color: var(--ink); }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--ecru); outline-offset: 2px; }
+  #scrub { flex: 1 1 200px; accent-color: var(--ecru); }
+  #time { font-variant-numeric: tabular-nums; color: var(--ink-dim); min-width: 88px; text-align: right; }
+  label.toggle { display: flex; gap: 6px; align-items: center; color: var(--ink-dim); cursor: pointer; }
+  label.toggle input { accent-color: var(--ecru); }
+  .notes {
+    width: min(100%, 620px);
+    color: var(--ink-dim);
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Savvy <em>Series C</em> · Nasdaq tower</h1>
+    <span class="spec">1568 × 2000 px · 24 s loop · 30 fps</span>
+  </header>
+
+  <canvas id="stage" class="stage" width="1568" height="2000" aria-label="Animated Series C announcement: advisor portraits connect into a network, then the headline reads Independent, but never alone, followed by Savvy Wealth Series C."></canvas>
+
+  <div class="controls">
+    <button id="play" type="button">Pause</button>
+    <button id="restart" type="button">Restart</button>
+    <input id="scrub" type="range" min="0" max="24" step="0.01" value="0" aria-label="Timeline">
+    <span id="time">0.00 s</span>
+    <label class="toggle"><input id="grid" type="checkbox"> Spec slots</label>
+  </div>
+  <p class="notes">The 26 portrait cards sit exactly on the slots from the tower spec (98 × 137 px). The portraits are temporary crops from Savvy's team photography; swap in advisor headshots by replacing the files in <code>headshots/</code>.</p>
+</div>
+
+<script>
+(() => {
+  /* ---------- Config ---------- */
+  const CONFIG = {
+    amount: '',            // e.g. '$XXM' → reads "$XXM Series C". Left blank until the number is public.
+    duration: 24,
+  };
+
+  const W = 1568, H = 2000;
+  const C = {
+    bg: '#021511',
+    bgLift: '#062a21',
+    ink: '#FFFFFF',
+    ecru: '#C7BCA1',
+    vanilla: '#FFF8F1',
+    deepGreen: '#175242',
+  };
+  const SANS = "'Inter', sans-serif";
+  const SERIF = "'Libre Caslon Text', 'Big Caslon', Georgia, serif";
+
+  /* ---------- Layout from the tower spec ---------- */
+  const CARD_W = 98, CARD_H = 137;
+  const ROWS = [
+    [118, [0, 294, 608, 882, 1196, 1490]],
+    [353, [196, 490, 804, 1098, 1392]],
+    [608, [98, 392, 686, 1000, 1294]],
+    [902, [0, 294, 608, 882, 1196]],
+    [1196, [196, 490, 804, 1098, 1392]],
+  ];
+  const nodes = [];
+  ROWS.forEach(([y, xs]) => xs.forEach(x => nodes.push({
+    kind: 'card', x, y, w: CARD_W, h: CARD_H, cx: x + CARD_W / 2, cy: y + CARD_H / 2,
+  })));
+  const CARD_COUNT = nodes.length; // 26
+  // Small deep-green tiles in the gaps, echoing the icon tiles on the Series C page.
+  [[150, 300], [720, 540], [1250, 815], [420, 1110], [1480, 1100], [955, 1300]].forEach(([cx, cy]) =>
+    nodes.push({ kind: 'tile', cx, cy, w: 26, h: 26, x: cx - 13, y: cy - 13 }));
+
+  /* ---------- Seeded randomness so every frame renders the same ---------- */
+  function rng(seed) {
+    return () => {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  const rand = rng(20260925);
+  const dist = (a, b) => Math.hypot(a.cx - b.cx, a.cy - b.cy);
+
+  /* ---------- Network edges ---------- */
+  const edgeKey = new Set();
+  const edges = [];
+  function addEdge(a, b, type) {
+    const k = a < b ? a + '-' + b : b + '-' + a;
+    if (a === b || edgeKey.has(k)) return;
+    edgeKey.add(k);
+    edges.push({ a, b, type, phase: rand(), speed: 0.12 + rand() * 0.16 });
+  }
+  nodes.forEach((n, i) => {
+    const near = nodes.map((m, j) => [j, dist(n, m)]).filter(([j]) => j !== i).sort((p, q) => p[1] - q[1]);
+    const k = n.kind === 'tile' ? 2 : 2 + (rand() < 0.35 ? 1 : 0);
+    near.slice(0, k).forEach(([j]) => addEdge(i, j, 'near'));
+  });
+  let longTries = 0, longCount = 0;
+  while (longCount < 9 && longTries++ < 400) {
+    const a = Math.floor(rand() * CARD_COUNT), b = Math.floor(rand() * CARD_COUNT);
+    const d = dist(nodes[a], nodes[b]);
+    if (d > 520 && d < 1150) { const before = edges.length; addEdge(a, b, 'long'); if (edges.length > before) longCount++; }
+  }
+  // Lines that leave the frame, so the network reads as larger than the tower.
+  const outbound = [];
+  nodes.forEach((n, i) => {
+    if (n.kind !== 'card') return;
+    if (n.cx < 150) outbound.push({ i, x: -40, y: n.cy + (rand() - 0.5) * 420 });
+    if (n.cx > W - 180) outbound.push({ i, x: W + 40, y: n.cy + (rand() - 0.5) * 420 });
+    if (n.cy < 200) outbound.push({ i, x: n.cx + (rand() - 0.5) * 380, y: -40 });
+  });
+
+  /* ---------- Reveal order: the network grows outward from the centre ---------- */
+  const adj = nodes.map(() => []);
+  edges.forEach(e => { adj[e.a].push(e.b); adj[e.b].push(e.a); });
+  const start = nodes.reduce((best, n, i) => (Math.hypot(n.cx - W / 2, n.cy - 680) < Math.hypot(nodes[best].cx - W / 2, nodes[best].cy - 680) ? i : best), 0);
+  const order = [start], seen = new Set([start]);
+  const parent = {};
+  while (order.length < nodes.length) {
+    // Pick the unrevealed node that touches the revealed set, choosing randomly among them.
+    const frontier = [];
+    order.forEach(i => adj[i].forEach(j => { if (!seen.has(j)) frontier.push([j, i]); }));
+    let pick;
+    if (frontier.length) pick = frontier[Math.floor(rand() * frontier.length)];
+    else { const j = nodes.findIndex((_, x) => !seen.has(x)); pick = [j, order[order.length - 1]]; addEdge(j, pick[1], 'near'); }
+    seen.add(pick[0]); order.push(pick[0]); parent[pick[0]] = pick[1];
+  }
+  const REVEAL_START = 1.1, REVEAL_END = 6.2;
+  order.forEach((i, k) => {
+    nodes[i].reveal = REVEAL_START + (REVEAL_END - REVEAL_START) * (k / (order.length - 1)) + (k ? (rand() - 0.5) * 0.12 : 0);
+  });
+  edges.forEach(e => {
+    const A = nodes[e.a], B = nodes[e.b];
+    if (e.type === 'long') { e.from = e.a; e.to = e.b; e.t0 = 6.4 + rand() * 1.4; e.dur = 1.1; return; }
+    const [first, second] = A.reveal <= B.reveal ? [e.a, e.b] : [e.b, e.a];
+    e.from = first; e.to = second;
+    e.dur = 0.55;
+    e.t0 = nodes[second].reveal - (parent[second] === first ? 0.45 : 0.2 - rand() * 0.6);
+  });
+
+  /* ---------- Assets ---------- */
+  const photos = Array.from({ length: CARD_COUNT }, (_, i) => {
+    const img = new Image();
+    img.src = 'headshots/advisor-' + String(i + 1).padStart(2, '0') + '.jpg';
+    return img;
+  });
+  // Shuffle which portrait lands in which slot so neighbours vary.
+  const photoFor = nodes.map((_, i) => i).slice(0, CARD_COUNT).sort(() => rand() - 0.5);
+
+  const wordmarkSrc = new Image();
+  wordmarkSrc.src = 'wordmark-black.png';
+  let wordmark = null;
+  function tintWordmark() {
+    const c = document.createElement('canvas');
+    c.width = wordmarkSrc.naturalWidth; c.height = wordmarkSrc.naturalHeight;
+    const x = c.getContext('2d');
+    x.drawImage(wordmarkSrc, 0, 0);
+    x.globalCompositeOperation = 'source-in';
+    x.fillStyle = C.ink; x.fillRect(0, 0, c.width, c.height);
+    wordmark = c;
+  }
+
+  // Film grain: a few pre-rendered noise tiles, cycled at 12 fps.
+  const grain = Array.from({ length: 4 }, (_, n) => {
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    const x = c.getContext('2d'); const d = x.createImageData(256, 256); const r = rng(99 + n);
+    for (let p = 0; p < d.data.length; p += 4) { const v = r() * 255; d.data[p] = d.data[p + 1] = d.data[p + 2] = v; d.data[p + 3] = 255; }
+    x.putImageData(d, 0, 0); return c;
+  });
+
+  /* ---------- Easing helpers ---------- */
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const prog = (t, t0, dur) => clamp((t - t0) / dur);
+  const easeOut = p => 1 - Math.pow(1 - p, 3);
+  const easeInOut = p => p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+
+  /* ---------- Drawing ---------- */
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+
+  function drawBackground() {
+    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    const g = ctx.createRadialGradient(W * 0.5, H * 0.36, 60, W * 0.5, H * 0.36, H * 0.75);
+    g.addColorStop(0, 'rgba(18, 64, 50, 0.55)');
+    g.addColorStop(1, 'rgba(2, 21, 17, 0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  }
+
+  function drawGrain(t) {
+    ctx.save();
+    ctx.globalAlpha = 0.07;
+    ctx.globalCompositeOperation = 'overlay';
+    ctx.fillStyle = ctx.createPattern(grain[Math.floor(t * 12) % grain.length], 'repeat');
+    ctx.fillRect(0, 0, W, H);
+    ctx.restore();
+  }
+
+  function lineAlpha(t) {
+    // Lines brighten while the network is forming, then settle.
+    return 0.34 + 0.12 * (1 - prog(t, 6.5, 2));
+  }
+
+  function drawEdges(t, fade) {
+    ctx.save();
+    ctx.lineWidth = 1.6;
+    ctx.lineCap = 'round';
+    const base = lineAlpha(t) * fade;
+    outbound.forEach(o => {
+      const n = nodes[o.i];
+      const p = easeOut(prog(t, n.reveal + 0.2, 1.2));
+      if (!p) return;
+      ctx.strokeStyle = `rgba(199, 188, 161, ${base * 0.6 * p})`;
+      ctx.beginPath(); ctx.moveTo(n.cx, n.cy); ctx.lineTo(n.cx + (o.x - n.cx) * p, n.cy + (o.y - n.cy) * p); ctx.stroke();
+    });
+    edges.forEach(e => {
+      const p = easeInOut(prog(t, e.t0, e.dur));
+      if (!p) return;
+      const A = nodes[e.from], B = nodes[e.to];
+      const a = e.type === 'long' ? base * 0.7 : base;
+      ctx.strokeStyle = `rgba(199, 188, 161, ${a})`;
+      ctx.beginPath(); ctx.moveTo(A.cx, A.cy); ctx.lineTo(A.cx + (B.cx - A.cx) * p, A.cy + (B.cy - A.cy) * p); ctx.stroke();
+      // Leading spark while the line is drawing.
+      if (p < 1) {
+        const x = A.cx + (B.cx - A.cx) * p, y = A.cy + (B.cy - A.cy) * p;
+        spark(x, y, 5, 0.9 * fade);
+      }
+    });
+    ctx.restore();
+  }
+
+  function spark(x, y, r, a) {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r * 4);
+    g.addColorStop(0, `rgba(255, 248, 241, ${a})`);
+    g.addColorStop(0.25, `rgba(199, 188, 161, ${a * 0.5})`);
+    g.addColorStop(1, 'rgba(199, 188, 161, 0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r * 4, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function drawPulses(t, fade) {
+    // Light travelling along the connections once the network is built.
+    const on = prog(t, 7, 1.5) * fade;
+    if (!on) return;
+    edges.forEach((e, k) => {
+      if (k % 3 !== 0) return;
+      const A = nodes[e.a], B = nodes[e.b];
+      const s = ((t * e.speed + e.phase) % 1 + 1) % 1;
+      const edgeFade = Math.sin(Math.PI * s);
+      spark(A.cx + (B.cx - A.cx) * s, A.cy + (B.cy - A.cy) * s, 3.2, 0.85 * on * edgeFade);
+    });
+  }
+
+  // Brightness wave that sweeps down the grid at the scene change.
+  function waveDim(n, t) {
+    const at = 11.5 + (n.cy / H) * 1.1;
+    const d = (t - at) / 0.35;
+    return 1 - 0.55 * Math.exp(-d * d);
+  }
+
+  function drawCard(n, idx, t, fade) {
+    const p = prog(t, n.reveal, 0.7);
+    if (!p) return;
+    const e = easeOut(p);
+    const s = 0.86 + 0.14 * e;
+    const w = n.w * s, h = n.h * s;
+    const x = n.cx - w / 2, y = n.cy - h / 2;
+    ctx.save();
+    ctx.globalAlpha = e * fade;
+    // Frame
+    ctx.fillStyle = C.vanilla;
+    ctx.fillRect(x, y, w, h);
+    const inset = 3 * s;
+    const img = photos[photoFor[idx]];
+    if (img.complete && img.naturalWidth) {
+      ctx.drawImage(img, x + inset, y + inset, w - inset * 2, h - inset * 2);
+    } else {
+      ctx.fillStyle = '#888887';
+      ctx.fillRect(x + inset, y + inset, w - inset * 2, h - inset * 2);
+    }
+    // Arrival flash, then the scene-change wave.
+    const flash = (1 - p) * 0.6;
+    const dim = 1 - waveDim(n, t);
+    if (flash > 0) { ctx.fillStyle = `rgba(255, 248, 241, ${flash})`; ctx.fillRect(x, y, w, h); }
+    if (dim > 0.01) { ctx.fillStyle = `rgba(2, 21, 17, ${dim})`; ctx.fillRect(x, y, w, h); }
+    ctx.restore();
+  }
+
+  function drawTile(n, t, fade) {
+    const p = easeOut(prog(t, n.reveal, 0.6));
+    if (!p) return;
+    ctx.save();
+    ctx.globalAlpha = p * fade;
+    ctx.fillStyle = C.deepGreen;
+    ctx.fillRect(n.x, n.y, n.w, n.h);
+    ctx.strokeStyle = 'rgba(199, 188, 161, 0.9)';
+    ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.arc(n.cx - 2.5, n.cy, 5.5, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(n.cx + 2.5, n.cy, 5.5, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
+
+  // A line of type that wipes up into place and wipes up out of place.
+  function typeLine({ text, font, spacing = '0px', x, baseline, size, tIn, tOut, t, color = C.ink, align = 'left' }) {
+    const pin = easeOut(prog(t, tIn, 0.9));
+    const pout = easeInOut(prog(t, tOut, 0.7));
+    if (!pin || pout >= 1) return 0;
+    ctx.save();
+    ctx.font = font;
+    ctx.letterSpacing = spacing;
+    ctx.textBaseline = 'alphabetic';
+    const width = ctx.measureText(text).width;
+    let left = align === 'right' ? x - width : x;
+    left = Math.min(left, W - 98 - width);
+    const top = baseline - size * 1.0, bottom = baseline + size * 0.3;
+    ctx.beginPath(); ctx.rect(0, top, W, bottom - top); ctx.clip();
+    const dy = (1 - pin) * size * 0.9 - pout * size * 0.9;
+    ctx.fillStyle = color;
+    ctx.globalAlpha = Math.min(pin, 1 - pout);
+    ctx.fillText(text, left, baseline + dy);
+    ctx.restore();
+    return width;
+  }
+
+  function drawText(t) {
+    // Scene A: the Series C line from the site.
+    typeLine({ t, text: 'Independent,', font: `300 168px ${SANS}`, spacing: '-6px', x: 98, baseline: 1560, size: 168, tIn: 3.0, tOut: 11.3 });
+    typeLine({ t, text: 'but never alone', font: `400 160px ${SERIF}`, spacing: '-1px', x: 392, baseline: 1752, size: 160, tIn: 3.9, tOut: 11.5 });
+
+    // Scene B: the announcement.
+    typeLine({ t, text: 'Savvy Wealth', font: `300 168px ${SANS}`, spacing: '-6px', x: 98, baseline: 1560, size: 168, tIn: 12.4, tOut: 21.2 });
+    const series = CONFIG.amount ? CONFIG.amount + ' Series C' : 'Series C';
+    typeLine({ t, text: series, font: `400 200px ${SERIF}`, spacing: '-2px', x: 392, baseline: 1790, size: 200, tIn: 13.2, tOut: 21.35 });
+
+    // Sign-off row: caption left, wordmark right, on one baseline.
+    const capIn = easeOut(prog(t, 14.4, 1.0)) * (1 - easeInOut(prog(t, 21.3, 0.6)));
+    if (capIn > 0) {
+      ctx.save();
+      ctx.globalAlpha = capIn;
+      ctx.font = `400 30px ${SANS}`;
+      ctx.letterSpacing = '2.1px';
+      ctx.fillStyle = C.ecru;
+      ctx.fillText('INDEPENDENCE, REINVENTED.', 98, 1906);
+      ctx.strokeStyle = 'rgba(199, 188, 161, 0.4)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(98, 1852); ctx.lineTo(98 + (W - 196) * capIn, 1852); ctx.stroke();
+      if (wordmark) {
+        const h = 64, w = h * wordmark.width / wordmark.height;
+        ctx.drawImage(wordmark, W - 98 - w, 1906 - h + 12, w, h);
+      }
+      ctx.restore();
+    }
+  }
+
+  function drawSpecOverlay() {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255, 90, 60, 0.9)';
+    ctx.setLineDash([6, 5]);
+    ctx.lineWidth = 2;
+    nodes.forEach(n => { if (n.kind === 'card') ctx.strokeRect(n.x + 1, n.y + 1, n.w - 2, n.h - 2); });
+    ctx.restore();
+  }
+
+  let showSpec = false;
+  function render(t) {
+    t = ((t % CONFIG.duration) + CONFIG.duration) % CONFIG.duration;
+    // Outro fade, so the loop point lands on an empty field.
+    const fade = 1 - easeInOut(prog(t, 21.6, 1.8));
+    drawBackground();
+    drawEdges(t, fade);
+    drawPulses(t, fade);
+    nodes.forEach((n, i) => n.kind === 'card' ? drawCard(n, i, t, fade) : drawTile(n, t, fade));
+    drawText(t);
+    drawGrain(t);
+    if (showSpec) drawSpecOverlay();
+  }
+
+  /* ---------- Playback ---------- */
+  const playBtn = document.getElementById('play');
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let playing = !reduced, clock = reduced ? 16 : 0, last = null;
+
+  function show(t) {
+    render(t);
+    scrub.value = t.toFixed(2);
+    timeEl.textContent = t.toFixed(2) + ' s';
+  }
+  function tick(now) {
+    if (playing) {
+      if (last !== null) clock = (clock + (now - last) / 1000) % CONFIG.duration;
+      last = now;
+      show(clock);
+    }
+    requestAnimationFrame(tick);
+  }
+  playBtn.addEventListener('click', () => {
+    playing = !playing; last = null;
+    playBtn.textContent = playing ? 'Pause' : 'Play';
+  });
+  document.getElementById('restart').addEventListener('click', () => { clock = 0; last = null; show(0); });
+  scrub.addEventListener('input', () => {
+    playing = false; playBtn.textContent = 'Play';
+    clock = parseFloat(scrub.value); show(clock);
+  });
+  document.getElementById('grid').addEventListener('change', e => { showSpec = e.target.checked; show(clock); });
+  playBtn.textContent = playing ? 'Pause' : 'Play';
+
+  const loaded = img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = img.onerror = r; });
+  const ready = Promise.all([
+    ...photos.map(loaded),
+    loaded(wordmarkSrc).then(() => { if (wordmarkSrc.naturalWidth) tintWordmark(); }),
+    document.fonts.load(`300 168px ${SANS}`),
+    document.fonts.load(`400 30px ${SANS}`),
+    document.fonts.load(`400 160px ${SERIF}`),
+  ].map(p => p.catch(() => {})));
+
+  show(clock);
+  ready.then(() => { show(clock); requestAnimationFrame(tick); });
+
+  // Hooks for frame-accurate export (used by render-video.mjs).
+  window.towerReady = ready;
+  window.renderAt = t => { playing = false; render(t); };
+})();
+</script>
