@@ -35,3 +35,14 @@ Without them the page falls back to Inter + Georgia. JetBrains Mono (terminal ac
 - Fernando Marques' post card uses a monogram; add `assets/img/av-fernando.jpg` and set it in the `posts` array.
 - The LinkedIn icons on the team polaroids open a LinkedIn people search; swap in the real profile URLs.
 - Nav and footer links point at savvywealth.com root/about/careers. Replace them with the real paths.
+
+## Deploying to Vercel
+
+Deploy this folder as its **own** Vercel project (e.g. `savvy-future-founder`). Don't link it to any existing project.
+All config lives in `future-founder/vercel.json`; nothing at the repo root changes, so other projects built from this repo are unaffected.
+
+- **CLI** (run inside `future-founder/`, with the licensed fonts present in `assets/fonts/`):
+  `npx vercel deploy --prod --yes --name savvy-future-founder`
+  The CLI uploads the local font files, so the page renders in Diatype / Big Caslon.
+- **Git import**: in Vercel, *Add New → Project*, pick this repo, set **Root Directory** to `future-founder`, framework *Other*, no build command.
+  The fonts are git-ignored, so a Git deploy falls back to Inter / Georgia unless the fonts are committed (only do that if the repo is private).
