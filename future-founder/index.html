@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savvy Future Founder</title>
+<meta name="description" content="Spend 2 years building at Savvy in NYC. Then we'll invest in your own startup. Interviews at Cal on Monday 10/26, offers the same day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Inter = Diatype fallback when the licensed files aren't present · JetBrains Mono = terminal accents · Caveat = whiteboard marker -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ FONTS ============
+     Licensed ABC Diatype + Big Caslon load from ./assets/fonts (not committed — see README).
+     Without them the page falls back to Inter / Georgia. */
+  @font-face { font-family: "ABC Diatype"; font-weight: 300; font-display: swap; src: local("ABC Diatype Light"), local("ABCDiatype-Light"), url("assets/fonts/ABCDiatype-Light.otf") format("opentype"); }
+  @font-face { font-family: "ABC Diatype"; font-weight: 400; font-display: swap; src: local("ABC Diatype"), local("ABCDiatype-Regular"), url("assets/fonts/ABCDiatype-Regular.otf") format("opentype"); }
+  @font-face { font-family: "ABC Diatype"; font-weight: 500; font-display: swap; src: local("ABC Diatype Medium"), local("ABCDiatype-Medium"), url("assets/fonts/ABCDiatype-Medium.otf") format("opentype"); }
+  @font-face { font-family: "Big Caslon CC"; font-weight: 400; font-display: swap; src: local("Big Caslon"), local("BigCaslon-Regular"), url("assets/fonts/BigCaslon-Regular.otf") format("opentype"); }
+  @font-face { font-family: "Big Caslon CC"; font-weight: 700; font-display: swap; src: local("Big Caslon Bold"), local("BigCaslon-Bold"), url("assets/fonts/BigCaslon-Bold.otf") format("opentype"); }
+
+  /* ============ TOKENS (from the Builders @ Savvy dark Figma) ============ */
+  :root {
+    color-scheme: dark;
+    --c-page: #171615;          /* page background */
+    --c-black: #000000;         /* footer sheet */
+    --c-light: #FCFBF9;         /* light CTA surface */
+    --c-white: #FFFFFF;
+    --c-ecru: #C7BCA1;
+    --c-gold: #8E7E57;
+    --c-green: #175242;         /* hero hue */
+    --c-mint: #6AE9B8;          /* tags, status dots */
+    --c-card-border: #E5E7EB;
+    --c-avatar: #D2DCD9;
+
+    --w-100: #FFFFFF;
+    --w-80: rgba(255,255,255,.8);
+    --w-70: rgba(255,255,255,.7);
+    --w-60: rgba(255,255,255,.6);
+    --w-50: rgba(255,255,255,.5);
+    --w-18: rgba(255,255,255,.18);
+    --w-12: rgba(255,255,255,.12);
+    --w-10: rgba(255,255,255,.1);
+    --b-80: rgba(0,0,0,.8);
+    --b-70: rgba(0,0,0,.7);
+    --b-60: rgba(0,0,0,.6);
+    --b-40: rgba(0,0,0,.4);
+
+    --grad-on-dark: linear-gradient(167deg, #FFFFFF 16.88%, #C7BCA1 101.79%);
+
+    --font-sans: "ABC Diatype", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: "Big Caslon CC", "Big Caslon", "Book Antiqua", Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --font-hand: "Caveat", "Bradley Hand", cursive;
+
+    --gutter: 95px;
+    --max: 1250px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--c-page);
+    color: var(--w-100);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, p, ul, ol, figure { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+  .wrap { max-width: calc(var(--max) + var(--gutter) * 2); margin: 0 auto; padding-inline: var(--gutter); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :focus-visible { outline: 2px solid var(--c-mint); outline-offset: 3px; }
+
+  /* ============ TYPE ============ */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 500; font-size: 14px; line-height: .8; letter-spacing: .42px; text-transform: uppercase;
+    color: var(--w-80);
+  }
+  .eyebrow::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--c-mint); box-shadow: 0 0 10px rgba(106,233,184,.7); }
+  .h-hero { font-weight: 300; font-size: clamp(44px, 6.6vw, 92px); line-height: 1.02; letter-spacing: -0.035em; }
+  .h-section { font-weight: 300; font-size: clamp(36px, 3.75vw, 54px); line-height: 1.1; letter-spacing: -1.08px; text-wrap: balance; }
+  .lede { font-size: 20px; line-height: 1.45; letter-spacing: -0.2px; color: var(--w-70); }
+  .mono { font-family: var(--font-mono); }
+
+  /* ============ BUTTONS (5px radius system) ============ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: var(--font-sans); font-weight: 500; letter-spacing: .36px; white-space: nowrap;
+    border-radius: 5px; cursor: pointer; border: 1px solid transparent;
+    transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, opacity .2s ease;
+  }
+  .btn-lg { font-size: 18px; line-height: 1.2; padding: 25px 35px; }
+  .btn-md { font-size: 18px; line-height: 1.4; padding: 20px 35px; }
+  .btn-sm { font-size: 14px; line-height: 1.45; padding: 14.38px 25px; letter-spacing: 0; }
+  .btn-primary-dark { background: var(--grad-on-dark); color: #000; }
+  .btn-primary-dark:hover { transform: translateY(-1px); box-shadow: 0 10px 30px -10px rgba(199,188,161,.55); }
+  .btn-white { background: #fff; color: #000; }
+  .btn-white:hover { background: var(--c-ecru); }
+  .btn-outline-dark { border-color: #fff; color: #fff; background: transparent; }
+  .btn-outline-dark:hover { background: rgba(255,255,255,.08); }
+  .btn-gold { background: var(--c-gold); color: #fff; }
+  .btn-gold:hover { background: #7c6d4a; }
+  .btn-outline-light { border-color: #000; color: #000; background: transparent; }
+  .btn-outline-light:hover { background: rgba(0,0,0,.05); }
+  .btn .arrow { width: 9px; height: 9px; }
+
+  .tag {
+    display: inline-flex; align-items: center; padding: 10px 14px; border-radius: 1000px;
+    background: rgba(106,233,184,.1); backdrop-filter: blur(4.5px); -webkit-backdrop-filter: blur(4.5px);
+    color: var(--c-mint); font-weight: 500; font-size: 14px; line-height: 1.1; letter-spacing: .7px; text-transform: uppercase; white-space: nowrap;
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50; height: calc(91px + env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
+    display: flex; align-items: center; padding-inline: 40px;
+    background: rgba(0,0,0,.01);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--w-18);
+    transition: background-color .3s ease;
+  }
+  .nav.scrolled { background: rgba(23,22,21,.72); }
+  .nav-row { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .nav-left { display: flex; align-items: center; gap: 33px; }
+  .logo { display: block; width: 81.43px; height: 27.39px; color: #fff; }
+  .logo svg { width: 100%; height: 100%; display: block; }
+  .seg { display: flex; gap: 6px; padding: 6px; border-radius: 10px; background: var(--w-10); }
+  .seg span { padding: 8px 16px; border-radius: 6px; font-size: 14px; line-height: 1.45; color: var(--w-50); white-space: nowrap; }
+  .seg span.on { background: rgba(199,188,161,.16); color: var(--c-ecru); font-weight: 500; }
+  .nav-right { display: flex; align-items: center; gap: 45px; }
+  .nav-links { display: flex; gap: 35px; }
+  .nav-links a { font-size: 14px; line-height: 1.45; color: var(--w-70); transition: color .2s; white-space: nowrap; }
+  .nav-links a:hover { color: #fff; }
+  .nav-actions { display: flex; gap: 16px; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative; overflow: hidden; isolation: isolate;
+    padding: 200px 0 120px;
+    background: var(--c-page) url("assets/img/hero-glow.jpg") center top / cover no-repeat;
+  }
+  .hero::before { /* dot grid, masked to an ellipse like the Figma "Mask group" */
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.3px);
+    background-size: 19.62px 19.62px;
+    -webkit-mask-image: radial-gradient(ellipse 46% 40% at 50% 34%, #000 30%, transparent 100%);
+            mask-image: radial-gradient(ellipse 46% 40% at 50% 34%, #000 30%, transparent 100%);
+    opacity: .6;
+  }
+  .hero::after { /* bottom fade into the page, "Rectangle 22243" */
+    content: ""; position: absolute; inset: auto 0 0 0; height: 291px; z-index: -1; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(23,22,21,0), var(--c-page));
+  }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 38px; }
+  .hero-copy { display: flex; flex-direction: column; align-items: center; gap: 22px; max-width: 980px; }
+  .hero .lede { max-width: 690px; }
+  .hero .lede strong { color: #fff; font-weight: 500; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .hero-meta {
+    display: flex; gap: 10px 28px; flex-wrap: wrap; justify-content: center;
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: .02em; color: var(--w-60);
+  }
+  .hero-meta b { color: var(--c-mint); font-weight: 500; }
+
+  /* the 2-year path, as a git graph */
+  .graph {
+    margin-top: 34px; width: 100%; max-width: 760px; text-align: left;
+    border: 1px solid var(--w-12); border-radius: 8px;
+    background: rgba(10,10,9,.42); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 40px 80px -40px rgba(0,0,0,.8);
+    font-family: var(--font-mono); font-size: 13.5px; line-height: 1.5;
+  }
+  .graph-bar {
+    display: flex; justify-content: space-between; gap: 16px; padding: 14px 20px;
+    border-bottom: 1px solid var(--w-10); color: var(--w-50); font-size: 12px;
+  }
+  .graph-bar .prompt { color: var(--w-80); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .graph-bar .prompt i { font-style: normal; color: var(--c-mint); }
+  .graph-body { padding: 22px 20px 26px; }
+  .commit { display: grid; grid-template-columns: 56px 1fr; column-gap: 8px; position: relative; min-height: 46px; }
+  .commit .rail { position: relative; }
+  .commit .rail::before { content: ""; position: absolute; left: 13px; top: 0; bottom: 0; width: 1.5px; background: rgba(199,188,161,.5); }
+  .commit:first-child .rail::before { top: 9px; }
+  .commit .rail::after { content: ""; position: absolute; left: 8px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--c-page); border: 1.5px solid var(--c-ecru); }
+  .commit .msg { padding-bottom: 16px; color: var(--w-80); }
+  .commit .msg .hash { color: var(--c-gold); margin-right: 10px; }
+  .commit .msg .ref { color: var(--c-ecru); border: 1px solid rgba(199,188,161,.35); border-radius: 4px; padding: 1px 6px; margin-right: 8px; font-size: 11.5px; white-space: nowrap; }
+  .commit .msg small { display: block; color: var(--w-50); font-size: 12.5px; margin-top: 2px; }
+  .commit.fork .rail::before { bottom: auto; height: 12px; }
+  .commit.fork .rail .branch {
+    position: absolute; left: 13px; top: 8px; width: 30px; height: 26px;
+    border-left: 1.5px solid var(--c-mint); border-bottom: 1.5px solid var(--c-mint); border-bottom-left-radius: 14px;
+  }
+  .commit.fork .rail::after { display: none; }
+  .commit.fork .msg { padding-top: 22px; padding-bottom: 0; }
+  .commit.fork .msg::before { content: ""; position: absolute; left: 39px; top: 29px; width: 9px; height: 9px; border-radius: 50%; background: var(--c-mint); box-shadow: 0 0 14px rgba(106,233,184,.8); }
+  .commit.fork .ref { color: var(--c-mint); border-color: rgba(106,233,184,.4); }
+  .commit.fork .msg strong { color: #fff; font-weight: 500; }
+  .cursor { display: inline-block; width: 8px; height: 15px; background: var(--c-mint); vertical-align: -2px; margin-left: 4px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ============ TICKER ============ */
+  .ticker { border-block: 1px solid var(--w-12); overflow: hidden; padding: 18px 0; background: var(--c-page); }
+  .ticker-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .ticker-track span {
+    display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;
+    font-weight: 500; font-size: 14px; letter-spacing: .7px; text-transform: uppercase; color: var(--w-70); white-space: nowrap;
+  }
+  .ticker-track span::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--c-mint); }
+  .ticker-track span.hi { color: #fff; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ============ SECTIONS ============ */
+  .section { padding: 150px 0; position: relative; }
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 64px; }
+  .section-head .h-section { max-width: 820px; }
+  .section-head .side { max-width: 360px; color: var(--w-60); font-size: 16px; line-height: 1.45; }
+  .stack { display: flex; flex-direction: column; gap: 24px; }
+
+  /* ============ OPPORTUNITY — white cards (Figma "Article") ============ */
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 21px; }
+  .card {
+    background: #fff; border: 1px solid var(--c-card-border); border-radius: 8px; padding: 24px;
+    display: flex; flex-direction: column; gap: 20px; color: #000;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -24px rgba(0,0,0,.7); }
+  .card-head { display: flex; align-items: flex-start; gap: 15px; }
+  .card-icon { flex: 0 0 40px; height: 40px; border-radius: 50%; background: var(--c-avatar); display: grid; place-items: center; }
+  .card-icon svg { width: 20px; height: 20px; }
+  .card-who { flex: 1; font-size: 14px; line-height: 1.45; min-width: 0; }
+  .card-who b { display: block; font-weight: 400; color: #000; }
+  .card-who span { color: var(--b-60); }
+  .card-date { font-size: 10px; line-height: .8; letter-spacing: .3px; text-transform: uppercase; color: var(--b-40); padding-top: 4px; white-space: nowrap; }
+  .card-title { font-weight: 300; font-size: 26px; line-height: 1.12; letter-spacing: -0.52px; color: #000; }
+  .card p { font-size: 16px; line-height: 1.45; color: var(--b-80); }
+  .card-foot { margin-top: auto; display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 14px; line-height: 1.4; color: var(--b-60); }
+  .card.feature { background: var(--grad-on-dark); border-color: transparent; }
+  .card.feature .card-icon { background: rgba(255,255,255,.65); }
+
+  /* next steps */
+  .next { margin-top: 96px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
+  .next h3 { font-weight: 300; font-size: 36px; line-height: 1.1; letter-spacing: -1.08px; }
+  .next .contact { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.45; color: var(--w-70); }
+  .next .contact a { color: #fff; border-bottom: 1px solid var(--w-50); transition: border-color .2s; }
+  .next .contact a:hover { border-color: var(--c-mint); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--w-18); }
+  .step { padding: 28px 24px 0 0; display: flex; flex-direction: column; gap: 18px; position: relative; }
+  .step::before { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--c-page); border: 1.5px solid var(--c-ecru); }
+  .step:last-child::before { background: var(--c-mint); border-color: var(--c-mint); box-shadow: 0 0 14px rgba(106,233,184,.8); }
+  .step .tag { align-self: flex-start; }
+  .step b { font-weight: 400; font-size: 24px; line-height: 1.15; letter-spacing: -0.48px; }
+  .step span { font-size: 15px; line-height: 1.45; color: var(--w-60); }
+
+  /* ============ WHY SAVVY — stats ============ */
+  .why { border-top: 1px solid var(--w-12); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .stat { display: flex; flex-direction: column; gap: 18px; }
+  .stat-rule { height: 1px; background: rgba(255,255,255,.2); }
+  .stat-num {
+    font-family: var(--font-serif); font-weight: 700; font-size: clamp(56px, 6.2vw, 92px); line-height: 1; letter-spacing: .01em;
+    background: var(--grad-on-dark); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .stat-label { font-size: 16px; line-height: 1.45; color: var(--w-70); max-width: 26ch; }
+  .arr {
+    margin-top: 72px; display: grid; grid-template-columns: auto 1fr; gap: 14px 28px; align-items: center;
+    font-family: var(--font-mono); font-size: 13px; color: var(--w-60);
+    border: 1px solid var(--w-12); border-radius: 8px; padding: 26px 28px; background: rgba(255,255,255,.02);
+  }
+  .arr-title { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--w-80); }
+  .arr-title b { color: var(--c-mint); font-weight: 500; }
+  .arr-bar { height: 28px; border-radius: 3px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; color: #000; font-weight: 500; font-size: 12.5px; }
+  .arr-bar.y1 { width: 10%; min-width: 64px; background: rgba(199,188,161,.55); }
+  .arr-bar.y2 { width: 100%; background: var(--grad-on-dark); transform-origin: left; }
+  .arr .label { white-space: nowrap; }
+
+  /* ============ WHAT WE'RE BUILDING — module grid (Figma "Read about how we build") ============ */
+  .build-head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 100px; }
+  .build-head .lede { max-width: 700px; }
+  .build-head .lede strong { color: #fff; font-weight: 400; }
+  .modules { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 32px; row-gap: 77px; }
+  .module { display: flex; flex-direction: column; gap: 35px; }
+  .module-art { height: 282px; border-radius: 8px; overflow: hidden; background: #F3F1EC; position: relative; }
+  .module-art img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  .module:hover .module-art img { transform: scale(1.04); }
+  .module-art .path {
+    position: absolute; left: 14px; bottom: 12px; font-family: var(--font-mono); font-size: 11.5px; color: rgba(0,0,0,.55);
+    background: rgba(255,255,255,.7); padding: 4px 8px; border-radius: 4px; backdrop-filter: blur(4px);
+  }
+  .module-meta { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+  .module-title { font-weight: 400; font-size: 26px; line-height: 1.15; letter-spacing: -0.52px; }
+  .module-by { font-size: 16px; line-height: 1.4; letter-spacing: .32px; color: var(--w-60); }
+
+  /* ============ NYC ============ */
+  .nyc { overflow: hidden; border-top: 1px solid var(--w-12); }
+  .nyc-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; margin-bottom: 56px; }
+  .nyc-head .meta { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .nyc-head .meta p { color: var(--w-70); font-size: 20px; line-height: 1.45; letter-spacing: -0.2px; }
+
+  .collage { position: relative; width: 100%; aspect-ratio: 1250 / 960; container-type: inline-size; }
+  .collage .skyline { position: absolute; left: -8%; right: -8%; bottom: 0; width: 116%; height: auto; opacity: .16; pointer-events: none; }
+  .ci {
+    position: absolute; left: var(--x); top: var(--y); width: var(--w); transform: rotate(var(--r, 0deg));
+    transition: transform .35s cubic-bezier(.2,.8,.2,1.2); z-index: var(--z, 1);
+  }
+  .ci:hover { transform: rotate(0deg) scale(1.05); z-index: 20; }
+
+  .polaroid { background: #F4F1EA; padding: 0.9cqw 0.9cqw 0; box-shadow: 0 2cqw 3cqw -1.2cqw rgba(0,0,0,.75); }
+  .polaroid img { width: 100%; aspect-ratio: var(--ar, 4/3); object-fit: cover; filter: saturate(.92) contrast(1.03); }
+  .polaroid figcaption { font-family: var(--font-hand); font-weight: 500; color: #222; font-size: 1.9cqw; line-height: 1; padding: 1cqw .3cqw 1.2cqw; }
+  .tape::before {
+    content: ""; position: absolute; top: -1cqw; left: 50%; width: 7cqw; height: 2cqw; transform: translateX(-50%) rotate(-3deg);
+    background: rgba(240,232,210,.62); box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  }
+
+  .sign { background: #111; color: #fff; padding: 1.1cqw 1.4cqw 1.2cqw; border-top: .35cqw solid #fff; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .sign .stn { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 2.3cqw; letter-spacing: -0.02em; line-height: 1.05; }
+  .sign .lines { display: flex; gap: .45cqw; margin-top: .9cqw; flex-wrap: wrap; }
+  .bullet { width: 2.1cqw; height: 2.1cqw; border-radius: 50%; display: grid; place-items: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 1.3cqw; color: #fff; }
+  .b-g { background: #00933C; } .b-y { background: #FCCC0A; color: #000; } .b-l { background: #A7A9AC; }
+
+  .taxi { background: #F7B731; color: #111; border-radius: .6cqw; overflow: hidden; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .taxi .checker { height: 1.4cqw; background: repeating-conic-gradient(#111 0 25%, #F7B731 0 50%) 0 0 / 1.4cqw 1.4cqw; }
+  .taxi .body { padding: 1cqw 1.4cqw; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .taxi .body b { display: block; font-size: 3cqw; letter-spacing: .04em; line-height: 1; }
+  .taxi .body span { white-space: nowrap; font-size: 1cqw; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+  .term { background: #0B0B0A; border: 1px solid rgba(255,255,255,.16); border-radius: .6cqw; box-shadow: 0 1.5cqw 3cqw -1cqw rgba(0,0,0,.9); font-family: var(--font-mono); overflow: hidden; }
+  .term-bar { padding: .7cqw 1cqw; font-size: .95cqw; color: var(--w-50); border-bottom: 1px solid rgba(255,255,255,.1); }
+  .term pre { margin: 0; padding: 1cqw 1.2cqw 1.3cqw; font-family: inherit; font-size: .95cqw; line-height: 1.35; color: var(--w-80); white-space: pre; }
+  .term pre .g { color: var(--c-mint); } .term pre .d { color: var(--w-50); }
+
+  .stub { display: flex; background: #EDE6D6; color: #1a1a1a; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); font-family: var(--font-mono); }
+  .stub .main { flex: 1; padding: 1.2cqw 1.4cqw; border-right: .2cqw dashed rgba(0,0,0,.35); }
+  .stub .main small { display: block; font-size: 1cqw; letter-spacing: .12em; color: rgba(0,0,0,.55); }
+  .stub .main b { display: block; font-family: var(--font-sans); font-weight: 500; font-size: 2.6cqw; letter-spacing: -0.03em; line-height: 1.05; margin: .4cqw 0; }
+  .stub .main span { font-size: 1.05cqw; }
+  .stub .side { width: 5cqw; display: grid; place-items: center; writing-mode: vertical-rl; font-size: 1.05cqw; letter-spacing: .14em; }
+
+  .quote { padding: 1.3cqw 1.6cqw; border-radius: .5cqw; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .quote b { display: block; font-size: 2.3cqw; line-height: 1.05; letter-spacing: -0.02em; }
+  .quote span { display: block; margin-top: .6cqw; font-size: 1.05cqw; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+  .q-wolf { background: var(--c-ecru); color: #111; }
+  .q-wolf b { font-family: var(--font-serif); font-weight: 700; }
+  .q-succession { background: #0d0d0d; color: var(--c-ecru); border: 1px solid rgba(199,188,161,.35); }
+  .q-succession b { font-family: var(--font-serif); font-weight: 400; font-size: 2.7cqw; }
+  .q-friends { background: #5B3E8C; color: #fff; }
+  .q-friends b { font-family: var(--font-hand); font-weight: 700; font-size: 3cqw; }
+  .q-snl { background: #fff; color: #000; }
+  .q-snl b { font-family: "Courier New", var(--font-mono); font-weight: 700; font-size: 1.8cqw; letter-spacing: -0.01em; }
+
+  .round { aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; text-align: center; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .r-seinfeld { background: #C8402F; color: #fff; font-weight: 500; font-size: 1.9cqw; line-height: 1; letter-spacing: -0.02em; padding: 1cqw; }
+  .r-seinfeld small { display: block; font-size: 1cqw; letter-spacing: .14em; opacity: .75; margin-top: .5cqw; text-transform: uppercase; }
+
+  .knicks { background: #006BB6; color: #fff; border: .45cqw solid #F58426; border-radius: .7cqw; padding: 1.2cqw 1.5cqw; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .knicks small { display: block; font-size: 1cqw; letter-spacing: .14em; color: #FDBB72; font-weight: 500; }
+  .knicks b { display: block; font-size: 2.1cqw; line-height: 1.02; letter-spacing: -0.03em; font-weight: 500; margin-top: .4cqw; }
+  .knicks span { display: block; font-size: 1.15cqw; margin-top: .5cqw; opacity: .9; }
+
+  .receipt { background: #FBFAF6; color: #222; font-family: var(--font-mono); font-size: .82cqw; line-height: 1.5; padding: 1.4cqw 1.4cqw 1.8cqw; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8);
+    -webkit-mask: linear-gradient(#000,#000) top / 100% calc(100% - .8cqw) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 1.2cqw .8cqw repeat-x;
+            mask: linear-gradient(#000,#000) top / 100% calc(100% - .8cqw) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 1.2cqw .8cqw repeat-x; }
+  .receipt .ctr { text-align: center; font-weight: 500; letter-spacing: .1em; }
+  .receipt .row { display: flex; justify-content: space-between; gap: 1cqw; }
+  .receipt hr { border: 0; border-top: 1px dashed rgba(0,0,0,.35); margin: .6cqw 0; }
+
+  .cap { background: #0C2340; color: #fff; padding: 1.1cqw 1.5cqw; border-radius: 3cqw 3cqw .6cqw .6cqw; text-align: center; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .cap b { display: block; font-family: var(--font-serif); font-weight: 700; font-size: 2.3cqw; line-height: 1; font-style: italic; }
+  .cap span { display: block; font-size: 1cqw; letter-spacing: .16em; margin-top: .4cqw; opacity: .8; text-transform: uppercase; }
+
+  .sticky { background: #F6E27A; color: #222; padding: 1.3cqw 1.3cqw 1.6cqw; font-family: var(--font-hand); font-weight: 500; font-size: 2cqw; line-height: 1.05; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+
+  .news { background: #EFECE4; color: #111; padding: 1.1cqw 1.3cqw 1.3cqw; box-shadow: 0 1.5cqw 2.5cqw -1cqw rgba(0,0,0,.8); }
+  .news small { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: .95cqw; letter-spacing: .08em; border-bottom: 1px solid #111; padding-bottom: .4cqw; }
+  .news b { display: block; font-family: var(--font-serif); font-weight: 700; font-size: 2.2cqw; line-height: 1; margin-top: .6cqw; letter-spacing: -0.01em; }
+
+  .slug { background: transparent; color: #fff; }
+  .slug b { display: block; font-family: var(--font-serif); font-size: 5cqw; line-height: .92; letter-spacing: -0.02em; }
+  .slug b i { font-style: normal; background: var(--grad-on-dark); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ============ TEAM — whiteboard wall ============ */
+  .board {
+    position: relative; background: var(--c-light); color: #000;
+    border-radius: 20px 20px 0 0; margin-top: 40px; padding: 140px 0 120px; overflow: hidden;
+  }
+  .board::before { /* faint ghosting of erased marker */
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background:
+      radial-gradient(40% 18% at 18% 22%, rgba(43,89,195,.05), transparent 70%),
+      radial-gradient(30% 14% at 78% 70%, rgba(200,64,47,.05), transparent 70%),
+      radial-gradient(35% 20% at 60% 12%, rgba(0,0,0,.035), transparent 70%);
+  }
+  .board-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 70px; position: relative; }
+  .board-head .eyebrow { color: var(--b-60); }
+  .board-head .h-section { color: #000; margin-top: 22px; }
+  .board-note { font-family: var(--font-hand); font-size: 30px; line-height: 1; color: #2B59C3; transform: rotate(-3deg); max-width: 300px; text-align: right; }
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; position: relative; }
+  .member { position: relative; }
+  .member .polaroid { padding: 14px 14px 0; background: #fff; box-shadow: 0 18px 40px -22px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.08); transform: rotate(var(--r)); transition: transform .3s ease; position: relative; }
+  .member:hover .polaroid { transform: rotate(0deg); }
+  .member .polaroid::before { content: ""; position: absolute; top: -12px; left: 50%; width: 92px; height: 24px; transform: translateX(-50%) rotate(-4deg); background: rgba(232,222,196,.75); }
+  .portrait {
+    aspect-ratio: 4 / 4.4; position: relative; overflow: hidden;
+    background: radial-gradient(120% 90% at 30% 20%, #2a2f2b 0%, #171615 70%);
+    display: grid; place-items: center;
+  }
+  .portrait::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1.3px); background-size: 14px 14px; }
+  .portrait span { position: relative; z-index: 1; font-family: var(--font-serif); font-size: 96px; letter-spacing: -0.02em; background: var(--grad-on-dark); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+  .member figcaption { padding: 16px 4px 18px; font-family: var(--font-hand); font-size: 28px; line-height: 1; color: #111; }
+  .member .bio { margin-top: 26px; padding-left: 4px; }
+  .member .bio h3 { font-weight: 300; font-size: 28px; line-height: 1.1; letter-spacing: -0.7px; }
+  .member .bio .role { margin-top: 6px; font-weight: 500; font-size: 12px; letter-spacing: .6px; text-transform: uppercase; color: var(--c-gold); }
+  .member .bio ul { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 15.5px; line-height: 1.45; color: var(--b-70); }
+  .scribble { position: absolute; font-family: var(--font-hand); font-weight: 700; line-height: 1; pointer-events: none; }
+  .scribble svg { display: block; }
+  .s-blue { color: #2B59C3; } .s-red { color: #C8402F; } .s-black { color: #222; }
+  .board-sticky {
+    position: relative; margin: 64px 4% 0 auto; width: 240px; padding: 20px 18px 24px; transform: rotate(4deg);
+    background: #F6E27A; font-family: var(--font-hand); font-weight: 500; font-size: 26px; line-height: 1.05; color: #222;
+    box-shadow: 0 16px 30px -18px rgba(0,0,0,.5);
+  }
+
+  /* ============ CTA (Figma "Come join us") ============ */
+  .cta { background: var(--c-light); color: #000; padding: 80px 0 150px; text-align: center; position: relative; }
+  .cta-inner { display: flex; flex-direction: column; align-items: center; gap: 45px; }
+  .cta .h-section { color: #000; font-size: clamp(40px, 5vw, 72px); letter-spacing: -0.03em; max-width: 900px; }
+  .cta .sub { margin-top: 30px; font-size: 20px; line-height: 1.45; letter-spacing: -0.2px; color: var(--b-70); max-width: 690px; margin-inline: auto; }
+  .cta .sub b { color: #000; font-weight: 500; }
+  .recruiter { margin-top: 16px; display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; font-size: 20px; line-height: 1.45; letter-spacing: -0.2px; color: var(--b-70); }
+  .recruiter img { width: 24.87px; height: 24.87px; border-radius: 50%; background: var(--c-avatar); object-fit: cover; }
+  .recruiter a { color: #000; border-bottom: 1px solid rgba(0,0,0,.35); transition: border-color .2s; }
+  .recruiter a:hover { border-color: #000; }
+  .cta-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  /* ============ FOOTER (black sheet, 20px top radius) ============ */
+  footer { background: #000; color: #fff; border-radius: 20px 20px 0 0; margin-top: -20px; position: relative; padding: 63px 40px 40px; }
+  .f-top { display: flex; justify-content: space-between; gap: 48px; }
+  .f-brand { width: 226px; display: flex; flex-direction: column; gap: 27px; }
+  .f-brand .logo { width: 92.94px; height: 31.26px; }
+  .f-brand p { font-size: 14px; line-height: 1.4; opacity: .8; }
+  .f-cols { display: flex; gap: 44px; }
+  .f-col { width: 199px; display: flex; flex-direction: column; gap: 27px; }
+  .f-col h4 { margin: 0; font-weight: 500; font-size: 11px; line-height: 1.2; letter-spacing: .66px; text-transform: uppercase; color: var(--c-ecru); }
+  .f-col ul { display: flex; flex-direction: column; gap: 17px; }
+  .f-col a { font-size: 14px; line-height: 1.2; transition: opacity .2s; }
+  .f-col a:hover { opacity: .7; }
+  .f-mid { margin-top: 174px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.3); }
+  .f-legal { display: flex; gap: 47px; flex-wrap: wrap; font-size: 14px; line-height: 1.4; letter-spacing: .56px; }
+  .f-legal > * { opacity: .7; }
+  .f-legal u { text-underline-offset: 3px; }
+  .f-right { display: flex; align-items: center; gap: 22px; font-size: 14px; letter-spacing: .56px; }
+  .f-right > span { opacity: .7; }
+  .f-social { display: flex; gap: 22px; }
+  .f-social a { width: 20px; height: 18px; display: grid; place-items: center; }
+  .f-social svg { width: 18px; height: 18px; fill: #fff; }
+  .f-disc { margin-top: 32px; font-size: 10px; line-height: 1.5; letter-spacing: .4px; opacity: .5; }
+
+  /* ============ REVEAL ============ */
+  /* content is fully visible at rest; .in only adds a light lift as sections enter */
+  .reveal.in { animation: lift .8s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes lift { from { transform: translateY(18px); } to { transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track, .cursor { animation: none; }
+    .reveal.in { animation: none; }
+    .ci, .card, .module-art img, .member .polaroid { transition: none; }
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1240px) {
+    :root { --gutter: 48px; }
+    .nav-links { display: none; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: repeat(2, 1fr); row-gap: 56px; }
+    .f-top { flex-direction: column; }
+    .f-cols { flex-wrap: wrap; }
+  }
+  @media (max-width: 900px) {
+    .next { grid-template-columns: 1fr; gap: 40px; }
+    .modules { grid-template-columns: repeat(2, 1fr); }
+    .nyc-head { grid-template-columns: 1fr; }
+    .team { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 72px; }
+    .board-head { flex-direction: column; align-items: flex-start; }
+    .board-note { text-align: left; }
+    .board-sticky { margin: 64px auto 0; }
+    .scribble.hide-sm { display: none; }
+  }
+  @media (max-width: 760px) {
+    :root { --gutter: 16px; }
+    .nav { height: calc(72px + env(safe-area-inset-top, 0px)); padding-inline: 16px; }
+    .seg, .nav-actions .btn-outline-dark { display: none; }
+    .hero { padding: 132px 0 80px; }
+    .h-hero { font-size: clamp(40px, 11.5vw, 56px); }
+    .lede, .nyc-head .meta p, .cta .sub, .recruiter { font-size: 17px; }
+    .btn-lg, .btn-md { font-size: 16px; padding: 18px 26px; }
+    .hero-ctas { width: 100%; flex-direction: column; }
+    .hero-ctas .btn, .cta-btns .btn { width: 100%; }
+    .cta-btns { width: 100%; flex-direction: column; }
+    .graph { font-size: 12px; }
+    .graph-bar .meta { display: none; }
+    .commit { grid-template-columns: 44px 1fr; }
+    .commit.fork .msg::before { left: 39px; }
+    .section { padding: 96px 0; }
+    .section-head { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
+    .cards, .modules, .stats, .steps { grid-template-columns: 1fr; }
+    .stats { row-gap: 40px; }
+    .step { padding-right: 0; padding-bottom: 28px; }
+    .modules { row-gap: 56px; }
+    .module-art { height: auto; aspect-ratio: 395 / 282; }
+    .build-head { margin-bottom: 56px; }
+    .arr { grid-template-columns: 1fr; padding: 22px 18px; }
+    .arr .label { margin-bottom: -6px; }
+    .board { padding: 96px 0 80px; }
+    .portrait span { font-size: 80px; }
+    .cta { padding: 64px 0 110px; }
+    footer { padding: 48px 16px 32px; }
+    .f-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+    .f-col { width: auto; }
+    .f-mid { margin-top: 72px; }
+    .f-legal { gap: 12px 24px; }
+
+    /* collage → loose two-column pile */
+    .collage { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 14px; container-type: inline-size; padding-bottom: 40px; }
+    .collage .skyline { display: none; }
+    .ci { position: relative; left: auto; top: auto; width: auto; }
+    .ci.wide { grid-column: 1 / -1; }
+    .ci.hide-sm { display: none; }
+    .polaroid { padding: 2.2cqw 2.2cqw 0; }
+    .polaroid figcaption { font-size: 5cqw; padding: 2.4cqw .6cqw 3cqw; }
+    .tape::before { width: 16cqw; height: 4.5cqw; top: -2.2cqw; }
+    .sign { padding: 3cqw 3.6cqw; } .sign .stn { font-size: 6.5cqw; } .bullet { width: 6.6cqw; height: 6.6cqw; font-size: 4cqw; } .sign .lines { gap: 1.4cqw; margin-top: 2.4cqw; }
+    .taxi .checker { height: 3.4cqw; background-size: 3.4cqw 3.4cqw; } .taxi .body { padding: 2.4cqw 3cqw; } .taxi .body b { font-size: 8cqw; } .taxi .body span { font-size: 3cqw; }
+    .term-bar { font-size: 2.8cqw; padding: 1.8cqw 2.4cqw; } .term pre { font-size: 3cqw; padding: 2.4cqw; }
+    .stub .main { padding: 2.8cqw 3.2cqw; } .stub .main small, .stub .main span, .stub .side { font-size: 2.6cqw; } .stub .main b { font-size: 6.4cqw; } .stub .side { width: 11cqw; }
+    .quote { padding: 3.2cqw 3.6cqw; } .quote b { font-size: 6cqw; } .quote span { font-size: 2.6cqw; } .q-succession b { font-size: 7cqw; } .q-friends b { font-size: 8cqw; } .q-snl b { font-size: 5cqw; }
+    .r-seinfeld { font-size: 4.6cqw; } .r-seinfeld small { font-size: 2.4cqw; }
+    .knicks { padding: 3cqw 3.4cqw; } .knicks small { font-size: 2.6cqw; } .knicks b { font-size: 6cqw; } .knicks span { font-size: 3cqw; }
+    .receipt { font-size: 2.8cqw; padding: 3.2cqw 3.2cqw 4cqw; }
+    .cap { padding: 2.6cqw 3cqw; } .cap b { font-size: 5.6cqw; } .cap span { font-size: 2.4cqw; }
+    .sticky { font-size: 5cqw; padding: 3cqw; }
+    .news { padding: 2.6cqw 3cqw; } .news small { font-size: 2.4cqw; } .news b { font-size: 6cqw; }
+    .slug b { font-size: 13cqw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Wordmark (exact Savvy SVG, recolored via currentColor) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="savvy-wordmark" viewBox="0 0 56.4492 18.8369">
+<g>
+<path d="M5.97612 6.46661C5.36037 6.21549 4.73995 5.97677 4.14921 5.67449C3.39595 5.2885 2.65206 4.75216 2.36607 3.96006C1.991 2.92149 2.58017 1.68605 3.55848 1.15747C4.53678 0.628879 5.78233 0.746687 6.75436 1.28613C7.72645 1.82556 8.44377 2.73547 8.9392 3.72444C9.00948 3.72444 9.07982 3.72599 9.14859 3.72754C9.14859 2.77112 9.14859 1.81626 9.14859 0.859844C8.05933 0.450614 6.93253 0.112691 5.77139 0.0227853C4.61024 -0.0671211 3.40845 0.10184 2.38795 0.658329C0.714199 1.57134 -0.184409 3.55858 0.326624 5.40321C0.411014 5.7101 0.5376 6.00774 0.703259 6.28056C1.25492 7.19047 2.20041 7.79659 3.17091 8.24612C4.1414 8.69565 5.16972 9.02583 6.09645 9.55905C6.64496 9.87374 7.16542 10.2721 7.49046 10.8115C7.86707 11.4393 7.93899 12.2562 7.61079 12.912C7.11385 13.904 5.86203 14.3086 4.7462 14.2373C2.72082 14.1102 0.848595 12.6453 0.251609 10.7201C0.167219 10.7217 0.084391 10.7247 0 10.7263C0.0484464 11.9757 0.0953304 13.2235 0.143777 14.4729C1.55967 15.0526 3.05839 15.5083 4.58992 15.5021C6.12147 15.4959 7.70142 14.9798 8.74069 13.8637C9.37048 13.1863 9.77838 12.312 9.90029 11.3975C10.0097 10.5744 9.8831 9.71251 9.47988 8.98703C8.96417 8.05856 8.04371 7.41683 7.08414 6.95025C6.72156 6.77353 6.34963 6.61694 5.97612 6.46505V6.46661Z" fill="currentColor"/>
+<path d="M32.7574 4.29629V4.4916C32.5512 4.57686 32.3543 4.70087 32.1636 4.86053C31.9729 5.02019 31.7776 5.25891 31.5807 5.57976C31.3838 5.90066 31.1571 6.31609 30.9087 6.83069C30.6586 7.34692 30.3633 8.00257 30.0272 8.8009L27.1861 15.4384H26.7454L23.551 7.88635C23.226 7.13297 22.9447 6.52377 22.7024 6.05876C22.4587 5.59531 22.2383 5.2403 22.0414 4.99383C21.8445 4.74737 21.6413 4.58151 21.435 4.49315V4.29784H26.0609V4.49315C25.6342 4.63886 25.4233 4.91943 25.4233 5.34106C25.4233 5.47282 25.4373 5.60459 25.467 5.74407C25.4967 5.88204 25.5483 6.05568 25.6202 6.26494C25.6921 6.47419 25.7968 6.74857 25.9281 7.08182L28.0206 12.2391L29.3428 8.77921C29.635 8.00878 29.8381 7.41663 29.9491 6.99506C30.0585 6.57342 30.1148 6.22463 30.1148 5.95025C30.1148 5.28371 29.7116 4.79542 28.9036 4.49315V4.29784H32.759V4.29474L32.7574 4.29629Z" fill="currentColor"/>
+<path d="M44.6 4.29629V4.4916C44.3937 4.57686 44.1968 4.70087 44.0061 4.86053C43.8155 5.02019 43.6201 5.25891 43.4232 5.57976C43.2263 5.90066 42.9997 6.31609 42.7512 6.83069C42.5012 7.34692 42.2058 8.00257 41.8698 8.8009L39.0302 15.4384H38.5895L35.3951 7.88635C35.0701 7.13297 34.7888 6.52377 34.5466 6.05876C34.3028 5.59531 34.0824 5.2403 33.8855 4.99383C33.6886 4.74737 33.4854 4.58151 33.2791 4.49315V4.29784H37.905V4.49315C37.4784 4.63886 37.2674 4.91943 37.2674 5.34106C37.2674 5.47282 37.2814 5.60459 37.3111 5.74407C37.3408 5.88204 37.3924 6.05568 37.4643 6.26494C37.5362 6.47419 37.6409 6.74857 37.7722 7.08182L39.8647 12.2391L41.1868 8.77921C41.4791 8.00878 41.6823 7.41663 41.7932 6.99506C41.9026 6.57342 41.9589 6.22463 41.9589 5.95025C41.9589 5.28371 41.5557 4.79542 40.7477 4.49315V4.29784H44.6031V4.29474L44.6 4.29629Z" fill="currentColor"/>
+<path d="M52.5923 4.29784V4.49315C53.4002 4.78302 53.8035 5.26976 53.8035 5.95026C53.8035 6.22465 53.7487 6.57494 53.6378 6.99501C53.5284 7.41665 53.319 8.01187 53.0095 8.77922L51.7108 12.2189L49.6183 7.08184C49.4855 6.73304 49.3838 6.45715 49.3104 6.25405C49.2385 6.051 49.1854 5.88206 49.1573 5.74101C49.1276 5.60304 49.1135 5.46817 49.1135 5.33796C49.1135 4.91633 49.3244 4.63422 49.7511 4.49005V4.29474H45.1253V4.49005C45.3316 4.57531 45.5332 4.74427 45.7316 4.99074C45.9286 5.23721 46.1489 5.59219 46.3927 6.05564C46.6365 6.51915 46.9178 7.12992 47.2413 7.88323L50.3481 15.175L50.1574 15.5795L50.0418 15.8229C50.0043 15.9066 49.9699 15.9887 49.9293 16.0693C49.8543 16.2213 49.773 16.3701 49.6745 16.5096C49.1526 17.2568 48.1274 17.5094 47.3382 16.9963C47.2506 16.9389 47.1694 16.8754 47.0975 16.8041C47.0131 16.7188 46.9381 16.6212 46.8631 16.5297C46.252 16.6723 45.9785 17.635 46.3005 18.1713C46.5583 18.6007 47.0694 18.8208 47.5819 18.8363C47.707 18.8394 47.832 18.8301 47.9524 18.81C48.9057 18.6472 49.587 17.931 50.0652 17.1204L50.0746 17.1033L50.1012 17.0552L50.1215 17.0149L50.1387 16.9808L50.1559 16.9467L50.1731 16.9126L50.2199 16.8211L50.2747 16.7096L50.3293 16.5917L50.3966 16.4507L50.6106 15.9919L50.8013 15.5826L50.8794 15.4168L53.719 8.80091C54.0582 8.00259 54.3504 7.34537 54.6005 6.83071C54.8505 6.31454 55.0724 5.90218 55.2725 5.59063C55.4694 5.27906 55.6631 5.04034 55.8554 4.87138C56.0461 4.70552 56.2429 4.57686 56.4492 4.49005V4.29474H52.5939L52.5907 4.29784H52.5923Z" fill="currentColor"/>
+<path d="M20.1963 7.68833C20.0478 6.78926 19.8072 6.05914 19.468 5.5011C19.1289 4.94309 18.671 4.53541 18.0912 4.28119C17.5114 4.02698 16.7816 3.89987 15.9002 3.89987C15.0188 3.89987 14.2046 4.02853 13.445 4.39745C12.97 4.62997 12.5261 4.96944 12.2854 5.43757C12.1636 5.68095 12.0963 5.96461 12.1808 6.22501C12.2651 6.48542 12.4917 6.68539 12.7512 6.77221C13.0122 6.85747 13.3013 6.84042 13.5623 6.75516C13.5716 6.06228 13.806 5.31512 14.3624 4.86248C14.8093 4.50131 15.4688 4.45636 16.008 4.66252C16.2018 4.73693 16.3847 4.85163 16.5269 5.00354C16.805 5.30116 17.0519 5.65613 17.2567 6.42342C15.347 7.36592 13.9561 8.30994 13.0825 9.25238C12.2104 10.1948 11.7729 11.2195 11.7729 12.3216C11.7729 12.9742 11.912 13.5353 12.1901 14.0081C12.4683 14.4809 12.8652 14.8467 13.3778 15.1071C13.8905 15.3675 14.4874 15.4993 15.1626 15.4993C15.9392 15.4993 16.6175 15.2963 17.188 14.8885C17.7615 14.4825 18.2366 13.881 18.6194 13.0811C18.782 13.8795 19.0461 14.453 19.4134 14.7878C19.7806 15.1226 20.3463 15.2885 21.109 15.2885H22.0998V15.0932C21.645 14.9785 21.334 14.4096 21.1574 13.4098L20.19 7.68525L20.1963 7.68833ZM17.6396 13.7818C17.2426 14.0422 16.8394 14.174 16.4284 14.174C15.7814 14.174 15.2751 13.9415 14.9094 13.478C14.2749 12.6735 14.2577 11.4814 14.4687 10.525C14.6797 9.56864 15.1985 8.65559 15.933 7.97976C16.3768 7.57361 16.8988 7.24964 17.3911 6.90862C17.4489 7.14113 18.5444 12.6936 18.5444 12.6936C18.3241 13.0858 18.0365 13.5183 17.6396 13.7787V13.7818Z" fill="currentColor"/>
+</g>
+  </symbol>
+  <symbol id="arrow-ne" viewBox="0 0 10 10"><path d="M1 9 9 1M3 1h6v6" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-row">
+    <div class="nav-left">
+      <a class="logo" href="https://www.savvywealth.com" aria-label="Savvy home"><svg><use href="#savvy-wordmark"/></svg></a>
+      <div class="seg" aria-hidden="true"><span class="on">Future Founder</span><span>CalHacks</span></div>
+    </div>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#offer">The offer</a>
+        <a href="#why">Why Savvy</a>
+        <a href="#building">What we’re building</a>
+        <a href="#nyc">NYC</a>
+        <a href="#team">Team</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-sm btn-outline-dark" href="sms:+12158279797">Text Laura</a>
+        <a class="btn btn-sm btn-white" href="https://jobs.ashbyhq.com/savvy/a4837df1-b75d-4d26-b902-6569e5cb0fea?utm_source=WVxz6VqbyV" target="_blank" rel="noopener">Apply now</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Technical staff · Future founder</span>
+    <div class="hero-copy">
+      <h1 class="h-hero">Build Savvy. Then we’ll invest in <span class="serif">your own startup.</span></h1>
+      <p class="lede">Hiring future founders <strong>this weekend</strong> to build Savvy’s next chapter… and then start your own. Spend 2 years building at Savvy in NYC. Then we’ll help you go build your own company.</p>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn btn-lg btn-primary-dark" href="https://jobs.ashbyhq.com/savvy/a4837df1-b75d-4d26-b902-6569e5cb0fea?utm_source=WVxz6VqbyV" target="_blank" rel="noopener">Apply now</a>
+      <a class="btn btn-lg btn-outline-dark" href="#building">See what we’re building</a>
+    </div>
+    <p class="hero-meta"><span><b>●</b> Interviews @ Cal · Mon 10/26</span><span>Offers out the same day</span><span>NYC · Union Square</span></p>
+
+    <div class="graph" role="img" aria-label="The Future Founder path: join Savvy in NYC, build with real ownership for two years, then branch off to your own startup with an angel check from Ritik and VC introductions.">
+      <div class="graph-bar">
+        <span class="prompt"><i>~/future-founder</i> $ git log --graph --oneline</span>
+        <span class="meta">main · 2 yrs</span>
+      </div>
+      <div class="graph-body" aria-hidden="true">
+        <div class="commit"><div class="rail"></div><div class="msg"><span class="hash">a1f0c3e</span><span class="ref">HEAD → you</span>Join Savvy, relocate to NYC<small>Union Square · 4 days a week</small></div></div>
+        <div class="commit"><div class="rail"></div><div class="msg"><span class="hash">7b2d91a</span>Ship with real ownership on a small team<small>learn alongside experienced founders + operators</small></div></div>
+        <div class="commit"><div class="rail"></div><div class="msg"><span class="hash">c94e0b7</span>Year 2: Savvy’s next chapter, shipped</div></div>
+        <div class="commit fork"><div class="rail"><span class="branch"></span></div><div class="msg"><span class="ref">your-startup</span><strong>Angel check from Ritik + VC intros</strong><span class="cursor"></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-label="Interviews at Cal on Monday 10/26. Offers out the same day.">
+  <div class="ticker-track" aria-hidden="true">
+    <span class="hi">Interviews @ Cal · Mon 10/26</span><span>Offers out same day</span><span>We’ll relocate you to NYC</span><span class="hi">Angel check + VC intros</span><span>Series C · $200M raised</span><span>$100M ARR</span><span>#1 fastest-growing financial services co.</span>
+    <span class="hi">Interviews @ Cal · Mon 10/26</span><span>Offers out same day</span><span>We’ll relocate you to NYC</span><span class="hi">Angel check + VC intros</span><span>Series C · $200M raised</span><span>$100M ARR</span><span>#1 fastest-growing financial services co.</span>
+  </div>
+</div>
+
+<!-- THE OPPORTUNITY -->
+<section class="section" id="offer">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="stack">
+        <span class="eyebrow">The opportunity</span>
+        <h2 class="h-section">2 years inside a breakout startup. <span class="serif">Then it’s your turn.</span></h2>
+      </div>
+      <p class="side">A new Technical Staff role for engineers who want to found something. Build Savvy first, with the people and capital to go solo after.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.4"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+          <div class="card-who"><b>Relocation</b><span>New York, NY</span></div>
+          <span class="card-date">01</span>
+        </div>
+        <h3 class="card-title">We’ll relocate you to NYC.</h3>
+        <p>Pack the hoodie. You’ll build from our Union Square office, four days a week.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.4"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M3.5 19c.8-3 3-4.6 5.5-4.6s4.7 1.6 5.5 4.6M14.5 14.7c2.6-.5 5 .9 5.8 3.8"/></svg></span>
+          <div class="card-who"><b>Mentorship</b><span>Founders + operators</span></div>
+          <span class="card-date">02</span>
+        </div>
+        <h3 class="card-title">Learn alongside experienced founders and operators.</h3>
+        <p>Sit next to people who’ve started companies, sold them, and scaled engineering orgs.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.4"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div class="card-who"><b>Ownership</b><span>Small team</span></div>
+          <span class="card-date">03</span>
+        </div>
+        <h3 class="card-title">Have actual ownership in a small team.</h3>
+        <p>No ticket factory. You own real problems end to end and ship them.</p>
+      </article>
+      <article class="card feature reveal">
+        <div class="card-head">
+          <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.4"><path d="M5 19 19 5M9 5h10v10"/></svg></span>
+          <div class="card-who"><b>After year 2</b><span>Your company</span></div>
+          <span class="card-date">04</span>
+        </div>
+        <h3 class="card-title">Then we invest in <span class="serif">your startup.</span></h3>
+        <p>After 2 years, our founder &amp; CEO will angel invest in your startup and introduce you to our VC network.</p>
+      </article>
+    </div>
+
+    <div class="next">
+      <div class="reveal">
+        <span class="eyebrow">What happens next</span>
+        <h3 style="margin-top:22px;">Meet us this weekend. <span class="serif">Leave Monday with an offer.</span></h3>
+        <div class="contact">
+          <span>Questions? Text Laura: <a href="sms:+12158279797">215-827-9797</a></span>
+          <span>Can’t make it? <a href="https://jobs.ashbyhq.com/savvy/a4837df1-b75d-4d26-b902-6569e5cb0fea?utm_source=WVxz6VqbyV" target="_blank" rel="noopener">Apply here</a></span>
+        </div>
+      </div>
+      <ol class="steps reveal">
+        <li class="step"><span class="tag">This weekend</span><b>Find us at CalHacks</b><span>Come by the booth, meet the team, and grab a spot for Monday.</span></li>
+        <li class="step"><span class="tag">Mon 10/26</span><b>Interview day in Berkeley</b><span>Attend Savvy interview day in person at Cal.</span></li>
+        <li class="step"><span class="tag">Same day</span><b>Offers go out</b><span>No three-week wait. You’ll hear from us Monday.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SAVVY -->
+<section class="section why" id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="stack">
+        <span class="eyebrow">Why Savvy</span>
+        <h2 class="h-section">The trajectory is steep and <span class="serif">it’s still early.</span></h2>
+      </div>
+      <p class="side">Savvy is a Series C fintech reinventing financial advice.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="stat-rule"></div><div class="stat-num">$200M</div><div class="stat-label">raised, through Series C</div></div>
+      <div class="stat reveal"><div class="stat-rule"></div><div class="stat-num">$100M</div><div class="stat-label">ARR this year</div></div>
+      <div class="stat reveal"><div class="stat-rule"></div><div class="stat-num">170+</div><div class="stat-label">people building it</div></div>
+      <div class="stat reveal"><div class="stat-rule"></div><div class="stat-num">#1</div><div class="stat-label">fastest-growing financial services company in America (Inc. 5000)</div></div>
+    </div>
+    <div class="arr reveal" role="img" aria-label="ARR grew 10x, from $10M to $100M, since 2025.">
+      <div class="arr-title"><span>$ savvy metrics --arr</span><span><b>10×</b> ARR growth since 2025</span></div>
+      <span class="label">2025</span><div class="arr-bar y1">$10M</div>
+      <span class="label">2026</span><div class="arr-bar y2" id="arrbar">$100M</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE'RE BUILDING -->
+<section class="section" id="building" style="border-top:1px solid var(--w-12);">
+  <div class="wrap">
+    <div class="build-head reveal">
+      <span class="eyebrow">What we’re building</span>
+      <h2 class="h-section">Not your <span class="serif">parents’</span> financial advisor.</h2>
+      <p class="lede">Financial advice still runs on spreadsheets. <strong>We’re rebuilding a $14T industry with AI:</strong> the business in a box for independent financial advisors.</p>
+    </div>
+    <div class="modules">
+      <article class="module reveal">
+        <div class="module-art"><img src="assets/img/module-1.png" alt="" loading="lazy"><span class="path">box/01-technology</span></div>
+        <div class="module-meta"><span class="tag">Module 01</span><h3 class="module-title">Proprietary technology</h3><p class="module-by">The platform advisors run their whole practice on.</p></div>
+      </article>
+      <article class="module reveal">
+        <div class="module-art"><img src="assets/img/module-2.png" alt="" loading="lazy"><span class="path">box/02-ai</span></div>
+        <div class="module-meta"><span class="tag">Module 02</span><h3 class="module-title">AI</h3><p class="module-by">AI-native from day one, giving advisors leverage.</p></div>
+      </article>
+      <article class="module reveal">
+        <div class="module-art"><img src="assets/img/module-3.png" alt="" loading="lazy"><span class="path">box/03-investments</span></div>
+        <div class="module-meta"><span class="tag">Module 03</span><h3 class="module-title">Investment management</h3><p class="module-by">Portfolios, built and managed in one place.</p></div>
+      </article>
+      <article class="module reveal">
+        <div class="module-art"><img src="assets/img/module-4.png" alt="" loading="lazy"><span class="path">box/04-marketing</span></div>
+        <div class="module-meta"><span class="tag">Module 04</span><h3 class="module-title">Marketing</h3><p class="module-by">Growth for advisors, built in.</p></div>
+      </article>
+      <article class="module reveal">
+        <div class="module-art"><img src="assets/img/module-5.png" alt="" loading="lazy"><span class="path">box/05-client-service</span></div>
+        <div class="module-meta"><span class="tag">Module 05</span><h3 class="module-title">Client service</h3><p class="module-by">Human + tech support for every end-client.</p></div>
+      </article>
+      <article class="module reveal">
+        <div class="module-art"><img src="assets/img/module-6.png" alt="" loading="lazy"><span class="path">box/06-operations</span></div>
+        <div class="module-meta"><span class="tag">Module 06</span><h3 class="module-title">Operations</h3><p class="module-by">The back office, handled.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NYC -->
+<section class="section nyc" id="nyc">
+  <div class="wrap">
+    <div class="nyc-head reveal">
+      <div class="stack">
+        <span class="eyebrow">Location: NYC</span>
+        <h2 class="h-section">Build in the <span class="serif">middle of everything.</span></h2>
+      </div>
+      <div class="meta">
+        <p>Union Square office. 4 days a week. Bagels, bodega cats, and the rest of New York at your door.</p>
+      </div>
+    </div>
+
+    <div class="collage" aria-label="A collage of New York: Savvy team photos around the city, subway lines at 14 St–Union Sq, and NYC pop-culture stickers.">
+      <svg class="skyline" viewBox="0 0 1400 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path fill="none" stroke="#fff" stroke-width="1.4" d="M0 260V200h40v-30h30v30h20v-60h44v60h18v-90h12V95h6v15h12v90h30v-40h50v40h22v-70h28v-20h14V80h4v-30h3v30h4v60h14v20h28v40h40v-55h36v55h20v-100l18-18 18 18v100h26v-70h46v70h20v-38h34v38h30V96h6V60h4V18h2v42h4v36h6v104h22v-62h40v62h32v-84h48v84h24v-48h32v48h40v-110h10V80h12v40h10v80h36v-44h42v44h28v-70h40v70h46v-30h40v90"/></svg>
+
+      <figure class="ci polaroid tape" style="--x:0%;--y:4%;--w:24%;--r:-4deg;--ar:3/2;"><img src="assets/img/nyc-street.jpg" alt="Savvy team crossing a Manhattan street" loading="lazy"><figcaption>lunch run, 12:41pm</figcaption></figure>
+
+      <div class="ci sign wide" style="--x:26.5%;--y:1%;--w:27%;--r:1.5deg;--z:3;">
+        <div class="stn">14 St–Union Sq</div>
+        <div class="lines" aria-label="4 5 6 L N Q R W trains">
+          <span class="bullet b-g">4</span><span class="bullet b-g">5</span><span class="bullet b-g">6</span><span class="bullet b-l">L</span><span class="bullet b-y">N</span><span class="bullet b-y">Q</span><span class="bullet b-y">R</span><span class="bullet b-y">W</span>
+        </div>
+      </div>
+
+      <figure class="ci polaroid tape" style="--x:56%;--y:2%;--w:22.5%;--r:4deg;--ar:3/2;"><img src="assets/img/nyc-office.jpg" alt="Savvy's office with arched windows" loading="lazy"><figcaption>HQ · Union Square</figcaption></figure>
+
+      <div class="ci taxi" style="--x:80%;--y:6%;--w:19.5%;--r:-6deg;">
+        <div class="checker"></div>
+        <div class="body"><b>TAXI</b><span>In office 4 days a week</span></div>
+      </div>
+
+      <div class="ci slug hide-sm" style="--x:30%;--y:19%;--w:30%;--r:0deg;--z:0;"><b>New<br><i>York</i>,<br>baby.</b></div>
+
+      <div class="ci term wide" style="--x:1.5%;--y:38%;--w:25%;--r:2.5deg;">
+        <div class="term-bar">~/nyc $ cat bodega_cat.txt</div>
+<pre>   <span class="g">/\_/\</span>    <span class="d">name:</span> Mayor of 14th St
+  <span class="g">( o.o )</span>   <span class="d">role:</span> security, bagels
+   <span class="g">> ^ <</span>    <span class="d">uptime:</span> 24/7/365
+  <span class="d">bodega</span>    <span class="d">status:</span> <span class="g">● online</span></pre>
+      </div>
+
+      <div class="ci stub" style="--x:28%;--y:44%;--w:23%;--r:-3.5deg;">
+        <div class="main"><small>BROOKLYN STEEL</small><b>Fri night,<br>after ship day</b><span>GA · DOORS 8PM</span></div>
+        <div class="side">ADMIT ONE</div>
+      </div>
+
+      <div class="ci quote q-wolf" style="--x:53.5%;--y:37%;--w:17%;--r:4deg;"><b>“Sell me this pen.”</b><span>Wall St., 6 stops away</span></div>
+
+      <div class="ci knicks" style="--x:72%;--y:34%;--w:17%;--r:-5deg;--z:2;"><small>MADISON SQ. GARDEN</small><b>Brunson. Courtside. Chalamet.</b><span>Knicks, 20 min from the office</span></div>
+
+      <figure class="ci polaroid tape" style="--x:85%;--y:44%;--w:14.5%;--r:3deg;--ar:3/4;"><img src="assets/img/nyc-subway.jpg" alt="Savvy team at the 23 Street subway entrance" loading="lazy"><figcaption>23 St, 8:52am</figcaption></figure>
+
+      <div class="ci round r-seinfeld" style="--x:21.5%;--y:68%;--w:11%;--r:10deg;--z:3;"><div>Serenity now!<small>Seinfeld</small></div></div>
+
+      <div class="ci quote q-snl" style="--x:1%;--y:76%;--w:20%;--r:-3deg;"><b>Live from New York…</b><span>Saturday night</span></div>
+
+      <figure class="ci polaroid tape wide" style="--x:34%;--y:63%;--w:21%;--r:-2deg;--ar:3/2;"><img src="assets/img/nyc-walk.jpg" alt="Two Savvy teammates talking at an outdoor table" loading="lazy"><figcaption>1:1s, outdoors</figcaption></figure>
+
+      <div class="ci quote q-succession" style="--x:57%;--y:60%;--w:14.5%;--r:-7deg;--z:3;"><b>L to the OG.</b><span>Succession</span></div>
+
+      <div class="ci quote q-friends" style="--x:58%;--y:80%;--w:15%;--r:5deg;"><b>How you doin’?</b><span>Friends</span></div>
+
+      <div class="ci news" style="--x:73.5%;--y:61%;--w:12%;--r:-2deg;"><small><span>CITY HALL</span><span>’26</span></small><b>Mamdani’s New York</b></div>
+
+      <div class="ci receipt" style="--x:86%;--y:75%;--w:13.5%;--r:4deg;">
+        <div class="ctr">DELI &amp; GROCERY</div><hr>
+        <div class="row"><span>1 everything bagel</span><span>3.25</span></div>
+        <div class="row"><span>  scallion cc</span><span>1.00</span></div>
+        <div class="row"><span>1 hot dog</span><span>2.50</span></div>
+        <hr><div class="row"><b>TOTAL</b><b>worth it</b></div>
+      </div>
+
+      <div class="ci cap" style="--x:74%;--y:82%;--w:11%;--r:-4deg;"><b>Bronx Bombers</b><span>Yankees cap, required</span></div>
+
+      <div class="ci sticky hide-sm" style="--x:44.5%;--y:86%;--w:12%;--r:3deg;">Wash Sq Park: chess at 5, don’t be late</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM — whiteboard -->
+<section class="board" id="team">
+  <div class="wrap">
+    <div class="board-head reveal">
+      <div>
+        <span class="eyebrow">The team</span>
+        <h2 class="h-section">Learn from people who’ve <span class="serif">done it before.</span></h2>
+      </div>
+      <p class="board-note">← the folks who’ll back you in year 2</p>
+    </div>
+
+    <div class="team">
+      <!-- Swap the monogram for a real photo: add <img src="assets/img/team-ritik.jpg" alt="Ritik Malhotra"> inside .portrait -->
+      <article class="member reveal">
+        <figure class="polaroid" style="--r:-2.5deg;"><div class="portrait"><span>RM</span></div><figcaption>Ritik, writing the check</figcaption></figure>
+        <div class="bio">
+          <h3>Ritik Malhotra</h3>
+          <div class="role">Founder &amp; CEO</div>
+          <ul><li>UC Berkeley · Y Combinator · Thiel Fellow</li><li>2 prior exits: Box (2014) + Brex (2019)</li></ul>
+        </div>
+        <span class="scribble s-red hide-sm" style="right:-20px; top:-52px; font-size:30px; transform:rotate(7deg);">Go Bears!</span>
+      </article>
+      <article class="member reveal">
+        <figure class="polaroid" style="--r:2deg;"><div class="portrait"><span>EH</span></div><figcaption>Eric, our CTO</figcaption></figure>
+        <div class="bio">
+          <h3>Eric Hurkman</h3>
+          <div class="role">CTO</div>
+          <ul><li>Former CTO @ Carta + Say Technologies</li><li>Former VP Engineering @ Maven Clinic + DrChrono</li></ul>
+        </div>
+        <span class="scribble s-blue hide-sm" style="left:-48px; top:42%; font-size:26px; transform:rotate(-8deg);">
+          <svg width="44" height="30" viewBox="0 0 44 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 6c12 2 26 8 36 18M30 24l8 0 -2-8"/></svg>
+        </span>
+      </article>
+      <article class="member reveal">
+        <figure class="polaroid" style="--r:-1.5deg;"><div class="portrait"><span>PL</span></div><figcaption>Peter, Monzo → Savvy</figcaption></figure>
+        <div class="bio">
+          <h3>Peter Lu</h3>
+          <div class="role">Chief Business Officer</div>
+          <ul><li>Former Head of Product @ Monzo</li><li>Former VP Product @ KOHO</li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="board-sticky">Q for Monday:<br>what will <u>you</u> build in 2028?</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="apply">
+  <div class="wrap cta-inner">
+    <div class="reveal">
+      <h2 class="h-section">Build Savvy. Then build <span class="serif">your own startup.</span></h2>
+      <p class="sub">We’re hosting interviews <b>@ Cal on Monday 10/26.</b> Offers go out the same day.</p>
+      <p class="recruiter">Text <img src="assets/img/laura.png" alt=""> Laura at <a href="sms:+12158279797">215-827-9797</a> or find us on <a href="https://www.linkedin.com/company/savvywealth" target="_blank" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="cta-btns reveal">
+      <a class="btn btn-md btn-gold" href="https://jobs.ashbyhq.com/savvy/a4837df1-b75d-4d26-b902-6569e5cb0fea?utm_source=WVxz6VqbyV" target="_blank" rel="noopener">Apply now</a>
+      <a class="btn btn-md btn-outline-light" href="https://www.savvywealth.com" target="_blank" rel="noopener">See what we’re building</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-top">
+    <div class="f-brand">
+      <a class="logo" href="https://www.savvywealth.com" aria-label="Savvy home"><svg><use href="#savvy-wordmark"/></svg></a>
+      <p>A modern wealth management platform built for the next generation of independent advisors.</p>
+    </div>
+    <div class="f-cols">
+      <div class="f-col"><h4>Platform</h4><ul><li><a href="https://www.savvywealth.com">Savvy Intelligence</a></li><li><a href="https://www.savvywealth.com">Operations</a></li><li><a href="https://www.savvywealth.com">Compliance</a></li><li><a href="https://www.savvywealth.com">Investment management</a></li></ul></div>
+      <div class="f-col"><h4>Advisors</h4><ul><li><a href="https://www.savvywealth.com">Why Savvy</a></li><li><a href="https://www.savvywealth.com">Transition support</a></li><li><a href="https://www.savvywealth.com">Stories</a></li><li><a href="https://www.savvywealth.com">Become an advisor</a></li></ul></div>
+      <div class="f-col"><h4>Clients</h4><ul><li><a href="https://www.savvywealth.com">Find an advisor</a></li><li><a href="https://www.savvywealth.com">Client experience</a></li><li><a href="https://www.savvywealth.com">Dashboard</a></li></ul></div>
+      <div class="f-col"><h4>Company</h4><ul><li><a href="https://www.savvywealth.com/about">About</a></li><li><a href="https://www.savvywealth.com">Resources</a></li><li><a href="https://www.savvywealth.com/careers">Careers</a></li><li><a href="https://www.savvywealth.com">Contact</a></li></ul></div>
+    </div>
+  </div>
+  <div class="f-mid">
+    <div class="f-legal"><span>CRD # 318493 &nbsp; | &nbsp; <u>Form ADV/Form CRS</u></span><span>Privacy Policy</span><span>Terms of Use</span></div>
+    <div class="f-right">
+      <span>© Savvy Wealth, Inc. All rights reserved.</span>
+      <div class="f-social">
+        <a href="https://www.linkedin.com/company/savvywealth" aria-label="Savvy on LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <p class="f-disc">Savvy Advisors, Inc. (“Savvy Advisors”) is an investment adviser located in New York, NY. Savvy Advisors is an SEC registered investment adviser. SEC registration does not constitute an endorsement of the firm by the Commission nor does it indicate that the adviser has attained a particular level of skill or ability. Savvy Advisors may only transact business in those states in which it is registered, or qualifies for an exemption or exclusion from registration requirements. Savvy Advisors’ website (referred to herein as the “Website”) is limited to the dissemination of general information pertaining to its advisory services, together with access to additional investment-related information, publications, and links. Accordingly, the publication of the Website on the Internet should not be construed by any client and/or prospective client as Savvy Advisors’ solicitation to effect, or attempt to effect transactions in securities, or the rendering of personalized investment advice for compensation, over the Internet. Any subsequent, direct communication by Savvy Advisors with a prospective client will be conducted by a representative that is either registered or qualifies for an exemption or exclusion from registration in the state where the prospective client resides.</p>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target, sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.animationDelay = Math.min(sibs, 5) * 70 + 'ms';
+      el.classList.add('in'); io.unobserve(el);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (el) { io.observe(el); });
+
+  var bar = document.getElementById('arrbar');
+  if (bar && bar.animate) {
+    var bio = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { bar.animate([{ transform: 'scaleX(.1)' }, { transform: 'scaleX(1)' }], { duration: 1400, easing: 'cubic-bezier(.2,.7,.2,1)' }); bio.disconnect(); }
+    }, { threshold: .6 });
+    bio.observe(bar);
+  }
+})();
+</script>
+</body>
+</html>
