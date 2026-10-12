@@ -153,7 +153,7 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11.4px;l
 /* ==========================================================================
    CONTENTS
    ========================================================================== */
-.toc{position:absolute;left:var(--mx);top:118px;width:560px}
+.toc{position:absolute;left:var(--mx);top:118px;width:760px}
 .toc ol{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
 .toc li a{display:flex;align-items:baseline;justify-content:space-between;padding:10px 0 10px;border-bottom:1px solid var(--line);transition:padding .15s,color .15s}
 .toc li a:hover{padding-left:8px;color:var(--teal)}
@@ -254,7 +254,10 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 .dsub a.on em{color:rgba(255,255,255,.6)}
 .drv-top{display:flex;justify-content:space-between;align-items:center}
 .drv-title{display:flex;align-items:flex-end;justify-content:space-between;margin-top:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.drv-title .h2{font-size:34px}
+.drv-title .h2{font-size:28px;text-wrap:balance}
+.cols2{columns:2;column-gap:48px}
+.cols2 p{break-inside:avoid-column}
+.tb i.nc{margin-left:4px}
 .drv-title .meta{display:flex;align-items:center;gap:16px;font-size:10.5px;color:var(--ink-2)}
 .drv-grid{display:grid;grid-template-columns:560px 1fr;gap:44px;margin-top:20px}
 .drv-grid .t p{font-size:13.6px;line-height:1.6}
@@ -356,72 +359,58 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 </section>
 
 <!-- =====================================================================
-     02 · CONTENTS + ANSWER FINDER
+     02 · CONTENTS
      ===================================================================== -->
 <section class="page cream" id="contents" data-title="Contents" data-chrome="tagline">
   <div class="toc">
     <div class="h1">Contents</div>
     <ol>
       <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp">Page 3</span></a></li>
-      <li><a href="#positioning"><span><span class="num">02</span><span class="tt">Cross-asset positioning</span></span><span class="pp">Page 4</span></a></li>
+      <li><a href="#positioning"><span><span class="num">02</span><span class="tt">Savvy Total Portfolios: tactical asset allocation positioning</span></span><span class="pp">Page 4</span></a></li>
       <li><a href="#core-driver"><span><span class="num">03</span><span class="tt">Core driver</span></span><span class="pp">Page 5</span></a></li>
       <li><a href="#macro"><span><span class="num">04</span><span class="tt">Macro thoughts</span></span><span class="pp">Page 7</span></a></li>
       <li class="nob"><div class="subs">
-        <a href="#growth">Growth</a><a href="#earnings">Earnings</a><a href="#inflation">Inflation</a><a href="#financial-conditions">Financial conditions</a><a href="#geopolitics">Geopolitics</a>
+        <a href="#growth">Growth</a><a href="#inflation">Inflation</a><a href="#financial-conditions">Financial conditions and the Fed</a><a href="#earnings">Earnings and valuation</a><a href="#geopolitics">Geopolitics</a>
       </div></li>
       <li><a href="#qa"><span><span class="num">05</span><span class="tt">Question of the month</span></span><span class="pp">Page 13</span></a></li>
       <li><a href="#risks"><span><span class="num">06</span><span class="tt">Risks we’re watching</span></span><span class="pp">Page 14</span></a></li>
       <li><a href="#closing"><span><span class="num">07</span><span class="tt">Closing thoughts</span></span><span class="pp">Page 15</span></a></li>
-      <li><a href="#sources"><span><span class="num">08</span><span class="tt">Sources &amp; disclosures</span></span><span class="pp">Page 16</span></a></li>
+      <li><a href="#sources"><span><span class="num">08</span><span class="tt">Sources</span></span><span class="pp">Page 16</span></a></li>
     </ol>
-  </div>
-  <div class="finder">
-    <div class="h3">Find the answer</div>
-    <a class="fq" href="#snapshot"><span class="qn">Q1</span><span><div class="q">Did SWIM make any positioning changes this month?</div><div class="a">No changes to positioning this month.</div></span><span class="go">p. 3 →</span></a>
-    <a class="fq" href="#positioning"><span class="qn">Q2</span><span><div class="q">What is SWIM’s cross-asset positioning?</div><div class="a">Equities slight overweight · Fixed income underweight · Alternatives slight overweight</div></span><span class="go">p. 4 →</span></a>
-    <a class="fq" href="#macro"><span class="qn">Q3</span><span><div class="q">What does SWIM think of the macro environment, why, and what is the outlook?</div><div class="a">Reflation with a Goldilocks bias, constructive</div></span><span class="go">p. 7 →</span></a>
-    <a class="fq" href="#risks"><span class="qn">Q4</span><span><div class="q">What are the risks to the SWIM view?</div><div class="a">Five risks we’re watching. Credit is the signal that would move us.</div></span><span class="go">p. 14 →</span></a>
   </div>
 </section>
 
 <!-- =====================================================================
-     03 · EXECUTIVE SNAPSHOT — verdict + changes (Q1) + stance
+     03 · EXECUTIVE SNAPSHOT — verdict + positioning changes + stance
      ===================================================================== -->
 <section class="page" id="snapshot" data-title="Executive snapshot" data-section="snapshot">
   <div class="body">
     <div class="snap-l">
       <div class="h1">Executive snapshot</div>
-      <div class="regime"><span class="dot"></span>Regime: <b>Reflation with a Goldilocks bias, constructive</b> · unchanged</div>
-      <div style="margin-top:26px">
+      <div style="margin-top:30px">
         <div class="ico-h">
           <svg width="26" height="22" viewBox="0 0 26 22" fill="none" stroke="#095972" stroke-width="1.2"><circle cx="11" cy="11" r="10"/><path d="M4 9.5a7.5 7.5 0 0 0 14 0"/><circle cx="21" cy="5" r="3.2"/></svg>
           <span class="h3">The verdict</span>
         </div>
-        <p class="t" style="font-size:14px;line-height:1.6">Our regime call is unchanged and constructive, and the book carries forward. September was a real-rate shock rather than a growth scare. The Fed raised rates a quarter point on September 16, and by month-end the 10-year Treasury yield had its highest close since 2002. Almost all of that rise came from real yields, the return investors demand after inflation, while expected inflation barely moved. That is <b>the price of money going up</b>, and it raises the bar every asset has to clear. Growth has not flinched. The <span data-tip="<b>Weekly Economic Index</b> — NY Fed index of real activity, scaled to four-quarter GDP growth.">Weekly Economic Index</span> has averaged 2.7% this year and the current-quarter nowcast is 3.7%. So we stay slightly overweight equities, led by US large caps, because higher rates change what we pay for earnings, not whether the earnings arrive. We stay underweight fixed income without extending duration, and we keep the real-asset tilt. Two readings have moved against us. Stocks now yield slightly less than Treasuries, with the <span data-tip="<b>Equity risk premium</b> — what owning stocks pays over a 10-year Treasury.">equity risk premium</span> at -0.07 percentage points, and earnings revisions have slipped just below zero. High-yield spreads have also started to widen, though the broad financial-conditions gauges have not followed. We are watching credit closely.</p>
+        <p class="t" style="font-size:14px;line-height:1.6">Our regime call is unchanged and constructive, and the book carries forward. September was a real-rate shock rather than a growth scare. The Fed raised rates a quarter point on September 16, and by month-end the 10-year Treasury yield had its highest close since 2002. Almost all of that rise came from real yields, the return investors demand after inflation, while expected inflation barely moved. That is the price of money going up, and it raises the bar every asset has to clear. Growth has not flinched. The Weekly Economic Index has averaged 2.7% this year and the current-quarter nowcast is 3.7%. So we stay slightly overweight equities, led by US large caps, because higher rates change what we pay for earnings, not whether the earnings arrive. We stay underweight fixed income without extending duration, and we keep the real-asset tilt. Two readings have moved against us. Stocks now yield slightly less than Treasuries, with the equity risk premium at -0.07 percentage points, and earnings revisions have slipped just below zero. High-yield spreads have also started to widen, though the broad financial-conditions gauges have not followed. We are watching credit closely.</p>
       </div>
     </div>
 
     <div class="snap-r">
+      <!-- TEMPLATE NOTE: in months with changes, replace .status/.last with the
+           change table (Asset/Class · Action · Previous → Current · Rationale). -->
       <div class="card tint changes">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <span class="eyebrow">Changes to the book</span><span class="qchip"><i>Q1</i>Positioning changes</span>
-        </div>
-        <!-- TEMPLATE NOTE: in months with changes, replace .status/.last with the
-             change table (Asset/Class · Action · Previous → Current · Rationale). -->
         <div class="status">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#095972" stroke-width="1.4"><circle cx="10" cy="10" r="9"/><path d="M6 10.2l2.6 2.6L14 7.4"/></svg>
           No changes to positioning this month.
         </div>
-        <p class="last">Last change: exited Consumer Discretionary (XLY) in late August. See the September issue.</p>
+        <p class="last"><i>Last change: exited Consumer Discretionary (XLY) in late August. See the September issue.</i></p>
       </div>
 
       <div class="card" style="padding-bottom:14px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div class="ico-h" style="margin:0">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#095972" stroke-width="1.2"><circle cx="11" cy="11" r="10"/><path d="M11 1v20"/><path d="M11 1a6 10 0 0 0 0 20"/></svg>
-            <span class="h3">Portfolio stance</span>
-          </div>
-          <span class="qchip"><i>Q2</i>Cross-asset</span>
+        <div class="ico-h" style="margin-bottom:8px">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#095972" stroke-width="1.2"><circle cx="11" cy="11" r="10"/><path d="M11 1v20"/><path d="M11 1a6 10 0 0 0 0 20"/></svg>
+          <span class="h3">Portfolio stance</span>
         </div>
         <div class="stance-row"><span class="nm">Equities</span><span data-pos="SOW">Slight Overweight</span>
           <p>Earnings are still arriving, so we stay overweight, led by US large caps. Higher real yields change what we pay for those earnings, and that is the risk we are watching.</p></div>
@@ -429,27 +418,19 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
           <p>We hold fewer bonds than a standard 60/40 and keep duration modestly short. We are not extending while rate volatility is high and inflation sits above target.</p></div>
         <div class="stance-row"><span class="nm">Alternatives</span><span data-pos="SOW">Slight Overweight</span>
           <p>Real assets hedge a Fed that still has work to do. We hold a broad commodity basket and gold, and accept that gold gives some back when real yields rise.</p></div>
-        <a class="more" href="#positioning" style="margin-top:4px">Full asset-class and sector views →</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- =====================================================================
-     04 · CROSS-ASSET POSITIONING (Q2)
+     04 · SAVVY TOTAL PORTFOLIOS — asset class + sector views
      ===================================================================== -->
-<section class="page" id="positioning" data-title="Cross-asset positioning" data-section="positioning">
+<section class="page" id="positioning" data-title="Tactical asset allocation positioning" data-section="positioning">
   <div class="body">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div class="h2" style="font-size:26px">Savvy Total Portfolios: tactical asset allocation positioning</div>
-      <span class="qchip"><i>Q2</i>Cross-asset positioning</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-      <div style="font-size:11.5px;color:var(--ink-2)"><span class="eyebrow" style="margin-right:10px">Executive snapshot · Portfolio stance</span><b style="color:#000;font-weight:500">No changes to positioning this month.</b> Last change: exited Consumer Discretionary (XLY) in late August.</div>
-      <div class="legend" id="pos-legend"></div>
-    </div>
-
-    <table class="tb pos-tb" style="margin-top:12px">
+    <div class="h2" style="font-size:26px">Savvy Total Portfolios: tactical asset allocation positioning</div>
+    <div style="font-size:11.5px;color:var(--ink-2);margin-top:8px"><b style="color:#000;font-weight:500">No changes to positioning this month.</b> <i>Last change: exited Consumer Discretionary (XLY) in late August. See the September issue.</i></div>
+    <table class="tb pos-tb" style="margin-top:14px">
       <thead><tr><th style="width:190px">Asset / Class</th><th style="width:200px">Positioning</th><th>Rationale</th></tr></thead>
       <tbody>
         <tr class="grp"><td>Equities</td><td data-pos="SOW">Slight Overweight</td><td>Earnings are still arriving, so we stay overweight, led by US large caps. Higher real yields change what we pay for those earnings, and that is the risk we are watching.</td></tr>
@@ -473,61 +454,36 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 </section>
 
 <!-- =====================================================================
-     05 · CORE DRIVER (own page — room for a change table in change months)
+     05–06 · CORE DRIVER (own page — room for a change table in change months)
      ===================================================================== -->
 <section class="page" id="core-driver" data-title="Core driver" data-section="core">
   <div class="body">
-    <div style="display:grid;grid-template-columns:1fr 470px;gap:48px;height:100%">
-      <div>
-        <div class="ico-h" style="margin-bottom:10px">
-          <svg width="30" height="22" viewBox="0 0 30 22" fill="none" stroke="#095972" stroke-width="1.2"><circle cx="11" cy="11" r="10"/><circle cx="19" cy="11" r="10"/></svg>
-          <span class="eyebrow">Executive snapshot · Core driver</span>
-        </div>
-        <div class="h1">Real yields did the lifting</div>
-        <div class="t" style="margin-top:22px">
-          <p>Between the end of August and the end of September, the 10-year Treasury yield rose 0.54 percentage points. The 10-year real yield, the yield on inflation-protected Treasuries, rose 0.49 points of that, and the <span data-tip="<b>Breakeven inflation rate</b> — the market’s estimate of future inflation: the nominal yield minus the real yield.">breakeven inflation rate</span>, the market’s estimate of future inflation, rose only 0.05. The pattern was already clear by September 24, when the real yield was up 0.41 points against 0.43 for the nominal yield, and it kept going into month-end. Our read is that investors are asking to be paid more in real terms for lending money, rather than pricing more inflation. That read is an inference from how the move split, and we cannot measure the cause directly.</p>
-          <p>The rise was global in direction but mainly a US story in size. By September 24, 10-year inflation-linked yields were higher this year in every major market we track. They were up about 1 percentage point in the US, against 0.1 to 0.7 points in Canada, the UK, Germany, Japan and France, where more of the rise in nominal yields came from higher inflation expectations.</p>
-          <p>A higher real yield is a higher discount rate. It lowers what a future dollar of earnings or coupons is worth today, so it touches every sleeve at once. Federal Reserve research attributes the 2022 equity drawdown mainly to rising real yields, and finds that the 2008 and 2020 sell-offs came from lower expected earnings and a higher equity risk premium instead. The lesson we take is narrow: rising real yields are a headwind while they rise, but on their own they do not stop the earnings.</p>
-        </div>
-      </div>
-      <div>
-        <div class="chart-card" role="img" aria-label="Change in the 10-year Treasury yield in September, split into real yield and breakeven inflation. Through September 24: +0.43 total, real +0.41. Through September 30: +0.54 total, real +0.49, breakeven +0.05.">
-          <div class="ct">Where September’s rise in the 10-year yield came from</div>
-          <div class="cs">Change since end-August, percentage points</div>
-          <div class="bars" id="split-chart">
-            <div class="brow" data-real="0.41" data-be="0.02" data-tot="0.43"><span class="bl">Through<br>Sep 24</span><div class="track"></div></div>
-            <div class="brow" data-real="0.49" data-be="0.05" data-tot="0.54"><span class="bl">Through<br>Sep 30</span><div class="track"></div></div>
-          </div>
-          <div class="clegend"><span><i style="background:var(--teal)"></i>Real yield (TIPS)</span><span><i style="background:var(--golden)"></i>Breakeven inflation</span></div>
-          <div class="stat">
-            <div><div class="big">~1.0<small>pp</small></div><div class="lab">Rise in the US 10-year inflation-linked yield this year, through Sep 24</div></div>
-            <div><div class="big">0.1–0.7<small>pp</small></div><div class="lab">Same measure in Canada, the UK, Germany, Japan and France</div></div>
-          </div>
-        </div>
-        <p class="small" style="margin-top:12px">Sep 24 breakeven is implied (nominal less real). Source: US Treasury par and real yield curves, FRED; LSEG inflation-linked yields.</p>
-      </div>
+    <div class="ico-h" style="margin-bottom:0">
+      <svg width="34" height="26" viewBox="0 0 30 22" fill="none" stroke="#095972" stroke-width="1.1"><circle cx="11" cy="11" r="10"/><circle cx="19" cy="11" r="10"/></svg>
+      <span class="h1">Core driver</span>
+    </div>
+    <div class="t cols2" style="margin-top:26px">
+      <p>Real yields did the lifting. Between the end of August and the end of September, the 10-year Treasury yield rose 0.54 percentage points. The 10-year real yield, the yield on inflation-protected Treasuries, rose 0.49 points of that, and the breakeven inflation rate, the market’s estimate of future inflation, rose only 0.05. The pattern was already clear by September 24, when the real yield was up 0.41 points against 0.43 for the nominal yield, and it kept going into month-end. Our read is that investors are asking to be paid more in real terms for lending money, rather than pricing more inflation. That read is an inference from how the move split, and we cannot measure the cause directly.</p>
+      <p>The rise was global in direction but mainly a US story in size. By September 24, 10-year inflation-linked yields were higher this year in every major market we track. They were up about 1 percentage point in the US, against 0.1 to 0.7 points in Canada, the UK, Germany, Japan and France, where more of the rise in nominal yields came from higher inflation expectations.</p>
+      <p>A higher real yield is a higher discount rate. It lowers what a future dollar of earnings or coupons is worth today, so it touches every sleeve at once. Federal Reserve research attributes the 2022 equity drawdown mainly to rising real yields, and finds that the 2008 and 2020 sell-offs came from lower expected earnings and a higher equity risk premium instead. The lesson we take is narrow: rising real yields are a headwind while they rise, but on their own they do not stop the earnings. Here is what that means for each part of the book.</p>
     </div>
   </div>
 </section>
 
-<!-- =====================================================================
-     06 · CORE DRIVER — what it means for the book
-     ===================================================================== -->
-<section class="page" id="core-driver-book" data-title="Core driver: the book" data-section="core">
+<section class="page" id="core-driver-book" data-title="Core driver (continued)" data-section="core">
   <div class="body">
-    <div class="eyebrow">Core driver · continued</div>
-    <div class="h2" style="margin-top:8px">What a higher price of money means for each part of the book</div>
+    <div class="h2">Core driver <span style="color:var(--ink-3)">(continued)</span></div>
     <div class="book">
       <div class="col">
-        <div class="hd"><span class="h3">Equities</span><span data-pos="SOW">Slight Overweight</span></div>
+        <div class="hd"><span class="h3">Equities</span></div>
         <p class="t">We stay slightly overweight, with US large caps overweight. The S&amp;P 500 slipped in September and is up 11.8% this year, so the market has absorbed the move so far. The cost shows up in valuation. At 19.08 times forward earnings, stocks now yield slightly less than a 10-year Treasury, so there is no valuation cushion left. That caps how hard we lean, and it is why the tilt stays slight. Small caps are the most rate-sensitive corner of the market and the place rate pressure would show first. We hold no tilt toward them and are watching them closely.</p>
       </div>
       <div class="col">
-        <div class="hd"><span class="h3">Fixed income</span><span data-pos="UW">Underweight</span></div>
-        <p class="t">The underweight did its job. Long-dated Treasuries fell 5.7% in September and investment-grade corporate bonds fell 3.8%. We hold fewer bonds than a standard 60/40. Taken on its own, our bond sleeve has a <span data-tip="<b>Duration</b> — a measure of a bond’s sensitivity to changes in interest rates.">duration</span>, a measure of sensitivity to rates, of about 4.9 years, against about 5.5 years for the bond sleeve of a standard 60/40, mostly because of our high-yield, convertible and short inflation-protected bond funds. By our estimate the portfolio is about 30% less sensitive to rates than a 60/40, and most of that comes from holding fewer bonds rather than shorter ones. The high-yield underweight, set because spreads were too tight to pay for the risk, protected us when those spreads widened late in the month.</p>
+        <div class="hd"><span class="h3">Fixed income</span></div>
+        <p class="t">The underweight did its job. Long-dated Treasuries fell 5.7% in September and investment-grade corporate bonds fell 3.8%. We hold fewer bonds than a standard 60/40. Taken on its own, our bond sleeve has a duration, a measure of sensitivity to rates, of about 4.9 years, against about 5.5 years for the bond sleeve of a standard 60/40, mostly because of our high-yield, convertible and short inflation-protected bond funds. By our estimate the portfolio is about 30% less sensitive to rates than a 60/40, and most of that comes from holding fewer bonds rather than shorter ones. The high-yield underweight, set because spreads were too tight to pay for the risk, protected us when those spreads widened late in the month.</p>
       </div>
       <div class="col">
-        <div class="hd"><span class="h3">Real assets</span><span data-pos="SOW">Slight Overweight</span></div>
+        <div class="hd"><span class="h3">Real assets</span></div>
         <p class="t">The month was mixed. Commodities worked: Brent crude rose 14.4% and a broad commodity fund rose 3.3%. Gold fell 6.6% as real yields and the dollar rose together, which is the cost of holding a hedge against fiscal risk when the return on cash goes up. Inflation-protected Treasuries fell 2.6%. That is why, while rates keep grinding higher, we prefer a commodity basket to them. We keep both legs of the sleeve.</p>
       </div>
     </div>
@@ -535,89 +491,47 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 </section>
 
 <!-- =====================================================================
-     07 · MACRO THOUGHTS — scorecard (Q3)
+     07 · MACRO THOUGHTS — summary scorecard leads
      ===================================================================== -->
 <section class="page" id="macro" data-title="Macro thoughts" data-section="macro">
   <div class="body">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div>
-        <div class="h1">Macro thoughts</div>
-        <div class="how"><span><b>1</b> What we’re watching</span><span><b>2</b> What we think</span><span><b>3</b> Why</span></div>
-      </div>
-      <span class="qchip"><i>Q3</i>Macro view &amp; outlook</span>
-    </div>
-    <div class="step" style="margin-top:26px">Regime scorecard · select a driver to jump to it</div>
+    <div class="h1">Macro thoughts</div>
+    <div class="h3" style="margin-top:28px;color:#000">The Savvy Macro Dashboard</div>
+    <div class="step" style="margin-top:6px">Summary</div>
     <table class="tb score-tb">
-      <thead><tr><th style="width:200px">Driver</th><th style="width:300px">Signal</th><th>Portfolio signal</th><th style="width:70px"></th></tr></thead>
+      <thead><tr><th style="width:240px">Category</th><th style="width:240px">Signal</th><th>Portfolio Signal</th></tr></thead>
       <tbody>
-        <tr data-href="#growth"><td class="k">Growth</td><td><span class="score" data-score="1" data-lbl="+1 (Slight Tailwind)"></span></td><td>Above trend and not yet dented by higher rates, so we keep the equity overweight</td><td class="go">p. 8 →</td></tr>
-        <tr data-href="#earnings"><td class="k">Earnings &amp; valuation</td><td style="color:var(--ink-3)">Not scored separately</td><td>The cushion over bonds is gone. Revisions are the reading to watch</td><td class="go">p. 9 →</td></tr>
-        <tr data-href="#inflation"><td class="k">Inflation</td><td><span class="score" data-score="-1" data-lbl="-1 (Slight Headwind)"></span></td><td>The Fed’s gauge is flat but above target and oil is lifting the headline, so we do not extend duration</td><td class="go">p. 10 →</td></tr>
-        <tr data-href="#financial-conditions"><td class="k">Financial conditions</td><td><span class="score" data-score="0.5" data-lbl="+0.5"></span></td><td>Real yields tightened and credit moved only at the riskiest edge, so we watch high yield for the signal</td><td class="go">p. 11 →</td></tr>
-        <tr data-href="#geopolitics"><td class="k">Geopolitics</td><td><span class="score" data-score="-0.5" data-lbl="-0.5"></span></td><td>Energy disruption persists, so we keep the broad commodity hedge</td><td class="go">p. 12 →</td></tr>
-        <tr class="overall" data-href="#snapshot"><td>Overall regime</td><td></td><td>Reflation with a Goldilocks bias, constructive</td><td class="go">p. 3 →</td></tr>
+        <tr data-href="#growth"><td class="k">Growth</td><td class="v">+1 (Slight Tailwind)</td><td>Above trend and not yet dented by higher rates, so we keep the equity overweight</td></tr>
+        <tr data-href="#inflation"><td class="k">Inflation</td><td class="v">-1 (Slight Headwind)</td><td>The Fed’s gauge is flat but above target and oil is lifting the headline, so we do not extend duration</td></tr>
+        <tr data-href="#financial-conditions"><td class="k">Financial Conditions</td><td class="v">+0.5</td><td>Real yields tightened and credit moved only at the riskiest edge, so we watch high yield for the signal</td></tr>
+        <tr data-href="#geopolitics"><td class="k">Geopolitics</td><td class="v">-0.5</td><td>Energy disruption persists, so we keep the broad commodity hedge</td></tr>
+        <tr class="overall"><td>Overall regime</td><td></td><td>Reflation with a Goldilocks bias, constructive</td></tr>
       </tbody>
     </table>
-    <p class="small" style="margin-top:10px">Signal scale runs from headwind (−) to tailwind (+). Source: Savvy Macro Dashboard.</p>
   </div>
 </section>
 
 <!-- =====================================================================
-     08–12 · DRIVER PAGES  (fixed order every month)
+     08–12 · DRIVER PAGES — data table, then the read
      ===================================================================== -->
 <section class="page" id="growth" data-title="Growth" data-section="macro" data-driver="growth">
   <div class="body">
-    <div class="drv-top"><span class="eyebrow">Macro thoughts · Driver 1 of 5</span><nav class="dsub"></nav></div>
-    <div class="drv-title"><div class="h2">Growth</div><div class="meta">Signal <span class="score" data-score="1" data-lbl="+1 (Slight Tailwind)"></span></div></div>
+    <div class="drv-top"><span class="eyebrow">Macro thoughts</span><nav class="dsub"></nav></div>
+    <div class="drv-title"><div class="h2">Growth: above trend, and not yet touched by higher rates</div></div>
     <div class="drv-grid">
       <div>
-        <div class="step"><b>1</b>What we’re watching</div>
         <table class="tb">
-          <thead><tr><th style="width:190px">Indicator</th><th style="width:90px">Current</th><th>Portfolio signal</th></tr></thead>
+          <thead><tr><th style="width:200px">Indicator</th><th style="width:96px">Current Data Point</th><th>Portfolio Signal</th></tr></thead>
           <tbody>
-            <tr><td class="k"><span data-tip="<b>Weekly Economic Index</b> — NY Fed index of real activity, scaled to four-quarter GDP growth.">Weekly Economic Index</span> (YTD avg)</td><td class="v">2.7%</td><td>Above trend all year, supports the equity overweight</td></tr>
-            <tr><td class="k"><span data-tip="<b>GDPNow</b> — Atlanta Fed’s running estimate of current-quarter real GDP growth.">GDPNow</span> (current quarter)</td><td class="v">3.7%</td><td>Running well above trend, so growth is not where higher rates have shown up yet</td></tr>
+            <tr><td class="k">Weekly Economic Index (WEI, YTD avg)</td><td class="v">2.7%</td><td>Above trend all year, supports the equity overweight</td></tr>
+            <tr><td class="k">GDPNow (current quarter)</td><td class="v">3.7%</td><td>Running well above trend, so growth is not where higher rates have shown up yet</td></tr>
             <tr><td class="k">Unemployment rate</td><td class="v">4.1%</td><td>Low and steady at the 20th pctile since 1948, so the Fed has no labour-market reason to ease</td></tr>
           </tbody>
         </table>
       </div>
-      <div>
-        <div class="step"><b>2</b>What we think</div>
-        <div class="think">Above trend, and not yet touched by higher rates.</div>
-        <div class="step"><b>3</b>Why</div>
-        <div class="t">
-          <p>Growth has not slowed. The Weekly Economic Index has averaged 2.7% this year, against a trend near 2%, and the Atlanta Fed’s current-quarter nowcast is 3.7%. Unemployment is 4.1%, low and steady. Nothing in the output data argues for less equity risk.</p>
-          <p>The question is what higher rates do next. Smaller companies and borrowers who depend on short-term financing feel the price of money first. We will judge whether that is happening through jobless claims, the unemployment rate and earnings revisions together, not through any single monthly print, including the September jobs report on October 2.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="page" id="earnings" data-title="Earnings & valuation" data-section="macro" data-driver="earnings">
-  <div class="body">
-    <div class="drv-top"><span class="eyebrow">Macro thoughts · Driver 2 of 5</span><nav class="dsub"></nav></div>
-    <div class="drv-title"><div class="h2">Earnings &amp; valuation</div><div class="meta">Not scored separately</div></div>
-    <div class="drv-grid">
-      <div>
-        <div class="step"><b>1</b>What we’re watching</div>
-        <table class="tb">
-          <thead><tr><th style="width:190px">Indicator</th><th style="width:90px">Current</th><th>Portfolio signal</th></tr></thead>
-          <tbody>
-            <tr><td class="k">S&amp;P 500 forward P/E</td><td class="v">19.08x</td><td>At the 30th pctile of the last five years, so the multiple itself is not what is stretched</td></tr>
-            <tr><td class="k"><span data-tip="<b>Equity risk premium</b> — what owning stocks pays over a 10-year Treasury.">Equity risk premium</span></td><td class="v">-0.07pp</td><td>Stocks now yield less than Treasuries, so there is no valuation cushion left</td></tr>
-            <tr><td class="k"><span data-tip="<b>Earnings Revision Index</b> — Citi index; above zero means analysts are raising estimates more often than cutting them.">Earnings Revision Index</span></td><td class="v">-0.06</td><td>Slipped just below zero, the first sign that fundamentals may be feeling rates</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <div class="step"><b>2</b>What we think</div>
-        <div class="think">The cushion over bonds is gone.</div>
-        <div class="step"><b>3</b>Why</div>
-        <div class="t">
-          <p>The S&amp;P 500 trades at 19.08 times forward earnings, a little below its 10-year average of about 20 times, so the multiple itself is not stretched. The pressure comes from the other side of the comparison. With the 10-year Treasury yield at its highest since 2002, the equity risk premium, what owning stocks pays over a 10-year Treasury, has turned negative at -0.07 percentage points, from 0.23 in mid-September.</p>
-          <p>Earnings revisions are the reading to watch. The revision index slipped to -0.06 from 0.51 in mid-September, so analysts are now cutting estimates slightly more often than raising them. One reading is not a trend, and the fundamentals behind the overweight have been robust. Even so, this is the first fundamental reading to move against us, and it is the one we would expect to turn first if higher rates were starting to bite.</p>
-        </div>
+      <div class="t">
+        <p>Growth has not slowed. The Weekly Economic Index has averaged 2.7% this year, against a trend near 2%, and the Atlanta Fed’s current-quarter nowcast is 3.7%. Unemployment is 4.1%, low and steady. Nothing in the output data argues for less equity risk.</p>
+        <p>The question is what higher rates do next. Smaller companies and borrowers who depend on short-term financing feel the price of money first. We will judge whether that is happening through jobless claims, the unemployment rate and earnings revisions together, not through any single monthly print, including the September jobs report on October 2.</p>
       </div>
     </div>
   </div>
@@ -625,62 +539,71 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 
 <section class="page" id="inflation" data-title="Inflation" data-section="macro" data-driver="inflation">
   <div class="body">
-    <div class="drv-top"><span class="eyebrow">Macro thoughts · Driver 3 of 5</span><nav class="dsub"></nav></div>
-    <div class="drv-title"><div class="h2">Inflation</div><div class="meta">Signal <span class="score" data-score="-1" data-lbl="-1 (Slight Headwind)"></span></div></div>
+    <div class="drv-top"><span class="eyebrow">Macro thoughts</span><nav class="dsub"></nav></div>
+    <div class="drv-title"><div class="h2">Inflation: the Fed’s gauge is flat near 3% while oil lifts the headline</div></div>
     <div class="drv-grid">
       <div>
-        <div class="step"><b>1</b>What we’re watching</div>
         <table class="tb">
-          <thead><tr><th style="width:150px">Indicator</th><th style="width:150px">Current</th><th>Portfolio signal</th></tr></thead>
+          <thead><tr><th style="width:170px">Indicator</th><th style="width:150px">Current Data Point</th><th>Portfolio Signal</th></tr></thead>
           <tbody>
-            <tr><td class="k">Headline CPI</td><td class="v">Aug 3.4%<br><span class="nc">Sep 3.6% · Oct 3.6%</span></td><td>Nowcasts climbing as oil rose, keeps the Fed leaning toward tightening</td></tr>
-            <tr><td class="k"><span data-tip="<b>Core PCE</b> — personal consumption expenditures prices excluding food and energy; the gauge the Fed acts on.">Core PCE</span> (Fed’s anchor)</td><td class="v">Aug 3.0%<br><span class="nc">Sep 3.0% · Oct 3.1%</span></td><td>Flat but a full point above target, so no case yet to extend duration</td></tr>
+            <tr><td class="k">Headline CPI</td><td class="v">Aug 3.4% <i class="nc">Sep 3.6%</i> <i class="nc">Oct 3.6%</i></td><td>Nowcasts climbing as oil rose, keeps the Fed leaning toward tightening</td></tr>
+            <tr><td class="k">Core PCE (Fed’s anchor)</td><td class="v">Aug 3.0% <i class="nc">Sep 3.0%</i> <i class="nc">Oct 3.1%</i></td><td>Flat but a full point above target, so no case yet to extend duration</td></tr>
           </tbody>
-          <caption>Italic figures are Cleveland Fed nowcasts. Fed target: 2%.</caption>
         </table>
       </div>
-      <div>
-        <div class="step"><b>2</b>What we think</div>
-        <div class="think">The Fed’s gauge is flat near 3% while oil lifts the headline.</div>
-        <div class="step"><b>3</b>Why</div>
-        <div class="t">
-          <p>Headline CPI was 3.4% in August, and the nowcasts put it at 3.6% for September and October as oil rose. Core PCE, the gauge the Fed acts on, was 3.0% in August and is nowcast at 3.0% and then 3.1%. Both sit well above the 2% target.</p>
-          <p>Core PCE needs a word on revisions. In mid-September we cited July core PCE at 3.3%, as first published, and a path rising toward 3.5%. The government’s annual revision on September 30 lowered July to about 3.0%, and August came in at 3.0% as well, with headline PCE at 3.4%. So on current data the Fed’s gauge is flat near 3%. That softens one of our reasons for keeping duration short. It does not remove the case: inflation is still a full point above target, the headline is rising, and the Fed hiked in September to get back to target sooner.</p>
-        </div>
+      <div class="t">
+        <p>Headline CPI was 3.4% in August, and the nowcasts put it at 3.6% for September and October as oil rose. Core PCE, the gauge the Fed acts on, was 3.0% in August and is nowcast at 3.0% and then 3.1%. Both sit well above the 2% target.</p>
+        <p>Core PCE needs a word on revisions. In mid-September we cited July core PCE at 3.3%, as first published, and a path rising toward 3.5%. The government’s annual revision on September 30 lowered July to about 3.0%, and August came in at 3.0% as well, with headline PCE at 3.4%. So on current data the Fed’s gauge is flat near 3%. That softens one of our reasons for keeping duration short. It does not remove the case: inflation is still a full point above target, the headline is rising, and the Fed hiked in September to get back to target sooner.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="page" id="financial-conditions" data-title="Financial conditions & the Fed" data-section="macro" data-driver="financial-conditions">
+<section class="page" id="financial-conditions" data-title="Financial conditions and the Fed" data-section="macro" data-driver="financial-conditions">
   <div class="body">
-    <div class="drv-top"><span class="eyebrow">Macro thoughts · Driver 4 of 5</span><nav class="dsub"></nav></div>
-    <div class="drv-title"><div class="h2">Financial conditions &amp; the Fed</div><div class="meta">Signal <span class="score" data-score="0.5" data-lbl="+0.5"></span></div></div>
-    <div class="drv-grid fc" style="grid-template-columns:540px 1fr;gap:36px;margin-top:14px">
+    <div class="drv-top"><span class="eyebrow">Macro thoughts</span><nav class="dsub"></nav></div>
+    <div class="drv-title"><div class="h2">Financial conditions and the Fed: real yields tightened, credit only at the edge</div></div>
+    <div class="drv-grid fc" style="grid-template-columns:540px 1fr;gap:36px;margin-top:16px">
       <div>
-        <div class="step"><b>1</b>What we’re watching</div>
         <table class="tb">
-          <thead><tr><th style="width:170px">Indicator</th><th style="width:74px">Current</th><th>Portfolio signal</th></tr></thead>
+          <thead><tr><th style="width:170px">Indicator</th><th style="width:80px">Current Data Point</th><th>Portfolio Signal</th></tr></thead>
           <tbody>
-            <tr><td class="k"><span data-tip="<b>Chicago Fed NFCI</b> — National Financial Conditions Index. Below zero means looser than average.">Chicago Fed NFCI</span></td><td class="v">-0.55</td><td>Still loose at the 32nd pctile since 1971, so the broad gauges have not confirmed the credit move</td></tr>
+            <tr><td class="k">Chicago Fed NFCI</td><td class="v">-0.55</td><td>Still loose at the 32nd pctile since 1971, so the broad gauges have not confirmed the credit move</td></tr>
             <tr><td class="k">St. Louis Fed Financial Stress Index</td><td class="v">-0.81</td><td>Calm at the 8th pctile since 1993, so the rise in yields has not become market stress</td></tr>
             <tr><td class="k">Fed hikes/cuts thru Dec 2027</td><td class="v">3.6 hikes</td><td>More tightening priced since the September hike, keeps real yields and the dollar firm</td></tr>
           </tbody>
         </table>
         <div class="aside">
-          <div class="ah">Channel to watch · Japan</div>
           <p>Japan is a channel to watch rather than a driver. The yen slipped in the second half of September, from about 154 per dollar in mid-month to about 158 by September 24, even after the Bank of Japan raised rates again. Tokyo spent roughly 27 trillion yen supporting its currency across April, May, July and August, and has said it would not hesitate to step in again. Japan’s reported Treasury holdings fell about $135 billion between February and July. Those figures include private investors and cannot show official selling, and Tokyo has said it plans to use the Fed’s repo facility rather than sell outright. Japan reported no intervention between August 27 and September 28. September’s rise in yields was also led by shorter maturities, while the gap between 10-year and 30-year yields narrowed. Heavy Japanese selling of long bonds would have pushed that gap wider.</p>
         </div>
       </div>
+      <div class="t">
+        <p>Monetary policy tightened again in September. The Fed raised rates a quarter point on September 16 and said the move would support a timelier return to their 2% goal. Futures now price 3.60 quarter-point hikes through December 2027, up from 3.14 in mid-September. For the October 28 meeting, futures settled on September 30 implied roughly a 38% chance of another hike.</p>
+        <p>This time the tightening reached market rates, through real yields, more than it reached credit. The national financial conditions index is -0.55, essentially unchanged, and the St. Louis Fed stress index is -0.81, still calm. Investment-grade spreads moved only from 81 to 84 basis points. High yield is the exception. In mid-September, high-yield spreads were 265 basis points. By September 30 they were 312, with most of the widening in the last week of the month. That is the signal we said would matter, and it has started at the riskiest edge of the market. It has not yet spread to investment grade or to the broad gauges.</p>
+        <p>The yield curve told a similar story. By September 24 the 2-year yield had risen about 0.53 points in the month against 0.43 for the 10-year, a bear flattening in which short-term yields rose faster than long-term ones, with nearly all of the 10-year’s move in real yields. In the final week the long end caught up, and the gap between 2-year and 10-year yields ended September where it began, at 0.41 points. We treat the curve’s shape as secondary. The research ties equity damage to the level of real yields, and that level is what we watch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="earnings" data-title="Earnings and valuation" data-section="macro" data-driver="earnings">
+  <div class="body">
+    <div class="drv-top"><span class="eyebrow">Macro thoughts</span><nav class="dsub"></nav></div>
+    <div class="drv-title"><div class="h2">Earnings and valuation: the cushion over bonds is gone</div></div>
+    <div class="drv-grid">
       <div>
-        <div class="step"><b>2</b>What we think</div>
-        <div class="think" style="margin-bottom:14px">Real yields tightened, credit only at the edge.</div>
-        <div class="step"><b>3</b>Why</div>
-        <div class="t" style="font-size:12px">
-          <p style="font-size:12px;line-height:1.52">Monetary policy tightened again in September. The Fed raised rates a quarter point on September 16 and said the move would support a timelier return to their 2% goal. Futures now price 3.60 quarter-point hikes through December 2027, up from 3.14 in mid-September. For the October 28 meeting, futures settled on September 30 implied roughly a 38% chance of another hike.</p>
-          <p style="font-size:12px;line-height:1.52">This time the tightening reached market rates, through real yields, more than it reached credit. The national financial conditions index is -0.55, essentially unchanged, and the St. Louis Fed stress index is -0.81, still calm. Investment-grade spreads moved only from 81 to 84 basis points. High yield is the exception. In mid-September, high-yield spreads were 265 basis points. By September 30 they were 312, with most of the widening in the last week of the month. That is the signal we said would matter, and it has started at the riskiest edge of the market. It has not yet spread to investment grade or to the broad gauges.</p>
-          <p style="font-size:12px;line-height:1.52">The yield curve told a similar story. By September 24 the 2-year yield had risen about 0.53 points in the month against 0.43 for the 10-year, a bear flattening in which short-term yields rose faster than long-term ones, with nearly all of the 10-year’s move in real yields. In the final week the long end caught up, and the gap between 2-year and 10-year yields ended September where it began, at 0.41 points. We treat the curve’s shape as secondary. The research ties equity damage to the level of real yields, and that level is what we watch.</p>
-        </div>
+        <table class="tb">
+          <thead><tr><th style="width:200px">Indicator</th><th style="width:96px">Current Data Point</th><th>Portfolio Signal</th></tr></thead>
+          <tbody>
+            <tr><td class="k">S&amp;P 500 forward P/E</td><td class="v">19.08x</td><td>At the 30th pctile of the last five years, so the multiple itself is not what is stretched</td></tr>
+            <tr><td class="k">Equity risk premium</td><td class="v">-0.07pp</td><td>Stocks now yield less than Treasuries, so there is no valuation cushion left</td></tr>
+            <tr><td class="k">Earnings Revision Index</td><td class="v">-0.06</td><td>Slipped just below zero, the first sign that fundamentals may be feeling rates</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="t">
+        <p>The S&amp;P 500 trades at 19.08 times forward earnings, a little below its 10-year average of about 20 times, so the multiple itself is not stretched. The pressure comes from the other side of the comparison. With the 10-year Treasury yield at its highest since 2002, the equity risk premium, what owning stocks pays over a 10-year Treasury, has turned negative at -0.07 percentage points, from 0.23 in mid-September.</p>
+        <p>Earnings revisions are the reading to watch. The revision index slipped to -0.06 from 0.51 in mid-September, so analysts are now cutting estimates slightly more often than raising them. One reading is not a trend, and the fundamentals behind the overweight have been robust. Even so, this is the first fundamental reading to move against us, and it is the one we would expect to turn first if higher rates were starting to bite.</p>
       </div>
     </div>
   </div>
@@ -688,27 +611,21 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 
 <section class="page" id="geopolitics" data-title="Geopolitics" data-section="macro" data-driver="geopolitics">
   <div class="body">
-    <div class="drv-top"><span class="eyebrow">Macro thoughts · Driver 5 of 5</span><nav class="dsub"></nav></div>
-    <div class="drv-title"><div class="h2">Geopolitics</div><div class="meta">Signal <span class="score" data-score="-0.5" data-lbl="-0.5"></span></div></div>
+    <div class="drv-top"><span class="eyebrow">Macro thoughts</span><nav class="dsub"></nav></div>
+    <div class="drv-title"><div class="h2">Geopolitics: Hormuz still disrupted, oil back in the inflation story</div></div>
     <div class="drv-grid">
       <div>
-        <div class="step"><b>1</b>What we’re watching</div>
         <table class="tb">
-          <thead><tr><th style="width:190px">Indicator</th><th style="width:90px">Current</th><th>Portfolio signal</th></tr></thead>
+          <thead><tr><th style="width:200px">Indicator</th><th style="width:96px">Current Data Point</th><th>Portfolio Signal</th></tr></thead>
           <tbody>
             <tr><td class="k">Hormuz arrivals (7d avg)</td><td class="v">3 ships</td><td>Traffic still a small fraction of normal, energy stays a live inflation channel</td></tr>
             <tr><td class="k">Hormuz normalized by year-end (Polymarket)</td><td class="v">20%</td><td>Market still prices persistence over resolution, so we keep the commodity hedge</td></tr>
           </tbody>
         </table>
       </div>
-      <div>
-        <div class="step"><b>2</b>What we think</div>
-        <div class="think">Hormuz still disrupted, oil back in the inflation story.</div>
-        <div class="step"><b>3</b>Why</div>
-        <div class="t">
-          <p>The Strait of Hormuz has not normalized. Arrivals are running at about 3 ships a day on a 7-day average, down from 5 in mid-September and against roughly 60 in normal times, and the market-implied odds of normalization by year-end are 20%. Brent crude rose 14.4% in September.</p>
-          <p>Energy is the most direct route from geopolitics into headline inflation, and the headline nowcasts are already rising. A Fed that hiked to reach target sooner has little room to look through an oil shock. That is why we hold a broad commodity basket. It carries the energy leg without a bet on any single commodity.</p>
-        </div>
+      <div class="t">
+        <p>The Strait of Hormuz has not normalized. Arrivals are running at about 3 ships a day on a 7-day average, down from 5 in mid-September and against roughly 60 in normal times, and the market-implied odds of normalization by year-end are 20%. Brent crude rose 14.4% in September.</p>
+        <p>Energy is the most direct route from geopolitics into headline inflation, and the headline nowcasts are already rising. A Fed that hiked to reach target sooner has little room to look through an oil shock. That is why we hold a broad commodity basket. It carries the energy leg without a bet on any single commodity.</p>
       </div>
     </div>
   </div>
@@ -722,12 +639,12 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
     <div class="h1">Question of the month</div>
     <div class="qa">
       <div class="card">
-        <div class="ql">Question</div>
+        <div class="ql">Question:</div>
         <div class="qq">“Will higher real rates end the party for stocks?”</div>
         <p class="t">Not on their own, and not yet. Higher real yields lower what future earnings are worth today, which is why stock valuations come under pressure while yields rise. That is what happened in 2022. A higher discount rate and a broken earnings stream are different problems, though. Growth is above trend and earnings are still arriving, so a hike or two changes what we pay for those earnings without stopping them. What would end the party is credit. If high-yield spreads keep widening and the stress spreads into investment-grade bonds and the broad financial-conditions gauges, tighter money would be reaching companies’ ability to borrow. Our response to that is set in advance: reduce equity risk, upgrade quality, extend duration and take the commodity tilt back to neutral, together. High yield has started to move. The rest has not.</p>
       </div>
       <div class="card">
-        <div class="ql">Question</div>
+        <div class="ql">Question:</div>
         <div class="qq">“Bond yields are the highest in decades. Why not buy more bonds now?”</div>
         <p class="t">Because the yield is only part of what a bond returns. The rest is what happens to its price, and with the 10-year yield rising more than half a point in a single month and the Fed still tightening, we are not paid enough to take more of that risk. A 10-year yield of 5.29% is attractive income, and we own bonds for exactly that, in a sleeve that runs a little shorter than the market. What we will not do yet is extend duration. The case for extending is strongest when tighter money starts to slow the economy or crack credit, because that is when yields have room to fall. If credit keeps deteriorating, extending duration is part of the plan we have already set out.</p>
       </div>
@@ -736,30 +653,22 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 </section>
 
 <!-- =====================================================================
-     14 · RISKS (Q4)
+     14 · RISKS WE'RE WATCHING
      ===================================================================== -->
 <section class="page" id="risks" data-title="Risks we’re watching" data-section="risks">
   <div class="body">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div class="h1">Risks we’re watching</div>
-      <span class="qchip"><i>Q4</i>Risks to the view</span>
-    </div>
+    <div class="h1">Risks we’re watching</div>
     <div class="risks">
-      <div class="risk"><div class="rh"><span class="rn">01</span><span class="rt">Real yields keep climbing</span></div>
-        <p>The 10-year Treasury yield ended September at 5.29% and the 10-year real yield at 2.93%. Another leg up would keep pressing on equity valuations. In our judgment, at these levels bonds and stocks can start to fall together, which weakens the cushion bonds normally provide. Our fixed income underweight and modestly short duration are the hedge, and we would not add duration into a rising real yield.</p>
-        <a class="lk" href="#core-driver">Core driver →</a></div>
-      <div class="risk"><div class="rh"><span class="rn">02</span><span class="rt">Credit stress spreads beyond high yield</span></div>
-        <p>This is the risk we named last month, before credit had moved. High-yield spreads have since widened from 265 to 312 basis points, while investment-grade spreads, at 84, and the broad financial-conditions gauges have barely moved. If the widening spreads, we would reduce equity risk, upgrade quality, extend duration and take the commodity tilt to neutral. High yield alone is not yet enough.</p>
-        <a class="lk" href="#financial-conditions">Financial conditions →</a></div>
-      <div class="risk"><div class="rh"><span class="rn">03</span><span class="rt">Japan defends the yen again</span></div>
-        <p>Tokyo has said it would not hesitate to intervene, and the yen slipped in the second half of September. A fresh round of intervention funded by selling Treasuries would add pressure at the long end of the curve. We see no evidence of that so far, and Tokyo has signaled it would use the Fed’s repo facility first. We treat it as a contingent risk for long bonds and one more reason not to extend duration.</p>
-        <a class="lk" href="#financial-conditions">Financial conditions →</a></div>
-      <div class="risk wide"><div class="rh"><span class="rn">04</span><span class="rt">Inflation forces the Fed’s hand in October</span></div>
-        <p>Headline CPI nowcasts sit at 3.6% and oil rose sharply in September. The Fed meets on October 28, the day before September’s PCE report, so the September CPI report on October 14 is the last major inflation print before the decision. A second hike would push the priced path and real yields higher again. Our real-asset tilt is the hedge.</p>
-        <a class="lk" href="#inflation">Inflation →</a></div>
-      <div class="risk wide"><div class="rh"><span class="rn">05</span><span class="rt">Earnings revisions roll over</span></div>
-        <p>The revision index has slipped just below zero. If analysts keep cutting estimates while real yields stay high, both halves of the equity case weaken at once: what we pay and what we earn. That combination, more than either alone, would lead us to cut the equity overweight. We would not act on a single reading.</p>
-        <a class="lk" href="#earnings">Earnings &amp; valuation →</a></div>
+      <div class="risk"><div class="rh"><span class="rn">1.</span><span class="rt">Real yields keep climbing.</span></div>
+        <p>The 10-year Treasury yield ended September at 5.29% and the 10-year real yield at 2.93%. Another leg up would keep pressing on equity valuations. In our judgment, at these levels bonds and stocks can start to fall together, which weakens the cushion bonds normally provide. Our fixed income underweight and modestly short duration are the hedge, and we would not add duration into a rising real yield.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">2.</span><span class="rt">Credit stress spreads beyond high yield.</span></div>
+        <p>This is the risk we named last month, before credit had moved. High-yield spreads have since widened from 265 to 312 basis points, while investment-grade spreads, at 84, and the broad financial-conditions gauges have barely moved. If the widening spreads, we would reduce equity risk, upgrade quality, extend duration and take the commodity tilt to neutral. High yield alone is not yet enough.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">3.</span><span class="rt">Japan defends the yen again.</span></div>
+        <p>Tokyo has said it would not hesitate to intervene, and the yen slipped in the second half of September. A fresh round of intervention funded by selling Treasuries would add pressure at the long end of the curve. We see no evidence of that so far, and Tokyo has signaled it would use the Fed’s repo facility first. We treat it as a contingent risk for long bonds and one more reason not to extend duration.</p></div>
+      <div class="risk wide"><div class="rh"><span class="rn">4.</span><span class="rt">Inflation forces the Fed’s hand in October.</span></div>
+        <p>Headline CPI nowcasts sit at 3.6% and oil rose sharply in September. The Fed meets on October 28, the day before September’s PCE report, so the September CPI report on October 14 is the last major inflation print before the decision. A second hike would push the priced path and real yields higher again. Our real-asset tilt is the hedge.</p></div>
+      <div class="risk wide"><div class="rh"><span class="rn">5.</span><span class="rt">Earnings revisions roll over.</span></div>
+        <p>The revision index has slipped just below zero. If analysts keep cutting estimates while real yields stay high, both halves of the equity case weaken at once: what we pay and what we earn. That combination, more than either alone, would lead us to cut the equity overweight. We would not act on a single reading.</p></div>
     </div>
   </div>
 </section>
@@ -768,26 +677,11 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
      15 · CLOSING THOUGHTS
      ===================================================================== -->
 <section class="page" id="closing" data-title="Closing thoughts" data-section="closing">
-  <div class="circ" style="width:560px;height:560px;right:-200px;bottom:-330px;border-color:rgba(9,89,114,.14)"></div>
   <div class="body">
-    <div style="display:grid;grid-template-columns:1fr 400px;gap:72px">
-      <div>
-        <div class="h1">Closing thoughts</div>
-        <div class="t" style="margin-top:24px">
-          <p style="font-size:14px;line-height:1.58">September raised the price of money through real yields rather than through inflation fears or a weaker economy. Our book was built for a Fed with work left to do: underweight bonds, modestly short duration, light on high yield and holding real assets. Most of that positioning helped this month, with gold the exception, and we are not changing it. We keep the equity overweight because growth and earnings have held up, and we accept that the margin for error is thinner than it was.</p>
-          <p style="font-size:14px;line-height:1.58">October has a crowded calendar. The September jobs report lands on October 2, the CPI report on October 14, the Fed decision on October 28 and September PCE the next morning. We will not reposition around any one of those prints. Credit is the signal that would move us.</p>
-        </div>
-        <div class="pull">Credit is the signal that would move us.</div>
-      </div>
-      <div style="padding-top:8px">
-        <div class="step">October calendar</div>
-        <ul class="cal">
-          <li><span class="d">02</span><span class="dot"></span><span class="ev">September jobs report</span></li>
-          <li><span class="d">14</span><span class="dot"></span><span class="ev">September CPI<small>Last major inflation print before the Fed</small></span></li>
-          <li class="fed"><span class="d">28</span><span class="dot"></span><span class="ev">Fed decision<small>Futures implied ~38% odds of a hike (Sep 30)</small></span></li>
-          <li><span class="d">29</span><span class="dot"></span><span class="ev">September PCE</span></li>
-        </ul>
-      </div>
+    <div class="h1">Closing thoughts</div>
+    <div class="t cols2" style="margin-top:26px">
+      <p style="font-size:14px;line-height:1.6">September raised the price of money through real yields rather than through inflation fears or a weaker economy. Our book was built for a Fed with work left to do: underweight bonds, modestly short duration, light on high yield and holding real assets. Most of that positioning helped this month, with gold the exception, and we are not changing it. We keep the equity overweight because growth and earnings have held up, and we accept that the margin for error is thinner than it was.</p>
+      <p style="font-size:14px;line-height:1.6">October has a crowded calendar. The September jobs report lands on October 2, the CPI report on October 14, the Fed decision on October 28 and September PCE the next morning. We will not reposition around any one of those prints. Credit is the signal that would move us.</p>
     </div>
   </div>
 </section>
@@ -795,7 +689,7 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 <!-- =====================================================================
      16 · SOURCES & DISCLOSURES
      ===================================================================== -->
-<section class="page" id="sources" data-title="Sources & disclosures" data-section="closing">
+<section class="page" id="sources" data-title="Sources" data-section="closing">
   <div class="body">
     <div class="h2">Sources</div>
     <ul class="src">
@@ -834,11 +728,6 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
   <div class="inner">
     <span class="wordmark white" role="img" aria-label="Savvy"></span>
     <div class="tg">Independence, <b>reinvented.</b></div>
-    <div class="about">
-      <h3>About this report</h3>
-      <p>Every month, the Savvy Wealth Investment Management team convenes to assess the market landscape: Where do we see opportunity? What risks deserve attention? And how should portfolios be positioned in response?</p>
-      <p>Savvy Portfolio Perspectives, published by Chief Investment Officer Anshul Sharma and our investment team, delivers those answers. Each edition provides our current market views, portfolio positioning insights, and forward-looking analysis – the same perspectives that inform how we manage Savvy Total Portfolios.</p>
-    </div>
   </div>
   <p class="disc">Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
 </section>
@@ -874,11 +763,11 @@ const NAV = [
 ];
 /* driver sub-nav — label, anchor, signal shown in the pill */
 const DRIVERS = [
-  ['growth','Growth','+1'],
-  ['earnings','Earnings','—'],
-  ['inflation','Inflation','−1'],
-  ['financial-conditions','Financial conditions','+0.5'],
-  ['geopolitics','Geopolitics','−0.5'],
+  ['growth','Growth'],
+  ['inflation','Inflation'],
+  ['financial-conditions','Financial conditions and the Fed'],
+  ['earnings','Earnings and valuation'],
+  ['geopolitics','Geopolitics'],
 ];
 const POS = { UW:0, SUW:1, N:2, SOW:3, OW:4 };
 
@@ -904,7 +793,7 @@ pages.forEach((pg, i) => {
 /* driver sub-nav */
 document.querySelectorAll('.dsub').forEach(nav => {
   const cur = nav.closest('.page').dataset.driver;
-  nav.innerHTML = DRIVERS.map(([id, l, s]) => `<a href="#${id}" class="${id === cur ? 'on' : ''}">${l}<em>${s}</em></a>`).join('');
+  nav.innerHTML = DRIVERS.map(([id, l]) => `<a href="#${id}" class="${id === cur ? 'on' : ''}">${l}</a>`).join('');
 });
 
 /* positioning scale */
