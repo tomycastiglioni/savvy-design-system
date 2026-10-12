@@ -139,7 +139,7 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11.4px;l
    COVER
    ========================================================================== */
 .cover{background:linear-gradient(200deg,#0B6280 0%,#08475B 38%,#05232E 78%,#031319 100%);color:#fff}
-.cover .globe{position:absolute;right:-80px;bottom:-420px;width:860px;height:860px}
+.cover .globe{position:absolute;right:-260px;bottom:-330px;width:860px;height:860px}
 .cover .inner{position:absolute;left:var(--mx);top:52px;bottom:56px;width:640px;display:flex;flex-direction:column}
 .cover .eb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:118px;font-weight:400;color:rgba(255,255,255,.92)}
 .cover h1{font-size:92px;font-weight:300;letter-spacing:-.035em;line-height:1;margin-top:22px}
@@ -313,9 +313,14 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
 .cal .ev small{display:block;font-size:10.5px;color:var(--ink-2);margin-top:1px}
 .cal li.fed .dot{background:var(--teal)}
 .pull{font-size:24px;line-height:1.25;letter-spacing:-.015em;font-weight:300;color:var(--teal);border-top:1px solid var(--line);padding-top:16px;margin-top:22px}
-.src{columns:2;column-gap:40px;margin-top:20px}
-.src li{list-style:none;break-inside:avoid;font-size:10.6px;line-height:1.48;color:var(--ink);padding:0 0 7px 13px;position:relative}
+.src{margin-top:12px}
+.src li{list-style:none;break-inside:avoid;font-size:10.2px;line-height:1.42;color:var(--ink);padding:0 0 7px 13px;position:relative}
 .src li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.close-grid{display:grid;grid-template-columns:1fr 520px;gap:56px;height:100%}
+.close-l{display:flex;flex-direction:column}
+.close-l .discl{margin-top:auto}
+.close-r{background:var(--teal-tint);border-radius:10px;padding:20px 24px;align-self:start}
+.close-r .src li{padding-bottom:5px}
 .discl{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
 .discl p{font-size:10px;line-height:1.5;color:var(--ink-2);font-style:italic}
 .discl p + p{margin-top:6px}
@@ -383,7 +388,7 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
       <li><a href="#positioning"><span><span class="num">06</span><span class="tt">Savvy Total Portfolios: tactical asset allocation positioning</span></span><span class="pp">Page 13</span></a></li>
       <li><a href="#risks"><span><span class="num">07</span><span class="tt">Risks we’re watching</span></span><span class="pp">Page 14</span></a></li>
       <li><a href="#closing"><span><span class="num">08</span><span class="tt">Closing thoughts</span></span><span class="pp">Page 15</span></a></li>
-      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp">Page 16</span></a></li>
+      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp">Page 15</span></a></li>
     </ol>
   </div>
 </section>
@@ -639,20 +644,24 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
   </div>
 </section>
 
-<section class="page" id="closing" data-title="Closing thoughts" data-section="closing">
+<section class="page" id="closing" data-title="Closing thoughts &amp; sources" data-section="closing">
   <div class="body">
-    <div class="h1">Closing thoughts</div>
-    <div class="t cols2" style="margin-top:26px">
-      <p style="font-size:14px;line-height:1.6">September raised the price of money through real yields rather than through inflation fears or a weaker economy. Our book was built for a Fed with work left to do: underweight bonds, modestly short duration, light on high yield and holding real assets. Most of that positioning helped this month, with gold the exception, and we are not changing it. We keep the equity overweight because growth and earnings have held up, and we accept that the margin for error is thinner than it was.</p>
-      <p style="font-size:14px;line-height:1.6">October has a crowded calendar. The September jobs report lands on October 2, the CPI report on October 14, the Fed decision on October 28 and September PCE the next morning. We will not reposition around any one of those prints. Credit is the signal that would move us.</p>
+    <div class="close-grid">
+      <div class="close-l">
+        <div class="h1">Closing thoughts</div>
+        <div class="t" style="margin-top:24px">
+          <p style="font-size:14px;line-height:1.6">September raised the price of money through real yields rather than through inflation fears or a weaker economy. Our book was built for a Fed with work left to do: underweight bonds, modestly short duration, light on high yield and holding real assets. Most of that positioning helped this month, with gold the exception, and we are not changing it. We keep the equity overweight because growth and earnings have held up, and we accept that the margin for error is thinner than it was.</p>
+          <p style="font-size:14px;line-height:1.6">October has a crowded calendar. The September jobs report lands on October 2, the CPI report on October 14, the Fed decision on October 28 and September PCE the next morning. We will not reposition around any one of those prints. Credit is the signal that would move us.</p>
+        </div>
+        <div class="discl">
+      <div class="step" style="margin-bottom:6px">Disclosures</div>
+      <p>Material prepared herein has been created for informational purposes only and should not be considered investment advice or a recommendation from the Savvy Investment Team. Information was obtained from sources believed to be reliable but was not verified for accuracy.</p>
+      <p>Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
     </div>
-  </div>
-</section>
-
-<section class="page" id="sources" data-title="Sources" data-section="sources">
-  <div class="body">
-    <div class="h2">Sources</div>
-    <ul class="src">
+      </div>
+      <aside class="close-r" id="sources">
+        <div class="h3">Sources</div>
+        <ul class="src">
       <li>Savvy Macro Dashboard (regime pillars and the indicator panel)</li>
       <li>Federal Reserve, FOMC statement and implementation note, September 16, 2026 (rate decision and the ‘timelier return’ language)</li>
       <li>Knox and Vissing-Jorgensen, A Stock Return Decomposition Using Observables, Finance and Economics Discussion Series 2022-014r1, Federal Reserve Board (real yields and the 2022 drawdown)</li>
@@ -669,16 +678,13 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
       <li>Savvy Total Portfolios moderate model and standard 60/40 benchmark holdings from YCharts, with fund durations from iShares and Vanguard. The duration comparison is our estimate</li>
       <li>IMF PortWatch Strait of Hormuz arrivals and Polymarket normalization odds</li>
     </ul>
-    <div class="discl">
-      <div class="step" style="margin-bottom:6px">Disclosures</div>
-      <p>Material prepared herein has been created for informational purposes only and should not be considered investment advice or a recommendation from the Savvy Investment Team. Information was obtained from sources believed to be reliable but was not verified for accuracy.</p>
-      <p>Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
+      </aside>
     </div>
   </div>
 </section>
 
 <section class="page back" id="back" data-title="Back cover">
-  <svg style="position:absolute;right:-140px;top:-120px" width="960" height="960" viewBox="0 0 960 960" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.2" aria-hidden="true">
+  <svg style="position:absolute;right:-380px;top:-200px" width="1120" height="1120" viewBox="0 0 960 960" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.2" aria-hidden="true">
     <circle cx="480" cy="480" r="200"/><circle cx="480" cy="480" r="320"/><circle cx="480" cy="480" r="440"/>
     <circle cx="341" cy="335" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="790" cy="560" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="165" cy="420" r="5" fill="rgba(255,255,255,.22)" stroke="none"/>
   </svg>
