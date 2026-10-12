@@ -153,12 +153,12 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11.4px;l
 /* ==========================================================================
    CONTENTS
    ========================================================================== */
-.toc{position:absolute;left:var(--mx);top:118px;width:760px}
-.toc ol{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
-.toc li a{display:flex;align-items:baseline;justify-content:space-between;padding:10px 0 10px;border-bottom:1px solid var(--line);transition:padding .15s,color .15s}
+.toc{position:absolute;left:var(--mx);top:96px;width:760px}
+.toc ol{list-style:none;margin-top:20px;border-top:1px solid var(--line)}
+.toc li a{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);transition:padding .15s,color .15s}
 .toc li a:hover{padding-left:8px;color:var(--teal)}
 .toc .tt{font-size:21px;letter-spacing:-.012em;font-weight:300}
-.toc .num{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-right:14px;letter-spacing:.04em}
+.toc .num{display:inline-block;min-width:16px;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-right:14px;letter-spacing:.04em}
 .toc .pp{font-size:11px;color:var(--ink-2)}
 .toc li.has-subs a{border-bottom:0;padding-bottom:2px}
 .toc .subs{display:flex;flex-wrap:wrap;gap:5px;padding:4px 0 12px 30px;border-bottom:1px solid var(--line)}
@@ -177,6 +177,13 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11.4px;l
 .fq .go{font-size:10.5px;color:var(--teal);white-space:nowrap;margin-top:2px}
 .circ{position:absolute;border-radius:50%;border:1.2px solid rgba(199,188,161,.55);pointer-events:none}
 
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.qcard{display:grid;grid-template-columns:40px 1fr;column-gap:14px;row-gap:8px;align-content:start;background:#fff;border-radius:10px;padding:20px 22px;transition:box-shadow .15s}
+.qcard:hover{box-shadow:0 0 0 1.5px var(--teal)}
+.qcard .qn{grid-row:1/4;font-size:12px;font-weight:500;color:#fff;background:var(--teal);border-radius:999px;text-align:center;padding:4px 0;height:max-content}
+.qcard .q{font-size:17px;line-height:1.3;font-weight:400;color:#000;letter-spacing:-.005em}
+.qcard .a{font-size:12.6px;line-height:1.55;color:var(--ink-2)}
+.qcard .go{grid-column:2;font-size:11px;color:var(--teal);font-weight:500;margin-top:4px}
 /* ==========================================================================
    EXECUTIVE SNAPSHOT
    ========================================================================== */
@@ -368,16 +375,49 @@ table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-we
   <div class="toc">
     <div class="h1">Contents</div>
     <ol>
-      <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp">Page 3</span></a></li>
-      <li><a href="#core-driver"><span><span class="num">02</span><span class="tt">Core driver</span></span><span class="pp">Page 4</span></a></li>
-      <li><a href="#macro"><span><span class="num">03</span><span class="tt">Macro thoughts</span></span><span class="pp">Page 6</span></a></li>
-      <li><a href="#dashboard"><span><span class="num">04</span><span class="tt">The Savvy Macro Dashboard</span></span><span class="pp">Page 9</span></a></li>
-      <li><a href="#qa"><span><span class="num">05</span><span class="tt">Question of the month</span></span><span class="pp">Page 11</span></a></li>
-      <li><a href="#positioning"><span><span class="num">06</span><span class="tt">Savvy Total Portfolios: tactical asset allocation positioning</span></span><span class="pp">Page 12</span></a></li>
-      <li><a href="#risks"><span><span class="num">07</span><span class="tt">Risks we’re watching</span></span><span class="pp">Page 13</span></a></li>
-      <li><a href="#closing"><span><span class="num">08</span><span class="tt">Closing thoughts</span></span><span class="pp">Page 14</span></a></li>
-      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp">Page 15</span></a></li>
+      <li><a href="#questions"><span><span class="num">—</span><span class="tt">Find the answer</span></span><span class="pp">Page 3</span></a></li>
+      <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp">Page 4</span></a></li>
+      <li><a href="#core-driver"><span><span class="num">02</span><span class="tt">Core driver</span></span><span class="pp">Page 5</span></a></li>
+      <li><a href="#macro"><span><span class="num">03</span><span class="tt">Macro thoughts</span></span><span class="pp">Page 7</span></a></li>
+      <li><a href="#dashboard"><span><span class="num">04</span><span class="tt">The Savvy Macro Dashboard</span></span><span class="pp">Page 10</span></a></li>
+      <li><a href="#qa"><span><span class="num">05</span><span class="tt">Question of the month</span></span><span class="pp">Page 12</span></a></li>
+      <li><a href="#positioning"><span><span class="num">06</span><span class="tt">Savvy Total Portfolios: tactical asset allocation positioning</span></span><span class="pp">Page 13</span></a></li>
+      <li><a href="#risks"><span><span class="num">07</span><span class="tt">Risks we’re watching</span></span><span class="pp">Page 14</span></a></li>
+      <li><a href="#closing"><span><span class="num">08</span><span class="tt">Closing thoughts</span></span><span class="pp">Page 15</span></a></li>
+      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp">Page 16</span></a></li>
     </ol>
+  </div>
+</section>
+
+<section class="page cream" id="questions" data-title="Find the answer" data-chrome="tagline">
+  <div class="body">
+    <div class="h1">Find the answer</div>
+    <div class="qgrid">
+      <a class="qcard" href="#positioning">
+        <span class="qn">Q1</span>
+        <div class="q">Did SWIM make any positioning changes this month?</div>
+        <div class="a">No changes to positioning this month.</div>
+        <span class="go">Savvy Total Portfolios · Page 13 →</span>
+      </a>
+      <a class="qcard" href="#snapshot">
+        <span class="qn">Q2</span>
+        <div class="q">What is SWIM’s cross-asset positioning?</div>
+        <div class="a">Equities: Slight Overweight<br>Fixed Income: Underweight<br>Alternatives: Slight Overweight</div>
+        <span class="go">Portfolio stance · Page 4 →</span>
+      </a>
+      <a class="qcard" href="#macro">
+        <span class="qn">Q3</span>
+        <div class="q">What does SWIM think of the macro environment, why, and what is the outlook?</div>
+        <div class="a">Overall regime: Reflation with a Goldilocks bias, constructive</div>
+        <span class="go">Macro thoughts · Page 7 →</span>
+      </a>
+      <a class="qcard" href="#risks">
+        <span class="qn">Q4</span>
+        <div class="q">What are the risks to the SWIM view?</div>
+        <div class="a">1. Real yields keep climbing.<br>2. Credit stress spreads beyond high yield.<br>3. Japan defends the yen again.<br>4. Inflation forces the Fed’s hand in October.<br>5. Earnings revisions roll over.</div>
+        <span class="go">Risks we’re watching · Page 14 →</span>
+      </a>
+    </div>
   </div>
 </section>
 
