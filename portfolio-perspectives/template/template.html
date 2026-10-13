@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Perspectives — October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   SAVVY PORTFOLIO PERSPECTIVES — 16:9 TEMPLATE (from October 2026)
+   Fixed structure. Each month: swap copy, data and the "changes" block only.
+   Page = 1280 × 720 px (13.333 × 7.5 in). Print → Save as PDF, no margins.
+   ========================================================================== */
+:root{
+  --teal:#095972;
+  --teal-ink:#074A5F;
+  --teal-tint:#EEF4F6;
+  --teal-tint-2:#E2ECEF;
+  --cream:#F5F2EC;
+  --vanilla:#FFF8F1;
+  --ecru:#C7BCA1;
+  --gold:#8E7E57;
+  --golden:#D79F32;
+  --ink:rgba(0,0,0,.9);
+  --ink-2:rgba(0,0,0,.7);
+  --ink-3:rgba(0,0,0,.5);
+  --line:rgba(0,0,0,.12);
+  --line-soft:rgba(0,0,0,.07);
+  --ow:#095972;      /* overweight side of the positioning scale */
+  --uw:#8E7E57;      /* underweight side */
+  --sans:'ABC Diatype','Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+  --pw:1280px; --ph:720px; --mx:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#2B3135;font-family:var(--sans);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01" 0}
+a{color:inherit;text-decoration:none}
+b,strong{font-weight:500}
+
+/* ---------- screen canvas ---------- */
+.deck{display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0 110px}
+.page{width:var(--pw);height:var(--ph);position:relative;overflow:hidden;background:#fff;flex:none;
+  box-shadow:0 1px 2px rgba(0,0,0,.25),0 12px 40px rgba(0,0,0,.25);scroll-margin-top:28px}
+.page.cream{background:var(--cream)}
+
+/* ---------- page chrome (injected by script, see bottom) ---------- */
+.pg-head{position:absolute;left:var(--mx);right:var(--mx);top:30px;height:22px;display:flex;align-items:center;justify-content:space-between;z-index:3}
+.wordmark{display:block;width:62px;height:21px;background:#000;
+  -webkit-mask:url('%%WORDMARK%%') left center/contain no-repeat;mask:url('%%WORDMARK%%') left center/contain no-repeat}
+.wordmark.white{background:#fff}
+.tagline{font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;text-align:right;line-height:1.05;font-weight:400}
+.tagline b{font-weight:600}
+.nav{display:flex;gap:2px;align-items:center}
+.nav a{font-size:10.5px;font-weight:400;letter-spacing:.01em;color:var(--ink-2);padding:6px 10px;border-radius:999px;transition:background .15s,color .15s;white-space:nowrap}
+.nav a .n{color:var(--ink-3);margin-right:5px;font-variant-numeric:tabular-nums}
+.nav a:hover{background:var(--teal-tint);color:var(--teal)}
+.nav a.on{background:var(--teal);color:#fff}
+.nav a.on .n{color:rgba(255,255,255,.65)}
+.pg-foot{position:absolute;left:var(--mx);right:var(--mx);bottom:22px;z-index:3}
+.pg-foot .row{display:flex;justify-content:space-between;font-size:9.5px;color:var(--ink-2);margin-bottom:8px;padding-top:9px;border-top:1px solid var(--line-soft)}
+.pg-foot .disc{font-size:7.2px;line-height:1.45;color:var(--ink-3);text-align:justify}
+
+/* ---------- body grid ---------- */
+.body{position:absolute;left:var(--mx);right:var(--mx);top:80px;bottom:96px}
+.eyebrow{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--teal)}
+.h1{font-size:44px;line-height:1;letter-spacing:-.02em;font-weight:300;color:#000}
+.h2{font-size:30px;line-height:1.08;letter-spacing:-.015em;font-weight:300;color:#000}
+.h3{font-size:19px;line-height:1.25;letter-spacing:-.01em;font-weight:400;color:var(--teal)}
+.lede{font-size:17px;line-height:1.45;font-weight:300;letter-spacing:-.005em;color:var(--ink)}
+p.t, .t p{font-size:13px;line-height:1.56;color:var(--ink)}
+.t p + p{margin-top:9px}
+.small{font-size:11px;line-height:1.5;color:var(--ink-2)}
+.ico-h{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.ico-h svg{flex:none}
+.qchip{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);
+  border:1px solid rgba(9,89,114,.35);border-radius:999px;padding:3px 9px 3px 4px;white-space:nowrap}
+.qchip i{font-style:normal;background:var(--teal);color:#fff;border-radius:999px;padding:1px 6px;letter-spacing:.04em}
+.rule{height:1px;background:var(--line)}
+
+/* ---------- tables ---------- */
+table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11.4px;line-height:1.38;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden}
+.tb thead th{background:var(--teal);color:#fff;font-weight:400;text-align:left;padding:9px 12px;font-size:10.6px;letter-spacing:.01em}
+.tb td{padding:7px 12px;vertical-align:middle;border-top:1px solid var(--line-soft)}
+.tb tbody tr:nth-child(even) td{background:#F7FAFB}
+.tb tr.grp td{background:var(--teal-tint)!important;font-weight:500;color:#000}
+.tb tr.sub td:first-child{padding-left:24px;color:var(--ink);font-weight:400}
+.tb td.k{font-weight:500;color:#000;white-space:nowrap}
+.tb td.v{font-weight:500;color:#000;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tb tbody tr{transition:background .12s}
+.tb tbody tr:hover td{background:#E9F1F4}
+.tb .nc{color:var(--ink-3);font-weight:400;font-style:italic}
+.pos-tb{font-size:11px;line-height:1.3}
+.pos-tb thead th{padding:7px 12px}
+.pos-tb td{padding:4.5px 12px}
+.pos-tb tr.sect td{background:#fff!important;color:var(--teal);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding-top:9px;border-top:1px solid var(--line)}
+.tb caption{caption-side:bottom;text-align:left;font-size:9.5px;color:var(--ink-3);padding-top:7px}
+
+/* positioning scale: UW · SUW · N · SOW · OW */
+.pos{display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
+.dots{display:inline-flex;gap:3px;align-items:center}
+.dots i{width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.22);display:block}
+
+.dots i.on.ow{background:var(--ow);border-color:var(--ow)}
+.dots i.on.uw{background:var(--uw);border-color:var(--uw)}
+.dots i.on.n{background:#000;border-color:#000}
+.pos .lbl{font-weight:500;color:#000}
+
+/* score bar (diverging, headwind ← 0 → tailwind) */
+.score{display:inline-flex;align-items:center;gap:10px}
+.sbar{position:relative;width:132px;height:14px}
+.sbar:before{content:"";position:absolute;left:0;right:0;top:6.5px;height:1px;background:var(--line)}
+.sbar .mid{position:absolute;left:50%;top:1px;width:1px;height:12px;background:rgba(0,0,0,.35)}
+.sbar .tick{position:absolute;top:4px;width:1px;height:6px;background:rgba(0,0,0,.15)}
+.sbar .fill{position:absolute;top:3px;height:8px;border-radius:4px}
+.sbar .fill.pos{background:var(--ow)}
+.sbar .fill.neg{background:var(--uw)}
+.score .num{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:500;color:#000;min-width:30px}
+
+/* ---------- tooltip ---------- */
+[data-tip]{cursor:help;border-bottom:1px dotted rgba(9,89,114,.55)}
+.tip{position:fixed;z-index:50;max-width:280px;background:#0F1F25;color:#fff;font-size:12px;line-height:1.45;padding:9px 11px;border-radius:6px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.tip.show{opacity:1;transform:none}
+.tip b{color:#9FD0DE;font-weight:500}
+
+/* ---------- toolbar (screen only) ---------- */
+.bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:4px;background:rgba(15,25,30,.92);backdrop-filter:blur(8px);
+  color:#fff;border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-size:12px}
+.bar button,.bar select{font:inherit;color:#fff;background:transparent;border:0;border-radius:999px;padding:8px 13px;cursor:pointer}
+.bar button:hover,.bar select:hover{background:rgba(255,255,255,.12)}
+.bar select{appearance:none;-webkit-appearance:none;padding-right:13px;max-width:230px}
+.bar select option{color:#000}
+.bar .pg{font-variant-numeric:tabular-nums;color:rgba(255,255,255,.7);padding:0 6px;min-width:56px;text-align:center}
+.bar .sep{width:1px;height:18px;background:rgba(255,255,255,.18);margin:0 4px}
+.bar .pdf{background:#fff;color:#0F1F25;font-weight:500}
+.bar .pdf:hover{background:#E6EEF0}
+
+/* ==========================================================================
+   COVER
+   ========================================================================== */
+.cover{background:linear-gradient(200deg,#0B6280 0%,#08475B 38%,#05232E 78%,#031319 100%);color:#fff}
+.cover .globe{position:absolute;right:-260px;bottom:-330px;width:860px;height:860px}
+.cover .inner{position:absolute;left:var(--mx);top:52px;bottom:56px;width:640px;display:flex;flex-direction:column}
+.cover .eb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:118px;font-weight:400;color:rgba(255,255,255,.92)}
+.cover h1{font-size:92px;font-weight:300;letter-spacing:-.035em;line-height:1;margin-top:22px}
+.cover .sub{font-size:24px;line-height:1.35;font-weight:300;color:rgba(255,255,255,.72);margin-top:26px;max-width:600px}
+.authors{margin-top:auto;display:flex;gap:34px}
+.author{display:flex;align-items:center;gap:12px}
+.author img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.author .nm{font-size:14px;font-weight:400}
+.author .rl{font-size:11.5px;color:rgba(255,255,255,.65);margin-top:2px}
+
+/* ==========================================================================
+   CONTENTS
+   ========================================================================== */
+.toc{position:absolute;left:var(--mx);top:96px;width:760px}
+.toc ol{list-style:none;margin-top:20px;border-top:1px solid var(--line)}
+.toc li a{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);transition:padding .15s,color .15s}
+.toc li a:hover{padding-left:8px;color:var(--teal)}
+.toc .tt{font-size:21px;letter-spacing:-.012em;font-weight:300}
+.toc .num{display:inline-block;min-width:16px;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-right:14px;letter-spacing:.04em}
+.toc .pp{font-size:11px;color:var(--ink-2)}
+.toc li.has-subs a{border-bottom:0;padding-bottom:2px}
+.toc .subs{display:flex;flex-wrap:wrap;gap:5px;padding:4px 0 12px 30px;border-bottom:1px solid var(--line)}
+.toc .subs a{font-size:10.5px;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:3px 9px;transition:all .15s}
+.toc .subs a:hover{border-color:var(--teal);color:var(--teal)}
+.finder{position:absolute;right:var(--mx);top:118px;width:520px;background:#fff;border-radius:10px;padding:26px 28px 14px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.finder .h3{color:#000;font-size:21px;font-weight:300}
+.finder .small{margin-top:6px}
+.fq{display:grid;grid-template-columns:32px 1fr auto;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line-soft);transition:background .15s}
+.fq:first-of-type{margin-top:16px}
+.finder .h3 + .fq{margin-top:16px}
+.fq:hover .q{color:var(--teal)}
+.fq .qn{font-size:11px;font-weight:500;color:#fff;background:var(--teal);border-radius:999px;text-align:center;padding:3px 0;margin-top:1px}
+.fq .q{font-size:13.6px;line-height:1.35;font-weight:400;color:#000;transition:color .15s}
+.fq .a{font-size:11.6px;line-height:1.45;color:var(--ink-2);margin-top:4px}
+.fq .go{font-size:10.5px;color:var(--teal);white-space:nowrap;margin-top:2px}
+.circ{position:absolute;border-radius:50%;border:1.2px solid rgba(199,188,161,.55);pointer-events:none}
+
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.qcard{display:grid;grid-template-columns:40px 1fr;column-gap:14px;row-gap:8px;align-content:start;background:#fff;border-radius:10px;padding:20px 22px;transition:box-shadow .15s}
+.qcard:hover{box-shadow:0 0 0 1.5px var(--teal)}
+.qcard .qn{grid-row:1/4;font-size:12px;font-weight:500;color:#fff;background:var(--teal);border-radius:999px;text-align:center;padding:4px 0;height:max-content}
+.qcard .q{font-size:17px;line-height:1.3;font-weight:400;color:#000;letter-spacing:-.005em}
+.qcard .a{font-size:12.6px;line-height:1.55;color:var(--ink-2)}
+.qcard .go{grid-column:2;font-size:11px;color:var(--teal);font-weight:500;margin-top:4px}
+/* ==========================================================================
+   EXECUTIVE SNAPSHOT
+   ========================================================================== */
+.snap-l{position:absolute;left:0;top:0;width:610px;bottom:0}
+.snap-r{position:absolute;right:0;top:0;width:500px;bottom:0;display:flex;flex-direction:column;gap:16px}
+.regime{display:inline-flex;gap:8px;align-items:center;font-size:11px;color:var(--ink-2);margin-top:14px}
+.regime b{color:#000;font-weight:500}
+.regime .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.card{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card.tint{background:var(--teal-tint);border-color:transparent}
+.changes .status{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:400;color:#000;margin-top:4px;letter-spacing:-.005em}
+.changes .status svg{flex:none}
+.changes .last{font-size:11.4px;color:var(--ink-2);margin-top:6px;line-height:1.45}
+.changes .last a{color:var(--teal);border-bottom:1px solid rgba(9,89,114,.35)}
+.stance-row{display:grid;grid-template-columns:106px 1fr;gap:4px 14px;padding:11px 0;border-top:1px solid var(--line-soft)}
+.stance-row:first-of-type{border-top:0;padding-top:4px}
+.stance-row .nm{font-size:13px;font-weight:500;color:#000}
+.stance-row .pos{grid-column:2;font-size:12px}
+.stance-row p{grid-column:1/-1;font-size:11.6px;line-height:1.5;color:var(--ink)}
+.more{font-size:11px;color:var(--teal);font-weight:500;display:inline-flex;gap:6px;align-items:center}
+.more:hover{text-decoration:underline}
+
+/* ==========================================================================
+   POSITIONING
+   ========================================================================== */
+.legend{display:flex;gap:8px;align-items:center;font-size:10px;color:var(--ink-2)}
+.legend .dots i{width:8px;height:8px}
+
+/* ==========================================================================
+   CORE DRIVER
+   ========================================================================== */
+.chart-card{background:var(--teal-tint);border-radius:10px;padding:20px 22px}
+.chart-card .ct{font-size:13.5px;font-weight:400;color:#000}
+.chart-card .cs{font-size:10.5px;color:var(--ink-2);margin-top:2px}
+.bars{margin-top:16px;display:flex;flex-direction:column;gap:16px}
+.brow{display:grid;grid-template-columns:86px 1fr;align-items:center;gap:12px}
+.brow .bl{font-size:10.5px;color:var(--ink-2);line-height:1.25}
+.track{position:relative;height:26px;display:flex;gap:2px;align-items:stretch}
+.seg{height:26px;transition:filter .12s}
+.seg:hover{filter:brightness(1.12)}
+.seg.real{background:var(--teal);border-radius:0}
+.seg.be{background:var(--golden);border-radius:0 4px 4px 0}
+.track .tot{align-self:center;margin-left:9px;font-size:13px;font-weight:500;color:#000;font-variant-numeric:tabular-nums;white-space:nowrap}
+.seglbl{position:absolute;top:31px;font-size:10px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.clegend{display:flex;gap:16px;margin-top:30px;font-size:10.5px;color:var(--ink-2)}
+.clegend span{display:inline-flex;align-items:center;gap:6px}
+.clegend i{width:10px;height:10px;border-radius:2px;display:block}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.stat > div{background:#fff;border-radius:8px;padding:13px 14px}
+.stat .big{font-size:28px;font-weight:300;letter-spacing:-.02em;color:#000;line-height:1}
+.stat .big small{font-size:14px}
+.stat .lab{font-size:10.5px;line-height:1.4;color:var(--ink-2);margin-top:6px}
+.book{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+.book .col{border-top:2px solid var(--teal);padding-top:14px}
+.book .col .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.book .col .hd .h3{color:#000;font-size:18px}
+.book p.t{font-size:14px;line-height:1.62}
+
+/* ==========================================================================
+   MACRO: scorecard + driver pages
+   ========================================================================== */
+.how{display:flex;gap:0;align-items:stretch;margin-top:18px;border:1px solid var(--line);border-radius:999px;overflow:hidden;width:max-content}
+.how span{font-size:10.5px;padding:7px 14px;color:var(--ink-2);display:flex;gap:7px;align-items:center}
+.how span + span{border-left:1px solid var(--line)}
+.how b{color:var(--teal);font-weight:600}
+table.score-tb td{padding:12px 14px}
+table.score-tb tbody tr{cursor:pointer}
+table.score-tb tr.overall td{background:var(--teal)!important;color:#fff;font-weight:500;border-top:0}
+table.score-tb tr.overall td .go{color:#fff}
+table.score-tb .go{color:var(--teal);font-size:10.5px;white-space:nowrap;font-weight:500}
+.dsub{display:flex;gap:4px}
+.dsub a{display:flex;align-items:center;gap:7px;font-size:10.5px;padding:6px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2);transition:all .15s;white-space:nowrap}
+.dsub a em{font-style:normal;font-variant-numeric:tabular-nums;font-weight:500;font-size:10px;color:var(--ink-3)}
+.dsub a:hover{border-color:var(--teal);color:var(--teal)}
+.dsub a.on{background:#000;border-color:#000;color:#fff}
+.dsub a.on em{color:rgba(255,255,255,.6)}
+.drv-top{display:flex;justify-content:space-between;align-items:center}
+.drv-title{display:flex;align-items:flex-end;justify-content:space-between;margin-top:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:24px}
+.mgrid .h3{margin-bottom:12px;text-wrap:balance}
+.data-tb{font-size:11px;line-height:1.3}
+.data-tb thead th{padding:7px 12px}
+.data-tb td{padding:4px 12px}
+.drv-title .h2{font-size:28px;text-wrap:balance}
+.cols2{columns:2;column-gap:48px}
+.cols2 p{break-inside:avoid-column}
+.tb i.nc{margin-left:4px}
+.drv-title .meta{display:flex;align-items:center;gap:16px;font-size:10.5px;color:var(--ink-2)}
+.drv-grid{display:grid;grid-template-columns:560px 1fr;gap:44px;margin-top:20px}
+.drv-grid .t p{font-size:13.6px;line-height:1.6}
+.drv-grid .tb{font-size:12px}
+.step{display:flex;align-items:center;gap:9px;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-2);margin-bottom:10px}
+.step b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--teal);color:var(--teal);font-size:9.5px;letter-spacing:0;font-weight:500}
+.think{font-size:22px;line-height:1.28;letter-spacing:-.012em;font-weight:300;color:var(--teal);margin-bottom:20px}
+.aside{margin-top:16px;border-left:2px solid var(--golden);padding:2px 0 2px 14px}
+.aside .ah{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--ink-2);margin-bottom:6px}
+.aside p{font-size:11.4px;line-height:1.52;color:var(--ink)}
+.fc .tb{font-size:11px}
+.fc .tb td{padding:5px 12px}
+.fc .aside{margin-top:12px}
+.fc .aside p{font-size:10.8px;line-height:1.48}
+.drv-grid.fc .t p{font-size:12px;line-height:1.5}
+.fc .think{font-size:20px}
+
+/* ==========================================================================
+   Q&A, RISKS, CLOSING, SOURCES
+   ========================================================================== */
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.qa .card{background:var(--teal-tint);border:0;padding:24px 26px}
+.qa p.t{font-size:13.6px;line-height:1.62}
+.qa .ql{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--teal)}
+.qa .qq{font-size:21px;line-height:1.28;letter-spacing:-.012em;font-weight:300;color:#000;margin:10px 0 14px}
+.risks{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 44px;margin-top:22px}
+.risk{border-top:1px solid var(--line);padding-top:12px}
+.risk .rh{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.risk .rn{font-size:11px;font-weight:500;color:var(--teal);font-variant-numeric:tabular-nums}
+.risk .rt{font-size:15px;font-weight:400;color:var(--teal-ink);letter-spacing:-.005em}
+.risk p{font-size:12.6px;line-height:1.55}
+.risk .lk{display:inline-block;margin-top:8px;font-size:10px;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.risk .lk:hover{border-color:var(--teal);color:var(--teal)}
+.cal{position:relative;margin-top:16px}
+.cal:before{content:"";position:absolute;left:43px;top:10px;bottom:10px;width:1px;background:var(--line)}
+.cal li{list-style:none;display:grid;grid-template-columns:44px 18px 1fr;align-items:center;padding:11px 0}
+.cal .d{font-size:22px;font-weight:300;color:#000;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.cal .dot{width:9px;height:9px;border-radius:50%;background:#fff;border:1.5px solid var(--teal);justify-self:center;position:relative;left:-5px}
+.cal .ev{font-size:13px;color:#000}
+.cal .ev small{display:block;font-size:10.5px;color:var(--ink-2);margin-top:1px}
+.cal li.fed .dot{background:var(--teal)}
+.pull{font-size:24px;line-height:1.25;letter-spacing:-.015em;font-weight:300;color:var(--teal);border-top:1px solid var(--line);padding-top:16px;margin-top:22px}
+.src{margin-top:12px}
+.src li{list-style:none;break-inside:avoid;font-size:10.2px;line-height:1.42;color:var(--ink);padding:0 0 7px 13px;position:relative}
+.src li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.close-grid{display:grid;grid-template-columns:1fr 520px;gap:56px;height:100%}
+.close-l{display:flex;flex-direction:column}
+.close-l .discl{margin-top:auto}
+.close-r{background:var(--teal-tint);border-radius:10px;padding:20px 24px;align-self:start}
+.close-r .src li{padding-bottom:5px}
+.discl{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.discl p{font-size:10px;line-height:1.5;color:var(--ink-2);font-style:italic}
+.discl p + p{margin-top:6px}
+
+/* back cover */
+.back{background:var(--teal);color:#fff}
+.back .inner{position:absolute;left:var(--mx);top:0;bottom:0;width:520px;display:flex;flex-direction:column;justify-content:center}
+.back .wordmark{width:120px;height:40px}
+.back .tg{font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:16px}
+.back .tg b{font-weight:600}
+.back .about{margin-top:48px;max-width:470px}
+.back .about h3{font-size:20px;font-weight:300;letter-spacing:-.01em}
+.back .about p{font-size:12px;line-height:1.55;color:rgba(255,255,255,.78);margin-top:10px}
+.back .disc{position:absolute;left:var(--mx);right:var(--mx);bottom:24px;font-size:8px;line-height:1.5;color:rgba(255,255,255,.6);text-align:justify}
+
+/* ---------- print ---------- */
+@page{size:1280px 720px;margin:0}
+@media print{
+  body{background:#fff}
+  .deck{display:block;padding:0;gap:0;zoom:1!important}
+  .page{box-shadow:none;break-after:page;page-break-after:always;margin:0}
+  .page:last-child{break-after:auto}
+  .bar,.tip{display:none!important}
+  [data-tip]{border-bottom:0;cursor:auto}
+  .nav a:hover,.tb tbody tr:hover td{background:inherit}
+}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- =====================================================================
+     01 · COVER
+     ===================================================================== -->
+<section class="page cover" id="cover" data-title="Cover">
+  <svg class="globe" viewBox="0 0 860 860" fill="none" stroke="rgba(120,200,225,.38)" stroke-width="1.5" aria-hidden="true">
+    <circle cx="430" cy="430" r="429"/>
+    <ellipse cx="430" cy="430" rx="300" ry="429"/>
+    <ellipse cx="430" cy="430" rx="172" ry="429"/>
+    <ellipse cx="430" cy="430" rx="52" ry="429"/>
+    <line x1="430" y1="1" x2="430" y2="859"/>
+  </svg>
+  <div class="inner">
+    <span class="wordmark white" role="img" aria-label="Savvy" style="width:78px;height:26px"></span>
+    <div class="eb">Portfolio Perspectives · October 2026</div>
+    <h1>The price of money</h1>
+    <p class="sub">Market views and portfolio insights from the Savvy Wealth Investment Management (SWIM) team</p>
+    <div class="authors">
+      <div class="author"><img src="%%ANSHUL%%" alt="Anshul Sharma"><div><div class="nm">Anshul Sharma</div><div class="rl">Chief Investment Officer</div></div></div>
+      <div class="author"><img src="%%ANI%%" alt="Ani Vedere"><div><div class="nm">Ani Vedere</div><div class="rl">Senior Research Analyst</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page cream" id="contents" data-title="Contents" data-chrome="tagline">
+  <div class="toc">
+    <div class="h1">Contents</div>
+    <ol>
+      <li><a href="#questions"><span><span class="num">—</span><span class="tt">Find the answer</span></span><span class="pp">Page 3</span></a></li>
+      <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp">Page 4</span></a></li>
+      <li><a href="#core-driver"><span><span class="num">02</span><span class="tt">Core driver</span></span><span class="pp">Page 5</span></a></li>
+      <li><a href="#macro"><span><span class="num">03</span><span class="tt">Macro thoughts</span></span><span class="pp">Page 7</span></a></li>
+      <li><a href="#dashboard"><span><span class="num">04</span><span class="tt">The Savvy Macro Dashboard</span></span><span class="pp">Page 10</span></a></li>
+      <li><a href="#qa"><span><span class="num">05</span><span class="tt">Question of the month</span></span><span class="pp">Page 12</span></a></li>
+      <li><a href="#positioning"><span><span class="num">06</span><span class="tt">Savvy Total Portfolios: tactical asset allocation positioning</span></span><span class="pp">Page 13</span></a></li>
+      <li><a href="#risks"><span><span class="num">07</span><span class="tt">Risks we’re watching</span></span><span class="pp">Page 14</span></a></li>
+      <li><a href="#closing"><span><span class="num">08</span><span class="tt">Closing thoughts</span></span><span class="pp">Page 15</span></a></li>
+      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp">Page 15</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="page cream" id="questions" data-title="Find the answer" data-chrome="tagline">
+  <div class="body">
+    <div class="h1">Find the answer</div>
+    <div class="qgrid">
+      <a class="qcard" href="#positioning">
+        <span class="qn">Q1</span>
+        <div class="q">Did SWIM make any positioning changes this month?</div>
+        <div class="a">No changes to positioning this month.</div>
+        <span class="go">Savvy Total Portfolios · Page 13 →</span>
+      </a>
+      <a class="qcard" href="#snapshot">
+        <span class="qn">Q2</span>
+        <div class="q">What is SWIM’s cross-asset positioning?</div>
+        <div class="a">Equities: Slight Overweight<br>Fixed Income: Underweight<br>Alternatives: Slight Overweight</div>
+        <span class="go">Portfolio stance · Page 4 →</span>
+      </a>
+      <a class="qcard" href="#macro">
+        <span class="qn">Q3</span>
+        <div class="q">What does SWIM think of the macro environment, why, and what is the outlook?</div>
+        <div class="a">Overall regime: Reflation with a Goldilocks bias, constructive</div>
+        <span class="go">Macro thoughts · Page 7 →</span>
+      </a>
+      <a class="qcard" href="#risks">
+        <span class="qn">Q4</span>
+        <div class="q">What are the risks to the SWIM view?</div>
+        <div class="a">1. Real yields keep climbing.<br>2. Credit stress spreads beyond high yield.<br>3. Japan defends the yen again.<br>4. Inflation forces the Fed’s hand in October.<br>5. Earnings revisions roll over.</div>
+        <span class="go">Risks we’re watching · Page 14 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="snapshot" data-title="Executive snapshot" data-section="snapshot">
+  <div class="body">
+    <div class="snap-l">
+      <div class="h1">Executive snapshot</div>
+      <div style="margin-top:30px">
+        <div class="ico-h">
+          <img src="%%ICON_VERDICT%%" alt="" width="28" height="22">
+          <span class="h3">The verdict</span>
+        </div>
+        <p class="t" style="font-size:14px;line-height:1.6">Our regime call is unchanged and constructive, and the book carries forward. September was a real-rate shock rather than a growth scare. The Fed raised rates a quarter point on September 16, and by month-end the 10-year Treasury yield had its highest close since 2002. Almost all of that rise came from real yields, the return investors demand after inflation, while expected inflation barely moved. That is the price of money going up, and it raises the bar every asset has to clear. Growth has not flinched. The Weekly Economic Index has averaged 2.7% this year and the current-quarter nowcast is 3.7%. So we stay slightly overweight equities, led by US large caps, because higher rates change what we pay for earnings, not whether the earnings arrive. We stay underweight fixed income without extending duration, and we keep the real-asset tilt. Two readings have moved against us. Stocks now yield slightly less than Treasuries, with the equity risk premium at -0.07 percentage points, and earnings revisions have slipped just below zero. High-yield spreads have also started to widen, though the broad financial-conditions gauges have not followed. We are watching credit closely.</p>
+      </div>
+    </div>
+
+    <div class="snap-r">
+      <div class="card" style="padding-bottom:14px">
+        <div class="ico-h" style="margin-bottom:8px">
+          <img src="%%ICON_STANCE%%" alt="" width="22" height="22">
+          <span class="h3">Portfolio stance</span>
+        </div>
+        <div class="stance-row"><span class="nm">Equities</span><span data-pos="SOW">Slight Overweight</span>
+          <p>Earnings are still arriving, so we stay overweight, led by US large caps. Higher real yields change what we pay for those earnings, and that is the risk we are watching.</p></div>
+        <div class="stance-row"><span class="nm">Fixed Income</span><span data-pos="UW">Underweight</span>
+          <p>We hold fewer bonds than a standard 60/40 and keep duration modestly short. We are not extending while rate volatility is high and inflation sits above target.</p></div>
+        <div class="stance-row"><span class="nm">Alternatives</span><span data-pos="SOW">Slight Overweight</span>
+          <p>Real assets hedge a Fed that still has work to do. We hold a broad commodity basket and gold, and accept that gold gives some back when real yields rise.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="core-driver" data-title="Core driver" data-section="core">
+  <div class="body">
+    <div class="ico-h" style="margin-bottom:0">
+      <img src="%%ICON_CORE%%" alt="" width="36" height="36">
+      <span class="h1">Core driver</span>
+    </div>
+    <div class="t cols2" style="margin-top:26px">
+      <p>Real yields did the lifting. Between the end of August and the end of September, the 10-year Treasury yield rose 0.54 percentage points. The 10-year real yield, the yield on inflation-protected Treasuries, rose 0.49 points of that, and the breakeven inflation rate, the market’s estimate of future inflation, rose only 0.05. The pattern was already clear by September 24, when the real yield was up 0.41 points against 0.43 for the nominal yield, and it kept going into month-end. Our read is that investors are asking to be paid more in real terms for lending money, rather than pricing more inflation. That read is an inference from how the move split, and we cannot measure the cause directly.</p>
+      <p>The rise was global in direction but mainly a US story in size. By September 24, 10-year inflation-linked yields were higher this year in every major market we track. They were up about 1 percentage point in the US, against 0.1 to 0.7 points in Canada, the UK, Germany, Japan and France, where more of the rise in nominal yields came from higher inflation expectations.</p>
+      <p>A higher real yield is a higher discount rate. It lowers what a future dollar of earnings or coupons is worth today, so it touches every sleeve at once. Federal Reserve research attributes the 2022 equity drawdown mainly to rising real yields, and finds that the 2008 and 2020 sell-offs came from lower expected earnings and a higher equity risk premium instead. The lesson we take is narrow: rising real yields are a headwind while they rise, but on their own they do not stop the earnings. Here is what that means for each part of the book.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="core-driver-book" data-title="Core driver (continued)" data-section="core">
+  <div class="body">
+    <div class="h2">Core driver <span style="color:var(--ink-3)">(continued)</span></div>
+    <div class="book">
+      <div class="col">
+        <div class="hd"><span class="h3">Equities</span></div>
+        <p class="t">We stay slightly overweight, with US large caps overweight. The S&amp;P 500 slipped in September and is up 11.8% this year, so the market has absorbed the move so far. The cost shows up in valuation. At 19.08 times forward earnings, stocks now yield slightly less than a 10-year Treasury, so there is no valuation cushion left. That caps how hard we lean, and it is why the tilt stays slight. Small caps are the most rate-sensitive corner of the market and the place rate pressure would show first. We hold no tilt toward them and are watching them closely.</p>
+      </div>
+      <div class="col">
+        <div class="hd"><span class="h3">Fixed income</span></div>
+        <p class="t">The underweight did its job. Long-dated Treasuries fell 5.7% in September and investment-grade corporate bonds fell 3.8%. We hold fewer bonds than a standard 60/40. Taken on its own, our bond sleeve has a duration, a measure of sensitivity to rates, of about 4.9 years, against about 5.5 years for the bond sleeve of a standard 60/40, mostly because of our high-yield, convertible and short inflation-protected bond funds. By our estimate the portfolio is about 30% less sensitive to rates than a 60/40, and most of that comes from holding fewer bonds rather than shorter ones. The high-yield underweight, set because spreads were too tight to pay for the risk, protected us when those spreads widened late in the month.</p>
+      </div>
+      <div class="col">
+        <div class="hd"><span class="h3">Real assets</span></div>
+        <p class="t">The month was mixed. Commodities worked: Brent crude rose 14.4% and a broad commodity fund rose 3.3%. Gold fell 6.6% as real yields and the dollar rose together, which is the cost of holding a hedge against fiscal risk when the return on cash goes up. Inflation-protected Treasuries fell 2.6%. That is why, while rates keep grinding higher, we prefer a commodity basket to them. We keep both legs of the sleeve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="macro" data-title="Macro thoughts" data-section="macro">
+  <div class="body">
+    <div class="h1">Macro thoughts</div>
+    <div class="mgrid">
+      <div class="mcol" id="growth">
+        <div class="h3">Growth: above trend, and not yet touched by higher rates</div>
+        <div class="t"><p>Growth has not slowed. The Weekly Economic Index has averaged 2.7% this year, against a trend near 2%, and the Atlanta Fed’s current-quarter nowcast is 3.7%. Unemployment is 4.1%, low and steady. Nothing in the output data argues for less equity risk.</p>
+        <p>The question is what higher rates do next. Smaller companies and borrowers who depend on short-term financing feel the price of money first. We will judge whether that is happening through jobless claims, the unemployment rate and earnings revisions together, not through any single monthly print, including the September jobs report on October 2.</p></div>
+      </div>
+      <div class="mcol" id="inflation">
+        <div class="h3">Inflation: the Fed’s gauge is flat near 3% while oil lifts the headline</div>
+        <div class="t"><p>Headline CPI was 3.4% in August, and the nowcasts put it at 3.6% for September and October as oil rose. Core PCE, the gauge the Fed acts on, was 3.0% in August and is nowcast at 3.0% and then 3.1%. Both sit well above the 2% target.</p>
+        <p>Core PCE needs a word on revisions. In mid-September we cited July core PCE at 3.3%, as first published, and a path rising toward 3.5%. The government’s annual revision on September 30 lowered July to about 3.0%, and August came in at 3.0% as well, with headline PCE at 3.4%. So on current data the Fed’s gauge is flat near 3%. That softens one of our reasons for keeping duration short. It does not remove the case: inflation is still a full point above target, the headline is rising, and the Fed hiked in September to get back to target sooner.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="financial-conditions" data-title="Macro thoughts (continued)" data-section="macro">
+  <div class="body">
+    <div class="h1">Macro thoughts <span style="color:var(--ink-3)">(continued)</span></div>
+    <div class="h3" style="margin-top:24px">Financial conditions and the Fed: real yields tightened, credit only at the edge</div>
+    <div class="t cols2" style="margin-top:12px"><p>Monetary policy tightened again in September. The Fed raised rates a quarter point on September 16 and said the move would support a timelier return to their 2% goal. Futures now price 3.60 quarter-point hikes through December 2027, up from 3.14 in mid-September. For the October 28 meeting, futures settled on September 30 implied roughly a 38% chance of another hike.</p>
+        <p>This time the tightening reached market rates, through real yields, more than it reached credit. The national financial conditions index is -0.55, essentially unchanged, and the St. Louis Fed stress index is -0.81, still calm. Investment-grade spreads moved only from 81 to 84 basis points. High yield is the exception. In mid-September, high-yield spreads were 265 basis points. By September 30 they were 312, with most of the widening in the last week of the month. That is the signal we said would matter, and it has started at the riskiest edge of the market. It has not yet spread to investment grade or to the broad gauges.</p>
+        <p>The yield curve told a similar story. By September 24 the 2-year yield had risen about 0.53 points in the month against 0.43 for the 10-year, a bear flattening in which short-term yields rose faster than long-term ones, with nearly all of the 10-year’s move in real yields. In the final week the long end caught up, and the gap between 2-year and 10-year yields ended September where it began, at 0.41 points. We treat the curve’s shape as secondary. The research ties equity damage to the level of real yields, and that level is what we watch.</p>
+        <p>Japan is a channel to watch rather than a driver. The yen slipped in the second half of September, from about 154 per dollar in mid-month to about 158 by September 24, even after the Bank of Japan raised rates again. Tokyo spent roughly 27 trillion yen supporting its currency across April, May, July and August, and has said it would not hesitate to step in again. Japan’s reported Treasury holdings fell about $135 billion between February and July. Those figures include private investors and cannot show official selling, and Tokyo has said it plans to use the Fed’s repo facility rather than sell outright. Japan reported no intervention between August 27 and September 28. September’s rise in yields was also led by shorter maturities, while the gap between 10-year and 30-year yields narrowed. Heavy Japanese selling of long bonds would have pushed that gap wider.</p></div>
+  </div>
+</section>
+
+<section class="page" id="earnings" data-title="Macro thoughts (continued)" data-section="macro">
+  <div class="body">
+    <div class="h1">Macro thoughts <span style="color:var(--ink-3)">(continued)</span></div>
+    <div class="mgrid">
+      <div class="mcol" id="earnings-col">
+        <div class="h3">Earnings and valuation: the cushion over bonds is gone</div>
+        <div class="t"><p>The S&amp;P 500 trades at 19.08 times forward earnings, a little below its 10-year average of about 20 times, so the multiple itself is not stretched. The pressure comes from the other side of the comparison. With the 10-year Treasury yield at its highest since 2002, the equity risk premium, what owning stocks pays over a 10-year Treasury, has turned negative at -0.07 percentage points, from 0.23 in mid-September.</p>
+        <p>Earnings revisions are the reading to watch. The revision index slipped to -0.06 from 0.51 in mid-September, so analysts are now cutting estimates slightly more often than raising them. One reading is not a trend, and the fundamentals behind the overweight have been robust. Even so, this is the first fundamental reading to move against us, and it is the one we would expect to turn first if higher rates were starting to bite.</p></div>
+      </div>
+      <div class="mcol" id="geopolitics">
+        <div class="h3">Geopolitics: Hormuz still disrupted, oil back in the inflation story</div>
+        <div class="t"><p>The Strait of Hormuz has not normalized. Arrivals are running at about 3 ships a day on a 7-day average, down from 5 in mid-September and against roughly 60 in normal times, and the market-implied odds of normalization by year-end are 20%. Brent crude rose 14.4% in September.</p>
+        <p>Energy is the most direct route from geopolitics into headline inflation, and the headline nowcasts are already rising. A Fed that hiked to reach target sooner has little room to look through an oil shock. That is why we hold a broad commodity basket. It carries the energy leg without a bet on any single commodity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="dashboard" data-title="The Savvy Macro Dashboard" data-section="dashboard">
+  <div class="body">
+    <div class="h1">The Savvy Macro Dashboard</div>
+    <div class="h3" style="margin-top:28px;margin-bottom:12px">Summary</div>
+    <table class="tb score-tb">
+      <thead><tr><th style="width:240px">Category</th><th style="width:240px">Signal</th><th>Portfolio Signal</th></tr></thead>
+      <tbody>
+        <tr data-href="#growth"><td class="k">Growth</td><td class="v">+1 (Slight Tailwind)</td><td>Above trend and not yet dented by higher rates, so we keep the equity overweight</td></tr>
+        <tr data-href="#inflation"><td class="k">Inflation</td><td class="v">-1 (Slight Headwind)</td><td>The Fed’s gauge is flat but above target and oil is lifting the headline, so we do not extend duration</td></tr>
+        <tr data-href="#financial-conditions"><td class="k">Financial Conditions</td><td class="v">+0.5</td><td>Real yields tightened and credit moved only at the riskiest edge, so we watch high yield for the signal</td></tr>
+        <tr data-href="#geopolitics"><td class="k">Geopolitics</td><td class="v">-0.5</td><td>Energy disruption persists, so we keep the broad commodity hedge</td></tr>
+        <tr class="overall"><td>Overall regime</td><td></td><td>Reflation with a Goldilocks bias, constructive</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page" id="dashboard-data" data-title="The Savvy Macro Dashboard: Data" data-section="dashboard">
+  <div class="body">
+    <div class="h3" style="margin-bottom:12px">Data</div>
+    <table class="tb data-tb">
+      <thead><tr><th style="width:300px">Indicator</th><th style="width:200px">Current Data Point</th><th>Portfolio Signal</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="3">Growth</td></tr>
+        <tr><td class="k">Weekly Economic Index (WEI, YTD avg)</td><td class="v">2.7%</td><td>Above trend all year, supports the equity overweight</td></tr>
+        <tr><td class="k">GDPNow (current quarter)</td><td class="v">3.7%</td><td>Running well above trend, so growth is not where higher rates have shown up yet</td></tr>
+        <tr><td class="k">Unemployment rate</td><td class="v">4.1%</td><td>Low and steady at the 20th pctile since 1948, so the Fed has no labour-market reason to ease</td></tr>
+        <tr><td class="k">S&amp;P 500 forward P/E</td><td class="v">19.08x</td><td>At the 30th pctile of the last five years, so the multiple itself is not what is stretched</td></tr>
+        <tr><td class="k">Equity risk premium</td><td class="v">-0.07pp</td><td>Stocks now yield less than Treasuries, so there is no valuation cushion left</td></tr>
+        <tr><td class="k">Earnings Revision Index</td><td class="v">-0.06</td><td>Slipped just below zero, the first sign that fundamentals may be feeling rates</td></tr>
+        <tr class="grp"><td colspan="3">Inflation</td></tr>
+        <tr><td class="k">Headline CPI</td><td class="v">Aug 3.4% <i class="nc">Sep 3.6%</i> <i class="nc">Oct 3.6%</i></td><td>Nowcasts climbing as oil rose, keeps the Fed leaning toward tightening</td></tr>
+        <tr><td class="k">Core PCE (Fed’s anchor)</td><td class="v">Aug 3.0% <i class="nc">Sep 3.0%</i> <i class="nc">Oct 3.1%</i></td><td>Flat but a full point above target, so no case yet to extend duration</td></tr>
+        <tr class="grp"><td colspan="3">Financial conditions</td></tr>
+        <tr><td class="k">Chicago Fed NFCI</td><td class="v">-0.55</td><td>Still loose at the 32nd pctile since 1971, so the broad gauges have not confirmed the credit move</td></tr>
+        <tr><td class="k">St. Louis Fed Financial Stress Index</td><td class="v">-0.81</td><td>Calm at the 8th pctile since 1993, so the rise in yields has not become market stress</td></tr>
+        <tr><td class="k">Fed hikes/cuts thru Dec 2027</td><td class="v">3.6 hikes</td><td>More tightening priced since the September hike, keeps real yields and the dollar firm</td></tr>
+        <tr class="grp"><td colspan="3">Geopolitics</td></tr>
+        <tr><td class="k">Hormuz arrivals (7d avg)</td><td class="v">3 ships</td><td>Traffic still a small fraction of normal, energy stays a live inflation channel</td></tr>
+        <tr><td class="k">Hormuz normalized by year-end (Polymarket)</td><td class="v">20%</td><td>Market still prices persistence over resolution, so we keep the commodity hedge</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page" id="qa" data-title="Question of the month" data-section="qa">
+  <div class="body">
+    <div class="h1">Question of the month</div>
+    <div class="qa">
+      <div class="card">
+        <div class="ql">Question:</div>
+        <div class="qq">“Will higher real rates end the party for stocks?”</div>
+        <p class="t">Not on their own, and not yet. Higher real yields lower what future earnings are worth today, which is why stock valuations come under pressure while yields rise. That is what happened in 2022. A higher discount rate and a broken earnings stream are different problems, though. Growth is above trend and earnings are still arriving, so a hike or two changes what we pay for those earnings without stopping them. What would end the party is credit. If high-yield spreads keep widening and the stress spreads into investment-grade bonds and the broad financial-conditions gauges, tighter money would be reaching companies’ ability to borrow. Our response to that is set in advance: reduce equity risk, upgrade quality, extend duration and take the commodity tilt back to neutral, together. High yield has started to move. The rest has not.</p>
+      </div>
+      <div class="card">
+        <div class="ql">Question:</div>
+        <div class="qq">“Bond yields are the highest in decades. Why not buy more bonds now?”</div>
+        <p class="t">Because the yield is only part of what a bond returns. The rest is what happens to its price, and with the 10-year yield rising more than half a point in a single month and the Fed still tightening, we are not paid enough to take more of that risk. A 10-year yield of 5.29% is attractive income, and we own bonds for exactly that, in a sleeve that runs a little shorter than the market. What we will not do yet is extend duration. The case for extending is strongest when tighter money starts to slow the economy or crack credit, because that is when yields have room to fall. If credit keeps deteriorating, extending duration is part of the plan we have already set out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="positioning" data-title="Tactical asset allocation positioning" data-section="positioning">
+  <div class="body">
+    <div class="h2" style="font-size:26px">Savvy Total Portfolios: tactical asset allocation positioning</div>
+    <div style="font-size:11.5px;color:var(--ink-2);margin-top:8px"><b style="color:#000;font-weight:500">No changes to positioning this month.</b> <i>Last change: exited Consumer Discretionary (XLY) in late August. See the September issue.</i></div>
+    <table class="tb pos-tb" style="margin-top:14px">
+      <thead><tr><th style="width:190px">Asset / Class</th><th style="width:200px">Positioning</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td>Equities</td><td data-pos="SOW">Slight Overweight</td><td>Earnings are still arriving, so we stay overweight, led by US large caps. Higher real yields change what we pay for those earnings, and that is the risk we are watching.</td></tr>
+        <tr class="sub"><td>US Large</td><td data-pos="OW">Overweight</td><td>Earnings are durable and broadening. We hold the overweight through market breadth, not just the largest few names.</td></tr>
+        <tr class="sub"><td>US Small</td><td data-pos="N">Neutral</td><td>The most rate-sensitive corner of equities; a 10-year yield of 5.29% argues against the cyclical case.</td></tr>
+        <tr class="sub"><td>Intl DM</td><td data-pos="N">Neutral</td><td>No clear growth, valuation or currency edge; not paid to tilt.</td></tr>
+        <tr class="sub"><td>EM</td><td data-pos="SOW">Slight Overweight</td><td>Cheaper than developed markets with real diversification value; a slight tilt.</td></tr>
+        <tr class="grp"><td>Fixed Income</td><td data-pos="UW">Underweight</td><td>We hold fewer bonds than a standard 60/40 and keep duration modestly short. We are not extending while rate volatility is high and inflation sits above target.</td></tr>
+        <tr class="sub"><td>IG Credit</td><td data-pos="N">Neutral</td><td>Quality carry worth owning for income; at 84bp spreads leave little upside.</td></tr>
+        <tr class="sub"><td>Developed Gov’t Bonds</td><td data-pos="N">Neutral</td><td>Own for ballast and carry. A tougher inflation standard says do not extend.</td></tr>
+        <tr class="sub"><td>High Yield</td><td data-pos="UW">Underweight</td><td>Spreads widened to 312bp in September, still too little to pay for late-cycle credit risk.</td></tr>
+        <tr class="grp"><td>Alternatives</td><td data-pos="SOW">Slight Overweight</td><td>Real assets hedge a Fed that still has work to do. We hold a broad commodity basket and gold, and accept that gold gives some back when real yields rise.</td></tr>
+        <tr class="sub"><td>Gold</td><td data-pos="SOW">Slight Overweight</td><td>Record central-bank reserve demand and fiscal-credibility risk support gold; capped by the hikes already priced.</td></tr>
+        <tr class="sub"><td>Broad Commodities</td><td data-pos="SOW">Slight Overweight</td><td>A broad basket tracks inflation plus a small premium — a cleaner hedge than TIPS if rates keep grinding higher.</td></tr>
+        <tr class="grp sect"><td>Sector views</td><td></td><td></td></tr>
+        <tr class="sub"><td>Technology</td><td data-pos="OW">Overweight</td><td>The AI investment cycle still drives earnings leadership; this is where we accept concentration. Held through the market, not one slice.</td></tr>
+        <tr class="sub"><td>Utilities</td><td data-pos="OW">Overweight</td><td>Structural power demand from AI and electrification underpins the overweight. We carry its rate sensitivity knowingly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page" id="risks" data-title="Risks we’re watching" data-section="risks">
+  <div class="body">
+    <div class="h1">Risks we’re watching</div>
+    <div class="risks">
+      <div class="risk"><div class="rh"><span class="rn">1.</span><span class="rt">Real yields keep climbing.</span></div>
+        <p>The 10-year Treasury yield ended September at 5.29% and the 10-year real yield at 2.93%. Another leg up would keep pressing on equity valuations. In our judgment, at these levels bonds and stocks can start to fall together, which weakens the cushion bonds normally provide. Our fixed income underweight and modestly short duration are the hedge, and we would not add duration into a rising real yield.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">2.</span><span class="rt">Credit stress spreads beyond high yield.</span></div>
+        <p>This is the risk we named last month, before credit had moved. High-yield spreads have since widened from 265 to 312 basis points, while investment-grade spreads, at 84, and the broad financial-conditions gauges have barely moved. If the widening spreads, we would reduce equity risk, upgrade quality, extend duration and take the commodity tilt to neutral. High yield alone is not yet enough.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">3.</span><span class="rt">Japan defends the yen again.</span></div>
+        <p>Tokyo has said it would not hesitate to intervene, and the yen slipped in the second half of September. A fresh round of intervention funded by selling Treasuries would add pressure at the long end of the curve. We see no evidence of that so far, and Tokyo has signaled it would use the Fed’s repo facility first. We treat it as a contingent risk for long bonds and one more reason not to extend duration.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">4.</span><span class="rt">Inflation forces the Fed’s hand in October.</span></div>
+        <p>Headline CPI nowcasts sit at 3.6% and oil rose sharply in September. The Fed meets on October 28, the day before September’s PCE report, so the September CPI report on October 14 is the last major inflation print before the decision. A second hike would push the priced path and real yields higher again. Our real-asset tilt is the hedge.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">5.</span><span class="rt">Earnings revisions roll over.</span></div>
+        <p>The revision index has slipped just below zero. If analysts keep cutting estimates while real yields stay high, both halves of the equity case weaken at once: what we pay and what we earn. That combination, more than either alone, would lead us to cut the equity overweight. We would not act on a single reading.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="closing" data-title="Closing thoughts &amp; sources" data-section="closing">
+  <div class="body">
+    <div class="close-grid">
+      <div class="close-l">
+        <div class="h1">Closing thoughts</div>
+        <div class="t" style="margin-top:24px">
+          <p style="font-size:14px;line-height:1.6">September raised the price of money through real yields rather than through inflation fears or a weaker economy. Our book was built for a Fed with work left to do: underweight bonds, modestly short duration, light on high yield and holding real assets. Most of that positioning helped this month, with gold the exception, and we are not changing it. We keep the equity overweight because growth and earnings have held up, and we accept that the margin for error is thinner than it was.</p>
+          <p style="font-size:14px;line-height:1.6">October has a crowded calendar. The September jobs report lands on October 2, the CPI report on October 14, the Fed decision on October 28 and September PCE the next morning. We will not reposition around any one of those prints. Credit is the signal that would move us.</p>
+        </div>
+        <div class="discl">
+      <div class="step" style="margin-bottom:6px">Disclosures</div>
+      <p>Material prepared herein has been created for informational purposes only and should not be considered investment advice or a recommendation from the Savvy Investment Team. Information was obtained from sources believed to be reliable but was not verified for accuracy.</p>
+      <p>Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
+    </div>
+      </div>
+      <aside class="close-r" id="sources">
+        <div class="h3">Sources</div>
+        <ul class="src">
+      <li>Savvy Macro Dashboard (regime pillars and the indicator panel)</li>
+      <li>Federal Reserve, FOMC statement and implementation note, September 16, 2026 (rate decision and the ‘timelier return’ language)</li>
+      <li>Knox and Vissing-Jorgensen, A Stock Return Decomposition Using Observables, Finance and Economics Discussion Series 2022-014r1, Federal Reserve Board (real yields and the 2022 drawdown)</li>
+      <li>US Treasury daily par and real yield curve rates and FRED (10-year nominal and real yields, 10-year breakeven, 2-year and 30-year yields, end-August, September 24 and September 30)</li>
+      <li>LSEG inflation-linked 10-year yields for the US, UK, Germany, France, Canada and Japan, through September 24 (Japan derived from the 10-year JGB less the breakeven)</li>
+      <li>ICE BofA option-adjusted spreads for high yield and investment grade, via FRED</li>
+      <li>CME fed funds futures for the priced policy path and the October meeting odds (September 30 settlements)</li>
+      <li>BEA personal income and outlays with the 2026 annual update, September 30, 2026 (core and headline PCE, including the July revision), and BLS CPI, with Cleveland Fed nowcasts for the open months</li>
+      <li>NY Fed Weekly Economic Index, Atlanta Fed GDPNow, and BLS unemployment</li>
+      <li>Chicago Fed National Financial Conditions Index and St. Louis Fed Financial Stress Index</li>
+      <li>FactSet forward P/E and equity risk premium, and Citi Earnings Revision Index</li>
+      <li>Japan Ministry of Finance foreign exchange intervention reports and statement of August 3, 2026, Bank of Japan policy statement of September 18, 2026, and US Treasury TIC data for Japan’s holdings through July</li>
+      <li>September asset-class returns (S&amp;P 500, long-dated Treasuries, investment-grade corporates, TIPS, gold, Brent, a broad commodity fund, the dollar index) and the yen from our internal price panel</li>
+      <li>Savvy Total Portfolios moderate model and standard 60/40 benchmark holdings from YCharts, with fund durations from iShares and Vanguard. The duration comparison is our estimate</li>
+      <li>IMF PortWatch Strait of Hormuz arrivals and Polymarket normalization odds</li>
+    </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="page back" id="back" data-title="Back cover">
+  <svg style="position:absolute;right:-380px;top:-200px" width="1120" height="1120" viewBox="0 0 960 960" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.5" vector-effect="non-scaling-stroke" aria-hidden="true">
+    <circle cx="480" cy="480" r="200" vector-effect="non-scaling-stroke"/><circle cx="480" cy="480" r="320" vector-effect="non-scaling-stroke"/><circle cx="480" cy="480" r="440" vector-effect="non-scaling-stroke"/>
+    <circle cx="341" cy="335" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="790" cy="560" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="165" cy="420" r="5" fill="rgba(255,255,255,.22)" stroke="none"/>
+  </svg>
+  <div class="inner">
+    <span class="wordmark white" role="img" aria-label="Savvy"></span>
+    <div class="tg">Independence, <b>reinvented.</b></div>
+  </div>
+  <p class="disc">Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
+</section>
+
+</main>
+
+<!-- screen-only toolbar -->
+<div class="bar" id="bar">
+  <button id="prev" aria-label="Previous page">←</button>
+  <span class="pg" id="pgn">1 / 17</span>
+  <button id="next" aria-label="Next page">→</button>
+  <span class="sep"></span>
+  <select id="jump" aria-label="Jump to section"></select>
+  <span class="sep"></span>
+  <button class="pdf" id="pdf">Save as PDF</button>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+/* ---------------- edition settings (edit monthly) ---------------- */
+const EDITION = 'October 2026';
+const DISCLAIMER = 'Material prepared herein has been created for informational purposes only and should not be considered investment advice or a recommendation from the Savvy Investment Team. Information was obtained from sources believed to be reliable but was not verified for accuracy. Savvy Wealth Investment Management ("SWIM") is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.';
+
+/* fixed navigation — same order every month */
+const NAV = [
+  ['snapshot','Snapshot','#snapshot','01'],
+  ['core','Core driver','#core-driver','02'],
+  ['macro','Macro thoughts','#macro','03'],
+  ['dashboard','Dashboard','#dashboard','04'],
+  ['qa','Q&A','#qa','05'],
+  ['positioning','Positioning','#positioning','06'],
+  ['risks','Risks','#risks','07'],
+  ['closing','Closing','#closing','08'],
+  ['sources','Sources','#sources','09'],
+];
+/* driver sub-nav — label, anchor, signal shown in the pill */
+const DRIVERS = [
+  ['growth','Growth'],
+  ['inflation','Inflation'],
+  ['financial-conditions','Financial conditions and the Fed'],
+  ['earnings','Earnings and valuation'],
+  ['geopolitics','Geopolitics'],
+];
+const POS = { UW:0, SUW:1, N:2, SOW:3, OW:4 };
+
+const pages = [...document.querySelectorAll('.page')];
+
+/* ---------------- page chrome ---------------- */
+pages.forEach((pg, i) => {
+  const n = i + 1;
+  if (pg.classList.contains('cover') || pg.classList.contains('back')) return;
+  const head = document.createElement('header');
+  head.className = 'pg-head';
+  const right = pg.dataset.chrome === 'tagline'
+    ? '<div class="tagline">Independence,<br><b>Reinvented.</b></div>'
+    : '<nav class="nav">' + NAV.map(([k, l, h, num]) =>
+        `<a href="${h}" class="${pg.dataset.section === k ? 'on' : ''}"><span class="n">${num}</span>${l}</a>`).join('') + '</nav>';
+  head.innerHTML = `<a href="#contents" title="Contents"><span class="wordmark" role="img" aria-label="Savvy"></span></a>${right}`;
+  const foot = document.createElement('footer');
+  foot.className = 'pg-foot';
+  foot.innerHTML = `<div class="row"><span>Savvy Portfolio Perspectives | ${EDITION}</span><span>Page ${n}</span></div><p class="disc">${DISCLAIMER}</p>`;
+  pg.prepend(head); pg.append(foot);
+});
+
+/* driver sub-nav */
+document.querySelectorAll('.dsub').forEach(nav => {
+  const cur = nav.closest('.page').dataset.driver;
+  nav.innerHTML = DRIVERS.map(([id, l]) => `<a href="#${id}" class="${id === cur ? 'on' : ''}">${l}</a>`).join('');
+});
+
+/* positioning scale */
+const dotsHTML = k => {
+  const idx = POS[k];
+  return '<span class="dots" aria-hidden="true">' + [0,1,2,3,4].map(j => {
+    const side = j < 2 ? 'uw' : j > 2 ? 'ow' : 'n';
+    return `<i class="${j === idx ? 'on ' + side : ''}"></i>`;
+  }).join('') + '</span>';
+};
+document.querySelectorAll('[data-pos]').forEach(el => {
+  const k = el.dataset.pos, label = el.textContent.trim();
+  el.innerHTML = `<span class="pos">${dotsHTML(k)}<span class="lbl">${label}</span></span>`;
+});
+const lg = document.getElementById('pos-legend');
+if (lg) lg.innerHTML = '<span>Underweight</span><span class="dots" aria-hidden="true"><i class="on uw"></i><i class="on uw" style="opacity:.45"></i><i class="on n" style="opacity:.8"></i><i class="on ow" style="opacity:.45"></i><i class="on ow"></i></span><span>Overweight</span>';
+
+/* score bars (range ±2) */
+document.querySelectorAll('.score[data-score]').forEach(el => {
+  const v = parseFloat(el.dataset.score), w = 132, half = w / 2, px = Math.min(Math.abs(v) / 2, 1) * half;
+  const fill = v >= 0 ? `left:${half}px;width:${px}px` : `left:${half - px}px;width:${px}px`;
+  el.innerHTML = `<span class="sbar"><span class="tick" style="left:0"></span><span class="tick" style="left:${half/2}px"></span><span class="tick" style="left:${half*1.5}px"></span><span class="tick" style="left:${w-1}px"></span><span class="mid"></span><span class="fill ${v>=0?'pos':'neg'}" style="${fill}"></span></span><span class="num">${el.dataset.lbl}</span>`;
+  el.querySelector('.sbar').setAttribute('data-tip', `<b>Signal ${el.dataset.lbl}</b><br>Left of centre = headwind, right = tailwind.`);
+  el.querySelector('.sbar').style.borderBottom = '0';
+});
+
+/* core-driver split chart: 0.60pp = full track */
+document.querySelectorAll('#split-chart .brow').forEach(r => {
+  const t = r.querySelector('.track'), full = 300, sc = full / 0.6;
+  const real = +r.dataset.real, be = +r.dataset.be, tot = +r.dataset.tot;
+  t.innerHTML = `<span class="seg real" style="width:${real*sc}px" data-tip="<b>Real yield</b> +${real.toFixed(2)}pp"></span>` +
+    `<span class="seg be" style="width:${Math.max(be*sc,3)}px" data-tip="<b>Breakeven inflation</b> +${be.toFixed(2)}pp"></span>` +
+    `<span class="tot">+${tot.toFixed(2)}</span>` +
+    `<span class="seglbl" style="left:0">Real +${real.toFixed(2)}</span><span class="seglbl" style="left:${real*sc+6}px">BE +${be.toFixed(2)}</span>`;
+  t.querySelectorAll('.seg').forEach(s => s.style.borderBottom = '0');
+  r.style.marginBottom = '12px';
+});
+
+/* clickable scorecard rows */
+document.querySelectorAll('tr[data-href]').forEach(tr => tr.addEventListener('click', () => go(document.querySelector(tr.dataset.href))));
+
+/* ---------------- screen: fit-to-width, nav, toolbar ---------------- */
+const deck = document.getElementById('deck');
+function fit() {
+  const z = Math.min(1, (window.innerWidth - 48) / 1280);
+  deck.style.zoom = z;
+}
+fit(); addEventListener('resize', fit);
+
+function current() {
+  const mid = innerHeight / 2;
+  let best = 0, bd = Infinity;
+  pages.forEach((p, i) => { const r = p.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom) / 2 - mid); if (d < bd) { bd = d; best = i; } });
+  return best;
+}
+function go(el) { if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+function step(d) { const i = Math.max(0, Math.min(pages.length - 1, current() + d)); go(pages[i]); }
+
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); go(t); history.replaceState(null, '', a.getAttribute('href')); }
+}));
+document.getElementById('prev').onclick = () => step(-1);
+document.getElementById('next').onclick = () => step(1);
+document.getElementById('pdf').onclick = () => print();
+addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); step(1); }
+  if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); step(-1); }
+  if (e.key === 'Home') { e.preventDefault(); go(pages[0]); }
+  if (e.key === 'End') { e.preventDefault(); go(pages[pages.length - 1]); }
+});
+const sel = document.getElementById('jump');
+sel.innerHTML = pages.map((p, i) => `<option value="${i}">${String(i+1).padStart(2,'0')} · ${p.dataset.title}</option>`).join('');
+sel.onchange = () => go(pages[+sel.value]);
+const pgn = document.getElementById('pgn');
+let ticking = false;
+addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { const i = current(); pgn.textContent = `${i+1} / ${pages.length}`; sel.value = i; ticking = false; }); });
+if (location.hash) setTimeout(() => go(document.querySelector(location.hash)), 60);
+
+/* tooltips */
+const tip = document.getElementById('tip');
+document.addEventListener('mouseover', e => {
+  const t = e.target.closest('[data-tip]'); if (!t) return;
+  tip.innerHTML = t.dataset.tip; tip.classList.add('show');
+});
+document.addEventListener('mousemove', e => {
+  if (!tip.classList.contains('show')) return;
+  const x = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 10), y = e.clientY + 18 + tip.offsetHeight > innerHeight ? e.clientY - tip.offsetHeight - 12 : e.clientY + 18;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+});
+document.addEventListener('mouseout', e => { if (e.target.closest('[data-tip]')) tip.classList.remove('show'); });
+addEventListener('beforeprint', () => { deck.style.zoom = 1; });
+addEventListener('afterprint', fit);
+</script>
+</body>
+</html>
