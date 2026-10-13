@@ -63,3 +63,20 @@ typed by hand, so check them if a section grows to a new page.
 4. Export a PDF of each (report and white label): open the built HTML in **Chrome** → **Save as PDF** (or Cmd/Ctrl + P) → Margins **None**,
    **Background graphics** on, Scale **Default**.
 5. Check that every page fits above the footer (long months may need a section split onto a "(continued)" page).
+
+## Blog post (Webflow CMS)
+
+Each edition also goes on savvywealth.com as a draft item in the **Blog Posts** collection.
+
+1. Save the copy doc as Markdown to `copy/YYYY-MM-report.md` and the supporting resources doc as text to
+   `copy/YYYY-MM-supporting.txt` (only the "Blog meta description" is read from it).
+2. Build the CMS fields:
+   ```
+   python3 portfolio-perspectives/blog/build_blog.py portfolio-perspectives/copy/YYYY-MM-report.md portfolio-perspectives/copy/YYYY-MM-supporting.txt portfolio-perspectives/blog/YYYY-MM
+   ```
+   This writes `blog.json` (title, slug, SEO title, meta description, body, sources) and `preview.html`.
+   The body uses the copy word for word, in the same structure and table embeds as previous posts
+   (`blog/embed-styles.json`).
+3. With the Webflow connector, Claude uploads the month's thumbnail (used for both Thumbnail and Main image)
+   and creates the item as a **draft**, copying authors, bios, photos and category from the previous post.
+   A person reviews and publishes it in Webflow.

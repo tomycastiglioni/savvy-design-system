@@ -205,6 +205,7 @@ def build(md, meta_description):
                         body.append(sector_table(val))
                     else:
                         body.append(positioning_table(val))
+            body.append(SPACER)
         elif low.startswith('the savvy macro dashboard'):
             body.append(f'<h2>{name}</h2>')
             for kind, val in bl:
@@ -214,6 +215,7 @@ def build(md, meta_description):
                     body.append(f'<h3>{plain(bold_only(val))}</h3>')
                 elif kind == 'table':
                     body.append(summary_table(val) if plain(val[0][0]).lower() == 'category' else data_table(val))
+            body.append(SPACER)
         elif low.startswith('question of the month'):
             body.append(f'<h2>{name}</h2>')
             for kind, val in bl:
