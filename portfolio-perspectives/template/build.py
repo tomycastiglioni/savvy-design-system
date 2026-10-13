@@ -4,7 +4,8 @@ Usage (from the repo root):
     python3 portfolio-perspectives/template/build.py SOURCE.html OUTPUT.html [--white-label]
 
 --white-label hides every Savvy logo (cover, page headers, back cover) and keeps its space
-empty, so client marketing can drop an advisor's logo in the same spot.
+empty, so client marketing can drop an advisor's logo in the same spot. It also removes the
+"Independence, reinvented." tagline from the back cover.
 
 Inlines the logo, section icons and author headshots from portfolio-perspectives/assets
 as data URIs, so the output is a single file you can open, share or print to PDF.
@@ -34,7 +35,7 @@ for key, (name, mime) in PLACEHOLDERS.items():
         sys.exit(f'Missing placeholder {key} in {src}')
     html = html.replace(key, data_uri(name, mime))
 if white_label:
-    html = html.replace('</style>', '/* white label: Savvy logo removed, space kept for an advisor logo */\n.wordmark{visibility:hidden!important}\n</style>', 1)
+    html = html.replace('</style>', '/* white label: Savvy logo removed, space kept for an advisor logo */\n.wordmark{visibility:hidden!important}\n.back .tg{display:none!important}\n</style>', 1)
     html = html.replace('<title>Portfolio Perspectives — ', '<title>Portfolio Perspectives (white label) — ', 1)
 pathlib.Path(out).write_text(html)
 print(f'Wrote {out}')
