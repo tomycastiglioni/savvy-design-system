@@ -92,7 +92,7 @@ def summary_table(rows):
         bold = ' style="font-weight:700;"' if '**' in (r[2] if len(r) > 2 else '') else ''
         cells += (f'\n      <div class="regime-summary-table__cell cat-strong {tone}">{plain(r[0])}</div>\n'
                   f'      <div class="regime-summary-table__cell {tone}">{plain(r[1])}</div>\n'
-                  f'      <div class="regime-summary-table__cell {tone}"{bold}>{last}</div>\n')
+                  f'      <div class="regime-summary-table__cell {tone} col-last"{bold}>{last}</div>\n')
     return embed('regime-summary', '<div class="regime-summary-wrap">\n  <div class="regime-summary-table">\n'
                  f'    <div class="regime-summary-table__grid">\n{cells}    </div>\n  </div>\n</div>')
 
@@ -112,7 +112,7 @@ def data_table(rows):
         value = re.sub(r'\s*<em>', '<br><em>', clean(r[1]))
         cells += (f'\n      <div class="market-table__cell cat-strong {tone}">{plain(r[0])}</div>\n'
                   f'      <div class="market-table__cell {tone}">{value}</div>\n'
-                  f'      <div class="market-table__cell {tone}">{plain(r[2])}</div>\n')
+                  f'      <div class="market-table__cell {tone} col-last">{plain(r[2])}</div>\n')
     return embed('market-table', '<div class="market-table-wrap">\n  <div class="market-table">\n'
                  f'    <div class="market-table__grid">\n{cells}\n    </div>\n  </div>\n</div>')
 
@@ -140,7 +140,7 @@ def sector_table(rows):
         tone = 'row--alt' if n % 2 == 0 else 'row--white'
         cells += (f'\n      <div class="sector-table__cell sec-strong {tone}">{plain(r[0])}</div>\n'
                   f'      <div class="sector-table__cell {tone}">{plain(r[1])}</div>\n'
-                  f'      <div class="sector-table__cell {tone}">{plain(r[2])}</div>\n')
+                  f'      <div class="sector-table__cell {tone} col-last">{plain(r[2])}</div>\n')
     return embed('sector-table', '<div class="sector-table-wrap">\n  <div class="sector-table">\n'
                  f'    <div class="sector-table__grid">\n{cells}    </div>\n  </div>\n</div>')
 
@@ -152,7 +152,8 @@ def change_table(rows):
     for n, r in enumerate(body):
         tone = 'row--alt' if n % 2 == 0 else 'row--white'
         cells += f'\n      <div class="rebalance-table__cell rbt-strong {tone}">{plain(r[0])}</div>\n'
-        cells += ''.join(f'      <div class="rebalance-table__cell {tone}">{plain(c)}</div>\n' for c in r[1:])
+        cells += ''.join(f'      <div class="rebalance-table__cell {tone}{" col-last" if i == len(r) - 2 else ""}">{plain(c)}</div>\n'
+                         for i, c in enumerate(r[1:]))
     return embed('rebalance-table', '<div class="rebalance-table-wrap">\n  <div class="rebalance-table">\n'
                  f'    <div class="rebalance-table__grid">\n{cells}    </div>\n  </div>\n</div>')
 
