@@ -12,7 +12,8 @@ same styling. Only the copy and data change.
 | `template/build.py` | Inlines the logo, icons and headshots and writes a single self-contained HTML file. |
 | `template/export-pdf.js` | Optional: renders the PDF and page previews with Playwright. |
 | `assets/` | Logo (black/white SVG), section icons (Verdict, Portfolio stance, Core driver), author headshots. |
-| `YYYY-MM-<slug>.html` / `.pdf` | Published editions. |
+| `YYYY-MM-<slug>.html` / `.pdf` | Published editions (Savvy-branded report). |
+| `YYYY-MM-<slug>-white-label.html` / `.pdf` | Same report with no Savvy logo, for client marketing to add an advisor's logo. |
 
 ## Fixed structure (16:9, 1280 × 720 px pages)
 
@@ -55,6 +56,10 @@ typed by hand, so check them if a section grows to a new page.
    ```
    python3 portfolio-perspectives/template/build.py portfolio-perspectives/template/YYYY-MM.html portfolio-perspectives/YYYY-MM-<slug>.html
    ```
-4. Export the PDF: open the built HTML in **Chrome** → **Save as PDF** (or Cmd/Ctrl + P) → Margins **None**,
+   Then build the white-label version (no Savvy logo; the logo spots stay empty for an advisor's logo):
+   ```
+   python3 portfolio-perspectives/template/build.py portfolio-perspectives/template/YYYY-MM.html portfolio-perspectives/YYYY-MM-<slug>-white-label.html --white-label
+   ```
+4. Export a PDF of each (report and white label): open the built HTML in **Chrome** → **Save as PDF** (or Cmd/Ctrl + P) → Margins **None**,
    **Background graphics** on, Scale **Default**.
 5. Check that every page fits above the footer (long months may need a section split onto a "(continued)" page).
