@@ -30,7 +30,6 @@ All exported from the Figma frame:
 
 - Fernando Marques' post card uses a monogram; add `assets/img/av-fernando.jpg` and set it in the `posts` array.
 - The LinkedIn icons on the team polaroids open a LinkedIn people search; swap in the real profile URLs.
-- "/lauragompers" in the CTA is plain text; link it once the handle is confirmed.
 - Nav and footer links point at savvywealth.com root/about/careers. Replace them with the real paths.
 
 ## Deploying to Vercel
