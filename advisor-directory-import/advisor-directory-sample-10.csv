@@ -1,0 +1,1890 @@
+"Name","Slug","Title tag","Meta description","Schema markup","Location","State","First name","Last name","Full name","Logo","LinkedIn URL","Intro description","Advisor photo","Gender","Specialty 1","Specialty 2","Specialty 3","Specialty 4","Certification 1","Certification 2","Certification 3","Certification 4","Team members","Calendly script","Hubspot script","Email","Quote","Press logo 1","Press name 1","Press link 1","Press logo 2","Press name 2","Press link 2","Team image","Team description","Team URL","Service eyebrow 1","Service title 1","Service description 1","Service eyebrow 2","Service title 2","Service description 2","Service eyebrow 3","Service title 3","Service description 3","Service eyebrow 4","Service title 4","Service description 4","Lead magnet title","Lead magnet copy","Lead magnet link","Lead magnet image","Full description","Phone","FAQ answer 1","FAQ answer 2","FAQ answer 3","FAQ answer 4","FAQ answer 5","FAQ answer 6","Disclaimer"
+"Joshua Barone","joshua-barone","Joshua Barone: Financial Advisor in Reno, Nevada | Savvy","Meet Joshua Barone, trusted wealth manager in Reno, Nevada, offering expert guidance for a secure financial future. Let's plan your success together!","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""Joshua Barone: Financial Advisor in Reno, Nevada | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/joshua-barone"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""Joshua Barone"",
+    ""url"": ""https://www.savvywealth.com/advisor/joshua-barone""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/685ab45071b4404c71406d80_aa4fd25992440af8f0cc8bbe0c16cf15_Joshua%20Barone%20SEO.webp""
+  },
+  ""datePublished"": ""2024-01-01"",
+  ""dateModified"": ""2025-09-15""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""Joshua Barone"",
+  ""jobTitle"": ""Financial Advisor"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/685ab45071b4404c71406d80_aa4fd25992440af8f0cc8bbe0c16cf15_Joshua%20Barone%20SEO.webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/joshua-barone"",
+  ""email"": ""joshua.barone@savvyadvisors.com"",
+  ""telephone"": ""+1-775-241-3119"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Reno"",
+    ""addressRegion"": ""NV"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Financial advisor based in Reno, Nevada, with 30+ years of experience including co-founding a trust company (1999) and an investment advisory firm (2006). Focused on macroeconomic, quantitative, and tax strategies to help families pursue lasting financial independence."",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/baronejoshua/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""knowsAbout"": [
+    ""Retirement Planning"",
+    ""Investment Management"",
+    ""Concentrated Stock Management"",
+    ""Tax Optimization"",
+    ""Business Succession"",
+    ""Financial Planning"",
+    ""Public and Private Markets""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Joshua Barone"",
+      ""item"": ""https://www.savvywealth.com/advisor/joshua-barone""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Like many of my clients, I started my journey from humble beginnings. Starting in an entry-level role, I worked my way up to co-founding a trust company in 1999 and then a financial advisory firm in 2006, driven by a growing passion for helping others achieve financial security. Becoming a financial advisor allowed me to guide people in maximizing their hard work—not just by helping them build wealth, but also by managing it wisely to help them achieve their financial goals.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I specialize in financial planning, investment management, and tax strategies, helping clients build and preserve wealth with confidence. I deal with a lot of concentrated positions and employ hedging strategies to mitigate risk. From ambitious young professionals to experienced executives, I am committed to guiding individuals toward achieving financial goals and laying the foundation for future generations.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I have the privilege of working with clients from all walks of life, guiding them through various stages of their financial journey. Over the years, I’ve helped many gain clarity and confidence in navigating the often complex worlds of investing, estate planning, and tax strategies.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Using active macroeconomic quantitative and tax avoidance strategies, I help clients mitigate risk and help families achieve lasting financial independence. I have created a proprietary algorithm that helps my advisor team sift through quantitative investment data and pinpoint the most undervalued investment opportunities in the market. I use this information to decide which investments are right for our clients and make recommendations. These strategies aim to provide investment decisions that have been thoroughly analyzed and dissected to help maximize returns across the entire credit cycle.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I prioritize active management using self-made models that incorporate macroeconomic analysis and quantitative research focusing on free cash flow to provide clients with strategies that are as thoughtful as they are effective.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What is your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""The most rewarding part of my work is seeing the long-term impact on my clients’ lives. Helping them achieve financial independence, support their families, and leave a lasting legacy is incredibly fulfilling. Knowing that I’ve played a role in their potential success drives me every day.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy Wealth’s client-first philosophy and commitment to innovation were major draws for me. The platform’s emphasis on leveraging technology to provide personalized, real-time solutions aligns perfectly with my approach to wealth management. From dynamic portfolio tracking to real-time financial planning tools, I’m able to offer a level of transparency and engagement that clients value.""
+      }
+    }
+  ]
+}
+</script>","Reno, NV","Nevada","Joshua","Barone","Joshua Barone","","https://www.linkedin.com/in/baronejoshua/","<p>I'm Joshua, a financial advisor from Reno, Nevada. As someone who co-founded and built a trust company and investment advisory firm from the ground up, I’m passionate about sharing the lessons I've learned on my financial journey of 30+ years to guide and empower clients to secure their financial futures. Using active macroeconomic quantitative and tax avoidance strategies, I mitigate risk and help families achieve lasting financial independence, acting as guardians for future generations. Trust, consistency, and accessibility are at the heart of all my long-lasting client relationships.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bb5e076d7b0ad5380e1f3_Joshua%20Barone.webp","Male","Investment Management","Estate & trust planning","Tax optimization","","","","","","kyra-luu; tanya-bustillos","https://calendly.com/api/form_builder/forms/384ddfa8-7fd4-487e-89e4-cab31f12e000/submissions","a01fb648-f6ed-402b-9cc4-2376aa9aa95e","joshua.barone@savvyadvisors.com","I prioritize trust, consistency, and accessibility. I've built long-term relationships that stand the test of time by maintaining regular check-ins, offering clear, honest advice, and being available when clients need me most. I believe that strong relationships are built on competence and care, and I strive to embody both in every client interaction.","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/685c1f4439d4f490bc4e9ce8_CBS%20News%20Logo%202020%201.svg","CBS News","https://www.cbsnews.com/news/investing-in-gold-expert-driven-strategies-to-use/","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e42c69aae2fb982bb57bb0_investment-news.svg","InvestmentNews","https://www.investmentnews.com/practice-management/wealth-managers-stick-with-gold-despite-silver-shining-brightly/260863","","","","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","Investment management","End-to-end investment management focused on tailoring portfolios to each client’s specific circumstances and preferences. Our holistic approach will take into consideration all facets of your situation, along with current economic data, to help optimize your portfolio's risk and return.","PRESERVATION OF YOUR LEGACY","Estate & trust planning","We specialize in making the often complex and emotionally charged process of trust and estate planning as seamless as possible, ensuring the security and preservation of a client's legacy for future generations.","STRIVING TO MINIMIZE YOUR TAX BURDEN","Tax optimization","We aim to take the ambiguity out of tax planning by utilizing tax-reducing strategies that encompass your overall tax liability. We do it by putting together a game plan that is specific to your needs.","","","","","","","","<p>Joshua grew up in Reno, Nevada, with a constant curiosity and avid observance of the world around him. This curiosity sparked his understanding of wealth management, always striving to read about and refine his financial models and investment strategies.</p><p>Joshua’s financial journey started from the ground up like many of his clients. After learning the ins and outs of the financial world, Joshua eventually co-founded a trust company in 1999 and a financial advisory firm in 2006.</p><p>Leaning on the experience he gained during his financial journey, Joshua is passionate about guiding others to build, preserve, and transfer their wealth with the same care and intention that helped him succeed. Whether it’s financial planning, investment management, or tax strategies, he provides an evidence-based approach built on macroeconomic analysis and quantitative research to safeguard your legacy for the next generation.</p><p>Outside of work, Joshua is passionate about family. Living in the adventure sports capital, he has many hobbies, including exploring the outdoors. He also has extensive knowledge of the food and wine industry.</p>","(775) 241-3124","<p>Like many of my clients, I started my journey from humble beginnings. Starting in an entry-level role, I worked my way up to co-founding a trust company in 1999 and then a financial advisory firm in 2006, driven by a growing passion for helping others achieve financial security. Becoming a financial advisor allowed me to guide people in maximizing their hard work—not just by helping them build wealth, but also by managing it wisely to help them achieve their financial goals.</p>","<p>I have the privilege of working with clients from all walks of life, guiding them through various stages of their financial journey. Over the years, I’ve helped many gain clarity and confidence in navigating the often complex worlds of investing, estate planning, and tax strategies.</p>","<p>I specialize in financial planning, investment management, and tax strategies, helping clients build and preserve wealth with confidence. I deal with a lot of concentrated positions and employ hedging strategies to mitigate risk. From ambitious young professionals to experienced executives, I am committed to guiding individuals toward achieving financial goals and laying the foundation for future generations.</p>","<p>Using active macroeconomic quantitative and tax avoidance strategies, I help clients mitigate risk and help families achieve lasting financial independence. I have created a proprietary algorithm that helps my advisor team sift through quantitative investment data and pinpoint the most undervalued investment opportunities in the market. I use this information to decide which investments are right for our clients and make recommendations. These strategies aim to provide investment decisions that have been thoroughly analyzed and dissected to help maximize returns across the entire credit cycle.</p>","<p>The most rewarding part of my work is seeing the long-term impact on my clients’ lives. Helping them achieve financial independence, support their families, and leave a lasting legacy is incredibly fulfilling. Knowing that I’ve played a role in their potential success drives me every day.</p>","<p>Savvy Wealth’s client-first philosophy and commitment to innovation were major draws for me. The platform’s emphasis on leveraging technology to provide personalized, real-time solutions aligns perfectly with my approach to wealth management. From dynamic portfolio tracking to real-time financial planning tools, I’m able to offer a level of transparency and engagement that clients value.</p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials provided by advisors. However advisors may have an indirect financial incentive to provide testimonials.</em></p><p><em>Ancora West Advisors, LLC dba Universal Value Advisors (“UVA”) is an investment advisor firm registered with the Securities and Exchange Commission.  Savvy Advisors, Inc. (“Savvy Advisors”) is also an investment advisor firm registered with the SEC.  UVA and Savvy are not affiliated or related.</em></p>"
+"Robert Barone","robert-barone","Robert Barone: Financial Advisor in Reno, Nevada | Savvy","Meet Robert Barone, trusted wealth manager in Reno, Nevada, offering expert guidance for a secure financial future. Let's plan your success together!","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""Robert Barone: Financial Advisor in Reno, Nevada | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/robert-barone"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""Robert Barone"",
+    ""url"": ""https://www.savvywealth.com/advisor/robert-barone""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6859708bfbc73cf1c6ff5f28_RB%20Hero.webp""
+  },
+  ""datePublished"": ""2024-01-01"",
+  ""dateModified"": ""2025-09-15""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""Robert Barone"",
+  ""jobTitle"": ""Ph.D. | Financial Advisor"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6859708bfbc73cf1c6ff5f28_RB%20Hero.webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/robert-barone"",
+  ""email"": ""mailto:bob.barone@savvyadvisors.com"",
+  ""telephone"": ""+1-775-241-3124"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Reno"",
+    ""addressRegion"": ""Nevada"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Dr. Robert Barone, Ph.D., is an economist and wealth advisor with over 50 years of experience. His career includes roles as a professor of finance, CEO of a community bank, contributor to Forbes, and Principal Wealth Manager. He provides clients with disciplined, macroeconomic-driven financial planning and investment management."",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/baronerobert/"",
+    ""https://www.forbes.com/sites/greatspeculations/people/robertbarone/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""knowsAbout"": [
+    ""Macroeconomic Analysis"",
+    ""Investment Management"",
+    ""Financial Planning"",
+    ""Risk Management"",
+    ""Trust and Estate Planning"",
+    ""Tax Strategy""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Robert Barone"",
+      ""item"": ""https://www.savvywealth.com/advisor/robert-barone""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Following my Ph.D. in Economics from Georgetown, I served as a Professor of Finance, CEO of Comstock Bancorp, and Director of the Federal Home Loan Bank of San Francisco. In 2006, I co-founded an investment advisory firm, continuing my passion for guiding clients financially.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I specialize in financial planning and investment management, using macroeconomic analysis and quantitative techniques to shift asset allocation and identify undervalued investment opportunities.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I work with clients from diverse backgrounds, helping them gain clarity and confidence in navigating complex economic trends and financial decisions.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I focus heavily on tax optimization, retirement income planning, and innovative asset placement strategies designed to align with clients’ long-term financial goals.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I’ve developed a proprietary algorithm to analyze quantitative investment data, allowing me to pinpoint undervalued opportunities and recommend investments best suited to clients’ needs.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What is your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My favorite part is putting my clients’ interests first and helping them succeed financially. Seeing their goals realized is the most rewarding part of my work.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy provides advanced technology and a supportive framework that helps advisors act in the best interests of their clients.""
+      }
+    }
+  ]
+}
+</script>","Reno, NV","Nevada","Robert","Barone","Robert Barone","","https://www.linkedin.com/in/baronerobert/","<p>My name is Robert, and I’ve been in the financial space for over 50 years. With a Ph.D. in Economics from Georgetown, my career has spanned co-founding an investment advisory firm, teaching Finance at the University of Nevada, serving as the CEO of a community bank, contributing to Forbes Markets as a writer, and serving as a Principal Wealth Manager. I’m dedicated to providing clients with an extensive understanding of the global markets and macroeconomic trends.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bc17cd483f38d7ad044b3_Robert%20Barone.webp","Male","Financial Planning & Analysis","Investment Management","Risk Management","","","","","","kyra-luu; tanya-bustillos","https://calendly.com/api/form_builder/forms/1575d3f7-a395-4502-8e1a-d08d3d57772d/submissions","72dc1f83-f5d0-49d1-be98-17784395cfb3","bob.barone@savvyadvisors.com","I am passionate about delivering a disciplined, active macroeconomic quantitative approach to help guide clients in reaching their financial goals.","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e44efa9584ed2f1ed91aea_marketwatch-logo%201.svg","MarketWatch","https://www.marketwatch.com/picks/bonds-cds-annuities-10-money-pros-on-exactly-what-safe-haven-investments-to-consider-now-3557392f","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/656dfc8f09b2ef101a95833b_forbes.svg","Forbes","https://www.forbes.com/sites/greatspeculations/people/robertbarone/","","","","TAKE CONTROL OF YOUR FINANCIAL FUTURE","Financial Planning & Analysis","Personalized wealth management helps our clients protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","​​Investment Management","End-to-end investment management focused on tailoring portfolios to each client’s specific circumstances and preferences. Our holistic approach will take into consideration all facets of your situation, along with current economic data, to help optimize your portfolio's risk and return.","MANAGING YOUR RISK","Risk Management","Identify and address potential risks to help protect your assets in an ever-changing market landscape.","","","","","","","","<p>Dr. Robert Barone, Ph.D. is an economist whose storied career spans numerous decades and positions within the world of finance. Since gaining his Ph.D. in Economics from Georgetown, he has been a Professor of Finance (University of Nevada), a community bank CEO (Comstock Bancorp), and a Director of the Federal Home Loan Bank of San Francisco, where he served as its Chair in 2004. He lives and breathes the world of finance, continuing to provide clients and avid Forbes readers with his latest market insights.</p>","(775) 241-3124","<p>Following my Ph.D. in Economics from Georgetown, I’ve traversed the financial landscape in different areas. I’ve been a Professor of Finance (University of Nevada), a community bank CEO (Comstock Bancorp), a Director of the Federal Home Loan Bank of San Francisco, where I served as its Chair in 2004, and more. In 2006, I founded an investment advisory firm alongside my son, Joshua Barone, which continued my passion for providing financial guidance.</p>","<p>I have the privilege of working with clients from all walks of life, guiding them through various stages of their financial journey. Over the years, I’ve helped many gain clarity and confidence in navigating the complex world of economic analysis and market trends.</p>","<p>I specialize in financial planning and investment management, informed by my deep understanding of macroeconomic trends. I utilize macroeconomic analysis to shift asset allocation between asset classes. I use quantitative techniques to help find the most reasonable value in those sectors.</p>","<p>A significant portion of my client assistance revolves around tax optimization. This encompasses a wide range, from designing retirement income plans and optimizing asset placement to translating their objectives into innovative solutions that best serve their financial interests in the end.</p>","<p>I firmly believe that my clients' interests are always paramount—even before our own. Meeting their interests is my favorite part of working with them.</p>","<p>Savvy provides cutting-edge technology and allows advisors to act in the best interests of their clients.</p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials provided by advisors. However advisors may have an indirect financial incentive to provide testimonials.</em></p><p><em>Ancora West Advisors, LLC dba Universal Value Advisors (“UVA”) is an investment advisor firm registered with the Securities and Exchange Commission.  Savvy Advisors, Inc. (“Savvy Advisors”) is also an investment advisor firm registered with the SEC.  UVA and Savvy are not affiliated or related.</em></p>"
+"Josh Bergman","josh-bergman","Josh Bergman: Financial Advisor in Long Island, NY | Savvy","Meet Josh Bergman, a trusted wealth manager in Long Island, NY, offering expert guidance for a bright financial future. Let's manage your future together.","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""Josh Bergman: Financial Advisor in Long Island, NY | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/josh-bergman"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""Josh Bergman, JD, CFA®"",
+    ""url"": ""https://www.savvywealth.com/advisor/josh-bergman""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/682dfadb381192b6733d41d5_Josh%20Bergman%20SEO%20(1).webp""
+  },
+  ""datePublished"": ""2024-01-01"",
+  ""dateModified"": ""2025-09-15""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""Josh Bergman, JD, CFA®"",
+  ""jobTitle"": ""Wealth Advisor"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/682dfadb381192b6733d41d5_Josh%20Bergman%20SEO%20(1).webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/josh-bergman"",
+  ""email"": ""josh.bergman@savvyadvisors.com"",
+  ""telephone"": ""+1-917-410-4496"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Long Island"",
+    ""addressRegion"": ""NY"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Financial advisor specializing in portfolio management, tax and succession planning, behavioral economics, managing concentrated positions, and sourcing alternative investments. Former Trusts & Estates attorney with experience advising UHNW families and institutions."",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/josh-bergman-jd-cfa-32615920/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""knowsAbout"": [
+    ""Portfolio Management"",
+    ""Tax Optimization"",
+    ""Succession Planning"",
+    ""Behavioral Economics"",
+    ""Concentrated Stock Management"",
+    ""Alternative Investments"",
+    ""Trust and Estate Planning"",
+    ""Investment Management"",
+    ""Financial Planning""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Josh Bergman"",
+      ""item"": ""https://www.savvywealth.com/advisor/josh-bergman""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Like many of my clients, I started my journey from humble beginnings. Starting in an entry-level role, I worked my way up to co-founding a trust company in 1999 and then a financial advisory firm in 2006, driven by a growing passion for helping others achieve financial security. Becoming a financial advisor allowed me to guide people in maximizing their hard work—not just by helping them build wealth, but also by managing it wisely to help them achieve their financial goals.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I specialize in financial planning, investment management, and tax strategies, helping clients build and preserve wealth with confidence. I deal with a lot of concentrated positions and employ hedging strategies to mitigate risk. From ambitious young professionals to experienced executives, I am committed to guiding individuals toward achieving financial goals and laying the foundation for future generations.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I have the privilege of working with clients from all walks of life, guiding them through various stages of their financial journey. Over the years, I’ve helped many gain clarity and confidence in navigating the often complex worlds of investing, estate planning, and tax strategies.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Using active macroeconomic quantitative and tax avoidance strategies, I help clients mitigate risk and help families achieve lasting financial independence. I have created a proprietary algorithm that helps my advisor team sift through quantitative investment data and pinpoint the most undervalued investment opportunities in the market. I use this information to decide which investments are right for our clients and make recommendations. These strategies aim to provide investment decisions that have been thoroughly analyzed and dissected to help maximize returns across the entire credit cycle.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I prioritize active management using self-made models that incorporate macroeconomic analysis and quantitative research focusing on free cash flow to provide clients with strategies that are as thoughtful as they are effective.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What is your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""The most rewarding part of my work is seeing the long-term impact on my clients’ lives. Helping them achieve financial independence, support their families, and leave a lasting legacy is incredibly fulfilling. Knowing that I’ve played a role in their potential success drives me every day.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy Wealth’s client-first philosophy and commitment to innovation were major draws for me. The platform’s emphasis on leveraging technology to provide personalized, real-time solutions aligns perfectly with my approach to wealth management. From dynamic portfolio tracking to real-time financial planning tools, I’m able to offer a level of transparency and engagement that clients value.""
+      }
+    }
+  ]
+}
+</script>","Long Island, NY","New York","Josh","Bergman","Josh Bergman","","https://www.linkedin.com/in/josh-bergman-jd-cfa-32615920/","<p>Hi! I’m Josh Bergman, JD, CFA®, a financial advisor specializing in portfolio management, tax and succession planning, behavioral economics, managing concentrated positions, and sourcing alternative investments. Earlier in my career, I was a Trusts and Estates attorney, which is when I realized I am passionate about helping families navigate some of life’s most personal and complex decisions. As my career progressed, I was able to expand my expertise to financial planning and asset management, where I was part of a team that oversaw $4.5 billion of assets under management before launching my firm, JNB Wealth. Today, my goal is to work with both ultra-high-net-worth (“UHNW”) families as well as “everyday investors” who could use some help retiring a few years earlier, buying a little more house, or sending their child to a better school.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bb438ca469997a73dfe2b_Josh%20Bergman.webp","Male","Tax Optimization","Estate & Trust Planning","Alternatives Investing","​​Investment Management","JD","CFA®","","","kyra-luu","https://calendly.com/api/form_builder/forms/7036f306-7f92-47fc-b7b2-d1101d97e10c/submissions","ca053566-d510-4bdb-abcd-45b46be80337","josh.bergman@savvyadvisors.com","I want my clients to feel safer - to feel that they can comfortably offload their financial and life stressors to me. This is a responsibility I happily embrace.","","","","","","","","","","STRIVING TO MINIMIZE YOUR TAX BURDEN","Tax Optimization","We aim to take the ambiguity out of tax planning by putting together a game plan that is specific to your needs.","PRESERVATION OF YOUR LEGACY","Estate & Trust Planning","We specialize in making the often complex and emotionally charged process of trust and estate planning as seamless as possible, helping to ensure the security and preservation of your legacy.","DIVERSIFICATION AND INNOVATION IN PORTFOLIOS","Alternatives Investing","We actively research alternative investment opportunities and monitor your portfolio holdings, bringing together actionable insights and forward-thinking risk assessments.","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","​​Investment Management","End-to-end investment management focused on tailoring portfolios to your specific circumstances and preferences. Our holistic approach will take into consideration all facets of your situation along with current economic data to calibrate your portfolio's risk and return.","Reducing Capital Gains for Married Couples","Discover the little-known Community Property Trust strategy that gives married couples in any state a full step-up in basis — potentially saving on capital gains tax when one spouse passes.","","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/693af52a21cf3e278d3031c6_Community%20Trust%20Webflow%20Image%20(1).webp","<p>Josh Bergman, JD, CFA®, is a Wealth Advisor based in Long Island, NY.</p><p>Before becoming a Wealth Advisor, Josh began his career as an attorney in the Corporate department of the law firm Simpson, Thacher &amp; Bartlett LLP. He then transitioned into advising domestic and international UHNW individuals and families on income, gift and estate tax planning, business succession planning, and charitable giving as a Trusts &amp; Estates attorney.</p><p>Prior to joining Savvy, Josh served as Vice President in the Wealth Management group of Allen &amp; Company Investment Advisors, where his team of advisors managed approximately $4.5 billion of assets under management on behalf of UHNW individuals and institutional investors.</p><p>His overall career experiences make him remarkably unique. As a JD, CFA®, and someone with experience managing several billion dollars on behalf of individuals and institutions, he provides clients with broad-ranging advice that typically would require bringing in specialists from multiple disciplines.</p>","(917) 410-4496","<p>Earlier in my career, I worked as a Trusts &amp; Estates (T&amp;E) attorney, advising ultra-high-net-worth (UHNW) individuals. In this role, I had the privilege of discussing some of the most important and sensitive topics with individuals and families, including their family dynamics, legacy, charitable intentions, and, often, their succession plans for family businesses they had worked so hard to build.</p><p>While serving as legal counsel to my clients, I discovered my passion for working with people and helping them navigate and simplify some of life’s most complex and stressful moments. This led me to an introduction to Allen &amp; Company’s Wealth Management division, where the focus was on providing financial advice and tax guidance to UHNW families and institutional investors. Initially, Allen &amp; Company sought to bring me in to focus exclusively on T&amp;E planning for their clients, but I expressed an interest in offering both T&amp;E advice and financial guidance. They supported this ambition, in part because of my background in finance and accounting, which I studied during my undergraduate years, as well as my experience working at Wharton while attending the University of Pennsylvania Law School.</p><p>At Allen &amp; Company, I earned the Chartered Financial Analyst® designation and worked closely with families and institutions on strategic and tactical asset allocation opportunities, tax guidance, and succession planning. Over time, I served on a team that collectively advised on approximately $4.5 billion in assets under management before ultimately launching my own firm, JNB Wealth.</p>","<p>I still work with UHNW families, though I am also expanding my client base to “everyday investors” who could use some help on their endeavors to retire sooner, or seek to buy a little more house, or send their children to a better school. One of the (many) reasons that I chose Savvy is that the platform provides me with the technology and operational efficiencies to work with a broader range of clients.</p>","<p>My expertise spans a few key areas that include tax and succession planning, concentrated position management, behavioral coaching, evidence-based portfolio management, sourcing alternative investments, and family communication.</p><p><strong>Tax and Legacy Planning</strong> - I was a practicing attorney and spent most of my legal career working with families to help them achieve their business and succession planning objectives in a structure that maximized their wealth, net of income, gift, and estate taxes.</p><p><strong>Concentrated Position Management </strong>- I have significant experience guiding clients with respect to concentrated equity positions, including analyzing risk, income tax and transfer tax considerations.  I’ve helped CEOs and board members of public companies craft 10b5-1 selling plans to systematically reduce their exposure to concentrated holdings.</p><p><strong>Behavioral Coaching </strong>- In my decade-plus of working with clients, I have learned that the best plan is one that the client can stick with through good times and bad.</p><p><strong>Research-Based Portfolio Management </strong>- I believe in the importance of using data to set the baseline for decision making and for projecting ranges of outcomes. This means that I lean on academic and practitioner research to inform my views and recommendations rather than the latest short-term narrative that financial media is focusing on.</p><p><strong>Alternative Investments </strong>- Prior to joining Savvy, I evaluated private investment opportunities on behalf of clients, with a focus on expected returns net of taxes and fees, while ensuring that my clients also preserved sufficient liquidity.</p><p><strong>Family Communication </strong>- Finally, I believe in the importance of helping families talk effectively about their wealth so that core values can be passed to the next generation. Defining and funding a good life can mean many different things to different people, and clarifying roles and expectations can be extremely valuable when it comes to maintaining family harmony.</p>","<p>The strategies are tailored to client goals, time horizon, and ability and willingness to take risks. However, there are a few foundational principles across my strategies, including a focus on tax efficiency, maintaining a long-term orientation, an emphasis on quality, constant re-underwriting of investment theses, and operating with the conviction to act opportunistically during periods of market dislocation.</p><p><strong>Tax Efficiency: </strong>Incorporating tax planning into portfolio management includes managing “asset location.” In other words, holding high-yielding assets in tax-advantaged accounts and lower-yielding assets in taxable accounts. It also means not day-trading portfolios and therefore not generating short-term capital gains or unnecessary transaction costs where possible.</p><p><strong>“Long-Termism”:</strong> I am a steadfast believer in the extraordinary compounding of capital that can occur after long holding periods.  In my opinion, timing the market is incredibly dangerous.  Investors need to be right twice - selling at the top and then having the courage to buy back in after a steep decline, which is often at a very scary moment in time.  It is a cliche, but for most investors, time in the market beats timing the market.</p><p><strong>Quality:</strong> Generally, the best businesses in the world are those that:</p><p>provide a product or service that people regularly need and where there are few good substitutes</p><p>do so better, cheaper, or faster than others</p><p>do so repeatedly, and</p><p>do it without sinking a mountain of capital and fixed costs into the ground (i.e., if they are “capital-light” businesses).</p><p>These businesses tend to earn customer loyalty, utility-like usage, and pricing power that allows for sustained earnings growth and reinvestment back into the business. When I recommend external fund managers for clients, I ensure that they adhere to a similar philosophy on quality investing over long periods.</p><p><strong>Continuous Evaluation: </strong>Having a long-term outlook does not mean “set it and forget it”. In fact, holding investments for long periods of time should be the opposite of set it and forget it. I believe that long-term holds require a constant sense of paranoia that the investment thesis is wrong: this healthy paranoia forces difficult questions and encourages more thought and circumspection throughout the life of an investment.</p><p><strong>Strategic and Tactical Opportunism: </strong>Crises and dislocations are natural phenomena in the markets, almost purge-like episodes following periods of relative calm. Finding clarity and conviction in these moments is difficult—plenty of capital managers have been found hiding in their caves during crises—but if an investor can successfully identify and capitalize on a dislocation, they may be rewarded over long periods of time. I plan to approach each and every day—and every crisis—with a prepared mind, and I believe my clients will be well-suited to react to these opportunities with conviction as a result.</p>","<p>My favorite part about working with clients is listening and learning about each individual’s stories, challenges, and dreams. It is a privilege to sit in the seat of the “trusted advisor,” which in the most productive relationships extends far beyond investment management.</p><p>I derive great personal satisfaction in seeing my clients achieve their goals, whether it is buying a home, fully funding their retirement, paying for a dream vacation, or enabling their child to go to the school that seemed out of reach.</p><p>Ultimately, I want my clients to feel safer and feel that they can offload their financial and life stressors to me, which is a responsibility I embrace.</p>","<p>When I was deciding where to operate my business, I did due diligence on dozens of alternatives, ranging from the bulge bracket banks to independent registered investment advisors to building my own tech stack.</p><p>After countless hours of research, in-person meetings, and tech demonstrations, it became clear to me that Savvy represents the leading edge of advisor technology. This enables advisors like myself to spend more time doing what we do best - research, portfolio management, and meeting with clients, and to spend less time on repetitive administrative tasks (which are critically important to get right but which can also be incredibly inefficient and time-consuming in legacy tech systems).</p><p>In my opinion, the most important thing to me is that Savvy’s technology platform positions me to provide  a better experience for my clients.</p>","<p><em>Josh Bergman is an investment advisor representative registered with Savvy Advisors, Inc. (“Savvy”).  All investment advisory services offered by Josh Bergman are offered through Savvy. JNB Wealth is an independent marketing brand name used by Josh Bergman for advertising and marketing purposes only.  JNB Wealth and Savvy are not related or affiliated.</em></p><p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p>"
+"Ryan Bond","ryan-bond","Ryan Bond: Financial Advisor in West Chester, Pennsylvania | Savvy","Meet Ryan Bond, a wealth manager in West Chester, PA, offering professional guidance to help you secure a financial future. Let's plan your success together!","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://www.savvywealth.com/advisor/ryan-bond/#webpage"",
+  ""name"": ""Ryan Bond: Financial Advisor in West Chester, Pennsylvania | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/ryan-bond"",
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""@id"": ""https://www.savvywealth.com/#website""
+  },
+  ""description"": ""Meet Ryan Bond, a wealth manager in West Chester, PA, offering professional guidance to help you secure a financial future. Let's plan your success together!"",
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/65e8d05c850d0c09dcc5de87_eac126329b267096553bb9b17836836a_Ryan%20Hero.webp""
+  },
+  ""datePublished"": ""2025-12-02T21:36:57.314000+00:00"",
+  ""dateModified"": ""2025-12-02T21:36:57.314000+00:00""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [
+        ""English""
+      ]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""@id"": ""https://www.savvywealth.com/advisor/ryan-bond/#person"",
+  ""name"": ""Ryan Bond"",
+  ""url"": ""https://www.savvywealth.com/advisor/ryan-bond"",
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""@id"": ""https://www.savvywealth.com/#organization""
+  },
+  ""jobTitle"": ""Senior Financial Advisor, CFP®"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/65e8d05c850d0c09dcc5de87_eac126329b267096553bb9b17836836a_Ryan%20Hero.webp"",
+  ""telephone"": ""720-542-6769"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""West Chester"",
+    ""addressRegion"": ""PA"",
+    ""addressCountry"": ""US""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/ryan-bond-cfp%C2%AE-863a23142/""
+  ],
+  ""knowsAbout"": [
+    ""Alternatives Investing"",
+    ""Estate Planning"",
+    ""Tax Optimization"",
+    ""Retirement Planning"",
+    ""Financial Planning & Analysis"",
+    ""RSU, ESPP, and ISO Liquidation"",
+    ""Direct Indexing""
+  ],
+  ""honorificSuffix"": ""CFP"",
+  ""description"": ""Senior financial advisor and CERTIFIED FINANCIAL PLANNER™ at Savvy with over eight years of experience, having worked with Morgan Stanley, Pennington Partners, Vanguard, and Personal Capital. Specializes in alternatives investing, estate planning, and complex equity compensation packages for tech executives.""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Advisors"",
+      ""item"": ""https://www.savvywealth.com/advisors""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 3,
+      ""name"": ""Ryan Bond"",
+      ""item"": ""https://www.savvywealth.com/advisor/ryan-bond""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""VideoObject"",
+  ""name"": ""Ryan Bond, Savvy Advisors"",
+  ""thumbnailUrl"": ""https://i.ytimg.com/vi/Dp5dDrX7e7k/hqdefault.jpg"",
+  ""embedUrl"": ""https://www.youtube.com/embed/Dp5dDrX7e7k"",
+  ""description"": ""Senior financial advisor and CERTIFIED FINANCIAL PLANNER™ at Savvy with over eight years of experience, having worked with Morgan Stanley, Pennington Partners, Vanguard, and Personal Capital. Specializes in alternatives investing, estate planning, and complex equity compensation packages for tech executives.""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I began my career eight years ago as an intern at Morgan Stanley during college. I then moved to Pennington Partners, where I managed separately managed account (SMA) portfolios overseeing several hundred million dollars. At Vanguard, I earned my CFP® designation and worked as an advisor for three years. I spent time with Personal Capital before joining Savvy, where I've rapidly grown my client portfolio thanks to the support of an exceptional team.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I primarily work with tech industry executives — CEOs, CTOs, and CIOs — typically in their 50s or early 60s and approaching retirement, with an average AUM ranging from one to three million dollars. My client base spans multiple states including New Jersey, New York, Pennsylvania, Florida, Texas, and California. I maintain four to six conversations annually with clients, focused on holistic financial planning and legacy preservation.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach you take?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""As a younger advisor with eight years of experience, I emphasize long-term continuity. Many advisors in the industry are in their 50s or early 60s, and significant turnover is expected over the next decade. Working with me offers the advantage of continuity — not just for you, but potentially for the next generation as they inherit and manage funds.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I specialize in alternatives investing — including structured notes, market-linked CDs, and low-cost index fund strategies. I also focus heavily on estate planning, helping clients review documents and develop comprehensive estate plans. A significant portion of my work involves complex equity compensation packages such as RSUs, ESPPs, and ISOs, with a focus on option liquidation and tax minimization.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How do you advise clients on trust, estate, and legacy planning?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My approach varies by life stage. For clients in their 20s and 30s, I emphasize aggressive growth while avoiding the trap of being retirement-rich but struggling day-to-day. In their 40s, strategy shifts toward balance — ensuring retirement assets are robust while maintaining quality of life. For clients in their 50s and 60s, I adopt a more conservative approach focused on preserving, growing, and generating income using a diversified mix of mutual funds, REITs, and dividend-generating blue-chip stocks.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What's your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I value the diverse range of conversations that go beyond just finances. I'm committed to fostering genuine friendships — I want clients to consider me someone they can grab a drink or dinner with. Meeting nearby clients in person frequently helps us fine-tune strategies and builds the kind of personal engagement that wasn't as feasible in my previous roles.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy's focus on developing technology for advisors sets it apart — many companies prioritize client-facing solutions, but Savvy builds tools and a platform that genuinely enhances advisor efficiency. The support team has been invaluable in getting me up to speed quickly, and tech support responds within minutes to any issues. It reflects a collective investment in the platform's success.""
+      }
+    }
+  ]
+}
+</script>","West Chester, PA","Pennsylvania","Ryan","Bond","Ryan Bond","","https://www.linkedin.com/in/ryan-bond-cfp%C2%AE-863a23142/","<p>Hi there 👋🏼 I'm Ryan, a senior financial advisor, and CERTIFIED FINANCIAL PLANNER™ at Savvy. With over eight years of experience in the field, I have worked with renowned firms like Morgan Stanley, Pennington Partners, Vanguard, and Personal Capital. Now, I am thrilled to be part of the dynamic Savvy team, where I have rapidly expanded my client portfolio. Grateful for the support of my colleagues, we work to ensure a seamless transition and onboarding processes for my clients.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bc1b44c65d1584902c147_Ryan%20Bond.webp","Male","Alternatives Investing","Financial Planning & Analysis","Estate & Trust Planning","","CFP®","","","","jennifer-battles","https://calendly.com/api/form_builder/forms/a2b3fea5-1bf6-4a1b-9993-9d91b1deb1a9/submissions","fe4393d7-92dc-4d4f-bf24-29dc0e93296c","ryan@savvyadvisors.com","I'm committed to fostering genuine friendships with my clients, moving beyond a transactional or rigid professional relationship. I want my clients to consider me a friend they can grab a drink or dinner with.","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e42c69aae2fb982bb57bb0_investment-news.svg","InvestmentNews","https://www.investmentnews.com/industry-news/advisors-split-on-whether-to-buy-bitcoin-as-crypto-breaks-out/255832","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e43683970a48c103cdc75a_etf.svg","etf.com","https://www.etf.com/sections/news/infrastructure-etfs-outperform-after-key-bridge-collapse","","","","PRESERVATION OF YOUR LEGACY","Estate & Trust Planning","We specialize in making the often complex and emotionally charged process of trust and estate planning as seamless as possible to help ensure the security and preservation of a client's legacy for future generations.","Take control of your financial future","Financial Planning & Analysis","Personalized wealth management helps our clients grow and protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","DIVERSIFICATION AND INNOVATION IN PORTFOLIOS","Alternatives Investing","We actively research alternative investment opportunities and monitor your portfolio investment holdings, bringing together actionable insights and forward-thinking risk assessments.","","","","","","","","<p>Ryan is a senior financial advisor and a CERTIFIED FINANCIAL PLANNER™ at Savvy. His journey into the financial advisory field began about eight years ago. Ryan initially launched his career as an intern at Morgan Stanley during my college years. Subsequently, he transitioned to a position at Pennington Partners, a smaller firm, where he managed SMA (Separately Managed Accounts) portfolios. He oversaw several hundred million dollars on their platform for a couple of years.</p><p>Ryan’s commitment to advancing his expertise led him to Vanguard, where he achieved the CERTIFIED FINANCIAL PLANNER™ (CFP®) designation. Over the next three years, Ryan worked as an advisor on their platform. More recently, he spent a couple of years with Personal Capital, which was later acquired by Empower. In the past three years, Ryan has had the privilege of serving as an advisor with both firms.</p><p>Now, he is thrilled to be a part of the Savvy team.</p>","720.542.6769","<p>I am a senior financial advisor and a <a href=""https://www.investopedia.com/terms/c/cfp.asp"">CERTIFIED FINANCIAL PLANNER™ </a>at Savvy. My journey into the financial advisory field began about eight years ago. I initially launched my career as an intern at Morgan Stanley during my college years. Subsequently, I transitioned to a position at Pennington Partners, a smaller firm, where I managed SMA (Separately Managed Accounts) portfolios. I oversaw several hundred million dollars on their platform for a couple of years.</p><p>My commitment to advancing my expertise led me to Vanguard, where I achieved the CERTIFIED FINANCIAL PLANNER™ (CFP®) designation. Over the next three years, I worked as an advisor on their platform. More recently, I spent a couple of years with Personal Capital, which was later acquired by Empower. In the past three years, I have had the privilege of serving as an advisor with both firms.</p><p>Now, I am excited to be part of the Savvy team. In just a few months, I have been able to rapidly grow my client portfolio, thanks to a supportive team that has assisted me with all operational aspects, ensuring a smooth transition and onboarding process.</p>","<p>I primarily work with clients from the tech industry, often holding executive roles like CEOs, CTOs, and CIOs in various tech companies nationwide. My client base is diverse and spans multiple states, including New Jersey, New York, Pennsylvania, Florida, Texas, and California. On average, my clients are in their 50s or early 60s, approaching retirement, with an average assets under management (AUM) ranging from one to three million dollars. I maintain a high-touch approach with my clients, preferring to engage in four to six conversations annually, focusing on fostering a collaborative partnership.</p><p>My expertise lies in holistic financial planning, working to help that clients' financial goals are met and that family legacies are well-preserved for future generations.</p>","<p>I have a range of areas of expertise in my financial advisory practice. While I do engage in <a href=""https://www.savvywealth.com/services/alternative-investment"">alternatives investing</a>, including structured notes and products, and some market-linked CDs, I primarily focus on keeping investment costs low and utilize index funds to optimize returns for my clients.</p><p>In addition, I specialize in <a href=""https://www.savvywealth.com/services/trust-and-estate-planning-services-savvy"">estate planning</a>, offering extensive experience in reviewing documents and assisting clients in developing comprehensive estate plans to ensure the security and preservation of their legacies for future generations. Another area of specialization involves working with clients who have complex options packages, such as RSUs, ESPPs, and ISOs. Together with these clients, I navigate the intricate process of option liquidation, with a focus on tax minimization, while achieving a well-diversified portfolio that avoids overexposure to any single stock within the market.</p>","<p>As a CERTIFIED FINANCIAL PLANNER™, I hold one of the highest designations in the financial planning field. Additionally, I am a relatively young professional, with eight years of industry experience. While some may have concerns about working with a younger advisor, it's important to note that many advisors in the industry are in their 50s or early 60s, with the average age of an advisor being around 58 years old.</p><p>Looking ahead, there is expected to be a significant turnover in the advisory industry over the next seven to ten years as many advisors retire. I understand the apprehension clients may have about their advisors retiring at the same time they are planning their retirement. Working with a younger advisor like me offers the advantage of long-term continuity. I am committed to guiding you through your retirement journey and potentially assisting the next generation, including your children, as they inherit and manage funds. This continuity and long-term commitment are key benefits of collaborating with a younger advisor who has a promising career ahead.</p><p>Certified Financial Planner Board of Standards Center for Financial Planning, Inc. owns and licenses the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™, and CFP® (with plaque design) in the United States to Certified Financial Planner Board of Standards, Inc., which authorizes individuals who successfully complete the organization’s initial and ongoing certification requirements to use the certification marks.</p>","<p>My favorite aspect of working with clients is the diverse range of conversations we have, from discussing their upcoming vacations to deepening our connections. I'm committed to fostering genuine friendships with my clients, moving beyond a transactional or rigid professional relationship. I want my clients to consider me a friend they can grab a drink or dinner with. Fortunately, many of my clients live nearby, allowing me to meet with them in person frequently. This face-to-face interaction helps strengthen our relationships, fine-tune our strategies, and provides a level of personal engagement that wasn't as feasible in my previous roles. Savvy has equipped me with the tools and framework to offer this personalized, in-person touch, enhancing the client experience.</p>","<p>Working with Savvy has been a great experience. The team's dedication and hard work are truly remarkable. They are fully committed to ensuring the best possible experience for both our advisors and clients. What sets Savvy apart is their focus on developing technology for advisors, which is a refreshing approach. While many companies prioritize client-facing solutions, Savvy recognizes the importance of creating tools and a platform that enhances advisors' efficiency, allowing us to dedicate more time to our clients.</p><p>I have the privilege of working with a dedicated support staff. My direct assistant, Shelby assists me with various tasks, including transfers, money movement, and account setup. Additionally, my hiring manager, Alice, has played a crucial role in helping me organize my marketing efforts, outreach, and prospecting for new clients. Their support has been invaluable in getting me up to speed quickly.</p><p>The team's relentless work ethic is striking. They embody a New York mentality, consistently putting in long hours and effort to ensure success. It's a testament to their commitment that even late in the evening, when I've encountered issues or found bugs in the platform, the tech team responds within minutes, actively working to address these concerns. Everyone at Savvy is deeply invested in the platform's success, and I'm confident that their collective efforts will help us achieve our goals.</p>","<p><em>Certified Financial Planner Board of Standards Center for Financial Planning, Inc. owns and licenses the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™, and CFP® (with plaque design) in the United States to Certified Financial Planner Board of Standards, Inc., which authorizes individuals who successfully complete the organization’s initial and ongoing certification requirements to use the certification marks.</em></p><p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p>"
+"Patrick Conroy","patrick-conroy","Patrick Conroy: Financial Advisor in New York, NY | Savvy","Meet Patrick Conroy, a trusted wealth manager in New York, NY, offering expert guidance for a bright financial future. Let's manage your future together.","<!-- WebSite -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<!-- WebPage -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://www.savvywealth.com/advisor/patrick-conroy/#webpage"",
+  ""name"": ""Patrick Conroy: Wealth Manager in New York, NY | Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/advisor/patrick-conroy"",
+  ""description"": ""Wealth advisor Patrick Conroy in New York offers personalized investment management, retirement planning, and financial strategies tailored to your goals."",
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""@id"": ""https://www.savvywealth.com/#website""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/69c40703b657c65755a848cc_Patrick%20C%20SEO.webp""
+  },
+  ""datePublished"": ""2026-03-25T17:30:33.511Z"",
+  ""dateModified"": ""2026-03-25T17:30:33.511Z"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""@id"": ""https://www.savvywealth.com/advisor/patrick-conroy/#person"",
+    ""name"": ""Patrick Conroy"",
+    ""url"": ""https://www.savvywealth.com/advisor/patrick-conroy""
+  }
+}
+</script>
+
+<!-- Organization -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<!-- Person -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""@id"": ""https://www.savvywealth.com/advisor/patrick-conroy/#person"",
+  ""name"": ""Patrick Conroy"",
+  ""honorificSuffix"": """",
+  ""jobTitle"": ""Wealth Manager"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/69c406e1143c8e14c16f84e6_Patrick%20C%20Hero%20(1)-p-500.webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/patrick-conroy"",
+  ""email"": ""mailto:patrick.conroy@savvyadvisors.com"",
+  ""telephone"": ""516-268-6076"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""New York"",
+    ""addressRegion"": ""NY"",
+    ""addressCountry"": ""US""
+  },
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""@id"": ""https://www.savvywealth.com/#organization""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/patrickdconroy/""
+  ],
+  ""knowsAbout"": [
+    ""Retirement Planning"",
+    ""Investment Management"",
+    ""Risk Management"",
+    ""Financial Planning & Analysis""
+  ],
+  ""description"": ""Patrick brings decades of perspective from across financial markets, trading, and wealth management. He began his career in financial services after graduating from Columbia University with a degree in Economics. Over the years, he held senior trading and leadership roles at firms including Merrill Lynch, Prudential, Credit Suisse, and Donaldson Lufkin Jenrette.\n\nAfter spending much of his career on the institutional side, Patrick transitioned into advising because he wanted to work more directly with individuals and families, helping them connect day-to-day decisions with long-term goals. He supports clients with investment and risk management, retirement planning, and financial planning, with a focus on building portfolios thoughtfully while keeping an eye on risk and tax considerations.\n\nOutside of work, Patrick is a lifelong learner with a deep interest in markets. He is married to his high school sweetheart, Karen, and they have four daughters, plus a grandchild, Finnegan. He enjoys skiing, golf, and keeping up with sports.""
+}
+</script>
+
+<!-- BreadcrumbList -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.savvywealth.com"" },
+    { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Patrick Conroy"", ""item"": ""https://www.savvywealth.com/advisor/patrick-conroy"" }
+  ]
+}
+</script>
+
+<!-- FAQPage -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I’ve been in financial services since graduating with a degree in Economics from Columbia University. After two decades in institutional trading and management, I transitioned to the advisory side to help clients with investment and risk management, along with financial and retirement planning.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I work with business owners, executives, high net worth individuals, and mass affluent families.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I focus on asking the right questions and drilling down to the “why,” so we can identify goals that are personally meaningful and build a plan that supports them.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy removes many of the frictions advisors face, which allows for more client-facing time.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My work centers on investment management, risk assessment and management, and financial and retirement planning.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I help clients build and maintain investment strategies with a focus on risk management and tax considerations, while keeping the plan aligned with their broader financial and retirement goals.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What is your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Helping clients live the best life possible with the assets they have available to them.""
+      }
+    }
+  ]
+}
+</script>","New York, NY","New York","Patrick","Conroy","Patrick Conroy","","https://www.linkedin.com/in/patrickdconroy","<p>Hi 👋🏼 I’m Patrick. I’m a Wealth Advisor based in New York, with about 20 years of experience in wealth management and a career rooted in financial markets, trading, and risk. I work with clients who want clear, steady guidance across investing, retirement planning, and the decisions that shape their financial lives.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bc16076d7b0ad53890372_Patrick%20Conroy.webp","Male","Retirement Planning","​​Investment Management","Risk Management","Financial Planning & Analysis","","","","","lyndsy-skiest","https://calendly.com/api/form_builder/forms/b0bc48b7-8841-4e5d-9ba2-8b8c2824afe2/submissions","cea281e8-600c-41ee-a4de-4a387d6ed964","patrick.conroy@savvyadvisors.com","I start by asking thoughtful questions and digging into the root of what matters most, so we can build a clear plan around goals that feel personally meaningful.","","","","","","","","","","DREAMS INTO ACTIONABLE PLANS","Retirement Planning","Transition into your golden years with confidence. Our goal is to see to it that you’re prepared for the unpredictable. Let us turn your retirement dreams into actionable plans.","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","​​Investment Management","End-to-end investment management focused on tailoring portfolios to each client’s specific circumstances and preferences. Our holistic approach will take into consideration all facets of your situation along with current economic data to optimize your portfolio's risk and return.","MANAGING YOUR RISK","Risk Management","Identify and address potential risks to help protect your assets in an ever-changing market landscape.","TAKE CONTROL OF YOUR FINANCIAL FUTURE","Financial Planning & Analysis","Personalized wealth management helps our clients protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","","","","","<p>Patrick brings decades of perspective from across financial markets, trading, and wealth management. He began his career in financial services after graduating from Columbia University with a degree in Economics. Over the years, he held senior trading and leadership roles at firms including Merrill Lynch, Prudential, Credit Suisse, and Donaldson Lufkin Jenrette.</p><p>After spending much of his career on the institutional side, Patrick transitioned into advising because he wanted to work more directly with individuals and families, helping them connect day-to-day decisions with long-term goals. He supports clients with investment and risk management, retirement planning, and financial planning, with a focus on building portfolios thoughtfully while keeping an eye on risk and tax considerations.</p><p>Outside of work, Patrick is a lifelong learner with a deep interest in markets. He is married to his high school sweetheart, Karen, and they have four daughters, plus a grandchild, Finnegan. He enjoys skiing, golf, and keeping up with sports.</p><p>Organizations<br>Columbia Alumni Association, Leukemia &amp; Lymphoma Society, St. Edwards Church</p>","516-268-6076","<p>I’ve been in financial services since graduating with a degree in Economics from Columbia University. After two decades in institutional trading and management, I transitioned to the advisory side to help clients with investment and risk management, along with financial and retirement planning.</p>","<p>I work with business owners, executives, high net worth individuals, and mass affluent families.</p>","<p>My work centers on investment management, risk assessment and management, and financial and retirement planning.</p>","<p>I help clients build and maintain investment strategies with a focus on risk management and tax considerations, while keeping the plan aligned with their broader financial and retirement goals.</p>","<p>Helping clients live the best life possible with the assets they have available to them.</p>","<p>Savvy removes many of the frictions advisors face, which allows for more client-facing time.</p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p>"
+"Justin Ericksen","justin-ericksen","Justin Ericksen: Financial Advisor in Orem, UT | Savvy","Meet Justin Ericksen, a trusted wealth manager in Orem, UT, offering expert guidance for a bright financial future. Let's manage your future together.","<!-- WebSite -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<!-- WebPage -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://www.savvywealth.com/advisor/justin-ericksen/#webpage"",
+  ""name"": ""Justin Ericksen, CFP®, CFA, AFC®: Wealth Manager in Orem, UT | Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/advisor/justin-ericksen"",
+  ""description"": ""Justin Ericksen, CFP®, CFA, AFC® is an advisor at Blue Barn Wealth helping individuals and families build financial clarity through planning, investment strategy, and wealth management."",
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""@id"": ""https://www.savvywealth.com/#website""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/69a09c2f5e0d8e02864de9ce_2f46bc32b28e461dcfef00304583efaa_Justin%20E%20SEO.webp""
+  },
+  ""datePublished"": ""2026-03-09T16:51:31.884Z"",
+  ""dateModified"": ""2026-03-09T16:51:31.884Z"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""@id"": ""https://www.savvywealth.com/advisor/justin-ericksen/#person"",
+    ""name"": ""Justin Ericksen"",
+    ""url"": ""https://www.savvywealth.com/advisor/justin-ericksen""
+  }
+}
+</script>
+
+<!-- Organization -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<!-- Person -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""@id"": ""https://www.savvywealth.com/advisor/justin-ericksen/#person"",
+  ""name"": ""Justin Ericksen"",
+  ""honorificSuffix"": ""CFP®, CFA, AFC®"",
+  ""jobTitle"": ""Wealth Manager"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/69a09c2ec8c56e2e73abe551_Justin%20E%20Hero%20(1).webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/justin-ericksen"",
+  ""email"": ""mailto:justin@bluebarnwealth.com"",
+  ""telephone"": ""+1-801-797-1947"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Orem"",
+    ""addressRegion"": ""UT"",
+    ""addressCountry"": ""US""
+  },
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""@id"": ""https://www.savvywealth.com/#organization""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/justin-ericksen-ms-cfp%C2%AE-cfa-afc%C2%AE-492b1216b/""
+  ],
+  ""knowsAbout"": [
+    ""Financial Planning & Analysis"",
+    ""Alternative Investing"",
+    ""Tax Optimization"",
+    ""Investment Management""
+  ],
+  ""description"": ""Justin Ericksen is an Advisor at Blue Barn Wealth and a CERTIFIED FINANCIAL PLANNER™ professional. He also holds the Chartered Financial Analyst designation and earned a master’s degree in Financial Planning and Analytics from Utah Valley University.\n\nJustin is passionate about finance and helping individuals succeed. He believes the most important things in life are spending time with the people you love and enriching the lives of others. His planning philosophy reflects those values—helping clients build financial strategies that support what matters most to them.\n\nOutside of work, Justin enjoys spending time with his wife and siblings. His favorite activities include tennis, snowboarding, singing, and playing board games. Justin, his wife, and their dog live in Fairview, Utah.""
+}
+</script>
+
+<!-- BreadcrumbList -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.savvywealth.com"" },
+    { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Justin Ericksen"", ""item"": ""https://www.savvywealth.com/advisor/justin-ericksen"" }
+  ]
+}
+</script>
+
+<!-- FAQPage -->
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I’ve always been drawn to finance and the role it plays in shaping people’s lives. I pursued formal education in financial planning and analytics and earned both the CFP® and CFA designations to provide clients with comprehensive, disciplined guidance. I wanted a career where I could help people succeed and make confident decisions about their future.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I work with individuals and families who want clarity around their financial direction—whether that’s building wealth, planning for retirement, managing investments, or navigating life transitions.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My background includes comprehensive financial planning, investment management, and long-term wealth strategy. I focus on aligning investment decisions with a broader financial plan.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I help clients develop personalized investment strategies, retirement plans, tax-aware planning approaches, and coordinated financial strategies designed to support their long-term goals.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Holding both the CFP® and CFA designations allows me to approach planning from both a holistic and analytical perspective. I believe strong financial decisions require both a thoughtful plan and disciplined execution.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What is your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Helping clients gain confidence in their financial decisions. When someone feels clear and steady about their financial future, it allows them to focus more fully on the parts of life that matter most.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Partnering with Savvy enhances the tools and support behind the scenes, allowing us to operate more efficiently and deliver a higher level of client service. The additional technology and operational platform enable us to focus even more on thoughtful planning and investment management for the families we serve.""
+      }
+    }
+  ]
+}
+</script>","Orem, UT","Utah","Justin","Ericksen","Justin Ericksen","","https://www.linkedin.com/in/justin-ericksen-ms-cfp%C2%AE-cfa-afc%C2%AE-492b1216b/","<p>I’m Justin Ericksen, CFP®, CFA, AFC®, an Advisor at Blue Barn Wealth, passionate about helping individuals and families build clarity and confidence around their finances. I combine comprehensive planning with disciplined investment strategy to support long-term success.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a8d9cac0ae12a31cf6f1442_Justin%20Ericksen.png","Male","Alternatives Investing","Financial Planning & Analysis","Investment Management","Tax Optimization","CFP®","CFA","AFC®","","anaiss-zamora","https://calendly.com/api/form_builder/forms/b97b42a7-8609-4900-aa28-85971940965f/submissions","796a01f6-b7af-4db9-9136-6ef35fc0d754","justin@bluebarnwealth.com","My goal is to help clients build financial clarity and confidence, so they can focus on what matters most in their lives.","","","","","","","","","","TAKE CONTROL OF YOUR FINANCIAL FUTURE","Financial Planning & Analysis","Personalized wealth management helps our clients protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","STRIVING TO MINIMIZE YOUR TAX BURDEN","Tax Optimization","We aim to take the ambiguity out of tax planning by utilizing tax-reducing strategies that encompass your overall tax liability. We do it by putting together a game plan that is specific to your needs.","DIVERSIFICATION AND INNOVATION IN PORTFOLIOS","Alternatives Investing","We actively research alternative investment opportunities and monitor your portfolio investment holdings, bringing together actionable insights and forward-thinking risk assessments.","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","​​Investment Management","End-to-end investment management focused on tailoring portfolios to each client’s specific circumstances and preferences. Our holistic approach will take into consideration all facets of your situation along with current economic data to optimize your portfolio's risk and return.","","","","","<p>Justin Ericksen is an Advisor at Blue Barn Wealth and a CERTIFIED FINANCIAL PLANNER™ professional. He also holds the Chartered Financial Analyst designation and earned a master’s degree in Financial Planning and Analytics from Utah Valley University.</p><p>Justin is passionate about finance and helping individuals succeed. He believes the most important things in life are spending time with the people you love and enriching the lives of others. His planning philosophy reflects those values—helping clients build financial strategies that support what matters most to them.</p><p>Outside of work, Justin enjoys spending time with his wife and siblings. His favorite activities include tennis, snowboarding, singing, and playing board games. Justin, his wife, and their dog live in Fairview, Utah.</p>","801-797-1947","<p>I’ve always been drawn to finance and the role it plays in shaping people’s lives. I pursued formal education in financial planning and analytics and earned both the CFP® and CFA designations to provide clients with comprehensive, disciplined guidance. I wanted a career where I could help people succeed and make confident decisions about their future.</p>","<p>I work with individuals and families who want clarity around their financial direction—whether that’s building wealth, planning for retirement, managing investments, or navigating life transitions.</p>","<p>My background includes comprehensive financial planning, investment management, and long-term wealth strategy. I focus on aligning investment decisions with a broader financial plan.</p>","<p>I help clients develop personalized investment strategies, retirement plans, tax-aware planning approaches, and coordinated financial strategies designed to support their long-term goals.</p>","<p>Helping clients gain confidence in their financial decisions. When someone feels clear and steady about their financial future, it allows them to focus more fully on the parts of life that matter most.</p>","<p>Partnering with Savvy enhances the tools and support behind the scenes, allowing us to operate more efficiently and deliver a higher level of client service. The additional technology and operational platform enable us to focus even more on thoughtful planning and investment management for the families we serve.</p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p><p><em>Blue Barn Wealth is a financial services group offering investment advisory services through Savvy Advisors, Inc. (“Savvy”). Savvy is an investment advisor registered with the Securities and Exchange Commission (“SEC”). Blue Barn Wealth is not a separately registered investment advisor.</em></p><p><em>Certified Financial Planner Board of Standards Center for Financial Planning, Inc. owns and licenses the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™, and CFP® (with plaque design) in the United States to Certified Financial Planner Board of Standards, Inc., which authorizes individuals who successfully complete the organization’s initial and ongoing certification requirements to use the certification marks.</em></p>"
+"Louis Green","louis-green","Louis Green: Financial Advisor in Brooklyn, NY | Savvy","Meet Louis Green, a trusted wealth manager in Brooklyn, NY, offering expert guidance for a secure financial future. Let's plan your success together!","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""Louis Green: Financial Advisor in Brooklyn, NY | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/louis-green"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""Louis Green, CFA®, CFP®"",
+    ""url"": ""https://www.savvywealth.com/advisor/louis-green""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6643777968ce5667bc1a820f_Louis%20SEO1.png""
+  },
+  ""datePublished"": ""2025-09-15"",
+  ""dateModified"": ""2025-09-15"",
+  ""description"": ""Meet Louis Green, a trusted wealth manager in Brooklyn, NY, offering expert guidance for a secure financial future. Let's plan your success together!""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""Louis Green, CFA®, CFP®"",
+  ""jobTitle"": ""Financial Advisor"",
+  ""image"": [
+    ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6824e6bec45a6186416dc9b7_Louis%20G%20Hero.webp"",
+    ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6824e6bf07b627fe87805b2a_Get%20to%20Know%20Louis.webp""
+  ],
+  ""url"": ""https://www.savvywealth.com/advisor/louis-green"",
+  ""email"": ""mailto:louis.green@savvyadvisors.com"",
+  ""telephone"": ""+1-917-590-0552"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""New York City"",
+    ""addressRegion"": ""NY"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Financial advisor focusing on long-term, goals-based planning, behavioral finance, and comprehensive wealth management for executives, business owners, retirees, and trustees."",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/louisgreencfa/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""knowsAbout"": [
+    ""Financial Planning & Analysis"",
+    ""Investment Management"",
+    ""Behavioral Finance"",
+    ""Retirement Planning"",
+    ""Restricted Stock & Stock Options"",
+    ""Concentrated Stock Management"",
+    ""Business Succession & Pre-sale Planning"",
+    ""Trust & Estate Planning"",
+    ""Tax Mitigation"",
+    ""Private Equity, Hedge Funds & Private Credit"",
+    ""Structured Products"",
+    ""Individual Fixed Income""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Louis Green"",
+      ""item"": ""https://www.savvywealth.com/advisor/louis-green""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I was inspired by my father, an accountant who made people feel welcome as he walked them through their taxes. I followed Warren Buffett, pursued an MBA in Finance, then began my career at Bankers Trust—working my way from the back office to Portfolio Manager, later serving clients at Deutsche Bank, PNC Wealth Management, and UBS before joining Savvy Wealth.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I produce a goals-based financial plan for every client, which drives asset allocation aligned to time horizon, goals, and risk tolerance. I encourage aggressive, tax-efficient saving for younger clients; pre-sale and trust planning for business owners; income-based strategies for retirees; and for clients with restricted stock, I address concentration risk and may use tactics like covered calls, collars, or exchange funds.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I work with retirees, business owners, executives, and technology leaders in New York City and New Jersey, with clients nationwide. Many seek advice after major life events—retirement, inheritance, or a business sale—or when managing equity compensation such as options or restricted stock.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My goals-based planning and disciplined allocations help clients stay invested. With CFA® and CFP® credentials, I pair sophisticated investment tools—hedge funds, private equity, private credit—with advanced planning such as charitable trust planning, estate tax strategies, and pre-sale business planning.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I combine deep financial planning with investments: comprehensive written plans, liquidity planning for volatile markets, and access to traditional equities, structured products, alternatives, and individual fixed income. I also coordinate with attorneys and accountants to keep estate plans current and aligned.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy’s technology and team approach free me to focus on clients. Through relationships with custodians like Fidelity and platforms like iCapital, clients can access sophisticated planning and investment capabilities. Our team handles much of the transition work, and I often work from Savvy’s Manhattan office.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What is your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Getting to know clients personally and helping them and their families pursue their goals. Many become friends, and their stories—often of impressive careers or businesses—are inspiring and help me in my own practice.""
+      }
+    }
+  ]
+}
+</script>","New York City, NY","New York","Louis","Green","Louis Green","","https://www.linkedin.com/in/louisgreencfa/","<p>Hi there 👋🏼 I'm Louis, I believe in creating comprehensive written financial plans tailored to my clients' needs, covering all aspects of their financial well-being, and ensuring sufficient liquidity for continued investment during market volatility.</p><p>My expertise lies in assisting clients in preparing for significant life milestones such as retirement, inheritance, wealth transfer, or business transitions. I also specialize in collaborating with executives on restricted stock, stock options, and strategic planning.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bb7ed33dfbec4c84d0105_Louis%20Green.webp","Male","Investment Management","Retirement Planning","Financial Planning & Analysis","","CFA®","CFP®","","","alex-galbo","https://calendly.com/api/form_builder/forms/e00e978a-8a65-4871-a54e-8396028056a8/submissions","46aeb983-19cf-43a3-a175-a7f06928368c","louis.green@savvyadvisors.com","My main strategy is to produce a goals-based financial plan for every client. That financial plan sets the framework for how I work with each person.","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e42c69aae2fb982bb57bb0_investment-news.svg","InvestmentNews","https://www.investmentnews.com/investing/news/advisors-debate-the-significance-of-dow-40k-253487","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e43683970a48c103cdc75a_etf.svg","etf.com","https://www.etf.com/sections/advisor-center/your-take-why-equity-valuations-matter","","","","Strategic, data-driven investing for ambitious results.","Investment Management","Explore a range of investment choices, including traditional equities, structured products, alternative investments, and individual fixed income.","Take control of your financial future","Financial Planning & Analysis","Personalized wealth management helps our clients protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","DREAMS INTO ACTIONABLE PLANS","Retirement Planning","Transition into your golden years with confidence. Our goal is to see to it that you’re prepared for the unpredictable. Let us turn your retirement dreams into actionable plans.","","","","","","","","<p>Louis is dedicated to helping his clients solve the financial puzzle of their lives. He focuses on long-term planning and comprehensive wealth management for attorneys, business executives, retirees, and trustees. Louis incorporates the lessons of behavioral finance into his work. He believes that by avoiding emotional mistakes, particularly during times of financial upheaval, clients can be better positioned to achieve their goals. Louis’s approach to wealth management seeks to address each client’s day-to-day liquidity needs, retirement income goals, and the longer-term legacy they wish to create.</p><p>He has earned advanced certifications including the Chartered Financial Analyst®, Certified Financial PlannerTM designations. This training enables Louis to provide sound advice in many areas, including cash flow management, investment management, retirement planning, trust and estate planning, and tax mitigation.</p><p>Louis became interested in financial services at a young age while watching his father, an accountant, provide tax services to friends and family. Reading about Warren Buffett and other great stock pickers added to his fascination with the markets. He started his career in 1997 at Bankers Trust. The firm was purchased by Deutsche Bank, where Louis worked as a portfolio analyst and then as a portfolio manager. He joined PNC Wealth Management as an investment advisor in 2015 and moved to UBS in December 2020. Louis founded Prestiq Wealth Partners and joined Savvy Wealth in 2024.</p><p>M.B.A., finance, Zicklin School of Business, Baruch College – B.A., English, St. Francis College, Brooklyn, NY – Chartered Financial Analyst® (CFA®) – Certified Financial PlannerTM professional.</p>","(917) 590-0552","<p>I was first inspired to become a financial advisor by my father. He prepared taxes for friends and family, but he did it in a way that made people feel welcome and supported as he walked them through their taxes. We would often talk about finance and eventually, I started following Warren Buffet. Warren's approach to investments and life was fascinating to me, which led to pursuing my MBA in Finance. After graduate school, I took a job at Bankers Trust and I worked my way up from the back office to a role as an assistant on a large team to eventually a role as a Portfolio Manager in their Private Bank. Along the way, I became certified as both a Chartered Financial Analyst® and Certified Financial Planner™. After a major reorganization, I was named as a Portfolio Manager at the Private Bank. I eventually moved on to my next roles at PNC Bank, UBS Financial Services and recently I joined Savvy Wealth.</p>","<p>I assist retirees, business owners, executives, and technology leaders in New York City and New Jersey, but my clientele extends nationwide. Although I am based in Manhattan, my clients are spread across the country. I started working with many of my clients because they have experienced a major life event such as a retirement, inheritance or a business sale which has prompted them to reach out to me to help plan for the future. Others are executives or employees of publicly traded companies who have stock options or restricted stock which they need to plan for.</p>","<p>Leveraging my expertise as a Certified Financial Planner™ and Chartered Financial Analyst®, I offer a combination of deep financial planning &amp; investments. I start with a goals-based approach to assist my clients in pursuing their financial futures. Each client receives a comprehensive written financial plan covering all aspects of their financial well-being, aimed at ensuring sufficient liquidity for continued investment during market volatility. My clients can invest in a variety of options, such as traditional equities, structured products, t, alternative investments, and individual fixed income. I work closely with clients to ensure their estate plans are current. I collaborate with their attorneys and accountants, or suggest experts from my network. This partnership allows us to update their estate plans effectively, aligning with their legal and tax experts.</p><p>Certified Financial Planner Board of Standards Center for Financial Planning, Inc. owns and licenses the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™, and CFP® (with plaque design) in the United States to Certified Financial Planner Board of Standards, Inc., which authorizes individuals who successfully complete the organization’s initial and ongoing certification requirements to use the certification marks</p>","<p>My main strategy is to produce a goals-based financial plan for every client. That financial plan sets the framework for how I work with a client. Within that financial plan, we will set an asset allocation that is aligned with their time horizon, financial goals, and risk tolerance.</p><p>For younger clients, I encourage an aggressive investment strategy to maximize their tax savings and focus on long term growth. For my business owner clients, I make sure to do pre-sale planning for the eventual sale of the business and trust planning to maximize their estate tax savings if their eventual wealth merits that strategy. For retirees, I develop an income-based approach to provide salary replacement. Some of my clients have restricted stock. For those clients, I speak about concentration risk, and the importance of reducing their positions over time. I can also write call options, use collar strategies or introduce exchange funds for highly concentrated positions or positions with very large capital gains.</p>","<p>My favorite part is getting to know them on a personal level and helping them and their families pursue their unique financial goals. I consider my clients to be friends. They all have a fantastic personal story to share and some have built incredible businesses or careers. Listening to their stories is fascinating because they help me in my own business as I am inspired by what they have accomplished.</p>","<p>Savvy’s proprietary technology and team approach allow me to spend time on what I enjoy most: helping my existing clients pursue their goals and meet new potential clients. Savvy has enabled me to get my clients access to sophisticated financial planning and investment capabilities through their relationships with trusted custodians such as Fidelity, and investment platforms such as iCapital. My clients will have access to anything they possibly need in the investment space. My team members, Hillary Peterson, Alex Walejewsky, Alice Yu &amp; Michael McCarthy are extremely hardworking and knowledgeable. They do most of the heavy lifting regarding client transitions. I also love the fact that Savvy is focused on expansion. Everyone is hard working. Finally, I live in New York City, so I get to work out of their offices in Manhattan.</p>","<p><em>Certified Financial Planner Board of Standards Center for Financial Planning, Inc. owns and licenses the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™, and CFP® (with plaque design) in the United States to Certified Financial Planner Board of Standards, Inc., which authorizes individuals who successfully complete the organization’s initial and ongoing certification requirements to use the certification marks.</em></p><p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p>"
+"John Khoury","john-khoury","John Khoury: Financial Advisor in Boston, MA | Savvy","Meet John Khoury a trusted wealth manager in Boston, Massachusetts, offering expert guidance for a bright financial future. Let's manage your future together.","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""John Khoury: Financial Advisor in Boston, MA | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/john-khoury"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""John Khoury, MSF"",
+    ""url"": ""https://www.savvywealth.com/advisor/john-khoury""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/65a6f6279b56f9842ebf152c_John%20SEO.png""
+  },
+  ""datePublished"": ""2024-01-01"",
+  ""dateModified"": ""2025-09-04""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""John Khoury, MSF"",
+  ""jobTitle"": ""Principal Wealth Manager"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/65e8d05c850d0c09dcc5def4_c17df32e46ac14c375cc1d51e093b5bd_john_advisor_hero.webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/john-khoury"",
+  ""email"": ""john.khoury@savvyadvisors.com"",
+  ""telephone"": ""+1-617-363-9959"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Boston"",
+    ""addressRegion"": ""MA"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Principal Wealth Manager with 20+ years of experience helping families, business owners, and organizations with fiduciary, cost-efficient, and tax-smart advice."",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/john-khoury/"",
+    ""https://www.khouryprivatewealth.com/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""knowsAbout"": [
+    ""Retirement Planning"",
+    ""Investment Management"",
+    ""Concentrated Stock Management"",
+    ""Tax Optimization"",
+    ""Business Succession"",
+    ""Financial Planning"",
+    ""Public and Private Markets""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""John Khoury"",
+      ""item"": ""https://www.savvywealth.com/advisor/john-khoury""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""While studying at the University of Massachusetts, my interest in finance grew. During my junior and senior years, I interned at Fidelity Investments, which expanded my knowledge and passion for financial planning and investing. After graduating, I was offered a full-time position as a retirement consultant, where I assisted clients with retirement planning and job transitions. After a few years, I realized I wanted to help clients achieve their financial goals in all aspects of their lives, leading me to transition into a financial advisor role. As a fiduciary advisor at Savvy, I focus on cost-efficient and tax-smart advice and always act in my clients’ best interests.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I collaborate with a diverse range of clients, from young professionals to retirees, as well as small business owners, corporations, and foundations. Many of my clients prefer cost-effective investment solutions while maintaining an active approach to asset allocation and security selection.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach you take?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I value my clients’ investment preferences and feedback and will construct financial plans that implement their ideas. There are many ways to manage wealth, and much of portfolio construction and financial planning depends on each individual’s preferences and goals. I tailor a plan for each client.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a typical area of expertise that you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My expertise lies in portfolio construction with a focus on tax-smart strategies across asset classes, requiring both strategic and tactical approaches while customizing portfolios to client goals. I also have extensive experience in retirement income planning and insurance planning, including building income and distribution strategies to generate tax-efficient retirement income.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Many clients use tax-smart portfolios where we utilize ongoing tax-loss harvesting to increase after-tax performance. My focus often includes individual stocks, individual bonds, and low-cost ETFs. For retirees, I construct income strategies such as dividend growth portfolios, bond ladders, and other income-producing investments.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Before joining Savvy, I worked at large financial corporations where introducing new ideas and tools could be challenging. At Savvy, I can provide a more personalized, boutique experience and freely implement strategies tailored to each client and family. Our team includes skilled wealth managers and financial professionals, and the Savvy advisor model combines fiduciary wealth management with the security of a major financial custodian.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What's your favorite part about working with clients as a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I enjoy goal planning and working toward accomplishing my clients’ goals. I’ve worked with many clients for over 20 years and value the personal connections, seeing them and their families succeed both personally and financially.""
+      }
+    }
+  ]
+}
+</script>","Boston, MA","Massachusetts","John","Khoury","John Khoury","","https://www.linkedin.com/in/john-khoury/","<p>Hello! I’m John. My finance journey began at the University of Massachusetts, where internships at Fidelity Investments sparked my passion for financial planning and investing. After starting my career as a retirement consultant, I earned my master’s degree in Financial Planning from the University of Nebraska while gaining valuable industry experience.</p><p>This combination of education and hands-on work deepened my commitment to helping clients achieve their financial goals holistically. I spent seven years as a trusted financial advisor at Fidelity, followed by 15 years at Schwab, where I further honed my expertise.</p><p>Now, as a financial advisor at Savvy, with a fiduciary responsibility, I seek to provide cost-efficient, tax-smart advice, always putting my clients’ best interests first.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bb99576d7b0ad5384ede9_John%20Khoury.webp","Male","Personal Direct Indexing","Retirement Planning","Tax Optimization","","MSF","","","","avi-claire-chabot","https://calendly.com/api/form_builder/forms/79482e63-a9af-47d2-8686-ce179a925211/submissions","499017b1-c36b-4314-bed8-ee8318c9b882","john.khoury@savvyadvisors.com","My approach revolves around a comprehensive understanding of clients' tax situations and estate plans. I encourage collaboration with their CPAs and estate planning attorneys to align our strategies seamlessly.","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e42c69aae2fb982bb57bb0_investment-news.svg","InvestmentNews","https://www.investmentnews.com/investing/features/the-biggest-hits-and-misses-of-2024-254716","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e43683970a48c103cdc75a_etf.svg","etf.com","https://www.etf.com/sections/news/active-etfs-gain-appeal-amid-volatility","","","","DREAMS INTO ACTIONABLE PLANS","Retirement Planning","Transition into your golden years with confidence. Our goal is to see to it that you’re 100% prepared for the unpredictable. Let us turn your retirement dreams into actionable plans.","STRIVING TO MINIMIZE YOUR TAX BURDEN","Tax Optimization","We aim to take the ambiguity out of tax planning by utilizing tax-reducing strategies that encompass your overall tax liability. We do it by putting together a game plan that is specific to your needs.","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","Investment Management","Explore a range of investment choices, including traditional equities, structured products, alternative investments, Direct Indexing, and individual fixed income.","ESTABLISH YOUR BUSINESS SUCCESSION PLAN","Succession Planning","Building a successful business is an incredible feat, but what happens to your hard-earned legacy when you're ready to step down? We build strategic blueprints to help ensure the continued growth and success of your enterprise.","","","","","<p>John Khoury is a Principal Wealth Manager at Savvy and brings 20+ years of wealth management experience working with families, business owners, and organizations. He has a passion for providing fiduciary advice to his clients and helping them with complex wealth management. He specializes in transitions, such as retirement, business sales or other liquidity events, paying for college, divorce, and the loss of a loved one.</p><p>Joining Savvy in November 2023, John was VP Sr. Financial Consultant at Schwab for 15 years and VP Financial Consultant at Fidelity for 8 years. At Schwab, John worked with 400 high-net-worth families and organizations, with over $300M in advisory services.</p><p>John Khoury lives in Boston Metrowest with his wife and three children. In his free time, he enjoys sports, family time, and volunteering with his local educational and charitable organizations.</p><p><a href=""https://www.khouryprivatewealth.com/"">khouryprivatewealth.com</a></p>","617.363.9959","<p>While studying at the University of Massachusetts, my interest in finance grew. During my junior and senior years, I had the privilege of interning at Fidelity Investments. Working at Fidelity allowed me to expand my knowledge and passion for financial planning and investing. After graduating, I was offered a full-time position as a retirement consultant, where I focused on assisting clients with retirement planning and guiding them through job transitions.</p><p>After a few years in this role, I realized I wanted to help clients achieve their financial goals in all aspects of their lives. This realization led me to transition into a financial advisor role. As a fiduciary advisor at Savvy, I can manage my practice with a strong emphasis on providing cost-efficient and tax-smart advice. I am dedicated to seeing things from my clients' perspective and always acting in their best interests.</p>","<p>I take pleasure in collaborating with a diverse array of individuals, helping a wide range of clients spanning from young professionals to retirees. Moreover, my clientele encompasses small business owners, corporations, and foundations. When it comes to investment options, many of my clients gravitate toward cost-effective solutions while maintaining an active approach to asset allocation and security selection.</p>","<p>My area of expertise lies in portfolio construction with a focus on tax-smart strategies spanning across asset classes. This requires both a strategic and tactical approach to investing while also customizing each client’s portfolio to meet their unique preferences and goals. Additionally, I also have extensive experience in retirement income planning and insurance planning. This entails constructing income and distribution strategies to help my clients generate income from their portfolios tax-efficiently during retirement.</p>","<p>Many of my clients have tax-smart portfolios where we utilize ongoing tax loss harvesting to increase after-tax performance. My focus typically leans toward individual stocks, individual bonds, and low-cost exchange-traded funds (ETFs). I also construct income strategies for many of my retired clients. These strategies can include dividend growth portfolios, bond ladders, and other income-producing investments.</p>","<p>I enjoy goal planning and working towards accomplishing my client's goals. I’ve worked with many of my clients for over 20 years now. I’ve built a personal connection with them and enjoy seeing them and their families succeed both personally and financially.</p>","<p>Before joining Savvy, my experience was primarily with large financial corporations. However, I often encountered challenges when trying to introduce new ideas and tools due to the size of these firms. The planning and portfolio management processes were designed to be scalable, which limited my ability to innovate.</p><p>Now, as a wealth manager at Savvy, I have the opportunity to provide a more personalized and boutique experience for my clients. I can freely implement my ideas and strategies, tailoring them to each individual and their family.</p><p>Our team at Savvy consists of skilled wealth managers, financial professionals, and executive management. Together, we create an environment that supports effective wealth management for our clients.</p><p>The Savvy advisor model offers the best of both worlds: the benefits of working with a fiduciary wealth management firm, combined with the security and asset protection provided by a major financial custodian.</p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p>"
+"Eric Kirste","eric-kirste","Eric Kirste: Financial Advisor in Arlington Heights, IL | Savvy","Meet Eric Kirste, a trusted wealth manager in Arlington Heights, IL offering expert guidance for a secure financial future. Let's plan your success together!","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""Eric Kirste: Financial Advisor in Arlington Heights, IL | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/eric-kirste"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""Eric Kirste"",
+    ""url"": ""https://www.savvywealth.com/advisor/eric-kirste""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/65e8d05c850d0c09dcc5df97_d86d0c42c3e2938e4d5c094337395fc3_Eric%20SEO1.webp""
+  },
+  ""datePublished"": ""2024-01-01"",
+  ""dateModified"": ""2025-08-22""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth"",
+    ""https://x.com/SavvyWealthInc""
+  ],
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+1-833-745-6789"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""US"",
+      ""availableLanguage"": [""English""]
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""Eric Kirste"",
+  ""honorificSuffix"": ""CFP®, CIMA®, AIF®"",
+  ""jobTitle"": ""Founding Principal Wealth Manager"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6824d70da90ee4dd633bb0b2_Eric%20Hero%20Advertisement%20(1).webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/eric-kirste"",
+  ""email"": ""mailto:eric@savvyadvisors.com"",
+  ""telephone"": ""+1-847-595-1986"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Arlington Heights"",
+    ""addressRegion"": ""IL"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Meet Eric Kirste, a trusted wealth manager in Arlington Heights, IL offering expert guidance for a secure financial future. Let's plan your success together!"",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/erickirste/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""hasCredential"": [
+    {
+      ""@type"": ""EducationalOccupationalCredential"",
+      ""credentialCategory"": ""ProfessionalCertification"",
+      ""name"": ""CERTIFIED FINANCIAL PLANNER™ (CFP®)""
+    },
+    {
+      ""@type"": ""EducationalOccupationalCredential"",
+      ""credentialCategory"": ""ProfessionalCertification"",
+      ""name"": ""Certified Investment Management Analyst® (CIMA®)""
+    },
+    {
+      ""@type"": ""EducationalOccupationalCredential"",
+      ""credentialCategory"": ""ProfessionalCertification"",
+      ""name"": ""Accredited Investment Fiduciary® (AIF®)""
+    }
+  ],
+  ""alumniOf"": [
+    { ""@type"": ""CollegeOrUniversity"", ""name"": ""Miami University (OH)"" },
+    { ""@type"": ""CollegeOrUniversity"", ""name"": ""Northwestern University"" },
+    { ""@type"": ""CollegeOrUniversity"", ""name"": ""The University of Chicago Booth School of Business"" }
+  ],
+  ""knowsAbout"": [
+    ""Retirement Planning"",
+    ""Investment Management"",
+    ""Tax Planning"",
+    ""Estate Planning"",
+    ""Social Security Timing"",
+    ""Financial Planning"",
+    ""Cash Flow Budgeting"",
+    ""Insurance Guidance"",
+    ""Direct Indexing"",
+    ""Wealth Management""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Eric Kirste"",
+      ""item"": ""https://www.savvywealth.com/advisor/eric-kirste""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""From a young age, I pursued a path in financial advice after witnessing friends and family face retirement challenges. I sought out mentors in high school and completed multiple internships in college. I joined the advisor who resonated most with me during my junior year, and with more than 23 years in the industry I now focus on building lasting relationships that align guidance with clients’ goals.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach that sets you apart?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I tailor services and fees to each client’s unique needs rather than applying one-size-fits-all models. This personalized approach addresses feedback I’ve gathered across large corporate and private bank environments and ensures our cadence and scope match each client’s situation.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""I work nationwide, frequently with clients in their 50s–70s on tax planning, wealth management, estate planning, and Social Security. I also specialize in transitions—retirement, starting a nonprofit or business, navigating loss, or managing a later‑life windfall—so strategies reflect what each client values most.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What’s your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""The relationships. I strive to understand each client’s goals, family, and legacy. Over time many clients become friends and feel like extended family.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What areas of expertise do you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Beyond investment planning, I focus on tax planning, estate planning, Social Security timing, and a comprehensive assessment of each client’s circumstances. I also review insurance needs and emphasize cash‑flow budgeting and retirement income distribution—transitioning from accumulation to a sustainable ‘retirement paycheck’ in a tax‑aware way.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Savvy embraces innovation across all client age groups, bringing a fresh approach to wealth management and enabling me to deliver a modern, client‑first experience.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of strategies do you usually help clients with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Strategies are highly customized. Recent planning included strengthening property and umbrella coverage, optimizing charitable giving and estate goals, right‑sizing risk, improving tax efficiency with direct indexing, timing Social Security, and crafting a tax‑efficient income distribution plan. (Hypothetical example for illustration only.)""
+      }
+    }
+  ]
+}
+</script>","Arlington Heights, IL","Illinois","Eric","Kirste","Eric Kirste","","https://www.linkedin.com/in/erickirste/","<p>Eric Kirste, CFP®, CIMA®, AIF® is the founding Principal Wealth Manager at Savvy Wealth. He has been featured in Barron's, The Wall Street Journal, InvestmentNews, Business Insider, GoBankingRates, and U.S. News &amp; World Report. With a deep-rooted passion for service and enriching the lives of others, Eric found his calling as a wealth management professional early on. Eric brings over 24 years of deep experience working closely with business owners, individuals and families in transition, helping them navigate difficult changes. Compassion is important to Eric, and he helps clients who are going through a divorce or grieving the loss of a spouse or family member get through the transition to financial independence and overcome new challenges with confidence. He also helps business owners and professionals nearing retirement ensure they are best prepared for their ideal retirement lifestyle.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bb9be9b83839b0faf0c8d_Eric%20Kirste.webp","Male","Investment Management","Financial Planning & Analysis","Retirement Planning","Succession Planning","CFP®","CIMA®","AIF®","","jennifer-battles","https://calendly.com/api/form_builder/forms/7e3dbeec-71f4-489b-81de-6fa7057c1542/submissions","df2d42bf-2b31-4afc-870e-1d2a99f8d6d6","eric@savvyadvisors.com","","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e42c69aae2fb982bb57bb0_investment-news.svg","InvestmentNews","https://www.investmentnews.com/equities/private-asset-owners-enjoy-relative-calm-as-stock-market-swings/260091","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/65c4cb5d7c81a128f7ab48bc_Business%20Insider%20logo.svg","Business Insider","https://www.businessinsider.com/personal-finance/investing/401k-contribution-limits","","","","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","Investment Management","Our expertly curated investment portfolios are meticulously designed to guide you through the intricate financial landscape, placing you at the forefront. Experience personalized solutions tailored to your needs and navigate them with confidence.","Take control of your financial future","Financial Planning & Analysis","Personalized wealth management helps our clients grow and protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","DREAMS INTO ACTIONABLE PLANS","Retirement Planning","Transition into your golden years with confidence. Our goal is to see to it that you’re 100% prepared for the unpredictable. Let us turn your retirement dreams into actionable plans.","STRIVING TO MINIMIZE YOUR TAX BURDEN","Tax Optimization","We aim to take the ambiguity out of tax planning by utilizing tax-reducing strategies that encompass your overall tax liability. We do it by putting together a game plan that is specific to your needs.","","","","","<p>Eric Kirste, CFP®, CIMA®, AIF® is the founding Principal Wealth Manager at Savvy Wealth. With a deep-rooted passion for service and enriching the lives of others, Eric found his calling as a wealth management professional early on. Eric brings over 24 years of deep experience working closely with business owners, individuals and families in transition, helping them navigate difficult changes. Compassion is important to Eric, and he helps clients who are going through a divorce or grieving the loss of a spouse or family member get through the transition to financial independence and overcome new challenges with confidence. He also helps business owners and professionals nearing retirement ensure they are best prepared for their ideal retirement lifestyle.</p><p>At Savvy, he strives to help his clients align their money with their values, provide integrated solutions to serve all of their needs and empower them to make a lifetime of smart financial decisions. Importantly, Eric is committed to keeping his clients’ best interests top of mind while offering ongoing guidance, encouragement and accountability.</p><p>With a passion for helping others, Eric has volunteered for the Foundation for Financial Planning, AARP and is the Treasurer on the Board of Wings For Widows. Eric is a native of the northwest suburbs of Chicago. He is committed to giving back to his community and serves as the Treasurer for the Prospect Heights Park District Board of Commissioners and the Old Orchard Country Club. He enjoys spending time with his wife, Alisa, their two sons, Logan and Matthew, and their rescue dog, Bear.</p><p><strong>Education</strong>:<br>Among his achievements, Eric has obtained several professional certifications, including the CERTIFIED FINANCIAL PLANNER™, Certified Investment Management Analyst®, and Accredited Investment Fiduciary®. He earned a Bachelor of Science in Business Finance from Miami University in Ohio and has completed the CERTIFIED FINANCIAL PLANNER™ certification education through Northwestern University, as well as the Investment Management Education Program from the University of Chicago's Booth School of Business.</p>","847.595.1986","<p>From a young age, I've been driven to pursue a career as a financial advisor. Seeing close friends and family struggle with poor financial guidance and retirement challenges made me realize the immense impact of competent advice. This realization fueled my passion, even during high school, when I actively sought opportunities to learn more about this industry. I would have lunch with advisors, eager to understand their methods, models, and client interactions. This pursuit continued throughout college, where I completed multiple internships with various advisors, engaging in diverse projects.</p><p>During my junior year of college, I made a decision that felt right - joining the advisor who resonated with me the most. With more than 23 years of industry expertise, I now find immense satisfaction in cultivating personal relationships with my clients. By understanding their financial goals and personal aspirations, I can provide guidance and foster genuine connections. It's not just about advising; it's about building long-lasting friendships and creating bonds that feel like family.</p>","<p>I work with clients across the nation, addressing a wide range of significant issues faced by individuals in their 50s, 60s, and 70s. This includes providing expertise in tax planning, wealth management, financial planning, estate planning, and optimizing social security benefits. Each client's situation is unique, requiring tailored solutions that align with their specific needs and goals.</p><p>However, it's important to note that not all clients fit into this category. I also serve as a transition specialist, assisting individuals who are undergoing significant life changes, such as transitioning into retirement, starting a nonprofit, embarking on their own business ventures or navigating the loss of a loved one. Additionally, I have experience working with clients who have experienced financial windfalls later in life.</p><p>My purpose is to understand what clients value most and help them make informed decisions on how to best utilize it. It's no longer solely about retirement; some individuals may have different aspirations and a desire to explore new opportunities. I take a personalized approach, offering guidance and carefully considering various options for their next chapter.</p>","<p>Early on, it became apparent to me that there was a need beyond a sole focus on investments for a holistic approach to financial advising. While I still do investment planning I like to look at the bigger picture of a client's financial health. Over time, I have honed my expertise in tax planning, estate planning, Social Security timing, and a comprehensive assessment of individual circumstances—beyond just a client's portfolio. Tax considerations play a significant role in a portfolio, but other aspects come into play as well.</p><p>While I provide guidance on various types of insurance, such as life, long-term care, and disability, I emphasize the importance of consulting an insurance professional once we identify areas for improvement. This process involves working closely with my clients on an annual basis, reviewing their property and casualty insurance. Cash flow budgeting and income distribution represent critical aspects that are often overlooked. Transitioning from asset accumulation to de-cumulation requires careful consideration of creating a retirement paycheck. Determining the optimal amount and method to withdraw funds, considering their financial plan, cost efficiency, and tax implications, is pivotal. This process involves a comprehensive analysis and exploration of the most suitable accounts and vehicles. It is not a mere exercise of throwing numbers around—it requires a thorough understanding of each individual's unique circumstances.</p>","<p>There are numerous types of strategies to consider depending on the clients, but recently I did a financial plan for a couple in their early to mid-sixties who plan to retire within the next one to two years. This is a great example because retirement planning can happen at any point, it’s never too late or too early to plan for retirement. It was crucial to have a conversation with them before their retirement, as it gives us time to make necessary adjustments. During a comprehensive review of their situation, I discovered many areas that needed attention.</p><p>Firstly, their home insurance coverage was inadequate, especially considering the possibility of natural disasters causing significant damage. They had recently completed a major remodel, which their insurance didn't account for. Additionally, they didn't have sufficient umbrella insurance to protect them.</p><p>I also delved into their tax returns and found opportunities for optimization. Although they were generous in their charitable contributions, we helped them establish a more efficient and strategic approach to maximize the impact of their donations. Furthermore, I realized their estate plan didn't align with their desired legacy goals of leaving money to both charities and their children.</p><p>In terms of investments, the couple was overly aggressive and concerned about the level of risk they were taking. Through a thorough financial and retirement plan, I was able to provide them with a sense of security by reducing their overall risk exposure. We also made adjustments to their investment portfolio to enhance tax efficiency, incorporating direct indexing.</p><p>Lastly, I assisted them in determining the optimal time to begin taking Social Security benefits and developed a tax-efficient income distribution plan for their retirement years.</p><p>While this is just a glimpse into the services I provided, it showcases my commitment to addressing their specific needs and goals.</p><p><em>The above scenario is hypothetical and is intended to illustrate the general advisory experience provided by Eric Kirste. The above scenario is not representative of an actual client experience or specific client situation or specific advice provided by the advisor. </em></p>","<p>I deeply value the relationships I form with my clients. Beyond simply handling their financial matters like assets, loans, taxes, and cash flow, I strive to truly understand their goals, their families, and their legacies. Over time, many of these clients become more than just business partners; they become friends and even become part of my extended family. This aspect of my working relationships is truly exceptional. It allows me to connect with the people I serve on a personal level, gaining a profound understanding of their lives and aspirations.</p>","<p>Savvy embraces an innovative approach to our industry. Savvy thinks differently about the industry which has brought a new level of innovation, regardless of our clients' age. Whether they are in their twenties, thirties, or eighties, Savvy values the importance of trying something new in an ever-evolving industry. I truly appreciate the touch of innovation that has been infused into my work.<a href=""https://www.letsmakeaplan.org/find-a-cfp-professional/certified-professional-profile/f13864d4-4246-4942-be39-0b24a275a323""><strong></strong></a></p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials provided by advisors. However advisors may have an indirect financial incentive to provide testimonials.</em></p><p><em>Certified Financial Planner Board of Standards Center for Financial Planning, Inc. owns and licenses the certification marks CFP®, CERTIFIED FINANCIAL PLANNER™, and CFP® (with plaque design) in the United States to Certified Financial Planner Board of Standards, Inc., which authorizes individuals who successfully complete the organization’s initial and ongoing certification requirements to use the certification marks.</em></p>"
+"Michael Most","michael-most","Michael Most: Financial Advisors in Fort Lauderdale, Florida | Savvy","Meet Michael Most, a trusted wealth manager in Fort Lauderdale, Florida, offering expert guidance for a bright financial future. Let's manage your future together.","<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebSite"",
+  ""@id"": ""https://www.savvywealth.com/#website"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""name"": ""Savvy Wealth""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""WebPage"",
+  ""name"": ""Michael Most: Financial Advisors in Fort Lauderdale, Florida | Savvy"",
+  ""url"": ""https://www.savvywealth.com/advisor/michael-most"",
+  ""about"": {
+    ""@type"": ""Person"",
+    ""name"": ""Michael Most"",
+    ""url"": ""https://www.savvywealth.com/advisor/michael-most""
+  },
+  ""isPartOf"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://www.savvywealth.com/""
+  },
+  ""primaryImageOfPage"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6852c8febef3845a730dda15_Michael%20Most%20SEO%20(1).webp""
+  },
+  ""datePublished"": ""2025-09-15"",
+  ""dateModified"": ""2025-09-15""
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Organization"",
+  ""@id"": ""https://www.savvywealth.com/#organization"",
+  ""name"": ""Savvy Wealth"",
+  ""url"": ""https://www.savvywealth.com/"",
+  ""logo"": {
+    ""@type"": ""ImageObject"",
+    ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+  },
+  ""sameAs"": [
+    ""https://www.linkedin.com/company/savvywealth/"",
+    ""https://x.com/SavvyWealthInc""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Person"",
+  ""name"": ""Michael Most"",
+  ""jobTitle"": ""Principal Wealth Manager"",
+  ""image"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6824d05a2c906e6a07c01ba6_Michael%20Hero%20Image.webp"",
+  ""url"": ""https://www.savvywealth.com/advisor/michael-most"",
+  ""email"": ""mailto:michael.most@savvyadvisors.com"",
+  ""telephone"": ""+1-347-271-2960"",
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""addressLocality"": ""Fort Lauderdale"",
+    ""addressRegion"": ""FL"",
+    ""addressCountry"": ""US""
+  },
+  ""description"": ""Michael Most is a Principal Wealth Manager at Savvy with 27 years of experience in financial services, previously serving in leadership and advisory roles at American Express Financial Advisors and LPL Financial."",
+  ""sameAs"": [
+    ""https://www.linkedin.com/in/michaelmostfinancial/""
+  ],
+  ""worksFor"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""url"": ""https://www.savvywealth.com""
+  },
+  ""knowsAbout"": [
+    ""Investment Management"",
+    ""Financial Planning"",
+    ""Personal Direct Indexing"",
+    ""Retirement Planning"",
+    ""ESG Investing"",
+    ""Tax Optimization"",
+    ""Trust & Estate Planning""
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://www.savvywealth.com""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Michael Most"",
+      ""item"": ""https://www.savvywealth.com/advisor/michael-most""
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How did you become a financial advisor?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""In 1996, I unexpectedly found my way into the financial advising realm at American Express Financial Advisors. Over the next 17 years, I wore various hats within the organization, transitioning from an advisor to a training manager and eventually a district manager. Initially joining the firm as American Express Financial Advisors, the name changed to Ameriprise Financial in 2005. My journey involved significant time in management, where I trained new advisors, participated in client appointments, and crafted financial plans. However, after nearly a decade in management, I felt a strong pull to return to my roots and be a financial advisor once again.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What types of clients do you work with?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My client base has evolved to focus on business owners and executives.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a unique approach you take?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My approach centers around building trust with clients. By actively listening to their needs, clients share invaluable insights, allowing me to tailor a strategy tailored to each individual. It has been a two-way learning process—while I have imparted financial knowledge, I have gained valuable lessons from clients as well. Success stories vary; some clients thrive due to their substantial income, while others excel through disciplined and effective financial habits. Recognizing that there is no one-size-fits-all solution, I customize approaches based on individuals’ distinct personalities and financial circumstances. For those facing challenges in saving, I create tailored routines that include effective ways to allocate funds and establish spending accounts.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Is there a typical area of expertise that you have?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""My expertise lies in the realm of retirement planning, where I specialize in preserving, growing, and generating retirement income. This extends to individuals who are at the stage of considering stepping away from their current endeavors, even if the term “retire” might not precisely capture their future plans.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""How do you work with clients to plan for retirement?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""When it comes to planning for retirement, my approach varies based on the individual’s proximity to retirement. For those in their 20s and 30s, the emphasis is on aggressive growth, balanced against day-to-day cash flow needs. In their 40s, the strategy maintains a balance, leaning slightly toward strengthening retirement assets. As clients enter their 50s or 60s, a more conservative approach focuses on preserving, growing, and generating income while maintaining some equity exposure to outpace inflation. My portfolio construction often blends mutual funds, alternatives such as REITs, and blue-chip stocks selected for quality and dividends.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""Working with Savvy"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""Working with Savvy has been distinctive. I value the open dialogue, the ability to course-correct quickly, and the firm’s tech-forward approach. Savvy can swiftly turn ideas into action and elevate initiatives. The collaborative environment enables me to run faster and further with the team, and I aim to leverage evolving technology, especially AI, to benefit clients.""
+      }
+    },
+    {
+      ""@type"": ""Question"",
+      ""name"": ""What’s your favorite part about working with clients?"",
+      ""acceptedAnswer"": {
+        ""@type"": ""Answer"",
+        ""text"": ""The genuine connection. Many clients become friends over time. I work to match plans to each client’s needs, whether risk-averse or more growth-oriented, so they can pursue goals without losing sleep. If a modest rate of return can meet their goals, exceeding it is a bonus.""
+      }
+    }
+  ]
+}
+</script>
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""VideoObject"",
+  ""name"": ""Michael Most, Savvy Advisor"",
+  ""description"": ""“I have always been driven by two simple questions: How can I help? and How can I be useful to others?”"",
+  ""thumbnailUrl"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/6852c8febef3845a730dda15_Michael%20Most%20SEO%20(1).webp"",
+  ""uploadDate"": ""2025-09-15T12:00:00-04:00"",
+  ""embedUrl"": ""https://player.vimeo.com/video/1071532379"",
+  ""publisher"": {
+    ""@type"": ""Organization"",
+    ""name"": ""Savvy Wealth"",
+    ""logo"": {
+      ""@type"": ""ImageObject"",
+      ""url"": ""https://cdn.prod.website-files.com/6479cdbae84fd9792129c576/647dd6624b8fd164bb0f9637_Savvy%20Logo.svg""
+    }
+  }
+}
+</script>","Fort Lauderdale, FL","Florida","Michael","Most","Michael Most","","https://www.linkedin.com/in/michaelmostfinancial/","<p>Hello there 👋🏼 I'm Michael Most, and I've dedicated the past 27 years to the dynamic world of financial services. My journey began at American Express Financial Advisors, where I wore various hats, transitioning from Training Manager to District Manager and eventually finding my niche as a Private Wealth Advisor. In 2012, I was ready for a change and moved to LPL Financial, where I continued my role as a Private Wealth Advisor.</p><p>In August 2023, I embarked on a new chapter in my professional life by joining Savvy as a Principal Wealth Manager. This exciting move aligns perfectly with my passion for helping clients navigate the complexities of financial planning.</p>","https://cdn.prod.website-files.com/647e0f47a33f9d6e433835d4/6a6bbb4a3cf42060394d120a_Michael%20Most.webp","Male","Personal Direct Indexing","Financial Planning & Analysis","Investment Management","","CRPC®","","","","kyra-luu","https://calendly.com/api/form_builder/forms/f8e38a02-cc2a-494b-8c62-aa132b776d51/submissions","79dfac65-3082-4ddf-afda-58932b098054","michael.most@savvyadvisors.com","I have always been driven by two simple questions: ""How can I help?"" and ""How can I be useful to others?"" These guiding principles underscore my approach to both professional and personal interactions.","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e44efa9584ed2f1ed91aea_marketwatch-logo%201.svg","MarketWatch","https://www.marketwatch.com/guides/cds/best-cd-rates/","https://s3.amazonaws.com/webflow-prod-assets/6479cdbae84fd9792129c576/66e4526d6c4fd2cfd29e16c9_usnewslogo.png","U.S. News & World Report","https://money.usnews.com/money/personal-finance/articles/use-your-fsa-balance-before-it-expires","","","","STRATEGIC, DATA-DRIVEN INVESTING TO TARGET AMBITIOUS RESULTS","Investment Management","End-to-end investment management including a focus on environmental, social, and governance (ESG) investing. My specialty is in helping clients invest in companies that align with their values, while still seeking to generate strong returns.","Take control of your financial future","Financial Planning & Analysis","Personalized wealth management helps our clients grow and protect their assets. We use a holistic approach to financial planning that integrates tax strategy, trust & estate planning, and risk management.","","Personal Direct Indexing","Build your own personalized index portfolio based on your unique values with direct ownership of individual stocks. This allows for greater customization and effective tax loss harvesting.","","","","","","","","<p>Michael Most has dedicated the last 27 years to the ever-evolving landscape of the financial services industry. His professional journey commenced at American Express Financial Advisors, where he seamlessly transitioned from the role of Training Manager to District Manager, ultimately finding his niche as a Private Wealth Advisor. In 2012, he embraced a new chapter at LPL Financial, continuing his impactful work as a Private Wealth Advisor.</p><p>Beyond the numbers and charts, Michael is a devoted reader and perpetual learner, always seeking opportunities to expand his knowledge. Nature holds a special allure for him, and he finds solace in its beauty. When not immersed in the financial world, you're likely to find Michael on the tennis or pickleball court, where he thrives on the thrill of competition and the camaraderie it fosters. Michael's  journey of growth and fulfillment is driven by a genuine desire to make a positive impact on those around him.</p>","347.271.2960","<p>In 1996, I unexpectedly found my way into the financial advising realm at American Express Financial Advisors. Over the next 17 years, I wore various hats within the organization, transitioning from an advisor to a training manager and eventually a district manager.</p><p>Initially joining the firm as American Express Financial Advisors, the name changed to Ameriprise Financial in 2005. My journey involved significant time in management, where I trained new advisors, participated in client appointments, and crafted financial plans. However, after nearly a decade in management, I felt a strong pull to return to my roots and be a financial advisor once again.</p>","<p>My client base has evolved to focus on business owners and executives.</p>","<p>My expertise lies in the realm of retirement planning, where I specialize in preserving, growing, and generating retirement income. This extends to individuals who are at the stage of considering stepping away from their current endeavors, even if the term ""retire"" might not precisely capture their future plans. These individuals have typically reached a point where they've accumulated enough financial resources to explore different career paths, even if they are not as financially lucrative.</p>","<p>When it comes to planning for retirement, my approach varies based on the individual's proximity to retirement. For those in their 20s and 30s, the emphasis is on aggressive growth since time is on their side. However, it's crucial to balance this by avoiding the pitfall of being ""retirement rich"" and struggling day-to-day, considering that most assets can't be accessed until after 59 and a half.</p><p>In their 40s, the strategy maintains a balance, leaning slightly towards ensuring that their retirement assets are robust and ready when needed. As clients enter their 50s or 60s, a more conservative approach is adopted. This stage involves preserving, growing, and generating income. The focus shifts from aggressive growth to maintaining a stable financial foundation while still incorporating some equity exposure to outpace inflation.</p><p>When it comes to wealth generation, many individuals use model portfolios, funds, and similar instruments. My approach involves a diversified mix, incorporating mutual funds, alternative investments such as real estate investment trusts, and blue-chip stocks. While mutual funds and alternative investments may offer stability over the long term, integrating quality stocks introduces the potential for higher returns. However, the addition of stocks requires careful selection, seeking blue-chip stocks with the worst-case scenario being a flat performance while continuing to generate dividends.</p>","<p>My favorite aspect of working with clients as a financial advisor is the genuine connection I build with them. Many of my clients have evolved into friends over time. Establishing relationships with clients allows me to gain a profound understanding of their lives, personalities, habits, and routines.</p><p>It's crucial to recognize and address the unique needs of clients, especially those who are risk-averse but still seek growth. I've developed effective communication strategies to put them at ease. The goal is to design financial plans that not only cater to their requirements but also helps to  ensure peace of mind. For clients with a higher risk tolerance, I understand that it doesn't necessitate taking excessive risks. If a modest rate of return can meet their goals, exceeding that becomes an added bonus. Striking this balance helps to ensure that clients feel secure in their financial decisions without losing sleep at night.</p>","<p>Working with Savvy has been a distinctive experience for me. Having previously been associated with larger companies, I appreciate the desire to do things differently. At Savvy, I find the space to communicate ideas freely. I value the openness to being wrong because it provides an opportunity for dialogue and learning. If someone can explain why I might be wrong, it's a chance to either course-correct or confidently defend my perspective.</p><p>Savvy's ability to swiftly turn ideas into action is impressive. They possess the capacity to not only support but also elevate your initiatives to the next level. While I've always considered myself efficient working independently, the collaborative environment at Savvy makes me hopeful that I can achieve even more by running faster and further with their team.</p><p>The biggest benefit of partnering with Savvy vs. a larger firm or working independently is that a boutique firm like Savvy can course-correct more quickly. Moreover, Savvy's cutting-edge technology and I feel their adaptability to the evolving landscape set them apart. In a world where technology, especially AI, is rapidly advancing, I want to embrace and leverage these changes to benefit those I work with.</p><p>As for prospective clients, I believe in one-on-one relationships. People will either like you or they won't, and it's important to avoid letting ego dictate. I'm here to earn your business and would love the opportunity to talk and see if we align.</p>","<p><em>Neither Savvy Wealth, nor Savvy Advisors compensates directly for testimonials or endorsements provided herein, by advisers. However advisors may have an indirect financial incentive to provide testimonials.</em></p>"
