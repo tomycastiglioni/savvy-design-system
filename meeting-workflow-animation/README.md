@@ -1,54 +1,52 @@
-# Remotion video
+# Meeting workflow animation
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Landing-page product animation for the Savvy Intelligence meeting workflow,
+built with [Remotion](https://www.remotion.dev). Output: 1300×900, 60 fps.
 
-Welcome to your Remotion project!
+## Compositions
+
+| ID | Workflow | Length |
+| --- | --- | --- |
+| `MeetingPrep` | 01 · Meeting prep — "Prepared before you ask" | 10 s |
+
+`MeetingPrep` beats: home "For your review" card → click "Review prep document"
+→ loading household → Household context (flag highlighted) → Meeting agenda
+(from the Quarterly Review template) → Outstanding tasks.
+
+## Where things live
+
+- `src/meeting-prep/timeline.ts` — global timeline (seconds). Change a beat here.
+- `src/meeting-prep/theme.ts` — Savvy Kit colors, fonts, easing, canvas geometry.
+- `src/meeting-prep/scenes/` — one file per screen.
+- `src/meeting-prep/components/` — cursor, Savvy Intelligence mark, avatar, reveal.
+- `public/fonts/` — DM Sans + DM Serif Display (SIL OFL), loaded locally.
 
 ## Commands
 
-**Install Dependencies**
-
 ```console
-npm i --loglevel=error
+npm i
+npm run dev        # Remotion Studio preview
+npm run lint       # eslint + tsc
 ```
 
-**Start Preview**
+## Export for the web
+
+Render a ProRes master, then encode:
 
 ```console
-npm run dev
+npx remotion render MeetingPrep out/master.mov --codec=prores --prores-profile=hq
+
+# Autoplay version
+ffmpeg -i out/master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -movflags +faststart -an out/export/meeting-prep.mp4
+
+# Scroll-scrub version: a keyframe every 6 frames (0.1 s) so seeking stays smooth
+ffmpeg -i out/master.mov -c:v libx264 -preset slow -crf 20 -g 6 -keyint_min 6 -sc_threshold 0 -bf 0 -pix_fmt yuv420p -movflags +faststart -an out/export/meeting-prep-scroll.mp4
+
+# Optional VP9/WebM
+ffmpeg -i out/master.mov -c:v libvpx-vp9 -crf 30 -b:v 0 -row-mt 1 -pix_fmt yuv420p -an out/export/meeting-prep.webm
+
+# Poster frame (2.2 s)
+npx remotion still MeetingPrep out/export/meeting-prep-poster.png --frame=132
 ```
 
-**Render video**
-
-```console
-npx remotion render
-```
-
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+Remotion is free for teams of up to 3; see https://www.remotion.pro/license.
