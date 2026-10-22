@@ -13,7 +13,8 @@ export const C = {
   label: "#8A919E",
   border: "#D1D5DB", // color/component/border-light — slate/300
   borderSoft: "#E8EAED", // color/component/base-muted — slate/200
-  panel: "#F6F7F9",
+  panel: "#F5F6F8",
+  statsBorder: "#E1E4E8",
   card: "#F8F9FA",
   tabsBg: "#F1F3F5",
   tabActive: "#E2E6EA",
@@ -37,10 +38,13 @@ export const CLAMP = {
 } as const;
 
 // Canvas geometry (1300×900), matched to the storyboard keyframes.
-export const REVIEW_BUTTON = { x: 261, y: 666, w: 238, h: 44 };
+export const REVIEW_PANEL = { x: 130, y: 452, w: 1037, h: 278 };
+export const REVIEW_CARD = { x: 155, y: 535, w: 986, h: 171 };
+export const REVIEW_BUTTON = { x: 261, y: 641, w: 231, h: 39 };
 export const LOADING_BOX = { x: 367, y: 245, w: 566, h: 410 };
 export const DOC_PANEL = { x: 145, y: 150, w: 1010, h: 690 };
-export const TABS_BAR = { x: 166, y: 83, w: 518, h: 66 };
+// Left edge aligned with the document panel.
+export const TABS_BAR = { x: 145, y: 63, w: 518, h: 66 };
 export const TABS = [
   { label: "Household context", x: 8, w: 175 },
   { label: "Meeting agenda", x: 183, w: 157 },

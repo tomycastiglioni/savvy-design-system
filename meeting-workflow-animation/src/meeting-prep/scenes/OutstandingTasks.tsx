@@ -12,23 +12,21 @@ type Task = {
   owner: string;
   team?: boolean;
   due?: string;
-  note?: string;
   status: "In progress" | "Not started";
 };
 
 const TASKS: Task[] = [
   { title: "Pre-Review Check-In", owner: "Heather Lee", status: "In progress" },
-  { title: "Raise cash for advisory fee — Joint (••8859)", owner: "Savvy Client Services (Ops)", team: true, status: "Not started" },
-  { title: "Collect 2025 tax return", owner: "Heather Lee", due: "Due Aug 28", note: "Upload request sent to Allison and Frank on Aug 3", status: "In progress" },
+  { title: "Raise cash for advisory fee", owner: "Savvy Client Services (Ops)", team: true, status: "Not started" },
+  { title: "Collect 2025 tax return", owner: "Heather Lee", due: "Due Aug 28", status: "In progress" },
   { title: "Maximize 401(k) contributions", owner: "Heather Lee", due: "Due Oct 28", status: "In progress" },
   { title: "Joint account de-risking proposal", owner: "Heather Lee", status: "Not started" },
-  { title: "Trust-as-beneficiary review", owner: "Heather Lee", status: "Not started" },
   { title: "Open new account", owner: "Savvy Client Services (Ops)", team: true, status: "Not started" },
 ];
 
 const HOVER_ROW = 1;
 
-// Mounted at T.tasksStart (8.45s) and holds to the end.
+// Mounted at T.tasksStart and holds to the end.
 export const OutstandingTasks: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -38,7 +36,7 @@ export const OutstandingTasks: React.FC = () => {
     ...CLAMP,
     easing: Easing.spring({ damping: 12 }),
   });
-  const hoverAt = 9.3 - T.tasksStart;
+  const hoverAt = T.hoverRow - T.tasksStart;
   const hover = interpolate(frame, [hoverAt * fps, (hoverAt + 0.15) * fps], [0, 1], CLAMP);
 
   return (
@@ -49,9 +47,9 @@ export const OutstandingTasks: React.FC = () => {
         maskImage: "linear-gradient(to bottom, #000 calc(100% - 120px), transparent)",
       }}
     >
-      <div style={{ position: "absolute", left: 52, right: 52, top: 36 }}>
-        <Reveal at={0.05} style={{ marginLeft: 22, display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-          <SectionHeader title="Outstanding tasks" count="(7)" subtitle="Open tasks tracked on this household." />
+      <div style={{ position: "absolute", left: 52, right: 52, top: 40 }}>
+        <Reveal at={0.05} style={{ marginLeft: 22, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <SectionHeader title="Outstanding tasks" count="(6)" />
           <div
             style={{
               display: "flex",
@@ -65,46 +63,44 @@ export const OutstandingTasks: React.FC = () => {
               fontWeight: 500,
               opacity: Math.min(1, synced * 1.5),
               scale: 0.8 + 0.2 * synced,
-              marginTop: 4,
             }}
           >
             <CircleCheck size={15} strokeWidth={2} /> Synced just now
           </div>
         </Reveal>
 
-        <div style={{ marginTop: 18 }}>
+        <div style={{ marginTop: 20 }}>
           {TASKS.map((task, i) => {
-            const pill = interpolate(frame, [(0.22 + i * 0.07) * fps, (0.5 + i * 0.07) * fps], [0, 1], {
+            const pill = interpolate(frame, [(0.22 + i * 0.08) * fps, (0.5 + i * 0.08) * fps], [0, 1], {
               ...CLAMP,
               easing: Easing.spring({ damping: 11 }),
             });
             return (
               <Reveal
                 key={task.title}
-                at={0.12 + i * 0.07}
+                at={0.12 + i * 0.08}
                 y={18}
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
-                  padding: "12px 14px",
+                  padding: "14px 14px",
                   borderRadius: 10,
                   background: i === HOVER_ROW ? `rgba(243, 244, 246, ${hover})` : "transparent",
                 }}
               >
                 <div>
-                  <div style={{ fontSize: 16, fontWeight: 600, color: C.ink }}>{task.title}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 7, fontSize: 14, color: C.muted }}>
-                    <Avatar size={22} initials="HL" team={task.team} />
+                  <div style={{ fontSize: 16.5, fontWeight: 600, color: C.ink }}>{task.title}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8, fontSize: 14.5, color: C.muted }}>
+                    <Avatar size={22} person={task.team ? "team" : "heather"} />
                     {task.owner}
                     {task.due ? <span>· {task.due}</span> : null}
                   </div>
-                  {task.note ? <div style={{ fontSize: 14, color: C.muted, marginTop: 7 }}>{task.note}</div> : null}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, color: C.faint }}>
                   <div
                     style={{
-                      fontSize: 13,
+                      fontSize: 13.5,
                       fontWeight: 500,
                       color: C.ink,
                       padding: "5px 10px",

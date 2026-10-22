@@ -7,18 +7,19 @@ built with [Remotion](https://www.remotion.dev). Output: 1300×900, 60 fps.
 
 | ID | Workflow | Length |
 | --- | --- | --- |
-| `MeetingPrep` | 01 · Meeting prep — "Prepared before you ask" | 10 s |
+| `MeetingPrep` | 01 · Meeting prep — "Prepared before you ask" | 12 s |
 
 `MeetingPrep` beats: home "For your review" card → click "Review prep document"
-→ loading household → Household context (flag highlighted) → Meeting agenda
-(from the Quarterly Review template) → Outstanding tasks.
+→ loading household → Household context → Meeting agenda (from the Quarterly
+Review template) → Outstanding tasks.
 
 ## Where things live
 
 - `src/meeting-prep/timeline.ts` — global timeline (seconds). Change a beat here.
 - `src/meeting-prep/theme.ts` — Savvy Kit colors, fonts, easing, canvas geometry.
 - `src/meeting-prep/scenes/` — one file per screen.
-- `src/meeting-prep/components/` — cursor, Savvy Intelligence mark, avatar, reveal.
+- `src/meeting-prep/components/` — cursor, Savvy Intelligence icon, avatar, reveal.
+- `public/images/` — official AI icon, cursors (arrow + tap) and Heather's avatar.
 - `public/fonts/` — DM Sans + DM Serif Display (SIL OFL), loaded locally.
 
 ## Commands
@@ -45,8 +46,8 @@ ffmpeg -i out/master.mov -c:v libx264 -preset slow -crf 20 -g 6 -keyint_min 6 -s
 # Optional VP9/WebM
 ffmpeg -i out/master.mov -c:v libvpx-vp9 -crf 30 -b:v 0 -row-mt 1 -pix_fmt yuv420p -an out/export/meeting-prep.webm
 
-# Poster frame (2.2 s)
-npx remotion still MeetingPrep out/export/meeting-prep-poster.png --frame=132
+# Poster frame (2.55 s)
+npx remotion still MeetingPrep out/export/meeting-prep-poster.png --frame=153
 ```
 
 Remotion is free for teams of up to 3; see https://www.remotion.pro/license.
