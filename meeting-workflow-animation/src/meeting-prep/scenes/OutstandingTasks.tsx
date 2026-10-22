@@ -1,9 +1,9 @@
 import { CircleCheck, Ellipsis, Pencil } from "lucide-react";
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { Avatar } from "../components/Avatar";
-import { Reveal } from "../components/Reveal";
-import { SectionHeader } from "../components/SectionHeader";
+import { Avatar } from "../../shared/components/Avatar";
+import { Reveal } from "../../shared/components/Reveal";
+import { SectionHeader } from "../../shared/components/SectionHeader";
 import { C, CLAMP, EASE_OUT } from "../theme";
 import { T } from "../timeline";
 

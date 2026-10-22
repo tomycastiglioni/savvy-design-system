@@ -1,7 +1,7 @@
 import { ChevronUp, ExternalLink, FileText, Send } from "lucide-react";
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { Reveal } from "../components/Reveal";
+import { Reveal } from "../../shared/components/Reveal";
 import { C, CLAMP, EASE_IN_OUT, FONT } from "../theme";
 import { T } from "../timeline";
 

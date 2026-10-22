@@ -6,9 +6,9 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { AIIcon, AIIconAvatar } from "../components/AIIcon";
-import { Avatar } from "../components/Avatar";
-import { Reveal } from "../components/Reveal";
+import { AIIcon, AIIconAvatar } from "../../shared/components/AIIcon";
+import { Avatar } from "../../shared/components/Avatar";
+import { Reveal } from "../../shared/components/Reveal";
 import { C, CLAMP, EASE_IN_OUT, EASE_OUT, FONT, REVIEW_BUTTON, REVIEW_CARD, REVIEW_PANEL } from "../theme";
 import { T } from "../timeline";
 

@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { AIIcon } from "../components/AIIcon";
+import { AIIcon } from "../../shared/components/AIIcon";
 import { C, CLAMP, DOC_PANEL, EASE_IN_OUT, EASE_MORPH, LOADING_BOX, REVIEW_BUTTON } from "../theme";
 
 // Local times (seconds from T.prepDocStart).

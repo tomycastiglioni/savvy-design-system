@@ -1,8 +1,8 @@
 import { Bold, ChevronDown, Italic, Strikethrough, Underline } from "lucide-react";
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { Reveal } from "../components/Reveal";
-import { SectionHeader } from "../components/SectionHeader";
+import { Reveal } from "../../shared/components/Reveal";
+import { SectionHeader } from "../../shared/components/SectionHeader";
 import { C, CLAMP, EASE_IN_OUT, EASE_OUT } from "../theme";
 import { T } from "../timeline";
 
