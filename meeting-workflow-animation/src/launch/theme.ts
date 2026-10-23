@@ -24,8 +24,9 @@ export const EYEBROW = {
   followUp: "#8E7E57",
 };
 
-// Headline type: ABC Diatype Regular, black. Positions are cap-top lines.
-export const HEADLINE = { size: 79.6, lh: 96, color: "#000000" };
+// Headline type: ABC Diatype Regular, black, 115% leading (as in Figma).
+// Positions are cap-top lines.
+export const HEADLINE = { size: 79.6, lh: 79.6 * 1.15, color: "#000000" };
 export const TITLE_SIZE = 78.5; // F1 title, tracked -0.02em
 export const TEXT_X = 174; // left text column (element edge; ink starts ~1px right)
 export const TEXT_X_RIGHT = 1167; // right text column (Live planning)

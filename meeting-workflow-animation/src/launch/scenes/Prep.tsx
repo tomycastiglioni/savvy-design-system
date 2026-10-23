@@ -127,12 +127,12 @@ export const Prep: React.FC = () => {
           <div
             style={{
               position: "absolute",
-              left: 21,
+              left: "50%",
               top: "50%",
-              translate: "0px -50%",
+              translate: "-50% -50%",
               display: "flex",
               alignItems: "center",
-              gap: 15,
+              gap: 13,
               fontSize: 22.2,
               fontWeight: 500,
               color: C.ink,

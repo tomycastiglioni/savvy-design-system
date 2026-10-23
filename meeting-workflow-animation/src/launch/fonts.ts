@@ -12,6 +12,14 @@ export const loadDiatype = () => {
     return;
   }
   requested = true;
-  loadFont({ family: "ABC Diatype", url: staticFile("fonts/ABCDiatype-Regular.otf"), weight: "400" });
-  loadFont({ family: "ABC Diatype", url: staticFile("fonts/ABCDiatype-Bold.otf"), weight: "700" });
+  loadFont({
+    family: "ABC Diatype",
+    url: staticFile("fonts/ABCDiatype-Regular.otf"),
+    weight: "400",
+  });
+  loadFont({
+    family: "ABC Diatype",
+    url: staticFile("fonts/ABCDiatype-Bold.otf"),
+    weight: "700",
+  });
 };

@@ -22,7 +22,8 @@ const LOGO = { x: 56, y: 50, h: 52.4 }; // box-relative
 const MIC = { x: 1115, y: 155, s: 100 };
 const PROMPT = "Prep me for my meeting with Allison and Frank";
 const WORDS = PROMPT.split(" ");
-export const REVIEW_BTN = { x: 381, y: 322, w: 307, h: 53 }; // F5, launch px
+// F5, launch px; wide enough for the whole label with even padding.
+export const REVIEW_BTN = { x: 381, y: 322, w: 334, h: 53 };
 
 // The stack (status/reply, bubble, box) re-centers as it grows: F3 → F4 → F5.
 const boxY = (t: number) =>
@@ -273,8 +274,8 @@ export const Intro: React.FC = () => {
                     ),
                     display: "flex",
                     alignItems: "center",
-                    paddingLeft: 21,
-                    gap: 15,
+                    justifyContent: "center",
+                    gap: 13,
                     fontSize: 22.2,
                     fontWeight: 500,
                     color: C.ink,

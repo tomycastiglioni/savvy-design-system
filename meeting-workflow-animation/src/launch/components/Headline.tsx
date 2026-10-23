@@ -10,6 +10,7 @@ const lineTop = (capTop: number, size: number, lh: number) =>
 
 const EYEBROW = { size: 21, lh: 24, tracking: "0.04em" };
 const EYEBROW_GAP = 88; // eyebrow cap top → first headline cap top
+const STORYBOARD_LH = 96;
 
 // Chapter headline: small uppercase eyebrow, then 2–3 lines of Diatype.
 // Lines rise in one after another at `inAt`, and leave together at `outAt`.
@@ -27,7 +28,11 @@ export const Headline: React.FC<{
   if (t < inAt || t > outAt + 0.5) {
     return null;
   }
-  const top0 = capTop ?? 397 - 48 * (lines.length - 2);
+  // Block positions come from the storyboard frames, set at 96px leading;
+  // tighter leading pulls the lines in toward the same center.
+  const top0 =
+    (capTop ?? 397 - 48 * (lines.length - 2)) +
+    ((STORYBOARD_LH - HEADLINE.lh) * (lines.length - 1)) / 2;
   const out = interpolate(t, [outAt, outAt + 0.4], [0, 1], {
     ...CLAMP,
     easing: EASE_IN_OUT,
