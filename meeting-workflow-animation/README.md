@@ -9,6 +9,7 @@ built with [Remotion](https://www.remotion.dev). Output: 1300×900, 60 fps.
 | --- | --- | --- | --- |
 | `MeetingPrep` | 01 · Meeting prep — "Prepared before you ask" | 12 s | 153 (2.55 s) |
 | `Delivery` | 02 · Delivery — live charts and what-ifs | 12 s | 240 (4.0 s) |
+| `Capture` | 03 · Meeting capture — "Every conversation, on the record" | 12 s | 90 (1.5 s) |
 
 `MeetingPrep` beats: home "For your review" card → click "Review prep document"
 → loading household → Household context → Meeting agenda (from the Quarterly
@@ -19,13 +20,20 @@ builds a chart (Retirement projection, Allocation vs. target) → "Present" on
 Retirement projection goes full screen → what-if controls slide in; dragging
 contributions, expected return and inflation redraws the projection live.
 
+`Capture` beats: vector iPhone recording the meeting (32:03 → 32:05) → tap
+Stop → Transcribing → tap "Stop and get recap" → Writing your recap → notes
+(Summary, Transcription, Summary) → the phone grows into the desktop recap
+(same panel as the 01 prep document) and scrolls.
+
 ## Where things live
 
 - `src/shared/` — used by every video so they stay identical: Savvy Kit tokens
   and chart series colors (`theme.ts`), fonts, the cursor (`CursorLayer`), AI
   icon, avatar, reveal.
 - `src/<workflow>/timeline.ts` — that video's timeline (seconds). Change a beat here.
-- `src/meeting-prep/`, `src/delivery/` — per-video geometry, scenes and charts.
+- `src/meeting-prep/`, `src/delivery/`, `src/capture/` — per-video geometry, scenes and charts.
+- `src/capture/content.ts` — recap text shown on both the phone and the desktop.
+- `src/capture/components/Phone.tsx` — the vector iPhone (frame, island, status bar).
 - `src/delivery/whatif.ts` — slider definitions, drags and the projection model.
 - `public/images/` — official AI icon, cursors (arrow + tap) and Heather's avatar.
 - `public/fonts/` — DM Sans (incl. italic) + DM Serif Display (SIL OFL), loaded locally.
