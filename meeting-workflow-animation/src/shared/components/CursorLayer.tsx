@@ -12,7 +12,7 @@ import { C, CLAMP, EASE_IN_OUT, EASE_OUT } from "../theme";
 
 // Supplied cursor SVGs, drawn at 1.5× their 31×33 / 30×32 artboards.
 // Hotspots are the arrow tip and the index fingertip.
-const SCALE = 1.5;
+const DEFAULT_SCALE = 1.5;
 const ARROW = { src: "images/cursor-arrow.svg", w: 31, h: 33, hotX: 9.15, hotY: 6.03 };
 const HAND = { src: "images/cursor-hand.svg", w: 30, h: 32, hotX: 9.4, hotY: 4.4 };
 
@@ -27,7 +27,7 @@ export type CursorKey = {
 export type CursorClick = { readonly at: number; readonly x: number; readonly y: number };
 type Range = readonly [number, number];
 
-const Ripple: React.FC<CursorClick> = ({ at, x, y }) => {
+const Ripple: React.FC<CursorClick & { readonly k?: number }> = ({ at, x, y, k = 1 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const p = interpolate(frame, [at * fps, (at + 0.45) * fps], [0, 1], {
@@ -37,7 +37,7 @@ const Ripple: React.FC<CursorClick> = ({ at, x, y }) => {
   if (p <= 0 || p >= 1) {
     return null;
   }
-  const size = 12 + p * 52;
+  const size = (12 + p * 52) * k;
   return (
     <div
       style={{
@@ -55,7 +55,7 @@ const Ripple: React.FC<CursorClick> = ({ at, x, y }) => {
   );
 };
 
-const CursorImage: React.FC<{ readonly c: typeof ARROW; readonly visible: boolean }> = ({ c, visible }) => (
+const CursorImage: React.FC<{ readonly c: typeof ARROW; readonly visible: boolean; readonly scale: number }> = ({ c, visible, scale: SCALE }) => (
   <Img
     src={staticFile(c.src)}
     style={{
@@ -75,7 +75,8 @@ export const CursorLayer: React.FC<{
   readonly clicks?: readonly CursorClick[];
   readonly hand?: readonly Range[]; // [from, to) in seconds
   readonly holds?: readonly Range[]; // pressed for the whole range (drags)
-}> = ({ path, opacity, clicks = [], hand = [], holds = [] }) => {
+  readonly scale?: number; // cursor size multiplier over the SVG artboard
+}> = ({ path, opacity, clicks = [], hand = [], holds = [], scale = DEFAULT_SCALE }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -102,11 +103,11 @@ export const CursorLayer: React.FC<{
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       {clicks.map((c) => (
-        <Ripple key={c.at} {...c} />
+        <Ripple key={c.at} {...c} k={scale / DEFAULT_SCALE} />
       ))}
       <div style={{ position: "absolute", left: x, top: y, opacity: alpha, scale: 1 - 0.14 * press, transformOrigin: "0px 0px" }}>
-        <CursorImage c={ARROW} visible={!isHand} />
-        <CursorImage c={HAND} visible={isHand} />
+        <CursorImage c={ARROW} visible={!isHand} scale={scale} />
+        <CursorImage c={HAND} visible={isHand} scale={scale} />
       </div>
     </AbsoluteFill>
   );

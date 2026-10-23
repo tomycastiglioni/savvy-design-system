@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, Send } from "lucide-react";
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, interpolateColors, useCurrentFrame, useVideoConfig } from "remotion";
 import { Reveal } from "../../shared/components/Reveal";
@@ -61,7 +61,8 @@ const CheckRow: React.FC<{
 );
 
 // "Edit client materials": choose sections, graphs and the typeface.
-export const EditorPanel: React.FC = () => {
+// `primary` swaps "Save changes" for "Draft email to client" (launch video).
+export const EditorPanel: React.FC<{ readonly primary?: "save" | "draft" }> = ({ primary = "save" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -169,9 +170,16 @@ export const EditorPanel: React.FC = () => {
             justifyContent: "center",
             scale: 1 - 0.03 * save.press,
             filter: `brightness(${1 - 0.12 * save.hover})`,
+            gap: 8,
           }}
         >
-          Save changes
+          {primary === "draft" ? (
+            <>
+              <Send size={15} strokeWidth={2} /> Draft email to client
+            </>
+          ) : (
+            "Save changes"
+          )}
         </Reveal>
       </div>
     </AbsoluteFill>
