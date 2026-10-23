@@ -3,6 +3,7 @@ import { AbsoluteFill } from "remotion";
 import { Background } from "./components/Background";
 import { loadDiatype } from "./fonts";
 import { LaunchCursor } from "./LaunchCursor";
+import { Sfx } from "./Sfx";
 import { CaptureChapter } from "./scenes/CaptureChapter";
 import { Close } from "./scenes/Close";
 import { FollowUp } from "./scenes/FollowUp";
@@ -31,6 +32,7 @@ export const Launch: React.FC = () => {
       <FollowUp />
       <Close />
       <LaunchCursor />
+      <Sfx />
     </AbsoluteFill>
   );
 };

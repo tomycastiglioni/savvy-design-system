@@ -57,8 +57,11 @@ plays the original scenes on their own clock. All beats are in
 committed because this repo is public: put `ABCDiatype-Regular.otf` and
 `ABCDiatype-Bold.otf` in `public/fonts/` before rendering `Launch`.
 
-**Sound:** effects generated with ElevenLabs (text to sound), trimmed and
-peak-normalized in `public/audio/launch/`. There is no music track yet.
+**Sound:** effects in `public/audio/launch/`, trimmed and peak-normalized.
+`click` and `whoosh` come from ElevenLabs (text to sound); `send`, `chime`,
+`mic`, `tick`, `shimmer`, `success` and `sting` are synthesized stand-ins until
+their ElevenLabs takes are generated (replace the file, keep the name). There
+is no music track yet.
 
 ## Where things live
 
