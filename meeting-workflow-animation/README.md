@@ -14,7 +14,7 @@ and an iPhone screen recording of mobile prep (`MobilePrep`, 1080×2348, 60 fps)
 | `Capture` | 03 · Meeting capture — "Every conversation, on the record" | 12 s | 90 (1.5 s) |
 | `Recap` | 04 · Recap & follow-through — "The meeting ends. The follow-up doesn't wait." | 16 s | 470 (7.8 s) |
 | `Launch` | Savvy Intelligence 2.0 launch video, 1920×1080 | 44 s | 1080 (18.0 s) |
-| `MobilePrep` | iPhone screen recording, 1080×2348 — "Your prep for the Dave R. review is ready." | 3.5 s | 60 (1.0 s) |
+| `MobilePrep` | iPhone screen recording, 1080×2348 — morning prep for the Dave R. review | 3.5 s | 150 (2.5 s) |
 
 `MeetingPrep` beats: home "For your review" card → click "Review prep document"
 → loading household → Household context → Meeting agenda (from the Quarterly
@@ -36,11 +36,11 @@ document" → editor + live preview (add Retirement projection graph, switch to
 serif, save) → "Draft client email" → "Analyzing your writing style…" with the
 advisor's style tags → the email writes itself → Send → "Email sent".
 
-`MobilePrep` beats (a plain screen recording: no phone frame, no touches; the
-phone plays itself): the advisor's Today screen with Dave R.'s review
-"Preparing…" → the iOS notification drops in and the row flips to "Prep ready"
-→ the banner leaves and the prep pushes in → household summary (account
-changes, one open task, one flagged item) and a four-item agenda fade in. All
+`MobilePrep` beats (a plain screen recording: no phone frame, no touches, no
+notification; the phone plays itself): Peter's "Good morning" screen with the
+next meeting's card loading (shimmer placeholders, "Preparing…") → "Prep
+ready" → four short rows fill in top to bottom (Summary, Task, Flagged,
+Agenda) → "Open prep". Text is a few words per row so it reads in 3.5 s. All
 layout is in iOS points (360×782.67) and scaled ×3; beats are in
 `src/mobile-prep/timeline.ts`, copy in `src/mobile-prep/content.ts`.
 
@@ -86,10 +86,9 @@ is no music track yet.
 - `src/delivery/whatif.ts` — slider definitions, drags and the projection model.
 - `public/images/` — official AI icon, cursors (arrow + tap) and Heather's avatar.
 - `public/fonts/` — DM Sans (incl. italic) + DM Serif Display (SIL OFL), loaded locally;
-  Inter (SIL OFL) stands in for SF Pro in `MobilePrep`'s iOS system UI.
-- `src/mobile-prep/` — the iPhone video: `TodayScreen` and `PrepScreen`, plus
-  the iOS status bar, home indicator and notification banner (`components/`).
-- `public/images/savvy-app-icon.svg` — stand-in Savvy app icon (the logo's S on savvy green), used in the banner.
+  Inter (SIL OFL) stands in for SF Pro in `MobilePrep`'s iOS status bar.
+- `src/mobile-prep/` — the iPhone video: `screens/MorningScreen.tsx`, plus the
+  iOS status bar and home indicator (`components/SystemUI.tsx`).
 - `src/launch/` — the launch video: `timeline.ts` (beats, cameras, gradients), `scenes/` (one per chapter), `LaunchCursor.tsx`, `Sfx.tsx`.
 - `public/images/savvy-logo.svg` — Savvy wordmark; `public/audio/launch/` — launch sound effects.
 
@@ -126,12 +125,12 @@ ffmpeg -i out/delivery-master.mov -c:v libvpx-vp9 -crf 30 -b:v 0 -row-mt 1 -pix_
 npx remotion still Delivery out/export/delivery-poster.png --frame=240
 ```
 
-For `MobilePrep` (no audio, poster on the notification):
+For `MobilePrep` (no audio, poster on the finished card):
 
 ```console
 npx remotion render MobilePrep out/mobile-prep-master.mov --codec=prores --prores-profile=hq
 ffmpeg -i out/mobile-prep-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -movflags +faststart -an out/export/mobile-prep.mp4
-npx remotion still MobilePrep out/export/mobile-prep-poster.png --frame=60
+npx remotion still MobilePrep out/export/mobile-prep-poster.png --frame=150
 ```
 
 For `Launch`, render the master with audio and encode with AAC instead of `-an`:
