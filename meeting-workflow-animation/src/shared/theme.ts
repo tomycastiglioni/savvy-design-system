@@ -40,7 +40,7 @@ export const FONT = {
 };
 
 // Section background gradients (102°, 20% → 80%), shared with the launch video.
-// Meeting prep is cream; Communicate (delivery, capture) is mint; recap is blue.
+// Meeting prep is cream, delivery mint, capture gold and recap blue.
 export const BG = {
   cream: ["#F9F5EF", "#D3CDC4"],
   mint: ["#D9F2EB", "#A4E6D4"],

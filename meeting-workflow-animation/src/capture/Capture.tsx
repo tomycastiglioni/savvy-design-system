@@ -49,7 +49,7 @@ export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?:
   const mobile = interpolate(grow, [0.3, 0.75], [1, 0], CLAMP);
 
   return (
-    <AbsoluteFill style={{ background: transparent ? undefined : bgGradient("mint"), fontFamily: FONT.sans, color: C.ink }}>
+    <AbsoluteFill style={{ background: transparent ? undefined : bgGradient("gold"), fontFamily: FONT.sans, color: C.ink }}>
       <style>{"*{box-sizing:border-box;}"}</style>
 
       <AbsoluteFill style={{ opacity: enter, translate: `0px ${(1 - enter) * 40}px`, scale: 0.96 + 0.04 * enter }}>

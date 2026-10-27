@@ -17,8 +17,8 @@ and an iPhone screen recording of mobile prep (`MobilePrep`, 1080×2348, 60 fps)
 | `MobilePrep` | iPhone screen recording, 1080×2348 — morning prep for the Dave R. review | 3.5 s | 150 (2.5 s) |
 
 Each workflow sits on its section's gradient (`BG` in `src/shared/theme.ts`,
-the same gradients as the launch video): Meeting prep is cream; Delivery and
-Capture, both in the Communicate section, are mint; Recap is blue.
+the same gradients as the launch video): Meeting prep is cream, Delivery is
+mint, Capture is gold and Recap is blue.
 
 `MeetingPrep` beats: home "For your review" card → click "Review prep document"
 → loading household → Household context → Meeting agenda (from the Quarterly
