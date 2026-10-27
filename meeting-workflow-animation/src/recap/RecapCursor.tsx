@@ -1,12 +1,14 @@
 import React from "react";
 import { CursorLayer } from "../shared/components/CursorLayer";
-import { center, CREATE_BTN, DRAFT_BTN, editorPoint, ROW, ROWS, SAVE_BTN, SEGMENT, sendCenter } from "./layout";
+import { center, CREATE_BTN, DRAFT_BTN, editorPoint, ROW, ROWS, SAVE_BTN, sendCenter } from "./layout";
 import { T } from "./timeline";
 
 const CREATE = center(CREATE_BTN);
 const DRAFT = center(DRAFT_BTN);
 const GRAPH = editorPoint(ROW.x + 23, ROWS.graphRetirement + ROW.h / 2 + 2);
-const SERIF = editorPoint(SEGMENT.x + SEGMENT.w * 0.75, SEGMENT.y + SEGMENT.h / 2 + 2);
+// In the gap under the graph rows while the preview builds the graph and
+// scrolls back up.
+const REST = editorPoint(ROW.x + 90, ROWS.graphAccounts + ROW.h + 14);
 const SAVE = editorPoint(SAVE_BTN.x + SAVE_BTN.w / 2, SAVE_BTN.y + SAVE_BTN.h / 2 + 2);
 const SEND = sendCenter();
 
@@ -20,8 +22,8 @@ export const RecapCursor: React.FC = () => (
       { t: 4.75, ...CREATE, ease: "linear" },
       { t: 6.15, ...GRAPH },
       { t: 6.5, ...GRAPH, ease: "linear" },
-      { t: 7.25, ...SERIF },
-      { t: 7.6, ...SERIF, ease: "linear" },
+      { t: 7.0, ...REST },
+      { t: 7.8, ...REST, ease: "linear" },
       { t: 8.35, ...SAVE },
       { t: 8.8, ...SAVE, ease: "linear" },
       { t: 9.55, ...DRAFT },
@@ -44,7 +46,6 @@ export const RecapCursor: React.FC = () => (
     clicks={[
       { at: T.clickCreate, ...CREATE },
       { at: T.clickGraph, ...GRAPH },
-      { at: T.clickSerif, ...SERIF },
       { at: T.clickSave, ...SAVE },
       { at: T.clickDraft, ...DRAFT },
       { at: T.clickSend, ...SEND },
@@ -52,7 +53,6 @@ export const RecapCursor: React.FC = () => (
     hand={[
       [4.15, 4.8],
       [5.95, 6.55],
-      [7.05, 7.65],
       [8.15, 8.85],
       [9.35, 10.1],
       [14.05, 14.85],

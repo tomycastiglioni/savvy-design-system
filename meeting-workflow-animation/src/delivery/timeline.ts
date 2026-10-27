@@ -1,7 +1,6 @@
 // Global timeline, in seconds (absolute). Slider drags live in whatif.ts.
 export const T = {
-  clickAddA: 1.95, // bottom-left slot → Retirement projection
-  clickAddB: 2.7, // bottom-right slot → Allocation vs. target
+  clickAdd: 1.95, // "Add graph" slot → Retirement projection
   clickPresent: 4.35,
   presentStart: 4.4, // Retirement projection expands to full screen
   presentEnd: 5.0,

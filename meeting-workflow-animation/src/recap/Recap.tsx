@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { Toast } from "./components/Bits";
-import { C, FONT } from "./layout";
+import { bgGradient, C, FONT } from "./layout";
 import { RecapCursor } from "./RecapCursor";
 import { DraftFlow } from "./scenes/DraftFlow";
 import { EditorPanel } from "./scenes/EditorPanel";
@@ -12,7 +12,7 @@ import { T } from "./timeline";
 // Continues 03's recap: topics → suggested tasks → client document (edit,
 // save) → draft client email in the advisor's writing style → sent.
 export const Recap: React.FC = () => (
-  <AbsoluteFill style={{ background: C.white, fontFamily: FONT.sans, color: C.ink }}>
+  <AbsoluteFill style={{ background: bgGradient("blue"), fontFamily: FONT.sans, color: C.ink }}>
     <style>{"*{box-sizing:border-box;}"}</style>
     <RecapPage />
     <EditorPanel />

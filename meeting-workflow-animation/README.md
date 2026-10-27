@@ -12,29 +12,35 @@ and an iPhone screen recording of mobile prep (`MobilePrep`, 1080×2348, 60 fps)
 | `MeetingPrep` | 01 · Meeting prep — "Prepared before you ask" | 12 s | 153 (2.55 s) |
 | `Delivery` | 02 · Delivery — live charts and what-ifs | 12 s | 240 (4.0 s) |
 | `Capture` | 03 · Meeting capture — "Every conversation, on the record" | 12 s | 90 (1.5 s) |
-| `Recap` | 04 · Recap & follow-through — "The meeting ends. The follow-up doesn't wait." | 16 s | 470 (7.8 s) |
+| `Recap` | 04 · Recap & follow-through — "The meeting ends. The follow-up doesn't wait." | 16 s | 505 (8.4 s) |
 | `Launch` | Savvy Intelligence 2.0 launch video, 1920×1080 | 44 s | 1080 (18.0 s) |
 | `MobilePrep` | iPhone screen recording, 1080×2348 — morning prep for the Dave R. review | 3.5 s | 150 (2.5 s) |
+
+Each workflow sits on its section's gradient (`BG` in `src/shared/theme.ts`,
+the same gradients as the launch video): Meeting prep is cream; Delivery and
+Capture, both in the Communicate section, are mint; Recap is blue.
 
 `MeetingPrep` beats: home "For your review" card → click "Review prep document"
 → loading household → Household context → Meeting agenda (from the Quarterly
 Review template) → Outstanding tasks.
 
-`Delivery` beats: Graphs with two charts and two "Add graph" slots → each click
-builds a chart (Retirement projection, Allocation vs. target) → "Present" on
-Retirement projection goes full screen → what-if controls slide in; dragging
+`Delivery` beats: Graphs with one chart (Account breakdown) and one "Add graph"
+slot → the click builds Retirement projection → "Present" on it goes full screen → what-if controls slide in; dragging
 contributions, expected return and inflation redraws the projection live.
 
 `Capture` beats: vector iPhone recording the meeting (32:03 → 32:05) → tap
 Stop → Transcribing → tap "Stop and get recap" → Writing your recap → notes
 (Summary, Transcription, Summary) → the phone grows into the desktop recap
-(same panel as the 01 prep document) and scrolls.
+(same panel as the 01 prep document: title and meeting line, then the summary)
+and scrolls.
 
-`Recap` beats: opens on `Capture`'s last frame (pixel-identical) → keeps
-scrolling into the topic summary and four suggested tasks → "Create client
-document" → editor + live preview (add Retirement projection graph, switch to
-serif, save) → "Draft client email" → "Analyzing your writing style…" with the
-advisor's style tags → the email writes itself → Send → "Email sent".
+`Recap` beats: opens on `Capture`'s last frame (identical apart from the
+background) → keeps scrolling into the topic summary and four suggested tasks →
+"Create client document" → editor + live preview with the firm's logo (add the
+Retirement projection graph, the preview scrolls back to the top, save; the
+document stays in Sans) → "Draft client email" → "Analyzing your writing
+style…" with the advisor's style tags → the email opens with its greeting and
+first line written and writes the rest from "As agreed…" → Send → "Email sent".
 
 `MobilePrep` beats (a plain screen recording: no phone frame, no touches, no
 notification; the phone plays itself): Peter's "Good morning" screen with the
@@ -60,7 +66,9 @@ grid of 2 s bars, so a 120 BPM track lines up with every section):
 How it fits together: each chapter places a workflow's 1300×900 design space
 on the chapter's gradient with a camera (`components/Stage.tsx`, keyframes in
 `timeline.ts` → `CAM`). Where the storyboard skips steps, `components/Remap.tsx`
-plays the original scenes on their own clock. All beats are in
+plays the original scenes on their own clock. The launch keeps the workflows'
+earlier versions where they have since changed (linked-documents line, serif
+switch, no firm logo, smaller "Email sent") through props on the shared scenes. All beats are in
 `src/launch/timeline.ts`; the sound cues in `src/launch/Sfx.tsx` follow them.
 
 **Fonts:** headlines use ABC Diatype (Dinamo), which Savvy licenses. It is not
@@ -84,7 +92,8 @@ is no music track yet.
 - `src/capture/content.ts` — recap text shown on both the phone and the desktop.
 - `src/capture/components/Phone.tsx` — the vector iPhone (frame, island, status bar).
 - `src/delivery/whatif.ts` — slider definitions, drags and the projection model.
-- `public/images/` — official AI icon, cursors (arrow + tap) and Heather's avatar.
+- `public/images/` — AI Savvy icon (`ai-icon.svg`, cropped to the mark), cursors (arrow + tap) and Heather's avatar.
+- `src/recap/components/FirmLogo.tsx` — placeholder logo for the advisor's wealth firm (fictional) on the client document.
 - `public/fonts/` — DM Sans (incl. italic) + DM Serif Display (SIL OFL), loaded locally;
   Inter (SIL OFL) stands in for SF Pro in `MobilePrep`'s iOS status bar.
 - `src/mobile-prep/` — the iPhone video: `screens/MorningScreen.tsx`, plus the

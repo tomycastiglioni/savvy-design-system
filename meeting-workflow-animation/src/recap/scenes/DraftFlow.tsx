@@ -8,7 +8,11 @@ import { C, CLAMP, DRAFT_BTN, EASE_IN_OUT, EASE_MORPH, EASE_OUT, EMAIL, LOADING_
 import { T } from "../timeline";
 
 const WORDS = EMAIL_BODY.map((p) => p.split(/(\s+)/));
-export const EMAIL_WORD_COUNT = WORDS.reduce((n, p) => n + p.filter((w) => w.trim()).length, 0);
+const wordCount = (paragraphs: string[][]) => paragraphs.reduce((n, p) => n + p.filter((w) => w.trim()).length, 0);
+export const EMAIL_WORD_COUNT = wordCount(WORDS);
+// The greeting and first line are already there when the draft opens; the
+// writing starts at "As agreed…".
+const PREWRITTEN_WORDS = wordCount(WORDS.slice(0, 2));
 
 const Caret: React.FC = () => (
   <span style={{ display: "inline-block", width: 2, height: "1.15em", background: C.green, verticalAlign: "text-bottom", marginLeft: 2 }} />
@@ -182,12 +186,15 @@ export const EmailDraft: React.FC<{
 );
 
 // "Email sent" confirmation, centered in w × h; `draw` strokes the check.
-export const EmailSent: React.FC<{ readonly w: number; readonly h: number; readonly draw: number; readonly style?: React.CSSProperties }> = ({
-  w,
-  h,
-  draw,
-  style,
-}) => (
+// The launch video passes its own, smaller text sizes.
+export const EmailSent: React.FC<{
+  readonly w: number;
+  readonly h: number;
+  readonly draw: number;
+  readonly titleSize?: number;
+  readonly subSize?: number;
+  readonly style?: React.CSSProperties;
+}> = ({ w, h, draw, titleSize = 32, subSize = 19, style }) => (
   <div
     style={{
       position: "absolute",
@@ -217,8 +224,8 @@ export const EmailSent: React.FC<{ readonly w: number; readonly h: number; reado
         />
       </svg>
     </div>
-    <div style={{ fontSize: 26, fontWeight: 600, color: C.ink, marginTop: 26 }}>Email sent</div>
-    <div style={{ fontSize: 16, color: C.muted, marginTop: 8 }}>To Allison &amp; Frank Chan, with the Quarterly Review recap attached</div>
+    <div style={{ fontSize: titleSize, fontWeight: 600, color: C.ink, marginTop: titleSize }}>Email sent</div>
+    <div style={{ fontSize: subSize, color: C.muted, marginTop: subSize / 2 }}>To Allison &amp; Frank Chan, with the Quarterly Review recap attached</div>
   </div>
 );
 
@@ -244,7 +251,7 @@ export const DraftFlow: React.FC = () => {
   const spin = interpolate(t, [T.loadStart + 0.35, T.loadEnd + 0.2], [0, 540], { ...CLAMP, easing: EASE_IN_OUT });
   const email = interpolate(t, [T.emailOpen - 0.15, T.emailOpen + 0.2], [0, 1], CLAMP);
 
-  const shown = Math.floor(interpolate(t, [T.typeStart, T.typeEnd], [0, EMAIL_WORD_COUNT], CLAMP));
+  const shown = Math.floor(interpolate(t, [T.typeStart, T.typeEnd], [PREWRITTEN_WORDS, EMAIL_WORD_COUNT], CLAMP));
   const typing = t >= T.typeStart && t < T.typeEnd + 0.1;
   const saved = interpolate(t, [T.typeEnd + 0.1, T.typeEnd + 0.35], [0, 1], CLAMP);
   const sentBtn = interpolate(t, [T.clickSend + 0.08, T.clickSend + 0.25], [0, 1], CLAMP);

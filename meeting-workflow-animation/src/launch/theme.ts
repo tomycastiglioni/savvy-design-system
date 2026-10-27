@@ -7,15 +7,6 @@ export const H = 1080;
 
 export const DIATYPE = '"ABC Diatype", "DM Sans", system-ui, sans-serif';
 
-// Background gradients (102°, 20% → 80%), sampled from the keyframes.
-export const BG = {
-  cream: ["#F9F5EF", "#D3CDC4"],
-  mint: ["#D9F2EB", "#A4E6D4"],
-  gold: ["#F8F1E2", "#EAD7B1"],
-  blue: ["#E1F5FC", "#A5DAEA"],
-} as const;
-export type BgName = keyof typeof BG;
-
 export const EYEBROW = {
   prep: "#8E7E57",
   planning: "#175242",

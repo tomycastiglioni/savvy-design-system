@@ -3,6 +3,7 @@ import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { Reveal } from "../../shared/components/Reveal";
 import { MEETING, NEXT_STEPS, QUICK_SUMMARY, SUMMARY_POINTS } from "../../capture/content";
 import { Swap } from "../components/Bits";
+import { FirmLogo } from "../components/FirmLogo";
 import { MiniProjection } from "../components/MiniProjection";
 import { C, CLAMP, EASE_IN_OUT, FONT } from "../layout";
 import { T } from "../timeline";
@@ -20,23 +21,24 @@ const Heading: React.FC<{ readonly p: number; readonly size: number; readonly lh
 );
 
 // The client document as it will be shared, updating live with the editor.
-export const PreviewDoc: React.FC = () => {
+// `serifSwitch` adds the typeface change and `logo` the firm logo; the launch
+// video keeps the serif switch and leaves the logo out.
+export const PreviewDoc: React.FC<{ readonly serifSwitch?: boolean; readonly logo?: boolean }> = ({ serifSwitch = false, logo = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const at = (s: number) => T.toEditor + 0.4 + s;
 
-  const serif = interpolate(t, [T.clickSerif + 0.02, T.clickSerif + 0.3], [0, 1], CLAMP);
+  const serif = serifSwitch ? interpolate(t, [T.clickSerif + 0.02, T.clickSerif + 0.3], [0, 1], CLAMP) : 0;
   const graph = interpolate(t, [T.clickGraph + 0.05, T.clickGraph + 0.5], [0, 1], { ...CLAMP, easing: EASE_IN_OUT });
   const build = interpolate(t, [T.clickGraph + 0.35, T.clickGraph + 1.05], [0, 1], { ...CLAMP, easing: EASE_IN_OUT });
-  // Scroll down to show the new graph, then back up before the typeface change
-  // so it lands on the title.
-  const scroll = interpolate(
-    t,
-    [T.clickGraph + 0.05, T.clickGraph + 0.6, T.clickSerif - 0.42, T.clickSerif - 0.05],
-    [0, PAGE_SCROLL, PAGE_SCROLL, 0],
-    { ...CLAMP, easing: EASE_IN_OUT },
-  );
+  // Scroll down to show the new graph, then back up to the title: slowly, or
+  // quickly before the typeface change when there is one.
+  const up = serifSwitch ? [T.clickSerif - 0.42, T.clickSerif - 0.05] : T.scrollUp;
+  const scroll = interpolate(t, [T.clickGraph + 0.05, T.clickGraph + 0.6, up[0], up[1]], [0, PAGE_SCROLL, PAGE_SCROLL, 0], {
+    ...CLAMP,
+    easing: EASE_IN_OUT,
+  });
 
   return (
     <>
@@ -57,7 +59,12 @@ export const PreviewDoc: React.FC = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{ padding: "34px 40px", translate: `0px ${scroll}px` }}>
+        <div style={{ position: "relative", padding: "34px 40px", translate: `0px ${scroll}px` }}>
+          {logo ? (
+            <Reveal at={at(0)} style={{ position: "absolute", right: 40, top: 36 }}>
+              <FirmLogo />
+            </Reveal>
+          ) : null}
           <Reveal at={at(0)}>
             <Heading p={serif} size={27} lh={38}>
               Quarterly Review

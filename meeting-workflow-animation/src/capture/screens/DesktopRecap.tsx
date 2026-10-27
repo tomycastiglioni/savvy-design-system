@@ -21,12 +21,14 @@ const Shown: React.FC<RevealProps> = ({ style, children }) => (
 
 // The recap document body. `scrollY` is the content offset in px, `topFade`
 // fades the top edge as it scrolls under it, `extra` continues the document.
+// `linkedDocs` adds the linked-documents line under the title (launch video).
 export const RecapContent: React.FC<{
   readonly scrollY: number;
   readonly topFade: number;
   readonly built?: boolean;
+  readonly linkedDocs?: boolean;
   readonly extra?: React.ReactNode;
-}> = ({ scrollY, topFade, built = false, extra }) => {
+}> = ({ scrollY, topFade, built = false, linkedDocs = false, extra }) => {
   const R = built ? Shown : Reveal;
 
   return (
@@ -62,12 +64,14 @@ export const RecapContent: React.FC<{
         <R at={0.08} style={{ fontSize: 14.5, color: C.muted, marginTop: 10 }}>
           Quarterly Review · 30 min · 9:00–9:30 AM
         </R>
-        <R at={0.14} style={{ fontSize: 14.5, color: C.muted, marginTop: 6, display: "flex", alignItems: "center", gap: 6 }}>
-          <FileText size={15} strokeWidth={1.8} />
-          Linked documents:
-          <span style={{ color: C.green }}>Quarterly Review prep,</span>
-          <span style={{ color: C.green }}>Client materials: Quarterly Review recap</span>
-        </R>
+        {linkedDocs ? (
+          <R at={0.14} style={{ fontSize: 14.5, color: C.muted, marginTop: 6, display: "flex", alignItems: "center", gap: 6 }}>
+            <FileText size={15} strokeWidth={1.8} />
+            Linked documents:
+            <span style={{ color: C.green }}>Quarterly Review prep,</span>
+            <span style={{ color: C.green }}>Client materials: Quarterly Review recap</span>
+          </R>
+        ) : null}
 
         <R at={0.2} style={{ height: 1, background: "#EEF0F2", margin: "26px 0 24px" }} />
 
@@ -128,11 +132,13 @@ export const RecapContent: React.FC<{
 };
 
 // Final scroll position, shared with 04 so it can open on this exact frame.
-export const RECAP_END_SCROLL = -236;
+// -236 framed the recap before the linked-documents line (24px) came out;
+// scrolling 24px less keeps the same framing.
+export const RECAP_END_SCROLL = -212;
 
 // Mounted at T.desktopReveal, inside the document panel (same panel as the
 // 01 prep document). Same recap as the phone, then a slow scroll.
-export const DesktopRecap: React.FC = () => {
+export const DesktopRecap: React.FC<{ readonly linkedDocs?: boolean }> = ({ linkedDocs = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -141,5 +147,5 @@ export const DesktopRecap: React.FC = () => {
     easing: EASE_IN_OUT,
   });
 
-  return <RecapContent scrollY={RECAP_END_SCROLL * scrolled} topFade={scrolled} />;
+  return <RecapContent scrollY={RECAP_END_SCROLL * scrolled} topFade={scrolled} linkedDocs={linkedDocs} />;
 };

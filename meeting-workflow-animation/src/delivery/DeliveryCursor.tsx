@@ -1,12 +1,13 @@
 import React from "react";
 import { CursorKey, CursorLayer } from "../shared/components/CursorLayer";
-import { knobCenter, presentButtonCenter, slotCenter, SLOTS } from "./layout";
+import { GRAPH_CARD, GRAPH_SLOTS, knobCenter, presentButtonCenter, slotCenter } from "./layout";
 import { T } from "./timeline";
 import { DRAGS, SLIDERS } from "./whatif";
 
-const ADD_A = slotCenter(SLOTS.bl);
-const ADD_B = slotCenter(SLOTS.br);
-const PRESENT = presentButtonCenter(SLOTS.bl);
+const ADD = slotCenter(GRAPH_SLOTS.add, GRAPH_CARD);
+const PRESENT = presentButtonCenter(GRAPH_SLOTS.add, GRAPH_CARD);
+// Out of the way, below the card, while the projection builds.
+const REST = { x: ADD.x + 70, y: GRAPH_SLOTS.add.y + GRAPH_CARD.h + 70 };
 
 // Each drag: arrive at the knob, then follow it with the same easing the
 // slider uses, so the fingertip stays on the knob.
@@ -26,10 +27,10 @@ export const DeliveryCursor: React.FC = () => (
   <CursorLayer
     path={[
       { t: 1.2, x: 1010, y: 880 },
-      { t: 1.85, ...ADD_A },
-      { t: 2.05, ...ADD_A, ease: "linear" },
-      { t: 2.6, ...ADD_B },
-      { t: 3.5, ...ADD_B, ease: "linear" },
+      { t: 1.85, ...ADD },
+      { t: 2.05, ...ADD, ease: "linear" },
+      { t: 2.7, ...REST },
+      { t: 3.55, ...REST, ease: "linear" },
       { t: 4.25, ...PRESENT },
       { t: 4.6, ...PRESENT, ease: "linear" },
       { t: 6.25, x: 1010, y: 830, ease: "linear" }, // hidden while presenting
@@ -45,13 +46,11 @@ export const DeliveryCursor: React.FC = () => (
       [6.4, 1],
     ]}
     clicks={[
-      { at: T.clickAddA, ...ADD_A },
-      { at: T.clickAddB, ...ADD_B },
+      { at: T.clickAdd, ...ADD },
       { at: T.clickPresent, ...PRESENT },
     ]}
     hand={[
       [1.65, 2.1],
-      [2.45, 3.0],
       [4.05, 4.75],
       [6.7, 10.7],
     ]}

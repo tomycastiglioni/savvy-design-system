@@ -61,8 +61,12 @@ const CheckRow: React.FC<{
 );
 
 // "Edit client materials": choose sections, graphs and the typeface.
-// `primary` swaps "Save changes" for "Draft email to client" (launch video).
-export const EditorPanel: React.FC<{ readonly primary?: "save" | "draft" }> = ({ primary = "save" }) => {
+// `primary` swaps "Save changes" for "Draft email to client" and `serifSwitch`
+// adds the click on Serif (both for the launch video).
+export const EditorPanel: React.FC<{ readonly primary?: "save" | "draft"; readonly serifSwitch?: boolean }> = ({
+  primary = "save",
+  serifSwitch = false,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -80,7 +84,7 @@ export const EditorPanel: React.FC<{ readonly primary?: "save" | "draft" }> = ({
 
   const at = (s: number) => T.toEditor + 0.3 + s;
   const graphOn = interpolate(t, [T.clickGraph, T.clickGraph + 0.15], [0, 1], CLAMP);
-  const serif = interpolate(t, [T.clickSerif, T.clickSerif + 0.3], [0, 1], { ...CLAMP, easing: EASE_OUT });
+  const serif = serifSwitch ? interpolate(t, [T.clickSerif, T.clickSerif + 0.3], [0, 1], { ...CLAMP, easing: EASE_OUT }) : 0;
   const half = SEGMENT.w / 2;
 
   return (
@@ -127,7 +131,7 @@ export const EditorPanel: React.FC<{ readonly primary?: "save" | "draft" }> = ({
               borderRadius: 7,
               background: C.white,
               boxShadow: "0 1px 3px rgba(16, 24, 40, 0.12)",
-              scale: 1 - 0.03 * serifBtn.press,
+              scale: 1 - 0.03 * (serifSwitch ? serifBtn.press : 0),
             }}
           />
           <div style={{ position: "absolute", left: 0, width: half, top: 0, height: SEGMENT.h, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 600, color: C.ink }}>

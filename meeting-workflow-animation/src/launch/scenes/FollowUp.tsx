@@ -248,6 +248,8 @@ export const FollowUp: React.FC = () => {
             w={inner.w - 2}
             h={inner.h - 2}
             draw={draw}
+            titleSize={26}
+            subSize={16}
             style={{ opacity: success, scale: 0.96 + 0.04 * success }}
           />
         </div>

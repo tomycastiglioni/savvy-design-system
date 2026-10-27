@@ -39,6 +39,17 @@ export const FONT = {
   serif: '"DM Serif Display", Georgia, serif', // font-family/display
 };
 
+// Section background gradients (102°, 20% → 80%), shared with the launch video.
+// Meeting prep is cream; Communicate (delivery, capture) is mint; recap is blue.
+export const BG = {
+  cream: ["#F9F5EF", "#D3CDC4"],
+  mint: ["#D9F2EB", "#A4E6D4"],
+  gold: ["#F8F1E2", "#EAD7B1"],
+  blue: ["#E1F5FC", "#A5DAEA"],
+} as const;
+export type BgName = keyof typeof BG;
+export const bgGradient = (bg: BgName) => `linear-gradient(102deg, ${BG[bg][0]} 20%, ${BG[bg][1]} 80%)`;
+
 export const EASE_OUT = Easing.bezier(0.16, 1, 0.3, 1);
 export const EASE_IN_OUT = Easing.bezier(0.65, 0, 0.35, 1);
 export const EASE_MORPH = Easing.bezier(0.7, 0, 0.2, 1);

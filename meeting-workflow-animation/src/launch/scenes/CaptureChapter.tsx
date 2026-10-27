@@ -39,7 +39,7 @@ export const CaptureChapter: React.FC = () => {
     <>
       <Stage cam={cam}>
         <Remap to={CAPTURE_TIME}>
-          <Capture transparent tabs={false} />
+          <Capture transparent tabs={false} linkedDocs />
         </Remap>
       </Stage>
       <Headline

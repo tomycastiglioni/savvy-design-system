@@ -7,7 +7,7 @@ import { HouseholdContext } from "./scenes/HouseholdContext";
 import { MeetingAgenda } from "./scenes/MeetingAgenda";
 import { OutstandingTasks } from "./scenes/OutstandingTasks";
 import { PrepDocument } from "./scenes/PrepDocument";
-import { C, DOC_PANEL, FONT } from "./theme";
+import { bgGradient, C, DOC_PANEL, FONT } from "./theme";
 import { T } from "./timeline";
 
 // Workflow 01 · Meeting prep — "Prepared before you ask".
@@ -17,7 +17,7 @@ export const MeetingPrep: React.FC = () => {
   const { fps } = useVideoConfig();
 
   return (
-    <AbsoluteFill style={{ background: C.white, fontFamily: FONT.sans, color: C.ink }}>
+    <AbsoluteFill style={{ background: bgGradient("cream"), fontFamily: FONT.sans, color: C.ink }}>
       <style>{"*{box-sizing:border-box;}"}</style>
 
       <Sequence name="Home" durationInFrames={Math.round(T.homeEnd * fps)}>

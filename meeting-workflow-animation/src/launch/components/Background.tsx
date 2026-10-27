@@ -1,10 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate } from "remotion";
-import { BG, BgName, CLAMP, EASE_IN_OUT } from "../theme";
+import { bgGradient as gradient, CLAMP, EASE_IN_OUT } from "../theme";
 import { BG_STOPS, useT } from "../timeline";
-
-const gradient = (bg: BgName) =>
-  `linear-gradient(102deg, ${BG[bg][0]} 20%, ${BG[bg][1]} 80%)`;
 
 // Cream to start; each chapter's gradient crossfades in on top of the last.
 export const Background: React.FC = () => {

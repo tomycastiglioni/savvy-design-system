@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame, useVideoConfig } from "remotion";
 import { Phone } from "./components/Phone";
 import { Touch } from "./components/Touch";
-import { C, CLAMP, DOC_PANEL, EASE_MORPH, EASE_OUT, FONT, MOBILE, SCREEN, SCREEN_RADIUS, screenPoint } from "./layout";
+import { bgGradient, C, CLAMP, DOC_PANEL, EASE_MORPH, EASE_OUT, FONT, MOBILE, SCREEN, SCREEN_RADIUS, screenPoint } from "./layout";
 import { DesktopRecap } from "./screens/DesktopRecap";
 import { DesktopTabs } from "./screens/DesktopTabs";
 import { NotesScreen } from "./screens/NotesScreen";
@@ -21,9 +21,14 @@ const TAPS = [
 // Workflow 03 · Meeting capture — "Every conversation, on the record".
 // Recording on the phone → transcribing → writing the recap → notes, then the
 // phone grows into the desktop document with the same recap.
-// `transparent` drops the white canvas and `tabs` the desktop tab bar, for
-// reuse inside the launch video.
-export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?: boolean }> = ({ transparent = false, tabs = true }) => {
+// `transparent` drops the background, `tabs` the desktop tab bar and
+// `linkedDocs` keeps the recap's linked-documents line, for reuse inside the
+// launch video.
+export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?: boolean; readonly linkedDocs?: boolean }> = ({
+  transparent = false,
+  tabs = true,
+  linkedDocs = false,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -44,7 +49,7 @@ export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?:
   const mobile = interpolate(grow, [0.3, 0.75], [1, 0], CLAMP);
 
   return (
-    <AbsoluteFill style={{ background: transparent ? undefined : C.white, fontFamily: FONT.sans, color: C.ink }}>
+    <AbsoluteFill style={{ background: transparent ? undefined : bgGradient("mint"), fontFamily: FONT.sans, color: C.ink }}>
       <style>{"*{box-sizing:border-box;}"}</style>
 
       <AbsoluteFill style={{ opacity: enter, translate: `0px ${(1 - enter) * 40}px`, scale: 0.96 + 0.04 * enter }}>
@@ -90,7 +95,7 @@ export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?:
           </div>
 
           <Sequence name="Desktop recap" from={Math.round(T.desktopReveal * fps)}>
-            <DesktopRecap />
+            <DesktopRecap linkedDocs={linkedDocs} />
           </Sequence>
         </Phone>
       </AbsoluteFill>

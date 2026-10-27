@@ -7,7 +7,8 @@ export const T = {
   clickCreate: 4.55,
   toEditor: 4.65, // recap → client materials editor, 0.6s
   clickGraph: 6.35,
-  clickSerif: 7.45,
+  scrollUp: [7.45, 8.35] as const, // preview: from the new graph back to the top
+  clickSerif: 7.45, // typeface switch, launch video only
   clickSave: 8.55,
   toRecap: 8.65, // editor → recap, 0.6s
   toast: 8.75,

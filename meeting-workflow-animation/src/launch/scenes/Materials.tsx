@@ -224,6 +224,7 @@ export const Materials: React.FC = () => {
                   <RecapContent
                     scrollY={F17_SCROLL * scrolled}
                     topFade={scrolled}
+                    linkedDocs
                     extra={<RecapExtra />}
                   />
                 </Sequence>
@@ -242,14 +243,14 @@ export const Materials: React.FC = () => {
                 }}
               >
                 <Remap to={EDITOR_TIME}>
-                  <PreviewDoc />
+                  <PreviewDoc serifSwitch logo={false} />
                 </Remap>
               </div>
             ) : null}
           </div>
           {t >= L.createClick ? (
             <Remap to={EDITOR_TIME}>
-              <EditorPanel primary="draft" />
+              <EditorPanel primary="draft" serifSwitch />
             </Remap>
           ) : null}
         </Stage>

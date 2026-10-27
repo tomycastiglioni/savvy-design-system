@@ -56,7 +56,8 @@ export const Home: React.FC = () => {
         </div>
       </Reveal>
 
-      {/* Stats */}
+      {/* Stats. Top padding is set so the label's cap height and the last
+          line's baseline sit the same 21px from the box edges. */}
       <Reveal
         at={0.15}
         dur={0.6}
@@ -79,7 +80,7 @@ export const Home: React.FC = () => {
             key={s.label}
             at={0.3 + i * 0.08}
             y={10}
-            style={{ flex: 1, padding: "25px 26px", borderLeft: i ? `1px solid ${C.statsBorder}` : "none" }}
+            style={{ flex: 1, padding: "17px 26px", borderLeft: i ? `1px solid ${C.statsBorder}` : "none" }}
           >
             <div style={{ fontSize: 15, fontWeight: 500, letterSpacing: "0.05em", color: C.body, textTransform: "uppercase", whiteSpace: "nowrap" }}>
               {s.label}

@@ -13,6 +13,16 @@ export const SLOTS = {
   br: { x: 651, y: 486 },
 };
 
+// 02 · Delivery's grid: one default graph and one "Add graph" slot, centred
+// at the same content width as the other workflows' document panel. (The
+// four-slot grid above is the launch video's.)
+export const GRAPH_CARD = { w: 497, h: 400 };
+export const GRAPHS_HEADER = { x: 145, y: 220 };
+export const GRAPH_SLOTS = {
+  default: { x: 145, y: 272 },
+  add: { x: 658, y: 272 },
+};
+
 export const PRESENT_RECT: Rect = { x: 108, y: 125, w: 1084, h: 650 };
 export const SPLIT_RECT: Rect = { x: 98, y: 125, w: 606, h: 650 };
 
@@ -20,9 +30,9 @@ export const SPLIT_RECT: Rect = { x: 98, y: 125, w: 606, h: 650 };
 export const CARD_HEADER_H = 66;
 export const PRESENT_BTN = { w: 92, h: 30, top: 16, right: 68 }; // right = offset of its right edge from the card's right edge
 
-export const slotCenter = (s: Point): Point => ({ x: s.x + CARD.w / 2, y: s.y + CARD.h / 2 });
-export const presentButtonCenter = (s: Point): Point => ({
-  x: s.x + CARD.w - PRESENT_BTN.right - PRESENT_BTN.w / 2,
+export const slotCenter = (s: Point, card = CARD): Point => ({ x: s.x + card.w / 2, y: s.y + card.h / 2 });
+export const presentButtonCenter = (s: Point, card = CARD): Point => ({
+  x: s.x + card.w - PRESENT_BTN.right - PRESENT_BTN.w / 2,
   y: s.y + PRESENT_BTN.top + PRESENT_BTN.h / 2 + 2,
 });
 
