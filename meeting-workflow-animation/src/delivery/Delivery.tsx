@@ -9,7 +9,8 @@ import { T } from "./timeline";
 
 // Workflow 02 · Delivery — live charts and what-ifs.
 // Graphs (1 + 1 added) → present Retirement projection → drag what-if sliders.
-export const Delivery: React.FC = () => {
+// `hideCursor` renders clean stills (thumbnails).
+export const Delivery: React.FC<{ readonly hideCursor?: boolean }> = ({ hideCursor = false }) => {
   const { fps } = useVideoConfig();
 
   return (
@@ -28,9 +29,11 @@ export const Delivery: React.FC = () => {
         <WhatIfPanel />
       </Sequence>
 
-      <Sequence name="Cursor">
-        <DeliveryCursor />
-      </Sequence>
+      {hideCursor ? null : (
+        <Sequence name="Cursor">
+          <DeliveryCursor />
+        </Sequence>
+      )}
     </AbsoluteFill>
   );
 };

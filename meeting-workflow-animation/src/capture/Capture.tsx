@@ -23,12 +23,13 @@ const TAPS = [
 // phone grows into the desktop document with the same recap.
 // `transparent` drops the background, `tabs` the desktop tab bar and
 // `linkedDocs` keeps the recap's linked-documents line, for reuse inside the
-// launch video.
-export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?: boolean; readonly linkedDocs?: boolean }> = ({
-  transparent = false,
-  tabs = true,
-  linkedDocs = false,
-}) => {
+// launch video. `hideCursor` drops the tap indicators for clean stills.
+export const Capture: React.FC<{
+  readonly transparent?: boolean;
+  readonly tabs?: boolean;
+  readonly linkedDocs?: boolean;
+  readonly hideCursor?: boolean;
+}> = ({ transparent = false, tabs = true, linkedDocs = false, hideCursor = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -106,11 +107,13 @@ export const Capture: React.FC<{ readonly transparent?: boolean; readonly tabs?:
       </Sequence>
       ) : null}
 
-      <Sequence name="Taps">
-        {TAPS.map((tap) => (
-          <Touch key={tap.at} {...tap} />
-        ))}
-      </Sequence>
+      {hideCursor ? null : (
+        <Sequence name="Taps">
+          {TAPS.map((tap) => (
+            <Touch key={tap.at} {...tap} />
+          ))}
+        </Sequence>
+      )}
     </AbsoluteFill>
   );
 };

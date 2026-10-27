@@ -13,7 +13,8 @@ import { T } from "./timeline";
 // Workflow 01 · Meeting prep — "Prepared before you ask".
 // Home "For your review" → Loading household → Household context →
 // Meeting agenda → Outstanding tasks.
-export const MeetingPrep: React.FC = () => {
+// `hideCursor` renders clean stills (thumbnails).
+export const MeetingPrep: React.FC<{ readonly hideCursor?: boolean }> = ({ hideCursor = false }) => {
   const { fps } = useVideoConfig();
 
   return (
@@ -63,9 +64,11 @@ export const MeetingPrep: React.FC = () => {
         </Sequence>
       </div>
 
-      <Sequence name="Cursor">
-        <Cursor />
-      </Sequence>
+      {hideCursor ? null : (
+        <Sequence name="Cursor">
+          <Cursor />
+        </Sequence>
+      )}
     </AbsoluteFill>
   );
 };

@@ -134,6 +134,15 @@ ffmpeg -i out/delivery-master.mov -c:v libvpx-vp9 -crf 30 -b:v 0 -row-mt 1 -pix_
 npx remotion still Delivery out/export/delivery-poster.png --frame=240
 ```
 
+Static thumbnails (no cursor or taps, 2× for sharp display), one per workflow:
+
+```console
+npx remotion still MeetingPrep out/export/meeting-prep-thumbnail.png --frame=146 --scale=2 --props='{"hideCursor":true}'
+npx remotion still Delivery out/export/delivery-thumbnail.png --frame=240 --scale=2 --props='{"hideCursor":true}'
+npx remotion still Capture out/export/capture-thumbnail.png --frame=90 --scale=2 --props='{"hideCursor":true}'
+npx remotion still Recap out/export/recap-thumbnail.png --frame=505 --scale=2 --props='{"hideCursor":true}'
+```
+
 For `MobilePrep` (no audio, poster on the finished card):
 
 ```console

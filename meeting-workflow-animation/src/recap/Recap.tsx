@@ -11,7 +11,8 @@ import { T } from "./timeline";
 // Workflow 04 · Recap & follow-through — "The meeting ends. The follow-up doesn't wait."
 // Continues 03's recap: topics → suggested tasks → client document (edit,
 // save) → draft client email in the advisor's writing style → sent.
-export const Recap: React.FC = () => (
+// `hideCursor` renders clean stills (thumbnails).
+export const Recap: React.FC<{ readonly hideCursor?: boolean }> = ({ hideCursor = false }) => (
   <AbsoluteFill style={{ background: bgGradient("blue"), fontFamily: FONT.sans, color: C.ink }}>
     <style>{"*{box-sizing:border-box;}"}</style>
     <RecapPage />
@@ -20,6 +21,6 @@ export const Recap: React.FC = () => (
       Client document saved
     </Toast>
     <DraftFlow />
-    <RecapCursor />
+    {hideCursor ? null : <RecapCursor />}
   </AbsoluteFill>
 );
