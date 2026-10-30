@@ -1,4 +1,4 @@
-import { BG, BgName } from "../shared/theme";
+import { BgName } from "../shared/theme";
 
 export * from "../shared/theme";
 export { DIATYPE } from "../launch/theme";
@@ -19,12 +19,13 @@ export const PHASES: readonly Phase[] = [
 ];
 export const phase = (key: PhaseKey) => PHASES.find((p) => p.key === key) as Phase;
 
-// The three phase colors in one sweep, for the closing frames.
-export const TRI_GRADIENT = `linear-gradient(102deg, ${BG.cream[0]} 12%, ${BG.mint[0]} 50%, ${BG.blue[1]} 92%)`;
-
-// Layout: headline column on the left, product UI on the right.
+// Layout: headline column on the left, product UI on the right, both centred
+// on the frame's middle line.
 export const TEXT_X = 174;
-export const UI = { x: 860, w: 900, cy: 585 };
+export const CY = 540;
+export const UI = { x: 860, w: 900, cy: CY };
+// Centred `h`-tall block on the middle line.
+export const centerTop = (h: number) => CY - h / 2;
 
 // The one meeting the whole video follows.
 export const HOUSEHOLD = "Allison & Frank Chan";

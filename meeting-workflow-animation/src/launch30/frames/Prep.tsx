@@ -1,9 +1,9 @@
 import React from "react";
 import { AIIcon, AIIconAvatar } from "../../shared/components/AIIcon";
-import { Bar, Bg, BgSweep, Card, Headline, HouseholdChip, Label } from "../components/Bits";
+import { Bar, Bg, BgSweep, Card, Cursor, Headline, HouseholdChip, Label } from "../components/Bits";
 import { AbstractChart } from "../components/Chart";
 import { Tracker } from "../components/Tracker";
-import { C, FONT, MEETING, phase, UI } from "../theme";
+import { C, centerTop, FONT, MEETING, phase, UI } from "../theme";
 
 const P = phase("prep");
 const AGENDA = ["Check-in", "Portfolio", "Retirement plan", "Taxes"];
@@ -12,7 +12,7 @@ const PrepHeadline: React.FC = () => <Headline eyebrow="Meeting prep" color={P.a
 
 // The prep document, abstracted: one number, the agenda, three tasks.
 const PrepDoc: React.FC<{ readonly highlight?: boolean; readonly style?: React.CSSProperties }> = ({ highlight = false, style }) => (
-  <Card style={{ left: UI.x, top: 270, width: UI.w, height: 600, ...style }}>
+  <Card style={{ left: UI.x, top: centerTop(600), width: UI.w, height: 600, ...style }}>
     <div style={{ position: "absolute", left: 44, top: 40, fontFamily: FONT.serif, fontSize: 46, color: C.ink }}>{MEETING}</div>
     <div style={{ position: "absolute", right: 40, top: 48 }}>
       <HouseholdChip meeting={false} />
@@ -77,13 +77,14 @@ const PrepDoc: React.FC<{ readonly highlight?: boolean; readonly style?: React.C
   </Card>
 );
 
-// F3 · 0:04 — the prep is waiting before the advisor asks.
+// F3 · 0:04 — the tracker arrives on top; the prep is waiting before the
+// advisor asks.
 export const F03PrepReady: React.FC = () => (
   <>
     <Bg bg={P.bg} />
     <Tracker step={0} />
     <PrepHeadline />
-    <Card style={{ left: 960, top: 440, width: 700, height: 300 }}>
+    <Card style={{ left: 960, top: centerTop(300), width: 700, height: 300 }}>
       <div style={{ position: "absolute", left: 38, top: 40 }}>
         <AIIconAvatar size={72} />
       </div>
@@ -113,6 +114,7 @@ export const F03PrepReady: React.FC = () => (
         <AIIcon size={22} /> Review prep
       </div>
     </Card>
+    <Cursor x={1196} y={638} />
   </>
 );
 
@@ -132,8 +134,8 @@ export const F05Handoff: React.FC = () => (
   <>
     <BgSweep from="cream" to="mint" />
     <Tracker step={0} toward={0.5} />
-    <PrepDoc highlight style={{ left: 300, top: 300, scale: 0.92, opacity: 0.55 }} />
-    <Card style={{ left: 1040, top: 330, width: 720, height: 450, boxShadow: "0 40px 90px -30px rgba(16, 24, 40, 0.35)" }}>
+    <PrepDoc highlight style={{ left: 300, top: centerTop(600) + 30, scale: 0.92, opacity: 0.55 }} />
+    <Card style={{ left: 1040, top: centerTop(450), width: 720, height: 450, boxShadow: "0 40px 90px -30px rgba(16, 24, 40, 0.35)" }}>
       <div style={{ position: "absolute", left: 40, top: 36, fontFamily: FONT.serif, fontSize: 36, color: C.ink }}>Retirement plan</div>
       <div style={{ position: "absolute", left: 40, top: 120 }}>
         <AbstractChart w={640} h={290} color={C.green} />

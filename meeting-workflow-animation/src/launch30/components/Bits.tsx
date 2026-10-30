@@ -1,7 +1,7 @@
 import { Users } from "lucide-react";
 import React from "react";
-import { AbsoluteFill } from "remotion";
-import { BAR, BgName, bgGradient, C, CARD_SHADOW, DIATYPE, HOUSEHOLD, MEETING } from "../theme";
+import { AbsoluteFill, Img, staticFile } from "remotion";
+import { BAR, BgName, bgGradient, C, CARD_SHADOW, CY, DIATYPE, HOUSEHOLD, MEETING } from "../theme";
 
 export const Bg: React.FC<{ readonly bg: BgName | string }> = ({ bg }) => (
   <AbsoluteFill style={{ background: bg in { cream: 1, mint: 1, gold: 1, blue: 1 } ? bgGradient(bg as BgName) : bg }} />
@@ -78,8 +78,9 @@ export const Label: React.FC<{ readonly children: React.ReactNode; readonly styl
 );
 
 // Diatype metrics: cap top sits 0.395em above the middle of a line box.
-const lineTop = (capTop: number, size: number, lh: number) => capTop - lh / 2 + 0.395 * size;
-export const HEAD = { size: 79.6, lh: 79.6 * 1.15 };
+export const lineTop = (capTop: number, size: number, lh: number) => capTop - lh / 2 + 0.395 * size;
+// Headlines: 110% leading and -1.5% tracking (a touch tighter than the 44 s cut).
+export const HEAD = { size: 79.6, lh: 79.6 * 1.1, tracking: "-0.015em" };
 const EYEBROW = { size: 21, lh: 24, gap: 88 };
 
 // Static chapter headline: eyebrow (the workflow) and two lines of Diatype,
@@ -90,7 +91,7 @@ export const Headline: React.FC<{
   readonly lines: readonly string[];
   readonly x?: number;
   readonly cy?: number;
-}> = ({ eyebrow, color, lines, x = 174, cy = 585 }) => {
+}> = ({ eyebrow, color, lines, x = 174, cy = CY }) => {
   const block = EYEBROW.gap + (lines.length - 1) * HEAD.lh + 0.7 * HEAD.size;
   const top0 = cy - block / 2;
   return (
@@ -119,6 +120,7 @@ export const Headline: React.FC<{
             top: lineTop(top0 + EYEBROW.gap + i * HEAD.lh, HEAD.size, HEAD.lh),
             fontSize: HEAD.size,
             lineHeight: `${HEAD.lh}px`,
+            letterSpacing: HEAD.tracking,
             color: "#000000",
           }}
         >
@@ -126,5 +128,22 @@ export const Headline: React.FC<{
         </div>
       ))}
     </div>
+  );
+};
+
+// The supplied cursors at the launch video's size (1.5 × 1.3), placed by
+// their hotspot (arrow tip / index fingertip). Only where the advisor acts.
+const CURSORS = {
+  arrow: { src: "images/cursor-arrow.svg", w: 31, h: 33, hotX: 9.15, hotY: 6.03 },
+  hand: { src: "images/cursor-hand.svg", w: 30, h: 32, hotX: 9.4, hotY: 4.4 },
+};
+const CURSOR_SCALE = 1.95;
+export const Cursor: React.FC<{ readonly x: number; readonly y: number; readonly kind?: keyof typeof CURSORS }> = ({ x, y, kind = "hand" }) => {
+  const c = CURSORS[kind];
+  return (
+    <Img
+      src={staticFile(c.src)}
+      style={{ position: "absolute", left: x - c.hotX * CURSOR_SCALE, top: y - c.hotY * CURSOR_SCALE, width: c.w * CURSOR_SCALE, height: c.h * CURSOR_SCALE }}
+    />
   );
 };

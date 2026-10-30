@@ -2,10 +2,10 @@ import { Check, FileText, Send } from "lucide-react";
 import React from "react";
 import { FirmLogo } from "../../recap/components/FirmLogo";
 import { AIIcon } from "../../shared/components/AIIcon";
-import { Bar, Bg, Card, Headline, HouseholdChip, Label } from "../components/Bits";
+import { Bar, Bg, Card, Cursor, Headline, HouseholdChip, Label } from "../components/Bits";
 import { AbstractChart } from "../components/Chart";
 import { Tracker } from "../components/Tracker";
-import { C, FONT, MEETING, phase, UI } from "../theme";
+import { C, centerTop, FONT, MEETING, phase, UI } from "../theme";
 
 const P = phase("deliver");
 const TASKS = ["Rebalance to 70/30", "Open Ellis's 529", "Raise 401(k) to 12.5%"];
@@ -18,7 +18,7 @@ export const F10Recap: React.FC = () => (
     <Bg bg={P.bg} />
     <Tracker step={2} />
     <DeliverHeadline />
-    <Card style={{ left: UI.x, top: 250, width: UI.w, height: 660 }}>
+    <Card style={{ left: UI.x, top: centerTop(660), width: UI.w, height: 660 }}>
       <div style={{ position: "absolute", left: 44, top: 40, fontFamily: FONT.serif, fontSize: 42, color: C.ink }}>{MEETING} recap</div>
       <div style={{ position: "absolute", left: 44, top: 104 }}>
         <HouseholdChip meeting={false} />
@@ -61,7 +61,7 @@ export const F11Email: React.FC = () => (
     <Bg bg={P.bg} />
     <Tracker step={2} />
     <DeliverHeadline />
-    <Card style={{ left: 870, top: 200, width: 540, height: 660 }}>
+    <Card style={{ left: 870, top: 190, width: 540, height: 660 }}>
       <div style={{ position: "absolute", right: 36, top: 38, scale: 1.15, transformOrigin: "100% 0" }}>
         <FirmLogo />
       </div>
@@ -76,7 +76,7 @@ export const F11Email: React.FC = () => (
         <AbstractChart w={420} h={190} color={C.green} growth={1.18} />
       </div>
     </Card>
-    <Card style={{ left: 1130, top: 400, width: 660, height: 500, boxShadow: "0 40px 90px -30px rgba(16, 24, 40, 0.35)" }}>
+    <Card style={{ left: 1130, top: 390, width: 660, height: 500, boxShadow: "0 40px 90px -30px rgba(16, 24, 40, 0.35)" }}>
       <div style={{ position: "absolute", left: 36, top: 30, fontSize: 21, fontWeight: 600, color: C.ink }}>Email draft</div>
       <div
         style={{
@@ -148,6 +148,7 @@ export const F11Email: React.FC = () => (
         <Send size={18} strokeWidth={2.2} /> Send
       </div>
     </Card>
+    <Cursor x={1706} y={842} />
   </>
 );
 
@@ -157,7 +158,7 @@ export const F12Sent: React.FC = () => (
     <Bg bg={P.bg} />
     <Tracker step={3} />
     <DeliverHeadline />
-    <Card style={{ left: 960, top: 330, width: 700, height: 470 }}>
+    <Card style={{ left: 960, top: centerTop(470), width: 700, height: 470 }}>
       <div
         style={{
           position: "absolute",

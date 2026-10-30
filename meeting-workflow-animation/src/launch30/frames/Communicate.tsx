@@ -3,10 +3,10 @@ import React from "react";
 import { Phone } from "../../capture/components/Phone";
 import { Waveform } from "../../capture/components/Waveform";
 import { AIIcon } from "../../shared/components/AIIcon";
-import { Bg, BgSweep, Card, Headline, HouseholdChip } from "../components/Bits";
+import { Bg, BgSweep, Card, Cursor, Headline, HouseholdChip } from "../components/Bits";
 import { AbstractChart } from "../components/Chart";
 import { Tracker } from "../components/Tracker";
-import { C, FONT, phase, UI } from "../theme";
+import { C, centerTop, FONT, phase, UI } from "../theme";
 
 const P = phase("communicate");
 const RED = "#AD3A35";
@@ -49,7 +49,7 @@ const Slider: React.FC<{ readonly label: string; readonly value: string; readonl
 
 // The presented plan: the same chart that left the prep.
 const Presentation: React.FC<{ readonly after?: boolean; readonly style?: React.CSSProperties }> = ({ after = false, style }) => (
-  <Card style={{ left: UI.x, top: 250, width: UI.w, height: 660, ...style }}>
+  <Card style={{ left: UI.x, top: centerTop(660), width: UI.w, height: 660, ...style }}>
     <div style={{ position: "absolute", left: 44, top: 40, fontFamily: FONT.serif, fontSize: 40, color: C.ink }}>Retirement plan</div>
     <div
       style={{
@@ -149,6 +149,7 @@ export const F07WhatIf: React.FC = () => (
     <Tracker step={1} />
     <PresentHeadline />
     <Presentation after />
+    <Cursor x={1140} y={796} />
   </>
 );
 
@@ -158,16 +159,20 @@ export const F08Capture: React.FC = () => (
     <Bg bg={P.bg} />
     <Tracker step={1} />
     <Headline eyebrow="Meeting capture" color={P.accent} lines={["Every word,", "on the record"]} />
-    <Presentation after style={{ left: 820, top: 270, scale: 0.84, opacity: 0.5, transformOrigin: "0 0" }} />
-    <RecordingPhone x={1340} y={210} />
+    <Presentation after style={{ left: 820, top: 232, scale: 0.84, opacity: 0.5, transformOrigin: "0 0" }} />
+    <RecordingPhone x={1340} y={190} />
   </>
 );
 
-// F9 · 0:17 — hand-off: the recording becomes the recap. Blue sweeps in.
+// F9 · 0:17 — hand-off: the recording becomes the recap. The phone comes up
+// close, running off the bottom of the frame; blue sweeps in.
+const CLOSE_UP = 1.5;
 export const F09Writing: React.FC = () => (
   <>
     <BgSweep from="mint" to="blue" at={0.7} />
+    <div style={{ position: "absolute", inset: 0, scale: CLOSE_UP, transformOrigin: "960px 200px" }}>
+      <RecordingPhone x={790} y={200} writing />
+    </div>
     <Tracker step={1} toward={0.5} />
-    <RecordingPhone x={790} y={210} writing />
   </>
 );
