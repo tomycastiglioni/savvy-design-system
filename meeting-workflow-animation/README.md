@@ -57,6 +57,20 @@ beige / green / blue backgrounds per phase and abstract UI (body copy as grey
 lines). Frames live in `src/launch30/frames/`; render them with
 `npx remotion still Launch30Storyboard out/storyboard/f01.png --frame=0` (etc.).
 
+Notes for building the 30 s video from the storyboard (team feedback):
+
+- Text effect: lines slide in from the right out of a blur, one after another,
+  landing in their final positions. F02 does "One client meeting," then
+  "start to finish"; F13 does "Prep.", "Communicate.", "Deliver."; F14 does
+  "Your whole practice," then "working for you".
+- F02 → F03: the Allison & Frank pill travels into the Prep ready card on the
+  right and becomes its household chip.
+- Tracker: the line after the active step fills over that phase's duration,
+  so it shows the time left (Prep 0:04–0:10, Communicate 0:10–0:18). Deliver
+  (0:18–0:24) has no line after it, so it gets a short tail line that fills
+  the same way.
+- Cursors only at F03 (Review prep), F07 (what-if drag) and F11 (Send).
+
 `Launch` chapters (from the 25-frame storyboard; chapters start on a 120 BPM
 grid of 2 s bars, so a 120 BPM track lines up with every section):
 
