@@ -50,8 +50,14 @@ Agenda) → "Open prep". Text is a few words per row so it reads in 3.5 s. All
 layout is in iOS points (360×782.67) and scaled ×3; beats are in
 `src/mobile-prep/timeline.ts`, copy in `src/mobile-prep/content.ts`.
 
-`Launch30Storyboard` (14 static frames, 1920×1080; frame *i* is storyboard
-frame *i + 1*) is the storyboard for the 30 s re-cut: one client meeting
+`Launch30` is the 30 s launch re-cut (1920×1080, 60 fps, with sound): one
+client meeting followed through Prep → Communicate → Deliver. Beats are in
+`src/launch30/timeline.ts`; scenes in `src/launch30/scenes/` reuse the
+storyboard frames' pieces, so the video and the stills stay in sync. The
+tracker's active step has a ring that fills with the time left in its phase.
+
+`Launch30Storyboard` (17 static frames, 1920×1080, in order F01 … F15 with
+F13 in three steps) is the storyboard for the 30 s re-cut: one client meeting
 followed through Prep → Communicate → Deliver, with a phase tracker on top,
 beige / green / blue backgrounds per phase and abstract UI (body copy as grey
 lines). Frames live in `src/launch30/frames/`; render them with
@@ -65,10 +71,9 @@ Notes for building the 30 s video from the storyboard (team feedback):
   "Your whole practice," then "working for you".
 - F02 → F03: the Allison & Frank pill travels into the Prep ready card on the
   right and becomes its household chip.
-- Tracker: the line after the active step fills over that phase's duration,
-  so it shows the time left (Prep 0:04–0:10, Communicate 0:10–0:18). Deliver
-  (0:18–0:24) has no line after it, so it gets a short tail line that fills
-  the same way.
+- Tracker: a ring around the active step's number fills over that phase
+  (Prep 0:04–0:10, Communicate 0:10–0:18, Deliver 0:18–0:24); the line to the
+  next step fills at each hand-off.
 - Cursors only at F03 (Review prep), F07 (what-if drag) and F11 (Send).
 
 `Launch` chapters (from the 25-frame storyboard; chapters start on a 120 BPM
@@ -170,6 +175,13 @@ For `MobilePrep` (no audio, poster on the finished card):
 npx remotion render MobilePrep out/mobile-prep-master.mov --codec=prores --prores-profile=hq
 ffmpeg -i out/mobile-prep-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -movflags +faststart -an out/export/mobile-prep.mp4
 npx remotion still MobilePrep out/export/mobile-prep-poster.png --frame=150
+```
+
+For `Launch30` (with sound):
+
+```console
+npx remotion render Launch30 out/launch30-master.mov --codec=prores --prores-profile=hq
+ffmpeg -i out/launch30-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart out/export/launch30.mp4
 ```
 
 For `Launch`, render the master with audio and encode with AAC instead of `-an`:

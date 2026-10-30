@@ -83,15 +83,17 @@ export const lineTop = (capTop: number, size: number, lh: number) => capTop - lh
 export const HEAD = { size: 79.6, lh: 79.6 * 1.1, tracking: "-0.015em" };
 const EYEBROW = { size: 21, lh: 24, gap: 88 };
 
-// Static chapter headline: eyebrow (the workflow) and two lines of Diatype,
-// centred on `cy`, in the left column.
+// Chapter headline: eyebrow (the workflow) and two lines of Diatype, centred
+// on `cy`, in the left column. `lineStyle(i)` animates each line (0 is the
+// eyebrow); static by default.
 export const Headline: React.FC<{
   readonly eyebrow: string;
   readonly color: string;
   readonly lines: readonly string[];
   readonly x?: number;
   readonly cy?: number;
-}> = ({ eyebrow, color, lines, x = 174, cy = CY }) => {
+  readonly lineStyle?: (i: number) => React.CSSProperties;
+}> = ({ eyebrow, color, lines, x = 174, cy = CY, lineStyle = () => ({}) }) => {
   const block = EYEBROW.gap + (lines.length - 1) * HEAD.lh + 0.7 * HEAD.size;
   const top0 = cy - block / 2;
   return (
@@ -107,6 +109,7 @@ export const Headline: React.FC<{
           letterSpacing: "0.04em",
           textTransform: "uppercase",
           color,
+          ...lineStyle(0),
         }}
       >
         {eyebrow}
@@ -122,6 +125,7 @@ export const Headline: React.FC<{
             lineHeight: `${HEAD.lh}px`,
             letterSpacing: HEAD.tracking,
             color: "#000000",
+            ...lineStyle(i + 1),
           }}
         >
           {line}
@@ -137,7 +141,7 @@ const CURSORS = {
   arrow: { src: "images/cursor-arrow.svg", w: 31, h: 33, hotX: 9.15, hotY: 6.03 },
   hand: { src: "images/cursor-hand.svg", w: 30, h: 32, hotX: 9.4, hotY: 4.4 },
 };
-const CURSOR_SCALE = 1.95;
+export const CURSOR_SCALE = 1.95;
 export const Cursor: React.FC<{ readonly x: number; readonly y: number; readonly kind?: keyof typeof CURSORS }> = ({ x, y, kind = "hand" }) => {
   const c = CURSORS[kind];
   return (
@@ -147,3 +151,36 @@ export const Cursor: React.FC<{ readonly x: number; readonly y: number; readonly
     />
   );
 };
+
+// The 44 s cut's title metrics: Diatype 78.5px, -2% tracking.
+export const TITLE = { size: 78.5, lh: 79.6 * 1.15, tracking: "-0.02em" };
+
+// One centred line of Diatype with its cap top at `capTop`. Children are the
+// line's parts (spans), so each can animate on its own and still land in its
+// place in the finished line.
+export const CenteredLine: React.FC<{
+  readonly capTop: number;
+  readonly size?: number;
+  readonly tracking?: string;
+  readonly children: React.ReactNode;
+}> = ({ capTop, size = HEAD.size, tracking = HEAD.tracking, children }) => (
+  <div
+    style={{
+      position: "absolute",
+      left: 0,
+      right: 0,
+      top: lineTop(capTop, size, HEAD.lh),
+      display: "flex",
+      justifyContent: "center",
+      gap: size * 0.26,
+      fontFamily: DIATYPE,
+      fontSize: size,
+      lineHeight: `${HEAD.lh}px`,
+      letterSpacing: tracking,
+      color: "#000000",
+      whiteSpace: "nowrap",
+    }}
+  >
+    {children}
+  </div>
+);

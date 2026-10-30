@@ -1,15 +1,15 @@
 import React from "react";
 import { Logo, LOGO_RATIO } from "../../launch/components/Logo";
-import { Bg, HEAD, HouseholdChip, lineTop } from "../components/Bits";
+import { Bg, CenteredLine, HEAD, HouseholdChip, lineTop, TITLE } from "../components/Bits";
 import { CY, DIATYPE } from "../theme";
 
-// The 44 s cut's title metrics: Diatype 78.5px, -2% tracking, cap top at 509.
-const TITLE = { size: 78.5, lh: 79.6 * 1.15, capTop: 509, tracking: "-0.02em" };
-
-const titleWord = (left: number): React.CSSProperties => ({
+// F1: the 44 s cut's title card. Cap top at 509; the wordmark sits between.
+export const TITLE_CAP = 509;
+export const TITLE_LOGO = { x: 796, y: 509, h: 73.6 };
+export const titleWord = (left: number): React.CSSProperties => ({
   position: "absolute",
   left,
-  top: lineTop(TITLE.capTop, TITLE.size, TITLE.lh),
+  top: lineTop(TITLE_CAP, TITLE.size, TITLE.lh),
   fontFamily: DIATYPE,
   fontSize: TITLE.size,
   lineHeight: `${TITLE.lh}px`,
@@ -18,41 +18,27 @@ const titleWord = (left: number): React.CSSProperties => ({
   whiteSpace: "nowrap",
 });
 
-// Centred single line of Diatype with its cap top at `capTop`.
-const Centered: React.FC<{ readonly capTop: number; readonly size?: number; readonly tracking?: string; readonly children: React.ReactNode }> = ({
-  capTop,
-  size = HEAD.size,
-  tracking = HEAD.tracking,
-  children,
-}) => (
-  <div
-    style={{
-      position: "absolute",
-      left: 0,
-      right: 0,
-      top: lineTop(capTop, size, HEAD.lh),
-      display: "flex",
-      justifyContent: "center",
-      gap: size * 0.26,
-      fontFamily: DIATYPE,
-      fontSize: size,
-      lineHeight: `${HEAD.lh}px`,
-      letterSpacing: tracking,
-      color: "#000000",
-      whiteSpace: "nowrap",
-    }}
-  >
-    {children}
-  </div>
-);
+// F2: the meeting line in two parts, and the household pill under it.
+export const MEETING_LINE = { capTop: 455, parts: ["One client meeting,", "start to finish"] };
+export const MEETING_PILL = { top: 568, size: 28, bg: "rgba(255, 255, 255, 0.8)" };
+
+// F13: the three phase words, each landing in its place in the line.
+export const PHASE_WORDS = ["Prep.", "Communicate.", "Deliver."];
+export const PHASE_WORDS_CAP = CY - 0.35 * HEAD.size;
+// F14: the launch tagline, two lines centred on the middle.
+export const TAGLINE = ["Your whole practice,", "working for you"];
+export const TAGLINE_CAP = CY - (HEAD.lh + 0.7 * HEAD.size) / 2;
+// F15: the wordmark, centred.
+export const END_LOGO_H = 93.85;
+export const END_LOGO = { x: 960 - (END_LOGO_H * LOGO_RATIO) / 2, y: CY - END_LOGO_H / 2 };
 
 // F1 · 0:00 — title card, same layout as the 44 s cut.
 export const F01Intro: React.FC = () => (
   <>
     <Bg bg="cream" />
     <div style={titleWord(375)}>Introducing</div>
-    <div style={{ position: "absolute", left: 796, top: 509 }}>
-      <Logo h={73.6} />
+    <div style={{ position: "absolute", left: TITLE_LOGO.x, top: TITLE_LOGO.y }}>
+      <Logo h={TITLE_LOGO.h} />
     </div>
     <div style={titleWord(1035)}>Intelligence 2.0</div>
   </>
@@ -62,11 +48,13 @@ export const F01Intro: React.FC = () => (
 export const F02Meeting: React.FC = () => (
   <>
     <Bg bg="cream" />
-    <Centered capTop={455} size={TITLE.size} tracking={TITLE.tracking}>
-      One client meeting, start to finish
-    </Centered>
-    <div style={{ position: "absolute", left: 0, right: 0, top: 568, display: "flex", justifyContent: "center" }}>
-      <HouseholdChip size={28} style={{ background: "rgba(255, 255, 255, 0.8)" }} />
+    <CenteredLine capTop={MEETING_LINE.capTop} size={TITLE.size} tracking={TITLE.tracking}>
+      {MEETING_LINE.parts.map((part) => (
+        <span key={part}>{part}</span>
+      ))}
+    </CenteredLine>
+    <div style={{ position: "absolute", left: 0, right: 0, top: MEETING_PILL.top, display: "flex", justifyContent: "center" }}>
+      <HouseholdChip size={MEETING_PILL.size} style={{ background: MEETING_PILL.bg }} />
     </div>
   </>
 );
@@ -74,12 +62,11 @@ export const F02Meeting: React.FC = () => (
 // F13a–c · 0:24 — "Prep. Communicate. Deliver.", one word after another,
 // each sliding into its place in the final line out of a blur. `step` is how
 // many words are visible; the last of them is still arriving unless `settled`.
-const WORDS = ["Prep.", "Communicate.", "Deliver."];
 const ThreeWords: React.FC<{ readonly step: number; readonly settled?: boolean }> = ({ step, settled = false }) => (
   <>
     <Bg bg="blue" />
-    <Centered capTop={CY - 0.35 * HEAD.size}>
-      {WORDS.map((word, i) => {
+    <CenteredLine capTop={PHASE_WORDS_CAP}>
+      {PHASE_WORDS.map((word, i) => {
         const arriving = i === step - 1 && !settled;
         return (
           <span
@@ -94,7 +81,7 @@ const ThreeWords: React.FC<{ readonly step: number; readonly settled?: boolean }
           </span>
         );
       })}
-    </Centered>
+    </CenteredLine>
   </>
 );
 export const F13aPrep: React.FC = () => <ThreeWords step={1} settled />;
@@ -102,24 +89,23 @@ export const F13bCommunicate: React.FC = () => <ThreeWords step={2} />;
 export const F13cDeliver: React.FC = () => <ThreeWords step={3} settled />;
 
 // F14 · 0:26 — the launch tagline.
-export const F14Tagline: React.FC = () => {
-  const capTop = CY - (HEAD.lh + 0.7 * HEAD.size) / 2;
-  return (
-    <>
-      <Bg bg="blue" />
-      <Centered capTop={capTop}>Your whole practice,</Centered>
-      <Centered capTop={capTop + HEAD.lh}>working for you</Centered>
-    </>
-  );
-};
+export const F14Tagline: React.FC = () => (
+  <>
+    <Bg bg="blue" />
+    {TAGLINE.map((line, i) => (
+      <CenteredLine key={line} capTop={TAGLINE_CAP + i * HEAD.lh}>
+        <span>{line}</span>
+      </CenteredLine>
+    ))}
+  </>
+);
 
 // F15 · 0:28 — the Savvy wordmark, as in the 44 s cut.
-const LOGO_H = 93.85;
 export const F15Logo: React.FC = () => (
   <>
     <Bg bg="blue" />
-    <div style={{ position: "absolute", left: 960 - (LOGO_H * LOGO_RATIO) / 2, top: CY - LOGO_H / 2 }}>
-      <Logo h={LOGO_H} />
+    <div style={{ position: "absolute", left: END_LOGO.x, top: END_LOGO.y }}>
+      <Logo h={END_LOGO_H} />
     </div>
   </>
 );

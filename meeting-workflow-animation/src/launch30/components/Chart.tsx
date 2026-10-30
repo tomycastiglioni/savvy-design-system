@@ -2,17 +2,20 @@ import React from "react";
 import { C, FONT } from "../theme";
 
 // Abstract projection: one curve, soft area, three faint gridlines, an end
-// value. `growth` bends the curve up; `ghost` dashes an earlier curve.
+// value. `growth` bends the curve up; `ghost` dashes an earlier curve (faded
+// by `ghostOpacity`). `detail` fades in the end value and the year labels.
 export const AbstractChart: React.FC<{
   readonly w: number;
   readonly h: number;
   readonly color: string;
   readonly growth?: number;
   readonly ghost?: number;
+  readonly ghostOpacity?: number;
   readonly endLabel?: string;
   readonly years?: boolean;
-}> = ({ w, h, color, growth = 1, ghost, endLabel, years = false }) => {
-  const pad = { l: 8, r: endLabel ? 120 : 16, t: 18, b: years ? 34 : 10 };
+  readonly detail?: number;
+}> = ({ w, h, color, growth = 1, ghost, ghostOpacity = 1, endLabel, years = false, detail = 1 }) => {
+  const pad = { l: 8, r: endLabel ? 16 + 104 * detail : 16, t: 18, b: years ? 10 + 24 * detail : 10 };
   const pw = w - pad.l - pad.r;
   const ph = h - pad.t - pad.b;
   const curve = (g: number) =>
@@ -21,10 +24,13 @@ export const AbstractChart: React.FC<{
       const v = 0.22 + 0.62 * g * Math.pow(t, 1.6);
       return [pad.l + t * pw, pad.t + ph * (1 - Math.min(v, 1))] as const;
     });
+  const path = (g: number) =>
+    curve(g)
+      .map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`)
+      .join(" ");
   const pts = curve(growth);
-  const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
   const [ex, ey] = pts[pts.length - 1];
-  const id = `area-${color.slice(1)}-${Math.round(growth * 100)}`;
+  const id = `area-${color.slice(1)}`;
 
   return (
     <svg width={w} height={h} style={{ display: "block", overflow: "visible", fontFamily: FONT.sans }}>
@@ -38,31 +44,22 @@ export const AbstractChart: React.FC<{
         <line key={i} x1={pad.l} x2={pad.l + pw} y1={pad.t + (ph * i) / 3} y2={pad.t + (ph * i) / 3} stroke="#EEF0F3" strokeWidth={1.5} />
       ))}
       <line x1={pad.l} x2={pad.l + pw} y1={pad.t + ph} y2={pad.t + ph} stroke="#DDE1E6" strokeWidth={1.5} />
-      {ghost !== undefined ? (
-        <path
-          d={curve(ghost)
-            .map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`)
-            .join(" ")}
-          fill="none"
-          stroke={color}
-          strokeOpacity={0.35}
-          strokeWidth={3}
-          strokeDasharray="8 8"
-        />
+      {ghost !== undefined && ghostOpacity > 0 ? (
+        <path d={path(ghost)} fill="none" stroke={color} strokeOpacity={0.35 * ghostOpacity} strokeWidth={3} strokeDasharray="8 8" />
       ) : null}
-      <path d={`${d} L${ex} ${pad.t + ph} L${pad.l} ${pad.t + ph} Z`} fill={`url(#${id})`} />
-      <path d={d} fill="none" stroke={color} strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={`${path(growth)} L${ex} ${pad.t + ph} L${pad.l} ${pad.t + ph} Z`} fill={`url(#${id})`} />
+      <path d={path(growth)} fill="none" stroke={color} strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round" />
       <circle cx={ex} cy={ey} r={8} fill={C.white} stroke={color} strokeWidth={4} />
-      {endLabel ? (
-        <g transform={`translate(${ex + 16}, ${ey - 20})`}>
+      {endLabel && detail > 0 ? (
+        <g transform={`translate(${ex + 16}, ${ey - 20})`} opacity={detail}>
           <rect width={98} height={40} rx={10} fill={color} />
           <text x={49} y={27} textAnchor="middle" fontSize={19} fontWeight={600} fill={C.white}>
             {endLabel}
           </text>
         </g>
       ) : null}
-      {years ? (
-        <g fontSize={15} fill={C.faint}>
+      {years && detail > 0 ? (
+        <g fontSize={15} fill={C.faint} opacity={detail}>
           <text x={pad.l} y={h - 6}>
             2026
           </text>
