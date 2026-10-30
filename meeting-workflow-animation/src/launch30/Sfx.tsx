@@ -3,48 +3,54 @@ import React from "react";
 import { Sequence, staticFile, useVideoConfig } from "remotion";
 import { L } from "./timeline";
 
-// Sounds, kept subtle: a soft air whoosh on the big moves and a muted tap on
-// each text reveal (public/audio/launch30/, ElevenLabs text to sound v2,
-// high-passed, trimmed and loudness-normalized), plus the launch kit's click,
-// success and sting (public/audio/launch/).
+// Sounds, kept soft and warm (public/audio/launch30/, ElevenLabs text to sound
+// v2, trimmed, filtered and peak-normalized; levels are set here): a short
+// swish on text reveals, a rounded whoosh on the big moves, a two-note chime
+// when the phone starts recording, a rising shimmer as it starts writing the
+// recap and a warm swell under the logo. Clicks and the sent chime come from
+// the launch kit (public/audio/launch/).
 const SOUNDS = {
-  whoosh: { src: "launch30/whoosh-soft", dur: 0.8 },
-  text: { src: "launch30/text", dur: 0.45 },
+  swish: { src: "launch30/swish", dur: 0.6 },
+  whoosh: { src: "launch30/whoosh", dur: 1.05 },
+  record: { src: "launch30/record", dur: 1.0 },
+  shimmer: { src: "launch30/shimmer", dur: 1.47 },
+  logo: { src: "launch30/logo", dur: 2.64 },
   click: { src: "launch/click", dur: 0.15 },
   success: { src: "launch/success", dur: 1.6 },
-  sting: { src: "launch/sting", dur: 3.2 },
 } as const;
 type Cue = { readonly sound: keyof typeof SOUNDS; readonly at: number; readonly volume: number };
 
-// The soft whoosh swells to its peak 0.36 s in; cue it so the peak meets the move.
-const whoosh = (peak: number): Cue => ({ sound: "whoosh", at: peak - 0.36, volume: 0.35 });
-const text = (at: number, volume = 0.5): Cue => ({ sound: "text", at: at + 0.04, volume });
-const click = (at: number): Cue => ({ sound: "click", at: at - 0.02, volume: 0.5 });
+// Each sound is cued so its loudest point meets the motion: the swish peaks
+// 0.2 s in, the whoosh 0.4 s, the shimmer 0.77 s, the logo swell 0.68 s.
+const swish = (textIn: number): Cue => ({ sound: "swish", at: textIn - 0.05, volume: 0.1 });
+const whoosh = (peak: number): Cue => ({ sound: "whoosh", at: peak - 0.4, volume: 0.16 });
+const click = (at: number): Cue => ({ sound: "click", at: at - 0.02, volume: 0.4 });
 
 const CUES: readonly Cue[] = [
-  // Text reveals
-  text(L.titleIn),
-  ...L.meetingIn.map((at) => text(at)),
-  ...[L.prepText, L.presentText, L.captureText, L.deliverText].map((at) => text(at)),
-  ...L.results.map((at) => text(at, 0.3)),
-  ...L.words.map((at) => text(at)),
-  ...L.tagline.map((at) => text(at)),
-  // Moves
+  // Text reveals that no move already covers
+  swish(L.titleIn),
+  ...L.meetingIn.map(swish),
+  swish(L.presentText),
+  ...L.words.map(swish),
+  ...L.tagline.map(swish),
+  // Moves (each phase's headline arrives with one of these)
   whoosh(L.pillFly[0] + 0.3), // the pill flies into the prep card
   whoosh(L.docMorph[0] + 0.25), // card → prep document
   whoosh(L.lift[0] + 0.25), // the plan lifts out
   whoosh(L.phoneIn[0] + 0.3), // the phone slides in
-  whoosh(L.closeUp[0] + 0.25), // close-up
   whoosh(L.toRecap[0] + 0.3), // phone → recap
   whoosh(L.toDoc[0] + 0.25), // recap → document and email
   whoosh(L.toSent[0] + 0.25), // email → "Email sent"
+  // The phone: recording starts, then it writes the recap
+  { sound: "record", at: L.phoneIn[1] - 0.2, volume: 0.08 },
+  { sound: "shimmer", at: L.writing[1] - 0.77, volume: 0.14 },
   // Where the advisor acts
   click(L.reviewClick),
   click(L.planClick),
   click(L.drag[0] - 0.05),
   click(L.sendClick),
-  { sound: "success", at: L.sentCheck[0], volume: 0.4 },
-  { sound: "sting", at: L.logoIn - 0.15, volume: 0.55 },
+  { sound: "success", at: L.sentCheck[0], volume: 0.18 },
+  { sound: "logo", at: L.logoIn + 0.45 - 0.68, volume: 0.16 },
 ];
 
 export const Launch30Sfx: React.FC = () => {
