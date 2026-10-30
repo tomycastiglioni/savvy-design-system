@@ -50,6 +50,13 @@ Agenda) → "Open prep". Text is a few words per row so it reads in 3.5 s. All
 layout is in iOS points (360×782.67) and scaled ×3; beats are in
 `src/mobile-prep/timeline.ts`, copy in `src/mobile-prep/content.ts`.
 
+`Launch30Storyboard` (14 static frames, 1920×1080; frame *i* is storyboard
+frame *i + 1*) is the storyboard for the 30 s re-cut: one client meeting
+followed through Prep → Communicate → Deliver, with a phase tracker on top,
+beige / green / blue backgrounds per phase and abstract UI (body copy as grey
+lines). Frames live in `src/launch30/frames/`; render them with
+`npx remotion still Launch30Storyboard out/storyboard/f01.png --frame=0` (etc.).
+
 `Launch` chapters (from the 25-frame storyboard; chapters start on a 120 BPM
 grid of 2 s bars, so a 120 BPM track lines up with every section):
 

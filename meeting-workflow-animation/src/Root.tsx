@@ -4,6 +4,7 @@ import { Capture } from "./capture/Capture";
 import { Delivery } from "./delivery/Delivery";
 import { Launch } from "./launch/Launch";
 import { DURATION } from "./launch/timeline";
+import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
 import { MobilePrep } from "./mobile-prep/MobilePrep";
 import { DURATION as MOBILE_PREP_DURATION } from "./mobile-prep/timeline";
@@ -51,6 +52,14 @@ export const RemotionRoot: React.FC = () => {
         component={Launch}
         durationInFrames={DURATION}
         fps={60}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Launch30Storyboard"
+        component={Launch30Storyboard}
+        durationInFrames={LAUNCH30_FRAMES.length}
+        fps={30}
         width={1920}
         height={1080}
       />
