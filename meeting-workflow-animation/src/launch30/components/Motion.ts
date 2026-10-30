@@ -17,12 +17,13 @@ export const rectStyle = (r: Rect): React.CSSProperties => ({ left: r.x, top: r.
 
 const blur = (px: number) => (px > 0.05 ? `blur(${px}px)` : undefined);
 
-// The launch text effect: slides in from the right out of a blur, landing in
-// its place; leaves with a fade and a little blur.
+// The launch text effect: slides up from below out of a blur, landing in its
+// place; leaves with a fade, a little blur and a small lift.
+export const SLIDE = { y: 36, blur: 9 };
 export const slideText = (t: number, inAt: number, outAt = Infinity, dur = 0.6): React.CSSProperties => {
   const p = ramp(t, inAt, inAt + dur);
   const out = ramp(t, outAt, outAt + 0.35, EASE_IN_OUT);
-  return { opacity: p * (1 - out), translate: `${(1 - p) * 46}px 0px`, filter: blur((1 - p) * 9 + out * 5) };
+  return { opacity: p * (1 - out), translate: `0px ${(1 - p) * SLIDE.y - out * 10}px`, filter: blur((1 - p) * SLIDE.blur + out * 5) };
 };
 
 // Headlines rise in line by line out of a blur (as in the 44 s cut) and

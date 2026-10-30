@@ -60,7 +60,7 @@ export const F02Meeting: React.FC = () => (
 );
 
 // F13a–c · 0:24 — "Prep. Communicate. Deliver.", one word after another,
-// each sliding into its place in the final line out of a blur. `step` is how
+// each sliding up into its place in the final line out of a blur. `step` is how
 // many words are visible; the last of them is still arriving unless `settled`.
 const ThreeWords: React.FC<{ readonly step: number; readonly settled?: boolean }> = ({ step, settled = false }) => (
   <>
@@ -73,7 +73,7 @@ const ThreeWords: React.FC<{ readonly step: number; readonly settled?: boolean }
             key={word}
             style={{
               opacity: i < step ? (arriving ? 0.45 : 1) : 0,
-              translate: arriving ? "46px 0px" : undefined,
+              translate: arriving ? "0px 36px" : undefined,
               filter: arriving ? "blur(9px)" : undefined,
             }}
           >

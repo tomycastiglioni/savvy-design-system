@@ -79,21 +79,19 @@ const Step: React.FC<{ readonly i: number; readonly s: StepState }> = ({ i, s })
 };
 
 // The story's spine, docked at the top: the three phases, the active one's
-// ring filling with the time left in it, and the lines between them filling
-// at each hand-off.
+// ring filling with the time left in it.
 export const TrackerView: React.FC<{
   readonly steps: readonly StepState[];
-  readonly lines: readonly [number, number];
   readonly style?: React.CSSProperties;
-}> = ({ steps, lines, style }) => (
+}> = ({ steps, style }) => (
   <div style={{ position: "absolute", left: 0, right: 0, top: 48, display: "flex", justifyContent: "center", fontFamily: DIATYPE, ...style }}>
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 16,
+        gap: 40,
         height: 62,
-        padding: "0 28px 0 16px",
+        padding: "0 28px 0 14px",
         borderRadius: 31,
         background: "rgba(255, 255, 255, 0.62)",
         border: "1px solid rgba(255, 255, 255, 0.9)",
@@ -101,24 +99,13 @@ export const TrackerView: React.FC<{
       }}
     >
       {PHASES.map((p, i) => (
-        <React.Fragment key={p.key}>
-          {i > 0 ? (
-            <div style={{ position: "relative", width: 64, height: 2, borderRadius: 1, background: "rgba(16, 24, 40, 0.14)" }}>
-              <div style={{ position: "absolute", inset: 0, width: `${lines[i - 1] * 100}%`, background: PHASES[i - 1].accent, borderRadius: 1 }} />
-            </div>
-          ) : null}
-          <Step i={i} s={steps[i]} />
-        </React.Fragment>
+        <Step key={p.key} i={i} s={steps[i]} />
       ))}
     </div>
   </div>
 );
 
-// Storyboard version: `step` is the active phase (0–2), 3 means all done;
-// `toward` fills the line after the active phase (hand-off frames).
-export const Tracker: React.FC<{ readonly step: number; readonly toward?: number }> = ({ step, toward = 0 }) => (
-  <TrackerView
-    steps={PHASES.map((_, i) => ({ status: i < step ? "done" : i === step ? "active" : "todo" }))}
-    lines={[1, 2].map((i) => (i <= step ? 1 : i === step + 1 ? toward : 0)) as unknown as readonly [number, number]}
-  />
+// Storyboard version: `step` is the active phase (0–2), 3 means all done.
+export const Tracker: React.FC<{ readonly step: number }> = ({ step }) => (
+  <TrackerView steps={PHASES.map((_, i) => ({ status: i < step ? "done" : i === step ? "active" : "todo" }))} />
 );

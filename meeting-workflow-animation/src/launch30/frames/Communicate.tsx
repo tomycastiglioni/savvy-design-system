@@ -62,13 +62,15 @@ const Slider: React.FC<{ readonly label: string; readonly value: string; readonl
 
 // The plan card's content. `m` morphs it from the lifted card (LIFT, 0) to
 // the presentation (PRESENT, 1); `chrome` fades in the presenting pill, end
-// value, years and sliders; `drag` moves the contributions what-if.
+// value, years and sliders; `build` draws the projection in; `drag` moves the
+// contributions what-if.
 export const PresentationContent: React.FC<{
   readonly m?: number;
   readonly chrome?: number;
+  readonly build?: number;
   readonly drag?: number;
   readonly hot?: number;
-}> = ({ m = 1, chrome = 1, drag = 0, hot = 0 }) => {
+}> = ({ m = 1, chrome = 1, build = 1, drag = 0, hot = 0 }) => {
   const c = chrome * m;
   return (
     <>
@@ -105,6 +107,7 @@ export const PresentationContent: React.FC<{
           endLabel={`$${(22.5 + 2.6 * drag).toFixed(1)}M`}
           years
           detail={c}
+          build={build}
         />
       </div>
       <div style={{ position: "absolute", left: 44, right: 44, top: 506, height: 1, background: "#EEF0F2", opacity: c }} />
@@ -250,6 +253,6 @@ export const F09Writing: React.FC = () => (
     <div style={{ position: "absolute", inset: 0, scale: CLOSE_UP, transformOrigin: "960px 200px" }}>
       <RecordingPhone x={790} y={200} writing />
     </div>
-    <Tracker step={1} toward={0.5} />
+    <Tracker step={1} />
   </>
 );

@@ -74,7 +74,7 @@ export const Intro: React.FC = () => {
             scale: k,
             transformOrigin: "0 0",
             opacity: pillIn,
-            translate: `0px ${(1 - pillIn) * -16}px`,
+            translate: `0px ${(1 - pillIn) * 16}px`,
           }}
         >
           <HouseholdChip size={MEETING_PILL.size} style={{ background: interpolateColors(fly, [0, 1], [MEETING_PILL.bg, "#F1F3F5"]) }} />

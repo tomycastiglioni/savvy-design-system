@@ -54,7 +54,14 @@ layout is in iOS points (360×782.67) and scaled ×3; beats are in
 client meeting followed through Prep → Communicate → Deliver. Beats are in
 `src/launch30/timeline.ts`; scenes in `src/launch30/scenes/` reuse the
 storyboard frames' pieces, so the video and the stills stay in sync. The
-tracker's active step has a ring that fills with the time left in its phase.
+tracker's active step has a ring that fills with the time left in its phase
+(no connector lines). The cursor clicks Review prep, then "Retirement plan" in
+the agenda, which lifts out and is presented; its projection draws in from
+left to right as it lands. Sound cues are in `src/launch30/Sfx.tsx`: a soft
+air whoosh on the big moves and a single muted tap on each text reveal
+(`public/audio/launch30/`, ElevenLabs text to sound, high-passed, trimmed and
+loudness-normalized to −24 LUFS), plus the launch kit's click, success and
+sting.
 
 `Launch30Storyboard` (17 static frames, 1920×1080, in order F01 … F15 with
 F13 in three steps) is the storyboard for the 30 s re-cut: one client meeting
@@ -65,16 +72,17 @@ lines). Frames live in `src/launch30/frames/`; render them with
 
 Notes for building the 30 s video from the storyboard (team feedback):
 
-- Text effect: lines slide in from the right out of a blur, one after another,
+- Text effect: lines rise in from below out of a blur, one after another,
   landing in their final positions. F02 does "One client meeting," then
   "start to finish"; F13 does "Prep.", "Communicate.", "Deliver."; F14 does
   "Your whole practice," then "working for you".
 - F02 → F03: the Allison & Frank pill travels into the Prep ready card on the
   right and becomes its household chip.
 - Tracker: a ring around the active step's number fills over that phase
-  (Prep 0:04–0:10, Communicate 0:10–0:18, Deliver 0:18–0:24); the line to the
-  next step fills at each hand-off.
-- Cursors only at F03 (Review prep), F07 (what-if drag) and F11 (Send).
+  (Prep 0:04–0:10, Communicate 0:10–0:18, Deliver 0:18–0:24), then pops to
+  done.
+- Cursors only at F03–F05 (Review prep, then Retirement plan in the agenda),
+  F07 (what-if drag) and F11 (Send).
 
 `Launch` chapters (from the 25-frame storyboard; chapters start on a 120 BPM
 grid of 2 s bars, so a 120 BPM track lines up with every section):

@@ -6,7 +6,7 @@ import { END_LOGO, END_LOGO_H, PHASE_WORDS, PHASE_WORDS_CAP, TAGLINE, TAGLINE_CA
 import { L, useT } from "../timeline";
 
 // 0:24–0:30 — "Prep. Communicate. Deliver." word by word, the launch tagline
-// line by line (both sliding in out of a blur), then the wordmark.
+// line by line (both sliding up out of a blur), then the wordmark.
 export const CloseScene: React.FC = () => {
   const t = useT();
   if (t < L.words[0]) return null;

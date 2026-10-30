@@ -37,7 +37,7 @@ export const PrepScene: React.FC = () => {
             <PrepCardContent chip={t >= L.pillFly[1]} press={pressAt(t, L.reviewClick)} />
           </div>
         ) : null}
-        {morph > 0 ? <PrepDocContent reveal={ramp(t, ...L.docReveal, Easing.linear)} highlight={ramp(t, L.highlight, L.highlight + 0.25)} /> : null}
+        {morph > 0 ? <PrepDocContent reveal={ramp(t, ...L.docReveal, Easing.linear)} highlight={ramp(t, L.planClick, L.planClick + 0.25)} /> : null}
       </Card>
     </>
   );

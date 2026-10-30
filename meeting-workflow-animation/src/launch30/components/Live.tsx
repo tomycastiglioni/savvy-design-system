@@ -33,8 +33,7 @@ export const LiveBackground: React.FC = () => {
 const POP = Easing.out(Easing.back(2.2));
 
 // The tracker over the whole story: the active step's ring fills with the time
-// left in its phase; a finished step pops to a check; the line to the next
-// step fills at each hand-off.
+// left in its phase; a finished step pops to a check.
 export const LiveTracker: React.FC = () => {
   const t = useT();
   const enter = ramp(t, L.trackerIn, L.trackerIn + 0.5);
@@ -46,13 +45,11 @@ export const LiveTracker: React.FC = () => {
     if (t >= a) return { status: "active", ring: (t - a) / (b - a) };
     return { status: "todo" };
   });
-  const lines = [ramp(t, ...L.line1, EASE_IN_OUT), ramp(t, ...L.line2, EASE_IN_OUT)] as const;
   const blur = (1 - enter) * 6 + leave * 4;
 
   return (
     <TrackerView
       steps={steps}
-      lines={lines}
       style={{ opacity: enter * (1 - leave), translate: `0px ${(1 - enter) * -28}px`, filter: blur > 0.05 ? `blur(${blur}px)` : undefined }}
     />
   );

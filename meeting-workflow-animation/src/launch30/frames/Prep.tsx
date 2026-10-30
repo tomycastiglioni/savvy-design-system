@@ -190,7 +190,7 @@ export const F04PrepDoc: React.FC = () => (
 export const F05Handoff: React.FC = () => (
   <>
     <BgSweep from="cream" to="mint" />
-    <Tracker step={0} toward={0.5} />
+    <Tracker step={0} />
     <Card style={{ left: 300, top: PREP_DOC.y + 30, width: PREP_DOC.w, height: PREP_DOC.h, scale: 0.92, opacity: 0.55 }}>
       <PrepDocContent highlight={1} />
     </Card>

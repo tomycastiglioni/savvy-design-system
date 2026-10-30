@@ -23,15 +23,15 @@ export const L = {
   reviewClick: 5.75,
   docMorph: [5.85, 6.45] as const,
   docReveal: [6.05, 7.15] as const,
-  highlight: 8.55, // agenda item 3
+  planClick: 8.6, // click on agenda item 3, "Retirement plan"
   prepOut: 8.9,
   lift: [9.0, 9.6] as const, // the plan lifts out of the prep
   sweep1: [9.2, 10.2] as const, // green sweeps in
-  line1: [9.4, 10.0] as const, // tracker: Prep → Communicate
   // Communicate
   land: [10.0, 10.7] as const, // lands as the presentation
+  lineDraw: [10.15, 11.05] as const, // the projection draws in
   presentText: 10.35,
-  chrome: 10.5,
+  chrome: 10.6,
   drag: [12.8, 13.6] as const, // contributions what-if
   presentOut: 14.3,
   stepBack: [14.4, 15.0] as const,
@@ -41,7 +41,6 @@ export const L = {
   closeUp: [16.9, 17.5] as const,
   writing: [17.15, 17.45] as const,
   sweep2: [17.2, 18.2] as const, // blue sweeps in
-  line2: [17.4, 18.0] as const, // tracker: Communicate → Deliver
   // Deliver
   toRecap: [18.0, 18.75] as const, // the phone grows into the recap
   recapReveal: [18.15, 19.1] as const,

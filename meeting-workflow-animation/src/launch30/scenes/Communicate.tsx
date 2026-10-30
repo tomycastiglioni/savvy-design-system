@@ -60,7 +60,7 @@ export const CommunicateScene: React.FC = () => {
           }}
         >
           <div style={{ position: "absolute", inset: 0, opacity: ramp(t, L.lift[0] + 0.2, L.lift[0] + 0.55) }}>
-            <PresentationContent m={land} chrome={ramp(t, L.chrome, L.chrome + 0.4)} drag={drag} hot={hot} />
+            <PresentationContent m={land} chrome={ramp(t, L.chrome, L.chrome + 0.4)} build={ramp(t, ...L.lineDraw, EASE_IN_OUT)} drag={drag} hot={hot} />
           </div>
         </Card>
       ) : null}
