@@ -6,22 +6,23 @@ import { L } from "./timeline";
 // Sounds, kept soft and warm (public/audio/launch30/, ElevenLabs text to sound
 // v2, trimmed, filtered and peak-normalized; levels are set here): a short
 // swish on text reveals, a rounded whoosh on the big moves, a two-note chime
-// when the phone starts recording, a rising shimmer as it starts writing the
-// recap and a warm swell under the logo. Clicks and the sent chime come from
-// the launch kit (public/audio/launch/).
+// when the phone starts recording and a rising shimmer as it starts writing the
+// recap. The logo sound was supplied by the Savvy team (faded out to end with
+// the video). Clicks and the sent chime come from the launch kit
+// (public/audio/launch/).
 const SOUNDS = {
   swish: { src: "launch30/swish", dur: 0.6 },
   whoosh: { src: "launch30/whoosh", dur: 1.05 },
   record: { src: "launch30/record", dur: 1.0 },
   shimmer: { src: "launch30/shimmer", dur: 1.47 },
-  logo: { src: "launch30/logo", dur: 2.64 },
+  logo: { src: "launch30/logo", dur: 1.75 },
   click: { src: "launch/click", dur: 0.15 },
   success: { src: "launch/success", dur: 1.6 },
 } as const;
 type Cue = { readonly sound: keyof typeof SOUNDS; readonly at: number; readonly volume: number };
 
 // Each sound is cued so its loudest point meets the motion: the swish peaks
-// 0.2 s in, the whoosh 0.4 s, the shimmer 0.77 s, the logo swell 0.68 s.
+// 0.2 s in, the whoosh 0.4 s, the shimmer 0.77 s; the logo sound starts on its hit.
 const swish = (textIn: number): Cue => ({ sound: "swish", at: textIn - 0.05, volume: 0.1 });
 const whoosh = (peak: number): Cue => ({ sound: "whoosh", at: peak - 0.4, volume: 0.16 });
 const click = (at: number): Cue => ({ sound: "click", at: at - 0.02, volume: 0.4 });
@@ -49,8 +50,8 @@ const CUES: readonly Cue[] = [
   click(L.planClick),
   click(L.drag[0] - 0.05),
   click(L.sendClick),
-  { sound: "success", at: L.sentCheck[0], volume: 0.18 },
-  { sound: "logo", at: L.logoIn + 0.45 - 0.68, volume: 0.16 },
+  { sound: "success", at: L.sentCheck[0], volume: 0.08 },
+  { sound: "logo", at: L.logoIn, volume: 0.34 },
 ];
 
 export const Launch30Sfx: React.FC = () => {

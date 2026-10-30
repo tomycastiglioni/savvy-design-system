@@ -60,9 +60,9 @@ the agenda, which lifts out and is presented; its projection draws in from
 left to right as it lands. Sound cues are in `src/launch30/Sfx.tsx`, kept soft
 and warm: a short swish on text reveals, a rounded whoosh on the big moves, a
 two-note chime when the phone starts recording, a rising shimmer as it starts
-writing the recap and a warm swell under the logo (`public/audio/launch30/`,
-ElevenLabs text to sound, trimmed, filtered and peak-normalized; levels are set
-in `Sfx.tsx`), plus the launch kit's click and sent chime.
+writing the recap (`public/audio/launch30/`, ElevenLabs text to sound,
+trimmed, filtered and peak-normalized; levels are set in `Sfx.tsx`), the logo
+sound supplied by the Savvy team, and the launch kit's click and sent chime.
 
 `Launch30Storyboard` (17 static frames, 1920×1080, in order F01 … F15 with
 F13 in three steps) is the storyboard for the 30 s re-cut: one client meeting
