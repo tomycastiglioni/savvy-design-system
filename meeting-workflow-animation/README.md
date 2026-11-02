@@ -48,7 +48,10 @@ next meeting's card loading (shimmer placeholders, "Preparing…") → "Prep
 ready" → four short rows fill in top to bottom (Summary, Task, Flagged,
 Agenda) → "Open prep". Text is a few words per row so it reads in 3.5 s. All
 layout is in iOS points (360×782.67) and scaled ×3; beats are in
-`src/mobile-prep/timeline.ts`, copy in `src/mobile-prep/content.ts`.
+`src/mobile-prep/timeline.ts`, copy in `src/mobile-prep/content.ts`. Sounds
+(`src/mobile-prep/Sfx.tsx`, ElevenLabs takes in `public/audio/mobile-prep/`): a
+soft rise while it loads, a chime on "Prep ready", and a pluck per row that
+climbs a pentatonic step each time.
 
 `Launch30` is the 30 s launch re-cut (1920×1080, 60 fps, with sound): one
 client meeting followed through Prep → Communicate → Deliver. Beats are in
@@ -178,11 +181,11 @@ npx remotion still Capture out/export/capture-thumbnail.png --frame=90 --scale=2
 npx remotion still Recap out/export/recap-thumbnail.png --frame=505 --scale=2 --props='{"hideCursor":true}'
 ```
 
-For `MobilePrep` (no audio, poster on the finished card):
+For `MobilePrep` (with sound, poster on the finished card):
 
 ```console
 npx remotion render MobilePrep out/mobile-prep-master.mov --codec=prores --prores-profile=hq
-ffmpeg -i out/mobile-prep-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -movflags +faststart -an out/export/mobile-prep.mp4
+ffmpeg -i out/mobile-prep-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart out/export/mobile-prep.mp4
 npx remotion still MobilePrep out/export/mobile-prep-poster.png --frame=150
 ```
 

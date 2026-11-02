@@ -4,10 +4,11 @@ import { AbsoluteFill } from "remotion";
 import { HomeIndicator, StatusBar } from "./components/SystemUI";
 import { FONT, H, SCALE, W } from "./layout";
 import { MorningScreen } from "./screens/MorningScreen";
+import { MobilePrepSfx } from "./Sfx";
 
 // iPhone screen recording, 1080×2348: the morning screen loads the next
 // meeting's prep and shows it in four short rows. No touches; the phone plays
-// itself.
+// itself, with soft interface sounds.
 export const MobilePrep: React.FC = () => (
   <AbsoluteFill style={{ background: "#FFFFFF" }}>
     <div
@@ -27,5 +28,6 @@ export const MobilePrep: React.FC = () => (
       <StatusBar />
       <HomeIndicator />
     </div>
+    <MobilePrepSfx />
   </AbsoluteFill>
 );
