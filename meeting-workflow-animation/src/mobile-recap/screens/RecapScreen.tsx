@@ -72,7 +72,7 @@ export const RecapScreen: React.FC<{ readonly t: number; readonly fps: number }>
           position: "absolute",
           left: PAD,
           right: PAD,
-          top: 558,
+          bottom: 42, // pinned above the home indicator, like an iOS bottom action
           height: 50,
           borderRadius: 25,
           background: interpolateColors(sent, [0, 1], [BUTTON_BG, C.green50]),
