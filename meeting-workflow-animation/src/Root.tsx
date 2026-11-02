@@ -12,6 +12,7 @@ import { MobileHousehold } from "./mobile-household/MobileHousehold";
 import { MobileHouseholdOptions, OPTIONS as MOBILE_HOUSEHOLD_OPTIONS } from "./mobile-household/Options";
 import { DURATION as MOBILE_HOUSEHOLD_DURATION } from "./mobile-household/timeline";
 import { MobilePrep } from "./mobile-prep/MobilePrep";
+import { MobileRecapOptions, OPTIONS as MOBILE_RECAP_OPTIONS } from "./mobile-recap/Options";
 import { DURATION as MOBILE_PREP_DURATION } from "./mobile-prep/timeline";
 import { Recap } from "./recap/Recap";
 
@@ -96,6 +97,14 @@ export const RemotionRoot: React.FC = () => {
         id="MobileHouseholdOptions"
         component={MobileHouseholdOptions}
         durationInFrames={MOBILE_HOUSEHOLD_OPTIONS.length}
+        fps={30}
+        width={1080}
+        height={2348}
+      />
+      <Composition
+        id="MobileRecapOptions"
+        component={MobileRecapOptions}
+        durationInFrames={MOBILE_RECAP_OPTIONS.length}
         fps={30}
         width={1080}
         height={2348}
