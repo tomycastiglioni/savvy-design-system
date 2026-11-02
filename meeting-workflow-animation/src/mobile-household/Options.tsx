@@ -1,105 +1,24 @@
 import "../mobile-prep/fonts";
-import { ChevronLeft, CircleCheck, Flag, TrendingUp, Wallet } from "lucide-react";
+import { CircleCheck, Flag, TrendingUp, Wallet } from "lucide-react";
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { HomeIndicator, StatusBar } from "../mobile-prep/components/SystemUI";
-import { BUTTON_BG, C, FONT, H, PAD, SAFE_TOP, SCALE, TILE, W } from "../mobile-prep/layout";
+import { BUTTON_BG, C, FONT, H, PAD, SCALE, TILE, W } from "../mobile-prep/layout";
 import { AIIcon } from "../shared/components/AIIcon";
+import { Card, Label, NavBar } from "./components";
 import { AGENDA, BUTTON, HOUSEHOLD, STATS } from "./content";
+import { HouseholdScreen } from "./screens/HouseholdScreen";
 
 // Static options for the 3 s mobile household video (summary + agenda), one
-// per frame: A · big number, B · stats and agenda cards, C · written brief.
-// Layout in iOS points, scaled ×3 like MobilePrep. Render with `remotion still`.
+// per frame: A · big number (approved, animated in MobileHousehold), B · stats
+// and agenda cards, C · written brief. Layout in iOS points, scaled ×3 like
+// MobilePrep. Render with `remotion still`.
 
 const ICONS = { summary: TrendingUp, agenda: Wallet, flagged: Flag };
 
-const Label: React.FC<{ readonly children: React.ReactNode; readonly style?: React.CSSProperties }> = ({ children, style }) => (
-  <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase", color: C.label, ...style }}>{children}</div>
-);
-
-const Card: React.FC<{ readonly children: React.ReactNode; readonly style?: React.CSSProperties }> = ({ children, style }) => (
-  <div
-    style={{
-      background: C.white,
-      border: `1px solid ${C.borderSoft}`,
-      borderRadius: 20,
-      boxShadow: "0 1px 2px rgba(16, 24, 40, 0.04), 0 10px 28px -14px rgba(16, 24, 40, 0.14)",
-      ...style,
-    }}
-  >
-    {children}
-  </div>
-);
-
-// iOS-style back link to the morning screen.
-const NavBar: React.FC = () => (
-  <div style={{ position: "absolute", left: PAD - 8, top: SAFE_TOP + 6, display: "flex", alignItems: "center", gap: 2, color: BUTTON_BG, fontSize: 16.5, fontWeight: 500 }}>
-    <ChevronLeft size={24} strokeWidth={2.2} /> {HOUSEHOLD.back}
-  </div>
-);
-
-const Up: React.FC<{ readonly children: React.ReactNode; readonly size?: number }> = ({ children, size = 13 }) => (
-  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, padding: "4px 10px", borderRadius: 999, background: C.green50, color: C.green, fontSize: size, fontWeight: 600 }}>
-    <TrendingUp size={size + 1} strokeWidth={2.4} /> {children}
-  </span>
-);
-
-// Rising line with a soft area, for option A's hero card.
-const Sparkline: React.FC<{ readonly w: number; readonly h: number }> = ({ w, h }) => {
-  const pts = Array.from({ length: 41 }, (_, i) => {
-    const t = i / 40;
-    const v = 0.25 + 0.55 * Math.pow(t, 1.4) + 0.05 * Math.sin(t * 11);
-    return [t * w, h - v * h] as const;
-  });
-  const line = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
-  const [ex, ey] = pts[pts.length - 1];
-  return (
-    <svg width={w} height={h} style={{ display: "block", overflow: "visible" }}>
-      <defs>
-        <linearGradient id="spark" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor={C.green} stopOpacity={0.16} />
-          <stop offset="1" stopColor={C.green} stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <path d={`${line} L${w} ${h} L0 ${h} Z`} fill="url(#spark)" />
-      <path d={line} fill="none" stroke={C.green} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx={ex} cy={ey} r={4.5} fill={C.white} stroke={C.green} strokeWidth={2.5} />
-    </svg>
-  );
-};
-
-// A · Big number: the household's total up top, the agenda as three numbered rows.
-const OptionA: React.FC = () => (
-  <AbsoluteFill style={{ background: C.panel }}>
-    <NavBar />
-    <div style={{ position: "absolute", left: PAD, right: PAD, top: 104 }}>
-      <Label>Household</Label>
-      <div style={{ fontFamily: FONT.serif, fontSize: 36, lineHeight: 1.1, color: C.ink, marginTop: 6 }}>{HOUSEHOLD.name}</div>
-      <div style={{ fontSize: 14, color: C.muted, marginTop: 6 }}>{HOUSEHOLD.review}</div>
-    </div>
-    <Card style={{ position: "absolute", left: PAD - 4, right: PAD - 4, top: 222, padding: "18px 20px 20px", overflow: "hidden" }}>
-      <div style={{ fontSize: 13.5, fontWeight: 500, color: C.muted }}>Total assets</div>
-      <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 4 }}>
-        <div style={{ fontSize: 46, fontWeight: 600, letterSpacing: "-0.02em", color: C.ink, fontVariantNumeric: "tabular-nums" }}>{STATS[0].value}</div>
-        <Up>{STATS[1].value}</Up>
-      </div>
-      <div style={{ marginTop: 14 }}>
-        <Sparkline w={W - 2 * (PAD - 4) - 40} h={62} />
-      </div>
-    </Card>
-    <div style={{ position: "absolute", left: PAD, right: PAD, top: 432 }}>
-      <Label>Agenda</Label>
-    </div>
-    <Card style={{ position: "absolute", left: PAD - 4, right: PAD - 4, top: 456, padding: "2px 18px" }}>
-      {AGENDA.map((item, i) => (
-        <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 14, height: 60, borderTop: i ? `1px solid ${C.borderSoft}` : "none" }}>
-          <div style={{ width: 28, height: 28, borderRadius: 14, background: C.green50, color: C.green, fontSize: 14, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</div>
-          <div style={{ fontSize: 17.5, fontWeight: 600, color: C.ink }}>{item.label}</div>
-        </div>
-      ))}
-    </Card>
-  </AbsoluteFill>
-);
+// A · Big number: the household's total up top, the agenda as three numbered
+// rows. The finished frame of the animated screen.
+const OptionA: React.FC = () => <HouseholdScreen t={Infinity} fps={30} />;
 
 // B · Cards: three household stats in a row, the agenda with times, a start button.
 const OptionB: React.FC = () => (

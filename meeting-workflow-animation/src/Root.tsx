@@ -8,7 +8,9 @@ import { Launch30 } from "./launch30/Launch30";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
 import { DURATION as LAUNCH30_DURATION } from "./launch30/timeline";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
+import { MobileHousehold } from "./mobile-household/MobileHousehold";
 import { MobileHouseholdOptions, OPTIONS as MOBILE_HOUSEHOLD_OPTIONS } from "./mobile-household/Options";
+import { DURATION as MOBILE_HOUSEHOLD_DURATION } from "./mobile-household/timeline";
 import { MobilePrep } from "./mobile-prep/MobilePrep";
 import { DURATION as MOBILE_PREP_DURATION } from "./mobile-prep/timeline";
 import { Recap } from "./recap/Recap";
@@ -78,6 +80,14 @@ export const RemotionRoot: React.FC = () => {
         id="MobilePrep"
         component={MobilePrep}
         durationInFrames={MOBILE_PREP_DURATION}
+        fps={60}
+        width={1080}
+        height={2348}
+      />
+      <Composition
+        id="MobileHousehold"
+        component={MobileHousehold}
+        durationInFrames={MOBILE_HOUSEHOLD_DURATION}
         fps={60}
         width={1080}
         height={2348}

@@ -11,8 +11,11 @@ export const HOUSEHOLD = {
   back: "Today",
 };
 
+// Total assets, in millions.
+export const TOTAL_M = 2.4;
+
 export const STATS = [
-  { label: "Assets", value: "$2.4M" },
+  { label: "Assets", value: `$${TOTAL_M}M` },
   { label: "This year", value: "+6.1%", up: true },
   { label: "Accounts", value: "4" },
 ];
