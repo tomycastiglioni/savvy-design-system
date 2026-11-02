@@ -3,8 +3,9 @@
 Landing-page product animations for the Savvy Intelligence meeting workflow,
 built with [Remotion](https://www.remotion.dev). Output: 1300×900, 60 fps.
 Plus the Savvy Intelligence 2.0 launch video (`Launch`, 1920×1080, 60 fps)
-and iPhone screen recordings of mobile prep (`MobilePrep`) and the household
-summary (`MobileHousehold`), both 1080×2348, 60 fps.
+and iPhone screen recordings of mobile prep (`MobilePrep`), the household
+summary (`MobileHousehold`) and the meeting recap (`MobileRecap`), all
+1080×2348, 60 fps.
 
 ## Compositions
 
@@ -17,6 +18,7 @@ summary (`MobileHousehold`), both 1080×2348, 60 fps.
 | `Launch` | Savvy Intelligence 2.0 launch video, 1920×1080 | 44 s | 1080 (18.0 s) |
 | `MobilePrep` | iPhone screen recording, 1080×2348 — morning prep for the Dave R. review | 3.5 s | 150 (2.5 s) |
 | `MobileHousehold` | iPhone screen recording, 1080×2348 — the Dave R. household summary and agenda | 3 s | 150 (2.5 s) |
+| `MobileRecap` | iPhone screen recording, 1080×2348 — the Dave R. review recap, follow-up sent | 3 s | 110 (1.83 s) |
 
 Each workflow sits on its section's gradient (`BG` in `src/shared/theme.ts`,
 the same gradients as the launch video): Meeting prep is cream, Delivery is
@@ -62,6 +64,13 @@ hold. Beats in `src/mobile-household/timeline.ts`, copy in
 `src/mobile-household/content.ts` ($2.4M and the four accounts are placeholder
 figures). `MobileHouseholdOptions` keeps the three static directions that were
 reviewed (A, the one built, plus B · cards and C · brief).
+
+`MobileRecap` beats (after the meeting, same style and sounds): "Recorded ·
+42 min" and "Review recap" rise in → the summary card's three points check in →
+the drafted follow-up email and "Send follow-up" → Send is pressed → "Sent to
+Dave". Option A of `MobileRecapOptions` with option C's header; beats in
+`src/mobile-recap/timeline.ts`, copy in `src/mobile-recap/content.ts` (the
+Dec 10 date and the 42 min length are placeholders).
 
 `Launch30` is the 30 s launch re-cut (1920×1080, 60 fps, with sound): one
 client meeting followed through Prep → Communicate → Deliver. Beats are in
@@ -205,6 +214,14 @@ For `MobileHousehold` (with sound, poster on the finished screen):
 npx remotion render MobileHousehold out/mobile-household-master.mov --codec=prores --prores-profile=hq
 ffmpeg -i out/mobile-household-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart out/export/mobile-household.mp4
 npx remotion still MobileHousehold out/export/mobile-household-poster.png --frame=150
+```
+
+For `MobileRecap` (with sound, poster before Send is pressed):
+
+```console
+npx remotion render MobileRecap out/mobile-recap-master.mov --codec=prores --prores-profile=hq
+ffmpeg -i out/mobile-recap-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart out/export/mobile-recap.mp4
+npx remotion still MobileRecap out/export/mobile-recap-poster.png --frame=110
 ```
 
 For `Launch30` (with sound):

@@ -1,16 +1,19 @@
 import "../mobile-prep/fonts";
-import { ChevronRight, CircleCheck, FileText, Mail, Mic, Send } from "lucide-react";
+import { CircleCheck, FileText, Send } from "lucide-react";
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Card, Label, NavBar } from "../mobile-household/components";
 import { HomeIndicator, StatusBar } from "../mobile-prep/components/SystemUI";
 import { BUTTON_BG, C, FONT, H, PAD, SCALE, W } from "../mobile-prep/layout";
 import { AIIcon } from "../shared/components/AIIcon";
-import { BUTTON, EMAIL, NEXT_STEPS, POINTS, RECAP } from "./content";
+import { RecordedPill } from "./components";
+import { EMAIL, NEXT_STEPS, POINTS, RECAP } from "./content";
+import { RecapScreen } from "./screens/RecapScreen";
+import { T } from "./timeline";
 
 // Static options for the mobile recap video (the recap and the follow-up,
-// ready to send), one per frame: A · recap card, B · email first, C · written
-// recap. Layout in iOS points, scaled ×3 like MobilePrep. Render with
+// ready to send), one per frame: A · recap card (approved, animated in
+// MobileRecap), B · email first, C · written recap. Layout in iOS points, scaled ×3 like MobilePrep. Render with
 // `remotion still`.
 
 const PrimaryButton: React.FC<{ readonly top: number; readonly label: string }> = ({ top, label }) => (
@@ -38,39 +41,9 @@ const PrimaryButton: React.FC<{ readonly top: number; readonly label: string }> 
 
 const Check: React.FC = () => <CircleCheck size={20} strokeWidth={2.2} color={C.green} style={{ flexShrink: 0 }} />;
 
-// A · Recap card: the name up top, three checked points, the drafted email, send.
-const OptionA: React.FC = () => (
-  <AbsoluteFill style={{ background: C.panel }}>
-    <NavBar />
-    <div style={{ position: "absolute", left: PAD, right: PAD, top: 104 }}>
-      <Label>{RECAP.label}</Label>
-      <div style={{ fontFamily: FONT.serif, fontSize: 36, lineHeight: 1.1, color: C.ink, marginTop: 6 }}>{RECAP.name}</div>
-      <div style={{ fontSize: 14, color: C.muted, marginTop: 6 }}>{RECAP.when}</div>
-    </div>
-    <Card style={{ position: "absolute", left: PAD - 4, right: PAD - 4, top: 222, padding: "16px 18px 4px" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, fontWeight: 600, color: C.green }}>
-        <AIIcon size={18} /> Summary
-      </div>
-      {POINTS.map((p, i) => (
-        <div key={p} style={{ display: "flex", alignItems: "center", gap: 12, height: 54, borderTop: i ? `1px solid ${C.borderSoft}` : "none", marginTop: i ? 0 : 6 }}>
-          <Check />
-          <div style={{ fontSize: 17, fontWeight: 600, color: C.ink }}>{p}</div>
-        </div>
-      ))}
-    </Card>
-    <Card style={{ position: "absolute", left: PAD - 4, right: PAD - 4, top: 456, padding: "14px 18px", display: "flex", alignItems: "center", gap: 14 }}>
-      <div style={{ width: 40, height: 40, borderRadius: 12, background: C.green50, color: C.green, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Mail size={20} strokeWidth={2.2} />
-      </div>
-      <div>
-        <div style={{ fontSize: 16, fontWeight: 600, color: C.ink }}>Follow-up email</div>
-        <div style={{ fontSize: 13.5, color: C.muted, marginTop: 2 }}>Drafted in your voice</div>
-      </div>
-      <ChevronRight size={20} color={C.faint} style={{ marginLeft: "auto" }} />
-    </Card>
-    <PrimaryButton top={552} label={BUTTON} />
-  </AbsoluteFill>
-);
+// A · Recap card: the approved direction, built in MobileRecap with option
+// C's header (recorded pill, "Review recap"). Shown just before Send is pressed.
+const OptionA: React.FC = () => <RecapScreen t={T.press - 0.05} fps={30} />;
 
 // B · Email first: the follow-up itself, with the agreed points and the recap attached.
 const OptionB: React.FC = () => (
@@ -112,14 +85,6 @@ const OptionB: React.FC = () => (
   </AbsoluteFill>
 );
 
-const Waveform: React.FC = () => (
-  <div style={{ display: "flex", alignItems: "center", gap: 2, height: 14 }}>
-    {[5, 9, 13, 8, 11, 6, 10, 4].map((h, i) => (
-      <div key={i} style={{ width: 2.5, height: h, borderRadius: 2, background: C.green }} />
-    ))}
-  </div>
-);
-
 const Avatar: React.FC<{ readonly initials: string; readonly you?: boolean }> = ({ initials, you = false }) => (
   <div
     style={{
@@ -145,9 +110,7 @@ const Avatar: React.FC<{ readonly initials: string; readonly you?: boolean }> = 
 const OptionC: React.FC = () => (
   <AbsoluteFill style={{ background: C.white }}>
     <NavBar />
-    <div style={{ position: "absolute", left: PAD, top: 104, display: "inline-flex", alignItems: "center", gap: 8, height: 28, padding: "0 12px", borderRadius: 14, background: C.green50, color: C.green, fontSize: 12.5, fontWeight: 600 }}>
-      <Mic size={14} strokeWidth={2.4} /> Recorded · {RECAP.minutes} min <Waveform />
-    </div>
+    <RecordedPill style={{ position: "absolute", left: PAD, top: 104 }} />
     <div style={{ position: "absolute", left: PAD, right: PAD, top: 146 }}>
       <div style={{ fontFamily: FONT.serif, fontSize: 34, lineHeight: 1.1, color: C.ink }}>{RECAP.title}</div>
       <div style={{ fontSize: 14, color: C.muted, marginTop: 6 }}>{RECAP.short}</div>

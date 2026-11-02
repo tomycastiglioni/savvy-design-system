@@ -3,10 +3,7 @@
 // line: the video is about 3 s. The points follow the review's agenda; the
 // length, the Dec 10 date and the next steps are placeholder demo details.
 export const RECAP = {
-  label: "Meeting recap",
-  name: "Dave R.",
   title: "Review recap",
-  when: "Today · 2:00 PM · 42 min",
   short: "Dave R. · Today",
   minutes: 42,
 };
@@ -27,3 +24,4 @@ export const EMAIL = {
 };
 
 export const BUTTON = "Send follow-up";
+export const SENT = "Sent to Dave";
