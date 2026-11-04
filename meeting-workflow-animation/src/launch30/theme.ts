@@ -14,7 +14,7 @@ export type Phase = { key: PhaseKey; label: string; when: string; bg: BgName; ac
 // Each phase owns a background and an accent (the launch eyebrow colors).
 export const PHASES: readonly Phase[] = [
   { key: "prep", label: "Prep", when: "Before the meeting", bg: "cream", accent: "#8E7E57" },
-  { key: "communicate", label: "Communicate", when: "During the meeting", bg: "mint", accent: "#175242" },
+  { key: "communicate", label: "Meet", when: "During the meeting", bg: "mint", accent: "#175242" },
   { key: "deliver", label: "Deliver", when: "After the meeting", bg: "blue", accent: "#095972" },
 ];
 export const phase = (key: PhaseKey) => PHASES.find((p) => p.key === key) as Phase;

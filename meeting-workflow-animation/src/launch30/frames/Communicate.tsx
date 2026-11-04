@@ -12,8 +12,8 @@ import { C, centerTop, FONT, phase, UI } from "../theme";
 const P = phase("communicate");
 const RED = "#AD3A35";
 
-export const PRESENT_HEADLINE = { eyebrow: "Live presentation", color: P.accent, lines: ["Plan live,", "together"] };
-export const CAPTURE_HEADLINE = { eyebrow: "Meeting capture", color: P.accent, lines: ["Every word,", "on the record"] };
+export const PRESENT_HEADLINE = { eyebrow: "Live presentation", color: P.accent, lines: ["Explore “what if?”", "scenarios together"] };
+export const CAPTURE_HEADLINE = { eyebrow: "Meeting capture", color: P.accent, lines: ["Give your", "full attention"] };
 // The plan as it lifts out of the prep, and as it is presented.
 export const LIFT: Rect = { x: 1040, y: centerTop(450), w: 720, h: 450 };
 export const PRESENT: Rect = { x: UI.x, y: centerTop(660), w: UI.w, h: 660 };
@@ -56,6 +56,44 @@ const Slider: React.FC<{ readonly label: string; readonly value: string; readonl
           boxShadow: `0 0 0 ${8 * hot}px rgba(23, 82, 66, 0.15)`,
         }}
       />
+    </div>
+  </div>
+);
+
+// The client's question, asked in the meeting: a chat bubble in the headline
+// column, level with the sliders it changes.
+export const QUESTION = { who: "Frank Chan", initials: "FC", text: "What if we save $15K more a year?" };
+export const BUBBLE = { x: 174, y: 704 };
+export const QuestionBubble: React.FC<{ readonly style?: React.CSSProperties }> = ({ style }) => (
+  <div style={{ position: "absolute", left: BUBBLE.x, top: BUBBLE.y, display: "flex", alignItems: "flex-start", gap: 14, fontFamily: FONT.sans, ...style }}>
+    <div
+      style={{
+        width: 54,
+        height: 54,
+        borderRadius: 27,
+        flexShrink: 0,
+        background: C.green100,
+        color: C.green,
+        fontSize: 19,
+        fontWeight: 700,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {QUESTION.initials}
+    </div>
+    <div
+      style={{
+        padding: "14px 22px 16px",
+        borderRadius: "6px 22px 22px 22px",
+        background: C.white,
+        boxShadow: "0 1px 2px rgba(16, 24, 40, 0.05), 0 16px 36px -16px rgba(16, 24, 40, 0.28)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <div style={{ fontSize: 15, fontWeight: 600, color: C.muted }}>{QUESTION.who}</div>
+      <div style={{ fontSize: 26, fontWeight: 500, color: C.ink, marginTop: 4 }}>{QUESTION.text}</div>
     </div>
   </div>
 );
@@ -218,12 +256,27 @@ export const F06Present: React.FC = () => (
   </>
 );
 
-// F7 · 0:12.5 — a what-if, answered live.
+// F7a · 0:11.5 — the client asks a what-if.
+export const F07Question: React.FC = () => (
+  <>
+    <Bg bg={P.bg} />
+    <Tracker step={1} />
+    <PresentHeadline />
+    <QuestionBubble />
+    <Card style={{ left: PRESENT.x, top: PRESENT.y, width: PRESENT.w, height: PRESENT.h }}>
+      <PresentationContent />
+    </Card>
+    <Cursor {...knobAt(KNOB.from)} />
+  </>
+);
+
+// F7b · 0:13 — answered live: contributions up $15K, the plan redraws.
 export const F07WhatIf: React.FC = () => (
   <>
     <Bg bg={P.bg} />
     <Tracker step={1} />
     <PresentHeadline />
+    <QuestionBubble />
     <Card style={{ left: PRESENT.x, top: PRESENT.y, width: PRESENT.w, height: PRESENT.h }}>
       <PresentationContent drag={1} hot={1} />
     </Card>

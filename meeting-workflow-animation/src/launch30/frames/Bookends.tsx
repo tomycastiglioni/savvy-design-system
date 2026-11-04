@@ -23,7 +23,7 @@ export const MEETING_LINE = { capTop: 455, parts: ["One client meeting,", "start
 export const MEETING_PILL = { top: 568, size: 28, bg: "rgba(255, 255, 255, 0.8)" };
 
 // F13: the three phase words, each landing in its place in the line.
-export const PHASE_WORDS = ["Prep.", "Communicate.", "Deliver."];
+export const PHASE_WORDS = ["Prep.", "Meet.", "Deliver."];
 export const PHASE_WORDS_CAP = CY - 0.35 * HEAD.size;
 // F14: the launch tagline, two lines centred on the middle.
 export const TAGLINE = ["Your whole practice,", "working for you"];
@@ -59,7 +59,7 @@ export const F02Meeting: React.FC = () => (
   </>
 );
 
-// F13a–c · 0:24 — "Prep. Communicate. Deliver.", one word after another,
+// F13a–c · 0:24 — "Prep. Meet. Deliver.", one word after another,
 // each sliding up into its place in the final line out of a blur. `step` is how
 // many words are visible; the last of them is still arriving unless `settled`.
 const ThreeWords: React.FC<{ readonly step: number; readonly settled?: boolean }> = ({ step, settled = false }) => (
@@ -85,7 +85,7 @@ const ThreeWords: React.FC<{ readonly step: number; readonly settled?: boolean }
   </>
 );
 export const F13aPrep: React.FC = () => <ThreeWords step={1} settled />;
-export const F13bCommunicate: React.FC = () => <ThreeWords step={2} />;
+export const F13bMeet: React.FC = () => <ThreeWords step={2} />;
 export const F13cDeliver: React.FC = () => <ThreeWords step={3} settled />;
 
 // F14 · 0:26 — the launch tagline.
