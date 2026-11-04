@@ -152,9 +152,6 @@ export const Cursor: React.FC<{ readonly x: number; readonly y: number; readonly
   );
 };
 
-// The 44 s cut's title metrics: Diatype 78.5px, -2% tracking.
-export const TITLE = { size: 78.5, lh: 79.6 * 1.15, tracking: "-0.02em" };
-
 // One centred line of Diatype with its cap top at `capTop`. Children are the
 // line's parts (spans), so each can animate on its own and still land in its
 // place in the finished line.

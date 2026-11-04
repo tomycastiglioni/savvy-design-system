@@ -1,84 +1,63 @@
-import React, { useMemo } from "react";
-import { interpolateColors } from "remotion";
-import { Logo } from "../../launch/components/Logo";
-import { CenteredLine, HouseholdChip, TITLE } from "../components/Bits";
-import { lerp, ramp, slideText } from "../components/Motion";
-import { MEETING_LINE, MEETING_PILL, TITLE_LOGO, titleWord } from "../frames/Bookends";
-import { CARD_CHIP } from "../frames/Prep";
-import { EASE_IN_OUT, HOUSEHOLD, MEETING } from "../theme";
+import React from "react";
+import { Easing } from "remotion";
+import { Card } from "../components/Bits";
+import { lerp, lerpRect, ramp, rectStyle, slideText } from "../components/Motion";
+import { ClientList, ClientRowContent, CLIENTS, LIST_SCROLL, PAGE_UP, rowRect, SELECTED, Title } from "../frames/Clients";
+import { PREP_CARD, PrepCardContent } from "../frames/Prep";
+import { EASE_IN_OUT, EASE_MORPH } from "../theme";
 import { L, useT } from "../timeline";
 
-// HouseholdChip's width at `size`, from its proportions and measured text.
-const chipWidth = (size: number) => {
-  const ctx = document.createElement("canvas").getContext("2d");
-  if (!ctx) return 0;
-  ctx.font = `500 ${size}px "DM Sans"`;
-  const name = ctx.measureText(HOUSEHOLD).width;
-  ctx.font = `400 ${size}px "DM Sans"`;
-  const meeting = ctx.measureText(`· ${MEETING}`).width;
-  return size * (0.35 + 1.6 + 0.5 + 0.5 + 0.8) + name + meeting;
-};
-
-const CARD_CHIP_SIZE = 17;
-
-// 0:00–0:04.6 — the title card, then the meeting we follow. The household
-// pill flies into the prep card on the right and becomes its chip.
+// 0:00–0:03.75 — "Run better meetings with Savvy Intelligence"; the page
+// scrolls up into the advisor's client list, which scrolls on to Allison &
+// Frank Chan. Their row is picked and becomes the prep card.
 export const Intro: React.FC = () => {
   const t = useT();
-  const pillW = useMemo(() => chipWidth(MEETING_PILL.size), []);
-  if (t >= L.pillFly[1]) return null;
+  if (t >= L.cardIn) return null;
 
-  const titleOut = ramp(t, L.titleOut, L.titleOut + 0.35, EASE_IN_OUT);
-  const word = (i: number, dir: number): React.CSSProperties => {
-    const p = ramp(t, L.titleIn + i * 0.12, L.titleIn + i * 0.12 + 0.8);
-    const blur = (1 - p) * 6 + titleOut * 5;
-    return {
-      opacity: p * (1 - titleOut),
-      translate: `${dir * titleOut * 18}px ${(1 - p) * 24}px`,
-      filter: blur > 0.05 ? `blur(${blur}px)` : undefined,
-    };
-  };
-
-  const pillIn = ramp(t, L.pillIn, L.pillIn + 0.5);
-  const fly = ramp(t, ...L.pillFly, EASE_IN_OUT);
-  const k = lerp(1, CARD_CHIP_SIZE / MEETING_PILL.size, fly);
+  const up = ramp(t, ...L.pageUp, EASE_IN_OUT);
+  const scroll = LIST_SCROLL * ramp(t, ...L.listScroll, EASE_IN_OUT);
+  const titleOut = ramp(t, L.listScroll[0], L.listScroll[0] + 0.3, Easing.linear);
+  const listIn = ramp(t, ...L.listIn);
+  const hover = ramp(t, L.listScroll[1] - 0.05, L.pickClick);
+  const morph = ramp(t, ...L.pickMorph, EASE_MORPH);
+  const othersOut = ramp(t, L.pickMorph[0] - 0.05, L.pickMorph[0] + 0.3, EASE_IN_OUT);
+  // One after the other, so the two layouts never overlap mid-morph.
+  const rowContent = 1 - ramp(t, L.pickMorph[0], L.pickMorph[0] + 0.15, Easing.linear);
+  const prepContent = ramp(t, L.pickMorph[0] + 0.17, L.pickMorph[0] + 0.45);
 
   return (
     <>
       {titleOut < 1 ? (
-        <>
-          <div style={{ ...titleWord(375), ...word(0, -1) }}>Introducing</div>
-          <div style={{ position: "absolute", left: TITLE_LOGO.x, top: TITLE_LOGO.y, ...word(1, 0) }}>
-            <Logo h={TITLE_LOGO.h} />
-          </div>
-          <div style={{ ...titleWord(1035), ...word(2, 1) }}>Intelligence 2.0</div>
-        </>
-      ) : null}
-
-      {t >= L.meetingIn[0] ? (
-        <CenteredLine capTop={MEETING_LINE.capTop} size={TITLE.size} tracking={TITLE.tracking}>
-          {MEETING_LINE.parts.map((part, i) => (
-            <span key={part} style={slideText(t, L.meetingIn[i], L.meetingOut)}>
-              {part}
-            </span>
-          ))}
-        </CenteredLine>
-      ) : null}
-
-      {t >= L.pillIn ? (
-        <div
-          style={{
-            position: "absolute",
-            left: lerp(960 - pillW / 2, CARD_CHIP.x, fly),
-            top: lerp(MEETING_PILL.top, CARD_CHIP.y, fly),
-            scale: k,
-            transformOrigin: "0 0",
-            opacity: pillIn,
-            translate: `0px ${(1 - pillIn) * 16}px`,
-          }}
-        >
-          <HouseholdChip size={MEETING_PILL.size} style={{ background: interpolateColors(fly, [0, 1], [MEETING_PILL.bg, "#F1F3F5"]) }} />
+        <div style={{ position: "absolute", inset: 0, opacity: 1 - titleOut }}>
+          <Title offset={PAGE_UP * up - scroll} lineStyle={(i) => slideText(t, L.titleIn[i])} />
         </div>
+      ) : null}
+
+      {listIn > 0 && othersOut < 1 ? (
+        <ClientList
+          scroll={scroll}
+          // The list rides up with the page, then scrolls under its header.
+          offset={-PAGE_UP * (1 - up)}
+          opacity={listIn * (1 - othersOut)}
+          hover={hover}
+          hide={morph > 0 ? SELECTED : undefined}
+          style={othersOut > 0 ? { filter: `blur(${othersOut * 6}px)` } : undefined}
+        />
+      ) : null}
+
+      {morph > 0 ? (
+        <Card style={{ ...rectStyle(lerpRect(rowRect(SELECTED, LIST_SCROLL), PREP_CARD, morph)), borderRadius: lerp(10, 22, morph) }}>
+          {rowContent > 0 ? (
+            <div style={{ position: "absolute", inset: 0, opacity: rowContent }}>
+              <ClientRowContent client={CLIENTS[SELECTED]} />
+            </div>
+          ) : null}
+          {prepContent > 0 ? (
+            <div style={{ position: "absolute", inset: 0, opacity: prepContent }}>
+              <PrepCardContent />
+            </div>
+          ) : null}
+        </Card>
       ) : null}
     </>
   );

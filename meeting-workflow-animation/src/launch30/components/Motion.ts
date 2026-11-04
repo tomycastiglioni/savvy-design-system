@@ -22,7 +22,7 @@ const blur = (px: number) => (px > 0.05 ? `blur(${px}px)` : undefined);
 export const SLIDE = { y: 36, blur: 9 };
 export const slideText = (t: number, inAt: number, outAt = Infinity, dur = 0.6): React.CSSProperties => {
   const p = ramp(t, inAt, inAt + dur);
-  const out = ramp(t, outAt, outAt + 0.35, EASE_IN_OUT);
+  const out = Number.isFinite(outAt) ? ramp(t, outAt, outAt + 0.35, EASE_IN_OUT) : 0;
   return { opacity: p * (1 - out), translate: `0px ${(1 - p) * SLIDE.y - out * 10}px`, filter: blur((1 - p) * SLIDE.blur + out * 5) };
 };
 
@@ -30,7 +30,7 @@ export const slideText = (t: number, inAt: number, outAt = Infinity, dur = 0.6):
 // leave together.
 export const riseText = (t: number, inAt: number, outAt = Infinity, dur = 0.7): React.CSSProperties => {
   const p = ramp(t, inAt, inAt + dur);
-  const out = ramp(t, outAt, outAt + 0.4, EASE_IN_OUT);
+  const out = Number.isFinite(outAt) ? ramp(t, outAt, outAt + 0.4, EASE_IN_OUT) : 0;
   return { opacity: p * (1 - out), translate: `0px ${(1 - p) * 28 - out * 14}px`, filter: blur((1 - p) * 6 + out * 4) };
 };
 export const headlineMotion = (t: number, inAt: number, outAt: number) => (i: number) => riseText(t, inAt + i * 0.08, outAt);

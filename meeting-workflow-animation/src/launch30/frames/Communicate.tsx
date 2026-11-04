@@ -61,42 +61,52 @@ const Slider: React.FC<{ readonly label: string; readonly value: string; readonl
 );
 
 // The client's question, asked in the meeting: a chat bubble in the headline
-// column, level with the sliders it changes.
+// column, level with the sliders it changes. `typed` (0–1) writes the question
+// out; the bubble keeps its final width so nothing reflows.
 export const QUESTION = { who: "Frank Chan", initials: "FC", text: "What if we save $15K more a year?" };
-export const BUBBLE = { x: 174, y: 704 };
-export const QuestionBubble: React.FC<{ readonly style?: React.CSSProperties }> = ({ style }) => (
-  <div style={{ position: "absolute", left: BUBBLE.x, top: BUBBLE.y, display: "flex", alignItems: "flex-start", gap: 14, fontFamily: FONT.sans, ...style }}>
-    <div
-      style={{
-        width: 54,
-        height: 54,
-        borderRadius: 27,
-        flexShrink: 0,
-        background: C.green100,
-        color: C.green,
-        fontSize: 19,
-        fontWeight: 700,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {QUESTION.initials}
+export const BUBBLE = { x: 174, y: 748 };
+export const QuestionBubble: React.FC<{ readonly typed?: number; readonly style?: React.CSSProperties }> = ({ typed = 1, style }) => {
+  const n = Math.round(typed * QUESTION.text.length);
+  return (
+    <div style={{ position: "absolute", left: BUBBLE.x, top: BUBBLE.y, display: "flex", alignItems: "flex-start", gap: 14, fontFamily: FONT.sans, ...style }}>
+      <div
+        style={{
+          width: 54,
+          height: 54,
+          borderRadius: 27,
+          flexShrink: 0,
+          background: C.green100,
+          color: C.green,
+          fontSize: 19,
+          fontWeight: 700,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {QUESTION.initials}
+      </div>
+      <div
+        style={{
+          padding: "14px 22px 16px",
+          borderRadius: "6px 22px 22px 22px",
+          background: C.white,
+          boxShadow: "0 1px 2px rgba(16, 24, 40, 0.05), 0 16px 36px -16px rgba(16, 24, 40, 0.28)",
+          whiteSpace: "nowrap",
+        }}
+      >
+        <div style={{ fontSize: 15, fontWeight: 600, color: C.muted }}>{QUESTION.who}</div>
+        <div style={{ position: "relative", fontSize: 26, fontWeight: 500, color: C.ink, marginTop: 4 }}>
+          <span>{QUESTION.text.slice(0, n)}</span>
+          {typed > 0 && typed < 1 ? (
+            <span style={{ display: "inline-block", width: 2.5, height: 28, marginLeft: 2, marginRight: -4.5, verticalAlign: "-5px", background: C.green }} />
+          ) : null}
+          <span style={{ visibility: "hidden" }}>{QUESTION.text.slice(n)}</span>
+        </div>
+      </div>
     </div>
-    <div
-      style={{
-        padding: "14px 22px 16px",
-        borderRadius: "6px 22px 22px 22px",
-        background: C.white,
-        boxShadow: "0 1px 2px rgba(16, 24, 40, 0.05), 0 16px 36px -16px rgba(16, 24, 40, 0.28)",
-        whiteSpace: "nowrap",
-      }}
-    >
-      <div style={{ fontSize: 15, fontWeight: 600, color: C.muted }}>{QUESTION.who}</div>
-      <div style={{ fontSize: 26, fontWeight: 500, color: C.ink, marginTop: 4 }}>{QUESTION.text}</div>
-    </div>
-  </div>
-);
+  );
+};
 
 // The plan card's content. `m` morphs it from the lifted card (LIFT, 0) to
 // the presentation (PRESENT, 1); `chrome` fades in the presenting pill, end

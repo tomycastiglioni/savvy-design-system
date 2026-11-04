@@ -1,50 +1,52 @@
 import { useCurrentFrame, useVideoConfig } from "remotion";
 
-// 30 s launch video timeline, in seconds. Phases start on 2 s bars (120 BPM):
-// Prep 0:04, Communicate 0:10, Deliver 0:18, close 0:24.
+// 30 s launch video timeline, in seconds. Prep 0:03.5, Meet 0:09.5, Deliver
+// 0:17.5, close 0:24.
 export const PHASE_TIMES = [
-  [4, 10],
-  [10, 18],
-  [18, 24],
+  [3.5, 9.5],
+  [9.5, 17.5],
+  [17.5, 24],
 ] as const;
 
 export const L = {
-  // Intro
-  titleIn: 0.25,
-  titleOut: 1.75,
-  meetingIn: [2.05, 2.4] as const, // "One client meeting," then "start to finish"
-  pillIn: 2.85,
-  meetingOut: 3.85,
-  pillFly: [3.95, 4.6] as const, // the household pill flies into the prep card
+  // Intro: the line, the advisor's client list, Allison & Frank Chan picked
+  titleIn: [0.2, 0.5] as const, // "Run better meetings with" / "Savvy Intelligence"
+  pageUp: [1.3, 1.95] as const, // the page scrolls up and the client list comes in
+  listIn: [1.4, 2.0] as const,
+  listScroll: [2.05, 2.85] as const, // the list scrolls to Allison & Frank Chan
+  pickClick: 3.05,
+  pickMorph: [3.15, 3.75] as const, // their row becomes the prep card
   // Prep
-  trackerIn: 4.0,
-  cardIn: 4.1,
-  prepText: 4.3,
-  reviewClick: 5.75,
-  docMorph: [5.85, 6.45] as const,
-  docReveal: [6.05, 7.15] as const,
-  planClick: 8.6, // click on agenda item 3, "Retirement plan"
-  prepOut: 8.9,
-  lift: [9.0, 9.6] as const, // the plan lifts out of the prep
-  sweep1: [9.2, 10.2] as const, // green sweeps in
-  // Communicate
-  land: [10.0, 10.7] as const, // lands as the presentation
-  lineDraw: [10.15, 11.05] as const, // the projection draws in
-  presentText: 10.35,
-  chrome: 10.6,
-  drag: [12.8, 13.6] as const, // contributions what-if
-  presentOut: 14.3,
-  stepBack: [14.4, 15.0] as const,
-  phoneIn: [14.6, 15.25] as const,
-  captureText: 14.8,
-  captureOut: 16.75,
-  closeUp: [16.9, 17.5] as const,
-  writing: [17.15, 17.45] as const,
-  sweep2: [17.2, 18.2] as const, // blue sweeps in
-  // Deliver
-  toRecap: [18.0, 18.75] as const, // the phone grows into the recap
-  recapReveal: [18.15, 19.1] as const,
-  deliverText: 18.4,
+  trackerIn: 3.5,
+  cardIn: 3.75,
+  prepText: 3.8,
+  reviewClick: 5.25,
+  docMorph: [5.35, 5.95] as const,
+  docReveal: [5.55, 6.65] as const,
+  planClick: 8.1, // click on agenda item 3, "Retirement plan"
+  prepOut: 8.4,
+  lift: [8.5, 9.1] as const, // the plan lifts out of the prep
+  sweep1: [8.7, 9.7] as const, // green sweeps in
+  // Meet
+  land: [9.5, 10.2] as const, // lands as the presentation
+  lineDraw: [9.65, 10.55] as const, // the projection draws in
+  presentText: 9.85,
+  chrome: 10.1,
+  bubble: 10.75, // the client's question pops in…
+  typing: [10.9, 11.9] as const, // …and writes itself out
+  drag: [12.2, 13.0] as const, // contributions what-if
+  presentOut: 13.8,
+  stepBack: [13.9, 14.5] as const,
+  phoneIn: [14.1, 14.75] as const,
+  captureText: 14.3,
+  captureOut: 16.25,
+  closeUp: [16.4, 17.0] as const,
+  writing: [16.65, 16.95] as const,
+  sweep2: [16.7, 17.7] as const, // blue sweeps in
+  // Deliver: the recap holds longer than before (0:18.25–0:20)
+  toRecap: [17.5, 18.25] as const, // the phone grows into the recap
+  recapReveal: [17.65, 18.6] as const,
+  deliverText: 17.9,
   toDoc: [20.0, 20.6] as const, // recap → client document
   emailIn: [20.45, 21.0] as const,
   write: [21.0, 21.7] as const,

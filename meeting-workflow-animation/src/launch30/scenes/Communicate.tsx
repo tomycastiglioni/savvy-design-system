@@ -9,6 +9,7 @@ import {
   PRESENT_HEADLINE,
   PresentationContent,
   PhoneScreen,
+  QuestionBubble,
   Scaled,
   ScreenPhone,
 } from "../frames/Communicate";
@@ -24,9 +25,23 @@ const PHONE_CLOSE: Rect = { x: 705, y: 200, w: 510, h: 1050 };
 // Where the presentation steps back to behind the phone (F08).
 const BACK = { x: 820, y: 232, scale: 0.84, opacity: 0.5 };
 
-// 0:09–0:18.75 — the plan lifts out of the prep and lands as the presentation;
-// a what-if; the phone records the meeting, comes up close, and grows into
-// the recap.
+// The client's question pops in under the headline and writes itself out,
+// then leaves with the headline.
+const Question: React.FC<{ readonly t: number }> = ({ t }) => {
+  const pop = ramp(t, L.bubble, L.bubble + 0.45, Easing.out(Easing.back(1.8)));
+  const shown = ramp(t, L.bubble, L.bubble + 0.2, Easing.linear);
+  const out = ramp(t, L.presentOut, L.presentOut + 0.35, EASE_IN_OUT);
+  return (
+    <QuestionBubble
+      typed={ramp(t, ...L.typing, Easing.linear)}
+      style={{ opacity: shown * (1 - out), scale: 0.85 + 0.15 * pop, transformOrigin: "0 0", translate: `0px ${(1 - shown) * 10 - out * 10}px` }}
+    />
+  );
+};
+
+// 0:08.5–0:18.25 — the plan lifts out of the prep and lands as the
+// presentation; the client asks a what-if and it's answered live; the phone
+// records the meeting, comes up close, and grows into the recap.
 export const CommunicateScene: React.FC = () => {
   const t = useT();
   if (t < L.lift[0] || t >= L.toRecap[1]) return null;
@@ -66,6 +81,7 @@ export const CommunicateScene: React.FC = () => {
       ) : null}
 
       {t >= L.presentText && t < L.presentOut + 0.5 ? <Headline {...PRESENT_HEADLINE} lineStyle={headlineMotion(t, L.presentText, L.presentOut)} /> : null}
+      {t >= L.bubble && t < L.presentOut + 0.4 ? <Question t={t} /> : null}
       {t >= L.captureText && t < L.captureOut + 0.5 ? <Headline {...CAPTURE_HEADLINE} lineStyle={headlineMotion(t, L.captureText, L.captureOut)} /> : null}
 
       {t >= L.phoneIn[0] ? (
@@ -79,7 +95,7 @@ export const CommunicateScene: React.FC = () => {
           <Scaled w={screen.w} opacity={fade(L.toRecap[0], 0.25)}>
             <PhoneScreen
               writing={ramp(t, ...L.writing, Easing.linear)}
-              timer={t < 15.6 ? "32:03" : t < 16.4 ? "32:04" : "32:05"}
+              timer={t < L.phoneIn[1] + 0.35 ? "32:03" : t < L.phoneIn[1] + 1.15 ? "32:04" : "32:05"}
               spin={Math.max(0, t - L.writing[0]) * 200}
             />
           </Scaled>

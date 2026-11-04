@@ -73,39 +73,46 @@ Dave". Option A of `MobileRecapOptions` with option C's header; beats in
 Dec 10 date and the 42 min length are placeholders).
 
 `Launch30` is the 30 s launch re-cut (1920×1080, 60 fps, with sound): one
-client meeting followed through Prep → Communicate → Deliver. Beats are in
+client meeting followed through Prep → Meet → Deliver. It opens on "Run better
+meetings with Savvy Intelligence", scrolls into the advisor's client list and
+picks Allison & Frank Chan, whose row becomes the prep card. Beats are in
 `src/launch30/timeline.ts`; scenes in `src/launch30/scenes/` reuse the
 storyboard frames' pieces, so the video and the stills stay in sync. The
 tracker's active step has a ring that fills with the time left in its phase
-(no connector lines). The cursor clicks Review prep, then "Retirement plan" in
-the agenda, which lifts out and is presented; its projection draws in from
-left to right as it lands. Sound cues are in `src/launch30/Sfx.tsx`, kept soft
-and warm: a short swish on text reveals, a rounded whoosh on the big moves, a
-two-note chime when the phone starts recording, a rising shimmer as it starts
-writing the recap (`public/audio/launch30/`, ElevenLabs text to sound,
-trimmed, filtered and peak-normalized; levels are set in `Sfx.tsx`), the logo
-sound supplied by the Savvy team, and the launch kit's click and sent chime.
+(no connector lines). The cursor picks the client, clicks Review prep, then
+"Retirement plan" in the agenda, which lifts out and is presented; its
+projection draws in from left to right as it lands. The client then asks
+"What if we save $15K more a year?" in a chat bubble that writes itself out,
+and the contributions slider answers it live. Sound cues are in
+`src/launch30/Sfx.tsx`, kept soft and warm: a short swish on text reveals, a
+rounded whoosh on the big moves, a pluck as the question arrives, a two-note
+chime when the phone starts recording, a rising shimmer as it starts writing
+the recap (`public/audio/launch30/`, ElevenLabs text to sound, trimmed,
+filtered and peak-normalized; levels are set in `Sfx.tsx`), the logo sound
+supplied by the Savvy team, and the launch kit's click and sent chime.
 
-`Launch30Storyboard` (17 static frames, 1920×1080, in order F01 … F15 with
-F13 in three steps) is the storyboard for the 30 s re-cut: one client meeting
-followed through Prep → Communicate → Deliver, with a phase tracker on top,
-beige / green / blue backgrounds per phase and abstract UI (body copy as grey
-lines). Frames live in `src/launch30/frames/`; render them with
+`Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
+in two steps and F13 in three) is the storyboard for the 30 s re-cut: the
+client list, then one client meeting followed through Prep → Meet → Deliver,
+with a phase tracker on top, beige / green / blue backgrounds per phase and
+abstract UI (body copy as grey lines). Frames live in `src/launch30/frames/`;
+render them with
 `npx remotion still Launch30Storyboard out/storyboard/f01.png --frame=0` (etc.).
 
-Notes for building the 30 s video from the storyboard (team feedback):
+Notes for the 30 s video (team feedback):
 
 - Text effect: lines rise in from below out of a blur, one after another,
-  landing in their final positions. F02 does "One client meeting," then
-  "start to finish"; F13 does "Prep.", "Communicate.", "Deliver."; F14 does
-  "Your whole practice," then "working for you".
-- F02 → F03: the Allison & Frank pill travels into the Prep ready card on the
-  right and becomes its household chip.
+  landing in their final positions. F01 does "Run better meetings with" then
+  "Savvy Intelligence"; F13 does "Prep.", "Meet.", "Deliver."; F14 does "Your
+  whole practice," then "working for you".
+- F01 → F03: the page scrolls up into the client list (layout from the team's
+  mock-up), the list scrolls to Allison & Frank Chan and their row morphs
+  into the Prep ready card.
 - Tracker: a ring around the active step's number fills over that phase
-  (Prep 0:04–0:10, Communicate 0:10–0:18, Deliver 0:18–0:24), then pops to
-  done.
-- Cursors only at F03–F05 (Review prep, then Retirement plan in the agenda),
-  F07 (what-if drag) and F11 (Send).
+  (Prep 0:03.5–0:09.5, Meet 0:09.5–0:17.5, Deliver 0:17.5–0:24), then pops to
+  done. The time saved in the intro went to the recap.
+- Cursors only at F03 (picking the client), F03–F05 (Review prep, then
+  Retirement plan in the agenda), F07 (what-if drag) and F11 (Send).
 
 `Launch` chapters (from the 25-frame storyboard; chapters start on a 120 BPM
 grid of 2 s bars, so a 120 BPM track lines up with every section):
