@@ -7,7 +7,7 @@ import { Bg, BgSweep, Card, Cursor, Headline, HouseholdChip } from "../component
 import { AbstractChart } from "../components/Chart";
 import { lerp, Rect } from "../components/Motion";
 import { Tracker } from "../components/Tracker";
-import { C, centerTop, CY, FONT, phase, UI } from "../theme";
+import { C, centerTop, CY, FONT, phase } from "../theme";
 
 const P = phase("communicate");
 const RED = "#AD3A35";
@@ -16,18 +16,24 @@ export const PRESENT_HEADLINE = { eyebrow: "Live presentation", color: P.accent,
 export const CAPTURE_HEADLINE = { eyebrow: "Meeting capture", color: P.accent, lines: ["Give your", "full attention"] };
 // The plan as it lifts out of the prep, and as it is presented.
 export const LIFT: Rect = { x: 1040, y: centerTop(450), w: 720, h: 450 };
-export const PRESENT: Rect = { x: UI.x, y: centerTop(660), w: UI.w, h: 660 };
+// The presentation is narrower than the other UI cards and sits right, so it
+// keeps clear of the two-line headline.
+export const PRESENT: Rect = { x: 980, y: centerTop(610), w: 780, h: 610 };
+// Inside it: the chart spans the card less 44 px margins; two sliders share
+// that width.
+const CHART = { w: PRESENT.w - 88, h: 290 };
+const SLIDER_W = (CHART.w - 92) / 2;
 // Contributions slider knob, in canvas px, at slider position p.
-const SLIDERS_TOP = 540;
-export const knobAt = (p: number) => ({ x: PRESENT.x + 44 + p * 360, y: PRESENT.y + SLIDERS_TOP + 42 });
+const SLIDERS_TOP = 128 + CHART.h + 82;
+export const knobAt = (p: number) => ({ x: PRESENT.x + 44 + p * SLIDER_W, y: PRESENT.y + SLIDERS_TOP + 42 });
 export const KNOB = { from: 0.5, to: 0.65 };
 // Where the presentation steps back to behind the phone (F08): smaller and
 // clear of the capture headline, centred on the middle line.
-const BACK_SCALE = 0.7;
+const BACK_SCALE = 630 / PRESENT.w;
 export const CAPTURE_BACK = { x: 900, y: CY - (PRESENT.h * BACK_SCALE) / 2, scale: BACK_SCALE, opacity: 0.5 };
 
 const Slider: React.FC<{ readonly label: string; readonly value: string; readonly p: number; readonly hot?: number }> = ({ label, value, p, hot = 0 }) => (
-  <div style={{ width: 360 }}>
+  <div style={{ width: SLIDER_W }}>
     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18, color: C.ink }}>
       <span style={{ fontWeight: 500 }}>{label}</span>
       <span
@@ -150,8 +156,8 @@ export const PresentationContent: React.FC<{
       </div>
       <div style={{ position: "absolute", left: lerp(40, 44, m), top: lerp(120, 128, m) }}>
         <AbstractChart
-          w={lerp(640, 812, m)}
-          h={lerp(290, 330, m)}
+          w={lerp(640, CHART.w, m)}
+          h={lerp(290, CHART.h, m)}
           color={C.green}
           growth={0.95 + 0.23 * drag}
           ghost={0.95}
@@ -162,7 +168,7 @@ export const PresentationContent: React.FC<{
           build={build}
         />
       </div>
-      <div style={{ position: "absolute", left: 44, right: 44, top: 506, height: 1, background: "#EEF0F2", opacity: c }} />
+      <div style={{ position: "absolute", left: 44, right: 44, top: SLIDERS_TOP - 34, height: 1, background: "#EEF0F2", opacity: c }} />
       <div style={{ position: "absolute", left: 44, top: SLIDERS_TOP, display: "flex", gap: 92, opacity: c }}>
         <Slider label="Contributions" value={`$${Math.round(50 + 15 * drag)}K`} p={lerp(KNOB.from, KNOB.to, drag)} hot={hot} />
         <Slider label="Retirement age" value="67" p={0.55} />

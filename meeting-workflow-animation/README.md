@@ -88,8 +88,8 @@ and the contributions slider answers it live. Sound cues are in
 rounded whoosh on the big moves, a pluck as the question arrives, a two-note
 chime when the phone starts recording, a rising shimmer as it starts writing
 the recap (`public/audio/launch30/`, ElevenLabs text to sound, trimmed,
-filtered and peak-normalized; levels are set in `Sfx.tsx`), the logo sound
-supplied by the Savvy team, and the launch kit's click and sent chime.
+filtered and peak-normalized; levels are set in `Sfx.tsx`), and the launch
+kit's click and sent chime. The logo end card is silent.
 
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
 in two steps and F13 in three) is the storyboard for the 30 s re-cut: the
