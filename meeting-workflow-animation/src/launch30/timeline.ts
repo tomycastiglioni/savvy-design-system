@@ -29,7 +29,7 @@ export const L = {
   sweep1: [8.7, 9.7] as const, // green sweeps in
   // Meet
   land: [9.5, 10.2] as const, // lands as the presentation
-  lineDraw: [9.65, 10.55] as const, // the projection draws in
+  lineDraw: [8.95, 9.65] as const, // the projection draws in as the plan lifts out
   presentText: 9.85,
   chrome: 10.1,
   bubble: 10.75, // the client's question pops in…

@@ -7,7 +7,7 @@ import { Bg, BgSweep, Card, Cursor, Headline, HouseholdChip } from "../component
 import { AbstractChart } from "../components/Chart";
 import { lerp, Rect } from "../components/Motion";
 import { Tracker } from "../components/Tracker";
-import { C, centerTop, FONT, phase, UI } from "../theme";
+import { C, centerTop, CY, FONT, phase, UI } from "../theme";
 
 const P = phase("communicate");
 const RED = "#AD3A35";
@@ -21,6 +21,10 @@ export const PRESENT: Rect = { x: UI.x, y: centerTop(660), w: UI.w, h: 660 };
 const SLIDERS_TOP = 540;
 export const knobAt = (p: number) => ({ x: PRESENT.x + 44 + p * 360, y: PRESENT.y + SLIDERS_TOP + 42 });
 export const KNOB = { from: 0.5, to: 0.65 };
+// Where the presentation steps back to behind the phone (F08): smaller and
+// clear of the capture headline, centred on the middle line.
+const BACK_SCALE = 0.7;
+export const CAPTURE_BACK = { x: 900, y: CY - (PRESENT.h * BACK_SCALE) / 2, scale: BACK_SCALE, opacity: 0.5 };
 
 const Slider: React.FC<{ readonly label: string; readonly value: string; readonly p: number; readonly hot?: number }> = ({ label, value, p, hot = 0 }) => (
   <div style={{ width: 360 }}>
@@ -300,7 +304,17 @@ export const F08Capture: React.FC = () => (
     <Bg bg={P.bg} />
     <Tracker step={1} />
     <Headline {...CAPTURE_HEADLINE} />
-    <Card style={{ left: 820, top: 232, width: PRESENT.w, height: PRESENT.h, scale: 0.84, opacity: 0.5, transformOrigin: "0 0" }}>
+    <Card
+      style={{
+        left: CAPTURE_BACK.x,
+        top: CAPTURE_BACK.y,
+        width: PRESENT.w,
+        height: PRESENT.h,
+        scale: CAPTURE_BACK.scale,
+        opacity: CAPTURE_BACK.opacity,
+        transformOrigin: "0 0",
+      }}
+    >
       <PresentationContent drag={1} />
     </Card>
     <RecordingPhone x={1340} y={190} />

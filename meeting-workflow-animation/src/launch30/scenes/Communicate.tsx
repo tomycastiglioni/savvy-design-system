@@ -3,6 +3,7 @@ import { Easing } from "remotion";
 import { Card, Headline } from "../components/Bits";
 import { headlineMotion, lerp, lerpRect, ramp, Rect, rectStyle } from "../components/Motion";
 import {
+  CAPTURE_BACK as BACK,
   CAPTURE_HEADLINE,
   LIFT,
   PRESENT,
@@ -22,8 +23,6 @@ const PHONE_REST: Rect = { x: 1340, y: 190, w: 340, h: 700 };
 const PHONE_START: Rect = { ...PHONE_REST, y: 1130 };
 // Close-up: 1.5× around the top centre, running off the bottom of the frame.
 const PHONE_CLOSE: Rect = { x: 705, y: 200, w: 510, h: 1050 };
-// Where the presentation steps back to behind the phone (F08).
-const BACK = { x: 820, y: 232, scale: 0.84, opacity: 0.5 };
 
 // The client's question pops in under the headline and writes itself out,
 // then leaves with the headline.
