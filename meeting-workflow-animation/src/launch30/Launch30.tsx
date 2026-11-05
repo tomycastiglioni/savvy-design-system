@@ -18,7 +18,7 @@ import { C, FONT } from "./theme";
 //
 // The voiceover is Jeremy B. (ElevenLabs v4), already timed to the beats and
 // loudness-normalized to −16 LUFS; it plays at half level against the sound
-// effects, and the export adds 6 dB with a limiter on top.
+// effects, and the export adds 4 dB with a limiter on top (about −15.5 LUFS).
 export const Launch30: React.FC = () => {
   useState(loadDiatype);
   return (
