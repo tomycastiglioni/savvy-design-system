@@ -12,7 +12,7 @@ import { Reveal } from "../../shared/components/Reveal";
 import { C, CLAMP, EASE_IN_OUT, EASE_OUT, FONT, REVIEW_BUTTON, REVIEW_CARD, REVIEW_PANEL } from "../theme";
 import { T } from "../timeline";
 
-const STATS: { label: string; value: (p: number) => string; sub: string }[] = [
+export const STATS: { label: string; value: (p: number) => string; sub: string }[] = [
   { label: "AUM", value: (p) => `$${(240.3 * p).toFixed(1)}M`, sub: "1 new in 30 days" },
   { label: "Upcoming meetings", value: () => "1", sub: "1 completed today" },
   { label: "Prospects", value: (p) => String(Math.round(384 * p)), sub: "8 new in 30 days" },

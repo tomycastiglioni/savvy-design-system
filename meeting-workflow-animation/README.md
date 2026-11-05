@@ -113,12 +113,17 @@ own first frame, so they loop without a seam.
 `AdPrep4x5`, `AdMeet4x5`, `AdCapture4x5` and `AdDeliver4x5` (1080×1350,
 60 fps, no sound) are the Innovation Campaign ads "01 — Meeting steps (4x5)
 v3" from Figma, animated: the v3 layout (Savvy logo, ABC Diatype Light
-headline, body copy, the step's gradient) with that step's workflow video
-playing under it, background dropped, running off the frame like the v2
-graphics (`src/ads/MeetingStepAd.tsx`, copy and sizes as in Figma). Prep, Meet
-and Capture start 0.6 s into their workflow so the first frame already shows
-the UI; Meet and Capture are scaled so the what-if controls and the desktop
-recap stay in frame. Render with
+headline, body copy, the step's gradient) with that step's workflow laid out
+for the 4:5 frame (`src/ads/`, copy and sizes as in Figma): bigger than on the
+website, left edge on the text margin, free to run off the right and bottom.
+Prep has its own home screen (stats as a 2×2 grid, the review card under them)
+and a larger prep document; Meet is one card (the "Add graph" slot, then the
+Retirement projection) with four what-if controls under the chart; Capture
+and Deliver are the workflow videos seen through a camera (`src/ads/Camera.tsx`)
+that keeps each step on the margin and every clicked button in frame, with
+Deliver's writing-style card centred between the copy and the bottom. Prep,
+Meet and Capture start 0.6 s in so the first frame already shows the UI.
+Render with
 `npx remotion render AdPrep4x5 out/ads/ad-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07

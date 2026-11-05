@@ -15,9 +15,16 @@ const GROW = 0.6; // button → loading card
 const HOLD_END = 1.55; // loading card holds until here
 const EXPAND_END = 2.1; // loading card → document panel
 
+type Box = { readonly x: number; readonly y: number; readonly w: number; readonly h: number };
+
 // One box: "Review prep document" button → "Loading household…" card → the
-// prep document panel.
-export const PrepDocument: React.FC = () => {
+// prep document panel. The three rects can be overridden (the ads lay the
+// home screen out differently).
+export const PrepDocument: React.FC<{ readonly from?: Box; readonly mid?: Box; readonly to?: Box }> = ({
+  from = REVIEW_BUTTON,
+  mid = LOADING_BOX,
+  to = DOC_PANEL,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -26,10 +33,10 @@ export const PrepDocument: React.FC = () => {
   const rect = (a: number, b: number, c: number) =>
     interpolate(frame, keys, [a, b, b, c], { ...CLAMP, easing });
 
-  const left = rect(REVIEW_BUTTON.x, LOADING_BOX.x, DOC_PANEL.x);
-  const top = rect(REVIEW_BUTTON.y, LOADING_BOX.y, DOC_PANEL.y);
-  const width = rect(REVIEW_BUTTON.w, LOADING_BOX.w, DOC_PANEL.w);
-  const height = rect(REVIEW_BUTTON.h, LOADING_BOX.h, DOC_PANEL.h);
+  const left = rect(from.x, mid.x, to.x);
+  const top = rect(from.y, mid.y, to.y);
+  const width = rect(from.w, mid.w, to.w);
+  const height = rect(from.h, mid.h, to.h);
   const radius = rect(9, 18, 16);
 
   const colorKeys = [0, 0.4 * fps, HOLD_END * fps, (EXPAND_END - 0.05) * fps];

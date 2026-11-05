@@ -54,8 +54,8 @@ export const OutlineButton: React.FC<{
   </div>
 );
 
-// Confirmation toast, bottom center. `at` is absolute seconds.
-export const Toast: React.FC<{ readonly at: number; readonly dur: number; readonly children: React.ReactNode }> = ({ at, dur, children }) => {
+// Confirmation toast, bottom center (`top` moves it). `at` is absolute seconds.
+export const Toast: React.FC<{ readonly at: number; readonly dur: number; readonly top?: number; readonly children: React.ReactNode }> = ({ at, dur, top = 812, children }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -70,7 +70,7 @@ export const Toast: React.FC<{ readonly at: number; readonly dur: number; readon
       style={{
         position: "absolute",
         left: "50%",
-        top: 812,
+        top,
         translate: `-50% ${(1 - p) * 16}px`,
         opacity: p,
         display: "flex",
