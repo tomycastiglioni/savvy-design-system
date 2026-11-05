@@ -16,21 +16,21 @@ import { anchor, Camera, toAd, toSource } from "../Camera";
 import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
 
 // Ad 01 · Prep. The home screen is laid out for the ad (greeting, the four
-// stats as a 2×2 grid, the review card under them) at 1.1×; "Review prep
+// stats as a 2×2 grid, the review card under them) at 1.05×; "Review prep
 // document" then grows into the prep document, shown at 1.25× through a fixed
 // camera with its left edge on the text margin, running off the right and
 // bottom. Times are the workflow video's (mounted at source frame 0).
 
 const TOP = graphicTop("prep");
-const K = 1.1; // home: design px → ad px
+const K = 1.05; // home: design px → ad px
 const W = INNER_W / K;
 const H = {
   avatar: 60,
-  statsY: 84,
+  statsY: 82,
   cellH: 120,
-  titleY: 348,
-  cardY: 384,
-  cardH: 160,
+  titleY: 344,
+  cardY: 378,
+  cardH: 230, // runs off the bottom of the frame
   button: { x: 105, y: 104, w: 231, h: 39 },
 };
 // The button, in ad px.
@@ -43,9 +43,9 @@ const BUTTON = {
 
 // The document: tab bar top-left on the text margin, 1.25×.
 const DOC = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 1.25);
-// "Loading household…" card, on the text margin and centred between the copy
-// and the bottom of the frame.
-const LOADING = { x: MARGIN_X, w: 620, h: 440, y: (TEXT_BOTTOM.prep + AD.h) / 2 - 220 };
+// "Loading household…" card, centred across the frame and between the copy and
+// the bottom.
+const LOADING = { x: (AD.w - 620) / 2, w: 620, h: 440, y: (TEXT_BOTTOM.prep + AD.h) / 2 - 220 };
 
 const AdHome: React.FC = () => {
   const frame = useCurrentFrame();

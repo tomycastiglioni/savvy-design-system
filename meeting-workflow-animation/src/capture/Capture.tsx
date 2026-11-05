@@ -24,12 +24,15 @@ const TAPS = [
 // `transparent` drops the background, `tabs` the desktop tab bar and
 // `linkedDocs` keeps the recap's linked-documents line, for reuse inside the
 // launch video. `hideCursor` drops the tap indicators for clean stills.
+// `screenShift` moves the recording screen's content (and its taps) up, for
+// the ads, where the phone runs off the bottom of the frame.
 export const Capture: React.FC<{
   readonly transparent?: boolean;
   readonly tabs?: boolean;
   readonly linkedDocs?: boolean;
   readonly hideCursor?: boolean;
-}> = ({ transparent = false, tabs = true, linkedDocs = false, hideCursor = false }) => {
+  readonly screenShift?: number;
+}> = ({ transparent = false, tabs = true, linkedDocs = false, hideCursor = false, screenShift = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -79,7 +82,7 @@ export const Capture: React.FC<{
             }}
           >
             <Sequence name="Recording → recap" durationInFrames={Math.round((T.toNotes + 0.6) * fps)}>
-              <AbsoluteFill style={{ translate: `${-0.3 * SCREEN.w * push}px 0px`, opacity: 1 - 0.5 * push }}>
+              <AbsoluteFill style={{ translate: `${-0.3 * SCREEN.w * push}px ${-screenShift}px`, opacity: 1 - 0.5 * push }}>
                 <RecordingFlow />
               </AbsoluteFill>
             </Sequence>
@@ -110,7 +113,7 @@ export const Capture: React.FC<{
       {hideCursor ? null : (
         <Sequence name="Taps">
           {TAPS.map((tap) => (
-            <Touch key={tap.at} {...tap} />
+            <Touch key={tap.at} {...tap} y={tap.at < T.toNotes ? tap.y - screenShift * zoom : tap.y} />
           ))}
         </Sequence>
       )}

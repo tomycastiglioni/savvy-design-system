@@ -22,7 +22,8 @@ const WORKFLOWS: Record<Workflow, React.FC> = { prep: AdPrep, meet: AdMeet, capt
 export type AdSpec = {
   readonly workflow: Workflow;
   readonly gradient: readonly [string, string];
-  // Text column (Figma auto layout: left 74.57, top 86.48, gap 56).
+  // Text column (Figma auto layout: left 74.57, top 86.48; logo, 56, then
+  // headline, 47, body).
   readonly column: number;
   readonly headline: readonly string[]; // one entry per forced line
   readonly headlineSize?: number;
@@ -45,27 +46,29 @@ export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, he
       </Sequence>
       <div style={{ position: "absolute", left: 74.57, top: 86.48, width: column, display: "flex", flexDirection: "column", gap: 56, fontFamily: '"ABC Diatype", sans-serif' }}>
         <Img src={staticFile("ads/savvy-logo.svg")} style={{ width: 220.609, height: 74.264, display: "block" }} />
-        <div
-          style={{
-            width: headlineWidth ?? column,
-            fontSize: headlineSize,
-            fontWeight: 300,
-            lineHeight: 1,
-            letterSpacing: -0.02 * headlineSize,
-            color: "#000000",
-          }}
-        >
-          {headline.map((line, i) => (
-            <React.Fragment key={line}>
-              {i ? <br /> : null}
-              {line}
-            </React.Fragment>
-          ))}
-        </div>
-        <div style={{ width: bodyWidth ?? column, fontSize: 38.241, fontWeight: 400, lineHeight: 1.35, letterSpacing: 0.1912, color: "rgba(0, 0, 0, 0.78)" }}>
-          {body.map((p) => (
-            <div key={p}>{p}</div>
-          ))}
+        <div style={{ display: "flex", flexDirection: "column", gap: 47 }}>
+          <div
+            style={{
+              width: headlineWidth ?? column,
+              fontSize: headlineSize,
+              fontWeight: 300,
+              lineHeight: 1,
+              letterSpacing: -0.02 * headlineSize,
+              color: "#000000",
+            }}
+          >
+            {headline.map((line, i) => (
+              <React.Fragment key={line}>
+                {i ? <br /> : null}
+                {line}
+              </React.Fragment>
+            ))}
+          </div>
+          <div style={{ width: bodyWidth ?? column, fontSize: 38.241, fontWeight: 400, lineHeight: 1.35, letterSpacing: 0.1912, color: "rgba(0, 0, 0, 0.78)" }}>
+            {body.map((p) => (
+              <div key={p}>{p}</div>
+            ))}
+          </div>
         </div>
       </div>
     </AbsoluteFill>
@@ -83,7 +86,6 @@ export const ADS = {
     column: 795.432,
     headline: ["Planning and prep that’s ready before you ask."],
     body: ["AI knows your clients and drafts meeting prep ahead of each client engagement."],
-    bodyWidth: 728.146,
     start: 0.6,
   },
   meet: {

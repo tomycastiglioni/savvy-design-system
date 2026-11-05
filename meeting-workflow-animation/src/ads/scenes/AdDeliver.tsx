@@ -10,13 +10,13 @@ import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
 // the text margin and every clicked button in frame.
 //   recap and editor   1.15×, running off the right ("Create client document" in frame)
 //   back on the recap  0.94×, so "Draft client email" fits
-//   writing-style card 1.1×, centred between the copy and the bottom of the frame
+//   writing-style card 1.1×, centred across the frame and between the copy and the bottom
 //   email and "sent"   fitted between the side margins, so Send is in frame
 const TOP = graphicTop("deliver");
 const RECAP = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 1.15);
 const EDIT = anchor(EDITOR.x, EDITOR.y, MARGIN_X, TOP, 1.15);
 const RECAP_WIDE = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 0.94);
-const LOADER = anchor(LOADING_BOX.x, LOADING_BOX.y + LOADING_BOX.h / 2, MARGIN_X, (TEXT_BOTTOM.deliver + AD.h) / 2, 1.1);
+const LOADER = anchor(LOADING_BOX.x + LOADING_BOX.w / 2, LOADING_BOX.y + LOADING_BOX.h / 2, AD.w / 2, (TEXT_BOTTOM.deliver + AD.h) / 2, 1.1);
 const MAIL = anchor(EMAIL.x, EMAIL.y, MARGIN_X, TOP, INNER_W / EMAIL.w);
 const KEYS: CameraKey[] = [
   { t: 0, ...RECAP },

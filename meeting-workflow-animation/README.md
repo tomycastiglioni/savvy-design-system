@@ -118,10 +118,13 @@ for the 4:5 frame (`src/ads/`, copy and sizes as in Figma): bigger than on the
 website, left edge on the text margin, free to run off the right and bottom.
 Prep has its own home screen (stats as a 2×2 grid, the review card under them)
 and a larger prep document; Meet is one card (the "Add graph" slot, then the
-Retirement projection) with four what-if controls under the chart; Capture
+Retirement projection, a blinking "Presenting" pill once it is presented)
+with two what-if controls under the chart (contributions, and the retirement
+age down to 63, the ad's question; in the ad it moves the projection); Capture
 and Deliver are the workflow videos seen through a camera (`src/ads/Camera.tsx`)
-that keeps each step on the margin and every clicked button in frame, with
-Deliver's writing-style card centred between the copy and the bottom. Prep,
+that keeps each step on the margin and every clicked button in frame (the
+loading and writing-style cards centred between the copy and the bottom).
+Graphics start 80 px under the copy. Prep,
 Meet and Capture start 0.6 s in so the first frame already shows the UI.
 Render with
 `npx remotion render AdPrep4x5 out/ads/ad-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
