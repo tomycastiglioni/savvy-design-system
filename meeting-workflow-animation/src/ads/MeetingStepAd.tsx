@@ -22,8 +22,8 @@ const WORKFLOWS: Record<Workflow, React.FC> = { prep: AdPrep, meet: AdMeet, capt
 export type AdSpec = {
   readonly workflow: Workflow;
   readonly gradient: readonly [string, string];
-  // Text column (Figma auto layout: left 74.57, top 86.48; logo, 56, then
-  // headline, 47, body).
+  // Text column (Figma auto layout: left 74.57, top 86.48; logo, 50.97, then
+  // headline, 42.78, body).
   readonly column: number;
   readonly headline: readonly string[]; // one entry per forced line
   readonly headlineSize?: number;
@@ -35,7 +35,12 @@ export type AdSpec = {
   readonly start?: number;
 };
 
-export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, headline, headlineSize = 100, headlineWidth, body, bodyWidth, start = 0 }) => {
+// Type sizes from Figma (headline letter-spacing −2%, body +0.5%).
+const HEADLINE = 91.012;
+const BODY = 34.804;
+const LOGO = { w: 200.781, h: 67.589 };
+
+export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, headline, headlineSize = HEADLINE, headlineWidth, body, bodyWidth, start = 0 }) => {
   useState(loadAdFonts);
   const { fps } = useVideoConfig();
   const Animation = WORKFLOWS[workflow];
@@ -44,9 +49,9 @@ export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, he
       <Sequence from={-Math.round(start * fps)}>
         <Animation />
       </Sequence>
-      <div style={{ position: "absolute", left: 74.57, top: 86.48, width: column, display: "flex", flexDirection: "column", gap: 56, fontFamily: '"ABC Diatype", sans-serif' }}>
-        <Img src={staticFile("ads/savvy-logo.svg")} style={{ width: 220.609, height: 74.264, display: "block" }} />
-        <div style={{ display: "flex", flexDirection: "column", gap: 47 }}>
+      <div style={{ position: "absolute", left: 74.57, top: 86.48, width: column, display: "flex", flexDirection: "column", gap: 50.967, fontFamily: '"ABC Diatype", sans-serif' }}>
+        <Img src={staticFile("ads/savvy-logo.svg")} style={{ width: LOGO.w, height: LOGO.h, display: "block" }} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 42.776 }}>
           <div
             style={{
               width: headlineWidth ?? column,
@@ -64,7 +69,7 @@ export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, he
               </React.Fragment>
             ))}
           </div>
-          <div style={{ width: bodyWidth ?? column, fontSize: 38.241, fontWeight: 400, lineHeight: 1.35, letterSpacing: 0.1912, color: "rgba(0, 0, 0, 0.78)" }}>
+          <div style={{ width: bodyWidth ?? column, fontSize: BODY, fontWeight: 400, lineHeight: 1.35, letterSpacing: 0.005 * BODY, color: "rgba(0, 0, 0, 0.78)" }}>
             {body.map((p) => (
               <div key={p}>{p}</div>
             ))}
@@ -83,7 +88,7 @@ export const ADS = {
   prep: {
     workflow: "prep",
     gradient: ["#F9F5EF", "#D3CDC4"],
-    column: 795.432,
+    column: 723.939,
     headline: ["Planning and prep that’s ready before you ask."],
     body: ["AI knows your clients and drafts meeting prep ahead of each client engagement."],
     start: 0.6,
@@ -91,16 +96,16 @@ export const ADS = {
   meet: {
     workflow: "meet",
     gradient: ["#D9F2EB", "#A4E6D4"],
-    column: 919.181,
+    column: 836.565,
     headline: ["Make your financial advice easy to present."],
-    headlineSize: 94.978,
+    headlineSize: 86.442,
     body: ["Ask AI “What if they retire at 63?” and watch the financial planning custom charts update live."],
     start: 0.6,
   },
   capture: {
     workflow: "capture",
     gradient: ["#F8F1E2", "#EAD7B1"],
-    column: 922.432,
+    column: 839.524,
     headline: ["Meeting capture on the go & synced."],
     body: ["Savvy records everything from your phone while you focus on planning with your clients. Notes are synced and their recap is written ready for your approval."],
     start: 0.6,
@@ -108,9 +113,9 @@ export const ADS = {
   deliver: {
     workflow: "deliver",
     gradient: ["#E1F5FC", "#A5DAEA"],
-    column: 906.432,
+    column: 824.962,
     headline: ["From advice", "to execution."],
-    headlineWidth: 857.708,
+    headlineWidth: 780.618,
     body: ["Recap email in your voice, ready to send.", "Tasks sent to your dedicated team, ready to execute."],
   },
 } satisfies Record<Workflow, AdSpec>;

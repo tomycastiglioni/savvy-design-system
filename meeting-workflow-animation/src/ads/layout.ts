@@ -4,7 +4,7 @@ export const AD = { w: 1080, h: 1350 };
 // the right and bottom edges.
 export const MARGIN_X = 74.57;
 // Where each ad's body copy ends (Figma auto layout: top 86.48 + block height).
-export const TEXT_BOTTOM = { prep: 667.74, meet: 557.74, capture: 619.74, deliver: 567.74 } as const;
+export const TEXT_BOTTOM = { prep: 614.81, meet: 513.81, capture: 570.81, deliver: 523.81 } as const;
 // Gap from the body copy to the graphic.
 export const GAP = 80;
 export const graphicTop = (k: keyof typeof TEXT_BOTTOM) => TEXT_BOTTOM[k] + GAP;
