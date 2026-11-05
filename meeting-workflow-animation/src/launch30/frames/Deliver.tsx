@@ -13,7 +13,7 @@ import { stagger } from "./Prep";
 const P = phase("deliver");
 const TASKS = ["Rebalance to 70/30", "Open Ellis's 529", "Raise 401(k) to 12.5%"];
 
-export const DELIVER_HEADLINE = { eyebrow: "Recap & follow-up", color: P.accent, lines: ["The follow-up", "doesn't wait"] };
+export const DELIVER_HEADLINE = { eyebrow: "Follow-up & Deliver", color: P.accent, lines: ["Your next steps", "start themselves"] };
 export const RECAP: Rect = { x: UI.x, y: centerTop(660), w: UI.w, h: 660 };
 export const DOC: Rect = { x: 870, y: 190, w: 540, h: 660 };
 export const EMAIL: Rect = { x: 1130, y: 390, w: 660, h: 500 };
@@ -54,7 +54,7 @@ export const RecapContent: React.FC<{ readonly reveal?: number }> = ({ reveal = 
           >
             <AIIcon size={24} />
             <div style={{ fontSize: 21, fontWeight: 500, color: C.ink }}>{task}</div>
-            <div style={{ marginLeft: "auto", padding: "8px 14px", borderRadius: 9, background: C.green, color: C.white, fontSize: 15, fontWeight: 600 }}>Create task</div>
+            <div style={{ marginLeft: "auto", padding: "8px 14px", borderRadius: 9, background: C.green, color: C.white, fontSize: 15, fontWeight: 600 }}>Approve &amp; send to team</div>
           </div>
         ))}
       </div>
@@ -169,11 +169,98 @@ export const EmailContent: React.FC<{ readonly write?: number; readonly press?: 
   );
 };
 
-const RESULTS = ["Recap shared with Allison & Frank", "Client document attached", "3 tasks created"];
+const RESULTS = ["Recap shared with Allison & Frank", "Client document attached", "3 tasks sent to your team"];
+
+// The advisor's team, who pick up the approved tasks (placeholder names), in
+// TASKS order.
+export const TEAM = [
+  { name: "Marcus Lee", role: "Trading", initials: "ML", bg: "#DCEBF5", fg: "#1D5A82" },
+  { name: "Priya Shah", role: "Operations", initials: "PS", bg: "#F3E8D6", fg: "#7A5A22" },
+  { name: "Dana Brooks", role: "Client service", initials: "DB", bg: "#E4E0F3", fg: "#4B3F86" },
+];
+type Member = (typeof TEAM)[number];
+
+export const Avatar: React.FC<{ readonly m: Member; readonly size?: number; readonly ring?: boolean; readonly style?: React.CSSProperties }> = ({ m, size = 36, ring = false, style }) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      borderRadius: "50%",
+      background: m.bg,
+      color: m.fg,
+      fontSize: size * 0.38,
+      fontWeight: 700,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      boxShadow: ring ? `0 0 0 3px ${C.white}` : undefined,
+      ...style,
+    }}
+  >
+    {m.initials}
+  </div>
+);
+
+// Option B at 0:22: "Email sent" folds into a banner and the approved tasks
+// are handed to the team below it, one person each. The pair is centred on
+// the middle line in SENT's column.
+export const SENT_BANNER: Rect = { x: SENT.x, y: centerTop(170 + 24 + 420), w: SENT.w, h: 170 };
+export const TEAM_CARD: Rect = { x: SENT.x, y: SENT_BANNER.y + 170 + 24, w: SENT.w, h: 420 };
+
+// The banner's content in SENT_BANNER's 700×170 box.
+export const SentBannerContent: React.FC = () => (
+  <>
+    <div style={{ position: "absolute", left: 40, top: 45, width: 80, height: 80, borderRadius: "50%", background: C.green50, color: C.green, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Check size={42} strokeWidth={2.6} />
+    </div>
+    <div style={{ position: "absolute", left: 146, top: 44, fontSize: 34, fontWeight: 600, color: C.ink }}>Email sent</div>
+    <div style={{ position: "absolute", left: 146, top: 96, fontSize: 19, color: C.body }}>Recap and client document shared with Allison &amp; Frank</div>
+  </>
+);
+
+// The team card's content in TEAM_CARD's 700×420 box; `rows` brings each task
+// in (0–1 each).
+export const TeamTasksContent: React.FC<{ readonly rows?: readonly number[] }> = ({ rows = [1, 1, 1] }) => (
+  <>
+    <div style={{ position: "absolute", left: 34, top: 32, fontSize: 25, fontWeight: 600, color: C.ink }}>Sent to your team</div>
+    <div style={{ position: "absolute", left: 34, top: 70, fontSize: 16, color: C.muted }}>3 tasks from {MEETING}</div>
+    <div style={{ position: "absolute", left: 26, right: 26, top: 116 }}>
+      {TASKS.map((task, i) => (
+        <div
+          key={task}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 14,
+            height: 82,
+            marginTop: i ? 10 : 0,
+            padding: "0 18px",
+            borderRadius: 14,
+            background: "#F5F7F9",
+            opacity: rows[i],
+            translate: `0px ${(1 - rows[i]) * 14}px`,
+          }}
+        >
+          <div style={{ fontSize: 20, fontWeight: 500, color: C.ink, flex: 1 }}>{task}</div>
+          <Avatar m={TEAM[i]} size={38} />
+          <div style={{ width: 132 }}>
+            <div style={{ fontSize: 16, fontWeight: 600, color: C.ink }}>{TEAM[i].name}</div>
+            <div style={{ fontSize: 14, color: C.muted, marginTop: 2 }}>{TEAM[i].role}</div>
+          </div>
+          <div style={{ width: 28, height: 28, borderRadius: "50%", background: C.green, color: C.white, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Check size={17} strokeWidth={3} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </>
+);
 
 // "Email sent" in SENT's 700×470 box; `draw` strokes the check, `rows` ticks
-// in each result (0–1 each).
-export const SentContent: React.FC<{ readonly draw?: number; readonly rows?: readonly number[] }> = ({ draw = 1, rows = [1, 1, 1] }) => (
+// in each result (0–1 each). `team` adds the team's faces to the tasks line
+// (option A at 0:22).
+export const SentContent: React.FC<{ readonly draw?: number; readonly rows?: readonly number[]; readonly team?: number }> = ({ draw = 1, rows = [1, 1, 1], team = 0 }) => (
   <>
     <div
       style={{
@@ -201,6 +288,13 @@ export const SentContent: React.FC<{ readonly draw?: number; readonly rows?: rea
             <Check size={17} strokeWidth={3} />
           </div>
           {line}
+          {i === 2 && team > 0 ? (
+            <div style={{ display: "flex", marginLeft: 6, opacity: team }}>
+              {TEAM.map((m, k) => (
+                <Avatar key={m.initials} m={m} size={34} ring style={{ marginLeft: k ? -9 : 0, scale: 0.6 + 0.4 * team }} />
+              ))}
+            </div>
+          ) : null}
         </div>
       ))}
     </div>
@@ -235,6 +329,31 @@ export const F11Email: React.FC = () => (
       <EmailContent />
     </Card>
     <Cursor {...SEND_BTN} />
+  </>
+);
+
+// The two options for the tasks going to the team at 0:22.
+export const SentTeamA: React.FC = () => (
+  <>
+    <Bg bg={P.bg} />
+    <Tracker step={3} />
+    <DeliverHeadline />
+    <Card style={at(SENT)}>
+      <SentContent team={1} />
+    </Card>
+  </>
+);
+export const SentTeamB: React.FC = () => (
+  <>
+    <Bg bg={P.bg} />
+    <Tracker step={3} />
+    <DeliverHeadline />
+    <Card style={at(SENT_BANNER)}>
+      <SentBannerContent />
+    </Card>
+    <Card style={at(TEAM_CARD)}>
+      <TeamTasksContent />
+    </Card>
   </>
 );
 

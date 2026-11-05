@@ -10,7 +10,7 @@ export const PHASE_TIMES = [
 
 export const L = {
   // Intro: the line, the advisor's client list, Allison & Frank Chan picked
-  titleIn: [0.2, 0.5] as const, // "Run better meetings with" / "Savvy Intelligence"
+  titleIn: [0.2, 0.5] as const, // "Deliver more for your clients" / "with Savvy Intelligence"
   pageUp: [1.3, 1.95] as const, // the page scrolls up and the client list comes in
   listIn: [1.4, 2.0] as const,
   listScroll: [2.05, 2.85] as const, // the list scrolls to Allison & Frank Chan

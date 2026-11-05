@@ -4,11 +4,11 @@ import { Bg, CenteredLine, Cursor, HEAD } from "../components/Bits";
 import { lerp, Rect } from "../components/Motion";
 import { C, CY } from "../theme";
 
-// The opening: "Run better meetings with Savvy Intelligence", then the
+// The opening: "Deliver more for your clients with Savvy Intelligence", then the
 // advisor's whole client list (the CRM), scrolled to Allison & Frank Chan,
 // who get picked. Layout from the team's mock-up (1920×1080).
 
-export const TITLE_LINES = ["Run better meetings with", "Savvy Intelligence"];
+export const TITLE_LINES = ["Deliver more for your clients", "with Savvy Intelligence"];
 // Two lines centred on the middle line; when the list comes up the page
 // scrolls so the title's cap top sits at 143.
 export const TITLE_CAP = CY - (HEAD.lh + 0.7 * HEAD.size) / 2;

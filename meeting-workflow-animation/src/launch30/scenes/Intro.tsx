@@ -7,7 +7,7 @@ import { PREP_CARD, PrepCardContent } from "../frames/Prep";
 import { EASE_IN_OUT, EASE_MORPH } from "../theme";
 import { L, useT } from "../timeline";
 
-// 0:00–0:03.75 — "Run better meetings with Savvy Intelligence"; the page
+// 0:00–0:03.75 — "Deliver more for your clients with Savvy Intelligence"; the page
 // scrolls up into the advisor's client list, which scrolls on to Allison &
 // Frank Chan. Their row is picked and becomes the prep card.
 export const Intro: React.FC = () => {
