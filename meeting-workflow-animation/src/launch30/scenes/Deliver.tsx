@@ -4,6 +4,7 @@ import { Card, Headline } from "../components/Bits";
 import { headlineMotion, lerpRect, ramp, rectStyle } from "../components/Motion";
 import { ClientDocContent, DELIVER_HEADLINE, DOC, EMAIL, EmailContent, RECAP, RecapContent, SENT_BANNER, SentBannerContent, TEAM_CARD, TeamTasksContent } from "../frames/Deliver";
 import { EASE_IN_OUT, EASE_MORPH, EASE_OUT } from "../theme";
+import { usePeek } from "../peek";
 import { L, pressAt, useT } from "../timeline";
 
 const EMAIL_START = { ...EMAIL, y: 1130 };
@@ -13,6 +14,7 @@ const EMAIL_START = { ...EMAIL, y: 1130 };
 // approved tasks go to the team in a card under it.
 export const DeliverScene: React.FC = () => {
   const t = useT();
+  const peek = usePeek();
   if (t < L.deliverText || t > L.deliverOut + 0.45) return null;
 
   const out = ramp(t, L.deliverOut, L.deliverOut + 0.35, EASE_IN_OUT);
@@ -26,7 +28,7 @@ export const DeliverScene: React.FC = () => {
 
   return (
     <>
-      <Headline {...DELIVER_HEADLINE} lineStyle={headlineMotion(t, L.deliverText, L.deliverOut)} />
+      {peek ? null : <Headline {...DELIVER_HEADLINE} lineStyle={headlineMotion(t, L.deliverText, L.deliverOut)} />}
 
       {t >= L.toRecap[1] && docOut < 1 ? (
         <Card style={{ ...rectStyle(lerpRect(RECAP, DOC, toDoc)), opacity: 1 - docOut, translate: `${-40 * docOut}px 0px`, ...exit }}>

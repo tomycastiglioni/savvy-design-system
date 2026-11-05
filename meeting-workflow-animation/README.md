@@ -101,6 +101,15 @@ timed to the beats) and the licensed track "Slaptastic" (Steven Beddall,
 its break falls on the meeting capture and its final hit on the logo. Export
 with 4 dB of gain and a limiter (`-af "volume=4dB,alimiter=limit=0.89:level=false"`).
 
+`Launch30Peek` is the website sneak peek: the same scenes with no text (no
+opening line, headlines or client question), no tracker and no sound, the
+product UI slid to the centre of the frame as each card comes in
+(`src/launch30/Peek.tsx`). `scripts/launch30-peek.sh` turns a render of
+0:02–0:18.7 into two 10 s loops (MP4 and GIF): `2colors` (beige → green, normal
+speed, to the phone landing) and `3colors` (beige → green → blue, 1.425×, to
+the recap). Both skip stretches where nothing moves and crossfade into their
+own first frame, so they loop without a seam.
+
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
 in two steps and F13 in three) is the storyboard for the 30 s re-cut: the
 client list, then one client meeting followed through Prep → Meet → Deliver,

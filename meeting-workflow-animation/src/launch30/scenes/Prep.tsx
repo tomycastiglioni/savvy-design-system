@@ -4,6 +4,7 @@ import { Card, Headline } from "../components/Bits";
 import { headlineMotion, lerp, lerpRect, ramp, rectStyle } from "../components/Motion";
 import { PREP_CARD, PREP_DOC, PREP_HEADLINE, PrepCardContent, PrepDocContent } from "../frames/Prep";
 import { EASE_IN_OUT, EASE_MORPH } from "../theme";
+import { usePeek } from "../peek";
 import { L, pressAt, useT } from "../timeline";
 
 // Where the prep document steps back to while the plan lifts out (F05).
@@ -13,6 +14,7 @@ const BACK = { dx: 300 - PREP_DOC.x, dy: 30, scale: 0.92, opacity: 0.55 };
 // opens into the prep document, and steps back as agenda item 3 lifts out.
 export const PrepScene: React.FC = () => {
   const t = useT();
+  const peek = usePeek();
   if (t < L.cardIn || t > L.land[0] + 0.45) return null;
 
   const morph = ramp(t, ...L.docMorph, EASE_MORPH);
@@ -22,7 +24,7 @@ export const PrepScene: React.FC = () => {
 
   return (
     <>
-      {t < L.prepOut + 0.5 ? <Headline {...PREP_HEADLINE} lineStyle={headlineMotion(t, L.prepText, L.prepOut)} /> : null}
+      {!peek && t < L.prepOut + 0.5 ? <Headline {...PREP_HEADLINE} lineStyle={headlineMotion(t, L.prepText, L.prepOut)} /> : null}
       <Card
         style={{
           ...rectStyle(lerpRect(PREP_CARD, PREP_DOC, morph)),

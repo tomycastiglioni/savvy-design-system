@@ -5,6 +5,7 @@ import { lerp, lerpRect, ramp, rectStyle, slideText } from "../components/Motion
 import { ClientList, ClientRowContent, CLIENTS, LIST_SCROLL, PAGE_UP, rowRect, SELECTED, Title } from "../frames/Clients";
 import { PREP_CARD, PrepCardContent } from "../frames/Prep";
 import { EASE_IN_OUT, EASE_MORPH } from "../theme";
+import { usePeek } from "../peek";
 import { L, useT } from "../timeline";
 
 // 0:00–0:03.75 — "Deliver more for your clients with Savvy Intelligence"; the page
@@ -12,6 +13,7 @@ import { L, useT } from "../timeline";
 // Frank Chan. Their row is picked and becomes the prep card.
 export const Intro: React.FC = () => {
   const t = useT();
+  const peek = usePeek();
   if (t >= L.cardIn) return null;
 
   const up = ramp(t, ...L.pageUp, EASE_IN_OUT);
@@ -27,7 +29,7 @@ export const Intro: React.FC = () => {
 
   return (
     <>
-      {titleOut < 1 ? (
+      {titleOut < 1 && !peek ? (
         <div style={{ position: "absolute", inset: 0, opacity: 1 - titleOut }}>
           <Title offset={PAGE_UP * up - scroll} lineStyle={(i) => slideText(t, L.titleIn[i])} />
         </div>

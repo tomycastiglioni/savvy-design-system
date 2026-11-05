@@ -5,6 +5,7 @@ import { Delivery } from "./delivery/Delivery";
 import { Launch } from "./launch/Launch";
 import { DURATION } from "./launch/timeline";
 import { Launch30 } from "./launch30/Launch30";
+import { Launch30Peek } from "./launch30/Peek";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
 import { DURATION as LAUNCH30_DURATION } from "./launch30/timeline";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
@@ -66,6 +67,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Launch30"
         component={Launch30}
+        durationInFrames={LAUNCH30_DURATION}
+        fps={60}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Launch30Peek"
+        component={Launch30Peek}
         durationInFrames={LAUNCH30_DURATION}
         fps={60}
         width={1920}

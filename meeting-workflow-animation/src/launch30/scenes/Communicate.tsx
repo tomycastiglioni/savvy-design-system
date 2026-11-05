@@ -19,6 +19,7 @@ import {
 import { RECAP, RecapContent } from "../frames/Deliver";
 import { AGENDA_ITEM } from "../frames/Prep";
 import { CARD_SHADOW, EASE_IN_OUT, EASE_MORPH, EASE_OUT } from "../theme";
+import { usePeek } from "../peek";
 import { L, useT } from "../timeline";
 
 const PHONE_REST: Rect = { x: 1340, y: 190, w: 340, h: 700 };
@@ -64,6 +65,7 @@ const Profile: React.FC<{ readonly t: number; readonly gone: number }> = ({ t, g
 // records the meeting, comes up close, and grows into the recap.
 export const CommunicateScene: React.FC = () => {
   const t = useT();
+  const peek = usePeek();
   if (t < L.lift[0] || t >= L.toRecap[1]) return null;
 
   const lift = ramp(t, ...L.lift, EASE_MORPH);
@@ -102,9 +104,9 @@ export const CommunicateScene: React.FC = () => {
 
       {t >= L.profileIn[0] && planGone < 1 ? <Profile t={t} gone={planGone} /> : null}
 
-      {t >= L.presentText && t < L.presentOut + 0.5 ? <Headline {...PRESENT_HEADLINE} lineStyle={headlineMotion(t, L.presentText, L.presentOut)} /> : null}
-      {t >= L.bubble && t < L.presentOut + 0.4 ? <Question t={t} /> : null}
-      {t >= L.captureText && t < L.captureOut + 0.5 ? <Headline {...CAPTURE_HEADLINE} lineStyle={headlineMotion(t, L.captureText, L.captureOut)} /> : null}
+      {!peek && t >= L.presentText && t < L.presentOut + 0.5 ? <Headline {...PRESENT_HEADLINE} lineStyle={headlineMotion(t, L.presentText, L.presentOut)} /> : null}
+      {!peek && t >= L.bubble && t < L.presentOut + 0.4 ? <Question t={t} /> : null}
+      {!peek && t >= L.captureText && t < L.captureOut + 0.5 ? <Headline {...CAPTURE_HEADLINE} lineStyle={headlineMotion(t, L.captureText, L.captureOut)} /> : null}
 
       {t >= L.phoneIn[0] ? (
         <ScreenPhone
