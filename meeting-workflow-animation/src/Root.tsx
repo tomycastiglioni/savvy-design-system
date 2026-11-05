@@ -1,9 +1,10 @@
 import "./shared/fonts";
-import { Composition, Folder } from "remotion";
+import { Composition, Folder, Still } from "remotion";
 import { Capture } from "./capture/Capture";
 import { Delivery } from "./delivery/Delivery";
 import { Launch } from "./launch/Launch";
 import { DURATION } from "./launch/timeline";
+import { CLIENT_LIST_SIZE, ClientListStill } from "./launch30/frames/Clients";
 import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
@@ -79,6 +80,12 @@ export const RemotionRoot: React.FC = () => {
         fps={60}
         width={1920}
         height={1080}
+      />
+      <Still
+        id="Launch30ClientList"
+        component={ClientListStill}
+        width={CLIENT_LIST_SIZE.w}
+        height={CLIENT_LIST_SIZE.h}
       />
       <Composition
         id="Launch30Storyboard"

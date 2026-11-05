@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 import React from "react";
 import { Bg, CenteredLine, Cursor, HEAD } from "../components/Bits";
 import { lerp, Rect } from "../components/Motion";
-import { C, CY } from "../theme";
+import { C, CY, FONT } from "../theme";
 
 // The opening: "Deliver more for your clients with Savvy Intelligence", then the
 // advisor's whole client list (the CRM), scrolled to Allison & Frank Chan,
@@ -111,6 +111,31 @@ export const Title: React.FC<{ readonly offset?: number; readonly lineStyle?: (i
       </CenteredLine>
     ))}
   </>
+);
+
+// The client list on its own, for a transparent still: header and all rows,
+// no background and no scroll fade. CLIENT_LIST_SIZE is the canvas it needs
+// (LIST.w plus room for the row shadows).
+const PAD = 40;
+export const CLIENT_LIST_SIZE = {
+  w: LIST.w + 2 * PAD,
+  h: PAD + (LIST.top - LIST.header) + CLIENTS.length * (LIST.rowH + LIST.gap) - LIST.gap + PAD,
+};
+export const ClientListStill: React.FC = () => (
+  <div style={{ position: "absolute", inset: 0, fontFamily: FONT.sans }}>
+    <style>{"*{box-sizing:border-box;}"}</style>
+    <div style={{ position: "absolute", left: PAD, width: LIST.w, top: PAD, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ fontSize: 24, fontWeight: 600, color: C.ink }}>Clients</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 18, color: C.body }}>
+        View all <ChevronRight size={20} strokeWidth={2} />
+      </div>
+    </div>
+    {CLIENTS.map((client, i) => (
+      <div key={client.name} style={rowCard({ x: PAD, y: PAD + (LIST.top - LIST.header) + i * (LIST.rowH + LIST.gap), w: LIST.w, h: LIST.rowH })}>
+        <ClientRowContent client={client} />
+      </div>
+    ))}
+  </div>
 );
 
 // Where the cursor rests on the selected row.
