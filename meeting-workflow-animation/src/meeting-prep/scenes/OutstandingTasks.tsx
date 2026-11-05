@@ -18,7 +18,7 @@ type Task = {
 const TASKS: Task[] = [
   { title: "Pre-Review Check-In", owner: "Heather Lee", status: "In progress" },
   { title: "Raise cash for advisory fee", owner: "Savvy Client Services (Ops)", team: true, status: "Not started" },
-  { title: "Collect 2025 tax return", owner: "Heather Lee", due: "Due Aug 28", status: "In progress" },
+  { title: "Collect last year's tax return", owner: "Heather Lee", due: "Due Aug 28", status: "In progress" },
   { title: "Maximize 401(k) contributions", owner: "Heather Lee", due: "Due Oct 28", status: "In progress" },
   { title: "Joint account de-risking proposal", owner: "Heather Lee", status: "Not started" },
   { title: "Open new account", owner: "Savvy Client Services (Ops)", team: true, status: "Not started" },

@@ -135,7 +135,7 @@ export const Home: React.FC = () => {
             Meeting prep document created for Allison &amp; Frank Chan household
           </div>
           <div style={{ position: "absolute", left: 105, top: 57, fontSize: 17, color: C.muted, whiteSpace: "nowrap" }}>
-            Quarterly Review · Friday, Jul 31, 2026 9:00 AM ET · Allison &amp; Frank Chan
+            Quarterly Review · Friday, Jul 31, 9:00 AM ET · Allison &amp; Frank Chan
           </div>
 
           {/* The button the cursor clicks; the PrepDocument box takes over at T.prepDocStart. */}

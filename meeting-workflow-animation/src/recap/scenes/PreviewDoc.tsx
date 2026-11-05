@@ -69,7 +69,7 @@ export const PreviewDoc: React.FC<{ readonly serifSwitch?: boolean; readonly log
             <Heading p={serif} size={27} lh={38}>
               Quarterly Review
             </Heading>
-            <div style={{ fontSize: 13.5, color: C.muted, marginTop: 6 }}>{MEETING.household} household · Prepared Aug 1, 2026</div>
+            <div style={{ fontSize: 13.5, color: C.muted, marginTop: 6 }}>{MEETING.household} household · Prepared Aug 1</div>
           </Reveal>
           <Reveal at={at(0.06)} style={{ height: 2, background: "#3B4252", margin: "20px 0 22px" }} />
 

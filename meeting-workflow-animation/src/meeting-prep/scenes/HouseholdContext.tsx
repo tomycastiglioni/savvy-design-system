@@ -27,7 +27,7 @@ const Bullet: React.FC<{ readonly children: React.ReactNode }> = ({ children }) 
 const CHANGES = [
   "Options Overlay strategy in progress across the Trust and Joint accounts.",
   "401(k) contributions remain well below the limit for both spouses.",
-  "2025 tax return requested from the client, not yet received.",
+  "Last year's tax return requested from the client, not yet received.",
 ];
 
 // Mounted at T.contextStart; exits when the agenda tab is clicked.

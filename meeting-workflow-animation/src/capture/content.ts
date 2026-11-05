@@ -3,7 +3,7 @@
 export const MEETING = {
   household: "Allison & Frank Chan",
   title: "Quarterly Review recap",
-  date: "Jul 31, 2026",
+  date: "Jul 31",
   attendees: "Heather Lee, Allison Chan, Frank Chan",
 };
 

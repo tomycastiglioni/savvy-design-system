@@ -34,7 +34,7 @@ export const StickyHeader: React.FC = () => {
       }}
     >
       <div style={{ position: "absolute", left: 52, top: 21, fontSize: 16, fontWeight: 600, color: C.ink }}>
-        Quarterly Review recap <span style={{ fontWeight: 400, color: C.muted }}>· Jul 31, 2026</span>
+        Quarterly Review recap <span style={{ fontWeight: 400, color: C.muted }}>· Jul 31</span>
       </div>
 
       <div style={{ position: "absolute", ...local(CREATE_BTN) }}>

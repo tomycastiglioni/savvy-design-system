@@ -20,7 +20,7 @@ const AGENDA: Line[] = [
   { kind: "bullet", text: "Revisit long-term goals and retirement timing." },
   { kind: "bullet", text: "Talk through cash flow across the two mortgages." },
   { kind: "heading", text: "4. Tax & accounts" },
-  { kind: "bullet", text: "Confirm the 2025 tax return upload and 401(k) contributions." },
+  { kind: "bullet", text: "Confirm last year's tax return upload and 401(k) contributions." },
 ];
 
 // Mounted at T.agendaStart; exits when the tasks tab is clicked.
