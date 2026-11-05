@@ -16,9 +16,9 @@ export const PAGE_UP = 143 - TITLE_CAP;
 
 export type Client = { readonly name: string; readonly members: string; readonly aum: string };
 export const CLIENTS: readonly Client[] = [
-  { name: "Adeel Mallick", members: "Adeel Mallick", aum: "$430K" },
-  { name: "Alan Gong", members: "Alan Gong", aum: "$567K" },
-  { name: "Alice Yu & Jackie Byun", members: "Alice Yu & Jackie Byun", aum: "$4.54M" },
+  { name: "Adeel Haddad", members: "Adeel Haddad", aum: "$430K" },
+  { name: "Alan Whitfield", members: "Alan Whitfield", aum: "$567K" },
+  { name: "Alice Moreno & Jackie Lin", members: "Alice Moreno & Jackie Lin", aum: "$4.54M" },
   { name: "Allison & Frank Chan", members: "Allison Chan & Frank Chan", aum: "$9.36M" },
   { name: "Chris Smith", members: "Chris Smith", aum: "$322K" },
   { name: "Dan Parsons", members: "Dan Parsons", aum: "$686K" },

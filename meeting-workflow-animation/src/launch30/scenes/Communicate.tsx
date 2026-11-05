@@ -10,6 +10,8 @@ import {
   PRESENT_HEADLINE,
   PresentationContent,
   PhoneScreen,
+  PROFILE,
+  ProfileCardContent,
   QuestionBubble,
   Scaled,
   ScreenPhone,
@@ -35,6 +37,25 @@ const Question: React.FC<{ readonly t: number }> = ({ t }) => {
       typed={ramp(t, ...L.typing, Easing.linear)}
       style={{ opacity: shown * (1 - out), scale: 0.85 + 0.15 * pop, transformOrigin: "0 0", translate: `0px ${(1 - shown) * 10 - out * 10}px` }}
     />
+  );
+};
+
+// The client's CRM profile rises in beside the phone; its meeting notes fill
+// in, "Syncing" turns to "Synced", and it leaves with the presentation.
+const Profile: React.FC<{ readonly t: number; readonly gone: number }> = ({ t, gone }) => {
+  const rise = ramp(t, ...L.profileIn, EASE_OUT);
+  return (
+    <Card
+      style={{
+        ...rectStyle(PROFILE),
+        borderRadius: 18,
+        opacity: ramp(t, L.profileIn[0], L.profileIn[0] + 0.25, Easing.linear) * (1 - gone),
+        translate: `0px ${(1 - rise) * 40}px`,
+        filter: gone > 0 ? `blur(${gone * 6}px)` : undefined,
+      }}
+    >
+      <ProfileCardContent notes={ramp(t, ...L.notes, Easing.linear)} synced={ramp(t, L.synced, L.synced + 0.3, Easing.linear)} spin={(t - L.profileIn[0]) * 300} />
+    </Card>
   );
 };
 
@@ -78,6 +99,8 @@ export const CommunicateScene: React.FC = () => {
           </div>
         </Card>
       ) : null}
+
+      {t >= L.profileIn[0] && planGone < 1 ? <Profile t={t} gone={planGone} /> : null}
 
       {t >= L.presentText && t < L.presentOut + 0.5 ? <Headline {...PRESENT_HEADLINE} lineStyle={headlineMotion(t, L.presentText, L.presentOut)} /> : null}
       {t >= L.bubble && t < L.presentOut + 0.4 ? <Question t={t} /> : null}

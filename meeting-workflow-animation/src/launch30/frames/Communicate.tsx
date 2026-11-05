@@ -179,11 +179,10 @@ export const PresentationContent: React.FC<{
 
 // The phone's screen content, laid out at 340×700. `writing` swaps the
 // recording for "Writing your recap": one leaves before the other arrives.
-export const PhoneScreen: React.FC<{ readonly writing?: number; readonly timer?: string; readonly spin?: number; readonly sync?: number }> = ({
+export const PhoneScreen: React.FC<{ readonly writing?: number; readonly timer?: string; readonly spin?: number }> = ({
   writing = 0,
   timer = "32:05",
   spin = 0,
-  sync = 0,
 }) => (
   <>
     {writing < 0.5 ? (
@@ -198,7 +197,6 @@ export const PhoneScreen: React.FC<{ readonly writing?: number; readonly timer?:
         <div style={{ marginTop: 22, scale: 0.82 }}>
           <HouseholdChip meeting={false} />
         </div>
-        {sync > 0 ? <SyncPill spin={spin} style={{ marginTop: 18, opacity: sync, translate: `0px ${(1 - sync) * 8}px` }} /> : null}
         <div
           style={{
             position: "absolute",
@@ -233,29 +231,8 @@ export const PhoneScreen: React.FC<{ readonly writing?: number; readonly timer?:
   </>
 );
 
-// Option A at 0:14: inside the recording app, the notes stream to the CRM.
-export const SyncPill: React.FC<{ readonly spin?: number; readonly style?: React.CSSProperties }> = ({ spin = 0, style }) => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      padding: "8px 14px",
-      borderRadius: 999,
-      background: C.green50,
-      color: C.green,
-      fontSize: 15,
-      fontWeight: 600,
-      whiteSpace: "nowrap",
-      ...style,
-    }}
-  >
-    <RefreshCw size={16} strokeWidth={2.4} style={{ rotate: `${spin}deg` }} /> Syncing notes to client profile
-  </div>
-);
-
-// Option B at 0:14: the client's CRM profile beside the phone, its meeting
-// notes filling in live. `notes` (0–1) writes the lines; `synced` (0–1) turns
+// 0:15: the client's CRM profile beside the phone, its meeting notes filling
+// in live as the meeting records. `notes` (0–1) writes the lines; `synced` (0–1) turns
 // "Syncing" into "Synced".
 export const PROFILE: Rect = { x: 796, y: 662, w: 516, h: 238 };
 export const ProfileCardContent: React.FC<{ readonly notes?: number; readonly synced?: number; readonly spin?: number }> = ({ notes = 1, synced = 0, spin = 0 }) => {
@@ -296,6 +273,7 @@ export const ProfileCardContent: React.FC<{ readonly notes?: number; readonly sy
           display: "flex",
           alignItems: "center",
           gap: 7,
+          scale: 1 + 0.12 * Math.sin(Math.min(1, synced) * Math.PI),
         }}
       >
         {synced < 0.5 ? <RefreshCw size={15} strokeWidth={2.4} style={{ rotate: `${spin}deg` }} /> : <Check size={16} strokeWidth={2.8} />}
@@ -335,9 +313,9 @@ export const Scaled: React.FC<{ readonly w: number; readonly opacity?: number; r
   </div>
 );
 
-const RecordingPhone: React.FC<{ readonly x: number; readonly y: number; readonly writing?: boolean; readonly sync?: number }> = ({ x, y, writing = false, sync = 0 }) => (
+const RecordingPhone: React.FC<{ readonly x: number; readonly y: number; readonly writing?: boolean }> = ({ x, y, writing = false }) => (
   <ScreenPhone screen={{ x, y, w: PHONE_SCREEN.w, h: PHONE_SCREEN.h }}>
-    <PhoneScreen writing={writing ? 1 : 0} sync={sync} spin={sync ? 40 : 0} />
+    <PhoneScreen writing={writing ? 1 : 0} />
   </ScreenPhone>
 );
 
@@ -383,9 +361,9 @@ export const F07WhatIf: React.FC = () => (
   </>
 );
 
-// F8 · 0:14.5 — the same meeting, recorded: presentation behind, phone in front.
-// `sync` / `profile` show the two options for the CRM sync indicator.
-export const CaptureFrame: React.FC<{ readonly sync?: boolean; readonly profile?: boolean }> = ({ sync = false, profile = false }) => (
+// F8 · 0:15 — the same meeting, recorded: presentation behind, phone in front,
+// the notes syncing to the client's profile in the CRM.
+export const F08Capture: React.FC = () => (
   <>
     <Bg bg={P.bg} />
     <Tracker step={1} />
@@ -403,15 +381,12 @@ export const CaptureFrame: React.FC<{ readonly sync?: boolean; readonly profile?
     >
       <PresentationContent drag={1} />
     </Card>
-    {profile ? (
-      <Card style={{ left: PROFILE.x, top: PROFILE.y, width: PROFILE.w, height: PROFILE.h, borderRadius: 18 }}>
-        <ProfileCardContent notes={0.8} spin={40} />
-      </Card>
-    ) : null}
-    <RecordingPhone x={1340} y={190} sync={sync ? 1 : 0} />
+    <Card style={{ left: PROFILE.x, top: PROFILE.y, width: PROFILE.w, height: PROFILE.h, borderRadius: 18 }}>
+      <ProfileCardContent notes={0.8} spin={40} />
+    </Card>
+    <RecordingPhone x={1340} y={190} />
   </>
 );
-export const F08Capture: React.FC = () => <CaptureFrame />;
 
 // F9 · 0:17 — hand-off: the recording becomes the recap. The phone comes up
 // close, running off the bottom of the frame; blue sweeps in.

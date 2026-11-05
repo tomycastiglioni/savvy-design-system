@@ -40,6 +40,9 @@ export const L = {
   phoneIn: [14.1, 14.75] as const,
   captureText: 14.3,
   captureOut: 16.25,
+  profileIn: [14.85, 15.3] as const, // the client's CRM profile, beside the phone
+  notes: [15.1, 15.9] as const, // its meeting notes fill in
+  synced: 15.95,
   closeUp: [16.4, 17.0] as const,
   writing: [16.65, 16.95] as const,
   sweep2: [16.7, 17.7] as const, // blue sweeps in
@@ -49,19 +52,20 @@ export const L = {
   deliverText: 17.9,
   toDoc: [20.0, 20.6] as const, // recap → client document
   emailIn: [20.45, 21.0] as const,
-  write: [21.0, 21.7] as const,
-  sendClick: 22.15,
-  toSent: [22.25, 22.8] as const,
-  sentCheck: [22.65, 23.0] as const,
-  results: [22.95, 23.15, 23.35] as const,
-  deliverOut: 23.8,
-  trackerOut: 24.25,
+  write: [20.9, 21.5] as const,
+  sendClick: 21.7,
+  toSent: [21.8, 22.35] as const, // the email folds into the "Email sent" banner
+  sentCheck: [22.2, 22.55] as const,
+  teamIn: [22.45, 22.95] as const, // "Sent to your team" rises in under it
+  teamRows: [22.7, 22.85, 23.0] as const,
+  deliverOut: 24.1,
+  trackerOut: 24.55,
   // Close
-  words: [24.3, 24.6, 24.9] as const,
-  wordsOut: 25.85,
-  tagline: [26.3, 26.65] as const,
-  taglineOut: 27.8,
-  logoIn: 28.25,
+  words: [24.6, 24.9, 25.2] as const,
+  wordsOut: 26.15,
+  tagline: [26.6, 26.95] as const,
+  taglineOut: 28.0,
+  logoIn: 28.45,
   end: 30,
 };
 

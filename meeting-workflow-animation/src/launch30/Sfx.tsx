@@ -7,8 +7,9 @@ import { L } from "./timeline";
 // v2, trimmed, filtered and peak-normalized; levels are set here): a short
 // swish on text reveals, a rounded whoosh on the big moves, a two-note chime
 // when the phone starts recording and a rising shimmer as it starts writing the
-// recap. The logo end card is silent. The question bubble's pop is a
-// MobilePrep pluck; clicks and the sent chime come from the launch kit
+// recap. The logo end card is silent. The question bubble, the CRM sync and
+// the team's tasks pop with MobilePrep plucks; clicks and the sent chime come
+// from the launch kit
 // (public/audio/launch/).
 const SOUNDS = {
   swish: { src: "launch30/swish", dur: 0.6 },
@@ -16,6 +17,8 @@ const SOUNDS = {
   record: { src: "launch30/record", dur: 1.0 },
   shimmer: { src: "launch30/shimmer", dur: 1.47 },
   pop: { src: "mobile-prep/row-3", dur: 0.45 },
+  pop1: { src: "mobile-prep/row-1", dur: 0.45 },
+  pop2: { src: "mobile-prep/row-2", dur: 0.45 },
   click: { src: "launch/click", dur: 0.15 },
   success: { src: "launch/success", dur: 1.6 },
 } as const;
@@ -42,12 +45,20 @@ const CUES: readonly Cue[] = [
   whoosh(L.phoneIn[0] + 0.3), // the phone slides in
   whoosh(L.toRecap[0] + 0.3), // phone → recap
   whoosh(L.toDoc[0] + 0.25), // recap → document and email
-  whoosh(L.toSent[0] + 0.25), // email → "Email sent"
+  whoosh(L.toSent[0] + 0.25), // email → "Email sent" banner
   // The phone: recording starts, then it writes the recap
   { sound: "record", at: L.phoneIn[1] - 0.2, volume: 0.08 },
   { sound: "shimmer", at: L.writing[1] - 0.77, volume: 0.14 },
   // The client's question arrives in the meeting
   { sound: "pop", at: L.bubble, volume: 0.12 },
+  // The notes sync to the client's CRM profile
+  swish(L.profileIn[0]),
+  { sound: "pop2", at: L.synced, volume: 0.08 },
+  // The tasks go to the team, one person at a time
+  swish(L.teamIn[0]),
+  { sound: "pop1", at: L.teamRows[0], volume: 0.06 },
+  { sound: "pop2", at: L.teamRows[1], volume: 0.06 },
+  { sound: "pop", at: L.teamRows[2], volume: 0.06 },
   // Where the advisor acts
   click(L.pickClick),
   click(L.reviewClick),

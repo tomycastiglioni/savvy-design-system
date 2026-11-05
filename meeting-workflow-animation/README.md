@@ -73,9 +73,9 @@ Dave". Option A of `MobileRecapOptions` with option C's header; beats in
 Dec 10 date and the 42 min length are placeholders).
 
 `Launch30` is the 30 s launch re-cut (1920×1080, 60 fps, with sound): one
-client meeting followed through Prep → Meet → Deliver. It opens on "Run better
-meetings with Savvy Intelligence", scrolls into the advisor's client list and
-picks Allison & Frank Chan, whose row becomes the prep card. Beats are in
+client meeting followed through Prep → Meet → Deliver. It opens on "Deliver
+more for your clients with Savvy Intelligence", scrolls into the advisor's
+client list and picks Allison & Frank Chan, whose row becomes the prep card. Beats are in
 `src/launch30/timeline.ts`; scenes in `src/launch30/scenes/` reuse the
 storyboard frames' pieces, so the video and the stills stay in sync. The
 tracker's active step has a ring that fills with the time left in its phase
@@ -83,9 +83,14 @@ tracker's active step has a ring that fills with the time left in its phase
 "Retirement plan" in the agenda, which lifts out and is presented; its
 projection draws in from left to right as it lands. The client then asks
 "What if we save $15K more a year?" in a chat bubble that writes itself out,
-and the contributions slider answers it live. Sound cues are in
+and the contributions slider answers it live. While the phone records, the
+client's CRM profile sits beside it with its meeting notes filling in
+("Syncing" → "Synced"). After Send, the email folds into an "Email sent"
+banner and a "Sent to your team" card hands each approved task to one person
+(placeholder names; photos in `public/launch30/team/`). Sound cues are in
 `src/launch30/Sfx.tsx`, kept soft and warm: a short swish on text reveals, a
-rounded whoosh on the big moves, a pluck as the question arrives, a two-note
+rounded whoosh on the big moves, plucks as the question arrives, as the notes
+sync and as each task reaches the team, a two-note
 chime when the phone starts recording, a rising shimmer as it starts writing
 the recap (`public/audio/launch30/`, ElevenLabs text to sound, trimmed,
 filtered and peak-normalized; levels are set in `Sfx.tsx`), and the launch
