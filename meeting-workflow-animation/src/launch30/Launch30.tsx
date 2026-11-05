@@ -9,6 +9,7 @@ import { CommunicateScene } from "./scenes/Communicate";
 import { DeliverScene } from "./scenes/Deliver";
 import { Intro } from "./scenes/Intro";
 import { PrepScene } from "./scenes/Prep";
+import { Launch30Music } from "./Music";
 import { Launch30Sfx } from "./Sfx";
 import { C, FONT } from "./theme";
 
@@ -18,7 +19,8 @@ import { C, FONT } from "./theme";
 //
 // The voiceover is Jeremy B. (ElevenLabs v4), already timed to the beats and
 // loudness-normalized to −16 LUFS; it plays at half level against the sound
-// effects, and the export adds 4 dB with a limiter on top (about −15.5 LUFS).
+// effects, and the music (Music.tsx) dips under it. The export adds 4 dB with
+// a limiter on top.
 export const Launch30: React.FC = () => {
   useState(loadDiatype);
   return (
@@ -32,6 +34,7 @@ export const Launch30: React.FC = () => {
       <CloseScene />
       <LiveTracker />
       <Launch30Cursor />
+      <Launch30Music />
       <Launch30Sfx />
       <Audio src={staticFile("audio/launch30/vo-jeremy.mp3")} volume={0.5} />
     </AbsoluteFill>

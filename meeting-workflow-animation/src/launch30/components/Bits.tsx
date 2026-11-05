@@ -83,6 +83,10 @@ export const lineTop = (capTop: number, size: number, lh: number) => capTop - lh
 export const HEAD = { size: 79.6, lh: 79.6 * 1.1, tracking: "-0.015em" };
 const EYEBROW = { size: 21, lh: 24, gap: 88 };
 
+// Height of a headline block, from the eyebrow's cap top to the last line's
+// baseline, for `lines` lines.
+export const headlineBlock = (lines: number) => EYEBROW.gap + (lines - 1) * HEAD.lh + 0.7 * HEAD.size;
+
 // Chapter headline: eyebrow (the workflow) and two lines of Diatype, centred
 // on `cy`, in the left column. `lineStyle(i)` animates each line (0 is the
 // eyebrow); static by default.
@@ -94,7 +98,7 @@ export const Headline: React.FC<{
   readonly cy?: number;
   readonly lineStyle?: (i: number) => React.CSSProperties;
 }> = ({ eyebrow, color, lines, x = 174, cy = CY, lineStyle = () => ({}) }) => {
-  const block = EYEBROW.gap + (lines.length - 1) * HEAD.lh + 0.7 * HEAD.size;
+  const block = headlineBlock(lines.length);
   const top0 = cy - block / 2;
   return (
     <div style={{ position: "absolute", inset: 0, fontFamily: DIATYPE, whiteSpace: "nowrap" }}>

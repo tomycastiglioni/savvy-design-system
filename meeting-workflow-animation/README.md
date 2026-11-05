@@ -94,7 +94,12 @@ sync and as each task reaches the team, a two-note
 chime when the phone starts recording, a rising shimmer as it starts writing
 the recap (`public/audio/launch30/`, ElevenLabs text to sound, trimmed,
 filtered and peak-normalized; levels are set in `Sfx.tsx`), and the launch
-kit's click and sent chime. The logo end card is silent.
+kit's click and sent chime. The logo end card has no sound effect.
+Jeremy B.'s voiceover (ElevenLabs v4, `public/audio/launch30/vo-jeremy.mp3`,
+timed to the beats) and the licensed track "Slaptastic" (Steven Beddall,
+`src/launch30/Music.tsx`) play under them: the music dips under each VO line,
+its break falls on the meeting capture and its final hit on the logo. Export
+with 4 dB of gain and a limiter (`-af "volume=4dB,alimiter=limit=0.89:level=false"`).
 
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
 in two steps and F13 in three) is the storyboard for the 30 s re-cut: the
@@ -143,6 +148,11 @@ switch, no firm logo, smaller "Email sent") through props on the shared scenes. 
 **Fonts:** headlines use ABC Diatype (Dinamo), which Savvy licenses. It is not
 committed because this repo is public: put `ABCDiatype-Regular.otf` and
 `ABCDiatype-Bold.otf` in `public/fonts/` before rendering `Launch`.
+
+**Music:** `Launch30` uses "Slaptastic" (Steven Beddall, Creative Cut · Beat),
+which Savvy licenses, so it is not committed either. Build the cut with
+`scripts/launch30-music.sh <original.mp3>`; it writes
+`public/audio/launch30/music-slaptastic.mp3`.
 
 **Sound:** effects in `public/audio/launch/`, trimmed and peak-normalized.
 `click` and `whoosh` come from ElevenLabs (text to sound); `send`, `chime`,

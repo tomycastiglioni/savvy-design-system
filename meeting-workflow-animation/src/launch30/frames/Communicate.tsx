@@ -3,7 +3,7 @@ import React from "react";
 import { Phone } from "../../capture/components/Phone";
 import { Waveform } from "../../capture/components/Waveform";
 import { AIIcon } from "../../shared/components/AIIcon";
-import { Bg, BgSweep, Card, Cursor, Headline, HouseholdChip, Label } from "../components/Bits";
+import { Bg, BgSweep, Card, Cursor, Headline, headlineBlock, HouseholdChip, Label } from "../components/Bits";
 import { AbstractChart } from "../components/Chart";
 import { lerp, Rect } from "../components/Motion";
 import { Tracker } from "../components/Tracker";
@@ -12,7 +12,18 @@ import { C, centerTop, CY, FONT, phase } from "../theme";
 const P = phase("communicate");
 const RED = "#AD3A35";
 
-export const PRESENT_HEADLINE = { eyebrow: "Live presentation", color: P.accent, lines: ["Explore “what if?”", "scenarios together"] };
+// At 0:10–0:14 the eyebrow, the headline and the client's question under it
+// are centred together on the middle line.
+const BUBBLE_GAP = 92; // headline baseline → bubble top
+const BUBBLE_H = 88;
+const PRESENT_BLOCK = headlineBlock(2);
+const PRESENT_TOP = CY - (PRESENT_BLOCK + BUBBLE_GAP + BUBBLE_H) / 2;
+export const PRESENT_HEADLINE = {
+  eyebrow: "Live presentation",
+  color: P.accent,
+  lines: ["Explore “what if?”", "scenarios together"],
+  cy: PRESENT_TOP + PRESENT_BLOCK / 2,
+};
 export const CAPTURE_HEADLINE = { eyebrow: "Meeting capture", color: P.accent, lines: ["Give your", "full attention"] };
 // The plan as it lifts out of the prep, and as it is presented.
 export const LIFT: Rect = { x: 1040, y: centerTop(450), w: 720, h: 450 };
@@ -70,11 +81,11 @@ const Slider: React.FC<{ readonly label: string; readonly value: string; readonl
   </div>
 );
 
-// The client's question, asked in the meeting: a chat bubble in the headline
-// column, level with the sliders it changes. `typed` (0–1) writes the question
+// The client's question, asked in the meeting: a chat bubble under the
+// headline, centred with it. `typed` (0–1) writes the question
 // out; the bubble keeps its final width so nothing reflows.
 export const QUESTION = { who: "Frank Chan", initials: "FC", text: "What if we save $15K more a year?" };
-export const BUBBLE = { x: 174, y: 748 };
+export const BUBBLE = { x: 174, y: PRESENT_TOP + PRESENT_BLOCK + BUBBLE_GAP };
 export const QuestionBubble: React.FC<{ readonly typed?: number; readonly style?: React.CSSProperties }> = ({ typed = 1, style }) => {
   const n = Math.round(typed * QUESTION.text.length);
   return (
