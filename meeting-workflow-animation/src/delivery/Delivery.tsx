@@ -9,12 +9,13 @@ import { T } from "./timeline";
 
 // Workflow 02 · Delivery — live charts and what-ifs.
 // Graphs (1 + 1 added) → present Retirement projection → drag what-if sliders.
-// `hideCursor` renders clean stills (thumbnails).
-export const Delivery: React.FC<{ readonly hideCursor?: boolean }> = ({ hideCursor = false }) => {
+// `hideCursor` renders clean stills (thumbnails); `transparent` drops the
+// background (for the ads).
+export const Delivery: React.FC<{ readonly hideCursor?: boolean; readonly transparent?: boolean }> = ({ hideCursor = false, transparent = false }) => {
   const { fps } = useVideoConfig();
 
   return (
-    <AbsoluteFill style={{ background: bgGradient("mint"), fontFamily: FONT.sans, color: C.ink }}>
+    <AbsoluteFill style={{ background: transparent ? undefined : bgGradient("mint"), fontFamily: FONT.sans, color: C.ink }}>
       <style>{"*{box-sizing:border-box;}"}</style>
 
       <Sequence name="Graphs grid" durationInFrames={Math.round((T.presentStart + 0.5) * fps)}>

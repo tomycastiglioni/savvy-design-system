@@ -1,4 +1,5 @@
 import "./shared/fonts";
+import { AD, adFrames, ADS, MeetingStepAd } from "./ads/MeetingStepAd";
 import { Composition, Folder, Still } from "remotion";
 import { Capture } from "./capture/Capture";
 import { Delivery } from "./delivery/Delivery";
@@ -56,6 +57,18 @@ export const RemotionRoot: React.FC = () => {
           width={1300}
           height={900}
         />
+      </Folder>
+      <Folder name="Ads-4x5">
+        {(
+          [
+            ["AdPrep4x5", ADS.prep, 12],
+            ["AdMeet4x5", ADS.meet, 12],
+            ["AdCapture4x5", ADS.capture, 12],
+            ["AdDeliver4x5", ADS.deliver, 16],
+          ] as const
+        ).map(([id, spec, seconds]) => (
+          <Composition key={id} id={id} component={MeetingStepAd} defaultProps={spec} durationInFrames={adFrames(spec, seconds)} fps={60} width={AD.w} height={AD.h} />
+        ))}
       </Folder>
       <Composition
         id="Launch"

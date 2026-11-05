@@ -13,12 +13,13 @@ import { T } from "./timeline";
 // Workflow 01 · Meeting prep — "Prepared before you ask".
 // Home "For your review" → Loading household → Household context →
 // Meeting agenda → Outstanding tasks.
-// `hideCursor` renders clean stills (thumbnails).
-export const MeetingPrep: React.FC<{ readonly hideCursor?: boolean }> = ({ hideCursor = false }) => {
+// `hideCursor` renders clean stills (thumbnails); `transparent` drops the
+// background (for the ads).
+export const MeetingPrep: React.FC<{ readonly hideCursor?: boolean; readonly transparent?: boolean }> = ({ hideCursor = false, transparent = false }) => {
   const { fps } = useVideoConfig();
 
   return (
-    <AbsoluteFill style={{ background: bgGradient("cream"), fontFamily: FONT.sans, color: C.ink }}>
+    <AbsoluteFill style={{ background: transparent ? undefined : bgGradient("cream"), fontFamily: FONT.sans, color: C.ink }}>
       <style>{"*{box-sizing:border-box;}"}</style>
 
       <Sequence name="Home" durationInFrames={Math.round(T.homeEnd * fps)}>

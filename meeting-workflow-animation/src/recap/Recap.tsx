@@ -11,9 +11,10 @@ import { T } from "./timeline";
 // Workflow 04 · Recap & follow-through — "The meeting ends. The follow-up doesn't wait."
 // Continues 03's recap: topics → suggested tasks → client document (edit,
 // save) → draft client email in the advisor's writing style → sent.
-// `hideCursor` renders clean stills (thumbnails).
-export const Recap: React.FC<{ readonly hideCursor?: boolean }> = ({ hideCursor = false }) => (
-  <AbsoluteFill style={{ background: bgGradient("blue"), fontFamily: FONT.sans, color: C.ink }}>
+// `hideCursor` renders clean stills (thumbnails); `transparent` drops the
+// background (for the ads).
+export const Recap: React.FC<{ readonly hideCursor?: boolean; readonly transparent?: boolean }> = ({ hideCursor = false, transparent = false }) => (
+  <AbsoluteFill style={{ background: transparent ? undefined : bgGradient("blue"), fontFamily: FONT.sans, color: C.ink }}>
     <style>{"*{box-sizing:border-box;}"}</style>
     <RecapPage />
     <EditorPanel />

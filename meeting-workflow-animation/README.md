@@ -110,6 +110,17 @@ speed, to the phone landing) and `3colors` (beige → green → blue, 1.425×, t
 the recap). Both skip stretches where nothing moves and crossfade into their
 own first frame, so they loop without a seam.
 
+`AdPrep4x5`, `AdMeet4x5`, `AdCapture4x5` and `AdDeliver4x5` (1080×1350,
+60 fps, no sound) are the Innovation Campaign ads "01 — Meeting steps (4x5)
+v3" from Figma, animated: the v3 layout (Savvy logo, ABC Diatype Light
+headline, body copy, the step's gradient) with that step's workflow video
+playing under it, background dropped, running off the frame like the v2
+graphics (`src/ads/MeetingStepAd.tsx`, copy and sizes as in Figma). Prep, Meet
+and Capture start 0.6 s into their workflow so the first frame already shows
+the UI; Meet and Capture are scaled so the what-if controls and the desktop
+recap stay in frame. Render with
+`npx remotion render AdPrep4x5 out/ads/ad-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
+
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
 in two steps and F13 in three) is the storyboard for the 30 s re-cut: the
 client list, then one client meeting followed through Prep → Meet → Deliver,
@@ -157,6 +168,8 @@ switch, no firm logo, smaller "Email sent") through props on the shared scenes. 
 **Fonts:** headlines use ABC Diatype (Dinamo), which Savvy licenses. It is not
 committed because this repo is public: put `ABCDiatype-Regular.otf` and
 `ABCDiatype-Bold.otf` in `public/fonts/` before rendering `Launch`.
+
+The ads also need `ABCDiatype-Light.otf` in `public/fonts/` (same license).
 
 **Music:** `Launch30` uses "Slaptastic" (Steven Beddall, Creative Cut · Beat),
 which Savvy licenses, so it is not committed either. Build the cut with
