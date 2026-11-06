@@ -36,7 +36,7 @@ const prepLayout = (lay: AdLayout) => {
   const TOP = lay.top;
   // Home scale: 1.05× in 4:5; in 1:1 and 9:16 the home fills the room between
   // the graphic line and the safe bottom (60 px margin in 1:1).
-  const K = byFormat(lay.format, { "4x5": 1.05, "1x1": 0.92, "9x16": 1.3 });
+  const K = byFormat(lay.format, { "4x5": 1.05, "1x1": (lay.safeBottom - 60 - TOP) / (H.cardY + H.cardH), "9x16": 1.3 });
   const W = INNER_W / K; // home width, design px
   const BUTTON = { x: MARGIN_X + H.button.x * K, y: TOP + (H.cardY + H.button.y) * K, w: H.button.w * K, h: H.button.h * K };
   // The document: tab bar top-left on the text margin.

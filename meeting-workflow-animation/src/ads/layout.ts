@@ -30,6 +30,12 @@ export const INNER_W = 1080 - 2 * MARGIN_X;
 // Height of each ad's Figma text block (logo to the end of the body copy).
 export type Step = "prep" | "meet" | "capture" | "deliver";
 const BLOCK_H: Record<Step, number> = { prep: 528.33, meet: 427.33, capture: 484.33, deliver: 437.33 };
+// Formats whose headline runs a line shorter than Figma's (the `formats` copy
+// overrides in MeetingStepAd.tsx): 1:1 sets Prep in two lines, Deliver in one.
+const HEADLINE_LINE = 91.012;
+const BLOCK_H_BY_FORMAT: Partial<Record<Format, Partial<Record<Step, number>>>> = {
+  "1x1": { prep: BLOCK_H.prep - HEADLINE_LINE, deliver: BLOCK_H.deliver - HEADLINE_LINE },
+};
 
 export const FormatContext = createContext<Format>("4x5");
 
@@ -40,7 +46,7 @@ export type AdLayout = Spec & {
 };
 export const adLayout = (format: Format, step: Step): AdLayout => {
   const f = FORMATS[format];
-  const textBottom = f.textTop + BLOCK_H[step] * f.textScale;
+  const textBottom = f.textTop + (BLOCK_H_BY_FORMAT[format]?.[step] ?? BLOCK_H[step]) * f.textScale;
   return { ...f, format, textBottom, top: textBottom + f.gap };
 };
 export const useAdLayout = (step: Step) => adLayout(useContext(FormatContext), step);

@@ -19,7 +19,7 @@ import { AdLayout, byFormat, INNER_W, MARGIN_X, useAdLayout } from "../layout";
 const deliverLayout = (lay: AdLayout) => {
   const TOP = lay.top;
   const mid = (lay.textBottom + lay.safeBottom) / 2;
-  const RECAP = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, byFormat(lay.format, { "4x5": 1.15, "1x1": 1, "9x16": 1.15 }));
+  const RECAP = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 1.15);
   // The editor fits down to its Save button, 60 px above the safe bottom.
   const editS = Math.min(byFormat(lay.format, { "4x5": 1, "1x1": 1, "9x16": 1.15 }), (lay.safeBottom - 60 - TOP) / 668);
   const EDIT = anchor(EDITOR.x, EDITOR.y, MARGIN_X, TOP, editS);

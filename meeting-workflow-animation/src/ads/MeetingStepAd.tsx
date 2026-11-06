@@ -33,6 +33,9 @@ export type AdSpec = {
   // first frame already shows the UI).
   readonly start?: number;
   readonly format?: Format;
+  // Per-format copy layout (e.g. 1:1 sets a headline in fewer, wider lines).
+  // A headline that loses lines must also shorten its block in layout.ts.
+  readonly formats?: Partial<Record<Format, Partial<Pick<AdSpec, "column" | "headline" | "headlineWidth" | "bodyWidth">>>>;
 };
 
 // Type sizes from Figma (headline letter-spacing −2%, body +0.5%).
@@ -40,7 +43,9 @@ const HEADLINE = 91.012;
 const BODY = 34.804;
 const LOGO = { w: 200.781, h: 67.589 };
 
-export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, headline, headlineSize = HEADLINE, headlineWidth, body, bodyWidth, start = 0, format = "4x5" }) => {
+export const MeetingStepAd: React.FC<AdSpec> = (spec) => {
+  const { format = "4x5" } = spec;
+  const { workflow, gradient, column, headline, headlineSize = HEADLINE, headlineWidth, body, bodyWidth, start = 0 } = { ...spec, ...spec.formats?.[format] };
   useState(loadAdFonts);
   const { fps } = useVideoConfig();
   const Animation = WORKFLOWS[workflow];
@@ -108,6 +113,7 @@ export const ADS = {
     headline: ["Planning and prep that’s ready before you ask."],
     body: ["AI knows your clients and drafts meeting prep ahead of each client engagement."],
     start: 0.6,
+    formats: { "1x1": { headline: ["Planning and prep that’s", "ready before you ask."], headlineWidth: 940 } },
   },
   meet: {
     workflow: "meet",
@@ -134,5 +140,6 @@ export const ADS = {
     headlineWidth: 780.618,
     body: ["Recap email in your voice, ready to send.", "Tasks sent to your dedicated team, ready to execute."],
     start: 3.25, // opens on the suggested tasks, all revealed
+    formats: { "1x1": { headline: ["From advice to execution."], headlineWidth: 1000 } },
   },
 } satisfies Record<Workflow, AdSpec>;
