@@ -22,7 +22,7 @@ import { TIMELINE, TimelineContext, useL } from "./timeline";
 // timeline and level-matched at −16 LUFS; it plays at half level against the
 // sound effects, and the music (Music.tsx) dips under it. The export adds 4 dB
 // with a limiter on top.
-const Voiceover: React.FC = () => {
+export const Voiceover: React.FC = () => {
   const L = useL();
   const { fps } = useVideoConfig();
   return (

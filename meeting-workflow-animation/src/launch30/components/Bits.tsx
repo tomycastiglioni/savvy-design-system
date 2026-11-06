@@ -101,7 +101,7 @@ export const Headline: React.FC<{
   const block = headlineBlock(lines.length);
   const top0 = cy - block / 2;
   return (
-    <div style={{ position: "absolute", inset: 0, fontFamily: DIATYPE, whiteSpace: "nowrap" }}>
+    <div style={{ position: "absolute", inset: 0, fontFamily: DIATYPE, whiteSpace: "nowrap", visibility: "visible" }}>
       <div
         style={{
           position: "absolute",

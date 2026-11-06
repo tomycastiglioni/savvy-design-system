@@ -37,7 +37,7 @@ const Question: React.FC<{ readonly t: number }> = ({ t }) => {
   return (
     <QuestionBubble
       typed={ramp(t, ...L.typing, Easing.linear)}
-      style={{ opacity: shown * (1 - out), scale: 0.85 + 0.15 * pop, transformOrigin: "0 0", translate: `0px ${(1 - shown) * 10 - out * 10}px` }}
+      style={{ opacity: shown * (1 - out), scale: 0.85 + 0.15 * pop, transformOrigin: "0 0", translate: `0px ${(1 - shown) * 10 - out * 10}px`, visibility: "visible" }}
     />
   );
 };

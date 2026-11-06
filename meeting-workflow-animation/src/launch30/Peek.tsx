@@ -10,7 +10,7 @@ import { DeliverScene } from "./scenes/Deliver";
 import { Intro } from "./scenes/Intro";
 import { PrepScene } from "./scenes/Prep";
 import { C, EASE_MORPH, FONT } from "./theme";
-import { PEEK_TIMELINE as L, TimelineContext, useT } from "./timeline";
+import { PEEK_TIMELINE, Timeline, TimelineContext, useT } from "./timeline";
 
 // Sneak peek of Launch30 for the website: the same scenes with no text (no
 // opening line, headlines or client question), no tracker and no sound, and
@@ -22,14 +22,18 @@ import { PEEK_TIMELINE as L, TimelineContext, useT } from "./timeline";
 // How far right of the frame's centre each stage of the UI sits (px):
 // client list 0, prep card and document 350, presentation 410, capture (CRM
 // profile + phone) 278, phone close-up 0, recap 350.
-const SHIFTS: readonly (readonly [readonly [number, number], number])[] = [
-  [L.pickMorph, 350],
-  [L.lift, 410],
-  [L.stepBack, 278],
-  [L.closeUp, 0],
-  [L.toRecap, 350],
-];
-const shiftAt = (t: number) => SHIFTS.reduce((dx, [[a, b], to]) => dx + (to - dx) * ramp(t, a, b, EASE_MORPH), 0);
+// The resized cuts (Formats.tsx) centre their UI the same way.
+export const shiftAt = (L: Timeline, t: number) => {
+  const shifts: readonly (readonly [readonly [number, number], number])[] = [
+    [L.pickMorph, 350],
+    [L.lift, 410],
+    [L.stepBack, 278],
+    [L.closeUp, 0],
+    [L.toRecap, 350],
+  ];
+  return shifts.reduce((dx, [[a, b], to]) => dx + (to - dx) * ramp(t, a, b, EASE_MORPH), 0);
+};
+const L = PEEK_TIMELINE;
 
 export const Launch30Peek: React.FC = () => {
   useState(loadDiatype);
@@ -40,7 +44,7 @@ export const Launch30Peek: React.FC = () => {
       <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.ink, overflow: "hidden" }}>
         <style>{"*{box-sizing:border-box;}"}</style>
         <LiveBackground />
-        <AbsoluteFill style={{ translate: `${-shiftAt(t)}px 0px` }}>
+        <AbsoluteFill style={{ translate: `${-shiftAt(L, t)}px 0px` }}>
           <PrepScene />
           <CommunicateScene />
           <DeliverScene />

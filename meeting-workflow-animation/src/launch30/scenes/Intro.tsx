@@ -31,7 +31,7 @@ export const Intro: React.FC = () => {
   return (
     <>
       {titleOut < 1 && !peek ? (
-        <div style={{ position: "absolute", inset: 0, opacity: 1 - titleOut }}>
+        <div style={{ position: "absolute", inset: 0, opacity: 1 - titleOut, visibility: "visible" }}>
           <Title offset={PAGE_UP * up - scroll} lineStyle={(i) => slideText(t, L.titleIn[i])} />
         </div>
       ) : null}
