@@ -121,7 +121,8 @@ and a larger prep document; Meet is one card (the "Add graph" slot, then the
 Retirement projection, a blinking "Presenting" pill once it is presented)
 with two what-if controls under the chart (contributions, and the retirement
 age down to 63, the ad's question; in the ad it moves the projection); Capture
-and Deliver are the workflow videos seen through a camera (`src/ads/Camera.tsx`)
+adds the launch video's CRM profile card beside the phone (notes syncing, then
+"Synced"); Capture and Deliver are the workflow videos seen through a camera (`src/ads/Camera.tsx`)
 that keeps each step on the margin and every clicked button in frame (the
 loading and writing-style cards centred between the copy and the bottom).
 Graphics start 80 px under the copy. Prep,
