@@ -117,6 +117,26 @@ bottom edge (the phone and the email still rise in from out of view); each
 phase's headline top left on a 75 px margin; the opening page and the close
 centred; the tracker on top.
 
+`MoreWays-*` are the seven card graphics of the website's "More ways Savvy
+Intelligence moves your practice forward" section (Figma: Innovation
+Campaign, "-> Motion"), each a seamless loop at its Figma size with a
+transparent background, to sit on the site's card glass (`-preview` puts it on
+the glass): `say` (Just say what you need, 12 s), `know` (Know more than they
+expect, 13 s), `report` (Every report sounds like you wrote it, 13 s), `day`
+(Start the day, 10 s), `monitor` (Monitor across your book, 11 s), `hunt`
+(Skip the data hunting, 11 s) and `more` (And a whole lot more, a 24 s
+scroll). Each card is a component driven by a few states
+(`src/more-ways/cards/`), so the storyboards (`MoreWays-board-*`) and the loops
+share it. `scripts/more-ways-export.sh` renders them at 2× into
+`out/more-ways/export/`: ProRes 4444 masters with alpha (`mov/`), VP9 WebM with
+alpha (`webm/`, Chrome, Firefox, Edge) and previews (`preview/`). Safari needs
+HEVC with alpha, which only Apple's encoder makes; on a Mac:
+`avconvert --preset PresetHEVCHighestQualityWithAlpha --source in.mov --output out.mov`.
+On the site, list the HEVC file first, then the WebM:
+`<video autoplay loop muted playsinline><source src="x.mov" type='video/mp4; codecs="hvc1"'><source src="x.webm" type="video/webm"></video>`.
+Medium-weight Diatype falls back to Regular until `ABCDiatype-Medium.otf` is in
+`public/fonts/`.
+
 `Launch30Peek` is the website sneak peek: the same scenes with no text (no
 opening line, headlines or client question), no tracker and no sound, the
 product UI slid to the centre of the frame as each card comes in
