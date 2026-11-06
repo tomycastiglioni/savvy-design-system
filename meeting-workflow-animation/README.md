@@ -129,8 +129,10 @@ scroll). Each card is a component driven by a few states
 (`src/more-ways/cards/`), so the storyboards (`MoreWays-board-*`) and the loops
 share it. `scripts/more-ways-export.sh` renders them at 2× into
 `out/more-ways/export/`: ProRes 4444 masters with alpha (`mov/`), VP9 WebM with
-alpha (`webm/`, Chrome, Firefox, Edge) and previews (`preview/`). Safari needs
-HEVC with alpha, which only Apple's encoder makes; on a Mac:
+alpha (`webm/`, Chrome, Firefox, Edge), animated WebP with alpha at 30 fps
+(`webp/`, `scripts/more-ways-webp.py`; plays as a plain `<img>` in every
+current browser, Safari included) and previews (`preview/`). For video in
+Safari, HEVC with alpha is needed, which only Apple's encoder makes; on a Mac:
 `avconvert --preset PresetHEVCHighestQualityWithAlpha --source in.mov --output out.mov`.
 On the site, list the HEVC file first, then the WebM:
 `<video autoplay loop muted playsinline><source src="x.mov" type='video/mp4; codecs="hvc1"'><source src="x.webm" type="video/webm"></video>`.
