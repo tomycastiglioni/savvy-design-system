@@ -1,5 +1,6 @@
 import React from "react";
-import { Icon } from "../Bits";
+import { EASE_IN_OUT, LINEAR, ramp, useT } from "../anim";
+import { Icon, Spinner } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
 // 05 · Monitor across your book (406×256). The household card (Figma): Savvy
@@ -9,8 +10,11 @@ export type MonitorState = {
   readonly household?: "chan" | "patel" | "ellis";
   readonly rows?: number; // 0–4 table rows filled
   readonly scan?: number; // 0–1 scan line down the card (-1 none)
-  readonly status?: "ontrack" | "flag" | "review";
+  readonly status?: "checking" | "ontrack" | "flag" | "review";
   readonly glow?: number; // 0–1 on the amber balances
+  readonly content?: number; // 0–1: the household's content (it swaps between households)
+  readonly pillPop?: number; // 0–1: the status pill landing
+  readonly spin?: number;
 };
 
 const W = 406;
@@ -45,21 +49,23 @@ const COLS = { required: 142.49, taken: 189.52, remaining: 246.52, withholding: 
 const num: React.CSSProperties = { position: "absolute", fontSize: 8.193, color: C.text, textAlign: "right", whiteSpace: "nowrap" };
 
 export const Monitor: React.FC<{ readonly s: MonitorState }> = ({ s }) => {
-  const { household = "ellis", rows = 4, scan = -1, status = "review", glow = 0 } = s;
+  const { household = "ellis", rows = 4, scan = -1, status = "review", glow = 0, content = 1, pillPop = 1, spin = 0 } = s;
   const h = HOUSEHOLDS[household];
   const pill =
     status === "review"
       ? { bg: C.greenBg, ink: "#004632", label: "RMD review in progress", check: true }
       : status === "flag"
         ? { bg: C.amberBg, ink: C.amberInk, label: "2 RMDs need attention", check: false }
-        : { bg: C.greenBg, ink: "#004632", label: "On track", check: true };
+        : status === "checking"
+          ? { bg: "#f0f2f4", ink: C.sub, label: "Checking…", check: false }
+          : { bg: C.greenBg, ink: "#004632", label: "On track", check: true };
   return (
     <div style={{ position: "relative", width: W, height: H, fontFamily: FONT }}>
       <div style={{ position: "absolute", left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, background: "#ffffff", border: `0.646px solid ${C.border}`, borderRadius: 8.822, overflow: "hidden" }}>
         <div style={{ position: "absolute", left: 18.59, top: 18.35, width: 27.787, height: 27.787, borderRadius: 13.893, background: "#edf5e9", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <Icon name="users" w={14.962} />
         </div>
-        <div style={{ position: "absolute", left: 54.93, top: 19.78, whiteSpace: "nowrap" }}>
+        <div style={{ position: "absolute", left: 54.93, top: 19.78, whiteSpace: "nowrap", opacity: content, translate: `0px ${(1 - content) * -6}px` }}>
           <div style={{ fontWeight: 700, fontSize: 9.975, color: C.text }}>{h.name}</div>
           <div style={{ fontSize: 7.837, color: C.sub, marginTop: 2.137 }}>{h.sub}</div>
         </div>
@@ -79,9 +85,18 @@ export const Monitor: React.FC<{ readonly s: MonitorState }> = ({ s }) => {
             fontWeight: MEDIUM,
             fontSize: 7.837,
             whiteSpace: "nowrap",
+            opacity: content * Math.min(1, pillPop * 1.5),
+            scale: 0.85 + 0.15 * pillPop,
+            transformOrigin: "100% 50%",
           }}
         >
-          {pill.check ? <Icon name="check-dark" w={9.262} /> : <div style={{ width: 6, height: 6, borderRadius: 3, background: "#d39b1b" }} />}
+          {pill.check ? (
+            <Icon name="check-dark" w={9.262} />
+          ) : status === "checking" ? (
+            <Spinner angle={spin} size={9} dark={false} />
+          ) : (
+            <div style={{ width: 6, height: 6, borderRadius: 3, background: "#d39b1b" }} />
+          )}
           {pill.label}
         </div>
         {/* table */}
@@ -100,7 +115,7 @@ export const Monitor: React.FC<{ readonly s: MonitorState }> = ({ s }) => {
             <React.Fragment key={r.account}>
               {i > 0 ? <div style={{ position: "absolute", left: 18.59, top: y - 8, width: 297.528, height: 0.5, background: "#e6e8ec" }} /> : null}
               {on ? (
-                <>
+                <div style={{ opacity: content, translate: `0px ${(1 - content) * -6}px` }}>
                   <div style={{ ...num, left: 18.59, top: y + 2.14, fontSize: 8.051, textAlign: "left" }}>{r.account}</div>
                   <div style={{ ...num, right: CARD.w - COLS.required, top: y + 2.14 }}>{r.required}</div>
                   <div style={{ ...num, right: CARD.w - COLS.taken, top: y + 2.14 }}>{r.taken}</div>
@@ -121,7 +136,7 @@ export const Monitor: React.FC<{ readonly s: MonitorState }> = ({ s }) => {
                     {r.remaining}
                   </div>
                   <div style={{ ...num, right: CARD.w - COLS.withholding, top: y + 2.14 }}>{r.withholding}</div>
-                </>
+                </div>
               ) : (
                 <div style={{ position: "absolute", left: 18.59, top: y + 3, width: 297, height: 7, borderRadius: 4, background: "#f0f2f4" }} />
               )}
@@ -151,3 +166,37 @@ export const MONITOR_FRAMES: readonly { s: MonitorState; title: string; caption:
   { s: { household: "ellis", rows: 4, status: "flag", glow: 1 }, title: "Only what needs you", caption: "It stops on the Ellis household: the RMD table fills in and two balances still to take light up amber." },
   { s: { household: "ellis", rows: 4, status: "review" }, title: "Picked up", caption: "The flag becomes “RMD review in progress” (the design’s state). Then the scan carries on." },
 ];
+
+// The loop (11 s): the Chans and the Patels are checked and on track; the
+// Ellis household is flagged, then picked up; back to the Chans.
+export const MONITOR_SECONDS = 11;
+type Seg = { h: "chan" | "patel" | "ellis"; from: number; to: number };
+const SEGS: readonly Seg[] = [
+  { h: "chan", from: -0.5, to: 1.8 },
+  { h: "patel", from: 1.8, to: 3.9 },
+  { h: "ellis", from: 3.9, to: 10.2 },
+  { h: "chan", from: 10.2, to: 12 },
+];
+export const MonitorLoop: React.FC = () => {
+  const t = useT();
+  const seg = SEGS.find((g) => t >= g.from && t < g.to) ?? SEGS[0];
+  // each household swaps in over 0.3 s (the first is already in at 0)
+  const content = seg.from < 0 ? 1 - ramp(t, seg.to - 0.3, seg.to, EASE_IN_OUT) : ramp(t, seg.from, seg.from + 0.3) * (t > seg.to - 0.3 ? 1 - ramp(t, seg.to - 0.3, seg.to, EASE_IN_OUT) : 1);
+  const scanAt = seg.h === "chan" && seg.from < 0 ? 0.2 : seg.from + 0.15;
+  // (the closing return to the Chans holds still, so the loop meets its start)
+  const scan = seg.from < 10 && t >= scanAt && t < scanAt + 1.0 ? ramp(t, scanAt, scanAt + 1.0, LINEAR) : -1;
+  const done = scanAt + 1.05;
+  let status: MonitorState["status"] = t < done ? "checking" : "ontrack";
+  let pillPop = t < done ? 1 : ramp(t, done, done + 0.3);
+  let glow = 0;
+  if (seg.h === "ellis") {
+    status = t < done ? "checking" : t < 7.2 ? "flag" : "review";
+    pillPop = t < done ? 1 : t < 7.2 ? ramp(t, done, done + 0.3) : ramp(t, 7.2, 7.5);
+    glow = t >= done && t < 7.2 ? 0.55 + 0.45 * Math.sin((t - done) * Math.PI * 1.6) : 0;
+  }
+  if (seg.from >= 10) {
+    status = "checking";
+    pillPop = 1;
+  }
+  return <Monitor s={{ household: seg.h, rows: 4, scan, status, glow, content, pillPop, spin: t * 360 }} />;
+};

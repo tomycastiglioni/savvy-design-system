@@ -1,4 +1,5 @@
 import React from "react";
+import { useT } from "../anim";
 import { GlassChip, IconName } from "../Bits";
 import { FONT } from "../theme";
 
@@ -54,3 +55,10 @@ export const MORE_FRAMES: readonly { s: MoreState; title: string; caption: strin
   { s: { drift: 140 }, title: "Scrolling", caption: "The top and bottom rows scroll left, the middle row right, at a slow, steady pace." },
   { s: { drift: 280 }, title: "Endlessly", caption: "The rows wrap seamlessly, so the list never runs out. A plain scroll, nothing else." },
 ];
+
+// The loop (24 s): one full run of a row scrolls by, so the end meets the start.
+export const MORE_SECONDS = 24;
+export const MoreLoop: React.FC = () => {
+  const t = useT();
+  return <More s={{ drift: ((ROW_W + GAP) * t) / MORE_SECONDS }} />;
+};

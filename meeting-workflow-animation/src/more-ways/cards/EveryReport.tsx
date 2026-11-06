@@ -1,5 +1,6 @@
 import React from "react";
 import { FirmLogo } from "../../recap/components/FirmLogo";
+import { along, blink, EASE_IN_OUT, EASE_MORPH, LINEAR, lerp as lerpT, press, ramp, useT } from "../anim";
 import { Caret, GlassChip, Icon, IconName, Pencil, Pointer, Spinner } from "../Bits";
 import { C, DM, FONT, MEDIUM } from "../theme";
 
@@ -13,12 +14,16 @@ import { C, DM, FONT, MEDIUM } from "../theme";
 export type ReportState = {
   readonly typed?: number; // 0–1 of the request
   readonly sent?: number; // 0–1: pill up, agents in
-  readonly agents?: number; // 0: working, 1: done
+  readonly agents?: number; // how many agents are done (0–2)
   readonly builder?: number; // 0–1: the report builder rising in
   readonly note?: number; // 0–1 of the note written
   readonly hover?: boolean; // cursor on Edit
   readonly editing?: boolean; // the note open for editing
   readonly spin?: number;
+  readonly caret?: boolean; // blink state for idle carets
+  readonly pointer?: { x: number; y: number; o: number };
+  readonly pressEdit?: number;
+  readonly pressSend?: number;
 };
 
 const W = 700;
@@ -35,7 +40,7 @@ const B = { x: 60, w: 580, top: 128 }; // the builder
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
 export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
-  const { typed = 1, sent = 0, agents = 0, builder = 0, note = 0, hover = false, editing = false, spin = 0 } = s;
+  const { typed = 1, sent = 0, agents = 0, builder = 0, note = 0, hover = false, editing = false, spin = 0, caret = true, pointer, pressEdit = 0 } = s;
   const text = PROMPT.slice(0, Math.round(typed * PROMPT.length));
   const written = NOTE.slice(0, Math.round(note * NOTE.length));
   return (
@@ -43,7 +48,7 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
       {/* the agents on it */}
       {sent > 0 ? (
         <div style={{ position: "absolute", left: 0, right: 0, top: 84, display: "flex", justifyContent: "center", gap: 8, opacity: sent }}>
-          {AGENTS.map((a) => (
+          {AGENTS.map((a, i) => (
             <GlassChip
               key={a.name}
               icon={a.icon}
@@ -51,8 +56,8 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
               size={11}
               extra={
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginLeft: 2, color: "rgba(255,255,255,0.6)" }}>
-                  · {agents >= 1 ? a.done : a.working}
-                  {agents >= 1 ? (
+                  · {agents > i ? a.done : a.working}
+                  {agents > i ? (
                     <span style={{ width: 13, height: 13, borderRadius: 7, background: C.mint, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
                       <Icon name="check-green" w={7.5} />
                     </span>
@@ -142,6 +147,7 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
                     fontWeight: MEDIUM,
                     fontSize: 10.5,
                     opacity: note >= 1 ? 1 : 0.4,
+                    scale: 1 - 0.06 * pressEdit,
                   }}
                 >
                   {editing ? null : <Pencil size={11} />}
@@ -163,9 +169,9 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
                 }}
               >
                 {written}
-                {(note > 0 && note < 1) || editing ? <Caret h={13} /> : null}
+                {(note > 0 && note < 1) || (editing && caret) ? <Caret h={13} /> : null}
               </div>
-              {hover ? <Pointer x={402} y={30} /> : null}
+              {hover && !pointer ? <Pointer x={402} y={30} /> : null}
             </div>
           </div>
         </div>
@@ -191,13 +197,18 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
           <Icon name="savvy-mark-lg" w={26.7} h={27.256} />
           <div style={{ fontSize: 17.658, lineHeight: 1.25, color: "#000000", minWidth: 366 }}>
             {text}
-            {typed < 1 ? <Caret h={20} color="#000000" /> : null}
+            {typed < 1 && caret ? <Caret h={20} color="#000000" /> : null}
           </div>
-          <div style={{ width: 49.894, height: 49.894, borderRadius: "50%", background: C.green2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: 49.894, height: 49.894, borderRadius: "50%", background: C.green2, display: "flex", alignItems: "center", justifyContent: "center", scale: 1 - 0.08 * (s.pressSend ?? 0) }}>
             <Icon name="send-pill" w={21.137} />
           </div>
         </div>
       </div>
+      {pointer && pointer.o > 0 ? (
+        <div style={{ opacity: pointer.o }}>
+          <Pointer x={pointer.x} y={pointer.y} />
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -217,3 +228,37 @@ export const REPORT_FRAMES: readonly { s: ReportState; title: string; caption: s
   { s: { sent: 1, agents: 1, builder: 1, note: 1, hover: true }, title: "Your draft", caption: "The draft is done and reads like the advisor. The cursor goes to “Edit”." },
   { s: { sent: 1, agents: 1, builder: 1, note: 1, editing: true }, title: "Yours to edit", caption: "The note opens for editing (outlined, caret in it): the advisor has the last word. Then it loops." },
 ];
+
+// The loop (13 s): the request, the agents, the builder and the draft, Edit;
+// then it all steps back and the pill empties.
+export const REPORT_SECONDS = 13;
+const EDIT = { x: 597, y: 200 }; // the Edit button, frame px
+export const EveryReportLoop: React.FC = () => {
+  const t = useT();
+  const sent = ramp(t, 2.85, 3.45, EASE_MORPH) - ramp(t, 11.7, 12.3, EASE_MORPH);
+  const typed = t < 12.3 ? ramp(t, 0.5, 2.5, LINEAR) : 0;
+  const p = along(t, [
+    [8.8, 640, 300],
+    [9.35, EDIT.x + 3, EDIT.y + 4],
+    [10.3, EDIT.x + 3, EDIT.y + 4],
+    [10.9, 640, 300],
+  ]);
+  return (
+    <EveryReport
+      s={{
+        typed,
+        sent,
+        agents: (t > 4.9 ? 1 : 0) + (t > 5.3 ? 1 : 0),
+        builder: ramp(t, 5.4, 6.0) - ramp(t, 11.3, 11.85, EASE_IN_OUT),
+        note: ramp(t, 6.1, 8.6, LINEAR),
+        hover: t >= 9.35 && t < 11.3,
+        editing: t >= 9.6 && t < 11.3,
+        spin: t * 360,
+        caret: t < 0.5 || t >= 12.3 ? blink(t) : t >= 9.6 ? blink(t - 9.6) : true,
+        pointer: { ...p, o: lerpT(0, 1, ramp(t, 8.8, 9.05)) * (1 - ramp(t, 10.4, 10.8)) },
+        pressEdit: press(t, 9.55),
+        pressSend: press(t, 2.65),
+      }}
+    />
+  );
+};

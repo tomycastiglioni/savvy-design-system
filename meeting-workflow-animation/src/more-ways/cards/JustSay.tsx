@@ -1,4 +1,5 @@
 import React from "react";
+import { blink, lerp, press, ramp, typeOut, useT, window, LINEAR } from "../anim";
 import { Caret, GlassChip, Icon, IconName } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
@@ -7,6 +8,7 @@ import { C, FONT, MEDIUM } from "../theme";
 // send, what Savvy did appears under the box.
 export type SayState = {
   readonly text?: string; // in the prompt field ("" shows the placeholder)
+  readonly textOpacity?: number;
   readonly caret?: boolean;
   readonly voice?: number; // 0–1: dictating (button lit, live waveform)
   readonly wave?: number; // waveform phase
@@ -29,7 +31,7 @@ const Waveform: React.FC<{ readonly phase: number }> = ({ phase }) => (
 );
 
 export const JustSay: React.FC<{ readonly s: SayState }> = ({ s }) => {
-  const { text = "", caret = false, voice = 0, wave = 0, sendPress = 0, lift = 0, results = [] } = s;
+  const { text = "", textOpacity = 1, caret = false, voice = 0, wave = 0, sendPress = 0, lift = 0, results = [] } = s;
   const top = (H - BOX.h) / 2 - 0.5 - lift;
   return (
     <div style={{ position: "relative", width: W, height: H, fontFamily: FONT }}>
@@ -69,7 +71,7 @@ export const JustSay: React.FC<{ readonly s: SayState }> = ({ s }) => {
         >
           <div style={{ fontSize: 14, lineHeight: "18px", color: text ? C.text : C.muted, minHeight: 18 }}>
             {text ? (
-              <span>
+              <span style={{ opacity: textOpacity }}>
                 {text}
                 {caret ? <Caret h={16} /> : null}
               </span>
@@ -167,3 +169,55 @@ export const SAY_FRAMES: readonly { s: SayState; title: string; caption: string 
     caption: "One dictated recap becomes tasks for the team and a drafted recap. Loops back to the empty prompt.",
   },
 ];
+
+// The loop (12 s): a typed scenario, then a dictated after-meeting recap.
+const Q = "What if the Chans retire at 63?";
+const R = "Quick recap from the Chans: move the rebalance to Monday, have Priya send the 529 forms";
+export const SAY_SECONDS = 12;
+export const JustSayLoop: React.FC = () => {
+  const t = useT();
+  const typing = ramp(t, 0.6, 2.4, LINEAR);
+  const speaking = ramp(t, 5.55, 8.3, LINEAR);
+  let text = "";
+  let textOpacity = 1;
+  let caret = false;
+  if (t < 2.9) {
+    text = typeOut(Q, typing);
+    textOpacity = 1 - ramp(t, 2.72, 2.88);
+    caret = t < 0.6 ? blink(t) : t < 2.4 || blink(t - 2.4);
+  } else if (t >= 5.5 && t < 8.9) {
+    text = typeOut(R, speaking, true);
+    textOpacity = 1 - ramp(t, 8.72, 8.88);
+    caret = true;
+  } else if (t >= 11.6) {
+    caret = blink(t - 11.6);
+  }
+  const chip1 = window(t, 2.95, 4.9, 0.45, 0.35);
+  const chipsOut = 1 - ramp(t, 10.9, 11.3);
+  const results =
+    t < 5.4
+      ? chip1 > 0
+        ? [{ icon: "chip-chart" as IconName, label: "Scenario modeled · Retire at 63", show: chip1 }]
+        : []
+      : t >= 8.9
+        ? [
+            { icon: "chip-refresh" as IconName, label: "Rebalance → Monday", show: ramp(t, 8.9, 9.35) * chipsOut },
+            { icon: "chip-users" as IconName, label: "529 forms → Priya", show: ramp(t, 9.05, 9.5) * chipsOut },
+            { icon: "chip-mail" as IconName, label: "Recap drafted", show: ramp(t, 9.2, 9.65) * chipsOut },
+          ]
+        : [];
+  return (
+    <JustSay
+      s={{
+        text,
+        textOpacity,
+        caret: caret && text.length > 0,
+        voice: window(t, 5.2, 8.35, 0.3, 0.2),
+        wave: t * 3,
+        sendPress: press(t, 2.6) + press(t, 8.6),
+        lift: lerp(0, 22, ramp(t, 2.75, 3.25)) * (1 - ramp(t, 11.0, 11.6)),
+        results,
+      }}
+    />
+  );
+};
