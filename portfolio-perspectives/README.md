@@ -26,15 +26,16 @@ The October 2026 16:9 edition is kept for reference in `template/2026-10.html`.
 3. Find the answer — the four advisor questions, each with a short answer and a link
 4. Executive snapshot — callout, Verdict, Core driver, Portfolio stance (with dots)
 5. Core driver
-6. Core driver (continued) — Equities / Fixed income / Real assets
+6. Core driver (continued) — Equities / Fixed income / Real assets, in two balanced columns
 7. Macro thoughts — Growth, Inflation, Financial conditions and the Fed
 8. Macro thoughts (continued) — Earnings and valuation, Geopolitics
+   (both pages: one two-column flow, subheads stacked down column 1, then column 2)
 9. The Savvy Macro Dashboard — Summary (signal dots, Headwind → Tailwind legend)
 10. The Savvy Macro Dashboard (continued) — Data
 11. Question of the month
 12. Positioning — asset class + sector views (dots, Underweight → Overweight legend)
 13. Risks we’re watching — 2-column grid
-14. Closing thoughts (column 1, with Disclosures) + Sources (column 2)
+14. Closing thoughts, with Sources below (one column; disclosures live in every page footer)
 15. Back cover
 
 The order follows the monthly content doc. Page numbers in the contents and on the Find the answer page are
@@ -42,8 +43,8 @@ typed by hand, so check them if a section grows to a new page.
 
 ## Dot scale
 
-Positioning and dashboard signals use one five-step scale. Only the active dot is coloured (and slightly
-larger); the others are light beige. Colours are set as `--s0` … `--s4` at the top of the template:
+Positioning and dashboard signals use one five-step scale. All dots are the same size; only the active dot is
+coloured, the others are a light teal. Colours are set as `--s0` … `--s4` at the top of the template:
 
 | Step | Positioning | Dashboard | Colour |
 |---|---|---|---|
@@ -54,6 +55,12 @@ larger); the others are light beige. Colours are set as `--s0` … `--s4` at the
 | `OW` | Overweight | Tailwind | dark green |
 
 Put `data-pos="UW|SUW|N|SOW|OW"` on the cell; the script draws the dots. No stance words next to the dots.
+
+## Typography
+
+- No widows or orphans: paragraphs use `text-wrap: pretty`, headings `text-wrap: balance`, and columns keep at
+  least three lines together. If a month's copy still leaves a single word on a line, adjust the column width or
+  page split, never the copy.
 
 ## Content rules
 

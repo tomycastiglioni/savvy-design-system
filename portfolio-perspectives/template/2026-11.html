@@ -31,7 +31,7 @@
   --s2:#B4AC9E;  /* neutral */
   --s3:#7DBE8C;  /* slight overweight / slight tailwind */
   --s4:#1F7A45;  /* overweight / tailwind */
-  --dot-off:#E7E1D6;
+  --dot-off:#D3E3E9;
   --sans:'ABC Diatype','Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
   --pw:816px; --ph:1056px; --mx:56px;
 }
@@ -77,7 +77,9 @@ p.t, .t p{font-size:12.8px;line-height:1.56;color:var(--ink)}
 .ico-h{display:flex;align-items:center;gap:11px;margin-bottom:10px}
 .ico-h img{flex:none}
 .cols2{columns:2;column-gap:36px}
-.cols2 p{break-inside:avoid-column}
+.cols2 p{break-inside:auto;orphans:3;widows:3}
+p,li,.qq,.think,.q,.a{text-wrap:pretty}
+.h1,.h2,.h3,.callout .think,.qa .qq,.qcard .q,.risk .rt{text-wrap:balance}
 
 /* ---------- tables ---------- */
 table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;line-height:1.38;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden}
@@ -98,12 +100,10 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;lin
 
 /* ---------- five-step scale: UW · SUW · N · SOW · OW (also headwind → tailwind) ---------- */
 .dots{display:inline-flex;gap:4px;align-items:center;vertical-align:middle}
-.dots i{width:9px;height:9px;border-radius:50%;background:var(--dot-off);display:block;flex:none}
-.dots i.on{width:13px;height:13px}
+.dots i{width:11px;height:11px;border-radius:50%;background:var(--dot-off);display:block;flex:none}
 .dots i.s0{background:var(--s0)} .dots i.s1{background:var(--s1)} .dots i.s2{background:var(--s2)}
 .dots i.s3{background:var(--s3)} .dots i.s4{background:var(--s4)}
 .legend{display:flex;gap:8px;align-items:center;font-size:10.5px;color:var(--ink-2)}
-.legend .dots i{width:11px;height:11px}
 
 /* ---------- tooltip ---------- */
 .tip{position:fixed;z-index:50;max-width:280px;background:#0F1F25;color:#fff;font-size:12px;line-height:1.45;padding:9px 11px;border-radius:6px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;box-shadow:0 8px 24px rgba(0,0,0,.3)}
@@ -127,7 +127,7 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;lin
 .cover{background:linear-gradient(200deg,#0B6280 0%,#08475B 38%,#05232E 78%,#031319 100%);color:#fff}
 .cover .globe{position:absolute;right:-300px;bottom:-300px;width:860px;height:860px}
 .cover .inner{position:absolute;left:var(--mx);right:var(--mx);top:56px;bottom:60px;display:flex;flex-direction:column}
-.cover .eb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:250px;font-weight:400;color:rgba(255,255,255,.92)}
+.cover .eb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:72px;font-weight:400;color:rgba(255,255,255,.92)}
 .cover h1{font-size:80px;font-weight:300;letter-spacing:-.035em;line-height:1;margin-top:22px}
 .cover .sub{font-size:22px;line-height:1.38;font-weight:300;color:rgba(255,255,255,.72);margin-top:26px;max-width:600px}
 .authors{margin-top:auto;display:flex;gap:34px}
@@ -176,12 +176,14 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;lin
 /* ==========================================================================
    CORE DRIVER, MACRO
    ========================================================================== */
-.book{display:flex;flex-direction:column;gap:20px;margin-top:24px}
-.book .col{border-top:2px solid var(--teal);padding-top:12px}
-.book .col .h3{color:#000;font-size:18px;margin-bottom:8px}
-.msec{margin-top:24px}
-.msec .h3{margin-bottom:10px}
-.msec + .msec{padding-top:20px;border-top:1px solid var(--line)}
+.book{columns:2;column-gap:36px;margin-top:24px}
+.book .col{border-top:1px solid var(--line);padding-top:12px;margin-bottom:22px}
+.book .col .h3{color:#000;font-size:18px;margin-bottom:8px;break-after:avoid}
+.book p.t{orphans:3;widows:3}
+.mflow{columns:2;column-gap:36px;margin-top:24px}
+.msec .h3{margin-bottom:8px;break-after:avoid}
+.msec + .msec{margin-top:22px}
+.msec .t p{orphans:3;widows:3}
 
 /* ==========================================================================
    DASHBOARD
@@ -212,18 +214,15 @@ table.score-tb tbody tr{cursor:pointer}
 .src{margin-top:12px}
 .src li{list-style:none;break-inside:avoid;font-size:10px;line-height:1.42;color:var(--ink);padding:0 0 6px 13px;position:relative}
 .src li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
-.close-grid{display:grid;grid-template-columns:1fr 290px;gap:32px;height:100%}
-.close-l{display:flex;flex-direction:column}
-.close-l .discl{margin-top:auto}
-.close-r{background:var(--teal-tint);border-radius:10px;padding:20px 20px 14px;align-self:start}
+.close-grid{display:flex;flex-direction:column;gap:26px}
+.close-r{background:var(--teal-tint);border-radius:10px;padding:20px 24px 14px}
+.close-r .src li{font-size:10.4px}
 .step{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-2)}
-.discl{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
-.discl p{font-size:10px;line-height:1.5;color:var(--ink-2);font-style:italic}
-.discl p + p{margin-top:6px}
 
 /* back cover */
 .back{background:var(--teal);color:#fff}
-.back .inner{position:absolute;left:var(--mx);top:0;bottom:0;width:520px;display:flex;flex-direction:column;justify-content:center}
+.back .rings{position:absolute;left:0;top:0}
+.back .inner{position:absolute;left:var(--mx);top:612px;width:300px}
 .back .wordmark{width:120px;height:40px}
 .back .tg{font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:16px}
 .back .tg b{font-weight:600}
@@ -395,20 +394,22 @@ table.score-tb tbody tr{cursor:pointer}
 <section class="page" id="macro" data-title="Macro thoughts" data-section="macro">
   <div class="body">
     <div class="h1">Macro thoughts</div>
+    <div class="mflow">
     <div class="msec" id="growth">
       <div class="h3">Growth: above trend on output, soft on hiring</div>
-      <div class="t cols2"><p>Growth has not slowed in any way that matters. The Bureau of Economic Analysis put third-quarter growth at 3.4% in its advance estimate, the Atlanta Fed’s current-quarter nowcast is 3.2%, and the Weekly Economic Index has averaged 2.8% this year against a trend near 2%. The October manufacturing survey read 55.5, well into expansion.</p>
+      <div class="t"><p>Growth has not slowed in any way that matters. The Bureau of Economic Analysis put third-quarter growth at 3.4% in its advance estimate, the Atlanta Fed’s current-quarter nowcast is 3.2%, and the Weekly Economic Index has averaged 2.8% this year against a trend near 2%. The October manufacturing survey read 55.5, well into expansion.</p>
       <p>The soft spot is hiring. Payrolls rose only 29,000 in September and the unemployment rate is 4.2%, still low. With labor-force growth much slower, estimates of the breakeven pace, the job growth needed to hold unemployment steady, have fallen to roughly 25,000 to 50,000 a month, so it takes few new jobs to keep unemployment flat or falling. Our read is that slow hiring without layoffs fits an economy growing on output per worker rather than headcount, though one month cannot settle that. We will judge it through the October jobs report on November 6, jobless claims and earnings revisions together, not any single print.</p></div>
     </div>
     <div class="msec" id="inflation">
       <div class="h3">Inflation: headline rising with oil, the Fed’s gauge above target</div>
-      <div class="t cols2"><p>Headline CPI was 3.7% in September, and the nowcasts put it at 3.7% for October and 4.3% for November as oil rose. Core PCE, the gauge the Fed acts on, was 3.1% in September and is nowcast at 3.2% and then 3.3%. Both sit well above the 2% target.</p>
+      <div class="t"><p>Headline CPI was 3.7% in September, and the nowcasts put it at 3.7% for October and 4.3% for November as oil rose. Core PCE, the gauge the Fed acts on, was 3.1% in September and is nowcast at 3.2% and then 3.3%. Both sit well above the 2% target.</p>
       <p>Markets are not pricing an inflation scare. The 10-year breakeven, the market’s estimate of future inflation, barely moved in October, slipping by 0.03 percentage points to about 2.3%. The open question is whether energy reaches core prices. If it does, the Fed has less room to ease and our case for keeping duration short gets stronger.</p></div>
     </div>
     <div class="msec" id="financial-conditions">
       <div class="h3">Financial conditions and the Fed: rates eased, credit widened</div>
-      <div class="t cols2"><p>The Fed raised rates by a quarter point on September 16 and held at 3.75 to 4.00 percent on October 28, with two voters dissenting in favor of another hike. That is a Fed that has paused but has not changed its view of the direction. Futures price a December hike as likely, about three chances in four, and about one more by mid-2027, for 2.16 quarter-point hikes in total through December 2027. That is down from 3.60 a month ago, and that pullback is what let real yields fall.</p>
+      <div class="t"><p>The Fed raised rates by a quarter point on September 16 and held at 3.75 to 4.00 percent on October 28, with two voters dissenting in favor of another hike. That is a Fed that has paused but has not changed its view of the direction. Futures price a December hike as likely, about three chances in four, and about one more by mid-2027, for 2.16 quarter-point hikes in total through December 2027. That is down from 3.60 a month ago, and that pullback is what let real yields fall.</p>
       <p>Credit moved the other way. High-yield spreads widened from 311 to 340 basis points in October and investment-grade spreads from 80 to 90. The Chicago Fed financial conditions index moved from -0.55 to -0.49 and the St. Louis Fed stress index from -0.81 to -0.58. All four moved in the direction we flagged, and both broad gauges still sit well on the easy side of their histories. That is a warning, not a confirmation.</p></div>
+    </div>
     </div>
   </div>
 </section>
@@ -416,15 +417,17 @@ table.score-tb tbody tr{cursor:pointer}
 <section class="page" id="macro-2" data-title="Macro thoughts (continued)" data-section="macro">
   <div class="body">
     <div class="h1">Macro thoughts <span style="color:var(--ink-3)">(continued)</span></div>
+    <div class="mflow">
     <div class="msec" id="earnings">
       <div class="h3">Earnings and valuation: strong, still concentrated, priced a little more fairly</div>
-      <div class="t cols2"><p>Earnings are the reason we hold the overweight. Trailing earnings growth for the S&amp;P 500 is 25.5% and analysts expect 22.9% over the next year. Estimates have been revised up by 5.8% over three months, and about 82% of the 265 companies that had reported third-quarter results by October 29 beat expectations. Net profit margins are 15.6%, at the top of their history, so margins have little room left to add to growth.</p>
+      <div class="t"><p>Earnings are the reason we hold the overweight. Trailing earnings growth for the S&amp;P 500 is 25.5% and analysts expect 22.9% over the next year. Estimates have been revised up by 5.8% over three months, and about 82% of the 265 companies that had reported third-quarter results by October 29 beat expectations. Net profit margins are 15.6%, at the top of their history, so margins have little room left to add to growth.</p>
       <p>The rotation has not yet shown up in reported profits. The seven largest stocks are still growing earnings 12.4 percentage points faster than the rest of the index, and the fourth quarter is the first in which analysts expect the rest to grow faster since 2022. Valuation eased with October’s pullback. The forward P/E is 18.65, from 19.08, and the equity risk premium, what owning stocks pays over a 10-year Treasury, is back above zero at 0.46 percentage points.</p></div>
     </div>
     <div class="msec" id="geopolitics">
       <div class="h3">Geopolitics: Hormuz traffic is low, but oil is getting through</div>
-      <div class="t cols2"><p>Strait of Hormuz transits are running at 3.9% of their normal pace, and prediction markets put the odds that traffic returns to normal within 12 months at about 44%. The transit count is a less useful gauge than it was, because oil is still reaching buyers. US crude oil rose from $90.42 to $104.12 a barrel in October, a 15% gain, and settled above $100.</p>
+      <div class="t"><p>Strait of Hormuz transits are running at 3.9% of their normal pace, and prediction markets put the odds that traffic returns to normal within 12 months at about 44%. The transit count is a less useful gauge than it was, because oil is still reaching buyers. US crude oil rose from $90.42 to $104.12 a barrel in October, a 15% gain, and settled above $100.</p>
       <p>In our experience, geopolitical shocks have tended to be buying opportunities unless they reach credit or earnings. Higher oil prices are the route by which this one could still reach both, through inflation and borrowing costs, but with supply getting through we see that as a smaller risk than it was. We keep the commodity tilt as the hedge and watch credit most closely.</p></div>
+    </div>
     </div>
   </div>
 </section>
@@ -532,7 +535,7 @@ table.score-tb tbody tr{cursor:pointer}
   </div>
 </section>
 
-<section class="page" id="closing" data-title="Closing thoughts &amp; sources" data-section="closing">
+<section class="page" id="closing" data-title="Closing thoughts and sources" data-section="closing">
   <div class="body">
     <div class="close-grid">
       <div class="close-l">
@@ -541,11 +544,7 @@ table.score-tb tbody tr{cursor:pointer}
           <p style="font-size:13.6px;line-height:1.62">October looked flat and was not. Leadership moved from the largest technology names toward the rest of the market, rates eased for real-yield reasons, and credit widened. The stance did not have a good month, and we have said where it cost us. We hold it because growth is above trend, earnings are rising and the signals that would change our minds have not confirmed.</p>
           <p style="font-size:13.6px;line-height:1.62">November has a full calendar. The midterm elections are on November 3, the October jobs report lands on November 6, the October CPI report follows in mid-November and the Fed meets again on December 8 and 9. We will not reposition around any one of those. Credit and earnings are the signals that would move us.</p>
         </div>
-        <div class="discl">
-          <div class="step" style="margin-bottom:6px">Disclosures</div>
-          <p>Material prepared herein has been created for informational purposes only and should not be considered investment advice or a recommendation from the Savvy Investment Team. Information was obtained from sources believed to be reliable but was not verified for accuracy.</p>
-          <p>Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
-        </div>
+        
       </div>
       <aside class="close-r" id="sources">
         <div class="h3">Sources</div>
@@ -568,9 +567,9 @@ table.score-tb tbody tr{cursor:pointer}
 </section>
 
 <section class="page back" id="back" data-title="Back cover">
-  <svg style="position:absolute;right:-560px;top:-120px" width="1300" height="1300" viewBox="0 0 960 960" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.5" aria-hidden="true">
-    <circle cx="480" cy="480" r="200" vector-effect="non-scaling-stroke"/><circle cx="480" cy="480" r="320" vector-effect="non-scaling-stroke"/><circle cx="480" cy="480" r="440" vector-effect="non-scaling-stroke"/>
-    <circle cx="341" cy="335" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="790" cy="560" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="165" cy="420" r="5" fill="rgba(255,255,255,.22)" stroke="none"/>
+  <svg class="rings" width="816" height="1056" viewBox="0 0 816 1056" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.5" aria-hidden="true">
+    <circle cx="200" cy="640" r="215"/><circle cx="200" cy="640" r="350"/><circle cx="200" cy="640" r="520"/><circle cx="200" cy="640" r="720"/>
+    <circle cx="380" cy="523" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="37" cy="332" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="690" cy="469" r="5" fill="rgba(255,255,255,.22)" stroke="none"/>
   </svg>
   <div class="inner">
     <span class="wordmark white" role="img" aria-label="Savvy"></span>
