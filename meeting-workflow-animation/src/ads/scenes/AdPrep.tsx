@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { AbsoluteFill, interpolate, interpolateColors, Sequence, useCurrentFrame, useVideoConfig } from "remotion";
 import { MeetingAgenda } from "../../meeting-prep/scenes/MeetingAgenda";
 import { AIIcon, AIIconAvatar } from "../../shared/components/AIIcon";
@@ -13,7 +13,7 @@ import { PrepDocument } from "../../meeting-prep/scenes/PrepDocument";
 import { C, CLAMP, DOC_PANEL, EASE_IN_OUT, EASE_OUT, FONT, TABS, TABS_BAR } from "../../meeting-prep/theme";
 import { T } from "../../meeting-prep/timeline";
 import { anchor, Camera, toAd, toSource } from "../Camera";
-import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
+import { AdLayout, byFormat, INNER_W, MARGIN_X, useAdLayout } from "../layout";
 
 // Ad 01 · Prep. The home screen is laid out for the ad (greeting, the four
 // stats as a 2×2 grid, the review card under them) at 1.05×; "Review prep
@@ -21,9 +21,6 @@ import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
 // camera with its left edge on the text margin, running off the right and
 // bottom. Times are the workflow video's (mounted at source frame 0).
 
-const TOP = graphicTop("prep");
-const K = 1.05; // home: design px → ad px
-const W = INNER_W / K;
 const H = {
   avatar: 60,
   statsY: 82,
@@ -33,21 +30,43 @@ const H = {
   cardH: 160,
   button: { x: 105, y: 104, w: 231, h: 39 },
 };
-// The button, in ad px.
-const BUTTON = {
-  x: MARGIN_X + H.button.x * K,
-  y: TOP + (H.cardY + H.button.y) * K,
-  w: H.button.w * K,
-  h: H.button.h * K,
+
+// Everything that depends on the format (in ad px unless noted).
+const prepLayout = (lay: AdLayout) => {
+  const TOP = lay.top;
+  // Home scale: 1.05× in 4:5; in 1:1 and 9:16 the home fills the room between
+  // the graphic line and the safe bottom (60 px margin in 1:1).
+  const K = byFormat(lay.format, { "4x5": 1.05, "1x1": 0.92, "9x16": 1.3 });
+  const W = INNER_W / K; // home width, design px
+  const BUTTON = { x: MARGIN_X + H.button.x * K, y: TOP + (H.cardY + H.button.y) * K, w: H.button.w * K, h: H.button.h * K };
+  // The document: tab bar top-left on the text margin.
+  const DOC = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, byFormat(lay.format, { "4x5": 1.25, "1x1": 1.1, "9x16": 1.4 }));
+  // "Loading household…" card, centred across the frame and between the copy
+  // and the safe bottom.
+  const LOADING = { x: (lay.w - 620) / 2, w: 620, h: 440, y: (lay.textBottom + lay.safeBottom) / 2 - 220 };
+  const tab = (i: number) => toAd(DOC, { x: TABS_BAR.x + TABS[i].x + TABS[i].w / 2, y: TABS_BAR.y + TABS_BAR.h / 2 + 2 });
+  return {
+    lay,
+    TOP,
+    K,
+    W,
+    BUTTON,
+    DOC,
+    LOADING,
+    REVIEW: { x: BUTTON.x + BUTTON.w / 2, y: BUTTON.y + BUTTON.h / 2 + 2 },
+    AGENDA_TAB: tab(1),
+    TASKS_TAB: tab(2),
+    TASK_ROW: toAd(DOC, { x: 330, y: 330 }),
+    BETWEEN: toAd(DOC, { x: 560, y: 380 }),
+  };
+};
+const usePrepLayout = () => {
+  const lay = useAdLayout("prep");
+  return useMemo(() => prepLayout(lay), [lay.format]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-// The document: tab bar top-left on the text margin, 1.25×.
-const DOC = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 1.25);
-// "Loading household…" card, centred across the frame and between the copy and
-// the bottom.
-const LOADING = { x: (AD.w - 620) / 2, w: 620, h: 440, y: (TEXT_BOTTOM.prep + AD.h) / 2 - 220 };
-
 const AdHome: React.FC = () => {
+  const { TOP, K, W, lay } = usePrepLayout();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const click = T.clickReview;
@@ -65,7 +84,7 @@ const AdHome: React.FC = () => {
         left: MARGIN_X,
         top: TOP,
         width: W,
-        height: (AD.h - TOP) / K,
+        height: (lay.h - TOP) / K,
         scale: K * (1 - 0.015 * exit),
         transformOrigin: "0 0",
         opacity: 1 - exit,
@@ -168,19 +187,13 @@ const AdHome: React.FC = () => {
   );
 };
 
-// Cursor, in ad px.
-const REVIEW = { x: BUTTON.x + BUTTON.w / 2, y: BUTTON.y + BUTTON.h / 2 + 2 };
-const tab = (i: number) => toAd(DOC, { x: TABS_BAR.x + TABS[i].x + TABS[i].w / 2, y: TABS_BAR.y + TABS_BAR.h / 2 + 2 });
-const AGENDA_TAB = tab(1);
-const TASKS_TAB = tab(2);
-const TASK_ROW = toAd(DOC, { x: 330, y: 330 });
-const BETWEEN = toAd(DOC, { x: 560, y: 380 });
-
-const AdPrepCursor: React.FC = () => (
+const AdPrepCursor: React.FC = () => {
+  const { REVIEW, AGENDA_TAB, TASKS_TAB, TASK_ROW, BETWEEN, lay } = usePrepLayout();
+  return (
   <CursorLayer
     scale={1.5 * 1.15}
     path={[
-      { t: 1.6, x: 900, y: AD.h + 40 },
+      { t: 1.6, x: 900, y: lay.h + 40 },
       { t: 2.6, ...REVIEW },
       { t: 3.2, ...REVIEW, ease: "linear" },
       { t: 6.95, x: AGENDA_TAB.x + 160, y: AGENDA_TAB.y + 260, ease: "linear" },
@@ -212,10 +225,12 @@ const AdPrepCursor: React.FC = () => (
       [11.25, Infinity],
     ]}
   />
-);
+  );
+};
 
 export const AdPrep: React.FC = () => {
   const { fps } = useVideoConfig();
+  const { DOC, BUTTON, LOADING } = usePrepLayout();
   return (
     <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.ink }}>
       <Sequence name="Home" durationInFrames={Math.round(T.homeEnd * fps)}>

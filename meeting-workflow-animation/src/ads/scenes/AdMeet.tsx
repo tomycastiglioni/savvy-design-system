@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { RetirementChart } from "../../delivery/charts/RetirementChart";
 import { AddGraphLabel, BuildSpinner, CardHeader, useAddGraph } from "../../delivery/components/GraphCard";
@@ -7,28 +7,46 @@ import { T } from "../../delivery/timeline";
 import { Params, SLIDERS, sliderLabel } from "../../delivery/whatif";
 import { CursorKey, CursorLayer } from "../../shared/components/CursorLayer";
 import { Reveal } from "../../shared/components/Reveal";
-import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
+import { AdLayout, byFormat, INNER_W, MARGIN_X, useAdLayout } from "../layout";
 
-// Ad 02 · Meet. One card at 1.25× between the side margins: an almost
+// Ad 02 · Meet. One card between the side margins (1.25× in 4:5): an almost
 // transparent "Add graph" slot (no other graph, no "Graphs" label) turns solid
 // as it builds the Retirement projection, goes into presentation mode (a
 // "Presenting" pill with a blinking dot), then grows down to show two what-if
 // controls under the chart, which the cursor drags: contributions up, the
 // retirement age down to 63 (the ad's question), contributions up again.
 
-const K = 1.25;
-const W = INNER_W / K;
 const INSET = { compact: 24, present: 12 }; // card edge → header / chart
 const CHART_H = { compact: 400, split: 410 };
-// The card's top: centred between the copy and the bottom of the frame while
-// it is the slot / compact graph, then up to the graphic line as it grows to
-// show the what-if controls.
-const TOP = { compact: (TEXT_BOTTOM.meet + AD.h) / 2 - (CHART_H.compact * K) / 2, split: graphicTop("meet") };
 const SLIDERS_H = 112;
 const PAD = 44 + INSET.present;
 const COL_GAP = 56;
-const COL_W = (W - 2 * PAD - COL_GAP) / 2;
 const ROW = { top: 30, track: 36 };
+
+// Everything that depends on the format. The card's top: centred between the
+// copy and the safe bottom while it is the slot / compact graph, then up to
+// the graphic line as it grows to show the what-if controls.
+const meetLayout = (lay: AdLayout) => {
+  const K = byFormat(lay.format, { "4x5": 1.25, "1x1": 1.05, "9x16": 1.3 });
+  const W = INNER_W / K;
+  const COL_W = (W - 2 * PAD - COL_GAP) / 2;
+  const TOP = { compact: (lay.textBottom + lay.safeBottom) / 2 - (CHART_H.compact * K) / 2, split: lay.top };
+  const knob = (slider: number, p: number) => ({
+    x: PAD + SHOWN.indexOf(slider) * (COL_W + COL_GAP) + p * COL_W,
+    y: CHART_H.split + ROW.top + ROW.track + 2,
+  });
+  // The header/chart box at a given padding; the cursor clicks while compact.
+  const innerBox = (inset: number) => ({ x: inset, y: inset / 2, w: W - 2 * inset });
+  const INNER = innerBox(INSET.compact);
+  const ADD = { x: W / 2, y: CHART_H.compact / 2 };
+  const PRESENT = { x: INNER.x + INNER.w - 14 - (15 + 12) * 2 - PRESENT_BTN.w / 2, y: INNER.y + PRESENT_BTN.top + PRESENT_BTN.h / 2 + 2 };
+  const REST = { x: ADD.x + 70, y: CHART_H.compact + 60 };
+  return { K, W, COL_W, TOP, knob, innerBox, ADD, PRESENT, REST };
+};
+const useMeetLayout = () => {
+  const lay = useAdLayout("meet");
+  return useMemo(() => meetLayout(lay), [lay.format]); // eslint-disable-line react-hooks/exhaustive-deps
+};
 // The two controls shown: Annual contributions and Retirement age.
 const SHOWN = [0, 2];
 
@@ -54,12 +72,10 @@ const paramsAt = (t: number): Params => {
   };
 };
 
-const knob = (slider: number, p: number) => ({
-  x: PAD + SHOWN.indexOf(slider) * (COL_W + COL_GAP) + p * COL_W,
-  y: CHART_H.split + ROW.top + ROW.track + 2,
-});
 
-const Controls: React.FC<{ readonly t: number; readonly top: number }> = ({ t, top }) => (
+const Controls: React.FC<{ readonly t: number; readonly top: number }> = ({ t, top }) => {
+  const { W, COL_W } = useMeetLayout();
+  return (
   <div style={{ position: "absolute", left: 0, top, width: W, height: SLIDERS_H }}>
     <div style={{ position: "absolute", left: PAD, right: PAD, top: 0, height: 1, background: "#EEF0F2" }} />
     {SHOWN.map((s, i) => {
@@ -92,7 +108,8 @@ const Controls: React.FC<{ readonly t: number; readonly top: number }> = ({ t, t
       );
     })}
   </div>
-);
+  );
+};
 
 // "Presenting" pill, top right, its dot blinking like a recording light.
 const LivePill: React.FC<{ readonly t: number; readonly opacity: number }> = ({ t, opacity }) => {
@@ -124,13 +141,7 @@ const LivePill: React.FC<{ readonly t: number; readonly opacity: number }> = ({ 
   );
 };
 
-// The header/chart box at a given padding; the cursor clicks while compact.
-const innerBox = (inset: number) => ({ x: inset, y: inset / 2, w: W - 2 * inset });
-const INNER = innerBox(INSET.compact);
-const ADD = { x: W / 2, y: CHART_H.compact / 2 };
-const PRESENT = { x: INNER.x + INNER.w - 14 - (15 + 12) * 2 - PRESENT_BTN.w / 2, y: INNER.y + PRESENT_BTN.top + PRESENT_BTN.h / 2 + 2 };
-const REST = { x: ADD.x + 70, y: CHART_H.compact + 60 };
-const dragKeys = (): CursorKey[] =>
+const dragKeys = (knob: (slider: number, p: number) => { x: number; y: number }): CursorKey[] =>
   DRAGS.flatMap((d, i) => {
     const from = knob(d.slider, i === 2 ? DRAGS[0].to : SLIDERS[d.slider].p0);
     const to = knob(d.slider, d.to);
@@ -142,7 +153,9 @@ const dragKeys = (): CursorKey[] =>
     ] satisfies CursorKey[];
   });
 
-const AdMeetCursor: React.FC = () => (
+const AdMeetCursor: React.FC = () => {
+  const { W, ADD, REST, PRESENT, knob } = useMeetLayout();
+  return (
   <CursorLayer
     path={[
       { t: 1.2, x: W - 40, y: CHART_H.compact + 120 },
@@ -153,7 +166,7 @@ const AdMeetCursor: React.FC = () => (
       { t: 4.25, ...PRESENT },
       { t: 4.6, ...PRESENT, ease: "linear" },
       { t: 6.25, x: W - 60, y: CHART_H.split + SLIDERS_H + 40, ease: "linear" },
-      ...dragKeys(),
+      ...dragKeys(knob),
       { t: 11.2, x: W - 120, y: CHART_H.split + SLIDERS_H + 30 },
     ]}
     opacity={[
@@ -175,9 +188,11 @@ const AdMeetCursor: React.FC = () => (
     ]}
     holds={DRAGS.map((d) => [d.start - 0.05, d.end + 0.05] as const)}
   />
-);
+  );
+};
 
 export const AdMeet: React.FC = () => {
+  const { K, W, TOP, innerBox } = useMeetLayout();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;

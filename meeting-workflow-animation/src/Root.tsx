@@ -1,5 +1,6 @@
 import "./shared/fonts";
-import { AD, adFrames, ADS, MeetingStepAd } from "./ads/MeetingStepAd";
+import { adFrames, ADS, MeetingStepAd } from "./ads/MeetingStepAd";
+import { FORMATS } from "./ads/layout";
 import { Composition, Folder, Still } from "remotion";
 import { Capture } from "./capture/Capture";
 import { Delivery } from "./delivery/Delivery";
@@ -58,18 +59,29 @@ export const RemotionRoot: React.FC = () => {
           height={900}
         />
       </Folder>
-      <Folder name="Ads-4x5">
-        {(
-          [
-            ["AdPrep4x5", ADS.prep, 12],
-            ["AdMeet4x5", ADS.meet, 12],
-            ["AdCapture4x5", ADS.capture, 12],
-            ["AdDeliver4x5", ADS.deliver, 16],
-          ] as const
-        ).map(([id, spec, seconds]) => (
-          <Composition key={id} id={id} component={MeetingStepAd} defaultProps={spec} durationInFrames={adFrames(spec, seconds)} fps={60} width={AD.w} height={AD.h} />
-        ))}
-      </Folder>
+      {(["4x5", "1x1", "9x16"] as const).map((format) => (
+        <Folder key={format} name={`Ads-${format}`}>
+          {(
+            [
+              ["AdPrep", ADS.prep, 12],
+              ["AdMeet", ADS.meet, 12],
+              ["AdCapture", ADS.capture, 12],
+              ["AdDeliver", ADS.deliver, 16],
+            ] as const
+          ).map(([id, spec, seconds]) => (
+            <Composition
+              key={id}
+              id={`${id}${format}`}
+              component={MeetingStepAd}
+              defaultProps={{ ...spec, format }}
+              durationInFrames={adFrames(spec, seconds)}
+              fps={60}
+              width={FORMATS[format].w}
+              height={FORMATS[format].h}
+            />
+          ))}
+        </Folder>
+      ))}
       <Composition
         id="Launch"
         component={Launch}

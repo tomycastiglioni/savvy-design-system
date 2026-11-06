@@ -111,8 +111,9 @@ the recap). Both skip stretches where nothing moves and crossfade into their
 own first frame, so they loop without a seam.
 
 `AdPrep4x5`, `AdMeet4x5`, `AdCapture4x5` and `AdDeliver4x5` (1080×1350,
-60 fps, no sound) are the Innovation Campaign ads "01 — Meeting steps (4x5)
-v3" from Figma, animated: the v3 layout (Savvy logo, ABC Diatype Light
+60 fps, no sound), with `…1x1` (1080×1080) and `…9x16` (1080×1920) versions,
+are the Innovation Campaign ads "01 — Meeting steps (4x5) v3" from Figma,
+animated: the v3 layout (Savvy logo, ABC Diatype Light
 headline, body copy, the step's gradient) with that step's workflow laid out
 for the 4:5 frame (`src/ads/`, copy and sizes as in Figma): bigger than on the
 website, left edge on the text margin, free to run off the right and bottom.
@@ -128,8 +129,11 @@ loading and writing-style cards centred between the copy and the bottom).
 Graphics start 80 px under the copy. Prep,
 Meet and Capture start 0.6 s in so the first frame already shows the UI;
 Deliver starts 3.25 s in, on the suggested tasks.
-Render with
-`npx remotion render AdPrep4x5 out/ads/ad-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
+1:1 and 9:16 reuse the Figma text block (75% in 1:1; in 9:16 it starts 250 px
+down, and clicked buttons and centred cards stay above 1600 px, clear of the
+story/reel overlays) and fit each graphic to the room left (per-format sizes
+in `src/ads/layout.ts` and the scenes). Render with
+`npx remotion render AdPrep4x5 out/ads/meeting-steps/4x5/savvy-meeting-steps-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
 in two steps and F13 in three) is the storyboard for the 30 s re-cut: the

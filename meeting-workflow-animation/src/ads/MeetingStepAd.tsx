@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { AbsoluteFill, Img, Sequence, staticFile, useVideoConfig } from "remotion";
 import { loadAdFonts } from "./fonts";
-import { AD } from "./layout";
+import { Format, FormatContext, FORMATS, MARGIN_X } from "./layout";
 import { AdCapture } from "./scenes/AdCapture";
 import { AdDeliver } from "./scenes/AdDeliver";
 import { AdMeet } from "./scenes/AdMeet";
 import { AdPrep } from "./scenes/AdPrep";
 
-// Innovation Campaign · "01 — Meeting steps (4x5) v3" (Figma), 1080×1350:
-// the v3 text layout (Savvy logo, Diatype Light headline, body copy) on the
-// step's gradient, with that step's workflow animation playing under it,
-// laid out for the 4:5 frame: bigger than on the website, left edge on the
-// text margin, free to run off the right and bottom (src/ads/scenes/).
-
-export { AD };
+// Innovation Campaign · "01 — Meeting steps (4x5) v3" (Figma), in 4:5
+// (1080×1350, the Figma layout), 1:1 and 9:16: the v3 text layout (Savvy logo,
+// Diatype Light headline, body copy) on the step's gradient, with that step's
+// workflow animation playing under it, laid out for the frame: bigger than on
+// the website, left edge on the text margin, free to run off the right and
+// bottom (src/ads/scenes/, sizes per format in src/ads/layout.ts).
 
 type Workflow = "prep" | "meet" | "capture" | "deliver";
 // Each step's graphic, laid out for the ad (src/ads/scenes/).
@@ -33,6 +32,7 @@ export type AdSpec = {
   // The graphic starts `start` s into its workflow (past the entrance, so the
   // first frame already shows the UI).
   readonly start?: number;
+  readonly format?: Format;
 };
 
 // Type sizes from Figma (headline letter-spacing −2%, body +0.5%).
@@ -40,16 +40,31 @@ const HEADLINE = 91.012;
 const BODY = 34.804;
 const LOGO = { w: 200.781, h: 67.589 };
 
-export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, headline, headlineSize = HEADLINE, headlineWidth, body, bodyWidth, start = 0 }) => {
+export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, headline, headlineSize = HEADLINE, headlineWidth, body, bodyWidth, start = 0, format = "4x5" }) => {
   useState(loadAdFonts);
   const { fps } = useVideoConfig();
   const Animation = WORKFLOWS[workflow];
+  const f = FORMATS[format];
   return (
+    <FormatContext.Provider value={format}>
     <AbsoluteFill style={{ background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`, overflow: "hidden" }}>
       <Sequence from={-Math.round(start * fps)}>
         <Animation />
       </Sequence>
-      <div style={{ position: "absolute", left: 74.57, top: 86.48, width: column, display: "flex", flexDirection: "column", gap: 50.967, fontFamily: '"ABC Diatype", sans-serif' }}>
+      <div
+        style={{
+          position: "absolute",
+          left: MARGIN_X,
+          top: f.textTop,
+          width: column,
+          display: "flex",
+          flexDirection: "column",
+          gap: 50.967,
+          fontFamily: '"ABC Diatype", sans-serif',
+          scale: f.textScale,
+          transformOrigin: "0 0",
+        }}
+      >
         <Img src={staticFile("ads/savvy-logo.svg")} style={{ width: LOGO.w, height: LOGO.h, display: "block" }} />
         <div style={{ display: "flex", flexDirection: "column", gap: 42.776 }}>
           <div
@@ -77,6 +92,7 @@ export const MeetingStepAd: React.FC<AdSpec> = ({ workflow, gradient, column, he
         </div>
       </div>
     </AbsoluteFill>
+    </FormatContext.Provider>
   );
 };
 
