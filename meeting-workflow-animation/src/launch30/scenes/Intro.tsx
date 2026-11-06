@@ -6,12 +6,13 @@ import { ClientList, ClientRowContent, CLIENTS, LIST_SCROLL, PAGE_UP, rowRect, S
 import { PREP_CARD, PrepCardContent } from "../frames/Prep";
 import { EASE_IN_OUT, EASE_MORPH } from "../theme";
 import { usePeek } from "../peek";
-import { L, useT } from "../timeline";
+import { useL, useT } from "../timeline";
 
 // 0:00–0:03.75 — "Deliver more for your clients with Savvy Intelligence"; the page
 // scrolls up into the advisor's client list, which scrolls on to Allison &
 // Frank Chan. Their row is picked and becomes the prep card.
 export const Intro: React.FC = () => {
+  const L = useL();
   const t = useT();
   const peek = usePeek();
   if (t >= L.cardIn) return null;

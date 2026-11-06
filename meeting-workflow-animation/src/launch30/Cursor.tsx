@@ -5,7 +5,7 @@ import { LIST_SCROLL, pickPoint } from "./frames/Clients";
 import { KNOB, knobAt } from "./frames/Communicate";
 import { SEND_BTN } from "./frames/Deliver";
 import { AGENDA_ITEM, REVIEW_BTN } from "./frames/Prep";
-import { L } from "./timeline";
+import { useL } from "./timeline";
 
 // On Allison & Frank Chan's row once the list has scrolled.
 const PICK = pickPoint(LIST_SCROLL);
@@ -18,7 +18,9 @@ const DROP = knobAt(KNOB.to);
 // plan, the what-if drag, Send. Each visit is timed from its click. The drag
 // uses the slider's own easing over the same window, so the fingertip stays
 // on the knob.
-export const Launch30Cursor: React.FC = () => (
+export const Launch30Cursor: React.FC = () => {
+  const L = useL();
+  return (
   <CursorLayer
     scale={CURSOR_SCALE}
     path={[
@@ -82,4 +84,5 @@ export const Launch30Cursor: React.FC = () => (
     ]}
     holds={[[L.drag[0] - 0.05, L.drag[1] + 0.05]]}
   />
-);
+  );
+};

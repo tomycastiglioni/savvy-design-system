@@ -1,7 +1,7 @@
 import { Audio } from "@remotion/media";
-import React from "react";
+import React, { useMemo } from "react";
 import { Sequence, staticFile, useVideoConfig } from "remotion";
-import { L } from "./timeline";
+import { Timeline, useL } from "./timeline";
 
 // Sounds, kept soft and warm (public/audio/launch30/, ElevenLabs text to sound
 // v2, trimmed, filtered and peak-normalized; levels are set here): a short
@@ -30,11 +30,12 @@ const swish = (textIn: number): Cue => ({ sound: "swish", at: textIn - 0.05, vol
 const whoosh = (peak: number): Cue => ({ sound: "whoosh", at: peak - 0.4, volume: 0.16 });
 const click = (at: number): Cue => ({ sound: "click", at: at - 0.02, volume: 0.4 });
 
-const CUES: readonly Cue[] = [
-  // Text reveals that no move already covers
+const cues = (L: Timeline): readonly Cue[] => [
+  // Text reveals that no move already covers; the close's land on the voiceover
   ...L.titleIn.map(swish),
   swish(L.presentText),
   ...L.words.map(swish),
+  swish(L.more),
   ...L.tagline.map(swish),
   // Moves (each phase's headline arrives with one of these)
   whoosh(L.pageUp[0] + 0.3), // the page scrolls up into the client list
@@ -69,6 +70,8 @@ const CUES: readonly Cue[] = [
 ];
 
 export const Launch30Sfx: React.FC = () => {
+  const L = useL();
+  const CUES = useMemo(() => cues(L), [L]);
   const { fps } = useVideoConfig();
   return (
     <>

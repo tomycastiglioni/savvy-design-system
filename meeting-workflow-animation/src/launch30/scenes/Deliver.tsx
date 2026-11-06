@@ -5,7 +5,7 @@ import { headlineMotion, lerpRect, ramp, rectStyle } from "../components/Motion"
 import { ClientDocContent, DELIVER_HEADLINE, DOC, EMAIL, EmailContent, RECAP, RecapContent, SENT_BANNER, SentBannerContent, TEAM_CARD, TeamTasksContent } from "../frames/Deliver";
 import { EASE_IN_OUT, EASE_MORPH, EASE_OUT } from "../theme";
 import { usePeek } from "../peek";
-import { L, pressAt, useT } from "../timeline";
+import { useL, pressAt, useT } from "../timeline";
 
 const EMAIL_START = { ...EMAIL, y: 1130 };
 
@@ -13,6 +13,7 @@ const EMAIL_START = { ...EMAIL, y: 1130 };
 // document and the email; sent, the email folds into a banner and the
 // approved tasks go to the team in a card under it.
 export const DeliverScene: React.FC = () => {
+  const L = useL();
   const t = useT();
   const peek = usePeek();
   if (t < L.deliverText || t > L.deliverOut + 0.45) return null;

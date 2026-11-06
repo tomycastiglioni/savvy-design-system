@@ -1,26 +1,40 @@
 import React from "react";
 import { Logo } from "../../launch/components/Logo";
 import { CenteredLine, HEAD } from "../components/Bits";
-import { ramp, slideText } from "../components/Motion";
-import { END_LOGO, END_LOGO_H, PHASE_WORDS, PHASE_WORDS_CAP, TAGLINE, TAGLINE_CAP } from "../frames/Bookends";
-import { L, useT } from "../timeline";
+import { lerp, ramp, slideText } from "../components/Motion";
+import { END_LOGO, END_LOGO_H, PHASE_WORDS_CAP, TAGLINE, TAGLINE_CAP } from "../frames/Bookends";
+import { EASE_IN_OUT } from "../theme";
+import { CLOSE_COPY, useL, useT } from "../timeline";
 
-// 0:24–0:30 — "Prep. Communicate. Deliver." word by word, the launch tagline
-// line by line (both sliding up out of a blur), then the wordmark.
+// The close, on the voiceover: "Prep. Meet. Deliver." word by word as each is
+// said, then its second line ("And so much more." / "for your client
+// relationships.") rises in under it while the first line moves up to make
+// room; then the launch tagline line by line, then the wordmark. Text slides
+// up out of a blur.
 export const CloseScene: React.FC = () => {
+  const L = useL();
   const t = useT();
   if (t < L.words[0]) return null;
+  const copy = CLOSE_COPY[L.ending ?? "a"];
   const logo = ramp(t, L.logoIn, L.logoIn + 0.9);
+  // One line, centred, until the second line arrives; then the pair is.
+  const lift = ramp(t, L.more - 0.1, L.more + 0.5, EASE_IN_OUT);
+  const firstCap = lerp(PHASE_WORDS_CAP, TAGLINE_CAP, lift);
   return (
     <>
       {t < L.wordsOut + 0.4 ? (
-        <CenteredLine capTop={PHASE_WORDS_CAP}>
-          {PHASE_WORDS.map((word, i) => (
-            <span key={word} style={slideText(t, L.words[i], L.wordsOut)}>
-              {word}
-            </span>
-          ))}
-        </CenteredLine>
+        <>
+          <CenteredLine capTop={firstCap}>
+            {copy.words.map((word, i) => (
+              <span key={word} style={slideText(t, L.words[i], L.wordsOut)}>
+                {word}
+              </span>
+            ))}
+          </CenteredLine>
+          <CenteredLine capTop={TAGLINE_CAP + HEAD.lh}>
+            <span style={slideText(t, L.more, L.wordsOut)}>{copy.more}</span>
+          </CenteredLine>
+        </>
       ) : null}
       {t >= L.tagline[0] && t < L.taglineOut + 0.4
         ? TAGLINE.map((line, i) => (
