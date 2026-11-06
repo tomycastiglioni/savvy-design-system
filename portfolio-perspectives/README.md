@@ -1,49 +1,66 @@
 # Savvy Portfolio Perspectives — monthly template
 
-The approved template is **October 2026, "The price of money"** (`2026-10-the-price-of-money.html` / `.pdf`).
-Its source lives in `template/template.html`. Every future edition reuses this file: same pages, same order,
-same styling. Only the copy and data change.
+The approved template is **November 2026, "Broader, not weaker"** (`2026-11-broader-not-weaker.html` / `.pdf`):
+the October 2026 design (logo, fonts, colours, gradients, graphics) set on **vertical US Letter pages**, with the
+five-step dot scale. Its source lives in `template/template.html`. Every future edition reuses this file: same
+pages, same order, same styling. Only the copy and data change.
+
+The October 2026 16:9 edition is kept for reference in `template/2026-10.html`.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| `template/template.html` | Source for the report, filled with the October 2026 copy. Duplicate it for each new edition. |
+| `template/template.html` | Source for the report, filled with the November 2026 copy. Duplicate it for each new edition. |
+| `template/YYYY-MM.html` | The source of each published edition. |
 | `template/build.py` | Inlines the logo, icons and headshots and writes a single self-contained HTML file. |
-| `template/export-pdf.js` | Optional: renders the PDF and page previews with Playwright. |
+| `template/export-pdf.js` | Optional: renders the PDF and page previews with Playwright, at the page's own size. |
 | `assets/` | Logo (black/white SVG), section icons (Verdict, Portfolio stance, Core driver), author headshots. |
 | `YYYY-MM-<slug>.html` / `.pdf` | Published editions (Savvy-branded report). |
 | `YYYY-MM-<slug>-white-label.html` / `.pdf` | Same report with no Savvy logo, for client marketing to add an advisor's logo. |
 
-## Fixed structure (16:9, 1280 × 720 px pages)
+## Fixed structure (portrait, 816 × 1056 px = 8.5 × 11 in pages)
 
 1. Cover — eyebrow, title, subtitle, authors
-2. Contents — clickable; driver links sit inside the Macro thoughts entry
-3. Find the answer — the four advisor questions (Q1–Q4), each with a short answer and a link
-4. Executive snapshot — The verdict (left), Portfolio stance (right)
+2. Contents — clickable
+3. Find the answer — the four advisor questions, each with a short answer and a link
+4. Executive snapshot — callout, Verdict, Core driver, Portfolio stance (with dots)
 5. Core driver
 6. Core driver (continued) — Equities / Fixed income / Real assets
-7. Macro thoughts — Growth + Inflation
-8. Macro thoughts (continued) — Financial conditions and the Fed
-9. Macro thoughts (continued) — Earnings and valuation + Geopolitics
-10. The Savvy Macro Dashboard — Summary
-11. The Savvy Macro Dashboard — Data
-12. Question of the month
-13. Savvy Total Portfolios: tactical asset allocation positioning — asset class + sector views
-14. Risks we’re watching — 3-column grid
-15. Closing thoughts (column 1, with Disclosures) + Sources (column 2)
-16. Back cover
+7. Macro thoughts — Growth, Inflation, Financial conditions and the Fed
+8. Macro thoughts (continued) — Earnings and valuation, Geopolitics
+9. The Savvy Macro Dashboard — Summary (signal dots, Headwind → Tailwind legend)
+10. The Savvy Macro Dashboard (continued) — Data
+11. Question of the month
+12. Positioning — asset class + sector views (dots, Underweight → Overweight legend)
+13. Risks we’re watching — 2-column grid
+14. Closing thoughts (column 1, with Disclosures) + Sources (column 2)
+15. Back cover
 
 The order follows the monthly content doc. Page numbers in the contents and on the Find the answer page are
 typed by hand, so check them if a section grows to a new page.
 
+## Dot scale
+
+Positioning and dashboard signals use one five-step scale. Only the active dot is coloured (and slightly
+larger); the others are light beige. Colours are set as `--s0` … `--s4` at the top of the template:
+
+| Step | Positioning | Dashboard | Colour |
+|---|---|---|---|
+| `UW` | Underweight | Headwind | dark red |
+| `SUW` | Slight underweight | Slight headwind | light red |
+| `N` | Neutral | Neutral | gray |
+| `SOW` | Slight overweight | Slight tailwind | light green |
+| `OW` | Overweight | Tailwind | dark green |
+
+Put `data-pos="UW|SUW|N|SOW|OW"` on the cell; the script draws the dots. No stance words next to the dots.
+
 ## Content rules
 
 - **Use the copy doc word for word.** No added sentences, labels, captions, charts, calendars or summaries.
-- Find the answer page: answers quote the doc — Q1 the positioning-change line, Q2 the three Portfolio stance
-  lines, Q3 the Overall regime, Q4 the five risk titles.
-- Positioning dots: `data-pos="UW|SUW|N|SOW|OW"` on the cell; the script draws the five dots.
-- Months with positioning changes: put the change table on the Savvy Total Portfolios page under the
+- Find the answer page: answers quote the doc — Q1 the positioning-change answer, Q2 the three asset-class dots,
+  Q3 the macro answer, Q4 the risk titles.
+- Months with positioning changes: put the change table on the Positioning page under the
   "No changes…" line it replaces, and update Q1.
 
 ## Making a new edition
@@ -61,7 +78,7 @@ typed by hand, so check them if a section grows to a new page.
    python3 portfolio-perspectives/template/build.py portfolio-perspectives/template/YYYY-MM.html portfolio-perspectives/YYYY-MM-<slug>-white-label.html --white-label
    ```
 4. Export a PDF of each (report and white label): open the built HTML in **Chrome** → **Save as PDF** (or Cmd/Ctrl + P) → Margins **None**,
-   **Background graphics** on, Scale **Default**.
+   **Background graphics** on, Scale **Default**. The page size (Letter, portrait) is set by the file.
 5. Check that every page fits above the footer (long months may need a section split onto a "(continued)" page).
 
 ## Blog post (Webflow CMS)
