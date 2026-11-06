@@ -125,7 +125,8 @@ and Deliver are the workflow videos seen through a camera (`src/ads/Camera.tsx`)
 that keeps each step on the margin and every clicked button in frame (the
 loading and writing-style cards centred between the copy and the bottom).
 Graphics start 80 px under the copy. Prep,
-Meet and Capture start 0.6 s in so the first frame already shows the UI.
+Meet and Capture start 0.6 s in so the first frame already shows the UI;
+Deliver starts 3.25 s in, on the suggested tasks.
 Render with
 `npx remotion render AdPrep4x5 out/ads/ad-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 

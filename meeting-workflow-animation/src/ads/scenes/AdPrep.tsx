@@ -30,8 +30,7 @@ const H = {
   cellH: 120,
   titleY: 344,
   cardY: 378,
-  // Runs 40 px off the bottom of the frame.
-  cardH: (AD.h + 40 - TOP) / K - 378,
+  cardH: 160,
   button: { x: 105, y: 104, w: 231, h: 39 },
 };
 // The button, in ad px.

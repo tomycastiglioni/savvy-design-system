@@ -117,5 +117,6 @@ export const ADS = {
     headline: ["From advice", "to execution."],
     headlineWidth: 780.618,
     body: ["Recap email in your voice, ready to send.", "Tasks sent to your dedicated team, ready to execute."],
+    start: 3.25, // opens on the suggested tasks, all revealed
   },
 } satisfies Record<Workflow, AdSpec>;

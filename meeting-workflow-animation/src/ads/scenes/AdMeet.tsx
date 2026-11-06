@@ -7,7 +7,7 @@ import { T } from "../../delivery/timeline";
 import { Params, SLIDERS, sliderLabel } from "../../delivery/whatif";
 import { CursorKey, CursorLayer } from "../../shared/components/CursorLayer";
 import { Reveal } from "../../shared/components/Reveal";
-import { graphicTop, INNER_W, MARGIN_X } from "../layout";
+import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
 
 // Ad 02 · Meet. One card at 1.25× between the side margins: an almost
 // transparent "Add graph" slot (no other graph, no "Graphs" label) turns solid
@@ -16,13 +16,16 @@ import { graphicTop, INNER_W, MARGIN_X } from "../layout";
 // controls under the chart, which the cursor drags: contributions up, the
 // retirement age down to 63 (the ad's question), contributions up again.
 
-const TOP = graphicTop("meet");
 const K = 1.25;
 const W = INNER_W / K;
-const INSET = 24; // padding between the card edge and the header / chart
+const INSET = { compact: 24, present: 12 }; // card edge → header / chart
 const CHART_H = { compact: 400, split: 410 };
+// The card's top: centred between the copy and the bottom of the frame while
+// it is the slot / compact graph, then up to the graphic line as it grows to
+// show the what-if controls.
+const TOP = { compact: (TEXT_BOTTOM.meet + AD.h) / 2 - (CHART_H.compact * K) / 2, split: graphicTop("meet") };
 const SLIDERS_H = 112;
-const PAD = 44 + INSET;
+const PAD = 44 + INSET.present;
 const COL_GAP = 56;
 const COL_W = (W - 2 * PAD - COL_GAP) / 2;
 const ROW = { top: 30, track: 36 };
@@ -98,8 +101,8 @@ const LivePill: React.FC<{ readonly t: number; readonly opacity: number }> = ({ 
     <div
       style={{
         position: "absolute",
-        right: 28,
-        top: 34,
+        right: 18,
+        top: 22,
         display: "flex",
         alignItems: "center",
         gap: 8,
@@ -121,7 +124,9 @@ const LivePill: React.FC<{ readonly t: number; readonly opacity: number }> = ({ 
   );
 };
 
-const INNER = { x: INSET, y: INSET / 2, w: W - 2 * INSET };
+// The header/chart box at a given padding; the cursor clicks while compact.
+const innerBox = (inset: number) => ({ x: inset, y: inset / 2, w: W - 2 * inset });
+const INNER = innerBox(INSET.compact);
 const ADD = { x: W / 2, y: CHART_H.compact / 2 };
 const PRESENT = { x: INNER.x + INNER.w - 14 - (15 + 12) * 2 - PRESENT_BTN.w / 2, y: INNER.y + PRESENT_BTN.top + PRESENT_BTN.h / 2 + 2 };
 const REST = { x: ADD.x + 70, y: CHART_H.compact + 60 };
@@ -195,10 +200,13 @@ export const AdMeet: React.FC = () => {
 
   const chartH = CHART_H.compact + (CHART_H.split - CHART_H.compact) * split;
   const cardH = chartH + SLIDERS_H * split;
+  const top = TOP.compact + (TOP.split - TOP.compact) * split;
+  const inset = INSET.compact + (INSET.present - INSET.compact) * m;
+  const box = innerBox(inset);
 
   return (
     <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.ink }}>
-      <div style={{ position: "absolute", left: MARGIN_X, top: TOP, width: W, height: 900, scale: K, transformOrigin: "0 0" }}>
+      <div style={{ position: "absolute", left: MARGIN_X, top, width: W, height: 900, scale: K, transformOrigin: "0 0" }}>
         <Reveal
           at={0.35}
           y={14}
@@ -224,17 +232,17 @@ export const AdMeet: React.FC = () => {
             <BuildSpinner opacity={add.spinner} spin={add.spin} />
           </div>
 
-          <div style={{ position: "absolute", left: INNER.x, top: INNER.y, width: INNER.w, height: chartH - INSET }}>
+          <div style={{ position: "absolute", left: box.x, top: box.y, width: box.w, height: chartH - inset }}>
             <Reveal at={add.headerAt} style={{ opacity: compactHeader }}>
               <CardHeader title="Retirement projection" subtitle="Projected wealth over the plan horizon." hover={presentHover} press={presentPress} />
             </Reveal>
-            <div style={{ position: "absolute", left: 32, top: 36, opacity: presentHeader, whiteSpace: "nowrap" }}>
+            <div style={{ position: "absolute", left: 22, top: 24, opacity: presentHeader, whiteSpace: "nowrap" }}>
               {/* 26 px (30 on the website) so the "Presenting" pill fits beside it. */}
               <div style={{ fontFamily: FONT.serif, fontSize: 26, lineHeight: 1.15 }}>Retirement projection (2026 – 2048)</div>
               <div style={{ fontSize: 15.5, fontStyle: "italic", color: C.muted, marginTop: 8 }}>Projected retirement wealth across the plan horizon.</div>
             </div>
             <LivePill t={t} opacity={presentHeader} />
-            <RetirementChart w={INNER.w} h={chartH - INSET} m={m} build={build} axis={axis} params={paramsAt(t)} legend={legend} endLabel={endLabel} />
+            <RetirementChart w={box.w} h={chartH - inset} m={m} build={build} axis={axis} params={paramsAt(t)} legend={legend} endLabel={endLabel} />
           </div>
 
           {split > 0 ? (

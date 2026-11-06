@@ -8,16 +8,19 @@ import { AD, graphicTop, INNER_W, MARGIN_X, TEXT_BOTTOM } from "../layout";
 
 // Ad 04 · Deliver: the workflow video through a camera that keeps each step on
 // the text margin and every clicked button in frame.
-//   recap and editor   1.15×, running off the right ("Create client document" in frame)
+//   recap              1.15×, running off the right ("Create client document" in frame)
+//   editor             1×, so "Save changes" is in frame; the preview runs off the right
 //   back on the recap  0.94×, so "Draft client email" fits
 //   writing-style card 1.1×, centred across the frame and between the copy and the bottom
-//   email and "sent"   fitted between the side margins, so Send is in frame
+//   email and "sent"   fitted between the side margins (Send in frame), centred
+//                      between the copy and the bottom
+// The ad starts 3.25 s in, on the suggested tasks.
 const TOP = graphicTop("deliver");
 const RECAP = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 1.15);
-const EDIT = anchor(EDITOR.x, EDITOR.y, MARGIN_X, TOP, 1.15);
+const EDIT = anchor(EDITOR.x, EDITOR.y, MARGIN_X, TOP, 1);
 const RECAP_WIDE = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 0.94);
 const LOADER = anchor(LOADING_BOX.x + LOADING_BOX.w / 2, LOADING_BOX.y + LOADING_BOX.h / 2, AD.w / 2, (TEXT_BOTTOM.deliver + AD.h) / 2, 1.1);
-const MAIL = anchor(EMAIL.x, EMAIL.y, MARGIN_X, TOP, INNER_W / EMAIL.w);
+const MAIL = anchor(EMAIL.x, EMAIL.y + EMAIL.h / 2, MARGIN_X, (TEXT_BOTTOM.deliver + AD.h) / 2, INNER_W / EMAIL.w);
 const KEYS: CameraKey[] = [
   { t: 0, ...RECAP },
   { t: T.toEditor, ...RECAP },
