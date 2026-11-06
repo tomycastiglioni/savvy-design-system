@@ -109,6 +109,14 @@ music dips under each VO line, its break falls on the meeting capture and its
 final hit on the logo. Export
 with 4 dB of gain and a limiter (`-af "volume=4dB,alimiter=limit=0.89:level=false"`).
 
+`Launch30-4x5`, `Launch30-1x1` and `Launch30-9x16` are the same video resized
+(1080 wide, same timing and sound; `src/launch30/Formats.tsx`). The 16:9
+picture is drawn in layers, each placed on the frame on its own: the product
+UI centred as in the sneak peek, in the lower part of the frame, with a soft
+bottom edge (the phone and the email still rise in from out of view); each
+phase's headline top left on a 75 px margin; the opening page and the close
+centred; the tracker on top.
+
 `Launch30Peek` is the website sneak peek: the same scenes with no text (no
 opening line, headlines or client question), no tracker and no sound, the
 product UI slid to the centre of the frame as each card comes in
