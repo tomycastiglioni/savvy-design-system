@@ -17,8 +17,9 @@ export const CloseScene: React.FC = () => {
   if (t < L.words[0]) return null;
   const copy = CLOSE_COPY[L.ending ?? "a"];
   const logo = ramp(t, L.logoIn, L.logoIn + 0.9);
-  // One line, centred, until the second line arrives; then the pair is.
-  const lift = ramp(t, L.more - 0.1, L.more + 0.5, EASE_IN_OUT);
+  // One line, centred, until the second line arrives; then the pair is. The
+  // first line is up before the second rises in under it, so they never cross.
+  const lift = ramp(t, L.more - 0.45, L.more + 0.1, EASE_IN_OUT);
   const firstCap = lerp(PHASE_WORDS_CAP, TAGLINE_CAP, lift);
   return (
     <>
