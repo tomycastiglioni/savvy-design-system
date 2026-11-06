@@ -8,6 +8,7 @@ import { Launch } from "./launch/Launch";
 import { DURATION } from "./launch/timeline";
 import { CLIENT_LIST_SIZE, ClientListStill } from "./launch30/frames/Clients";
 import { FORMATS as LAUNCH30_FORMATS, Launch30Format } from "./launch30/Formats";
+import { BOARD_KEYS as MORE_WAYS_BOARDS, boardSize as moreWaysBoardSize, MoreWaysStoryboard } from "./more-ways/Storyboard";
 import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
@@ -99,6 +100,11 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+      <Folder name="MoreWays-storyboards">
+        {MORE_WAYS_BOARDS.map((card) => (
+          <Still key={card} id={`MoreWays-board-${card}`} component={MoreWaysStoryboard} defaultProps={{ card }} width={moreWaysBoardSize(card).w} height={moreWaysBoardSize(card).h} />
+        ))}
+      </Folder>
       <Folder name="Launch30-formats">
         {(["4x5", "1x1", "9x16"] as const).map((format) => (
           <Composition
