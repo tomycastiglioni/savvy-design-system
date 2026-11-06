@@ -12,12 +12,11 @@ import { PrepScene } from "./scenes/Prep";
 import { Launch30Music } from "./Music";
 import { Launch30Sfx } from "./Sfx";
 import { C, FONT } from "./theme";
-import { Ending, TimelineContext, TIMELINES, useL } from "./timeline";
+import { TIMELINE, TimelineContext, useL } from "./timeline";
 
 // Savvy Intelligence launch video (1920×1080, 60 fps): one client meeting
 // followed through Prep → Meet → Deliver, built from the storyboard frames
-// (src/launch30/frames/). Two endings, A (~32 s) and B (~33 s); beats in
-// timeline.ts.
+// (src/launch30/frames/). 32.4 s; beats in timeline.ts.
 //
 // The voiceover is Jeremy B. (ElevenLabs v4), one file per line, placed by the
 // timeline and level-matched at −16 LUFS; it plays at half level against the
@@ -37,10 +36,10 @@ const Voiceover: React.FC = () => {
   );
 };
 
-export const Launch30: React.FC<{ readonly ending: Ending }> = ({ ending }) => {
+export const Launch30: React.FC = () => {
   useState(loadDiatype);
   return (
-    <TimelineContext.Provider value={TIMELINES[ending]}>
+    <TimelineContext.Provider value={TIMELINE}>
       <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.ink, overflow: "hidden" }}>
         <style>{"*{box-sizing:border-box;}"}</style>
         <LiveBackground />

@@ -72,11 +72,10 @@ Dave". Option A of `MobileRecapOptions` with option C's header; beats in
 `src/mobile-recap/timeline.ts`, copy in `src/mobile-recap/content.ts` (the
 Dec 10 date and the 42 min length are placeholders).
 
-`Launch30A` and `Launch30B` are the launch video (1920×1080, 60 fps, with
-sound), one per ending under discussion: A closes on "Prep, meet, deliver,
-and so much more." (32.4 s), B on "Prep. Meet. Deliver more for your client
-relationships." (33.2 s); both then say "That's your whole practice, working
-for you." One client meeting is followed through Prep → Meet → Deliver. It opens on "Deliver
+`Launch30` is the launch video (32.4 s, 1920×1080, 60 fps, with sound): one
+client meeting followed through Prep → Meet → Deliver, closing on "Prep,
+meet, deliver, and so much more. That's your whole practice, working for
+you." It opens on "Deliver
 more for your clients with Savvy Intelligence", scrolls into the advisor's
 client list and picks Allison & Frank Chan, whose row becomes the prep card. Beats are in
 `src/launch30/timeline.ts`: the approved 30 s cut's beats, with time added or
@@ -194,11 +193,11 @@ committed because this repo is public: put `ABCDiatype-Regular.otf` and
 
 The ads also need `ABCDiatype-Light.otf` in `public/fonts/` (same license).
 
-**Music:** `Launch30A`/`B` use "Slaptastic" (Steven Beddall, Creative Cut ·
-Beat), which Savvy licenses, so it is not committed either. Build the cuts
-with `scripts/launch30-music.sh <original.mp3>`; it writes
-`public/audio/launch30/music-slaptastic-a.mp3` and `-b.mp3` (rebuild them if
-the timeline moves the logo).
+**Music:** `Launch30` uses "Slaptastic" (Steven Beddall, Creative Cut · Beat),
+which Savvy licenses, so it is not committed either. Build the cut with
+`scripts/launch30-music.sh <original.mp3>`; it writes
+`public/audio/launch30/music-slaptastic.mp3` (rebuild it if the timeline
+moves the logo).
 
 **Sound:** effects in `public/audio/launch/`, trimmed and peak-normalized.
 `click` and `whoosh` come from ElevenLabs (text to sound); `send`, `chime`,
@@ -292,11 +291,11 @@ ffmpeg -i out/mobile-recap-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt
 npx remotion still MobileRecap out/export/mobile-recap-poster.png --frame=110
 ```
 
-For `Launch30A` (and `B` the same way), with sound:
+For `Launch30` (with sound):
 
 ```console
-npx remotion render Launch30A out/launch30-a-master.mov --codec=prores --prores-profile=hq
-ffmpeg -i out/launch30-a-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -af "volume=4dB,alimiter=limit=0.89:level=false" -c:a aac -b:a 192k -movflags +faststart out/export/launch30-a.mp4
+npx remotion render Launch30 out/launch30-master.mov --codec=prores --prores-profile=hq
+ffmpeg -i out/launch30-master.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -af "volume=4dB,alimiter=limit=0.89:level=false" -c:a aac -b:a 192k -movflags +faststart out/export/launch30.mp4
 ```
 
 For `Launch`, render the master with audio and encode with AAC instead of `-an`:

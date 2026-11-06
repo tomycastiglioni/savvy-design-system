@@ -10,7 +10,7 @@ import { CLIENT_LIST_SIZE, ClientListStill } from "./launch30/frames/Clients";
 import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
-import { durationOf, PEEK_TIMELINE, TIMELINES } from "./launch30/timeline";
+import { durationOf, PEEK_TIMELINE, TIMELINE as LAUNCH30_TIMELINE } from "./launch30/timeline";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
 import { MobileHousehold } from "./mobile-household/MobileHousehold";
 import { MobileHouseholdOptions, OPTIONS as MOBILE_HOUSEHOLD_OPTIONS } from "./mobile-household/Options";
@@ -90,19 +90,14 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
-      {(["a", "b"] as const).map((ending) => (
-        <Composition
-          key={ending}
-          // Ending A: "…and so much more." · B: "…Deliver more for your client relationships."
-          id={`Launch30${ending.toUpperCase()}`}
-          component={Launch30}
-          defaultProps={{ ending }}
-          durationInFrames={durationOf(TIMELINES[ending])}
-          fps={60}
-          width={1920}
-          height={1080}
-        />
-      ))}
+      <Composition
+        id="Launch30"
+        component={Launch30}
+        durationInFrames={durationOf(LAUNCH30_TIMELINE)}
+        fps={60}
+        width={1920}
+        height={1080}
+      />
       <Composition
         id="Launch30Peek"
         component={Launch30Peek}

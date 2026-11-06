@@ -4,10 +4,10 @@ import { staticFile, useVideoConfig } from "remotion";
 import { Timeline, useL } from "./timeline";
 
 // "Slaptastic" (Steven Beddall, Creative Cut · Beat; licensed, approved by the
-// team), cut to each ending at 120 BPM by scripts/launch30-music.sh: it comes
+// team), cut to the video at 120 BPM by scripts/launch30-music.sh: it comes
 // in partway through its soft intro bar, keeps its one-bar break (on the
 // meeting capture), drops one repeated bar before its ending, and lands its
-// final hit on the logo. public/audio/launch30/music-slaptastic-{a,b}.mp3.
+// final hit on the logo. public/audio/launch30/music-slaptastic.mp3.
 //
 // It dips under each voiceover line and comes back up between them, and fades
 // out over the last half second.
@@ -41,5 +41,5 @@ const musicVolume = (L: Timeline, t: number) => {
 export const Launch30Music: React.FC = () => {
   const L = useL();
   const { fps } = useVideoConfig();
-  return <Audio src={staticFile(`audio/launch30/music-slaptastic-${L.ending ?? "a"}.mp3`)} volume={(f) => musicVolume(L, f / fps)} />;
+  return <Audio src={staticFile("audio/launch30/music-slaptastic.mp3")} volume={(f) => musicVolume(L, f / fps)} />;
 };

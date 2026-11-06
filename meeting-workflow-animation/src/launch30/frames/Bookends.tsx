@@ -7,7 +7,7 @@ import { CY } from "../theme";
 export const PHASE_WORDS = ["Prep.", "Meet.", "Deliver."];
 export const PHASE_WORDS_CAP = CY - 0.35 * HEAD.size;
 // F14: the launch tagline, two lines centred on the middle.
-export const TAGLINE = ["Your whole practice,", "working for you"];
+export const TAGLINE = ["Your whole practice,", "working for you."];
 export const TAGLINE_CAP = CY - (HEAD.lh + 0.7 * HEAD.size) / 2;
 // F15: the wordmark, centred.
 export const END_LOGO_H = 93.85;

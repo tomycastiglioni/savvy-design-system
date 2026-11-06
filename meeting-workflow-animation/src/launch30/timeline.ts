@@ -8,8 +8,7 @@ import { useCurrentFrame, useVideoConfig } from "remotion";
 // Jeremy's natural pace with a pause after it, and the visuals make room. The
 // room is taken only where the picture holds still (ROOM), so no move plays
 // faster or slower than before. The close is built from the voiceover itself:
-// each word lands as it's said. Two endings: "a" ("…and so much more") and
-// "b" ("…Deliver more for your client relationships").
+// each word lands as it's said.
 
 const BASE = {
   // Intro: the line, the advisor's client list, Allison & Frank Chan picked
@@ -101,39 +100,25 @@ const VO_LINES = {
 } satisfies Record<string, VoLine>;
 const PAD = 0.06; // silence at either end of each file
 
-export type Ending = "a" | "b";
-type CloseCopy = {
-  readonly line: VoLine & { readonly said: readonly [number, number, number, number] };
-  readonly words: readonly [string, string, string]; // first line, word by word
-  readonly more: string; // second line
-  readonly tagline: VoLine & { readonly said: readonly [number, number] }; // "That's your whole practice," / "working for you."
-};
-export const CLOSE_COPY: Record<Ending, CloseCopy> = {
-  // "Prep, meet, deliver, and so much more."
-  a: {
-    line: { src: "06-close-a", len: 3.38, said: [0.06, 0.72, 1.39, 2.09] },
-    words: ["Prep.", "Meet.", "Deliver."],
-    more: "And so much more.",
-    tagline: { src: "07-tagline-a", len: 2.58, said: [0.06, 1.75] },
-  },
-  // "Prep. Meet. Deliver more for your client relationships."
-  b: {
-    line: { src: "06-close-b", len: 4.13, said: [0.06, 0.94, 1.86, 2.62] },
-    words: ["Prep.", "Meet.", "Deliver more"],
-    more: "for your client relationships.",
-    tagline: { src: "07-tagline-b", len: 2.63, said: [0.06, 1.68] },
-  },
-};
+// The close: "Prep, meet, deliver, and so much more." on two lines, then
+// "That's your whole practice, working for you." (the tagline, Bookends.tsx).
+export const CLOSE = {
+  line: { src: "06-close", len: 3.38, said: [0.06, 0.72, 1.39, 2.09] },
+  words: ["Prep.", "Meet.", "Deliver."], // first line, word by word
+  more: "And so much more.", // second line
+  tagline: { src: "07-tagline", len: 2.58, said: [0.06, 1.75] }, // "That's…" / "working…"
+} as const;
 
 const LEAD = 0.1; // text starts arriving this long before its word is said
 const END_CARD = 1.3; // the logo holds this long (was 1.55)
 
-const build = (ending: Ending | null) => {
-  const b = mapBeats(ending ? shift : (s) => s);
-  if (!ending) {
+// `retimed` false gives the approved cut's beats (no voiceover).
+const build = (retimed: boolean) => {
+  const b = mapBeats(retimed ? shift : (s) => s);
+  if (!retimed) {
     return { ...b, ...BASE_CLOSE, vo: [] as { src: string; at: number; len: number }[] };
   }
-  const { line, tagline } = CLOSE_COPY[ending];
+  const { line, tagline } = CLOSE;
   // Lines 1–5 sit on the picture: the opening line with the title, each
   // phase's line as its screen arrives.
   const intro = 0.1;
@@ -171,25 +156,25 @@ const build = (ending: Ending | null) => {
   };
 };
 
-export type Timeline = ReturnType<typeof build> & { readonly ending: Ending | null; readonly phases: readonly (readonly [number, number])[] };
-const timeline = (ending: Ending | null): Timeline => {
-  const l = build(ending);
-  const f = ending ? shift : (s: number) => s;
+export type Timeline = ReturnType<typeof build> & { readonly phases: readonly (readonly [number, number])[] };
+const timeline = (retimed: boolean): Timeline => {
+  const l = build(retimed);
+  const f = retimed ? shift : (s: number) => s;
   // Prep, Meet and Deliver on the tracker
   const phases = [
     [f(3.5), f(9.5)],
     [f(9.5), f(17.5)],
     [f(17.5), f(24)],
   ] as const;
-  return { ...l, ending, phases };
+  return { ...l, phases };
 };
 
-export const TIMELINES = { a: timeline("a"), b: timeline("b") };
+export const TIMELINE = timeline(true);
 // The approved cut's beats; Launch30Peek runs on these so its loop edits
 // (scripts/launch30-peek.sh) still line up.
-export const PEEK_TIMELINE = timeline(null);
+export const PEEK_TIMELINE = timeline(false);
 
-export const TimelineContext = createContext<Timeline>(TIMELINES.a);
+export const TimelineContext = createContext<Timeline>(TIMELINE);
 export const useL = () => useContext(TimelineContext);
 export const durationOf = (l: Timeline, fps = 60) => Math.round(l.end * fps);
 
