@@ -14,8 +14,10 @@ The October 2026 16:9 edition is kept for reference in `template/2026-10.html`.
 | `template/template.html` | Source for the report, filled with the November 2026 copy. Duplicate it for each new edition. |
 | `template/YYYY-MM.html` | The source of each published edition. |
 | `template/build.py` | Inlines the logo, icons and headshots and writes a single self-contained HTML file. |
-| `template/export-pdf.js` | Optional: renders the PDF and page previews with Playwright, at the page's own size. |
-| `assets/` | Logo (black/white SVG), section icons (Verdict, Portfolio stance, Core driver), author headshots. |
+| `template/carousel.html` | Source for the 7-slide LinkedIn carousel (1080 × 1350), matching the Figma carousel. |
+| `template/export_pdf.py` | Renders the PDF and page previews with Playwright (Python) and flags pages that overflow. `export-pdf.js` is the Node version. |
+| `skill/` | The Claude skill the investment team uses to build each edition (see below). |
+| `assets/` | Logo (black/white SVG), section icons (Verdict, Portfolio stance, Core driver), author headshots, Inter font (embedded at build). |
 | `YYYY-MM-<slug>.html` / `.pdf` | Published editions (Savvy-branded report). |
 | `YYYY-MM-<slug>-white-label.html` / `.pdf` | Same report with no Savvy logo, for client marketing to add an advisor's logo. |
 
@@ -104,3 +106,23 @@ Each edition also goes on savvywealth.com as a draft item in the **Blog Posts** 
 3. With the Webflow connector, Claude uploads the month's thumbnail (used for both Thumbnail and Main image)
    and creates the item as a **draft**, copying authors, bios, photos and category from the previous post.
    A person reviews and publishes it in Webflow.
+
+## Carousel (HTML)
+
+`template/carousel.html` is the LinkedIn carousel as an HTML template, matching the Figma slides (file
+`QJAJaS7qru79fTrIq73NHt`, page "PORTFOLIO PERSPECTIVES OCTOBER", "November 2026_Slide 1–7"). Edit the lines marked
+`<!-- EDIT -->`, then:
+```
+python3 portfolio-perspectives/template/build.py portfolio-perspectives/template/carousel.html OUT-carousel.html
+python3 portfolio-perspectives/template/export_pdf.py OUT-carousel.html OUT_DIR
+```
+
+## Sharing with the investment team (Claude skill)
+
+From December 2026 the investment team builds the report, white label and carousel in their own Claude with the
+skill in `skill/`. `skill/SKILL.md` holds the instructions Claude follows: the page-by-page copy map, dot levels,
+overflow rules and carousel slots.
+
+- Package it: `python3 portfolio-perspectives/skill/make_skill.py` → `skill/savvy-portfolio-perspectives.zip`.
+- Install it in Claude: **Settings › Capabilities › Skills › Upload skill**, with code execution turned on.
+- Re-run `make_skill.py` and share the new zip whenever the template, the scripts or SKILL.md change.

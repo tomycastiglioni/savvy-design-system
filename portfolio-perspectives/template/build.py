@@ -1,4 +1,4 @@
-"""Build a self-contained Portfolio Perspectives HTML file from a source template.
+"""Build a self-contained Portfolio Perspectives HTML file (report or carousel) from a source template.
 
 Usage (from the repo root):
     python3 portfolio-perspectives/template/build.py SOURCE.html OUTPUT.html [--white-label]
@@ -19,6 +19,7 @@ def data_uri(name, mime):
 
 PLACEHOLDERS = {
     '%%WORDMARK%%': ('logo-black.svg', 'image/svg+xml'),
+    '%%WORDMARK_WHITE%%': ('logo-white.svg', 'image/svg+xml'),
     '%%ICON_VERDICT%%': ('icon-verdict.svg', 'image/svg+xml'),
     '%%ICON_STANCE%%': ('icon-portfolio-stance.svg', 'image/svg+xml'),
     '%%ICON_CORE%%': ('icon-core-driver.svg', 'image/svg+xml'),
@@ -31,9 +32,18 @@ white_label = '--white-label' in sys.argv
 src, out = args[0], args[1]
 html = pathlib.Path(src).read_text()
 for key, (name, mime) in PLACEHOLDERS.items():
-    if key not in html:
-        sys.exit(f'Missing placeholder {key} in {src}')
-    html = html.replace(key, data_uri(name, mime))
+    if key in html:
+        html = html.replace(key, data_uri(name, mime))
+# embed Inter so the file renders the same offline (replaces the Google Fonts link)
+font = ASSETS / 'fonts' / 'inter-variable.woff2'
+if font.exists():
+    face = ("<style>@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:block;"
+            "src:url(data:font/woff2;base64," + base64.b64encode(font.read_bytes()).decode() + ") format('woff2')}</style>")
+    lines = [l for l in html.split('\n') if 'fonts.googleapis.com' not in l and 'fonts.gstatic.com' not in l]
+    html = '\n'.join(lines).replace('</head>', face + '\n</head>', 1)
+if '%%' in html:
+    i = html.index('%%')
+    sys.exit(f'Unknown placeholder left in {src}: ' + html[i:i + 30])
 if white_label:
     html = html.replace('</style>', '/* white label: Savvy logo removed, space kept for an advisor logo */\n.wordmark{visibility:hidden!important}\n.back .tg,.tagline{display:none!important}\n</style>', 1)
     html = html.replace('<title>Portfolio Perspectives — ', '<title>Portfolio Perspectives (white label) — ', 1)

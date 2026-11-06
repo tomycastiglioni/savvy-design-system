@@ -50,9 +50,8 @@ b,strong{font-weight:500}
 /* ---------- page chrome (injected by script, see bottom) ---------- */
 .pg-head{position:absolute;left:var(--mx);right:var(--mx);top:34px;z-index:3}
 .pg-head .top{display:flex;align-items:center;justify-content:space-between;height:22px}
-.wordmark{display:block;width:62px;height:21px;background:#000;
-  -webkit-mask:url('%%WORDMARK%%') left center/contain no-repeat;mask:url('%%WORDMARK%%') left center/contain no-repeat}
-.wordmark.white{background:#fff}
+.wordmark{display:block;width:62px;height:21px;background:url('%%WORDMARK%%') left center/contain no-repeat}
+.wordmark.white{background-image:url('%%WORDMARK_WHITE%%')}
 .tagline{font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;text-align:right;line-height:1.05;font-weight:400}
 .tagline b{font-weight:600}
 .nav{display:flex;gap:2px;align-items:center;margin-top:14px;margin-left:-8px}
