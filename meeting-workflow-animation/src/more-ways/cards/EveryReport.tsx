@@ -1,108 +1,184 @@
 import React from "react";
 import { FirmLogo } from "../../recap/components/FirmLogo";
-import { Caret, Icon, Pointer } from "../Bits";
+import { Caret, GlassChip, Icon, IconName, Pencil, Pointer, Spinner } from "../Bits";
 import { C, DM, FONT, MEDIUM } from "../theme";
 
-// 03 · Every report sounds like you wrote it (700×324). The prompt pill
-// (Figma) asks for the Chans' Q4 advisor note; the pill moves up and the
-// report rises in under it, branded, the note writing itself in the advisor's
-// voice; it's scheduled and published to the client portal, and the pill
-// becomes the confirmation.
+// 03 · Every report sounds like you wrote it (700×324). The request in the
+// prompt pill (Figma): “Write the advisor note for the Chans’ Q4 report.”
+// Sent, the pill moves up and two agents take it: the Reporting Agent builds
+// the report, the Email Agent learns the advisor's writing style from their
+// sent emails. The report builder rises in with the advisor note open, a
+// “Writing style” indicator and the draft writing itself, and an Edit option
+// the advisor takes.
 export type ReportState = {
-  readonly typed?: number; // 0–1 of the prompt
-  readonly sent?: number; // 0–1: pill up, report in
+  readonly typed?: number; // 0–1 of the request
+  readonly sent?: number; // 0–1: pill up, agents in
+  readonly agents?: number; // 0: working, 1: done
+  readonly builder?: number; // 0–1: the report builder rising in
   readonly note?: number; // 0–1 of the note written
-  readonly voice?: boolean; // "In your voice" detail
-  readonly hover?: boolean; // cursor on Publish
-  readonly published?: boolean;
+  readonly hover?: boolean; // cursor on Edit
+  readonly editing?: boolean; // the note open for editing
+  readonly spin?: number;
 };
 
 const W = 700;
 const H = 324;
 const PROMPT = "Write the advisor note for the Chans’ Q4 report.";
-const NOTE =
-  "Allison, Frank — a steady quarter for you both. We brought the portfolio back to its 70/30 target and fully funded Ellie’s 529. Nothing needs your attention before we meet.";
-const DOC = { w: 560, top: 108 };
+const NOTE = "Allison, Frank — a steady quarter for you both. We brought the portfolio back to its 70/30 target and fully funded Ellie’s 529. Nothing needs your attention before we meet.";
+const AGENTS: readonly { icon: IconName; name: string; working: string; done: string }[] = [
+  { icon: "file-text-white", name: "Reporting Agent", working: "Building the Q4 report", done: "Report built" },
+  { icon: "chip-mail", name: "Email Agent", working: "Learning your writing style", done: "Style from 212 emails" },
+];
+const SECTIONS = ["Performance", "Allocation", "Advisor note", "Next steps"];
+const B = { x: 60, w: 580, top: 128 }; // the builder
 
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
 export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
-  const { typed = 1, sent = 0, note = 0, voice = false, hover = false, published = false } = s;
+  const { typed = 1, sent = 0, agents = 0, builder = 0, note = 0, hover = false, editing = false, spin = 0 } = s;
   const text = PROMPT.slice(0, Math.round(typed * PROMPT.length));
-  const pillScale = lerp(1, 0.78, sent);
-  const pillTop = lerp(H / 2, 46, sent);
   const written = NOTE.slice(0, Math.round(note * NOTE.length));
   return (
     <div style={{ position: "relative", width: W, height: H, overflow: "hidden", fontFamily: FONT }}>
-      {/* the report */}
+      {/* the agents on it */}
       {sent > 0 ? (
+        <div style={{ position: "absolute", left: 0, right: 0, top: 84, display: "flex", justifyContent: "center", gap: 8, opacity: sent }}>
+          {AGENTS.map((a) => (
+            <GlassChip
+              key={a.name}
+              icon={a.icon}
+              label={a.name}
+              size={11}
+              extra={
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginLeft: 2, color: "rgba(255,255,255,0.6)" }}>
+                  · {agents >= 1 ? a.done : a.working}
+                  {agents >= 1 ? (
+                    <span style={{ width: 13, height: 13, borderRadius: 7, background: C.mint, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+                      <Icon name="check-green" w={7.5} />
+                    </span>
+                  ) : (
+                    <Spinner angle={spin} size={12} />
+                  )}
+                </span>
+              }
+            />
+          ))}
+        </div>
+      ) : null}
+
+      {/* the report builder, advisor note open */}
+      {builder > 0 ? (
         <div
           style={{
             position: "absolute",
-            left: (W - DOC.w) / 2,
-            top: lerp(H + 20, DOC.top, sent),
-            width: DOC.w,
-            height: 300,
+            left: B.x,
+            top: lerp(H + 10, B.top, builder),
+            width: B.w,
+            height: 260,
             background: "#ffffff",
             borderRadius: 10,
             border: `0.7px solid ${C.border}`,
-            boxShadow: "0 18px 40px -18px rgba(0,0,0,0.35)",
-            padding: "20px 24px",
-            boxSizing: "border-box",
+            boxShadow: "0 18px 40px -18px rgba(0,0,0,0.4)",
+            overflow: "hidden",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ scale: 0.8, transformOrigin: "0 50%" }}>
-              <FirmLogo />
+          <div style={{ height: 46, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", borderBottom: `0.7px solid ${C.border}` }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ width: 112, height: 24, display: "flex", alignItems: "center" }}>
+                <div style={{ scale: 0.72, transformOrigin: "0 50%", width: "max-content", flexShrink: 0 }}>
+                  <FirmLogo />
+                </div>
+              </div>
+              <div style={{ fontWeight: MEDIUM, fontSize: 13, color: C.ink }}>Q4 Report · Allison &amp; Frank Chan</div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ fontFamily: DM, fontSize: 10.5, color: C.sub2, padding: "6px 10px", borderRadius: 6, border: `0.8px solid ${C.border}` }}>Every quarter</div>
+            <div style={{ fontFamily: DM, fontSize: 10.5, color: C.muted }}>Quarterly · Client portal</div>
+          </div>
+          <div style={{ display: "flex", height: 214 }}>
+            <div style={{ width: 138, padding: "12px 8px", borderRight: `0.7px solid ${C.border}`, background: "#fbfbfc" }}>
+              <div style={{ fontFamily: DM, fontWeight: 600, fontSize: 9, letterSpacing: "0.06em", textTransform: "uppercase", color: C.muted, padding: "0 8px 8px" }}>Sections</div>
+              {SECTIONS.map((sec) => {
+                const on = sec === "Advisor note";
+                return (
+                  <div
+                    key={sec}
+                    style={{
+                      height: 28,
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "0 8px",
+                      borderRadius: 6,
+                      fontFamily: DM,
+                      fontSize: 11.5,
+                      fontWeight: on ? 600 : 400,
+                      color: on ? C.green : C.sub2,
+                      background: on ? C.greenSoft : undefined,
+                    }}
+                  >
+                    {sec}
+                  </div>
+                );
+              })}
+            </div>
+            <div style={{ flex: 1, padding: "14px 18px", position: "relative" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ fontWeight: MEDIUM, fontSize: 14, color: C.ink }}>Advisor note</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "3px 8px 3px 5px", borderRadius: 10, background: C.greenBg, color: C.greenInk, fontSize: 10, fontWeight: MEDIUM }}>
+                    <Icon name="savvy-mark" w={11} />
+                    Writing style: Yours
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 5,
+                    height: 24,
+                    padding: "0 9px",
+                    borderRadius: 6,
+                    border: `0.8px solid ${editing ? C.green : "#d4d7de"}`,
+                    background: editing ? C.green : hover ? "#f3f5f7" : "#ffffff",
+                    color: editing ? "#ffffff" : C.ink,
+                    fontWeight: MEDIUM,
+                    fontSize: 10.5,
+                    opacity: note >= 1 ? 1 : 0.4,
+                  }}
+                >
+                  {editing ? null : <Pencil size={11} />}
+                  {editing ? "Done" : "Edit"}
+                </div>
+              </div>
+              <div style={{ fontFamily: DM, fontSize: 10, color: C.muted, marginTop: 6 }}>Draft · in your voice, from your sent client emails</div>
               <div
                 style={{
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  height: 28,
-                  padding: "0 12px",
-                  borderRadius: 6,
-                  fontWeight: MEDIUM,
-                  fontSize: 11,
-                  background: published ? C.greenBg : C.green,
-                  color: published ? C.greenInk : "#ffffff",
+                  marginTop: 10,
+                  padding: editing ? "9px 10px" : "9px 0",
+                  borderRadius: 7,
+                  border: editing ? `1px solid ${C.green2}` : "1px solid transparent",
+                  boxShadow: editing ? "0 0 0 3px rgba(8,107,78,0.12)" : undefined,
+                  fontFamily: DM,
+                  fontSize: 12,
+                  lineHeight: 1.55,
+                  color: C.text,
                 }}
               >
-                {published ? <Icon name="check-dark" w={10} /> : null}
-                {published ? "Published" : "Publish to portal"}
+                {written}
+                {(note > 0 && note < 1) || editing ? <Caret h={13} /> : null}
               </div>
+              {hover ? <Pointer x={402} y={30} /> : null}
             </div>
           </div>
-          <div style={{ marginTop: 16, display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-            <div style={{ fontWeight: MEDIUM, fontSize: 15, color: C.ink }}>Q4 Report · Allison &amp; Frank Chan</div>
-          </div>
-          <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ fontFamily: DM, fontWeight: 600, fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase", color: C.sub2 }}>Advisor note</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "3px 8px 3px 5px", borderRadius: 10, background: C.greenBg, color: C.greenInk, fontSize: 10, fontWeight: MEDIUM, opacity: voice ? 1 : 0.0 }}>
-              <Icon name="savvy-mark" w={11} />
-              In your voice
-            </div>
-            {voice ? <div style={{ fontFamily: DM, fontSize: 10, color: C.muted }}>Learned from 212 of your sent emails</div> : null}
-          </div>
-          <div style={{ marginTop: 8, fontFamily: DM, fontSize: 12.5, lineHeight: 1.55, color: C.text, minHeight: 58 }}>
-            {written}
-            {note > 0 && note < 1 ? <Caret h={13} /> : null}
-          </div>
-          {hover ? <Pointer x={486} y={38} /> : null}
         </div>
       ) : null}
-      {/* the prompt pill; once published it carries the confirmation */}
+
+      {/* the request */}
       <div
         style={{
           position: "absolute",
           left: W / 2,
-          top: pillTop,
+          top: lerp(H / 2, 42, sent),
           translate: "-50% -50%",
-          scale: pillScale,
+          scale: lerp(1, 0.72, sent),
           height: 81.711,
           boxSizing: "border-box",
           padding: 8.677,
@@ -111,25 +187,14 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
           boxShadow: "0 6.508px 13.739px rgba(37, 58, 47, 0.12)",
         }}
       >
-        <div
-          style={{
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            gap: 20.247,
-            padding: "0 7.231px 0 20.247px",
-            borderRadius: 57.849,
-            background: "#ffffff",
-            whiteSpace: "nowrap",
-          }}
-        >
+        <div style={{ height: "100%", display: "flex", alignItems: "center", gap: 20.247, padding: "0 7.231px 0 20.247px", borderRadius: 57.849, background: "#ffffff", whiteSpace: "nowrap" }}>
           <Icon name="savvy-mark-lg" w={26.7} h={27.256} />
-          <div style={{ fontSize: 17.658, lineHeight: 1.25, color: "#000000", minWidth: published ? 0 : 366 }}>
-            {published ? "Published to the Chans’ client portal" : text}
-            {!published && typed < 1 ? <Caret h={20} color="#000000" /> : null}
+          <div style={{ fontSize: 17.658, lineHeight: 1.25, color: "#000000", minWidth: 366 }}>
+            {text}
+            {typed < 1 ? <Caret h={20} color="#000000" /> : null}
           </div>
           <div style={{ width: 49.894, height: 49.894, borderRadius: "50%", background: C.green2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            {published ? <Icon name="check-small" w={18} style={{ filter: "brightness(0) invert(1)" }} /> : <Icon name="send-pill" w={21.137} />}
+            <Icon name="send-pill" w={21.137} />
           </div>
         </div>
       </div>
@@ -138,9 +203,17 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
 };
 
 export const REPORT_FRAMES: readonly { s: ReportState; title: string; caption: string }[] = [
-  { s: { typed: 0.62 }, title: "Ask for it", caption: "The prompt from the design types itself: “Write the advisor note for the Chans’ Q4 report.”" },
-  { s: { typed: 1, sent: 1, note: 0.45 }, title: "Drafted", caption: "Sent: the pill moves up and the Chans’ Q4 report rises in, in the firm’s brand; the note writes itself." },
-  { s: { typed: 1, sent: 1, note: 1, voice: true }, title: "In your voice", caption: "“In your voice”, learned from the advisor’s sent emails. It reads like them, not like a template." },
-  { s: { typed: 1, sent: 1, note: 1, voice: true, hover: true }, title: "On schedule", caption: "Set to go out every quarter; the cursor clicks “Publish to portal”." },
-  { s: { typed: 1, sent: 1, note: 1, voice: true, published: true }, title: "Published", caption: "The button reads “Published” and the pill becomes the confirmation: “Published to the Chans’ client portal”." },
+  { s: { typed: 0.62 }, title: "The request", caption: "The request types itself in the prompt from the design: “Write the advisor note for the Chans’ Q4 report.”" },
+  {
+    s: { sent: 1, agents: 0, spin: 120 },
+    title: "Two agents on it",
+    caption: "Sent: the pill moves up and two agents pick it up. The Reporting Agent builds the report; the Email Agent learns the advisor’s writing style from their sent emails.",
+  },
+  {
+    s: { sent: 1, agents: 1, builder: 1, note: 0.5 },
+    title: "The report builder",
+    caption: "Both tick. The report builder rises in with the advisor note open and a “Writing style: Yours” indicator; the draft writes itself.",
+  },
+  { s: { sent: 1, agents: 1, builder: 1, note: 1, hover: true }, title: "Your draft", caption: "The draft is done and reads like the advisor. The cursor goes to “Edit”." },
+  { s: { sent: 1, agents: 1, builder: 1, note: 1, editing: true }, title: "Yours to edit", caption: "The note opens for editing (outlined, caret in it): the advisor has the last word. Then it loops." },
 ];

@@ -119,3 +119,27 @@ export const Skeleton: React.FC<{ readonly w: number | string; readonly h?: numb
 export const Pointer: React.FC<{ readonly x: number; readonly y: number; readonly scale?: number }> = ({ x, y, scale = 0.9 }) => (
   <Img src={staticFile("images/cursor-arrow.svg")} style={{ position: "absolute", left: x - 9.15 * scale, top: y - 6.03 * scale, width: 31 * scale, height: 33 * scale }} />
 );
+
+// Small loading ring.
+export const Spinner: React.FC<{ readonly angle: number; readonly size?: number; readonly dark?: boolean }> = ({ angle, size = 13, dark = true }) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      flexShrink: 0,
+      borderRadius: "50%",
+      border: `1.6px solid ${dark ? "rgba(255,255,255,0.18)" : "#e3e6ea"}`,
+      borderTopColor: dark ? C.mint : C.green2,
+      rotate: `${angle}deg`,
+      boxSizing: "border-box",
+    }}
+  />
+);
+
+// Pencil (lucide), for edit buttons.
+export const Pencil: React.FC<{ readonly size?: number; readonly color?: string }> = ({ size = 12, color = "#1d2334" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{ display: "block", flexShrink: 0 }}>
+    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+    <path d="m15 5 4 4" />
+  </svg>
+);
