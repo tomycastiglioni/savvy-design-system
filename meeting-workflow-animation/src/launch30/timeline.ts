@@ -11,11 +11,11 @@ import { useCurrentFrame, useVideoConfig } from "remotion";
 // each word lands as it's said.
 
 const BASE = {
-  // Intro: the line, the advisor's client list, Allison & Frank Chan picked
+  // Intro: the line, the advisor's client list, Allison & Frank Marlowe picked
   titleIn: [0.2, 0.5], // "Deliver more for your clients" / "with Savvy Intelligence"
   pageUp: [1.3, 1.95], // the page scrolls up and the client list comes in
   listIn: [1.4, 2.0],
-  listScroll: [2.05, 2.85], // the list scrolls to Allison & Frank Chan
+  listScroll: [2.05, 2.85], // the list scrolls to Allison & Frank Marlowe (longer in the retimed cut, below)
   pickClick: 3.05,
   pickMorph: [3.15, 3.75], // their row becomes the prep card
   // Prep
@@ -70,9 +70,10 @@ const BASE_CLOSE = { words: [24.6, 24.9, 25.2], more: 25.5, wordsOut: 26.15, tag
 // Time added (+) or taken (−) after a BASE moment where the picture holds.
 const ROOM: readonly (readonly [number, number])[] = [
   [0.9, 0.6], // the title holds while "Savvy Intelligence is connected…" plays
-  [2.95, 0.9], // the list rests on Allison & Frank before the pick, so the
-  //              opening line has finished as their prep card lands
-  [7.4, -0.5], // the prep document holds less: the line now plays over it
+  [2.95, 1.8], // the list scrolls further (LIST_SCROLL_S) and rests on Allison &
+  //              Frank; they're picked only once the opening line has ended
+  [4.5, -0.4], // the prep card holds less: the prep line now plays over it
+  [7.4, -0.8], // the prep document holds less: the line now plays over it
   [10.45, -0.25], // the presentation: less wait before the client's question
   [12.05, -0.1], // and before the what-if drag
   [13.4, -0.5], // after the drag
@@ -92,7 +93,7 @@ const mapBeats = (f: (s: number) => number): Beats =>
 // onsets of the words the close puts on screen, from the file's start.
 type VoLine = { readonly src: string; readonly len: number };
 const VO_LINES = {
-  intro: { src: "01-intro", len: 5.95 }, // "Savvy Intelligence is connected to your whole practice, helping you deliver more for your client relationships."
+  intro: { src: "01-intro", len: 5.35 }, // "Savvy Intelligence is connected to your whole practice, helping you deliver more for your clients."
   prep: { src: "02-prep", len: 2.75 }, // "Your agenda is prepped before you even ask."
   meet: { src: "03-meet", len: 2.64 }, // "Present and adjust plans live in the meeting."
   capture: { src: "04-capture", len: 3.47 }, // "And every word's captured, so you can stay in the conversation."
@@ -113,8 +114,13 @@ const LEAD = 0.1; // text starts arriving this long before its word is said
 const END_CARD = 1.3; // the logo holds this long (was 1.55)
 
 // `retimed` false gives the approved cut's beats (no voiceover).
+// The list scroll in the retimed cut: six rows down to the Marlowes, at the
+// approved cut's speed.
+const LIST_SCROLL_S = 1.7;
+
 const build = (retimed: boolean) => {
   const b = mapBeats(retimed ? shift : (s) => s);
+  if (retimed) b.listScroll = [b.listScroll[0], b.listScroll[0] + LIST_SCROLL_S];
   if (!retimed) {
     return { ...b, ...BASE_CLOSE, vo: [] as { src: string; at: number; len: number }[] };
   }
@@ -122,7 +128,9 @@ const build = (retimed: boolean) => {
   // Lines 1–5 sit on the picture: the opening line with the title, each
   // phase's line as its screen arrives.
   const intro = 0.1;
-  const prep = intro + VO_LINES.intro.len + 0.45; // a pause after the opening line
+  // A pause after the opening line: the client is picked, their prep card
+  // lands, and only then the prep line.
+  const prep = b.cardIn + 0.45;
   const meet = b.land[0] - 0.15; // "Present…" as the plan lands as a presentation
   const capture = b.phoneIn[0] + 0.15; // "And every word's captured…" as the phone slides in
   const deliver = b.deliverText;

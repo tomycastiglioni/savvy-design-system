@@ -5,8 +5,8 @@ import { lerp, Rect } from "../components/Motion";
 import { C, CY, FONT } from "../theme";
 
 // The opening: "Deliver more for your clients with Savvy Intelligence", then the
-// advisor's whole client list (the CRM), scrolled to Allison & Frank Chan,
-// who get picked. Layout from the team's mock-up (1920×1080).
+// advisor's whole client list (the CRM, by last name), scrolled a long way
+// down to Allison & Frank Marlowe, who get picked. Names are made up. Layout from the team's mock-up (1920×1080).
 
 export const TITLE_LINES = ["Deliver more for your clients", "with Savvy Intelligence"];
 // Two lines centred on the middle line; when the list comes up the page
@@ -16,24 +16,26 @@ export const PAGE_UP = 143 - TITLE_CAP;
 
 export type Client = { readonly name: string; readonly members: string; readonly aum: string };
 export const CLIENTS: readonly Client[] = [
-  { name: "Adeel Haddad", members: "Adeel Haddad", aum: "$430K" },
-  { name: "Alan Whitfield", members: "Alan Whitfield", aum: "$567K" },
-  { name: "Alice Moreno & Jackie Lin", members: "Alice Moreno & Jackie Lin", aum: "$4.54M" },
-  { name: "Allison & Frank Chan", members: "Allison Chan & Frank Chan", aum: "$9.36M" },
-  { name: "Chris Smith", members: "Chris Smith", aum: "$322K" },
-  { name: "Dan Parsons", members: "Dan Parsons", aum: "$686K" },
-  { name: "Diana Ruiz", members: "Diana Ruiz", aum: "$1.12M" },
-  { name: "Elena & Mark Price", members: "Elena Price & Mark Price", aum: "$2.07M" },
+  { name: "Alan Ashby", members: "Alan Ashby", aum: "$567K" },
+  { name: "Adeel Bakshi", members: "Adeel Bakshi", aum: "$430K" },
+  { name: "Chris Calder", members: "Chris Calder", aum: "$322K" },
+  { name: "Alice Duarte & Jackie Lowell", members: "Alice Duarte & Jackie Lowell", aum: "$4.54M" },
+  { name: "Diana Ferro", members: "Diana Ferro", aum: "$1.12M" },
+  { name: "Dan Hollis", members: "Dan Hollis", aum: "$686K" },
+  { name: "Allison & Frank Marlowe", members: "Allison Marlowe & Frank Marlowe", aum: "$9.36M" },
+  { name: "Elena & Mark Prescott", members: "Elena Prescott & Mark Prescott", aum: "$2.07M" },
+  { name: "Grace & Tom Sutter", members: "Grace Sutter & Tom Sutter", aum: "$3.18M" },
+  { name: "Henry Wexler", members: "Henry Wexler", aum: "$845K" },
 ];
-// Allison & Frank Chan, the household the video follows.
-export const SELECTED = 3;
+// Allison & Frank Marlowe, the household the video follows.
+export const SELECTED = 6;
 
 // The list once the page has scrolled up (frame 2). `scroll` moves the rows on
 // past that; the header sticks at STICK.
 export const LIST = { x: 451, w: 1017, header: 460, top: 541, rowH: 125, gap: 20 };
 export const STICK = 138;
-// Far enough that the selected row sits mid-frame (frame 3).
-export const LIST_SCROLL = 390;
+// Far enough that the selected row sits mid-frame (frame 3): six rows down.
+export const LIST_SCROLL = 825;
 export const rowRect = (i: number, scroll: number): Rect => ({ x: LIST.x, y: LIST.top + i * (LIST.rowH + LIST.gap) - scroll, w: LIST.w, h: LIST.rowH });
 export const headerTop = (scroll: number) => Math.max(STICK, LIST.header - scroll);
 
@@ -161,7 +163,7 @@ export const F02Clients: React.FC = () => (
   </>
 );
 
-// F03 · 0:03 — scrolled to Allison & Frank Chan, who get picked.
+// F03 · 0:03 — scrolled to Allison & Frank Marlowe, who get picked.
 export const F03Pick: React.FC = () => (
   <>
     <Bg bg="cream" />

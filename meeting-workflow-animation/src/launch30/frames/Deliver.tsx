@@ -171,9 +171,9 @@ export const EmailContent: React.FC<{ readonly write?: number; readonly press?: 
 // The advisor's team, who pick up the approved tasks (placeholder names and
 // photos, public/launch30/team/), in TASKS order.
 export const TEAM = [
-  { name: "Marcus Lee", role: "Trading", photo: "launch30/team/marcus.jpg" },
-  { name: "Priya Shah", role: "Operations", photo: "launch30/team/priya.jpg" },
-  { name: "Dana Brooks", role: "Client service", photo: "launch30/team/dana.jpg" },
+  { name: "Marcus Reid", role: "Trading", photo: "launch30/team/marcus.jpg" },
+  { name: "Priya Kapoor", role: "Operations", photo: "launch30/team/priya.jpg" },
+  { name: "Dana Whitman", role: "Client service", photo: "launch30/team/dana.jpg" },
 ];
 
 export const Avatar: React.FC<{ readonly photo: string; readonly size?: number }> = ({ photo, size = 36 }) => (

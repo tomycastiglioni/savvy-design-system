@@ -7,7 +7,7 @@ import { SEND_BTN } from "./frames/Deliver";
 import { AGENDA_ITEM, REVIEW_BTN } from "./frames/Prep";
 import { useL } from "./timeline";
 
-// On Allison & Frank Chan's row once the list has scrolled.
+// On Allison & Frank Marlowe's row once the list has scrolled.
 const PICK = pickPoint(LIST_SCROLL);
 // On "Retirement plan", agenda item 3.
 const PLAN = { x: AGENDA_ITEM.x + 120, y: AGENDA_ITEM.y + AGENDA_ITEM.h / 2 + 2 };

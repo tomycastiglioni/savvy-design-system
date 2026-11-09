@@ -7,9 +7,9 @@
 # Bars start at 0.045 s + 2 s × n (bar 0 is a soft intro bar). Each cut drops
 # bar 15 (a repeat of bar 13; 12 ms crossfade at the bar line), so its final
 # hit, bar 17, lands 30 s after bar 1. Bar 1 is placed at the logo time
-# (timeline.ts, L.logoIn: 31.07 s) − 30 s = 1.07 s, so the hit lands on the
+# (timeline.ts, L.logoIn: 31.27 s) − 30 s = 1.27 s, so the hit lands on the
 # logo; the cut comes in that far before bar 1, partway into the intro bar,
-# and the one-bar break (bar 8, 15.07 s) falls on the meeting capture.
+# and the one-bar break (bar 8, 15.27 s) falls on the meeting capture.
 # Rebuild after any change to the timeline that moves the logo.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -25,4 +25,4 @@ cut() {
   echo "wrote $out"
 }
 ORIG="$1"
-cut 1.07 public/audio/launch30/music-slaptastic.mp3
+cut 1.27 public/audio/launch30/music-slaptastic.mp3
