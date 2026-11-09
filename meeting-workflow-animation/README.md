@@ -72,12 +72,14 @@ Dave". Option A of `MobileRecapOptions` with option C's header; beats in
 `src/mobile-recap/timeline.ts`, copy in `src/mobile-recap/content.ts` (the
 Dec 10 date and the 42 min length are placeholders).
 
-`Launch30` is the launch video (32.4 s, 1920×1080, 60 fps, with sound): one
+`Launch30` is the launch video (32.6 s, 1920×1080, 60 fps, with sound): one
 client meeting followed through Prep → Meet → Deliver, closing on "Prep,
 meet, deliver, and so much more. That's your whole practice, working for
 you." It opens on "Deliver
 more for your clients with Savvy Intelligence", scrolls into the advisor's
-client list and picks Allison & Frank Chan, whose row becomes the prep card. Beats are in
+client list (by last name; the names are made up) and scrolls down to Allison
+& Frank Marlowe, whose row becomes the prep card once the opening line has
+ended. Beats are in
 `src/launch30/timeline.ts`: the approved 30 s cut's beats, with time added or
 taken only where the picture holds, so the voiceover plays at its natural
 pace with a pause after each line, and a close built on the voiceover (each
