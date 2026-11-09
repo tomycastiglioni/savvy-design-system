@@ -6,7 +6,7 @@ import { C, CY, FONT } from "../theme";
 
 // The opening: "Deliver more for your clients with Savvy Intelligence", then the
 // advisor's whole client list (the CRM, by last name), scrolled a long way
-// down to Allison & Frank Marlowe, who get picked. Names are made up. Layout from the team's mock-up (1920×1080).
+// down to Allison & Frank Chan, who get picked. The other names are made up. Layout from the team's mock-up (1920×1080).
 
 export const TITLE_LINES = ["Deliver more for your clients", "with Savvy Intelligence"];
 // Two lines centred on the middle line; when the list comes up the page
@@ -18,16 +18,16 @@ export type Client = { readonly name: string; readonly members: string; readonly
 export const CLIENTS: readonly Client[] = [
   { name: "Alan Ashby", members: "Alan Ashby", aum: "$567K" },
   { name: "Adeel Bakshi", members: "Adeel Bakshi", aum: "$430K" },
+  { name: "Diana Barlow", members: "Diana Barlow", aum: "$1.12M" },
+  { name: "Dan Bishop", members: "Dan Bishop", aum: "$686K" },
   { name: "Chris Calder", members: "Chris Calder", aum: "$322K" },
-  { name: "Alice Duarte & Jackie Lowell", members: "Alice Duarte & Jackie Lowell", aum: "$4.54M" },
-  { name: "Diana Ferro", members: "Diana Ferro", aum: "$1.12M" },
-  { name: "Dan Hollis", members: "Dan Hollis", aum: "$686K" },
-  { name: "Allison & Frank Marlowe", members: "Allison Marlowe & Frank Marlowe", aum: "$9.36M" },
+  { name: "Alice Carver & Jackie Lowell", members: "Alice Carver & Jackie Lowell", aum: "$4.54M" },
+  { name: "Allison & Frank Chan", members: "Allison Chan & Frank Chan", aum: "$9.36M" },
   { name: "Elena & Mark Prescott", members: "Elena Prescott & Mark Prescott", aum: "$2.07M" },
   { name: "Grace & Tom Sutter", members: "Grace Sutter & Tom Sutter", aum: "$3.18M" },
   { name: "Henry Wexler", members: "Henry Wexler", aum: "$845K" },
 ];
-// Allison & Frank Marlowe, the household the video follows.
+// Allison & Frank Chan, the household the video follows.
 export const SELECTED = 6;
 
 // The list once the page has scrolled up (frame 2). `scroll` moves the rows on
@@ -163,7 +163,7 @@ export const F02Clients: React.FC = () => (
   </>
 );
 
-// F03 · 0:03 — scrolled to Allison & Frank Marlowe, who get picked.
+// F03 · 0:03 — scrolled to Allison & Frank Chan, who get picked.
 export const F03Pick: React.FC = () => (
   <>
     <Bg bg="cream" />

@@ -28,7 +28,7 @@ export const UI = { x: 860, w: 900, cy: CY };
 export const centerTop = (h: number) => CY - h / 2;
 
 // The one meeting the whole video follows.
-export const HOUSEHOLD = "Allison & Frank Marlowe";
+export const HOUSEHOLD = "Allison & Frank Chan";
 export const MEETING = "Quarterly Review";
 
 // Abstract UI: body copy becomes bars; only names, numbers and labels stay text.

@@ -78,7 +78,7 @@ meet, deliver, and so much more. That's your whole practice, working for
 you." It opens on "Deliver
 more for your clients with Savvy Intelligence", scrolls into the advisor's
 client list (by last name; the names are made up) and scrolls down to Allison
-& Frank Marlowe, whose row becomes the prep card once the opening line has
+& Frank Chan, whose row becomes the prep card once the opening line has
 ended. Beats are in
 `src/launch30/timeline.ts`: the approved 30 s cut's beats, with time added or
 taken only where the picture holds, so the voiceover plays at its natural
@@ -190,7 +190,7 @@ Notes for the 30 s video (team feedback):
   "Savvy Intelligence"; F13 does "Prep.", "Meet.", "Deliver."; F14 does "Your
   whole practice," then "working for you".
 - F01 → F03: the page scrolls up into the client list (layout from the team's
-  mock-up), the list scrolls to Allison & Frank Marlowe and their row morphs
+  mock-up), the list scrolls to Allison & Frank Chan and their row morphs
   into the Prep ready card.
 - Tracker: a ring around the active step's number fills over that phase
   (Prep 0:03.5–0:09.5, Meet 0:09.5–0:17.5, Deliver 0:17.5–0:24), then pops to

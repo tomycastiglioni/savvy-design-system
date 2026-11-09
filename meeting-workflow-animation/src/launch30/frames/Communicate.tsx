@@ -84,7 +84,7 @@ const Slider: React.FC<{ readonly label: string; readonly value: string; readonl
 // The client's question, asked in the meeting: a chat bubble under the
 // headline, centred with it. `typed` (0–1) writes the question
 // out; the bubble keeps its final width so nothing reflows.
-export const QUESTION = { who: "Frank Marlowe", initials: "FM", text: "What if we save $15K more a year?" };
+export const QUESTION = { who: "Frank Chan", initials: "FC", text: "What if we save $15K more a year?" };
 export const BUBBLE = { x: 174, y: PRESENT_TOP + PRESENT_BLOCK + BUBBLE_GAP };
 export const QuestionBubble: React.FC<{ readonly typed?: number; readonly style?: React.CSSProperties }> = ({ typed = 1, style }) => {
   const n = Math.round(typed * QUESTION.text.length);
@@ -267,7 +267,7 @@ export const ProfileCardContent: React.FC<{ readonly notes?: number; readonly sy
       >
         <Users size={26} strokeWidth={2.2} />
       </div>
-      <div style={{ position: "absolute", left: 98, top: 27, fontSize: 22, fontWeight: 600, color: C.ink, whiteSpace: "nowrap" }}>Allison &amp; Frank Marlowe</div>
+      <div style={{ position: "absolute", left: 98, top: 27, fontSize: 22, fontWeight: 600, color: C.ink, whiteSpace: "nowrap" }}>Allison &amp; Frank Chan</div>
       <div style={{ position: "absolute", left: 98, top: 58, fontSize: 16, color: C.muted }}>Client profile</div>
       <div
         style={{

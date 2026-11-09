@@ -11,11 +11,11 @@ import { useCurrentFrame, useVideoConfig } from "remotion";
 // each word lands as it's said.
 
 const BASE = {
-  // Intro: the line, the advisor's client list, Allison & Frank Marlowe picked
+  // Intro: the line, the advisor's client list, Allison & Frank Chan picked
   titleIn: [0.2, 0.5], // "Deliver more for your clients" / "with Savvy Intelligence"
   pageUp: [1.3, 1.95], // the page scrolls up and the client list comes in
   listIn: [1.4, 2.0],
-  listScroll: [2.05, 2.85], // the list scrolls to Allison & Frank Marlowe (longer in the retimed cut, below)
+  listScroll: [2.05, 2.85], // the list scrolls to Allison & Frank Chan (longer in the retimed cut, below)
   pickClick: 3.05,
   pickMorph: [3.15, 3.75], // their row becomes the prep card
   // Prep
@@ -114,7 +114,7 @@ const LEAD = 0.1; // text starts arriving this long before its word is said
 const END_CARD = 1.3; // the logo holds this long (was 1.55)
 
 // `retimed` false gives the approved cut's beats (no voiceover).
-// The list scroll in the retimed cut: six rows down to the Marlowes, at the
+// The list scroll in the retimed cut: six rows down to the Chans, at the
 // approved cut's speed.
 const LIST_SCROLL_S = 1.7;
 
