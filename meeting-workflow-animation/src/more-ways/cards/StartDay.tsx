@@ -26,12 +26,14 @@ const ITEMS: readonly { icon: IconName; title: string; summary: string; badge?: 
 const num = (v: boolean | number | undefined, d: number) => (typeof v === "number" ? v : v === undefined ? d : v ? 1 : 0);
 const c01 = (n: number) => Math.min(1, Math.max(0, n));
 
-export const StartDay: React.FC<{ readonly s: DayState }> = ({ s }) => {
+// `h` lets the frame run taller than the card's (the ads let the graphic run
+// on past the website card's edge).
+export const StartDay: React.FC<{ readonly s: DayState; readonly h?: number }> = ({ s, h = H }) => {
   const { items = 3, badges = 2, pointer } = s;
   const preparing = num(s.preparing, 0);
   const hover = num(s.hover, 0);
   return (
-    <div style={{ position: "relative", width: W, height: H, overflow: "hidden", fontFamily: FONT }}>
+    <div style={{ position: "relative", width: W, height: h, overflow: "hidden", fontFamily: FONT }}>
       <div style={{ position: "absolute", left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, background: "#ffffff", border: `0.646px solid ${C.border}`, borderRadius: 8.822, overflow: "hidden" }}>
         <Icon name="layers" w={16.493} style={{ position: "absolute", left: 23.35, top: 21.61 }} />
         <div style={{ position: "absolute", left: 50.85, top: 19.35, fontWeight: MEDIUM, fontSize: 15, lineHeight: "21px", color: "#1d2939" }}>Today’s briefing</div>
@@ -109,7 +111,7 @@ export const DAY_FRAMES: readonly { s: DayState; title: string; caption: string 
 // The loop (10 s): prepared, the items land, the flags pop, the drafts are
 // opened under the cursor; then back to "Preparing…".
 export const DAY_SECONDS = 10;
-export const StartDayLoop: React.FC = () => {
+export const StartDayLoop: React.FC<{ readonly h?: number }> = ({ h }) => {
   const t = useT();
   const reset = 1 - ramp(t, 8.6, 9.0);
   const items = [0, 1, 2].reduce((n, i) => n + ramp(t, 1.2 + 0.45 * i, 1.6 + 0.45 * i), 0) * reset;
@@ -123,6 +125,7 @@ export const StartDayLoop: React.FC = () => {
   ]);
   return (
     <StartDay
+      h={h}
       s={{
         items,
         badges,

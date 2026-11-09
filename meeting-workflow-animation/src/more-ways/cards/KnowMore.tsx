@@ -38,6 +38,7 @@ const FILES = [
   { name: "Financial plan from previous advisor", meta: "PDF · 18 pages" },
 ];
 const OPPORTUNITIES = ["Concentrated stock in employer RSUs", "Roth conversion before RSUs vest", "529 plans for both children"];
+const CONTENT_END = 459; // card px: the agenda's last row, plus a margin
 const AGENDA = ["Goals and timeline", "Equity compensation plan", "Next steps and onboarding"];
 
 const FileRow: React.FC<{ readonly name: string; readonly meta: string; readonly p: number }> = ({ name, meta, p }) => (
@@ -55,21 +56,23 @@ const FileRow: React.FC<{ readonly name: string; readonly meta: string; readonly
   </div>
 );
 
-export const KnowMore: React.FC<{ readonly s: KnowState }> = ({ s }) => {
+// `h` lets the frame run taller than the card's (the ads let the graphic run
+// on past the website card's edge).
+export const KnowMore: React.FC<{ readonly s: KnowState; readonly h?: number }> = ({ s, h = H }) => {
   const { files = 1, reading = 1, filled = 4, scroll = 0, added = false, press = 0, fade = 1, pointer } = s;
   const named = typeof s.named === "number" ? s.named : s.named === false ? 0 : 1;
   const docs = s.docs ?? (filled === 0 ? 1 : 0);
   const hint = s.hint ?? 0;
   const toast = s.toast ?? (added ? 1 : 0);
   return (
-    <div style={{ position: "relative", width: W, height: H, overflow: "hidden", fontFamily: FONT }}>
+    <div style={{ position: "relative", width: W, height: h, overflow: "hidden", fontFamily: FONT }}>
       <div
         style={{
           position: "absolute",
           left: CARD.x,
           top: CARD.y,
           width: CARD.w,
-          height: CARD.h,
+          height: h > CARD.y + CARD.h + 4 ? h - CARD.y + 24 : CARD.h, // runs on past a taller frame (ads)
           background: "#ffffff",
           border: `0.769px solid ${C.border}`,
           borderRadius: 10.5,
@@ -238,7 +241,7 @@ export const KnowMore: React.FC<{ readonly s: KnowState }> = ({ s }) => {
           style={{
             position: "absolute",
             left: "50%",
-            bottom: 18,
+            top: Math.min(h, CARD.y + CONTENT_END + 55) - 18 - 37, // the frame's foot, or under the agenda
             translate: `-50% ${(1 - toast) * 14}px`,
             opacity: toast,
             display: "flex",
@@ -275,11 +278,14 @@ export const KNOW_FRAMES: readonly { s: KnowState; title: string; caption: strin
 // agenda, added to the CRM; then the card resets to a new prospect.
 export const KNOW_SECONDS = 13;
 const BUTTON = { x: 517, y: 71.7 }; // "Create opportunity", frame px
-export const KnowMoreLoop: React.FC = () => {
+// The card scrolls only as far as it needs to for the agenda to be seen: all
+// the way on the website, less (or not at all) where the frame runs taller.
+export const KnowMoreLoop: React.FC<{ readonly h?: number }> = ({ h = H }) => {
   const t = useT();
+  const scrollBy = Math.min(196, Math.max(0, CONTENT_END - (h - CARD.y)));
   if (t >= 12.15) {
     // a new prospect, empty, fading back in
-    return <KnowMore s={{ named: 0, filled: 0, docs: 0, files: 0, reading: 0, hint: 1, fade: ramp(t, 12.2, 12.6) }} />;
+    return <KnowMore h={h} s={{ named: 0, filled: 0, docs: 0, files: 0, reading: 0, hint: 1, fade: ramp(t, 12.2, 12.6) }} />;
   }
   const p = along(t, [
     [8.7, 640, 300],
@@ -289,6 +295,7 @@ export const KnowMoreLoop: React.FC = () => {
   ]);
   return (
     <KnowMore
+      h={h}
       s={{
         hint: 1 - ramp(t, 0.3, 0.6),
         files: ramp(t, 0.35, 1.45, LINEAR),
@@ -296,7 +303,7 @@ export const KnowMoreLoop: React.FC = () => {
         docs: 1 - ramp(t, 3.0, 3.25),
         named: ramp(t, 3.0, 3.35),
         filled: ramp(t, 3.2, 4.3, LINEAR) * 4,
-        scroll: 196 * (ramp(t, 5.4, 6.3, EASE_IN_OUT) - ramp(t, 8.0, 8.8, EASE_IN_OUT)),
+        scroll: scrollBy * (ramp(t, 5.4, 6.3, EASE_IN_OUT) - ramp(t, 8.0, 8.8, EASE_IN_OUT)),
         added: t >= 9.5,
         press: press(t, 9.45),
         toast: window(t, 9.6, 11.5, 0.35, 0.3),

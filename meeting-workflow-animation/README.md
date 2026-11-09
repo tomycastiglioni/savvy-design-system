@@ -175,6 +175,21 @@ story/reel overlays) and fit each graphic to the room left (per-format sizes
 in `src/ads/layout.ts` and the scenes). Render with
 `npx remotion render AdPrep4x5 out/ads/meeting-steps/4x5/savvy-meeting-steps-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 
+`AdBento-07-say-4x5` … `AdBento-12-hunt-9x16` (folder "Ads-bento") are the
+Innovation Campaign's feature-bento ads ("03 — Feature bento (4x5) v3" in
+Figma): the Figma copy (logo, Diatype Light headline, body) on the Figma
+background (`public/ads/bento/background-4x5.png`, the blurred overlay
+flattened), with the matching "More ways" card animation (`src/more-ways/cards/`)
+80 px under the copy, its left edge on the 75 px margin, as wide as the margins
+allow (`src/ads/bento/BentoAd.tsx`). A card that fits ends with its own edge;
+one that doesn't (Know more, Every report and the PDF hunt in 4:5) gets a frame
+down to the ad's bottom edge and runs off it. Each ad is one seamless loop of
+its card (10–13 s). The copy is measured once the fonts load, so the graphic
+follows the line breaks. 1:1 sets the copy at 75% across the full width with
+balanced headlines; 9:16 keeps the 4:5 copy, starts at 250 px and centres copy
+and card between there and 1650 px. Render all 18 with `scripts/bento-ads.sh`
+(or `scripts/bento-ads.sh 4x5`) to `out/ads/bento/<format>/`.
+
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07
 in two steps and F13 in three) is the storyboard for the 30 s re-cut: the
 client list, then one client meeting followed through Prep → Meet → Deliver,

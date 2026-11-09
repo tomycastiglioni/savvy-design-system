@@ -1,6 +1,7 @@
 import "./shared/fonts";
 import { adFrames, ADS, MeetingStepAd } from "./ads/MeetingStepAd";
 import { FORMATS } from "./ads/layout";
+import { BENTO_ADS, BENTO_FORMATS, BentoAd, BentoFormat, bentoSeconds } from "./ads/bento/BentoAd";
 import { Composition, Folder, Still } from "remotion";
 import { Capture } from "./capture/Capture";
 import { Delivery } from "./delivery/Delivery";
@@ -122,6 +123,22 @@ export const RemotionRoot: React.FC = () => {
         {MORE_WAYS_BOARDS.map((card) => (
           <Still key={card} id={`MoreWays-board-${card}`} component={MoreWaysStoryboard} defaultProps={{ card }} width={moreWaysBoardSize(card).w} height={moreWaysBoardSize(card).h} />
         ))}
+      </Folder>
+      <Folder name="Ads-bento">
+        {(Object.keys(BENTO_FORMATS) as BentoFormat[]).flatMap((format) =>
+          BENTO_ADS.map((ad, i) => (
+            <Composition
+              key={`${ad.card}-${format}`}
+              id={`AdBento-${String(i + 7).padStart(2, "0")}-${ad.card}-${format}`}
+              component={BentoAd}
+              defaultProps={{ ...ad, format }}
+              durationInFrames={bentoSeconds(ad.card) * 60}
+              fps={60}
+              width={BENTO_FORMATS[format].w}
+              height={BENTO_FORMATS[format].h}
+            />
+          )),
+        )}
       </Folder>
       <Folder name="Launch30-formats">
         {(["4x5", "1x1", "9x16"] as const).map((format) => (

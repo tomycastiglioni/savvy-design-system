@@ -39,12 +39,14 @@ const B = { x: 60, w: 580, top: 128 }; // the builder
 
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
-export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
+// `h` lets the frame run taller than the card's (the ads let the graphic run
+// on past the website card's edge).
+export const EveryReport: React.FC<{ readonly s: ReportState; readonly h?: number }> = ({ s, h = H }) => {
   const { typed = 1, sent = 0, agents = 0, builder = 0, note = 0, hover = false, editing = false, spin = 0, caret = true, pointer, pressEdit = 0 } = s;
   const text = PROMPT.slice(0, Math.round(typed * PROMPT.length));
   const written = NOTE.slice(0, Math.round(note * NOTE.length));
   return (
-    <div style={{ position: "relative", width: W, height: H, overflow: "hidden", fontFamily: FONT }}>
+    <div style={{ position: "relative", width: W, height: h, overflow: "hidden", fontFamily: FONT }}>
       {/* the agents on it */}
       {sent > 0 ? (
         <div style={{ position: "absolute", left: 0, right: 0, top: 84, display: "flex", justifyContent: "center", gap: 8, opacity: sent }}>
@@ -77,9 +79,9 @@ export const EveryReport: React.FC<{ readonly s: ReportState }> = ({ s }) => {
           style={{
             position: "absolute",
             left: B.x,
-            top: lerp(H + 10, B.top, builder),
+            top: lerp(h + 10, B.top, builder),
             width: B.w,
-            height: 260,
+            height: h > B.top + 260 + 4 ? h - B.top + 24 : 260, // runs on past a taller frame (ads)
             background: "#ffffff",
             borderRadius: 10,
             border: `0.7px solid ${C.border}`,
@@ -233,7 +235,7 @@ export const REPORT_FRAMES: readonly { s: ReportState; title: string; caption: s
 // then it all steps back and the pill empties.
 export const REPORT_SECONDS = 13;
 const EDIT = { x: 597, y: 200 }; // the Edit button, frame px
-export const EveryReportLoop: React.FC = () => {
+export const EveryReportLoop: React.FC<{ readonly h?: number }> = ({ h }) => {
   const t = useT();
   const sent = ramp(t, 2.85, 3.45, EASE_MORPH) - ramp(t, 11.7, 12.3, EASE_MORPH);
   const typed = t < 12.3 ? ramp(t, 0.5, 2.5, LINEAR) : 0;
@@ -245,6 +247,7 @@ export const EveryReportLoop: React.FC = () => {
   ]);
   return (
     <EveryReport
+      h={h}
       s={{
         typed,
         sent,
