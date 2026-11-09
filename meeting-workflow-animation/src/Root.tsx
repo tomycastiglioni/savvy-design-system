@@ -1,6 +1,7 @@
 import "./shared/fonts";
 import { adFrames, ADS, MeetingStepAd } from "./ads/MeetingStepAd";
 import { FORMATS } from "./ads/layout";
+import { EMAIL_UIS, EmailHeader, EmailQuestionStill, EmailUI, EmailUIStill, emailUISize, HEADER as EMAIL_HEADER, QUESTION_SIZE } from "./email/EmailAssets";
 import { BENTO_ADS, BENTO_FORMATS, BentoAd, BentoFormat, bentoSeconds } from "./ads/bento/BentoAd";
 import { Composition, Folder, Still } from "remotion";
 import { Capture } from "./capture/Capture";
@@ -123,6 +124,22 @@ export const RemotionRoot: React.FC = () => {
         {MORE_WAYS_BOARDS.map((card) => (
           <Still key={card} id={`MoreWays-board-${card}`} component={MoreWaysStoryboard} defaultProps={{ card }} width={moreWaysBoardSize(card).w} height={moreWaysBoardSize(card).h} />
         ))}
+      </Folder>
+      <Folder name="Email">
+        <Still id="Email-header" component={EmailHeader} width={EMAIL_HEADER.w} height={EMAIL_HEADER.h} />
+        {(Object.keys(EMAIL_UIS) as EmailUI[]).flatMap((ui) =>
+          [false, true].map((shadow) => (
+            <Still
+              key={`${ui}${shadow}`}
+              id={`Email-ui-${ui}${shadow ? "-shadow" : ""}`}
+              component={EmailUIStill}
+              defaultProps={{ ui, shadow }}
+              width={emailUISize(ui, shadow).w}
+              height={emailUISize(ui, shadow).h}
+            />
+          )),
+        )}
+        <Still id="Email-ui-question" component={EmailQuestionStill} width={QUESTION_SIZE.w} height={QUESTION_SIZE.h} />
       </Folder>
       <Folder name="Ads-bento">
         {(Object.keys(BENTO_FORMATS) as BentoFormat[]).flatMap((format) =>

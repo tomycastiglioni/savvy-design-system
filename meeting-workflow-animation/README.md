@@ -175,6 +175,15 @@ story/reel overlays) and fit each graphic to the room left (per-format sizes
 in `src/ads/layout.ts` and the scenes). Render with
 `npx remotion render AdPrep4x5 out/ads/meeting-steps/4x5/savvy-meeting-steps-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 
+`Email-header` (folder "Email", 600 px wide; render with `--scale=2`) is the
+email header: "Prep. Meet. Deliver with Savvy Intelligence." over the three
+phase backgrounds in one sweep, with the 30 s video's Prep, Meet and Deliver
+screens stepping down in order (`src/email/EmailAssets.tsx`). The screens
+also render alone on transparent backgrounds for Figma: `Email-ui-prep`,
+`Email-ui-meet`, `Email-ui-deliver` (flat, card-sized), the same with
+`-shadow` (the video's card shadow, padded), and `Email-ui-question` (the
+client's what-if bubble).
+
 `AdBento-07-say-4x5` … `AdBento-12-hunt-9x16` (folder "Ads-bento") are the
 Innovation Campaign's feature-bento ads ("03 — Feature bento (4x5) v3" in
 Figma): the Figma copy (logo, Diatype Light headline, body; three typos
