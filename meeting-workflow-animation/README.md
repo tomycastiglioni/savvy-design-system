@@ -177,7 +177,9 @@ in `src/ads/layout.ts` and the scenes). Render with
 
 `AdBento-07-say-4x5` … `AdBento-12-hunt-9x16` (folder "Ads-bento") are the
 Innovation Campaign's feature-bento ads ("03 — Feature bento (4x5) v3" in
-Figma): the Figma copy (logo, Diatype Light headline, body) on the Figma
+Figma): the Figma copy (logo, Diatype Light headline, body; three typos
+fixed: you’re, prospect’s, clients’, with the two headlines widened so they
+keep their line count) on the Figma
 background (`public/ads/bento/background-4x5.png`, the blurred overlay
 flattened), with the matching "More ways" card animation (`src/more-ways/cards/`)
 80 px under the copy, its left edge on the 75 px margin, as wide as the margins

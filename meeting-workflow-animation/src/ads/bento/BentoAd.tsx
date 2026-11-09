@@ -72,15 +72,17 @@ export type BentoAdSpec = {
   readonly headlineSize: number; // px (Figma)
   readonly body: string;
   readonly column: number; // text column width (Figma)
+  readonly headlineColumn?: number; // a wider headline, where a fixed typo made a word longer
 };
-// The six ads, copy and sizes as in Figma.
+// The six ads, copy and sizes as in Figma (three typos fixed: you’re,
+// prospect’s, clients’).
 export const BENTO_ADS: readonly BentoAdSpec[] = [
-  { card: "say", headline: "Like your talking to your analyst.", headlineSize: 92.142, body: "Type it or dictate it. Savvy Intelligence takes it from there.", column: 668.027 },
+  { card: "say", headline: "Like you’re talking to your analyst.", headlineSize: 92.142, body: "Type it or dictate it. Savvy Intelligence takes it from there.", column: 668.027, headlineColumn: 720 /* wider for “you’re” */ },
   {
     card: "know",
     headline: "Know more than they expect. Win more clients.",
     headlineSize: 79.242,
-    body: "Upload a prospects context, and uncover financial planning opportunities to deliver value, personalized and specific to their needs.",
+    body: "Upload a prospect’s context, and uncover financial planning opportunities to deliver value, personalized and specific to their needs.",
     column: 840.332,
   },
   {
@@ -99,10 +101,11 @@ export const BENTO_ADS: readonly BentoAdSpec[] = [
   },
   {
     card: "monitor",
-    headline: "Don’t miss an opportunity to optimize your clients financial plan.",
+    headline: "Don’t miss an opportunity to optimize your clients’ financial plan.",
     headlineSize: 73.713,
     body: "Our AI will find and surface opportunities for you to deliver value across allocations, with holdings and more.",
     column: 788.733,
+    headlineColumn: 820, // wider for “clients’”, still three lines
   },
   {
     card: "hunt",
@@ -139,7 +142,7 @@ const useMeasuredHeight = () => {
   return { ref, height };
 };
 
-export const BentoAd: React.FC<BentoAdSpec & { readonly format?: BentoFormat }> = ({ card, headline, headlineSize, body, column, format = "4x5" }) => {
+export const BentoAd: React.FC<BentoAdSpec & { readonly format?: BentoFormat }> = ({ card, headline, headlineSize, body, column, headlineColumn, format = "4x5" }) => {
   useState(loadAdFonts);
   const f = BENTO_FORMATS[format];
   const g = GRAPHICS[card];
@@ -187,7 +190,18 @@ export const BentoAd: React.FC<BentoAdSpec & { readonly format?: BentoFormat }> 
         }}
       >
         <Img src={staticFile("ads/bento/savvy-logo-white.svg")} style={{ width: 203.273, height: 68.428, display: "block" }} />
-        <div style={{ fontWeight: 300, fontSize: headlineSize, lineHeight: 1, letterSpacing: -0.02 * headlineSize, textWrap: f.balance ? "balance" : undefined }}>{headline}</div>
+        <div
+          style={{
+            width: headlineColumn ? Math.min(headlineColumn * f.column, INNER / f.textScale) : undefined,
+            fontWeight: 300,
+            fontSize: headlineSize,
+            lineHeight: 1,
+            letterSpacing: -0.02 * headlineSize,
+            textWrap: f.balance ? "balance" : undefined,
+          }}
+        >
+          {headline}
+        </div>
         {/* the resizes avoid a one-word last line; 4:5 keeps Figma's breaks */}
         <div style={{ fontWeight: 400, fontSize: 35.236, lineHeight: 1.35, letterSpacing: 0.005 * 35.236, color: "rgba(255, 255, 255, 0.78)", textWrap: format === "4x5" ? undefined : "pretty" }}>{body}</div>
       </div>
