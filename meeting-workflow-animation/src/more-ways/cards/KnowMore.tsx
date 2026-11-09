@@ -38,7 +38,7 @@ const FILES = [
   { name: "Financial plan from previous advisor", meta: "PDF · 18 pages" },
 ];
 const OPPORTUNITIES = ["Concentrated stock in employer RSUs", "Roth conversion before RSUs vest", "529 plans for both children"];
-const CONTENT_END = 459; // card px: the agenda's last row, plus a margin
+const CONTENT_END = 461; // card px: the agenda's last row, plus a margin (the website scrolls the full 196)
 const AGENDA = ["Goals and timeline", "Equity compensation plan", "Next steps and onboarding"];
 
 const FileRow: React.FC<{ readonly name: string; readonly meta: string; readonly p: number }> = ({ name, meta, p }) => (
@@ -208,8 +208,21 @@ export const KnowMore: React.FC<{ readonly s: KnowState; readonly h?: number }> 
             </div>
           ) : null}
 
-          {/* below the stats: what to raise, and the first meeting */}
-          <div style={{ position: "absolute", left: GRID.x, top: GRID.y + GRID.h + 24, width: GRID.w, display: "grid", gridTemplateColumns: "1fr 1fr", columnGap: 11.902 }}>
+          {/* below the stats: what to raise, and the first meeting (in once
+              the summary is in: a taller frame shows it from the start) */}
+          <div
+            style={{
+              position: "absolute",
+              left: GRID.x,
+              top: GRID.y + GRID.h + 24,
+              width: GRID.w,
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              columnGap: 11.902,
+              opacity: Math.min(1, Math.max(0, filled - 3)),
+              translate: `0px ${(1 - Math.min(1, Math.max(0, filled - 3))) * 8}px`,
+            }}
+          >
             <div>
               <div style={{ fontWeight: MEDIUM, fontSize: 12.5, color: C.ink, marginBottom: 10 }}>Opportunities worth raising</div>
               {OPPORTUNITIES.map((o) => (
