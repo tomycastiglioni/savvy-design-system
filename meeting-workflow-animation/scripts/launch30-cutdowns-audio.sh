@@ -4,7 +4,9 @@
 #   vo/05-deliver-first.mp3  "Afterwards, your recap is ready to send." (the
 #                            deliver line's first sentence, 60 ms after it)
 #   vo/06-close-tight.mp3    "Prep, meet, deliver, and so much more." with the
-#                            pauses between the words cut to ~60 ms (6 s cut)
+#                            pauses between the words cut to ~60 ms
+#   vo/06a-prep … 06d-more   the same line in four parts ("Prep," "meet,"
+#                            "deliver," "and so much more."), for the 6 s cut
 #   music-slaptastic-15.mp3  the music for 15 s: the 30 s cut from its start to
 #                            bar 6, then bar 16 and the final hit (13.27 s)
 #   music-slaptastic-6.mp3   for 6 s: 0.42 s in to bar 2, then bar 16 and the
@@ -32,6 +34,13 @@ ffmpeg -nostdin -hide_banner -loglevel error -y -i "$VO/06-close.mp3" -filter_co
    [d]atrim=start=2.152,asetpts=PTS-STARTPTS[s];\
    [p][q][r][s]concat=n=4:v=0:a=1[o]" -map "[o]" "${MP3[@]}" "$VO/06-close-tight.mp3"
 
+# the same line in its four parts, for the 6 s cut's beats (cuts mid-pause)
+part() { ffmpeg -nostdin -hide_banner -loglevel error -y -i "$VO/06-close.mp3" -af "atrim=$1,asetpts=PTS-STARTPTS" "${MP3[@]}" "$VO/$2.mp3"; }
+part 0:0.534 06a-prep
+part 0.695:1.236 06b-meet
+part 1.357:2.007 06c-deliver
+part start=2.152 06d-more
+
 music() {
   local from="$1" to="$2" out="$3"
   ffmpeg -nostdin -hide_banner -loglevel error -y -i "$A/music-slaptastic.mp3" -filter_complex \
@@ -44,6 +53,6 @@ music() {
 music 0 11.27 "$A/music-slaptastic-15.mp3"
 music 0.42 3.27 "$A/music-slaptastic-6.mp3"
 
-for f in "$VO/05-deliver-first.mp3" "$VO/06-close-tight.mp3" "$A/music-slaptastic-15.mp3" "$A/music-slaptastic-6.mp3"; do
+for f in "$VO/05-deliver-first.mp3" "$VO/06-close-tight.mp3" "$VO"/06?-*.mp3 "$A/music-slaptastic-15.mp3" "$A/music-slaptastic-6.mp3"; do
   echo "$f: $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f") s"
 done

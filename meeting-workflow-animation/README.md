@@ -116,12 +116,14 @@ with 4 dB of gain and a limiter (`-af "volume=4dB,alimiter=limit=0.89:level=fals
 their sound effects, crossfaded one into the next, then the close ("Prep.
 Meet. Deliver." / "And so much more.") and the logo, no tagline. 15 s: the
 prep card and document, the plan presented with its what-if, the recap, with
-the prep, meet and first deliver lines. 6 s: three quick text-free snaps (the
-prep document, the what-if, the recap's tasks), then the close with the
-pauses between the words cut to ~60 ms. `scripts/launch30-cutdowns-audio.sh`
-makes the two voiceover edits and the music edits (final hit on the logo:
+the prep, meet and first deliver lines. 6 s (`Launch30Six`): three beats of
+about 1.5 s, each its word on top and one simple card under it, centred
+together, as the word is said ("Prep." and the prep-ready card, "Meet." and
+the retirement plan with its line rising, "Deliver." and "Email sent");
+"and so much more" is only said; then the logo. `scripts/launch30-cutdowns-audio.sh`
+makes the voiceover edits and the music edits (final hit on the logo:
 13.27 s and 4.85 s; from the 30 s cut, so not in the repo). Export as for
-`Launch30`.
+`Launch30` (the 6 s with `volume=5.3dB` to match its loudness).
 
 `Launch30-4x5`, `Launch30-1x1` and `Launch30-9x16` are the same video resized
 (1080 wide, same timing and sound; `src/launch30/Formats.tsx`). The 16:9
