@@ -4,7 +4,7 @@ import { loadDiatype } from "../launch/fonts";
 import { LiveBackground } from "./components/Live";
 import { ramp } from "./components/Motion";
 import { Launch30Cursor } from "./Cursor";
-import { PeekContext } from "./peek";
+import { PeekContext, ShortScrollContext } from "./peek";
 import { CommunicateScene } from "./scenes/Communicate";
 import { DeliverScene } from "./scenes/Deliver";
 import { Intro } from "./scenes/Intro";
@@ -41,6 +41,7 @@ export const Launch30Peek: React.FC = () => {
   return (
     <TimelineContext.Provider value={L}>
     <PeekContext.Provider value>
+      <ShortScrollContext.Provider value>
       <AbsoluteFill style={{ fontFamily: FONT.sans, color: C.ink, overflow: "hidden" }}>
         <style>{"*{box-sizing:border-box;}"}</style>
         <LiveBackground />
@@ -52,6 +53,7 @@ export const Launch30Peek: React.FC = () => {
           <Launch30Cursor />
         </AbsoluteFill>
       </AbsoluteFill>
+      </ShortScrollContext.Provider>
     </PeekContext.Provider>
     </TimelineContext.Provider>
   );

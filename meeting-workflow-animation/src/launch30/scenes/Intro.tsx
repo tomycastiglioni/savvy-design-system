@@ -5,7 +5,7 @@ import { lerp, lerpRect, ramp, rectStyle, slideText } from "../components/Motion
 import { ClientList, ClientRowContent, CLIENTS, LIST_SCROLL, PAGE_UP, rowRect, SELECTED, Title } from "../frames/Clients";
 import { PREP_CARD, PrepCardContent } from "../frames/Prep";
 import { EASE_IN_OUT, EASE_MORPH } from "../theme";
-import { usePeek } from "../peek";
+import { usePeek, useShortScroll } from "../peek";
 
 const PEEK_SCROLL = 390;
 import { useL, useT } from "../timeline";
@@ -17,12 +17,13 @@ export const Intro: React.FC = () => {
   const L = useL();
   const t = useT();
   const peek = usePeek();
+  const short = useShortScroll();
   if (t >= L.cardIn) return null;
 
   const up = ramp(t, ...L.pageUp, EASE_IN_OUT);
   // The sneak peek keeps its approved scroll (390 px in 0.8 s): it starts that
   // far above the Chans, a few rows into the list, instead of at the top.
-  const from = peek ? LIST_SCROLL - PEEK_SCROLL : 0;
+  const from = short ? LIST_SCROLL - PEEK_SCROLL : 0;
   const scroll = from + (LIST_SCROLL - from) * ramp(t, ...L.listScroll, EASE_IN_OUT);
   const titleOut = ramp(t, L.listScroll[0], L.listScroll[0] + 0.3, Easing.linear);
   const listIn = ramp(t, ...L.listIn);
