@@ -161,7 +161,7 @@ the wide card as CSS, starting where Figma places the rows.
 opening line, headlines or client question), no tracker and no sound, the
 product UI slid to the centre of the frame as each card comes in
 (`src/launch30/Peek.tsx`). `scripts/launch30-peek.sh` turns a render of
-0:02–0:18.7 into two 10 s loops (MP4 and GIF): `2colors` (beige → green, normal
+0:01.4–0:18.7 into two 10.4 s loops (MP4 and GIF), each opening on the client list: `2colors` (beige → green, normal
 speed, to the phone landing) and `3colors` (beige → green → blue, 1.425×, to
 the recap). Both skip stretches where nothing moves and crossfade into their
 own first frame, so they loop without a seam.
