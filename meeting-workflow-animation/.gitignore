@@ -12,3 +12,5 @@ public/fonts/ABCDiatype-*
 # "Slaptastic" (Steven Beddall) is licensed music; keep it out of this public
 # repo. scripts/launch30-music.sh builds the cut from the original file.
 public/audio/launch30/music-slaptastic.mp3
+# its edits for the cutdowns (scripts/launch30-cutdowns-audio.sh)
+public/audio/launch30/music-slaptastic-*.mp3
