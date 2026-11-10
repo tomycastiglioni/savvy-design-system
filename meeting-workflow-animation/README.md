@@ -111,6 +111,18 @@ music dips under each VO line, its break falls on the meeting capture and its
 final hit on the logo. Export
 with 4 dB of gain and a limiter (`-af "volume=4dB,alimiter=limit=0.89:level=false"`).
 
+`Launch30-15s` and `Launch30-6s` (folder "Launch30-cutdowns",
+`src/launch30/Cutdowns.tsx`) are cutdowns: stretches of the 30 s scenes, with
+their sound effects, crossfaded one into the next, then the close ("Prep.
+Meet. Deliver." / "And so much more.") and the logo, no tagline. 15 s: the
+prep card and document, the plan presented with its what-if, the recap, with
+the prep, meet and first deliver lines. 6 s: three quick text-free snaps (the
+prep document, the what-if, the recap's tasks), then the close with the
+pauses between the words cut to ~60 ms. `scripts/launch30-cutdowns-audio.sh`
+makes the two voiceover edits and the music edits (final hit on the logo:
+13.27 s and 4.85 s; from the 30 s cut, so not in the repo). Export as for
+`Launch30`.
+
 `Launch30-4x5`, `Launch30-1x1` and `Launch30-9x16` are the same video resized
 (1080 wide, same timing and sound; `src/launch30/Formats.tsx`). The 16:9
 picture is drawn in layers, each placed on the frame on its own: the product
