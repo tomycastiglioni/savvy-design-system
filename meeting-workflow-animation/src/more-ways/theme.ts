@@ -53,7 +53,7 @@ export const CARDS: Record<CardKey, { title: string; body: string; w: number; h:
     title: "Ready on day 1, at no added cost",
     body: "Savvy Intelligence is built into the platform, so you can drop tools you’d otherwise pay for. There’s nothing to install or configure.",
     w: 700,
-    h: 350,
+    h: 384, // the Figma card's 542 less its copy (to 158), so the card can sit centred with even space
   },
   service: {
     title: "Backed by your service team at Savvy",
@@ -65,7 +65,7 @@ export const CARDS: Record<CardKey, { title: string; body: string; w: number; h:
     title: "Start the day knowing what needs you",
     body: "Your daily briefing from Savvy Intelligence is waiting on your dashboard, along with account changes, open items and drafts ready for your review across your whole book.",
     w: 534,
-    h: 290,
+    h: 324, // the Figma card's 542 less its copy (to 218), the briefing centred in it
   },
   knowbook: {
     title: "Know more than they expect",

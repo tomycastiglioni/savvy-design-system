@@ -1,5 +1,6 @@
 import { ChartLine, Landmark, Receipt } from "lucide-react";
 import React from "react";
+import { ramp, useT } from "../anim";
 import { Icon, Pill, Spinner } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
@@ -60,6 +61,7 @@ export const KnowBook: React.FC<{ readonly s: KnowBookState }> = ({ s }) => {
   const { scan = 5, clear = 0, spin = 0 } = s;
   const keep = 1 - clear;
   const finished = scan >= HOUSEHOLDS.length && clear === 0;
+  // (during the reset the scan is complete; the rows close and fade back)
   const checked = Math.min(BOOK, Math.round((BOOK * scan) / HOUSEHOLDS.length));
   let y = ROWS.top;
   return (
@@ -71,20 +73,24 @@ export const KnowBook: React.FC<{ readonly s: KnowBookState }> = ({ s }) => {
         </div>
         <div style={{ position: "absolute", left: 60, top: 13, fontWeight: MEDIUM, fontSize: 15, color: C.ink }}>Across your book</div>
         <div style={{ position: "absolute", left: 60, top: 33, fontSize: 10.5, color: C.muted, whiteSpace: "nowrap" }}>Savvy Intelligence · reading accounts, tax returns and plans</div>
-        <div style={{ position: "absolute", right: 18, top: 18 }}>
-          {finished ? (
+        {/* scanning, then the tally; at the reset the tally gives way to the start */}
+        {finished || clear > 0 ? (
+          <div style={{ position: "absolute", right: 18, top: 18, opacity: keep }}>
             <Pill tone="green" size={10.5}>
               <Icon name="check-dark" w={8} /> {`${FOUND} to raise · ${BOOK} checked`}
             </Pill>
-          ) : (
+          </div>
+        ) : null}
+        {!finished ? (
+          <div style={{ position: "absolute", right: 18, top: 18, opacity: clear > 0 ? clear : 1 }}>
             <Pill tone="amber" size={10.5} style={{ background: "#f1f3f5", color: C.sub2 }}>
               <Spinner angle={spin} size={9} dark={false} />
               <span>
-                Checking <span style={{ fontVariantNumeric: "tabular-nums" }}>{Math.max(1, Math.round(checked * keep))}</span> of {BOOK}
+                Checking <span style={{ fontVariantNumeric: "tabular-nums" }}>{clear > 0 ? 1 : Math.max(1, checked)}</span> of {BOOK}
               </span>
             </Pill>
-          )}
-        </div>
+          </div>
+        ) : null}
         <div style={{ position: "absolute", left: 18, right: 18, top: 56, height: 1, background: C.border }} />
 
         {/* household after household */}
@@ -159,3 +165,33 @@ export const KNOWBOOK_FRAMES: readonly { s: KnowBookState; title: string; captio
   { s: { scan: 3.95, spin: 200 }, title: "An upcoming RMD", caption: "Ruth Ellis: $12,480 still to take from her inherited IRA by Dec 31 (Accounts). Households with nothing new show “On track”." },
   { s: { scan: 5, spin: 260 }, title: "Portfolio drift", caption: "The Patels: equities at 66% against the plan’s 60% target (Accounts, Plan). “3 to raise · 142 checked”. Then the scan starts over." },
 ];
+
+// The loop (12 s): the scan runs down the book, briskly past households that
+// are on track and pausing on each finding as it opens (the Chans' Roth
+// window, Ruth Ellis's RMD, the Patels' drift); the tally holds, then it all
+// eases back to the start.
+export const KNOWBOOK_SECONDS = 12;
+const SCAN: readonly (readonly [number, number])[] = [
+  [0.4, 0],
+  [1.2, 1], // Ashby, on track
+  [2.6, 2], // the Chans' Roth window opens
+  [3.5, 2],
+  [4.2, 3], // Bishop, on track
+  [5.6, 4], // Ruth Ellis's RMD opens
+  [6.5, 4],
+  [7.9, 5], // the Patels' drift opens
+];
+const scanAt = (t: number) => {
+  if (t <= SCAN[0][0]) return SCAN[0][1];
+  for (let i = 1; i < SCAN.length; i++) {
+    const [t1, v1] = SCAN[i];
+    const [t0, v0] = SCAN[i - 1];
+    if (t <= t1) return v0 + ((v1 - v0) * (t - t0)) / (t1 - t0);
+  }
+  return SCAN[SCAN.length - 1][1];
+};
+export const KnowBookLoop: React.FC = () => {
+  const t = useT();
+  const back = t >= 11.7;
+  return <KnowBook s={{ scan: back ? 0 : scanAt(t), clear: back ? 0 : ramp(t, 10.9, 11.7), spin: t * 380 }} />;
+};

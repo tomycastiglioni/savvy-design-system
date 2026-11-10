@@ -4,14 +4,14 @@ import { Icon, IconName, Pill, Pointer, Skeleton } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 import { DayState } from "./StartDay";
 
-// v2 · 04 · Start the day knowing what needs you (534×290), on the dark card.
+// v2 · 04 · Start the day knowing what needs you (534×324), on the dark card.
 // The website card's briefing (cards/StartDay.tsx), now as it waits on the
-// dashboard: from Savvy Intelligence, across the whole book. Runs off the
-// bottom: it's prepared before the day starts, each item lands, the flags
-// pop on, and the drafts are ready to open.
+// dashboard: from Savvy Intelligence, across the whole book. Whole and
+// centred in the frame: it's prepared before the day starts, each item lands,
+// the flags pop on, and the drafts are ready to open.
 const W = 534;
-const H = 290;
-const CARD = { x: (W - 466) / 2, y: 20, w: 466, h: 300 };
+const H = 324; // runs from under the card's copy to its foot; the briefing sits centred
+const CARD = { x: (W - 466) / 2, y: (H - 266) / 2, w: 466, h: 266 };
 const ROWS_TOP = 66;
 const ITEMS: readonly { icon: IconName; title: string; summary: string; badge?: { tone: "amber" | "green"; label: string } }[] = [
   { icon: "chart", title: "Account changes", summary: "3 accounts with notable activity across your book" },
@@ -116,10 +116,10 @@ export const BriefingLoop: React.FC = () => {
   const badges = (ramp(t, 2.7, 3.05, POP) + ramp(t, 3.0, 3.35, POP)) * (1 - ramp(t, 8.35, 8.65));
   const target = { x: BRIEF_DRAFTS.x, y: BRIEF_DRAFTS.y };
   const p = along(t, [
-    [4.4, 500, 310],
+    [4.4, 500, H + 16],
     [5.0, target.x, target.y],
     [7.0, target.x, target.y],
-    [7.6, 520, 310],
+    [7.6, 520, H + 16],
   ]);
   return (
     <Briefing

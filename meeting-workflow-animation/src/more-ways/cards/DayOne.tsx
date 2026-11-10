@@ -4,7 +4,7 @@ import { ramp, useT } from "../anim";
 import { Icon, Pill } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
-// v2 · 02 · Ready on day 1, at no added cost (700×350), on the dark card.
+// v2 · 02 · Ready on day 1, at no added cost (700×384), on the dark card.
 // Savvy Intelligence, built in and on from day 1, nothing to install; below,
 // the tools an advisor would otherwise pay for, each covered in turn, and the
 // added cost counting down to $0.
@@ -14,8 +14,8 @@ export type DayOneState = {
 };
 
 const W = 700;
-const H = 350;
-const CARD = { x: 70, y: 22, w: 560, h: 318 };
+const H = 384; // runs from under the card's copy to its foot; the card sits centred
+const CARD = { x: 70, y: (H - 340) / 2, w: 560, h: 340 };
 const TOOLS = [
   { name: "Meeting notetaker", what: "Records and summarizes meetings", price: 40, Glyph: Mic },
   { name: "Email assistant", what: "Drafts client emails", price: 30, Glyph: Mail },
@@ -23,7 +23,7 @@ const TOOLS = [
   { name: "Report writer", what: "Writes advisor notes", price: 59, Glyph: FileText },
 ];
 const TOTAL = TOOLS.reduce((n, t) => n + t.price, 0);
-const ROW = { top: 100, h: 36, gap: 6 };
+const ROW = { top: 100, h: 40, gap: 6 };
 const c01 = (n: number) => Math.min(1, Math.max(0, n));
 
 export const DayOne: React.FC<{ readonly s: DayOneState }> = ({ s }) => {
