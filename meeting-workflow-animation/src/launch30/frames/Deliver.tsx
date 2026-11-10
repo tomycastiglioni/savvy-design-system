@@ -24,7 +24,7 @@ export const RecapContent: React.FC<{ readonly reveal?: number }> = ({ reveal = 
   const s = (i: number) => stagger(reveal, i, 6);
   return (
     <>
-      <div style={{ position: "absolute", left: 44, top: 40, fontFamily: FONT.serif, fontSize: 42, color: C.ink, whiteSpace: "nowrap", ...s(0) }}>{MEETING} recap</div>
+      <div style={{ position: "absolute", left: 44, top: 44, fontFamily: FONT.sans, fontWeight: 600, fontSize: 34, letterSpacing: "-0.015em", color: C.ink, whiteSpace: "nowrap", ...s(0) }}>{MEETING} recap</div>
       <div style={{ position: "absolute", left: 44, top: 104, ...s(0) }}>
         <HouseholdChip meeting={false} />
       </div>

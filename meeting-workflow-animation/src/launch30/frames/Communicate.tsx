@@ -143,7 +143,7 @@ export const PresentationContent: React.FC<{
   const c = chrome * m;
   return (
     <>
-      <div style={{ position: "absolute", left: lerp(40, 44, m), top: lerp(36, 40, m), fontFamily: FONT.serif, fontSize: lerp(36, 40, m), color: C.ink, whiteSpace: "nowrap" }}>
+      <div style={{ position: "absolute", left: lerp(40, 44, m), top: lerp(39, 43, m), fontFamily: FONT.sans, fontWeight: 600, fontSize: lerp(29, 32, m), letterSpacing: "-0.015em", color: C.ink, whiteSpace: "nowrap" }}>
         Retirement plan
       </div>
       <div

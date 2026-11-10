@@ -72,7 +72,7 @@ export const PrepDocContent: React.FC<{ readonly reveal?: number; readonly highl
   const aum = 9.36 * interpolate(reveal, [0.1, 0.7], [0, 1], { ...CLAMP, easing: EASE_OUT });
   return (
     <>
-      <div style={{ position: "absolute", left: 44, top: 40, fontFamily: FONT.serif, fontSize: 46, color: C.ink, ...s(0) }}>{MEETING}</div>
+      <div style={{ position: "absolute", left: 44, top: 44, fontFamily: FONT.sans, fontWeight: 600, fontSize: 36, letterSpacing: "-0.015em", color: C.ink, ...s(0) }}>{MEETING}</div>
       <div style={{ position: "absolute", right: 40, top: 48, ...s(0) }}>
         <HouseholdChip meeting={false} />
       </div>
