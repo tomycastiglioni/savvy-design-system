@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>And a whole lot more: CSS scroll (wide)</title>
+<style>
+  /* Demo page only: the site's dark card behind the graphic. */
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0f3544; }
+  .demo-card { border-radius: 10px; background: linear-gradient(180deg, #2b4b5b 0%, #23404f 70%); }
+
+  /* ---- Copy from here: "And a whole lot more…" graphic, wide (617×376,
+     Figma 25683:703) ----
+     Three rows of jobs scrolling in alternate directions, endlessly; at the
+     start they sit exactly as in Figma. Transparent background; it sits on
+     the card. Needs ABC Diatype Medium (as on the site). */
+  .mw-more {
+    position: relative;
+    width: 617px;
+    height: 376px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 17.285px; /* rows 70.47 px apart, centre to centre */
+  }
+  .mw-more__row { display: flex; width: max-content; animation: mw-more-scroll 24s linear infinite; }
+  /* where each row starts (Figma): -700.03 px, -456.51 px, -185.83 px */
+  .mw-more__row:nth-child(1) { animation-delay: -10.904s; }
+  .mw-more__row:nth-child(2) { animation-direction: reverse; animation-delay: -16.89s; }
+  .mw-more__row:nth-child(3) { animation-delay: -2.894s; }
+  /* Each row holds its set of chips twice; moving by one set loops it. */
+  .mw-more__set { display: flex; gap: 13.23px; padding-right: 13.23px; }
+  .mw-more__chip {
+    display: flex;
+    align-items: center;
+    gap: 10.584px;
+    padding: 15.876px 21.167px 15.876px 18.521px;
+    border-radius: 7.938px;
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 3.969px 10.584px rgba(81, 69, 45, 0.03);
+    color: #fff;
+    font-family: "ABC Diatype", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 15.876px;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+  .mw-more__chip img { width: 20.105px; height: 20.105px; display: block; }
+  @keyframes mw-more-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .mw-more__row { animation: none; } }
+</style>
+</head>
+<body>
+<div class="demo-card">
+  <div class="mw-more" aria-label="Jobs Savvy Intelligence handles: tax projections, beneficiary checks, onboarding, model rebalances, client emails, meeting prep, follow-up, household summaries" role="img">
+    <!-- the same row three times; each row repeats its set of chips twice -->
+    <div class="mw-more__row">
+      <div class="mw-more__set">
+        <div class="mw-more__chip"><img src="icons/chip-chart.svg" alt="">Tax projections</div>
+        <div class="mw-more__chip"><img src="icons/chip-users.svg" alt="">Beneficiary checks</div>
+        <div class="mw-more__chip"><img src="icons/chip-square-plus.svg" alt="">Onboarding</div>
+        <div class="mw-more__chip"><img src="icons/chip-refresh.svg" alt="">Model rebalances</div>
+        <div class="mw-more__chip"><img src="icons/chip-mail.svg" alt="">Client emails</div>
+        <div class="mw-more__chip"><img src="icons/chip-calendar.svg" alt="">Meeting prep</div>
+        <div class="mw-more__chip"><img src="icons/chip-circle-check.svg" alt="">Follow-up</div>
+        <div class="mw-more__chip"><img src="icons/chip-layers.svg" alt="">Household summaries</div>
+      </div>
+      <div class="mw-more__set" aria-hidden="true">
+        <div class="mw-more__chip"><img src="icons/chip-chart.svg" alt="">Tax projections</div>
+        <div class="mw-more__chip"><img src="icons/chip-users.svg" alt="">Beneficiary checks</div>
+        <div class="mw-more__chip"><img src="icons/chip-square-plus.svg" alt="">Onboarding</div>
+        <div class="mw-more__chip"><img src="icons/chip-refresh.svg" alt="">Model rebalances</div>
+        <div class="mw-more__chip"><img src="icons/chip-mail.svg" alt="">Client emails</div>
+        <div class="mw-more__chip"><img src="icons/chip-calendar.svg" alt="">Meeting prep</div>
+        <div class="mw-more__chip"><img src="icons/chip-circle-check.svg" alt="">Follow-up</div>
+        <div class="mw-more__chip"><img src="icons/chip-layers.svg" alt="">Household summaries</div>
+      </div>
+    </div>
+    <div class="mw-more__row" aria-hidden="true">
+      <div class="mw-more__set" aria-hidden="true">
+        <div class="mw-more__chip"><img src="icons/chip-chart.svg" alt="">Tax projections</div>
+        <div class="mw-more__chip"><img src="icons/chip-users.svg" alt="">Beneficiary checks</div>
+        <div class="mw-more__chip"><img src="icons/chip-square-plus.svg" alt="">Onboarding</div>
+        <div class="mw-more__chip"><img src="icons/chip-refresh.svg" alt="">Model rebalances</div>
+        <div class="mw-more__chip"><img src="icons/chip-mail.svg" alt="">Client emails</div>
+        <div class="mw-more__chip"><img src="icons/chip-calendar.svg" alt="">Meeting prep</div>
+        <div class="mw-more__chip"><img src="icons/chip-circle-check.svg" alt="">Follow-up</div>
+        <div class="mw-more__chip"><img src="icons/chip-layers.svg" alt="">Household summaries</div>
+      </div>
+      <div class="mw-more__set" aria-hidden="true">
+        <div class="mw-more__chip"><img src="icons/chip-chart.svg" alt="">Tax projections</div>
+        <div class="mw-more__chip"><img src="icons/chip-users.svg" alt="">Beneficiary checks</div>
+        <div class="mw-more__chip"><img src="icons/chip-square-plus.svg" alt="">Onboarding</div>
+        <div class="mw-more__chip"><img src="icons/chip-refresh.svg" alt="">Model rebalances</div>
+        <div class="mw-more__chip"><img src="icons/chip-mail.svg" alt="">Client emails</div>
+        <div class="mw-more__chip"><img src="icons/chip-calendar.svg" alt="">Meeting prep</div>
+        <div class="mw-more__chip"><img src="icons/chip-circle-check.svg" alt="">Follow-up</div>
+        <div class="mw-more__chip"><img src="icons/chip-layers.svg" alt="">Household summaries</div>
+      </div>
+    </div>
+    <div class="mw-more__row" aria-hidden="true">
+      <div class="mw-more__set" aria-hidden="true">
+        <div class="mw-more__chip"><img src="icons/chip-chart.svg" alt="">Tax projections</div>
+        <div class="mw-more__chip"><img src="icons/chip-users.svg" alt="">Beneficiary checks</div>
+        <div class="mw-more__chip"><img src="icons/chip-square-plus.svg" alt="">Onboarding</div>
+        <div class="mw-more__chip"><img src="icons/chip-refresh.svg" alt="">Model rebalances</div>
+        <div class="mw-more__chip"><img src="icons/chip-mail.svg" alt="">Client emails</div>
+        <div class="mw-more__chip"><img src="icons/chip-calendar.svg" alt="">Meeting prep</div>
+        <div class="mw-more__chip"><img src="icons/chip-circle-check.svg" alt="">Follow-up</div>
+        <div class="mw-more__chip"><img src="icons/chip-layers.svg" alt="">Household summaries</div>
+      </div>
+      <div class="mw-more__set" aria-hidden="true">
+        <div class="mw-more__chip"><img src="icons/chip-chart.svg" alt="">Tax projections</div>
+        <div class="mw-more__chip"><img src="icons/chip-users.svg" alt="">Beneficiary checks</div>
+        <div class="mw-more__chip"><img src="icons/chip-square-plus.svg" alt="">Onboarding</div>
+        <div class="mw-more__chip"><img src="icons/chip-refresh.svg" alt="">Model rebalances</div>
+        <div class="mw-more__chip"><img src="icons/chip-mail.svg" alt="">Client emails</div>
+        <div class="mw-more__chip"><img src="icons/chip-calendar.svg" alt="">Meeting prep</div>
+        <div class="mw-more__chip"><img src="icons/chip-circle-check.svg" alt="">Follow-up</div>
+        <div class="mw-more__chip"><img src="icons/chip-layers.svg" alt="">Household summaries</div>
+      </div>
+    </div>
+  </div>
+  <!-- ---- to here ---- -->
+</div>
+</body>
+</html>

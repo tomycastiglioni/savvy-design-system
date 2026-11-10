@@ -141,6 +141,20 @@ On the site, list the HEVC file first, then the WebM:
 Medium-weight Diatype falls back to Regular until `ABCDiatype-Medium.otf` is in
 `public/fonts/`.
 
+The section's second version (Figma "Hero", 25683:472) adds five more, all on
+the dark card: `record` (Every agent works from the same client record, 534×264,
+12 s: the sources flow into one client record, three agents light up from it, a
+new one arrives connected on day 1), `dayone` (Ready on day 1, at no added cost,
+700×350, 11 s: Savvy Intelligence built in and on, four tools covered in turn,
+the added cost counting down to $0; the prices are illustrative), `service`
+(Backed by your service team at Savvy, 700×376, 13 s: requests from a meeting
+approved and routed to the team, then in progress and done), `briefing` (Start
+the day, the briefing as it waits on the dashboard across the whole book,
+534×290, 10 s) and `morewide` (the 617×376 "whole lot more", larger chips, the
+same 24 s scroll). `scripts/more-ways-export.sh v2` exports them to
+`out/more-ways/v2/export/`; `web/more-ways/and-a-whole-lot-more-wide.html` is
+the wide card as CSS, starting where Figma places the rows.
+
 `Launch30Peek` is the website sneak peek: the same scenes with no text (no
 opening line, headlines or client question), no tracker and no sound, the
 product UI slid to the centre of the frame as each card comes in

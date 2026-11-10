@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import { along, LINEAR, press as pressAt, ramp, useT, window } from "../anim";
 import { Icon, Pill, Pointer, Spinner } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
@@ -13,6 +14,7 @@ export type ServiceState = {
   readonly press?: number; // the Approve button being pressed
   readonly spin?: number;
   readonly pointer?: { x: number; y: number; o: number };
+  readonly clear?: number; // 0–1: back to the start (the loop's reset)
 };
 
 const W = 700;
@@ -59,7 +61,8 @@ const Status: React.FC<{ readonly v: number; readonly spin: number }> = ({ v, sp
   );
 
 export const ServiceTeam: React.FC<{ readonly s: ServiceState }> = ({ s }) => {
-  const { approved = 2, status = [2, 1], press = 0, spin = 0, pointer } = s;
+  const { approved = 2, status = [2, 1], press = 0, spin = 0, pointer, clear = 0 } = s;
+  const swap = clear > 0 ? Math.abs(1 - 2 * clear) : 1; // Approved → Approve, crossing at the middle
   const landed = Math.floor(approved);
   const flying = approved - landed > 0 && landed < REQUESTS.length ? approved - landed : 0;
   return (
@@ -73,7 +76,7 @@ export const ServiceTeam: React.FC<{ readonly s: ServiceState }> = ({ s }) => {
         <div style={{ position: "absolute", left: 16, top: 54, fontSize: 10.5, color: C.muted }}>Allison &amp; Frank Chan</div>
         <div style={{ position: "absolute", left: 16, right: 16, top: 80, height: 1, background: C.border }} />
         {REQUESTS.map((r, i) => {
-          const done = approved > i;
+          const done = approved > i && clear < 0.5;
           const pressing = !done && i === landed ? press : 0;
           return (
             <div
@@ -97,11 +100,11 @@ export const ServiceTeam: React.FC<{ readonly s: ServiceState }> = ({ s }) => {
                 <div style={{ fontSize: 10, color: C.muted, marginTop: 2 }}>{r.kind}</div>
               </div>
               {done ? (
-                <Pill tone="green" size={10}>
+                <Pill tone="green" size={10} style={{ opacity: swap }}>
                   <Icon name="check-dark" w={8} /> Approved
                 </Pill>
               ) : (
-                <div style={{ padding: "6px 11px", borderRadius: 6, background: C.green, color: "#ffffff", fontWeight: MEDIUM, fontSize: 10.5, scale: 1 - 0.06 * pressing }}>Approve</div>
+                <div style={{ padding: "6px 11px", borderRadius: 6, background: C.green, color: "#ffffff", fontWeight: MEDIUM, fontSize: 10.5, scale: 1 - 0.06 * pressing, opacity: approved > i ? swap : 1 }}>Approve</div>
               )}
             </div>
           );
@@ -124,8 +127,8 @@ export const ServiceTeam: React.FC<{ readonly s: ServiceState }> = ({ s }) => {
           ))}
         </div>
         <div style={{ position: "absolute", left: 16, right: 16, top: 80, height: 1, background: C.border }} />
-        {landed === 0 && !flying ? (
-          <div style={{ position: "absolute", left: 12, right: 12, top: TIX.top, height: TIX.h, borderRadius: 8, border: "1.2px dashed #d5dbd7", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10.5, color: C.muted }}>
+        {(landed === 0 && !flying) || clear > 0 ? (
+          <div style={{ position: "absolute", left: 12, right: 12, top: TIX.top, height: TIX.h, borderRadius: 8, border: "1.2px dashed #d5dbd7", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10.5, color: C.muted, opacity: landed === 0 && !flying ? 1 : clear }}>
             Requests you approve land here
           </div>
         ) : null}
@@ -144,6 +147,7 @@ export const ServiceTeam: React.FC<{ readonly s: ServiceState }> = ({ s }) => {
               display: "flex",
               alignItems: "center",
               gap: 10,
+              opacity: 1 - clear,
             }}
           >
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -209,3 +213,42 @@ export const SERVICE_FRAMES: readonly { s: ServiceState; title: string; caption:
   { s: { approved: 1, status: [1], spin: 120 }, title: "They take it from there", caption: "It lands with the team: Priya Kapoor has it, “In progress”." },
   { s: { approved: 2, status: [2, 1], spin: 220 }, title: "Seen through", caption: "The 529 is done; the next approval is already with Marcus. Then the loop starts over." },
 ];
+
+// The loop (13 s): the cursor approves the first request, which travels to
+// the team and lands as "Received"; Priya picks it up ("In progress"). The
+// second is approved and goes to Marcus. Both are seen through ("Done"),
+// then everything fades back to the start.
+export const SERVICE_SECONDS = 13;
+export const ServiceTeamLoop: React.FC = () => {
+  const t = useT();
+  if (t >= 12.2) return <ServiceTeam s={{ approved: 0, status: [], spin: t * 360 }} />;
+  const a0 = APPROVE_AT(0);
+  const a1 = APPROVE_AT(1);
+  const second = t >= 3.0;
+  const p = second
+    ? along(t, [
+        [3.6, 610, 360],
+        [4.3, a1.x + 4, a1.y + 4],
+        [4.75, a1.x + 4, a1.y + 4],
+        [5.35, 580, 350],
+      ])
+    : along(t, [
+        [0.5, 610, 360],
+        [1.2, a0.x + 4, a0.y + 4],
+        [1.65, a0.x + 4, a0.y + 4],
+        [2.25, 580, 350],
+      ]);
+  const o = second ? window(t, 3.6, 4.85, 0.25, 0.35) : window(t, 0.5, 1.75, 0.25, 0.35);
+  return (
+    <ServiceTeam
+      s={{
+        approved: ramp(t, 1.55, 2.45, LINEAR) + ramp(t, 4.65, 5.55, LINEAR),
+        status: [t >= 6.6 ? 2 : t >= 3.2 ? 1 : 0, t >= 9.6 ? 2 : t >= 6.2 ? 1 : 0],
+        press: second ? pressAt(t, 4.5) : pressAt(t, 1.4),
+        spin: t * 360,
+        pointer: { ...p, o },
+        clear: ramp(t, 11.3, 12.2),
+      }}
+    />
+  );
+};

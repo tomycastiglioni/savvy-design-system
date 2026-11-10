@@ -1,4 +1,5 @@
 import React from "react";
+import { along, LINEAR, POP, ramp, useT, window } from "../anim";
 import { Icon, IconName, Pill, Pointer, Skeleton } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 import { DayState } from "./StartDay";
@@ -103,3 +104,32 @@ export const BRIEFING_FRAMES: readonly { s: DayState; title: string; caption: st
   { s: { items: 3, badges: 2 }, title: "Flagged", caption: "“Due soon” and “Ready” pop on, so what needs you stands out." },
   { s: { items: 3, badges: 2, hover: true }, title: "Ready for your review", caption: "The cursor rests on the drafts; the row lifts and “Ready” becomes “Open →”. Then the day resets." },
 ];
+
+// The loop (10 s), timed as the first section's: prepared, the items land,
+// the flags pop, the drafts are opened under the cursor; then back to
+// "Preparing…".
+export const BRIEFING_SECONDS = 10;
+export const BriefingLoop: React.FC = () => {
+  const t = useT();
+  const reset = 1 - ramp(t, 8.6, 9.0);
+  const items = [0, 1, 2].reduce((n, i) => n + ramp(t, 1.2 + 0.45 * i, 1.6 + 0.45 * i), 0) * reset;
+  const badges = (ramp(t, 2.7, 3.05, POP) + ramp(t, 3.0, 3.35, POP)) * (1 - ramp(t, 8.35, 8.65));
+  const target = { x: BRIEF_DRAFTS.x, y: BRIEF_DRAFTS.y };
+  const p = along(t, [
+    [4.4, 500, 310],
+    [5.0, target.x, target.y],
+    [7.0, target.x, target.y],
+    [7.6, 520, 310],
+  ]);
+  return (
+    <Briefing
+      s={{
+        items,
+        badges,
+        preparing: 1 - ramp(t, 0.9, 1.15, LINEAR) + ramp(t, 9.0, 9.25, LINEAR),
+        hover: window(t, 5.0, 7.0, 0.3, 0.3),
+        pointer: { ...p, o: window(t, 4.4, 7.2, 0.25, 0.4) },
+      }}
+    />
+  );
+};

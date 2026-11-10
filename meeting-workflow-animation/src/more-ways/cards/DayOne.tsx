@@ -1,5 +1,6 @@
 import { FileSearch, FileText, Mail, Mic } from "lucide-react";
 import React from "react";
+import { ramp, useT } from "../anim";
 import { Icon, Pill } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
@@ -114,3 +115,14 @@ export const DAYONE_FRAMES: readonly { s: DayOneState; title: string; caption: s
   { s: { list: 1, covered: 1.6 }, title: "Covered, one by one", caption: "Each tool turns “Included”: its price strikes through and the added cost counts down." },
   { s: { list: 1, covered: 4 }, title: "$0 added", caption: "All four covered: $0 added cost, against $228/mo in separate tools. Then the list resets." },
 ];
+
+// The loop (11 s): the tools come in, then each is covered in turn (0.5 s,
+// 0.7 s apart) and the added cost counts down to $0; it holds, the list
+// clears, and comes back.
+export const DAYONE_SECONDS = 11;
+export const DayOneLoop: React.FC = () => {
+  const t = useT();
+  const list = ramp(t, 0.3, 1.2) - ramp(t, 9.5, 10.2);
+  const covered = t >= 10.2 ? 0 : [0, 1, 2, 3].reduce((n, i) => n + ramp(t, 2.0 + 1.2 * i, 2.5 + 1.2 * i), 0);
+  return <DayOne s={{ list, covered }} />;
+};

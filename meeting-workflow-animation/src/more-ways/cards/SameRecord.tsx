@@ -1,5 +1,6 @@
 import { ChartLine, Landmark, Mail, NotebookPen, Receipt } from "lucide-react";
 import React from "react";
+import { LINEAR, ramp, useT } from "../anim";
 import { GlassChip, Icon, Skeleton, Spinner } from "../Bits";
 import { C, FONT, MEDIUM } from "../theme";
 
@@ -12,7 +13,8 @@ export type RecordState = {
   readonly kept?: number; // 0–1: "Connections maintained by Savvy"
   readonly agents?: number; // 0–3: agents working from the record (fractional: the pulse on its way)
   readonly fresh?: number; // 0–1: the new agent arriving, connected on day 1
-  readonly fade?: number; // 0–1 everything (the loop's reset)
+  readonly clear?: number; // 0–1: everything that happened fades back to the start (the loop's reset)
+  readonly spin?: number;
 };
 
 const W = 534;
@@ -52,32 +54,38 @@ const Pulse: React.FC<{ readonly from: [number, number]; readonly to: [number, n
 };
 
 export const SameRecord: React.FC<{ readonly s: RecordState }> = ({ s }) => {
-  const { flow = 5, kept = 1, agents = 3, fresh = 1, fade = 1 } = s;
+  const { flow = 5, kept = 1, agents = 3, fresh = 1, clear = 0, spin = 0 } = s;
+  const keep = 1 - clear;
+  const live = clear === 0; // pulses only while it's playing forward
   const newY = agentY(3);
   return (
-    <div style={{ position: "relative", width: W, height: H, overflow: "hidden", fontFamily: FONT, opacity: fade }}>
+    <div style={{ position: "relative", width: W, height: H, overflow: "hidden", fontFamily: FONT }}>
       {/* connectors and pulses */}
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         {SOURCES.map((src, i) => (
-          <path key={src.label} d={inPath(i)} fill="none" stroke={`rgba(255,255,255,${0.14 + 0.16 * c01(flow - i)})`} strokeWidth={STROKE} />
+          <path key={src.label} d={inPath(i)} fill="none" stroke={`rgba(255,255,255,${0.14 + 0.16 * c01(flow - i) * keep})`} strokeWidth={STROKE} />
         ))}
         {AGENTS.map((a, i) => (
-          <path key={a} d={outPath(agentY(i))} fill="none" stroke={`rgba(255,255,255,${0.14 + 0.16 * c01(agents - i)})`} strokeWidth={STROKE} />
+          <path key={a} d={outPath(agentY(i))} fill="none" stroke={`rgba(255,255,255,${0.14 + 0.16 * c01(agents - i) * keep})`} strokeWidth={STROKE} />
         ))}
-        <path d={outPath(newY)} fill="none" stroke="rgba(206,237,205,0.55)" strokeWidth={STROKE} strokeDasharray="200" strokeDashoffset={200 * (1 - c01(fresh * 1.6 - 0.3))} />
-        {SOURCES.map((src, i) => (
-          <Pulse key={src.label} from={[SRC.right, srcY(i)]} to={[REC.x, rowY(i)]} p={flow - i} />
-        ))}
-        {AGENTS.map((a, i) => (
-          <Pulse key={a} from={[OUT.x, OUT.y]} to={[AG.x, agentY(i)]} p={agents - i} />
-        ))}
-        <Pulse from={[OUT.x, OUT.y]} to={[AG.x, newY]} p={fresh * 1.6 - 0.6} />
+        <path d={outPath(newY)} fill="none" stroke={`rgba(206,237,205,${0.55 * keep})`} strokeWidth={STROKE} strokeDasharray="200" strokeDashoffset={200 * (1 - c01(fresh * 1.6 - 0.3))} />
+        {live ? (
+          <>
+            {SOURCES.map((src, i) => (
+              <Pulse key={src.label} from={[SRC.right, srcY(i)]} to={[REC.x, rowY(i)]} p={flow - i} />
+            ))}
+            {AGENTS.map((a, i) => (
+              <Pulse key={a} from={[OUT.x, OUT.y]} to={[AG.x, agentY(i)]} p={agents - i} />
+            ))}
+            <Pulse from={[OUT.x, OUT.y]} to={[AG.x, newY]} p={fresh * 1.6 - 0.6} />
+          </>
+        ) : null}
       </svg>
 
       {/* what flows in */}
       {SOURCES.map((src, i) => (
         <div key={src.label} style={{ position: "absolute", right: W - SRC.right, top: srcY(i) - CHIP_H / 2 }}>
-          <GlassChip glyph={src.glyph} label={src.label} size={CHIP} lit={c01(flow - i) * (1 - c01(flow - i - 1)) * 0.8} />
+          <GlassChip glyph={src.glyph} label={src.label} size={CHIP} lit={live ? c01(flow - i) * (1 - c01(flow - i - 1)) * 0.8 : 0} />
         </div>
       ))}
 
@@ -92,7 +100,7 @@ export const SameRecord: React.FC<{ readonly s: RecordState }> = ({ s }) => {
         </div>
         <div style={{ position: "absolute", left: 12, right: 12, top: 50, height: 1, background: C.border }} />
         {SOURCES.map((src, i) => {
-          const on = c01((flow - i - 0.85) / 0.15);
+          const on = c01((flow - i - 0.85) / 0.15) * keep;
           return (
             <div key={src.label} style={{ position: "absolute", left: 12, right: 12, top: ROW.top - REC.y + i * ROW.h, height: ROW.h, display: "flex", alignItems: "center", gap: 6 }}>
               <div style={{ width: 5, height: 5, borderRadius: 3, background: on > 0 ? C.green2 : "#d9dde2", flexShrink: 0 }} />
@@ -104,9 +112,9 @@ export const SameRecord: React.FC<{ readonly s: RecordState }> = ({ s }) => {
             </div>
           );
         })}
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 28, background: C.tile, borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 6, padding: "0 12px", opacity: 0.35 + 0.65 * kept }}>
-          <div style={{ width: 12, height: 12, borderRadius: 6, background: kept > 0.5 ? C.greenBg : "#e6e9ed", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            {kept > 0.5 ? <Icon name="check-dark" w={7} /> : null}
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 28, background: C.tile, borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 6, padding: "0 12px", opacity: 0.35 + 0.65 * kept * keep }}>
+          <div style={{ width: 12, height: 12, borderRadius: 6, background: kept * keep > 0.5 ? C.greenBg : "#e6e9ed", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {kept * keep > 0.5 ? <Icon name="check-dark" w={7} /> : null}
           </div>
           <div style={{ fontSize: 9, color: C.sub2, whiteSpace: "nowrap" }}>Connections maintained by Savvy</div>
         </div>
@@ -114,8 +122,8 @@ export const SameRecord: React.FC<{ readonly s: RecordState }> = ({ s }) => {
 
       {/* the agents working from it */}
       {AGENTS.map((a, i) => {
-        const on = c01(agents - i);
-        const done = agents - i >= 1;
+        const on = c01(agents - i) * keep;
+        const done = agents - i >= 1 && clear < 0.5;
         return (
           <div key={a} style={{ position: "absolute", left: AG.x, top: agentY(i) - CHIP_H / 2, opacity: 0.45 + 0.55 * on }}>
             <GlassChip
@@ -123,18 +131,18 @@ export const SameRecord: React.FC<{ readonly s: RecordState }> = ({ s }) => {
               label={a}
               size={CHIP}
               lit={done ? 0.6 : 0}
-              extra={done ? <Icon name="check-small" w={8} style={{ marginLeft: 2 }} /> : on > 0 ? <Spinner angle={on * 720} size={10} /> : null}
+              extra={done ? <Icon name="check-small" w={8} style={{ marginLeft: 2 }} /> : on > 0 && live ? <Spinner angle={spin} size={10} /> : null}
             />
           </div>
         );
       })}
       {fresh > 0 ? (
-        <div style={{ position: "absolute", left: AG.x, top: newY - CHIP_H / 2, opacity: c01(fresh * 2), translate: `${(1 - c01(fresh * 1.4)) * 18}px 0px` }}>
+        <div style={{ position: "absolute", left: AG.x, top: newY - CHIP_H / 2, opacity: c01(fresh * 2) * keep, translate: `${(1 - c01(fresh * 1.4)) * 18}px 0px` }}>
           <GlassChip
             glyph={<Icon name="savvy-mark" w={12.7} style={{ filter: "brightness(1.6) saturate(0.7)" }} />}
             label="New agent"
             size={CHIP}
-            lit={c01(fresh * 1.6 - 0.9) * 0.8}
+            lit={c01(fresh * 1.6 - 0.9) * 0.8 * keep}
             extra={
               <span style={{ marginLeft: 2, padding: "2px 6px", borderRadius: 10, background: C.mint, color: C.greenInk, fontSize: 8.5, fontWeight: 700 }}>
                 Day 1
@@ -153,3 +161,25 @@ export const RECORD_FRAMES: readonly { s: RecordState; title: string; caption: s
   { s: { flow: 5, kept: 1, agents: 1.55, fresh: 0 }, title: "Every agent works from it", caption: "The prep, reporting and email agents light up one by one, each drawing on the same record." },
   { s: { flow: 5, kept: 1, agents: 3, fresh: 1 }, title: "A new agent, day 1", caption: "A new agent slides in and is connected to the same record right away (“Day 1”). Then the loop starts over." },
 ];
+
+// The loop (12 s): the sources flow in one by one and fill the record, the
+// connections are confirmed, the three agents light up from it, and a new
+// agent arrives connected on day 1. Then it all fades back to the start.
+export const RECORD_SECONDS = 12;
+export const SameRecordLoop: React.FC = () => {
+  const t = useT();
+  const clear = ramp(t, 10.9, 11.7);
+  const back = t >= 11.7; // once cleared, the start (so the loop meets itself)
+  return (
+    <SameRecord
+      s={{
+        flow: back ? 0 : 5 * ramp(t, 0.5, 3.7, LINEAR),
+        kept: back ? 0 : ramp(t, 3.75, 4.15),
+        agents: back ? 0 : 3 * ramp(t, 4.5, 6.9, LINEAR),
+        fresh: back ? 0 : ramp(t, 7.4, 9.0, LINEAR),
+        clear: back ? 0 : clear,
+        spin: t * 420,
+      }}
+    />
+  );
+};

@@ -90,3 +90,10 @@ export const MOREWIDE_FRAMES: readonly { s: MoreState; title: string; caption: s
   { s: {}, title: "Hundreds of jobs", caption: "The design’s three rows of jobs, in the wider frame (617×376) with the larger chips." },
   { s: { drift: 170 }, title: "Scrolling", caption: "Same as before: the top and bottom rows scroll left, the middle row right, slow and steady, wrapping endlessly." },
 ];
+
+// The wide card's loop: the same, one full run of a row (24 s).
+export const MoreWideLoop: React.FC = () => {
+  const t = useT();
+  const { rowW, gap } = LAYOUTS.wide;
+  return <More wide s={{ drift: ((rowW + gap) * t) / MORE_SECONDS }} />;
+};

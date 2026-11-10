@@ -7,12 +7,22 @@
 #   webp/     animated WebP with alpha, 30 fps (every browser, Safari too, as
 #             a plain image)
 #   preview/  MP4 on the site's card glass, for review
+# `more-ways-export.sh v2` does the section's second version (record, day 1,
+# service team, briefing, the wider "whole lot more") into
+# out/more-ways/v2/export/.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-OUT=out/more-ways/export
+if [ "${1:-}" = "v2" ]; then
+  OUT=out/more-ways/v2/export
+  names=(record:v2-01-every-agent-works-from-the-same-record dayone:v2-02-ready-on-day-1
+    service:v2-03-backed-by-your-service-team briefing:v2-04-start-the-day-knowing-what-needs-you
+    morewide:v2-06-and-a-whole-lot-more)
+else
+  OUT=out/more-ways/export
+  names=(say:01-just-say-what-you-need know:02-know-more-than-they-expect report:03-every-report-sounds-like-you
+    day:04-start-the-day monitor:05-monitor-across-your-book hunt:06-skip-the-data-hunting more:07-and-a-whole-lot-more)
+fi
 mkdir -p "$OUT/mov" "$OUT/webm" "$OUT/webp" "$OUT/preview"
-names=(say:01-just-say-what-you-need know:02-know-more-than-they-expect report:03-every-report-sounds-like-you
-  day:04-start-the-day monitor:05-monitor-across-your-book hunt:06-skip-the-data-hunting more:07-and-a-whole-lot-more)
 for pair in "${names[@]}"; do
   card=${pair%%:*}
   name=${pair#*:}
