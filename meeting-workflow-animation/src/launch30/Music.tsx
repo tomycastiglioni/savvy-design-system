@@ -21,8 +21,12 @@ const smooth = (p: number) => {
   return c * c * (3 - 2 * c);
 };
 
+// What the level follows: the voiceover lines and the end (the cutdowns pass
+// their own).
+type Cues = Pick<Timeline, "vo" | "end">;
+
 // The last line only half dips, so the final hit still lands with the logo.
-const duck = (L: Timeline, t: number) =>
+const duck = (L: Cues, t: number) =>
   Math.max(
     0,
     ...L.vo.map(({ at, len }, i) => {
@@ -32,7 +36,7 @@ const duck = (L: Timeline, t: number) =>
     }),
   );
 
-const musicVolume = (L: Timeline, t: number) => {
+export const musicVolume = (L: Cues, t: number) => {
   const level = OPEN + (UNDER - OPEN) * duck(L, t);
   const fadeOut = 1 - smooth((t - (L.end - 0.5)) / 0.5);
   return level * fadeOut;

@@ -15,6 +15,7 @@ import { LoopKey as MoreWaysLoopKey, LOOPS as MORE_WAYS_LOOPS, MoreWaysLoop } fr
 import { CARDS as MORE_WAYS_CARDS } from "./more-ways/theme";
 import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
+import { cutFrames, Launch30Cut } from "./launch30/Cutdowns";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
 import { durationOf, PEEK_TIMELINE, TIMELINE as LAUNCH30_TIMELINE } from "./launch30/timeline";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
@@ -156,6 +157,11 @@ export const RemotionRoot: React.FC = () => {
             />
           )),
         )}
+      </Folder>
+      <Folder name="Launch30-cutdowns">
+        {(["15s", "6s"] as const).map((cut) => (
+          <Composition key={cut} id={`Launch30-${cut}`} component={Launch30Cut} defaultProps={{ cut }} durationInFrames={cutFrames(cut)} fps={60} width={1920} height={1080} />
+        ))}
       </Folder>
       <Folder name="Launch30-formats">
         {(["4x5", "1x1", "9x16"] as const).map((format) => (
