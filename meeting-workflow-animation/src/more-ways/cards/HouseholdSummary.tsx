@@ -18,8 +18,8 @@ export type SummaryState = {
 
 const W = 700;
 const H = 430;
-export const SUMMARY_CARD = { x: 24, y: 20, w: 652, h: 390 };
-const CELL = { top: 78, w: 300, h: 128, gap: 12 };
+export const SUMMARY_CARD = { x: 24, y: 20, w: 652, h: 402 };
+const CELL = { top: 78, w: 300, h: 134, gap: 12 };
 const c01 = (n: number) => Math.min(1, Math.max(0, n));
 
 const Label: React.FC<{ readonly children: React.ReactNode }> = ({ children }) => (
