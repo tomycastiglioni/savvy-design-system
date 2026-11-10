@@ -91,9 +91,10 @@ export const MOREWIDE_FRAMES: readonly { s: MoreState; title: string; caption: s
   { s: { drift: 170 }, title: "Scrolling", caption: "Same as before: the top and bottom rows scroll left, the middle row right, slow and steady, wrapping endlessly." },
 ];
 
-// The wide card's loop: the same, one full run of a row (24 s).
+// The wide card's loop: one full run of a row, slower (40 s, about 38 px/s).
+export const MOREWIDE_SECONDS = 40;
 export const MoreWideLoop: React.FC = () => {
   const t = useT();
   const { rowW, gap } = LAYOUTS.wide;
-  return <More wide s={{ drift: ((rowW + gap) * t) / MORE_SECONDS }} />;
+  return <More wide s={{ drift: ((rowW + gap) * t) / MOREWIDE_SECONDS }} />;
 };

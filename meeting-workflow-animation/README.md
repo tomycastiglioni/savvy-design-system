@@ -150,8 +150,10 @@ the added cost counting down to $0; the prices are illustrative), `service`
 (Backed by your service team at Savvy, 700×376, 13 s: requests from a meeting
 approved and routed to the team, then in progress and done), `briefing` (Start
 the day, the briefing as it waits on the dashboard across the whole book,
-534×290, 10 s) and `morewide` (the 617×376 "whole lot more", larger chips, the
-same 24 s scroll). `scripts/more-ways-export.sh v2` exports them to
+534×290, 10 s), `knowbook` (Know more than they expect, 617×350: the whole
+book read from one record, stopping on a Roth window, an upcoming RMD and
+portfolio drift; frames for approval) and `morewide` (the 617×376 "whole lot
+more", larger chips, the scroll slowed to 40 s a run). `scripts/more-ways-export.sh v2` exports them to
 `out/more-ways/v2/export/`; `web/more-ways/and-a-whole-lot-more-wide.html` is
 the wide card as CSS, starting where Figma places the rows.
 

@@ -11,7 +11,7 @@ import { MORE_SECONDS, MoreLoop } from "./cards/More";
 import { DAY_SECONDS, StartDayLoop } from "./cards/StartDay";
 import { BRIEFING_SECONDS, BriefingLoop } from "./cards/Briefing";
 import { DAYONE_SECONDS, DayOneLoop } from "./cards/DayOne";
-import { MoreWideLoop } from "./cards/More";
+import { MOREWIDE_SECONDS, MoreWideLoop } from "./cards/More";
 import { RECORD_SECONDS, SameRecordLoop } from "./cards/SameRecord";
 import { SERVICE_SECONDS, ServiceTeamLoop } from "./cards/ServiceTeam";
 import { C, CardKey } from "./theme";
@@ -20,8 +20,8 @@ import { C, CardKey } from "./theme";
 // --scale=2 for the site). Transparent, to sit on the site's card glass;
 // `preview` puts them on that glass for review.
 // Both sections' cards (the second's: record, dayone, service, briefing,
-// morewide).
-export type LoopKey = CardKey;
+// morewide; knowbook's loop follows once its frames are approved).
+export type LoopKey = Exclude<CardKey, "knowbook">;
 export const LOOPS: Record<LoopKey, { seconds: number; Loop: React.FC }> = {
   say: { seconds: SAY_SECONDS, Loop: JustSayLoop },
   know: { seconds: KNOW_SECONDS, Loop: KnowMoreLoop },
@@ -34,7 +34,7 @@ export const LOOPS: Record<LoopKey, { seconds: number; Loop: React.FC }> = {
   dayone: { seconds: DAYONE_SECONDS, Loop: DayOneLoop },
   service: { seconds: SERVICE_SECONDS, Loop: ServiceTeamLoop },
   briefing: { seconds: BRIEFING_SECONDS, Loop: BriefingLoop },
-  morewide: { seconds: MORE_SECONDS, Loop: MoreWideLoop },
+  morewide: { seconds: MOREWIDE_SECONDS, Loop: MoreWideLoop },
 };
 
 export const MoreWaysLoop: React.FC<{ readonly card: LoopKey; readonly preview?: boolean }> = ({ card, preview = false }) => {

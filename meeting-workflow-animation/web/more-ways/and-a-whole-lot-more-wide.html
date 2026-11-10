@@ -24,11 +24,11 @@
     justify-content: center;
     gap: 17.285px; /* rows 70.47 px apart, centre to centre */
   }
-  .mw-more__row { display: flex; width: max-content; animation: mw-more-scroll 24s linear infinite; }
+  .mw-more__row { display: flex; width: max-content; animation: mw-more-scroll 40s linear infinite; /* one set per 40 s, slow */ }
   /* where each row starts (Figma): -700.03 px, -456.51 px, -185.83 px */
-  .mw-more__row:nth-child(1) { animation-delay: -10.904s; }
-  .mw-more__row:nth-child(2) { animation-direction: reverse; animation-delay: -16.89s; }
-  .mw-more__row:nth-child(3) { animation-delay: -2.894s; }
+  .mw-more__row:nth-child(1) { animation-delay: -18.173s; }
+  .mw-more__row:nth-child(2) { animation-direction: reverse; animation-delay: -28.15s; }
+  .mw-more__row:nth-child(3) { animation-delay: -4.823s; }
   /* Each row holds its set of chips twice; moving by one set loops it. */
   .mw-more__set { display: flex; gap: 13.23px; padding-right: 13.23px; }
   .mw-more__chip {

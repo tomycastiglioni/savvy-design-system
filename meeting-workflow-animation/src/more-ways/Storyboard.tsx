@@ -10,6 +10,7 @@ import { Monitor, MONITOR_FRAMES } from "./cards/Monitor";
 import { More, MORE_FRAMES, MOREWIDE_FRAMES } from "./cards/More";
 import { Briefing, BRIEFING_FRAMES } from "./cards/Briefing";
 import { DayOne, DAYONE_FRAMES } from "./cards/DayOne";
+import { KnowBook, KNOWBOOK_FRAMES } from "./cards/KnowBook";
 import { RECORD_FRAMES, SameRecord } from "./cards/SameRecord";
 import { SERVICE_FRAMES, ServiceTeam } from "./cards/ServiceTeam";
 import { DAY_FRAMES, StartDay } from "./cards/StartDay";
@@ -31,12 +32,13 @@ const BOARDS: Partial<Record<CardKey, () => readonly Frame[]>> = {
   dayone: () => DAYONE_FRAMES.map((f) => ({ node: <DayOne s={f.s} />, title: f.title, caption: f.caption })),
   service: () => SERVICE_FRAMES.map((f) => ({ node: <ServiceTeam s={f.s} />, title: f.title, caption: f.caption })),
   briefing: () => BRIEFING_FRAMES.map((f) => ({ node: <Briefing s={f.s} />, title: f.title, caption: f.caption })),
+  knowbook: () => KNOWBOOK_FRAMES.map((f) => ({ node: <KnowBook s={f.s} />, title: f.title, caption: f.caption })),
   morewide: () => MOREWIDE_FRAMES.map((f) => ({ node: <More s={f.s} wide />, title: f.title, caption: f.caption })),
 };
 export const BOARD_KEYS = Object.keys(BOARDS) as CardKey[];
 const ORDER: readonly CardKey[] = ["say", "know", "report", "day", "monitor", "hunt", "more"];
-const ORDER_V2: readonly CardKey[] = ["record", "dayone", "service", "briefing", "know", "morewide"];
-const number = (card: CardKey) => (ORDER_V2.includes(card) && card !== "know" ? `v2 · ${String(ORDER_V2.indexOf(card) + 1).padStart(2, "0")}` : String(ORDER.indexOf(card) + 1).padStart(2, "0"));
+const ORDER_V2: readonly CardKey[] = ["record", "dayone", "service", "briefing", "knowbook", "morewide"];
+const number = (card: CardKey) => (ORDER_V2.includes(card) ? `v2 · ${String(ORDER_V2.indexOf(card) + 1).padStart(2, "0")}` : String(ORDER.indexOf(card) + 1).padStart(2, "0"));
 
 const PAD = 72;
 const GAP = 40;
