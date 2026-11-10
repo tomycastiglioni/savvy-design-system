@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Renders the six bento ads (Innovation Campaign, "03 — Feature bento"):
+# Renders the bento ads (07–13) (Innovation Campaign, "03 — Feature bento"):
 #   scripts/bento-ads.sh            all formats
 #   scripts/bento-ads.sh 4x5 1x1    just those
 # to out/ads/bento/<format>/savvy-bento-<nn>-<name>-<format>.mp4 (h264,
@@ -9,7 +9,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 formats=("$@")
 [ ${#formats[@]} -eq 0 ] && formats=(4x5 1x1 9x16)
-ads=("07 say just-say" "08 know know-more" "09 report every-report" "10 day start-the-day" "11 monitor year-end-rmds" "12 hunt skip-the-pdf-hunt")
+ads=("07 say just-say" "08 know know-more" "09 report every-report" "10 day start-the-day" "11 monitor year-end-rmds" "12 hunt skip-the-pdf-hunt" "13 summary every-household-summarized")
 for fmt in "${formats[@]}"; do
   mkdir -p "out/ads/bento/$fmt"
   for ad in "${ads[@]}"; do

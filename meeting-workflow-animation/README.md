@@ -214,7 +214,7 @@ also render alone on transparent backgrounds for Figma: `Email-ui-prep`,
 `-shadow` (the video's card shadow, padded), and `Email-ui-question` (the
 client's what-if bubble).
 
-`AdBento-07-say-4x5` … `AdBento-12-hunt-9x16` (folder "Ads-bento") are the
+`AdBento-07-say-4x5` … `AdBento-13-summary-9x16` (folder "Ads-bento") are the
 Innovation Campaign's feature-bento ads ("03 — Feature bento (4x5) v3" in
 Figma): the Figma copy (logo, Diatype Light headline, body; three typos
 fixed: you’re, prospect’s, clients’, with the two headlines widened so they
@@ -225,7 +225,7 @@ flattened), with the matching "More ways" card animation (`src/more-ways/cards/`
 allow (`src/ads/bento/BentoAd.tsx`). A card that fits ends with its own edge;
 one that doesn't (Know more, Every report and the PDF hunt in 4:5) gets a frame
 down to the ad's bottom edge and runs off it. Each ad is one seamless loop of
-its card (10–13 s). The copy is measured once the fonts load, so the graphic
+its card (10–13 s). Ad 13 (Every household, summarized before the call) has a card of its own, `src/more-ways/cards/HouseholdSummary.tsx`: the Chans' household summary filling in section by section, then marked as updated after the last meeting. The copy is measured once the fonts load, so the graphic
 follows the line breaks. 1:1 sets the copy at 75% across the full width with
 balanced headlines; 9:16 keeps the 4:5 copy, starts at 250 px and centres copy
 and card between there and 1650 px. Render all 18 with `scripts/bento-ads.sh`

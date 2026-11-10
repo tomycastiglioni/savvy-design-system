@@ -12,6 +12,7 @@ import { DAY_SECONDS, StartDayLoop } from "./cards/StartDay";
 import { BRIEFING_SECONDS, BriefingLoop } from "./cards/Briefing";
 import { DAYONE_SECONDS, DayOneLoop } from "./cards/DayOne";
 import { KNOWBOOK_SECONDS, KnowBookLoop } from "./cards/KnowBook";
+import { HouseholdSummaryLoop, SUMMARY_SECONDS } from "./cards/HouseholdSummary";
 import { MOREWIDE_SECONDS, MoreWideLoop } from "./cards/More";
 import { RECORD_SECONDS, SameRecordLoop } from "./cards/SameRecord";
 import { SERVICE_SECONDS, ServiceTeamLoop } from "./cards/ServiceTeam";
@@ -36,6 +37,7 @@ export const LOOPS: Record<LoopKey, { seconds: number; Loop: React.FC }> = {
   service: { seconds: SERVICE_SECONDS, Loop: ServiceTeamLoop },
   briefing: { seconds: BRIEFING_SECONDS, Loop: BriefingLoop },
   knowbook: { seconds: KNOWBOOK_SECONDS, Loop: KnowBookLoop },
+  summary: { seconds: SUMMARY_SECONDS, Loop: HouseholdSummaryLoop },
   morewide: { seconds: MOREWIDE_SECONDS, Loop: MoreWideLoop },
 };
 

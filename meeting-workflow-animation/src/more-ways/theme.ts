@@ -39,7 +39,7 @@ export const C = {
 // back to Regular until ABCDiatype-Medium.otf is added.
 export const MEDIUM = 500;
 
-export type CardKey = "say" | "know" | "report" | "day" | "monitor" | "hunt" | "more" | "record" | "dayone" | "service" | "briefing" | "morewide" | "knowbook";
+export type CardKey = "say" | "know" | "report" | "day" | "monitor" | "hunt" | "more" | "record" | "dayone" | "service" | "briefing" | "morewide" | "knowbook" | "summary";
 export const CARDS: Record<CardKey, { title: string; body: string; w: number; h: number }> = {
   // The section's second version (Figma "Hero", 25683:472): three rows of
   // two cards, all on the dark-teal glass.
@@ -72,6 +72,12 @@ export const CARDS: Record<CardKey, { title: string; body: string; w: number; h:
     body: "Because accounts, tax returns, and plans sit in the same record, Savvy Intelligence can spot a Roth window that reopened, an upcoming RMD, or portfolio drift across every household on your book.",
     w: 617,
     h: 350,
+  },
+  summary: {
+    title: "Every household, summarized before the call",
+    body: "See who’s in the household, what you discussed last, open tasks, and recent account changes in one summary. Savvy Intelligence updates it after every meeting, so you’re caught up before you dial.",
+    w: 700,
+    h: 430,
   },
   morewide: {
     title: "And a whole lot more…",

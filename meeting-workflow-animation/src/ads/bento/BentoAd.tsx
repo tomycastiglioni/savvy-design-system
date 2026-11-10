@@ -6,6 +6,7 @@ import { EveryReportLoop, REPORT_SECONDS } from "../../more-ways/cards/EveryRepo
 import { JustSayLoop, SAY_SECONDS } from "../../more-ways/cards/JustSay";
 import { KNOW_SECONDS, KnowMoreLoop } from "../../more-ways/cards/KnowMore";
 import { MONITOR_SECONDS, MonitorLoop } from "../../more-ways/cards/Monitor";
+import { HouseholdSummaryLoop, SUMMARY_CARD, SUMMARY_SECONDS } from "../../more-ways/cards/HouseholdSummary";
 import { DAY_SECONDS, StartDayLoop } from "../../more-ways/cards/StartDay";
 import { CARDS, CardKey } from "../../more-ways/theme";
 import { loadAdFonts } from "../fonts";
@@ -64,6 +65,8 @@ const GRAPHICS: Partial<Record<CardKey, Graphic>> = {
   day: { Loop: StartDayLoop, seconds: DAY_SECONDS, box: { x: 34, y: 26.27, w: 466 }, full: 284, essential: 284, maxScale: 2 },
   monitor: { Loop: MonitorLoop, seconds: MONITOR_SECONDS, box: { x: 35, y: 21.5, w: 336 }, full: 213, essential: 213, maxScale: 2.8 },
   hunt: { Loop: DataHuntLoop, seconds: HUNT_SECONDS, box: { x: 40.8, y: 22.77, w: 334 }, full: 392.5, essential: 345, maxScale: 2.6 },
+  // shown whole, with room under it (its footer is the point)
+  summary: { Loop: HouseholdSummaryLoop, seconds: SUMMARY_SECONDS, box: { x: SUMMARY_CARD.x, y: SUMMARY_CARD.y, w: SUMMARY_CARD.w }, full: SUMMARY_CARD.h + 2, essential: SUMMARY_CARD.h + 48, maxScale: 1.45 },
 };
 
 export type BentoAdSpec = {
@@ -114,6 +117,14 @@ export const BENTO_ADS: readonly BentoAdSpec[] = [
     body: "Advisors can find beneficiaries, cost basis or last year’s return details without opening a single PDF.",
     column: 732.925,
   },
+  {
+    card: "summary",
+    headline: "Every household, summarized before the call",
+    headlineSize: 92.142,
+    body: "See who’s in the household, what you discussed last, open tasks, and recent account changes in one summary. Savvy Intelligence updates it after every meeting, so you’re caught up before you dial.",
+    column: 865,
+  },
+
 ];
 export const bentoSeconds = (card: CardKey) => GRAPHICS[card]?.seconds ?? 10;
 
