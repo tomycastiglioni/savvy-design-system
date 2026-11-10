@@ -14,7 +14,10 @@ import { C, CardKey } from "./theme";
 // The seven card graphics as seamless loops, at their Figma size (render at
 // --scale=2 for the site). Transparent, to sit on the site's card glass;
 // `preview` puts them on that glass for review.
-export const LOOPS: Record<CardKey, { seconds: number; Loop: React.FC }> = {
+// The loops made so far (the second section's cards get theirs once their
+// frames are approved).
+export type LoopKey = Extract<CardKey, "say" | "know" | "report" | "day" | "monitor" | "hunt" | "more">;
+export const LOOPS: Record<LoopKey, { seconds: number; Loop: React.FC }> = {
   say: { seconds: SAY_SECONDS, Loop: JustSayLoop },
   know: { seconds: KNOW_SECONDS, Loop: KnowMoreLoop },
   report: { seconds: REPORT_SECONDS, Loop: EveryReportLoop },
@@ -24,7 +27,7 @@ export const LOOPS: Record<CardKey, { seconds: number; Loop: React.FC }> = {
   more: { seconds: MORE_SECONDS, Loop: MoreLoop },
 };
 
-export const MoreWaysLoop: React.FC<{ readonly card: CardKey; readonly preview?: boolean }> = ({ card, preview = false }) => {
+export const MoreWaysLoop: React.FC<{ readonly card: LoopKey; readonly preview?: boolean }> = ({ card, preview = false }) => {
   useState(loadDiatype);
   const { Loop } = LOOPS[card];
   return (

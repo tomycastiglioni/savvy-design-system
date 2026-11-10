@@ -11,8 +11,8 @@ import { DURATION } from "./launch/timeline";
 import { CLIENT_LIST_SIZE, ClientListStill } from "./launch30/frames/Clients";
 import { FORMATS as LAUNCH30_FORMATS, Launch30Format } from "./launch30/Formats";
 import { BOARD_KEYS as MORE_WAYS_BOARDS, boardSize as moreWaysBoardSize, MoreWaysStoryboard } from "./more-ways/Storyboard";
-import { LOOPS as MORE_WAYS_LOOPS, MoreWaysLoop } from "./more-ways/Loops";
-import { CARDS as MORE_WAYS_CARDS, CardKey as MoreWaysCard } from "./more-ways/theme";
+import { LoopKey as MoreWaysLoopKey, LOOPS as MORE_WAYS_LOOPS, MoreWaysLoop } from "./more-ways/Loops";
+import { CARDS as MORE_WAYS_CARDS } from "./more-ways/theme";
 import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
@@ -105,7 +105,7 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Folder name="MoreWays">
-        {(Object.keys(MORE_WAYS_LOOPS) as MoreWaysCard[]).flatMap((card) =>
+        {(Object.keys(MORE_WAYS_LOOPS) as MoreWaysLoopKey[]).flatMap((card) =>
           [false, true].map((preview) => (
             <Composition
               key={`${card}${preview}`}

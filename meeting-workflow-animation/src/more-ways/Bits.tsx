@@ -73,6 +73,7 @@ export const Pill: React.FC<{ readonly tone: "green" | "amber"; readonly size?: 
 // dark card (icon + label).
 export const GlassChip: React.FC<{
   readonly icon?: IconName;
+  readonly glyph?: React.ReactNode; // in place of `icon` (a lucide icon, say)
   readonly label: string;
   readonly size?: number;
   readonly style?: React.CSSProperties;
@@ -80,6 +81,7 @@ export const GlassChip: React.FC<{
   readonly extra?: React.ReactNode;
 }> = ({
   icon,
+  glyph,
   label,
   size = 13.893,
   style,
@@ -104,7 +106,7 @@ export const GlassChip: React.FC<{
       ...style,
     }}
   >
-    {icon ? <Icon name={icon} w={size * 1.2665} /> : null}
+    {icon ? <Icon name={icon} w={size * 1.2665} /> : glyph ?? null}
     {label}
     {extra}
   </div>

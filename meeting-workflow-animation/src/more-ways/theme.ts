@@ -30,6 +30,7 @@ export const C = {
   chip: "rgba(255, 255, 255, 0.13)",
   // the website's card glass, behind the graphics in the storyboards
   card: "#23404f",
+  chipIcon: "#9cdaf8", // the glass chips' icon stroke
   cardTop: "#2b4b5b",
   page: "#0f3544",
 } as const;
@@ -38,8 +39,40 @@ export const C = {
 // back to Regular until ABCDiatype-Medium.otf is added.
 export const MEDIUM = 500;
 
-export type CardKey = "say" | "know" | "report" | "day" | "monitor" | "hunt" | "more";
+export type CardKey = "say" | "know" | "report" | "day" | "monitor" | "hunt" | "more" | "record" | "dayone" | "service" | "briefing" | "morewide";
 export const CARDS: Record<CardKey, { title: string; body: string; w: number; h: number }> = {
+  // The section's second version (Figma "Hero", 25683:472): three rows of
+  // two cards, all on the dark-teal glass.
+  record: {
+    title: "Every agent works from the same client record",
+    body: "Accounts, tax, planning, meeting notes, and client communications already flow into one client record. We maintain the connections, so there’s nothing for you to set up. Each new agent we release works from that same record on day 1.",
+    w: 534,
+    h: 264,
+  },
+  dayone: {
+    title: "Ready on day 1, at no added cost",
+    body: "Savvy Intelligence is built into the platform, so you can drop tools you’d otherwise pay for. There’s nothing to install or configure.",
+    w: 700,
+    h: 350,
+  },
+  service: {
+    title: "Backed by your service team at Savvy",
+    body: "Requests from your meetings route straight to your service team at Savvy. You approve, and they take it from there.",
+    w: 700,
+    h: 376,
+  },
+  briefing: {
+    title: "Start the day knowing what needs you",
+    body: "Your daily briefing from Savvy Intelligence is waiting on your dashboard, along with account changes, open items and drafts ready for your review across your whole book.",
+    w: 534,
+    h: 290,
+  },
+  morewide: {
+    title: "And a whole lot more…",
+    body: "Savvy Intelligence can handle hundreds of jobs across your practice, and we’re adding more all the time.",
+    w: 617,
+    h: 376,
+  },
   say: {
     title: "Just say what you need",
     body: "Describe what you need in your own words, typed or dictated: a question about a client, a scenario to model, tasks to assign, or everything on your mind after a meeting. Savvy Intelligence takes it from there.",
