@@ -21,7 +21,7 @@ export const CLIENTS: readonly Client[] = [
   { name: "Diana Barlow", members: "Diana Barlow", aum: "$1.12M" },
   { name: "Dan Bishop", members: "Dan Bishop", aum: "$686K" },
   { name: "Chris Calder", members: "Chris Calder", aum: "$322K" },
-  { name: "Alice Carver & Jackie Lowell", members: "Alice Carver & Jackie Lowell", aum: "$4.54M" },
+  { name: "Alice & Ben Carver", members: "Alice Carver & Ben Carver", aum: "$4.54M" },
   { name: "Allison & Frank Chan", members: "Allison Chan & Frank Chan", aum: "$9.36M" },
   { name: "Elena & Mark Prescott", members: "Elena Prescott & Mark Prescott", aum: "$2.07M" },
   { name: "Grace & Tom Sutter", members: "Grace Sutter & Tom Sutter", aum: "$3.18M" },

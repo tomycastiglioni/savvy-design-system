@@ -6,6 +6,8 @@ import { ClientList, ClientRowContent, CLIENTS, LIST_SCROLL, PAGE_UP, rowRect, S
 import { PREP_CARD, PrepCardContent } from "../frames/Prep";
 import { EASE_IN_OUT, EASE_MORPH } from "../theme";
 import { usePeek } from "../peek";
+
+const PEEK_SCROLL = 390;
 import { useL, useT } from "../timeline";
 
 // 0:00–0:03.75 — "Deliver more for your clients with Savvy Intelligence"; the page
@@ -18,7 +20,10 @@ export const Intro: React.FC = () => {
   if (t >= L.cardIn) return null;
 
   const up = ramp(t, ...L.pageUp, EASE_IN_OUT);
-  const scroll = LIST_SCROLL * ramp(t, ...L.listScroll, EASE_IN_OUT);
+  // The sneak peek keeps its approved scroll (390 px in 0.8 s): it starts that
+  // far above the Chans, a few rows into the list, instead of at the top.
+  const from = peek ? LIST_SCROLL - PEEK_SCROLL : 0;
+  const scroll = from + (LIST_SCROLL - from) * ramp(t, ...L.listScroll, EASE_IN_OUT);
   const titleOut = ramp(t, L.listScroll[0], L.listScroll[0] + 0.3, Easing.linear);
   const listIn = ramp(t, ...L.listIn);
   const hover = ramp(t, L.listScroll[1] - 0.05, L.pickClick);
