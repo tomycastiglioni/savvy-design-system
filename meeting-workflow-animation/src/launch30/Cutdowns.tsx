@@ -46,7 +46,7 @@ const PAD = 0.06; // silence at the end of each voiceover file
 
 export const CUTS: Record<"15s", Cut> = {
   "15s": {
-    end: 15,
+    end: 14.9, // just under 15 s: YouTube caps non-skippable in-stream ads at 15 s
     segs: [
       { kind: "story", at: 0, src: 6.15, len: 7.7, fade: 0 }, // prep card → document → the plan presented, what-if
       { kind: "story", at: 7.4, src: 18.85, len: 1.95, fade: 0.3 }, // the recap
@@ -147,7 +147,7 @@ export const Launch30Cut: React.FC<{ readonly cut: "15s" }> = ({ cut }) => {
 };
 
 // —— 6 s ——
-const SIX_END = 6;
+const SIX_END = 5.9; // just under 6 s: YouTube rejects a bumper over 6 s
 const WORD_SIZE = 100;
 const WORD_TO_CARD = 150; // the word's cap top → the card's top
 // Each beat's word and card are centred together on the frame.
@@ -164,7 +164,7 @@ const BEATS: readonly Beat[] = [
   // its line rising with the what-if
   { word: "Meet.", in: 1.55, out: 2.8, card: { w: 780, h: 466, s: 1.3, Content: ({ t }) => <PresentationContent drag={ramp(t, 2.0, 2.6, EASE_IN_OUT)} /> } },
   // the follow-up sent, its check drawing in
-  { word: "Deliver.", in: 3.0, out: 4.6, card: { w: 700, h: 170, s: 1.55, Content: ({ t }) => <SentBannerContent draw={ramp(t, 3.2, 3.6)} /> } },
+  { word: "Deliver.", in: 3.0, out: 4.4, card: { w: 700, h: 170, s: 1.55, Content: ({ t }) => <SentBannerContent draw={ramp(t, 3.2, 3.6)} /> } },
 ];
 // "Prep," "meet," "deliver," as each word lands, then "and so much more."
 // (parts of the close line; the first sound of each is `said` in)
@@ -174,7 +174,7 @@ const SIX_VO = [
   { src: "06c-deliver", said: 0.03, word: 2 },
 ].map(({ src, said, word }) => ({ src, at: BEATS[word].in + LEAD - said, len: 0.6 }));
 const SIX_VO_ALL: Vo[] = [...SIX_VO, { src: "06d-more", at: 3.75, len: 1.25 }];
-const SIX_LOGO = 4.85; // on the music's final hit
+const SIX_LOGO = 4.7; // on the music's final hit
 const SIX_L = quiet({ sweep1: [1.3, 1.8], sweep2: [2.75, 3.25], end: SIX_END });
 
 const SixBeat: React.FC<{ readonly beat: Beat }> = ({ beat }) => {
@@ -213,7 +213,7 @@ const SixBeat: React.FC<{ readonly beat: Beat }> = ({ beat }) => {
 // The wordmark, as the 30 s close brings it in (out of a blur).
 const SixLogo: React.FC = () => {
   const t = useT();
-  const logo = ramp(t, SIX_LOGO, SIX_LOGO + 0.9);
+  const logo = ramp(t, SIX_LOGO, SIX_LOGO + 0.6); // quicker than the 30 s, so it holds before the end
   if (logo <= 0) return null;
   return (
     <div style={{ position: "absolute", left: END_LOGO.x, top: END_LOGO.y, opacity: logo, scale: 0.96 + 0.04 * logo, filter: logo < 1 ? `blur(${(1 - logo) * 8}px)` : undefined }}>

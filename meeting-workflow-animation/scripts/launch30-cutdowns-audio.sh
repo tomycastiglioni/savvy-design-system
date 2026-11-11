@@ -9,8 +9,8 @@
 #                            "deliver," "and so much more."), for the 6 s cut
 #   music-slaptastic-15.mp3  the music for 15 s: the 30 s cut from its start to
 #                            bar 6, then bar 16 and the final hit (13.27 s)
-#   music-slaptastic-6.mp3   for 6 s: 0.42 s in to bar 2, then bar 16 and the
-#                            final hit (4.85 s)
+#   music-slaptastic-6.mp3   for 6 s: 0.57 s in to bar 2, then bar 16 and the
+#                            final hit (4.7 s)
 # The music is made from the 30 s cut (public/audio/launch30/
 # music-slaptastic.mp3, built by launch30-music.sh; licensed, not in the repo).
 # In it, bar n starts at 2n − 0.73 s, bar 16 at 29.27 s and the hit at 31.27 s;
@@ -51,7 +51,7 @@ music() {
     -map "[m]" -c:a libmp3lame -b:a 256k "$out"
 }
 music 0 11.27 "$A/music-slaptastic-15.mp3"
-music 0.42 3.27 "$A/music-slaptastic-6.mp3"
+music 0.57 3.27 "$A/music-slaptastic-6.mp3"
 
 for f in "$VO/05-deliver-first.mp3" "$VO/06-close-tight.mp3" "$VO"/06?-*.mp3 "$A/music-slaptastic-15.mp3" "$A/music-slaptastic-6.mp3"; do
   echo "$f: $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f") s"

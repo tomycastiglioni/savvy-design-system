@@ -122,8 +122,8 @@ together, as the word is said ("Prep." and the prep-ready card, "Meet." and
 the retirement plan with its line rising, "Deliver." and "Email sent");
 "and so much more" is only said; then the logo. `scripts/launch30-cutdowns-audio.sh`
 makes the voiceover edits and the music edits (final hit on the logo:
-13.27 s and 4.85 s; from the 30 s cut, so not in the repo). Export as for
-`Launch30` (the 6 s with `volume=5.3dB` to match its loudness).
+13.27 s and 4.7 s; from the 30 s cut, so not in the repo). Export as for
+`Launch30` (the 6 s with `volume=5.3dB` to match its loudness). They run 14.9 s and 5.9 s, just under YouTube's 15 s in-stream and 6 s bumper limits; keep exports from running over (`-t`).
 
 `Launch30-4x5`, `Launch30-1x1` and `Launch30-9x16` are the same video resized
 (1080 wide, same timing and sound; `src/launch30/Formats.tsx`). The 16:9
