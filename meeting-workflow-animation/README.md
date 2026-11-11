@@ -205,6 +205,14 @@ story/reel overlays) and fit each graphic to the room left (per-format sizes
 in `src/ads/layout.ts` and the scenes). Render with
 `npx remotion render AdPrep4x5 out/ads/meeting-steps/4x5/savvy-meeting-steps-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 
+`Hero-board-*` (folder "Hero-storyboards", `src/hero/`) are the storyboards for
+the website hero's pill graphics, one per pill, 620×360 (the hero's graphic
+area, ~1.72:1), in the bento cards' style and transparent: `scenarios`
+(Financial planning scenarios), `prep` (Automated meeting prep), `summaries`
+(Customizable meeting summaries), `contacts` (Household contact summaries),
+`report` (Performance report builder) and `prospect` (Prospect analysis).
+Each graphic is a component driven by a few states, ready to animate.
+
 `Email-header` (folder "Email", 600 px wide; render with `--scale=2`) is the
 email header: "Prep. Meet. Deliver with Savvy Intelligence." over the three
 phase backgrounds in one sweep, with the 30 s video's Prep, Meet and Deliver

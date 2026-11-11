@@ -16,6 +16,7 @@ import { CARDS as MORE_WAYS_CARDS } from "./more-ways/theme";
 import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
 import { cutFrames, Launch30Cut, Launch30Six } from "./launch30/Cutdowns";
+import { HERO_BOARD, HERO_PILL_KEYS, HeroStoryboard } from "./hero/Storyboard";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
 import { durationOf, PEEK_TIMELINE, TIMELINE as LAUNCH30_TIMELINE } from "./launch30/timeline";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
@@ -124,6 +125,11 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="MoreWays-storyboards">
         {MORE_WAYS_BOARDS.map((card) => (
           <Still key={card} id={`MoreWays-board-${card}`} component={MoreWaysStoryboard} defaultProps={{ card }} width={moreWaysBoardSize(card).w} height={moreWaysBoardSize(card).h} />
+        ))}
+      </Folder>
+      <Folder name="Hero-storyboards">
+        {HERO_PILL_KEYS.map((pill) => (
+          <Still key={pill} id={`Hero-board-${pill}`} component={HeroStoryboard} defaultProps={{ pill }} width={HERO_BOARD.w} height={HERO_BOARD.h} />
         ))}
       </Folder>
       <Folder name="Email">
