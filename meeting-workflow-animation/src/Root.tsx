@@ -17,6 +17,9 @@ import { Launch30 } from "./launch30/Launch30";
 import { Launch30Peek } from "./launch30/Peek";
 import { cutFrames, Launch30Cut, Launch30Six } from "./launch30/Cutdowns";
 import { HERO_BOARD, HERO_PILL_KEYS, HeroStoryboard } from "./hero/Storyboard";
+import { HERO_LOOPS, HeroLoop, HeroLoopKey } from "./hero/Loops";
+import { HeroStill } from "./hero/Stills";
+import { H as HERO_H, W as HERO_W } from "./hero/Bits";
 import { FRAMES as LAUNCH30_FRAMES, Launch30Storyboard } from "./launch30/Storyboard";
 import { durationOf, PEEK_TIMELINE, TIMELINE as LAUNCH30_TIMELINE } from "./launch30/timeline";
 import { MeetingPrep } from "./meeting-prep/MeetingPrep";
@@ -125,6 +128,25 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="MoreWays-storyboards">
         {MORE_WAYS_BOARDS.map((card) => (
           <Still key={card} id={`MoreWays-board-${card}`} component={MoreWaysStoryboard} defaultProps={{ card }} width={moreWaysBoardSize(card).w} height={moreWaysBoardSize(card).h} />
+        ))}
+      </Folder>
+      <Folder name="Hero">
+        {(Object.keys(HERO_LOOPS) as HeroLoopKey[]).flatMap((pill) =>
+          [false, true].map((preview) => (
+            <Composition
+              key={`${pill}${preview}`}
+              id={`Hero-${pill}${preview ? "-preview" : ""}`}
+              component={HeroLoop}
+              defaultProps={{ pill, preview }}
+              durationInFrames={HERO_LOOPS[pill].seconds * 60}
+              fps={60}
+              width={HERO_W}
+              height={HERO_H}
+            />
+          )),
+        )}
+        {(Object.keys(HERO_LOOPS) as HeroLoopKey[]).map((pill) => (
+          <Still key={pill} id={`Hero-still-${pill}`} component={HeroStill} defaultProps={{ pill }} width={HERO_W} height={HERO_H} />
         ))}
       </Folder>
       <Folder name="Hero-storyboards">

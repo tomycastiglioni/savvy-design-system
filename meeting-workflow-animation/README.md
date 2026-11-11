@@ -211,7 +211,13 @@ area, ~1.72:1), in the bento cards' style and transparent: `scenarios`
 (Financial planning scenarios), `prep` (Automated meeting prep), `summaries`
 (Customizable meeting summaries), `contacts` (Household contact summaries),
 `report` (Performance report builder) and `prospect` (Prospect analysis).
-Each graphic is a component driven by a few states, ready to animate.
+Each graphic is a component driven by a few states. `Hero-<pill>` are their
+seamless loops (11–12 s; `-preview` on the hero's background; the scenarios
+card uses what-if sliders, dragged), each ending in a crossfade back to its
+first frame; `Hero-still-<pill>` is each in its finished state with no cursor.
+`scripts/hero-export.sh` renders them at 2× into `out/hero/export/` (ProRes
+4444, VP9 WebM with alpha, animated WebP with alpha, previews and PNGs), as for
+the "More ways" cards.
 
 `Email-header` (folder "Email", 600 px wide; render with `--scale=2`) is the
 email header: "Prep. Meet. Deliver with Savvy Intelligence." over the three

@@ -30,6 +30,12 @@ const NOTE_TEXT = "A steady quarter for you both. We brought the portfolio back 
 export const sideAt = (i: number) => ({ x: 20 + SIDE.x + 34, y: 14 + SIDE.top + i * (SIDE.h + SIDE.gap) + SIDE.h / 2 }); // frame px
 export const PUBLISH_AT = { x: 20 + 580 - 20 - 60, y: 14 + 35 };
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
+const easeDrag = (d: number) => (d < 0.5 ? 2 * d * d : 1 - (-2 * d + 2) ** 2 / 2);
+// where the cursor holds the dragged block (its grip, as it travels), frame px
+export const dragHandleAt = (drag: number) => {
+  const e = easeDrag(drag);
+  return { x: 20 + lerp(SIDE.x, SLOT.x, e) + 34, y: 14 + lerp(SIDE.top + SIDE.h + SIDE.gap, SLOT.y, e) + 17 };
+};
 
 const Allocation: React.FC = () => (
   <>
@@ -60,7 +66,7 @@ export const ReportBuilder: React.FC<{ readonly s: ReportState }> = ({ s }) => {
   const written = NOTE_TEXT.slice(0, Math.round(note * NOTE_TEXT.length));
   // the dragged block, from the sidebar row to its slot
   const from = { x: SIDE.x, y: SIDE.top + (SIDE.h + SIDE.gap) };
-  const e = drag < 0.5 ? 2 * drag * drag : 1 - (-2 * drag + 2) ** 2 / 2;
+  const e = easeDrag(drag);
   const fly = { x: lerp(from.x, SLOT.x, e), y: lerp(from.y, SLOT.y, e), w: lerp(SIDE.w, SLOT.w, e), h: lerp(SIDE.h, SLOT.h, e) };
   return (
     <Frame>

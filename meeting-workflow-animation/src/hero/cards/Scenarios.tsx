@@ -1,25 +1,31 @@
 import React from "react";
 import { Pill, Pointer } from "../../more-ways/Bits";
 import { C, MEDIUM } from "../../more-ways/theme";
-import { c01, Frame, Head, Label, MarkAvatar, Panel, Switch } from "../Bits";
+import { c01, Frame, Head, Label, MarkAvatar, Panel } from "../Bits";
 
-// Financial planning scenarios. The Chans' retirement plan; scenarios switch
-// on and the projection and its numbers move with them: retiring at 63
-// costs some confidence, saving $15K more a year wins it back and then some.
+// Financial planning scenarios. The Chans' retirement plan with its what-if
+// sliders: drag the retirement age down to 63 and the projection and its
+// numbers move with it, costing some confidence; drag annual savings up by
+// $15K and it's won back, and then some.
 export type ScenarioState = {
-  readonly retire?: number; // 0–1 "Retire at 63"
-  readonly save?: number; // 0–1 "Save $15K more"
+  readonly retire?: number; // 0–1: retirement age 65 → 63
+  readonly save?: number; // 0–1: annual savings $50K → $65K
+  readonly hot?: number; // which slider is held (0, 1; -1 none)
   readonly pointer?: { x: number; y: number; o: number };
 };
 
 const CH = { x: 20, y: 84, w: 346, h: 150 }; // the chart, card px
-const ROWS = { x: 386, top: 98, h: 52, gap: 8, w: 174 };
-const SCENARIOS = [
-  { title: "Retire at 63", sub: "2 years earlier" },
-  { title: "Save $15K more", sub: "per year, until retiring" },
-  { title: "Market dip", sub: "−20% next year" },
+const ROWS = { x: 386, top: 98, h: 56, gap: 6, w: 174 };
+const TRACK = { x: 12, w: 150, y: 38 }; // in each slider row
+// the sliders: their value and where the knob sits (0–1), for retire / save
+const SLIDERS: readonly { title: string; value: (r: number, s: number) => string; at: (r: number, s: number) => number }[] = [
+  { title: "Retirement age", value: (r) => `${Math.round(65 - 2 * r)}`, at: (r) => 0.5 - 0.2 * r },
+  { title: "Annual savings", value: (_r, sv) => `$${Math.round(50 + 15 * sv)}K`, at: (_r, sv) => 0.5 + 0.15 * sv },
+  { title: "Spending", value: () => "$120K/yr", at: () => 0.43 },
 ];
-export const toggleAt = (i: number) => ({ x: 20 + ROWS.x + ROWS.w - 26, y: 14 + ROWS.top + i * (ROWS.h + ROWS.gap) + ROWS.h / 2 }); // frame px
+// the knob of slider `i` at position `p` (0–1), frame px
+export const knobAt = (i: number, p: number) => ({ x: 20 + ROWS.x + TRACK.x + p * TRACK.w, y: 14 + ROWS.top + i * (ROWS.h + ROWS.gap) + TRACK.y });
+export const knobFor = (i: number, retire: number, save: number) => knobAt(i, SLIDERS[i].at(retire, save));
 
 // the projection: value over time for a growth factor
 const path = (g: number) => {
@@ -32,7 +38,7 @@ const path = (g: number) => {
 };
 
 export const Scenarios: React.FC<{ readonly s: ScenarioState }> = ({ s }) => {
-  const { retire = 0, save = 0, pointer } = s;
+  const { retire = 0, save = 0, hot = -1, pointer } = s;
   const active = c01(retire + save);
   const g = 0.72 - 0.2 * retire + 0.26 * save;
   const success = Math.round(82 - 11 * retire + 17 * save);
@@ -101,34 +107,47 @@ export const Scenarios: React.FC<{ readonly s: ScenarioState }> = ({ s }) => {
           </div>
         </div>
 
-        {/* the scenarios */}
-        <Label style={{ position: "absolute", left: ROWS.x, top: 80 }}>Scenarios</Label>
-        {SCENARIOS.map((sc, i) => {
-          const on = i === 0 ? retire : i === 1 ? save : 0;
+        {/* the what-ifs */}
+        <Label style={{ position: "absolute", left: ROWS.x, top: 80 }}>What if…</Label>
+        {SLIDERS.map((sl, i) => {
+          const p = sl.at(retire, save);
+          const moved = i === 0 ? retire : i === 1 ? save : 0;
+          const held = hot === i;
           return (
             <div
-              key={sc.title}
+              key={sl.title}
               style={{
                 position: "absolute",
                 left: ROWS.x,
                 top: ROWS.top + i * (ROWS.h + ROWS.gap),
                 width: ROWS.w,
                 height: ROWS.h,
-                boxSizing: "border-box",
-                padding: "0 12px",
                 borderRadius: 8,
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                background: on > 0.5 ? "rgba(222,243,220,0.6)" : C.tile,
-                boxShadow: on > 0.5 ? "inset 0 0 0 1px rgba(8,107,78,0.25)" : undefined,
+                background: moved > 0.5 ? "rgba(222,243,220,0.6)" : C.tile,
+                boxShadow: held ? "inset 0 0 0 1px rgba(8,107,78,0.35)" : undefined,
               }}
             >
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontWeight: MEDIUM, fontSize: 12, color: C.ink, whiteSpace: "nowrap" }}>{sc.title}</div>
-                <div style={{ fontSize: 9.5, color: C.muted, marginTop: 2, whiteSpace: "nowrap" }}>{sc.sub}</div>
+              <div style={{ position: "absolute", left: 12, right: 12, top: 10, display: "flex", justifyContent: "space-between", fontSize: 11.5 }}>
+                <span style={{ color: C.ink, whiteSpace: "nowrap" }}>{sl.title}</span>
+                <span style={{ fontWeight: MEDIUM, color: moved > 0.5 ? C.greenInk : C.ink }}>{sl.value(retire, save)}</span>
               </div>
-              <Switch on={on} />
+              <div style={{ position: "absolute", left: TRACK.x, top: TRACK.y - 2, width: TRACK.w, height: 4, borderRadius: 2, background: "#dfe3e8" }}>
+                <div style={{ width: `${p * 100}%`, height: "100%", borderRadius: 2, background: C.green2 }} />
+              </div>
+              <div
+                style={{
+                  position: "absolute",
+                  left: TRACK.x + p * TRACK.w - 7,
+                  top: TRACK.y - 7,
+                  width: 14,
+                  height: 14,
+                  borderRadius: 7,
+                  background: "#ffffff",
+                  border: `2px solid ${C.green2}`,
+                  boxSizing: "border-box",
+                  boxShadow: held ? "0 0 0 5px rgba(8,107,78,0.15)" : "0 1px 3px rgba(16,24,40,0.2)",
+                }}
+              />
             </div>
           );
         })}
@@ -146,7 +165,7 @@ export const Scenarios: React.FC<{ readonly s: ScenarioState }> = ({ s }) => {
 };
 
 export const SCENARIO_FRAMES: readonly { s: ScenarioState; title: string; caption: string }[] = [
-  { s: {}, title: "The plan as it stands", caption: "The Chans’ retirement plan: an 82% probability of success, $4.1M at 90. Scenarios to try on the right." },
-  { s: { retire: 1, pointer: { ...toggleAt(0), o: 1 } }, title: "Retire at 63?", caption: "“Retire at 63” switches on: the projection dips under the current plan (dashed) and the numbers follow, 71% (−11 pts)." },
-  { s: { retire: 1, save: 1, pointer: { ...toggleAt(1), o: 1 } }, title: "Save $15K more", caption: "Adding “Save $15K more” lifts it past the plan: 88% (+6 pts), $4.0M at 90. “Retiring at 63 works if you save $15K more a year.”" },
+  { s: {}, title: "The plan as it stands", caption: "The Chans’ retirement plan: an 82% probability of success, $4.1M at 90, with its what-if sliders on the right." },
+  { s: { retire: 1, hot: 0, pointer: { ...knobFor(0, 1, 0), o: 1 } }, title: "What if they retire at 63?", caption: "The retirement age is dragged from 65 to 63: the projection dips under the current plan (dashed) and the numbers follow, 71% (−11 pts)." },
+  { s: { retire: 1, save: 1, hot: 1, pointer: { ...knobFor(1, 1, 1), o: 1 } }, title: "And save $15K more?", caption: "Annual savings dragged from $50K to $65K lifts it past the plan: 88% (+6 pts), $4.0M at 90. “Retiring at 63 works if you save $15K more a year.”" },
 ];
