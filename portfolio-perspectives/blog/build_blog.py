@@ -222,9 +222,12 @@ def build(md, meta_description):
             for kind, val in bl:
                 b = bold_only(val) if kind == 'p' else None
                 if b:
+                    if body[-1] != f'<h2>{name}</h2>' and body[-1] != SPACER:
+                        body.append(SPACER)  # one spacer after each answer, not between its paragraphs
                     body.append(f'<h2>"{plain(b)}"</h2>')
                 elif kind == 'p':
-                    body += [f'<p>{clean(val)}</p>', SPACER]
+                    body.append(f'<p>{clean(val)}</p>')
+            body.append(SPACER)
         elif low.startswith('risks'):
             body.append(f'<h2>{name}</h2>')
             for kind, val in bl:

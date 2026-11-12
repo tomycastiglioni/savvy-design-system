@@ -149,3 +149,15 @@ overflow rules and carousel slots.
 
 `template/email-banner.html` is the monthly email header (600 × 150, Figma `XYp5xl61nCXvKUjuc4jLEL` node
 `32544:195`). Change the month, build, then `export_pdf.py` writes a 1200 × 300 PNG. Outputs live in `email/`.
+
+## Blog thumbnail
+
+`template/blog-thumbnail.html` is the Webflow blog Thumbnail and Main image (548 × 210, Figma `XYp5xl61nCXvKUjuc4jLEL`
+node `32544:204`). Change the month, build, then `export_pdf.py` writes a 1096 × 420 PNG.
+
+## Blog from a finished report
+
+When the month's copy arrives as the investment team's finished report, run
+`blog/report_to_copy.py template/YYYY-MM-<slug>.html copy/YYYY-MM-report.md` to make the copy doc, then
+`build_blog.py` as above. It keeps the October blog style: dots become stance and signal names, and the positioning
+heading is "Savvy Total Portfolios: tactical asset allocation positioning".
