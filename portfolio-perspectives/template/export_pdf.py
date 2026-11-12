@@ -31,6 +31,10 @@ OVERFLOW_JS = """() => [...document.querySelectorAll('.page')].map((pg, i) => {
   return [i + 1, Math.round(max - br.bottom)];
 }).filter(Boolean)"""
 
+CLIP_JS = """() => [...document.querySelectorAll('.page')].flatMap((pg, i) =>
+  [...pg.querySelectorAll('td,th')].filter(c => getComputedStyle(c).overflow === 'hidden' && c.scrollWidth > c.clientWidth + 0.5)
+    .map(c => [i + 1, c.textContent.trim().slice(0, 40)]))"""
+
 with sync_playwright() as p:
     exe = os.environ.get('CHROME_PATH')  # optional: an existing Chrome/Chromium binary
     browser = p.chromium.launch(executable_path=exe) if exe else p.chromium.launch()
@@ -39,6 +43,7 @@ with sync_playwright() as p:
     page.wait_for_timeout(600)
     page.add_style_tag(content='.bar,.tip{display:none!important}')
     over = [(n, px) for n, px in page.evaluate(OVERFLOW_JS) if px > 0]
+    clipped = page.evaluate(CLIP_JS)
     sel = '.page' if page.query_selector('.page') else '.slide'
     nodes = page.query_selector_all(sel)
     for i, n in enumerate(nodes, 1):
@@ -49,7 +54,11 @@ with sync_playwright() as p:
     browser.close()
 
 print(f'Wrote {out / (stem + ".pdf")} ({len(nodes)} pages) and PNG previews')
+if clipped:
+    print('CLIPPED — table cells cut off (page, text):', clipped)
 if over:
     print('OVERFLOW — these pages run past the footer (page, px):', over)
+    sys.exit(2)
+if clipped:
     sys.exit(2)
 print('All pages fit.')

@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio Perspectives — November 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
    SAVVY PORTFOLIO PERSPECTIVES — PORTRAIT TEMPLATE (from November 2026)
@@ -32,7 +30,7 @@
   --s3:#7DBE8C;  /* slight overweight / slight tailwind */
   --s4:#1F7A45;  /* overweight / tailwind */
   --dot-off:#D3E3E9;
-  --sans:'ABC Diatype','Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+  --sans:'ABC Diatype','Diatype','Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
   --pw:816px; --ph:1056px; --mx:56px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -54,9 +52,9 @@ b,strong{font-weight:500}
 .wordmark.white{background-image:url('%%WORDMARK_WHITE%%')}
 .tagline{font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;text-align:right;line-height:1.05;font-weight:400}
 .tagline b{font-weight:600}
-.nav{display:flex;gap:2px;align-items:center;margin-top:14px;margin-left:-8px}
-.nav a{font-size:9.6px;font-weight:400;letter-spacing:.01em;color:var(--ink-2);padding:5px 8px;border-radius:999px;transition:background .15s,color .15s;white-space:nowrap}
-.nav a .n{color:var(--ink-3);margin-right:4px;font-variant-numeric:tabular-nums}
+.nav{display:flex;gap:1px;align-items:center;margin-top:14px;margin-left:-6px}
+.nav a{font-size:9.2px;font-weight:400;letter-spacing:0;color:var(--ink-2);padding:5px 6px;border-radius:999px;transition:background .15s,color .15s;white-space:nowrap}
+.nav a .n{color:var(--ink-3);margin-right:3px;font-variant-numeric:tabular-nums}
 .nav a:hover{background:var(--teal-tint);color:var(--teal)}
 .nav a.on{background:var(--teal);color:#fff}
 .nav a.on .n{color:rgba(255,255,255,.65)}
@@ -187,14 +185,18 @@ table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;lin
 /* ==========================================================================
    DASHBOARD
    ========================================================================== */
-.dash-h{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px}
-.dash-h .h3{color:#000;font-size:16px;font-weight:500}
-table.score-tb td{padding:11px 10px}
+.dash-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 8px}
+.dash-h .h3{color:#000;font-size:15px;font-weight:500}
+/* one page, one line per row (Ani 2026-11-06): rows never wrap */
+table.dash-tb{table-layout:fixed;font-size:10.2px;line-height:1.3}
+.dash-tb td,.dash-tb th{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.dash-tb thead th{padding:6px 8px;font-size:9.8px}
+.dash-tb td{padding:6px 8px}
+table.score-tb td{padding:8px 8px}
 table.score-tb tbody tr{cursor:pointer}
-.data-tb{font-size:10.6px;line-height:1.38}
-.data-tb thead th{padding:6px 10px}
-.data-tb td{padding:4px 9px}
-.data-tb tr.grp td{padding:5px 10px}
+.data-tb tr.grp td{padding:4px 8px;font-size:9.6px;letter-spacing:.02em}
+.dash-tb td.ic{padding-left:8px;padding-right:0}
+.ri{display:block;width:15px;height:15px;fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* ==========================================================================
    Q&A, RISKS, CLOSING, SOURCES
@@ -269,16 +271,16 @@ table.score-tb tbody tr{cursor:pointer}
   <div class="body toc">
     <div class="h1">Contents</div>
     <ol>
-      <li><a href="#questions"><span><span class="num">—</span><span class="tt">Find the answer</span></span><span class="pp">Page 3</span></a></li>
-      <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp">Page 4</span></a></li>
-      <li><a href="#core-driver"><span><span class="num">02</span><span class="tt">Core driver</span></span><span class="pp">Page 5</span></a></li>
-      <li><a href="#macro"><span><span class="num">03</span><span class="tt">Macro thoughts</span></span><span class="pp">Page 7</span></a></li>
-      <li><a href="#dashboard"><span><span class="num">04</span><span class="tt">The Savvy Macro Dashboard</span></span><span class="pp">Page 9</span></a></li>
-      <li><a href="#qa"><span><span class="num">05</span><span class="tt">Question of the month</span></span><span class="pp">Page 11</span></a></li>
-      <li><a href="#positioning"><span><span class="num">06</span><span class="tt">Positioning</span></span><span class="pp">Page 12</span></a></li>
-      <li><a href="#risks"><span><span class="num">07</span><span class="tt">Risks we’re watching</span></span><span class="pp">Page 13</span></a></li>
-      <li><a href="#closing"><span><span class="num">08</span><span class="tt">Closing thoughts</span></span><span class="pp">Page 14</span></a></li>
-      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp">Page 14</span></a></li>
+      <li><a href="#questions"><span><span class="num">—</span><span class="tt">Find the answer</span></span><span class="pp" data-page-of="#questions"></span></a></li>
+      <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp" data-page-of="#snapshot"></span></a></li>
+      <li><a href="#core-driver"><span><span class="num">02</span><span class="tt">Core driver</span></span><span class="pp" data-page-of="#core-driver"></span></a></li>
+      <li><a href="#macro"><span><span class="num">03</span><span class="tt">Macro thoughts</span></span><span class="pp" data-page-of="#macro"></span></a></li>
+      <li><a href="#dashboard"><span><span class="num">04</span><span class="tt">The Savvy Macro Dashboard</span></span><span class="pp" data-page-of="#dashboard"></span></a></li>
+      <li><a href="#qa"><span><span class="num">05</span><span class="tt">Question of the month</span></span><span class="pp" data-page-of="#qa"></span></a></li>
+      <li><a href="#positioning"><span><span class="num">06</span><span class="tt">Positioning</span></span><span class="pp" data-page-of="#positioning"></span></a></li>
+      <li><a href="#risks"><span><span class="num">07</span><span class="tt">Risks we’re watching</span></span><span class="pp" data-page-of="#risks"></span></a></li>
+      <li><a href="#closing"><span><span class="num">08</span><span class="tt">Closing thoughts</span></span><span class="pp" data-page-of="#closing"></span></a></li>
+      <li><a href="#sources"><span><span class="num">09</span><span class="tt">Sources</span></span><span class="pp" data-page-of="#sources"></span></a></li>
     </ol>
   </div>
 </section>
@@ -291,7 +293,7 @@ table.score-tb tbody tr{cursor:pointer}
         <span class="qn">Q</span>
         <div class="q">Did SWIM make any positioning changes this month?</div>
         <div class="a">No. Positioning is unchanged this month.</div>
-        <span class="go">Positioning · Page 12 →</span>
+        <span class="go">Positioning · <span data-page-of="#positioning"></span> →</span>
       </a>
       <a class="qcard" href="#positioning">
         <span class="qn">Q</span>
@@ -301,13 +303,13 @@ table.score-tb tbody tr{cursor:pointer}
           <li><span data-pos="UW"></span>Fixed Income</li>
           <li><span data-pos="SOW"></span>Alternatives</li>
         </ul>
-        <span class="go">Positioning · Page 12 →</span>
+        <span class="go">Positioning · <span data-page-of="#positioning"></span> →</span>
       </a>
       <a class="qcard" href="#macro">
         <span class="qn">Q</span>
         <div class="q">What does SWIM think of the macro environment, why, and what is the outlook?</div>
         <div class="a">Our view is unchanged and the book carries forward. The equal-weighted S&amp;P 500, where every company counts the same, rose 5.0%, while the Nasdaq 100 fell 6.7% and semiconductor stocks fell 15.4%.</div>
-        <span class="go">Macro thoughts · Page 7 →</span>
+        <span class="go">Macro thoughts · <span data-page-of="#macro"></span> →</span>
       </a>
       <a class="qcard" href="#risks">
         <span class="qn">Q</span>
@@ -318,7 +320,7 @@ table.score-tb tbody tr{cursor:pointer}
           <li>Yields rebound with the Fed</li>
           <li>Political uncertainty delays business spending</li>
         </ul>
-        <span class="go">Risks · Page 13 →</span>
+        <span class="go">Risks · <span data-page-of="#risks"></span> →</span>
       </a>
     </div>
   </div>
@@ -438,45 +440,41 @@ table.score-tb tbody tr{cursor:pointer}
   <div class="body">
     <div class="h1">The Savvy Macro Dashboard</div>
     <div class="dash-h"><span class="h3">Summary</span><span class="legend" data-legend="Headwind|Tailwind"></span></div>
-    <table class="tb score-tb">
-      <thead><tr><th style="width:170px">Category</th><th style="width:100px">Signal</th><th>Portfolio Signal</th></tr></thead>
+    <table class="tb dash-tb score-tb">
+      <colgroup><col style="width:28px"><col style="width:150px"><col style="width:92px"><col></colgroup>
+      <thead><tr><th></th><th>Category</th><th>Signal</th><th>Portfolio Signal</th></tr></thead>
       <tbody>
-        <tr data-href="#growth"><td class="k">Growth</td><td data-pos="SOW"></td><td>Above trend and still strong, so we keep the equity overweight</td></tr>
-        <tr data-href="#inflation"><td class="k">Inflation</td><td data-pos="N"></td><td>Core PCE, the Fed’s anchor, sits above target and is nowcast higher, so we keep duration short</td></tr>
-        <tr data-href="#financial-conditions"><td class="k">Financial conditions</td><td data-pos="SOW"></td><td>Rates eased but credit spreads widened, so we watch the broad gauges for confirmation</td></tr>
-        <tr data-href="#earnings"><td class="k">Fundamentals</td><td data-pos="OW"></td><td>Earnings are strong and revisions are rising, so the overweight rests on profits rather than price</td></tr>
-        <tr data-href="#geopolitics"><td class="k">Geopolitics</td><td data-pos="SUW"></td><td>Oil is getting through despite low Hormuz traffic, so we keep the broad commodity hedge as insurance</td></tr>
+        <tr data-href="#growth"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 17l5-6 4 3 7-9"/><path d="M14.5 5H19v4.5"/></svg></td><td class="k">Growth</td><td data-pos="SOW"></td><td>Above trend and still strong, so we keep the equity overweight</td></tr>
+        <tr data-href="#inflation"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 4h3l2 10h9.5l2-7H7"/><circle cx="9.5" cy="18" r="1.2"/><circle cx="16" cy="18" r="1.2"/></svg></td><td class="k">Inflation</td><td data-pos="N"></td><td>Core PCE sits above target and is nowcast higher, so we keep duration short</td></tr>
+        <tr data-href="#financial-conditions"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 9l8-5 8 5M5.5 9.5v7M9 9.5v7M13 9.5v7M16.5 9.5v7M3 18.5h16"/></svg></td><td class="k">Financial conditions</td><td data-pos="SOW"></td><td>Rates eased but credit spreads widened, so we watch the broad gauges</td></tr>
+        <tr data-href="#earnings"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 18V11M11 18V4M17 18V8"/></svg></td><td class="k">Fundamentals</td><td data-pos="OW"></td><td>Earnings and revisions are rising, so profits carry the overweight</td></tr>
+        <tr data-href="#geopolitics"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8"/><ellipse cx="11" cy="11" rx="3.6" ry="8"/><path d="M3 11h16"/></svg></td><td class="k">Geopolitics</td><td data-pos="SUW"></td><td>Oil is getting through despite low Hormuz traffic, so we keep the commodity hedge</td></tr>
       </tbody>
     </table>
-  </div>
-</section>
-
-<section class="page" id="dashboard-data" data-title="The Savvy Macro Dashboard: Data" data-section="dashboard">
-  <div class="body">
-    <div class="h2">The Savvy Macro Dashboard <span style="color:var(--ink-3)">(continued)</span></div>
-    <div class="dash-h" style="margin-top:16px"><span class="h3">Data</span></div>
-    <table class="tb data-tb">
-      <thead><tr><th style="width:158px">Indicator</th><th style="width:72px">Current</th><th>Portfolio Signal</th></tr></thead>
+    <div class="dash-h"><span class="h3">Data</span></div>
+    <table class="tb dash-tb data-tb">
+      <colgroup><col style="width:28px"><col style="width:172px"><col style="width:78px"><col></colgroup>
+      <thead><tr><th></th><th>Indicator</th><th>Current</th><th>Portfolio Signal</th></tr></thead>
       <tbody>
-        <tr class="grp"><td colspan="3">Growth</td></tr>
-        <tr><td class="k">Weekly Economic Index</td><td class="v">2.8%</td><td>The New York Fed’s weekly read of the economy, scaled like GDP growth. It has averaged 2.8% so far this year, above trend, which is why we keep the equity overweight</td></tr>
-        <tr><td class="k">GDPNow (current quarter)</td><td class="v">3.2%</td><td>The Atlanta Fed’s running estimate of this quarter’s growth. Still above trend, so October’s rotation was not a growth scare and we do not cut equities</td></tr>
-        <tr><td class="k">Unemployment rate</td><td class="v">4.2%</td><td>Low at the 23rd pctile since 1948. Slow hiring has not become job losses, so the earnings base behind the overweight holds. A sustained rise is what would make us revisit it</td></tr>
-        <tr class="grp"><td colspan="3">Inflation</td></tr>
-        <tr><td class="k">Core PCE (Fed’s anchor)</td><td class="v">Sep 3.1% <i class="nc">Oct 3.2%</i> <i class="nc">Nov 3.3%</i></td><td>The Fed’s preferred inflation gauge. Above target and nowcast higher, so we keep duration short and hold fewer bonds than a standard 60/40</td></tr>
-        <tr class="grp"><td colspan="3">Financial conditions</td></tr>
-        <tr><td class="k">Chicago Fed NFCI</td><td class="v">-0.49</td><td>A broad gauge of how easily credit flows. Still loose at the 41st pctile since 1971, so wider credit spreads have not tightened conditions enough for us to cut risk</td></tr>
-        <tr><td class="k">Financial Stress Index</td><td class="v">-0.58</td><td>The St. Louis Fed’s gauge of market strain across rates, spreads and volatility. Calm at the 23rd pctile since 1993, so we hold the equity overweight rather than de-risk</td></tr>
-        <tr><td class="k">Fed hikes/cuts thru Dec 2027</td><td class="v">2.16 hikes</td><td>A December hike is mostly priced, with fewer hikes after it than a month ago. That eased real yields, but not enough for us to extend duration</td></tr>
-        <tr class="grp"><td colspan="3">Fundamentals</td></tr>
-        <tr><td class="k">S&amp;P 500 forward P/E</td><td class="v">18.65x</td><td>Price paid for next year’s earnings. At the 28th pctile of the last five years, so the multiple is not what is stretched, and earnings rather than valuation carry the overweight</td></tr>
-        <tr><td class="k">Equity risk premium</td><td class="v">0.46pp</td><td>The extra yield stocks offer over Treasuries. Thin but positive again, so valuation argues for care in sizing, not for selling</td></tr>
-        <tr><td class="k">S&amp;P 500 revision breadth</td><td class="v">0.2</td><td>Our count of companies with estimates raised minus those cut: +0.20 at October 30, down from +0.26. Still positive, so profits back the overweight. A turn below zero is the signal we watch</td></tr>
-        <tr class="grp"><td colspan="3">Geopolitics</td></tr>
-        <tr><td class="k">Hormuz normalized within 12m</td><td class="v">44%</td><td>Kalshi prediction-market odds that Strait of Hormuz traffic is back to normal in the next year. A little under even, so we keep the commodity hedge without making it a central bet</td></tr>
+        <tr class="grp"><td colspan="4">Growth</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 11h4l2-5 3 10 3-7 2 2h4"/></svg></td><td class="k">Weekly Economic Index</td><td class="v">2.8%</td><td>Weekly activity is running above trend, so we keep the equity overweight</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3.5 15.5a7.5 7.5 0 1 1 15 0"/><path d="M11 15.5l3.5-4.5"/><circle cx="11" cy="15.5" r="1"/></svg></td><td class="k">GDPNow (current quarter)</td><td class="v">3.2%</td><td>This quarter is still above trend, so October was not a growth scare</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="6.5" r="3"/><path d="M4.5 19c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/></svg></td><td class="k">Unemployment rate</td><td class="v">4.2%</td><td>Low at the 23rd pctile since 1948, and a sustained rise would make us revisit</td></tr>
+        <tr class="grp"><td colspan="4">Inflation</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M9 13.5V4.5a2 2 0 0 1 4 0v9a3.5 3.5 0 1 1-4 0z"/><path d="M11 8v7"/></svg></td><td class="k">Core PCE (Fed’s anchor)</td><td class="v">3.1% → 3.3%</td><td>Above target and nowcast higher, so we keep duration short</td></tr>
+        <tr class="grp"><td colspan="4">Financial conditions</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 6h14M4 11h14M4 16h14"/><circle cx="8" cy="6" r="1.6"/><circle cx="14" cy="11" r="1.6"/><circle cx="10" cy="16" r="1.6"/></svg></td><td class="k">Chicago Fed NFCI</td><td class="v">-0.49</td><td>Still loose at the 41st pctile since 1971, so wider spreads have not made us cut risk</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3.5l8.5 15h-17z"/><path d="M11 9v4.5"/><circle cx="11" cy="16" r=".6"/></svg></td><td class="k">Financial Stress Index</td><td class="v">-0.58</td><td>Calm at the 23rd pctile since 1993, so we hold rather than de-risk</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><rect x="3.5" y="5" width="15" height="13.5" rx="1.5"/><path d="M3.5 9h15M7.5 3v4M14.5 3v4"/></svg></td><td class="k">Fed hikes/cuts thru Dec 2027</td><td class="v">2.16 hikes</td><td>Fewer hikes priced than a month ago, but not enough to extend duration</td></tr>
+        <tr class="grp"><td colspan="4">Fundamentals</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><circle cx="6.5" cy="6.5" r="2.3"/><circle cx="15.5" cy="15.5" r="2.3"/><path d="M16.5 5.5l-11 11"/></svg></td><td class="k">S&amp;P 500 forward P/E</td><td class="v">18.65x</td><td>At the 28th pctile of the last five years, so earnings, not the multiple, carry the view</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 4v14M6.5 18h9M4 7.5h14"/><path d="M4 7.5l-2 5h4zM18 7.5l-2 5h4z"/></svg></td><td class="k">Equity risk premium</td><td class="v">0.46pp</td><td>Thin but positive again, which argues for care in sizing, not selling</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M7 17V5M3.5 8.5L7 5l3.5 3.5M15 5v12M11.5 13.5L15 17l3.5-3.5"/></svg></td><td class="k">S&amp;P 500 revision breadth</td><td class="v">+0.20</td><td>Down from +0.26 but still positive, so profits back the overweight</td></tr>
+        <tr class="grp"><td colspan="4">Geopolitics</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 14h16l-2.5 4.5h-11z"/><path d="M6 14V9.5h10V14M11 9.5V4"/></svg></td><td class="k">Hormuz normalized within 12m</td><td class="v">44%</td><td>Kalshi odds of normal traffic within a year, so we keep the commodity hedge</td></tr>
       </tbody>
     </table>
-    <p class="note">Please see Sources for details. Data as of 2026-11-03. Signals as of 2026-10-30.</p>
+    <p class="note">Please see Sources for details. Core PCE is September’s reading and the November nowcast. Data as of 2026-11-03. Signals as of 2026-10-30.</p>
   </div>
 </section>
 
@@ -627,7 +625,7 @@ pages.forEach((pg, i) => {
   head.innerHTML = `<div class="top"><a href="#contents" title="Contents"><span class="wordmark" role="img" aria-label="Savvy"></span></a>` +
     (tagline ? '<div class="tagline">Independence,<br><b>Reinvented.</b></div>' : '') + '</div>' +
     (tagline ? '' : '<nav class="nav">' + NAV.map(([k, l, h, num]) =>
-      `<a href="${h}" class="${pg.dataset.section === k ? 'on' : ''}"><span class="n">${num}</span>${l}</a>`).join('') + '</nav>');
+      `<a href="${h}" class="${pg.dataset.section === k || (k === 'sources' && pg.dataset.section === 'closing') ? 'on' : ''}"><span class="n">${num}</span>${l}</a>`).join('') + '</nav>');
   const foot = document.createElement('footer');
   foot.className = 'pg-foot';
   foot.innerHTML = `<div class="row"><span>Savvy Portfolio Perspectives | ${EDITION}</span><span>Page ${n}</span></div><p class="disc">${DISCLAIMER}</p>`;
@@ -677,11 +675,31 @@ const sel = document.getElementById('jump');
 sel.innerHTML = pages.map((p, i) => `<option value="${i}">${String(i+1).padStart(2,'0')} · ${p.dataset.title}</option>`).join('');
 sel.onchange = () => go(pages[+sel.value]);
 const pgn = document.getElementById('pgn');
+pgn.textContent = `1 / ${pages.length}`;
+/* page references resolve from the live layout, so Contents and Find the answer never go stale */
+document.querySelectorAll('[data-page-of]').forEach(el => {
+  const t = document.querySelector(el.dataset.pageOf), pg = t && t.closest('.page');
+  if (pg) el.textContent = `Page ${pages.indexOf(pg) + 1}`;
+});
 let ticking = false;
 addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { const i = current(); pgn.textContent = `${i+1} / ${pages.length}`; sel.value = i; ticking = false; }); });
 if (location.hash) setTimeout(() => go(document.querySelector(location.hash)), 60);
 addEventListener('beforeprint', () => { deck.style.zoom = 1; });
 addEventListener('afterprint', fit);
+
+/* dashboard tables stay one line per row (house rule). If a typeface runs wider, tighten in this order
+   until no cell clips: cell padding 8→6px, letter-spacing to -0.01em, then type size in 0.2px steps
+   (never below 8.6px). Runs once fonts have loaded. */
+document.fonts.ready.then(() => document.querySelectorAll('table.dash-tb').forEach(t => {
+  const cells = [...t.querySelectorAll('td,th')];
+  const clipped = () => cells.some(c => c.scrollWidth > c.clientWidth + 0.5);
+  if (!clipped()) return;
+  cells.forEach(c => { if (!c.classList.contains('ic')) { c.style.paddingLeft = c.style.paddingRight = '6px'; } });
+  if (!clipped()) return;
+  t.style.letterSpacing = '-0.01em';
+  let fs = parseFloat(getComputedStyle(t).fontSize);
+  while (clipped() && fs > 8.6) { fs = Math.round((fs - 0.2) * 10) / 10; t.style.fontSize = fs + 'px'; }
+}));
 </script>
 </body>
 </html>

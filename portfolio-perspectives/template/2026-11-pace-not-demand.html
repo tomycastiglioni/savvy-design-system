@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Perspectives — November 2026</title>
+<style>
+/* ==========================================================================
+   SAVVY PORTFOLIO PERSPECTIVES — PORTRAIT TEMPLATE (from November 2026)
+   Same styling as the October 2026 16:9 edition, set on US Letter pages.
+   Page = 816 × 1056 px (8.5 × 11 in). Print → Save as PDF, no margins.
+   ========================================================================== */
+:root{
+  --teal:#095972;
+  --teal-ink:#074A5F;
+  --teal-tint:#EEF4F6;
+  --teal-tint-2:#E2ECEF;
+  --cream:#F5F2EC;
+  --ecru:#C7BCA1;
+  --golden:#D79F32;
+  --ink:rgba(0,0,0,.9);
+  --ink-2:rgba(0,0,0,.7);
+  --ink-3:rgba(0,0,0,.5);
+  --line:rgba(0,0,0,.12);
+  --line-soft:rgba(0,0,0,.07);
+  /* five-step scale: underweight/headwind (reds) · neutral (gray) · overweight/tailwind (greens) */
+  --s0:#B3261E;  /* underweight / headwind */
+  --s1:#E8877C;  /* slight underweight / slight headwind */
+  --s2:#B4AC9E;  /* neutral */
+  --s3:#7DBE8C;  /* slight overweight / slight tailwind */
+  --s4:#1F7A45;  /* overweight / tailwind */
+  --dot-off:#D3E3E9;
+  --sans:'ABC Diatype','Diatype','Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --pw:816px; --ph:1056px; --mx:56px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#2B3135;font-family:var(--sans);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01" 0}
+a{color:inherit;text-decoration:none}
+b,strong{font-weight:500}
+
+/* ---------- screen canvas ---------- */
+.deck{display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0 110px}
+.page{width:var(--pw);height:var(--ph);position:relative;overflow:hidden;background:#fff;flex:none;
+  box-shadow:0 1px 2px rgba(0,0,0,.25),0 12px 40px rgba(0,0,0,.25);scroll-margin-top:28px}
+.page.cream{background:var(--cream)}
+
+/* ---------- page chrome (injected by script, see bottom) ---------- */
+.pg-head{position:absolute;left:var(--mx);right:var(--mx);top:34px;z-index:3}
+.pg-head .top{display:flex;align-items:center;justify-content:space-between;height:22px}
+.wordmark{display:block;width:62px;height:21px;background:url('%%WORDMARK%%') left center/contain no-repeat}
+.wordmark.white{background-image:url('%%WORDMARK_WHITE%%')}
+.tagline{font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;text-align:right;line-height:1.05;font-weight:400}
+.tagline b{font-weight:600}
+.nav{display:flex;gap:1px;align-items:center;margin-top:14px;margin-left:-6px}
+.nav a{font-size:9.2px;font-weight:400;letter-spacing:0;color:var(--ink-2);padding:5px 6px;border-radius:999px;transition:background .15s,color .15s;white-space:nowrap}
+.nav a .n{color:var(--ink-3);margin-right:3px;font-variant-numeric:tabular-nums}
+.nav a:hover{background:var(--teal-tint);color:var(--teal)}
+.nav a.on{background:var(--teal);color:#fff}
+.nav a.on .n{color:rgba(255,255,255,.65)}
+.pg-foot{position:absolute;left:var(--mx);right:var(--mx);bottom:24px;z-index:3}
+.pg-foot .row{display:flex;justify-content:space-between;font-size:9.5px;color:var(--ink-2);margin-bottom:8px;padding-top:9px;border-top:1px solid var(--line-soft)}
+.pg-foot .disc{font-size:7.2px;line-height:1.45;color:var(--ink-3);text-align:justify}
+
+/* ---------- body grid ---------- */
+.body{position:absolute;left:var(--mx);right:var(--mx);top:120px;bottom:118px}
+.page[data-chrome="tagline"] .body{top:96px}
+.h1{font-size:44px;line-height:1;letter-spacing:-.02em;font-weight:300;color:#000}
+.h2{font-size:30px;line-height:1.08;letter-spacing:-.015em;font-weight:300;color:#000}
+.h3{font-size:19px;line-height:1.25;letter-spacing:-.01em;font-weight:400;color:var(--teal)}
+p.t, .t p{font-size:12.8px;line-height:1.56;color:var(--ink)}
+.t p + p{margin-top:9px}
+.small{font-size:11px;line-height:1.5;color:var(--ink-2)}
+.ico-h{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+.ico-h img{flex:none}
+.cols2{columns:2;column-gap:36px}
+.cols2 p{break-inside:auto;orphans:3;widows:3}
+p,li,.qq,.think,.q,.a{text-wrap:pretty}
+.h1,.h2,.h3,.callout .think,.qa .qq,.qcard .q,.risk .rt{text-wrap:balance}
+
+/* ---------- tables ---------- */
+table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:11px;line-height:1.38;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden}
+.tb thead th{background:var(--teal);color:#fff;font-weight:400;text-align:left;padding:8px 10px;font-size:10.4px;letter-spacing:.01em}
+.tb td{padding:6px 10px;vertical-align:middle;border-top:1px solid var(--line-soft)}
+.tb tbody tr:nth-child(even) td{background:#F7FAFB}
+.tb tr.grp td{background:var(--teal-tint)!important;font-weight:500;color:#000}
+.tb tr.sub td:first-child{padding-left:22px;color:var(--ink);font-weight:400}
+.tb td.k{font-weight:500;color:#000}
+.tb td.v{font-weight:500;color:#000;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tb tbody tr{transition:background .12s}
+.tb tbody tr:hover td{background:#E9F1F4}
+.tb .nc{color:var(--ink-3);font-weight:400;font-style:italic;display:block}
+.pos-tb td{padding:6px 10px}
+.pos-tb tr.grp td{font-weight:500}
+.pos-tb tr.sect td{background:#fff!important;color:var(--teal);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding-top:12px;border-top:1px solid var(--line)}
+.note{font-size:9.5px;color:var(--ink-3);margin-top:7px}
+
+/* ---------- five-step scale: UW · SUW · N · SOW · OW (also headwind → tailwind) ---------- */
+.dots{display:inline-flex;gap:4px;align-items:center;vertical-align:middle}
+.dots i{width:11px;height:11px;border-radius:50%;background:var(--dot-off);display:block;flex:none}
+.dots i.s0{background:var(--s0)} .dots i.s1{background:var(--s1)} .dots i.s2{background:var(--s2)}
+.dots i.s3{background:var(--s3)} .dots i.s4{background:var(--s4)}
+.legend{display:flex;gap:8px;align-items:center;font-size:10.5px;color:var(--ink-2)}
+
+/* ---------- tooltip ---------- */
+.tip{position:fixed;z-index:50;max-width:280px;background:#0F1F25;color:#fff;font-size:12px;line-height:1.45;padding:9px 11px;border-radius:6px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.tip.show{opacity:1;transform:none}
+
+/* ---------- toolbar (screen only) ---------- */
+.bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:4px;background:rgba(15,25,30,.92);backdrop-filter:blur(8px);
+  color:#fff;border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-size:12px}
+.bar button,.bar select{font:inherit;color:#fff;background:transparent;border:0;border-radius:999px;padding:8px 13px;cursor:pointer}
+.bar button:hover,.bar select:hover{background:rgba(255,255,255,.12)}
+.bar select{appearance:none;-webkit-appearance:none;padding-right:13px;max-width:230px}
+.bar select option{color:#000}
+.bar .pg{font-variant-numeric:tabular-nums;color:rgba(255,255,255,.7);padding:0 6px;min-width:56px;text-align:center}
+.bar .sep{width:1px;height:18px;background:rgba(255,255,255,.18);margin:0 4px}
+.bar .pdf{background:#fff;color:#0F1F25;font-weight:500}
+.bar .pdf:hover{background:#E6EEF0}
+
+/* ==========================================================================
+   COVER
+   ========================================================================== */
+.cover{background:linear-gradient(200deg,#0B6280 0%,#08475B 38%,#05232E 78%,#031319 100%);color:#fff}
+.cover .globe{position:absolute;right:-300px;bottom:-300px;width:860px;height:860px}
+.cover .inner{position:absolute;left:var(--mx);right:var(--mx);top:56px;bottom:60px;display:flex;flex-direction:column}
+.cover .eb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:72px;font-weight:400;color:rgba(255,255,255,.92)}
+.cover h1{font-size:80px;font-weight:300;letter-spacing:-.035em;line-height:1;margin-top:22px}
+.cover .sub{font-size:22px;line-height:1.38;font-weight:300;color:rgba(255,255,255,.72);margin-top:26px;max-width:600px}
+.authors{margin-top:auto;display:flex;gap:34px}
+.author{display:flex;align-items:center;gap:12px}
+.author img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.author .nm{font-size:14px;font-weight:400}
+.author .rl{font-size:11.5px;color:rgba(255,255,255,.65);margin-top:2px}
+
+/* ==========================================================================
+   CONTENTS, FIND THE ANSWER
+   ========================================================================== */
+.toc ol{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.toc li a{display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);transition:padding .15s,color .15s}
+.toc li a:hover{padding-left:8px;color:var(--teal)}
+.toc .tt{font-size:22px;letter-spacing:-.012em;font-weight:300}
+.toc .num{display:inline-block;min-width:16px;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-right:18px;letter-spacing:.04em}
+.toc .pp{font-size:11px;color:var(--ink-2)}
+
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.qcard{display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:10px;padding:22px 22px 20px;transition:box-shadow .15s;min-height:300px}
+.qcard:hover{box-shadow:0 0 0 1.5px var(--teal)}
+.qcard .qn{font-size:12px;font-weight:500;color:#fff;background:var(--teal);border-radius:999px;text-align:center;padding:4px 0;width:36px}
+.qcard .q{font-size:17px;line-height:1.3;font-weight:400;color:#000;letter-spacing:-.005em}
+.qcard .a{font-size:12.4px;line-height:1.55;color:var(--ink-2)}
+.qcard ul.a{list-style:none;display:flex;flex-direction:column;gap:7px}
+.qcard ul.a li{display:flex;align-items:center;gap:10px}
+.qcard ul.a.bul li{display:block;padding-left:13px;position:relative}
+.qcard ul.a.bul li:before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.qcard .go{font-size:11px;color:var(--teal);font-weight:500;margin-top:auto}
+
+/* ==========================================================================
+   EXECUTIVE SNAPSHOT
+   ========================================================================== */
+.callout{margin-top:26px;border-left:2px solid var(--teal);padding:2px 0 2px 20px}
+.callout .think{font-size:28px;line-height:1.2;letter-spacing:-.015em;font-weight:300;color:var(--teal)}
+.callout p{font-size:13px;line-height:1.55;margin-top:12px;max-width:560px}
+.snap-sec{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+.blist{list-style:none}
+.blist li{font-size:12.6px;line-height:1.55;color:var(--ink);padding-left:14px;position:relative}
+.blist li + li{margin-top:7px}
+.blist li:before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.stance li{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:start;padding-left:0}
+.stance li:before{display:none}
+.stance li .dots{margin-top:3px}
+
+/* ==========================================================================
+   CORE DRIVER, MACRO
+   ========================================================================== */
+.book{columns:2;column-gap:36px;margin-top:24px}
+.book .col{border-top:1px solid var(--line);padding-top:12px;margin-bottom:22px}
+.book .col .h3{color:#000;font-size:18px;margin-bottom:8px;break-after:avoid}
+.book p.t{orphans:3;widows:3}
+.mflow{columns:2;column-gap:36px;margin-top:24px}
+.msec .h3{margin-bottom:8px;break-after:avoid}
+.msec + .msec{margin-top:22px}
+.msec .t p{orphans:3;widows:3}
+
+/* ==========================================================================
+   DASHBOARD
+   ========================================================================== */
+.dash-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 8px}
+.dash-h .h3{color:#000;font-size:15px;font-weight:500}
+/* one page, one line per row (Ani 2026-11-06): rows never wrap */
+table.dash-tb{table-layout:fixed;font-size:10.2px;line-height:1.3}
+.dash-tb td,.dash-tb th{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.dash-tb thead th{padding:6px 8px;font-size:9.8px}
+.dash-tb td{padding:6px 8px}
+table.score-tb td{padding:8px 8px}
+table.score-tb tbody tr{cursor:pointer}
+.data-tb tr.grp td{padding:4px 8px;font-size:9.6px;letter-spacing:.02em}
+.dash-tb td.ic{padding-left:8px;padding-right:0}
+.ri{display:block;width:15px;height:15px;fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ==========================================================================
+   Q&A, RISKS, CLOSING, SOURCES
+   ========================================================================== */
+.qa{margin-top:26px}
+.qa .card{background:var(--teal-tint);border-radius:10px;padding:28px 30px}
+.qa p.t{font-size:13.6px;line-height:1.65}
+.qa .ql{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--teal)}
+.qa .qq{font-size:24px;line-height:1.25;letter-spacing:-.012em;font-weight:300;color:#000;margin:10px 0 16px}
+.risks{display:grid;grid-template-columns:1fr 1fr;gap:34px 36px;margin-top:26px}
+.risk{border-top:1px solid var(--line);padding-top:12px}
+.risk .rh{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.risk .rn{font-size:11px;font-weight:500;color:var(--teal);font-variant-numeric:tabular-nums}
+.risk .rt{font-size:15px;font-weight:400;color:var(--teal-ink);letter-spacing:-.005em;line-height:1.3}
+.risk p{font-size:12.4px;line-height:1.56}
+.src{margin-top:12px}
+.src li{list-style:none;break-inside:avoid;font-size:10px;line-height:1.42;color:var(--ink);padding:0 0 6px 13px;position:relative}
+.src li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+.close-grid{display:flex;flex-direction:column;gap:26px}
+.close-r{background:var(--teal-tint);border-radius:10px;padding:20px 24px 14px}
+.close-r .src li{font-size:10.4px}
+.step{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-2)}
+
+/* back cover */
+.back{background:var(--teal);color:#fff}
+.back .rings{position:absolute;left:0;top:0}
+.back .inner{position:absolute;left:var(--mx);top:612px;width:300px}
+.back .wordmark{width:120px;height:40px}
+.back .tg{font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:16px}
+.back .tg b{font-weight:600}
+.back .disc{position:absolute;left:var(--mx);right:var(--mx);bottom:28px;font-size:8px;line-height:1.5;color:rgba(255,255,255,.6);text-align:justify}
+
+/* ---------- print ---------- */
+@page{size:816px 1056px;margin:0}
+@media print{
+  body{background:#fff}
+  .deck{display:block;padding:0;gap:0;zoom:1!important}
+  .page{box-shadow:none;break-after:page;page-break-after:always;margin:0}
+  .page:last-child{break-after:auto}
+  .bar,.tip{display:none!important}
+  .nav a:hover,.tb tbody tr:hover td{background:inherit}
+}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<section class="page cover" id="cover" data-title="Cover">
+  <svg class="globe" viewBox="0 0 860 860" fill="none" stroke="url(#globe-fade)" stroke-width="1.5" aria-hidden="true">
+    <defs><linearGradient id="globe-fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="860">
+      <stop offset=".26" stop-color="#2F6F87"/><stop offset=".5" stop-color="#062A36"/>
+    </linearGradient></defs>
+    <circle cx="430" cy="430" r="429"/>
+    <ellipse cx="430" cy="430" rx="300" ry="429"/>
+    <ellipse cx="430" cy="430" rx="172" ry="429"/>
+    <ellipse cx="430" cy="430" rx="52" ry="429"/>
+    <line x1="430" y1="1" x2="430" y2="859"/>
+  </svg>
+  <div class="inner">
+    <span class="wordmark white" role="img" aria-label="Savvy" style="width:78px;height:26px"></span>
+    <div class="eb">Portfolio Perspectives · November 2026</div>
+    <h1>The pace changed, the demand did not</h1>
+    <p class="sub">Market views and portfolio insights from the Savvy Wealth Investment Management (SWIM) team</p>
+    <div class="authors">
+      <div class="author"><img src="%%ANSHUL%%" alt="Anshul Sharma"><div><div class="nm">Anshul Sharma</div><div class="rl">Chief Investment Officer</div></div></div>
+      <div class="author"><img src="%%ANI%%" alt="Ani Vedere"><div><div class="nm">Ani Vedere</div><div class="rl">Senior Research Analyst</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page cream" id="contents" data-title="Contents" data-chrome="tagline">
+  <div class="body toc">
+    <div class="h1">Contents</div>
+    <ol>
+      <li><a href="#questions"><span><span class="num">—</span><span class="tt">Find the answer</span></span><span class="pp" data-page-of="#questions"></span></a></li>
+      <li><a href="#snapshot"><span><span class="num">01</span><span class="tt">Executive snapshot</span></span><span class="pp" data-page-of="#snapshot"></span></a></li>
+      <li><a href="#midterms"><span><span class="num">02</span><span class="tt">On the midterm results and the ensuing sell-off</span></span><span class="pp" data-page-of="#midterms"></span></a></li>
+      <li><a href="#core-driver"><span><span class="num">03</span><span class="tt">Core driver</span></span><span class="pp" data-page-of="#core-driver"></span></a></li>
+      <li><a href="#macro"><span><span class="num">04</span><span class="tt">Macro thoughts</span></span><span class="pp" data-page-of="#macro"></span></a></li>
+      <li><a href="#dashboard"><span><span class="num">05</span><span class="tt">The Savvy Macro Dashboard</span></span><span class="pp" data-page-of="#dashboard"></span></a></li>
+      <li><a href="#qa"><span><span class="num">06</span><span class="tt">Question of the month</span></span><span class="pp" data-page-of="#qa"></span></a></li>
+      <li><a href="#positioning"><span><span class="num">07</span><span class="tt">Positioning</span></span><span class="pp" data-page-of="#positioning"></span></a></li>
+      <li><a href="#risks"><span><span class="num">08</span><span class="tt">Risks we’re watching</span></span><span class="pp" data-page-of="#risks"></span></a></li>
+      <li><a href="#closing"><span><span class="num">09</span><span class="tt">Closing thoughts</span></span><span class="pp" data-page-of="#closing"></span></a></li>
+      <li><a href="#sources"><span><span class="num">10</span><span class="tt">Sources</span></span><span class="pp" data-page-of="#sources"></span></a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="page cream" id="questions" data-title="Find the answer" data-chrome="tagline">
+  <div class="body">
+    <div class="h1">Find the answer</div>
+    <div class="qgrid">
+      <a class="qcard" href="#positioning">
+        <span class="qn">Q</span>
+        <div class="q">Did SWIM make any positioning changes this month?</div>
+        <div class="a">No. Positioning is unchanged this month.</div>
+        <span class="go">Positioning · <span data-page-of="#positioning"></span> →</span>
+      </a>
+      <a class="qcard" href="#positioning">
+        <span class="qn">Q</span>
+        <div class="q">What is SWIM’s cross-asset positioning?</div>
+        <ul class="a">
+          <li><span data-pos="SOW"></span>Equities</li>
+          <li><span data-pos="UW"></span>Fixed Income</li>
+          <li><span data-pos="SOW"></span>Alternatives</li>
+        </ul>
+        <span class="go">Positioning · <span data-page-of="#positioning"></span> →</span>
+      </a>
+      <a class="qcard" href="#macro">
+        <span class="qn">Q</span>
+        <div class="q">What does SWIM think of the macro environment, why, and what is the outlook?</div>
+        <div class="a">Our view is unchanged after the November 5 sell-off, which repriced policy risk, not the economy. In October the equal-weighted S&amp;P 500, where every company counts the same, rose 5.0%, while the Nasdaq 100 fell 6.7% and semiconductor stocks fell 15.4%.</div>
+        <span class="go">Macro thoughts · <span data-page-of="#macro"></span> →</span>
+      </a>
+      <a class="qcard" href="#risks">
+        <span class="qn">Q</span>
+        <div class="q">What are the risks to the SWIM view?</div>
+        <ul class="a bul">
+          <li>Tighter credit slows growth or AI spending</li>
+          <li>Earnings estimates roll over</li>
+          <li>Yields rebound with the Fed</li>
+          <li>Data-center policy slows AI building</li>
+        </ul>
+        <span class="go">Risks · <span data-page-of="#risks"></span> →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="snapshot" data-title="Executive snapshot" data-section="snapshot">
+  <div class="body">
+    <div class="h1">Executive snapshot</div>
+    <div class="callout">
+      <div class="think">October’s index return hid a change in who was leading</div>
+      <p>Large technology and semiconductor stocks, the market’s leaders for most of the year, sold off hard. Utilities moved the other way and rose 10.2% as Treasury yields fell.</p>
+    </div>
+    <div class="snap-sec">
+      <div class="ico-h"><img src="%%ICON_VERDICT%%" alt="" width="26" height="20"><span class="h3">Verdict</span></div>
+      <ul class="blist">
+        <li>Our view is unchanged after the November 5 sell-off, which we read as a repricing of policy risk and crowded positions, not of the economy.</li>
+        <li>The equal-weighted S&amp;P 500, where every company counts the same, rose 5.0%, while the Nasdaq 100 fell 6.7% and semiconductor stocks fell 15.4%.</li>
+        <li>Third-quarter growth came in at 3.4% in the advance estimate, the October manufacturing survey read 55.5, and about 82% of the 265 companies that had reported third-quarter earnings by October 29 beat expectations.</li>
+      </ul>
+    </div>
+    <div class="snap-sec">
+      <div class="ico-h"><img src="%%ICON_CORE%%" alt="" width="24" height="24"><span class="h3">Core driver</span></div>
+      <ul class="blist">
+        <li>For the fourth quarter, analysts expect the other 493 companies to grow earnings 31.6% against 27.4% for the seven largest, which would be the first quarter since 2022 that the rest of the index out-grows the leaders.</li>
+        <li>The utilities overweight helped, with our utilities and power holding up 4.1% while the S&amp;P 500 fell 0.9%.</li>
+        <li>Bonds rallied, and investment-grade corporate bonds returned 2.5%, so holding fewer bonds than a standard 60/40 cost us.</li>
+      </ul>
+    </div>
+    <div class="snap-sec">
+      <div class="ico-h"><img src="%%ICON_STANCE%%" alt="" width="22" height="22"><span class="h3">Portfolio stance</span></div>
+      <ul class="blist stance">
+        <li><span data-pos="SOW"></span><span>Equities: Earnings, not October’s price moves, set the overweight.</span></li>
+        <li><span data-pos="UW"></span><span>Fixed Income: We hold fewer bonds than a standard 60/40 and keep duration modestly short.</span></li>
+        <li><span data-pos="SOW"></span><span>Alternatives: Real assets hedge energy-driven inflation and fiscal risk.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="midterms" data-title="On the midterm results and the ensuing sell-off" data-section="midterms">
+  <div class="body">
+    <div class="h1">On the midterm results and the ensuing sell-off</div>
+    <div class="t cols2" style="margin-top:26px">
+      <p>On November 5, two days after the midterm elections, the S&amp;P 500 fell 4.4% and the Nasdaq fell 5.5%, which left the Nasdaq in correction territory. It was the worst day for the S&amp;P 500 since April 2025. AI and semiconductor stocks led the decline, and several large chipmakers fell between 10% and 17%. The trigger was policy. The election results raised questions, in the states and in Washington, about how quickly new data centers can be built.</p>
+      <p>We read the day as a repricing of policy uncertainty and of crowded positions, not of the economy. Professional investors had been trimming their AI holdings since mid-October, the same unwinding that drove October’s rotation, and the election gave them a reason to sell more at once. A trade that has run hot is healthier letting air out over weeks than bursting all at once. The jobs report the next morning pointed the other way, with hiring well ahead of expectations.</p>
+      <p>The risk is to the pace of AI building, not to the demand for it. New rules can slow how fast data centers are permitted, powered and connected, which pushes spending out rather than cancelling it. The largest firms may come out ahead. They have the balance sheets, the existing capacity and the freedom to choose where to build that smaller rivals lack, so slower approvals could widen their lead. Pennsylvania offers an early template. A state executive order asks developers to bring their own power, pay for the grid upgrades they need and win local approval. Other states could follow. Clear rules, even strict ones, let companies plan, and over time that could turn this headwind into a tailwind. What would change our view is weaker demand, such as slowing AI revenue or softer cloud usage. We have not seen either.</p>
+      <p>Days like this are part of owning stocks. Since 1928 the S&amp;P 500 has averaged more than three pullbacks of 5% and about one correction of 10% a year. Since 1980 its average decline within a year has been about 14%, and it still finished higher in about three of every four years. After November 5 it sat about 6% below its high. The Nasdaq went through a correction in March and set new records in October.</p>
+      <p>The sell-off pressed on our technology and utilities overweights, since utilities are tied to the power demand from AI. Other parts of the book cushioned it. The equal-weighted S&amp;P 500 exposure we added this year spreads the equity holding beyond the leaders, and bonds and commodities diversify. Treasuries rallied on the day. In taxable accounts we used the decline to harvest tax losses.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="core-driver" data-title="Core driver" data-section="core">
+  <div class="body">
+    <div class="ico-h" style="margin-bottom:0">
+      <img src="%%ICON_CORE%%" alt="" width="36" height="36">
+      <span class="h1">Core driver</span>
+    </div>
+    <div class="t cols2" style="margin-top:26px">
+      <p>October’s index return hid a change in who was leading. Large technology and semiconductor stocks, the market’s leaders for most of the year, sold off hard. The Nasdaq 100 fell 6.7%, semiconductors fell 15.4% and emerging markets, which carry a large weight in chipmakers, fell 8.0%. Utilities moved the other way and rose 10.2% as Treasury yields fell. Small caps rose 0.6%. The equal-weighted S&amp;P 500 beat the cap-weighted index by almost six percentage points in a single month. The sell-off after the midterm elections hit the same crowded trade.</p>
+      <p>The honest question is whether earnings are broadening too, and so far that is a forecast, not a fact. Over the past year the seven largest stocks grew earnings 12.4 percentage points faster than the rest of the index. For the fourth quarter, analysts expect the other 493 companies to grow earnings 31.6% against 27.4% for the seven largest, which would be the first quarter since 2022 that the rest of the index out-grows the leaders. Third-quarter reports point the same way. As of late October, the other 493 had reported faster third-quarter earnings growth than the seven, even though the seven still lead over the full past year. The same estimates put the seven back in front in early 2027. October priced a handoff in leadership ahead of any proof of one in reported profits. We read the rotation as a market spreading out its bets, not a verdict that the leaders’ earnings are failing. The coming quarters are the test, and estimate revisions are how we will judge it.</p>
+      <p>We would rather say plainly how the stance did. The high-yield underweight helped as spreads widened, with our high-yield fund up 0.4% against 2.2% for our core bond fund. The utilities overweight helped, with our utilities and power holding up 4.1% while the S&amp;P 500 fell 0.9%. Commodities were about flat. Oil’s 15% gain was offset by falls in gold and copper, so our broad commodity fund slipped 0.5%. Against that, the technology overweight hurt, with our technology sector fund down 8.3%. The emerging markets overweight hurt, with our two emerging-market funds down 6.4% and 8.5%. Our gold holding fell 6.6%. Bonds rallied, and investment-grade corporate bonds returned 2.5%, so holding fewer bonds than a standard 60/40 cost us. On balance October did not pay the stance. We hold it because the reasons for it are intact, and one month of price is not a reason.</p>
+      <p>Here is what that means for each part of the book.</p>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="core-driver-book" data-title="Core driver (continued)" data-section="core">
+  <div class="body">
+    <div class="h1">Core driver <span style="color:var(--ink-3)">(continued)</span></div>
+    <div class="book">
+      <div class="col">
+        <div class="h3">Equities</div>
+        <p class="t">We stay slightly overweight, with US large caps as the core and overweights in technology and utilities. Earnings, not October’s price action, set those views. Analysts have raised forward estimates by 5.8% on average over the past three months, and that is the gauge that would tell us to change the technology view. Small caps and international developed stocks stay neutral. We stay modestly overweight emerging markets.</p>
+      </div>
+      <div class="col">
+        <div class="h3">Fixed income</div>
+        <p class="t">We stay underweight, with high yield the deepest underweight, and we keep duration modestly short. The 10-year Treasury yield fell from 5.3% to 4.9% in October, and almost all of the move came from real yields, the return investors demand after inflation, which fell from 2.9% to 2.6%. With inflation above target, futures pricing a December hike as likely and about one more by mid-2027, we are not extending duration into that rally.</p>
+      </div>
+      <div class="col">
+        <div class="h3">Real assets</div>
+        <p class="t">We keep both legs of the sleeve. Commodities are the hedge against energy-driven inflation. They were about flat in October, as oil’s gain was offset by weaker metals. Gold is the hedge against fiscal risk, and it gave back 6.2% in a month when real yields fell, which is not what the usual relationship would predict. We accept that the two legs will not always move together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="macro" data-title="Macro thoughts" data-section="macro">
+  <div class="body">
+    <div class="h1">Macro thoughts</div>
+    <div class="mflow">
+    <div class="msec" id="growth">
+      <div class="h3">Growth: above trend, and hiring picked up</div>
+      <div class="t"><p>Growth has not slowed in any way that matters. The Bureau of Economic Analysis put third-quarter growth at 3.4% in its advance estimate, the Atlanta Fed’s current-quarter nowcast is 3.2%, and the Weekly Economic Index has averaged 2.8% this year against a trend near 2%. The October manufacturing survey read 55.5, well into expansion.</p>
+      <p>Hiring had been the soft spot. Payrolls rose only 29,000 in September and the unemployment rate was 4.2%, still low. With labor-force growth much slower, estimates of the breakeven pace, the job growth needed to hold unemployment steady, have fallen to roughly 25,000 to 50,000 a month, so it takes few new jobs to keep unemployment flat or falling. Our read is that slow hiring without layoffs fits an economy growing on output per worker rather than headcount, though one month cannot settle that. The October report, released November 6, eased the concern. Payrolls rose 165,000 against about 60,000 expected, unemployment fell to 4.1% and the two prior months were revised up. We will keep judging hiring through jobless claims and earnings revisions together, not any single print.</p></div>
+    </div>
+    <div class="msec" id="inflation">
+      <div class="h3">Inflation: headline rising with oil, the Fed’s gauge above target</div>
+      <div class="t"><p>Headline CPI was 3.7% in September, and the nowcasts put it at 3.7% for October and 4.3% for November as oil rose. Core PCE, the gauge the Fed acts on, was 3.1% in September and is nowcast at 3.2% and then 3.3%. Both sit well above the 2% target.</p>
+      <p>Markets are not pricing an inflation scare. The 10-year breakeven, the market’s estimate of future inflation, barely moved in October, slipping by 0.03 percentage points to about 2.3%. The open question is whether energy reaches core prices. If it does, the Fed has less room to ease and our case for keeping duration short gets stronger.</p></div>
+    </div>
+    <div class="msec" id="financial-conditions">
+      <div class="h3">Financial conditions and the Fed: rates eased, credit widened</div>
+      <div class="t"><p>The Fed raised rates by a quarter point on September 16 and held at 3.75 to 4.00 percent on October 28, with two voters dissenting in favor of another hike. That is a Fed that has paused but has not changed its view of the direction. Futures price a December hike as likely, about three chances in four, and about one more by mid-2027, for 2.16 quarter-point hikes in total through December 2027. That is down from 3.60 a month ago, and that pullback is what let real yields fall.</p>
+      <p>Credit moved the other way. High-yield spreads widened from 311 to 340 basis points in October and investment-grade spreads from 80 to 90. The Chicago Fed financial conditions index moved from -0.55 to -0.49 and the St. Louis Fed stress index from -0.81 to -0.58. All four moved in the direction we flagged, and both broad gauges still sit well on the easy side of their histories. That is a warning, not a confirmation.</p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="macro-2" data-title="Macro thoughts (continued)" data-section="macro">
+  <div class="body">
+    <div class="h1">Macro thoughts <span style="color:var(--ink-3)">(continued)</span></div>
+    <div class="mflow">
+    <div class="msec" id="earnings">
+      <div class="h3">Earnings and valuation: strong, still concentrated, priced a little more fairly</div>
+      <div class="t"><p>Earnings are the reason we hold the overweight. Trailing earnings growth for the S&amp;P 500 is 25.5% and analysts expect 22.9% over the next year. Estimates have been revised up by 5.8% over three months, and about 82% of the 265 companies that had reported third-quarter results by October 29 beat expectations. Net profit margins are 15.6%, at the top of their history, so margins have little room left to add to growth.</p>
+      <p>The rotation has not yet shown up in reported profits. The seven largest stocks are still growing earnings 12.4 percentage points faster than the rest of the index, and the fourth quarter is the first in which analysts expect the rest to grow faster since 2022. Valuation eased with October’s pullback. The forward P/E is 18.65, from 19.08, and the equity risk premium, what owning stocks pays over a 10-year Treasury, is back above zero at 0.46 percentage points.</p></div>
+    </div>
+    <div class="msec" id="geopolitics">
+      <div class="h3">Geopolitics: Hormuz traffic is low, but oil is getting through</div>
+      <div class="t"><p>Strait of Hormuz transits are running at 3.9% of their normal pace, and Kalshi, a prediction market, puts the odds that traffic returns to normal within 12 months at about 44%. The transit count is a less useful gauge than it was, because oil is still reaching buyers. US crude oil rose from $90.42 to $104.12 a barrel in October, a 15% gain, and settled above $100.</p>
+      <p>In our experience, geopolitical shocks have tended to be buying opportunities unless they reach credit or earnings. Higher oil prices are the route by which this one could still reach both, through inflation and borrowing costs, but with supply getting through we see that as a smaller risk than it was. We keep the commodity tilt as the hedge and watch credit most closely.</p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="dashboard" data-title="The Savvy Macro Dashboard" data-section="dashboard">
+  <div class="body">
+    <div class="h1">The Savvy Macro Dashboard</div>
+    <div class="dash-h"><span class="h3">Summary</span><span class="legend" data-legend="Headwind|Tailwind"></span></div>
+    <table class="tb dash-tb score-tb">
+      <colgroup><col style="width:28px"><col style="width:150px"><col style="width:92px"><col></colgroup>
+      <thead><tr><th></th><th>Category</th><th>Signal</th><th>Portfolio Signal</th></tr></thead>
+      <tbody>
+        <tr data-href="#growth"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 17l5-6 4 3 7-9"/><path d="M14.5 5H19v4.5"/></svg></td><td class="k">Growth</td><td data-pos="SOW"></td><td>Above trend and still strong, so we keep the equity overweight</td></tr>
+        <tr data-href="#inflation"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 4h3l2 10h9.5l2-7H7"/><circle cx="9.5" cy="18" r="1.2"/><circle cx="16" cy="18" r="1.2"/></svg></td><td class="k">Inflation</td><td data-pos="N"></td><td>Core PCE sits above target and is nowcast higher, so we keep duration short</td></tr>
+        <tr data-href="#financial-conditions"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 9l8-5 8 5M5.5 9.5v7M9 9.5v7M13 9.5v7M16.5 9.5v7M3 18.5h16"/></svg></td><td class="k">Financial conditions</td><td data-pos="SOW"></td><td>Rates eased but credit spreads widened, so we watch the broad gauges</td></tr>
+        <tr data-href="#earnings"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 18V11M11 18V4M17 18V8"/></svg></td><td class="k">Fundamentals</td><td data-pos="OW"></td><td>Earnings and revisions are rising, so profits carry the overweight</td></tr>
+        <tr data-href="#geopolitics"><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8"/><ellipse cx="11" cy="11" rx="3.6" ry="8"/><path d="M3 11h16"/></svg></td><td class="k">Geopolitics</td><td data-pos="SUW"></td><td>Oil is getting through despite low Hormuz traffic, so we keep the commodity hedge</td></tr>
+      </tbody>
+    </table>
+    <div class="dash-h"><span class="h3">Data</span></div>
+    <table class="tb dash-tb data-tb">
+      <colgroup><col style="width:28px"><col style="width:152px"><col style="width:154px"><col></colgroup>
+      <thead><tr><th></th><th>Indicator</th><th>Current</th><th>Portfolio Signal</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="4">Growth</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 11h4l2-5 3 10 3-7 2 2h4"/></svg></td><td class="k">Weekly Economic Index</td><td class="v">2.8%</td><td>Weekly activity is running above trend, so we keep the equity overweight</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3.5 15.5a7.5 7.5 0 1 1 15 0"/><path d="M11 15.5l3.5-4.5"/><circle cx="11" cy="15.5" r="1"/></svg></td><td class="k">GDPNow (current quarter)</td><td class="v">3.2%</td><td>This quarter is still above trend, so October was not a growth scare</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="6.5" r="3"/><path d="M4.5 19c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/></svg></td><td class="k">Unemployment rate</td><td class="v">4.2%</td><td>Low at the 23rd pctile since 1948, and a sustained rise would make us revisit</td></tr>
+        <tr class="grp"><td colspan="4">Inflation</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M9 13.5V4.5a2 2 0 0 1 4 0v9a3.5 3.5 0 1 1-4 0z"/><path d="M11 8v7"/></svg></td><td class="k">Core PCE (Fed’s anchor)</td><td class="v" style="letter-spacing:-0.2px;padding-right:4px">Sep 3.1% Oct 3.2% Nov 3.3%</td><td>Above target and nowcast higher, so we keep duration short</td></tr>
+        <tr class="grp"><td colspan="4">Financial conditions</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 6h14M4 11h14M4 16h14"/><circle cx="8" cy="6" r="1.6"/><circle cx="14" cy="11" r="1.6"/><circle cx="10" cy="16" r="1.6"/></svg></td><td class="k">Chicago Fed NFCI</td><td class="v">-0.49</td><td>Still loose at the 41st pctile since 1971, so wider spreads have not made us cut risk</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3.5l8.5 15h-17z"/><path d="M11 9v4.5"/><circle cx="11" cy="16" r=".6"/></svg></td><td class="k">Financial Stress Index</td><td class="v">-0.58</td><td>Calm at the 23rd pctile since 1993, so we hold rather than de-risk</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><rect x="3.5" y="5" width="15" height="13.5" rx="1.5"/><path d="M3.5 9h15M7.5 3v4M14.5 3v4"/></svg></td><td class="k">Fed hikes/cuts thru Dec 2027</td><td class="v">2.16 hikes</td><td>Fewer hikes priced than a month ago, but not enough to extend duration</td></tr>
+        <tr class="grp"><td colspan="4">Fundamentals</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><circle cx="6.5" cy="6.5" r="2.3"/><circle cx="15.5" cy="15.5" r="2.3"/><path d="M16.5 5.5l-11 11"/></svg></td><td class="k">S&amp;P 500 forward P/E</td><td class="v">18.65x</td><td>At the 28th pctile of the last five years, so earnings, not the multiple, carry the view</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 4v14M6.5 18h9M4 7.5h14"/><path d="M4 7.5l-2 5h4zM18 7.5l-2 5h4z"/></svg></td><td class="k">Equity risk premium</td><td class="v">0.46pp</td><td>Thin but positive again, which argues for care in sizing, not selling</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M7 17V5M3.5 8.5L7 5l3.5 3.5M15 5v12M11.5 13.5L15 17l3.5-3.5"/></svg></td><td class="k">S&amp;P 500 revision breadth</td><td class="v">+0.20</td><td>Down from +0.26 but still positive, so profits back the overweight</td></tr>
+        <tr class="grp"><td colspan="4">Geopolitics</td></tr>
+        <tr><td class="ic"><svg class="ri" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 14h16l-2.5 4.5h-11z"/><path d="M6 14V9.5h10V14M11 9.5V4"/></svg></td><td class="k">Hormuz normalized within 12m</td><td class="v">44%</td><td>Kalshi odds of normal traffic within a year, so we keep the commodity hedge</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Please see Sources for details. Core PCE is September’s reading and the November nowcast. Data as of 2026-11-03. Signals as of 2026-10-30.</p>
+  </div>
+</section>
+
+<section class="page" id="qa" data-title="Question of the month" data-section="qa">
+  <div class="body">
+    <div class="h1">Question of the month</div>
+    <div class="qa">
+      <div class="card">
+        <div class="ql">Question:</div>
+        <div class="qq">If AI stocks sold off, why are you still overweight technology?</div>
+        <p class="t">Because earnings revisions, not price, set the overweight. Our technology fund fell 8.3% in October and semiconductors fell 15.4%, and we felt it. But analysts are still raising estimates, by 5.8% on average over the past three months, and about 82% of the 265 companies that had reported third-quarter results by October 29 beat expectations. A price drawdown with rising estimates makes the same earnings cheaper. What would change the view is estimates turning down, not a bad month. We also hold technology inside a broad large-cap core, alongside a utilities and power holding that rose 4.1% in the same month, so the book is not a single bet on the leaders.</p>
+        <p class="t" style="margin-top:12px">The spending is also starting to pay. On third-quarter calls, large financial firms said the benefits of AI already exceed what they spent on it this year, and one expects those benefits to more than double next year. It is early, but that is demand, and the November 5 sell-off did not change it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="positioning" data-title="Positioning" data-section="positioning">
+  <div class="body">
+    <div class="h1">Positioning</div>
+    <div style="font-size:12px;color:var(--ink-2);margin-top:14px;font-style:italic">No changes to positioning this month.</div>
+    <div class="legend" data-legend="Underweight|Overweight" style="margin:16px 0 10px"></div>
+    <table class="tb pos-tb">
+      <thead><tr><th style="width:166px">Asset / Class</th><th style="width:96px">Positioning</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td>Equities</td><td data-pos="SOW"></td><td>Earnings, not October’s price moves, set the overweight. US large caps stay the core, and we hold through a rotation that has not yet changed the earnings picture.</td></tr>
+        <tr class="sub"><td>US Large</td><td data-pos="OW"></td><td>Earnings are durable and broadening. Equal-weighted exposure spreads the overweight across the market, not just the largest few names.</td></tr>
+        <tr class="sub"><td>US Small</td><td data-pos="N"></td><td>The most rate-sensitive corner of equities; a 10-year yield near 5.0% argues against the cyclical case.</td></tr>
+        <tr class="sub"><td>Intl DM</td><td data-pos="N"></td><td>No clear growth, valuation or currency edge; not paid to tilt.</td></tr>
+        <tr class="sub"><td>EM</td><td data-pos="SOW"></td><td>Cheaper than developed markets with real diversification value; a slight tilt.</td></tr>
+        <tr class="grp"><td>Fixed Income</td><td data-pos="UW"></td><td>We hold fewer bonds than a standard 60/40 and keep duration modestly short. We are not extending while inflation sits above target and the Fed may still hike.</td></tr>
+        <tr class="sub"><td>IG Credit</td><td data-pos="N"></td><td>Quality carry worth owning for income. At 90bp, spreads still leave little upside.</td></tr>
+        <tr class="sub"><td>Developed Gov’t Bonds</td><td data-pos="N"></td><td>Own for ballast and carry. A tougher inflation standard says do not extend.</td></tr>
+        <tr class="sub"><td>High Yield</td><td data-pos="UW"></td><td>Spreads widened to 340bp in October, still too little to pay for late-cycle credit risk.</td></tr>
+        <tr class="grp"><td>Alternatives</td><td data-pos="SOW"></td><td>Real assets hedge energy-driven inflation and fiscal risk. We hold a broad commodity basket and gold, and accept that the two legs will not always move together.</td></tr>
+        <tr class="sub"><td>Gold</td><td data-pos="SOW"></td><td>Record central-bank reserve demand and fiscal-credibility risk support gold; capped by the hikes already priced.</td></tr>
+        <tr class="sub"><td>Broad Commodities</td><td data-pos="SOW"></td><td>A broad basket tracks inflation plus a small premium, a cleaner hedge than TIPS if rates keep grinding higher.</td></tr>
+        <tr class="sect"><td colspan="3">Sector views</td></tr>
+        <tr class="sub"><td>Technology</td><td data-pos="OW"></td><td>The AI investment cycle still drives earnings leadership; this is where we accept concentration. Held through the market, not one slice.</td></tr>
+        <tr class="sub"><td>Utilities</td><td data-pos="OW"></td><td>Structural power demand from AI and electrification underpins the overweight. We carry its rate sensitivity knowingly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page" id="risks" data-title="Risks we’re watching" data-section="risks">
+  <div class="body">
+    <div class="h1">Risks we’re watching</div>
+    <div class="risks">
+      <div class="risk"><div class="rh"><span class="rn">1.</span><span class="rt">Tighter credit slows growth or AI spending</span></div>
+        <p>High-yield spreads widened from 311 to 340 basis points in October and investment-grade spreads from 80 to 90. If the broad financial-conditions gauges follow, tighter credit could slow hiring, growth and the borrowing behind AI investment. We would then reduce equity risk, upgrade quality, extend duration and take the commodity tilt to neutral, together. This is the risk that matters most to us.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">2.</span><span class="rt">Earnings estimates roll over</span></div>
+        <p>Analysts have raised forward estimates by 5.8% over three months, but the margin of companies seeing estimates raised over cut has narrowed, from +0.26 to +0.20 in the month to October 30. The seven largest stocks are still growing earnings 12.4 percentage points faster than the rest. If revisions turn negative, or growth narrows further onto a few names, the case for the equity overweight weakens. Estimate revisions are the signal we watch.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">3.</span><span class="rt">Yields rebound with the Fed</span></div>
+        <p>Futures price a December hike as likely and 2.16 quarter-point hikes in total through December 2027. A rebound in the 10-year real yield from 2.6% would reverse October’s relief and squeeze the equity risk premium, now only 0.46 percentage points. Our short duration is the hedge.</p></div>
+      <div class="risk"><div class="rh"><span class="rn">4.</span><span class="rt">Data-center policy slows AI building</span></div>
+        <p>After the midterm elections, state and federal rules could slow how fast new data centers are permitted and powered. That would delay spending at the technology and utilities companies we overweight, even if demand holds. We would judge it through capital-spending guidance on earnings calls, AI revenue and new state rules like Pennsylvania’s.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="closing" data-title="Closing thoughts and sources" data-section="closing">
+  <div class="body">
+    <div class="close-grid">
+      <div class="close-l">
+        <div class="h1">Closing thoughts</div>
+        <div class="t" style="margin-top:24px">
+          <p style="font-size:13.6px;line-height:1.62">October looked flat and was not. Leadership moved from the largest technology names toward the rest of the market, rates eased for real-yield reasons, and credit widened. The stance did not have a good month, and we have said where it cost us. We hold it because growth is above trend, earnings are rising and the signals that would change our minds have not confirmed.</p>
+          <p style="font-size:13.6px;line-height:1.62">November has already tested that. AI stocks sold off sharply after the midterm elections, and the jobs report the next day came in well ahead of expectations. Still ahead are the October CPI report in mid-November, Nvidia’s results on November 17 and the Fed’s meeting on December 8 and 9. We will not reposition around any one of those. Credit and earnings are the signals that would move us.</p>
+        </div>
+        
+      </div>
+      <aside class="close-r" id="sources">
+        <div class="h3">Sources</div>
+        <ul class="src">
+          <li>Savvy Macro Dashboard (pillar scores and the indicator panel)</li>
+          <li>Bloomberg (S&amp;P 500, S&amp;P 500 equal-weight, Nasdaq 100, Philadelphia semiconductor, Russell 2000, MSCI EM and EAFE indices, sector funds, Treasury nominal and real yields and breakeven, ICE BofA high-yield and investment-grade spreads, WTI crude oil, gold, USDJPY and EURUSD, September 30 to October 30 and latest November 2 to 3)</li>
+          <li>Bloomberg (investment-grade corporate bond fund total return, October) and Bloomberg S&amp;P 500 third-quarter earnings beat rate through October 29</li>
+          <li>Savvy Earnings Update findings (Bloomberg consensus quarterly earnings growth for the S&amp;P 500’s seven largest stocks and the other 493, as of mid-October)</li>
+          <li>Federal Reserve Board, FOMC statements, September 16 and October 28, 2026</li>
+          <li>CME fed funds futures for the priced policy path</li>
+          <li>BEA gross domestic product advance estimate for the third quarter and personal income and outlays, BLS CPI and employment situation, ISM manufacturing survey, and Cleveland Fed nowcasts for the open months</li>
+          <li>NY Fed Weekly Economic Index and Atlanta Fed GDPNow</li>
+          <li>Chicago Fed National Financial Conditions Index and St. Louis Fed Financial Stress Index</li>
+          <li>FactSet forward P/E and equity risk premium, Savvy revision breadth from Bloomberg consensus (October 30), and Bloomberg S&amp;P 500 earnings growth, revisions, beat rate and margins through September 30</li>
+          <li>IMF PortWatch Strait of Hormuz arrivals and Kalshi normalization odds</li>
+          <li>Savvy, From the CIO’s Desk, November 6, 2026 (index moves on November 5, market history since 1928 and 1980, third-quarter AI commentary, Pennsylvania executive order) and BLS employment situation for October</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="page back" id="back" data-title="Back cover">
+  <svg class="rings" width="816" height="1056" viewBox="0 0 816 1056" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.5" aria-hidden="true">
+    <circle cx="200" cy="640" r="215"/><circle cx="200" cy="640" r="350"/><circle cx="200" cy="640" r="520"/><circle cx="200" cy="640" r="720"/>
+    <circle cx="380" cy="523" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="37" cy="332" r="5" fill="rgba(255,255,255,.22)" stroke="none"/><circle cx="690" cy="469" r="5" fill="rgba(255,255,255,.22)" stroke="none"/>
+  </svg>
+  <div class="inner">
+    <span class="wordmark white" role="img" aria-label="Savvy"></span>
+    <div class="tg">Independence, <b>reinvented.</b></div>
+  </div>
+  <p class="disc">Savvy Wealth Investment Management (“SWIM”) is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.</p>
+</section>
+
+</main>
+
+<!-- screen-only toolbar -->
+<div class="bar" id="bar">
+  <button id="prev" aria-label="Previous page">←</button>
+  <span class="pg" id="pgn"></span>
+  <button id="next" aria-label="Next page">→</button>
+  <span class="sep"></span>
+  <select id="jump" aria-label="Jump to section"></select>
+  <span class="sep"></span>
+  <button class="pdf" id="pdf">Save as PDF</button>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+/* ---------------- edition settings (edit monthly) ---------------- */
+const EDITION = 'November 2026';
+const DISCLAIMER = 'Material prepared herein has been created for informational purposes only and should not be considered investment advice or a recommendation from the Savvy Investment Team. Information was obtained from sources believed to be reliable but was not verified for accuracy. Savvy Wealth Investment Management ("SWIM") is a proprietary, in-house investment solution offered by Savvy Advisors, Inc. (“Savvy Advisors”). It is designed to support financial advisors in the management of client portfolios. Savvy Wealth Investment Management is not a separate legal entity and is not independently registered as an investment adviser. All advisory services are provided by Savvy Advisors in its capacity as a registered investment adviser.';
+
+/* fixed navigation — same order every month */
+const NAV = [
+  ['snapshot','Snapshot','#snapshot','01'],
+  ['midterms','Midterms','#midterms','02'],
+  ['core','Core driver','#core-driver','03'],
+  ['macro','Macro','#macro','04'],
+  ['dashboard','Dashboard','#dashboard','05'],
+  ['qa','Q&A','#qa','06'],
+  ['positioning','Positioning','#positioning','07'],
+  ['risks','Risks','#risks','08'],
+  ['closing','Closing','#closing','09'],
+  ['sources','Sources','#sources','10'],
+];
+/* five-step scale: UW/headwind (dark red) · SUW (light red) · N (gray) · SOW (light green) · OW/tailwind (dark green) */
+const POS = { UW:0, SUW:1, N:2, SOW:3, OW:4 };
+const NAMES = ['Underweight','Slight underweight','Neutral','Slight overweight','Overweight'];
+
+const pages = [...document.querySelectorAll('.page')];
+
+/* ---------------- page chrome ---------------- */
+pages.forEach((pg, i) => {
+  const n = i + 1;
+  if (pg.classList.contains('cover') || pg.classList.contains('back')) return;
+  const head = document.createElement('header');
+  head.className = 'pg-head';
+  const tagline = pg.dataset.chrome === 'tagline';
+  head.innerHTML = `<div class="top"><a href="#contents" title="Contents"><span class="wordmark" role="img" aria-label="Savvy"></span></a>` +
+    (tagline ? '<div class="tagline">Independence,<br><b>Reinvented.</b></div>' : '') + '</div>' +
+    (tagline ? '' : '<nav class="nav">' + NAV.map(([k, l, h, num]) =>
+      `<a href="${h}" class="${pg.dataset.section === k || (k === 'sources' && pg.dataset.section === 'closing') ? 'on' : ''}"><span class="n">${num}</span>${l}</a>`).join('') + '</nav>');
+  const foot = document.createElement('footer');
+  foot.className = 'pg-foot';
+  foot.innerHTML = `<div class="row"><span>Savvy Portfolio Perspectives | ${EDITION}</span><span>Page ${n}</span></div><p class="disc">${DISCLAIMER}</p>`;
+  pg.prepend(head); pg.append(foot);
+});
+
+/* five-step dots */
+const dotsHTML = k => '<span class="dots" role="img" aria-label="' + NAMES[POS[k]] + '">' +
+  [0,1,2,3,4].map(j => `<i class="${j === POS[k] ? 'on s' + j : ''}"></i>`).join('') + '</span>';
+document.querySelectorAll('[data-pos]').forEach(el => { el.innerHTML = dotsHTML(el.dataset.pos) + el.innerHTML; });
+document.querySelectorAll('[data-legend]').forEach(el => {
+  const [l, r] = el.dataset.legend.split('|');
+  el.innerHTML = `<span>${l}</span><span class="dots" aria-hidden="true">${[0,1,2,3,4].map(j => `<i class="s${j}"></i>`).join('')}</span><span>${r}</span>`;
+});
+
+/* clickable dashboard rows */
+document.querySelectorAll('tr[data-href]').forEach(tr => tr.addEventListener('click', () => go(document.querySelector(tr.dataset.href))));
+
+/* ---------------- screen: fit-to-width, nav, toolbar ---------------- */
+const deck = document.getElementById('deck');
+const PW = 816;
+function fit() { deck.style.zoom = Math.min(1, (window.innerWidth - 48) / PW); }
+fit(); addEventListener('resize', fit);
+
+function current() {
+  const mid = innerHeight / 2;
+  let best = 0, bd = Infinity;
+  pages.forEach((p, i) => { const r = p.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom) / 2 - mid); if (d < bd) { bd = d; best = i; } });
+  return best;
+}
+function go(el) { if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+function step(d) { const i = Math.max(0, Math.min(pages.length - 1, current() + d)); go(pages[i]); }
+
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); go(t); history.replaceState(null, '', a.getAttribute('href')); }
+}));
+document.getElementById('prev').onclick = () => step(-1);
+document.getElementById('next').onclick = () => step(1);
+document.getElementById('pdf').onclick = () => print();
+addEventListener('keydown', e => {
+  if (['ArrowRight','PageDown'].includes(e.key)) { e.preventDefault(); step(1); }
+  if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); step(-1); }
+  if (e.key === 'Home') { e.preventDefault(); go(pages[0]); }
+  if (e.key === 'End') { e.preventDefault(); go(pages[pages.length - 1]); }
+});
+const sel = document.getElementById('jump');
+sel.innerHTML = pages.map((p, i) => `<option value="${i}">${String(i+1).padStart(2,'0')} · ${p.dataset.title}</option>`).join('');
+sel.onchange = () => go(pages[+sel.value]);
+const pgn = document.getElementById('pgn');
+pgn.textContent = `1 / ${pages.length}`;
+/* page references resolve from the live layout, so Contents and Find the answer never go stale */
+document.querySelectorAll('[data-page-of]').forEach(el => {
+  const t = document.querySelector(el.dataset.pageOf), pg = t && t.closest('.page');
+  if (pg) el.textContent = `Page ${pages.indexOf(pg) + 1}`;
+});
+let ticking = false;
+addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { const i = current(); pgn.textContent = `${i+1} / ${pages.length}`; sel.value = i; ticking = false; }); });
+if (location.hash) setTimeout(() => go(document.querySelector(location.hash)), 60);
+addEventListener('beforeprint', () => { deck.style.zoom = 1; });
+addEventListener('afterprint', fit);
+
+/* dashboard tables stay one line per row (house rule). If a typeface runs wider, tighten in this order
+   until no cell clips: cell padding 8→6px, letter-spacing to -0.01em, then type size in 0.2px steps
+   (never below 8.6px). Runs once fonts have loaded. */
+document.fonts.ready.then(() => document.querySelectorAll('table.dash-tb').forEach(t => {
+  const cells = [...t.querySelectorAll('td,th')];
+  const clipped = () => cells.some(c => c.scrollWidth > c.clientWidth + 0.5);
+  if (!clipped()) return;
+  cells.forEach(c => { if (!c.classList.contains('ic')) { c.style.paddingLeft = c.style.paddingRight = '6px'; } });
+  if (!clipped()) return;
+  t.style.letterSpacing = '-0.01em';
+  let fs = parseFloat(getComputedStyle(t).fontSize);
+  while (clipped() && fs > 8.6) { fs = Math.round((fs - 0.2) * 10) / 10; t.style.fontSize = fs + 'px'; }
+}));
+</script>
+</body>
+</html>

@@ -21,6 +21,22 @@ The October 2026 16:9 edition is kept for reference in `template/2026-10.html`.
 | `YYYY-MM-<slug>.html` / `.pdf` | Published editions (Savvy-branded report). |
 | `YYYY-MM-<slug>-white-label.html` / `.pdf` | Same report with no Savvy logo, for client marketing to add an advisor's logo. |
 
+## House rules from the investment team (2026-11-06, keep them)
+
+The investment team (Ani) runs these templates as the canonical renderer inside their `draft-pp` Claude skill.
+Their deliberate changes, now in `template/template.html` and `skill/SKILL.md`:
+1. The Macro Dashboard sits on **one page** (Summary + Data).
+2. Data rows **never wrap**: widen the column or tighten spacing. The template auto-tightens if a font runs wide,
+   and `export_pdf.py` flags any clipped cell.
+3. **Every data row has its own icon.**
+4. Typeface **ABC Diatype**: drop the licensed `Diatype-<Weight>.woff2` files into `assets/fonts/` and `build.py`
+   embeds them. Until then the embedded Inter is the fallback, never Helvetica Neue.
+5. Page numbers in Contents, Find the answer and nav fill automatically. The nav highlights the current section.
+6. Optional **event section** after the Executive snapshot (November 2026: midterms and the November 5 sell-off).
+
+The published November 2026 edition is `2026-11-pace-not-demand.*`. `2026-11-broader-not-weaker.*` was the
+first cut, before the event section.
+
 ## Fixed structure (portrait, 816 × 1056 px = 8.5 × 11 in pages)
 
 1. Cover — eyebrow, title, subtitle, authors

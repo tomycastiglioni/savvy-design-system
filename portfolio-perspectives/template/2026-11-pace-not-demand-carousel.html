@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Perspectives carousel — November 2026</title>
+<style>
+/* ==========================================================================
+   SAVVY PORTFOLIO PERSPECTIVES — LINKEDIN CAROUSEL TEMPLATE (from November 2026)
+   Matches the Figma carousel (file QJAJaS7qru79fTrIq73NHt, "November 2026_Slide 1–7").
+   7 slides, 1080 × 1350 px each. Colour rhythm: gradient · cream · teal · cream · cream · black · gradient.
+   Each month: swap the copy marked EDIT only. Print → Save as PDF, no margins.
+   ========================================================================== */
+:root{
+  --teal:#095972; --cream:#F5F2EC; --ecru:#C7BCA1; --up:#175242; --down:#B63D35; --tick:#C4C2BD;
+  --grad:linear-gradient(215deg,#095972 0%,#000D11 100%);
+  --label:'ABC Diatype','Diatype','Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --sans:'ABC Diatype','Diatype','Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#2B3135;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:32px 0}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;flex:none;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.slide.grad{background:var(--grad);color:#fff}
+.slide.cream{background:var(--cream);color:#000}
+.slide.teal{background:var(--teal);color:#fff}
+.slide.black{background:#000;color:#fff}
+p,h1,h2,li,.t{text-wrap:pretty}
+h1,h2{text-wrap:balance}
+
+/* chrome */
+.logo{position:absolute;left:80px;top:80px;width:170px;height:57px;background:url('%%WORDMARK_WHITE%%') left center/contain no-repeat}
+.cream .logo{background-image:url('%%WORDMARK%%')}
+.cream .logo{width:120px;height:40px}
+.next{position:absolute;left:964px;top:1244px;width:43px;height:23px}
+.label{position:absolute;left:80px;top:207px;display:flex;align-items:center;gap:28px;font-family:var(--label);font-size:39.5px;line-height:46px;letter-spacing:-.01em}
+.cream .label{color:var(--teal)}
+.label.plain{top:206px;opacity:.8}
+.byline{position:absolute;left:80px;top:1208px;display:flex;align-items:center;gap:35px}
+.byline .nm{font-size:27.7px;font-weight:500;line-height:35px}
+.byline .rl{font-size:26.2px;line-height:32px;opacity:.7;margin-top:3px}
+
+/* 1 · cover */
+.s1 .eb{position:absolute;left:80px;top:202px;font-size:30.2px;font-weight:500;letter-spacing:1.78px;text-transform:uppercase;opacity:.8}
+.s1 h1{position:absolute;left:76px;top:290px;width:824px;font-size:112.5px;line-height:1.08;font-weight:300}
+.s1 .sub{position:absolute;left:80px;width:820px;font-size:44px;line-height:1.35;opacity:.9}
+.rings{position:absolute;left:0;top:0}
+
+/* 2 · core driver */
+.s2 .body{position:absolute;left:80px;top:316px;width:850px;font-size:50px;line-height:1.28;font-weight:300}
+
+/* 3 · what changed */
+.s3 h1{position:absolute;left:76px;top:340px;width:950px;font-size:96px;line-height:1.12;font-weight:300}
+.s3 .sub{position:absolute;left:80px;width:900px;font-size:48px;line-height:1.21;opacity:.9}
+.s3 .art{position:absolute;left:0;top:0;opacity:.2}
+
+/* 4 · where we stand */
+.s4 .lists{position:absolute;left:80px;top:337px;width:926px}
+.s4 .hd{font-size:26px;font-weight:500;letter-spacing:.08em;color:var(--teal);line-height:31px;margin-bottom:32px}
+.s4 ul{list-style:none;display:flex;flex-direction:column;gap:32px}
+.s4 ul + .hd{margin-top:56px}
+.s4 li{display:grid;grid-template-columns:74px 1fr;font-size:40.7px;line-height:1.3}
+.s4 li svg{margin-top:17px}
+.s4 .line{position:absolute;left:0;top:0}
+
+/* 5 · the numbers */
+.s5 .nums{position:absolute;left:76px;top:340px;width:924px;display:flex;flex-direction:column;gap:40px}
+.s5 .num{display:flex;flex-direction:column;gap:20px;width:904px}
+.s5 .big{font-size:96px;font-weight:300;letter-spacing:-.07em;color:var(--teal);line-height:116px}
+.s5 .cap{font-size:34px;line-height:41px;color:rgba(0,0,0,.8)}
+.s5 hr{border:0;border-top:1px solid var(--ecru);width:924px}
+
+/* 6 · question of the month */
+.s6 .qa{position:absolute;left:80px;top:318px;width:810px;display:flex;flex-direction:column;gap:56px}
+.s6 .q{font-size:66.8px;line-height:1.26;font-weight:300}
+.s6 hr{border:0;border-top:2px solid var(--ecru);width:140px}
+.s6 .a{font-size:38px;line-height:1.45;opacity:.8;max-width:752px}
+
+/* 7 · what we're watching */
+.s7 ul{position:absolute;left:80px;top:310px;width:916px;list-style:none;display:flex;flex-direction:column;gap:18px}
+.s7 li{position:relative;padding-left:36px;font-size:36px;line-height:50px;opacity:.9}
+.s7 li:before{content:"";position:absolute;left:0;top:15px;width:12px;height:12px;border-radius:50%;background:var(--ecru)}
+.s7 .cta{position:absolute;left:80px;display:inline-flex;align-items:center;gap:33.5px;padding:44.5px 62.4px;border-radius:9px;
+  background:linear-gradient(120deg,#fff 0%,var(--ecru) 100%);color:#000;font-family:var(--label);font-weight:500;font-size:32.1px;line-height:38px;letter-spacing:.02em;white-space:nowrap}
+
+@page{size:1080px 1350px;margin:0}
+@media print{
+  body{background:none}
+  .deck{display:block;padding:0}
+  .slide{box-shadow:none;break-after:page;page-break-after:always}
+  .slide:last-child{break-after:auto}
+}
+</style>
+</head>
+<body>
+<main class="deck">
+
+<!-- 1 · COVER (gradient) -->
+<section class="slide grad s1">
+  <svg class="rings" width="1080" height="1350" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" aria-hidden="true">
+    <circle cx="1080" cy="1350" r="250"/><circle cx="1080" cy="1350" r="350"/><circle cx="1080" cy="1350" r="450"/>
+  </svg>
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="eb">Portfolio Perspectives — November 2026</div>          <!-- EDIT: month -->
+  <h1>The pace<br>changed, the<br>demand did not.</h1>                                     <!-- EDIT: report title, with a full stop -->
+  <p class="sub">Why the November 5 sell-off hit the pace of AI building, not the demand for it, and what would change our view.</p>  <!-- EDIT: carousel subline -->
+  <div class="byline"><div><div class="nm">Anshul Sharma</div><div class="rl">Chief Investment Officer, Savvy Wealth</div></div></div>
+  <svg class="next" viewBox="0 0 43 23" fill="none"><path d="M1.25 11.1495H40.848M30.9485 21.049L40.848 11.1495L30.9485 1.25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</section>
+
+<!-- 2 · CORE DRIVER (cream) -->
+<section class="slide cream s2">
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="label">
+    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"><path d="M29.262 42.6774C35.7047 36.2347 35.7047 25.789 29.2619 19.3463C22.8192 12.9036 12.3735 12.9035 5.9308 19.3463C-0.511923 25.789 -0.511927 36.2347 5.93079 42.6774C12.3735 49.1201 22.8192 49.1201 29.262 42.6774Z" stroke="#095972" stroke-width="2.1975"/><path d="M42.6776 29.2618C49.1203 22.8191 49.1203 12.3734 42.6775 5.93068C36.2348 -0.512041 25.7891 -0.512053 19.3464 5.93067C12.9037 12.3734 12.9037 22.8191 19.3464 29.2618C25.7891 35.7046 36.2348 35.7045 42.6776 29.2618Z" stroke="#095972" stroke-width="2.1975"/></svg>
+    Core driver
+  </div>
+  <p class="body">The pace changed, the demand did not. October’s flat S&amp;P 500 hid a rotation out of the largest technology names, and the November 5 sell-off hit the same crowded trade. Earnings, not price, set our views, so the book is unchanged.</p>  <!-- EDIT: carousel core -->
+  <svg class="next" viewBox="0 0 43 23" fill="none"><path d="M1.25 11.1495H40.848M30.9485 21.049L40.848 11.1495L30.9485 1.25" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</section>
+
+<!-- 3 · WHAT CHANGED THIS MONTH (teal) -->
+<section class="slide teal s3">
+  <svg class="art" width="1080" height="1350" aria-hidden="true">
+    <g fill="#095972" stroke="#fff" stroke-width="1.5">
+      <circle cx="788" cy="1081" r="357"/>
+      <circle cx="788" cy="1081" r="179" stroke-dasharray="5 5"/>
+      <line x1="788" y1="762" x2="788" y2="1400"/><line x1="469" y1="1081" x2="1107" y2="1081"/>
+      <circle cx="788" cy="724" r="38.5"/><circle cx="788" cy="1438" r="38.5"/><circle cx="431" cy="1081" r="38.5"/><circle cx="1145" cy="1081" r="38.5"/><circle cx="788" cy="1081" r="38.5"/>
+    </g>
+  </svg>
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="label">
+    <svg width="63" height="49" viewBox="0 0 63 49" fill="none"><path d="M61.7483 17.187C61.7483 33.935 48.1715 47.5119 31.4235 47.5119C14.6755 47.5119 1.09863 33.935 1.09863 17.187" stroke="white" stroke-width="2.1975"/><path d="M31.4226 33.2656C40.3053 33.2656 47.5061 26.0648 47.5061 17.1821C47.5061 8.29946 40.3053 1.09863 31.4226 1.09863C22.5399 1.09863 15.3391 8.29946 15.3391 17.1821C15.3391 26.0648 22.5399 33.2656 31.4226 33.2656Z" stroke="white" stroke-width="2.1975"/></svg>
+    What changed this month
+  </div>
+  <h1>No trades<br>this month.</h1>                                         <!-- EDIT: headline -->
+  <p class="sub">Our view is unchanged and the book carries forward.</p>      <!-- EDIT: one line -->
+  <svg class="next" viewBox="0 0 43 23" fill="none"><path d="M1.25 11.1495H40.848M30.9485 21.049L40.848 11.1495L30.9485 1.25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</section>
+
+<!-- 4 · WHERE WE STAND (cream). data-dir: up = overweight side, down = underweight side, flat = neutral -->
+<section class="slide cream s4">
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="label">
+    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"><path d="M24.3041 47.5095C37.12 47.5095 47.5094 37.12 47.5094 24.3041C47.5094 11.4881 37.12 1.09863 24.3041 1.09863C11.4881 1.09863 1.09863 11.4881 1.09863 24.3041C1.09863 37.12 11.4881 47.5095 24.3041 47.5095Z" stroke="#095972" stroke-width="2.1975"/><path d="M24.3052 1.1665V47.4326" stroke="#095972" stroke-width="2.1975"/></svg>
+    Where we stand
+  </div>
+  <div class="lists">
+    <div class="hd">ASSET CLASSES</div>
+    <ul>
+      <li data-dir="up">Slight overweight Equities</li>                                  <!-- EDIT -->
+      <li data-dir="down">Underweight Fixed income</li>                                  <!-- EDIT -->
+      <li data-dir="up">Slight overweight Alternatives (commodities and gold)</li>       <!-- EDIT -->
+    </ul>
+    <div class="hd">SECTORS</div>
+    <ul>
+      <li data-dir="up">Overweight Technology</li>                                       <!-- EDIT -->
+      <li data-dir="up">Overweight Utilities</li>                                        <!-- EDIT -->
+    </ul>
+  </div>
+  <svg class="line" id="stand-line" width="1080" height="1350" fill="none" aria-hidden="true"></svg>
+  <svg class="next" viewBox="0 0 43 23" fill="none"><path d="M1.25 11.1495H40.848M30.9485 21.049L40.848 11.1495L30.9485 1.25" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</section>
+
+<!-- 5 · THE NUMBERS (cream) -->
+<section class="slide cream s5">
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="label">
+    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"><path d="M24.3041 47.5095C37.12 47.5095 47.5094 37.12 47.5094 24.3041C47.5094 11.4881 37.12 1.09863 24.3041 1.09863C11.4881 1.09863 1.09863 11.4881 1.09863 24.3041C1.09863 37.12 11.4881 47.5095 24.3041 47.5095Z" stroke="#095972" stroke-width="2.1975"/><path d="M24.3039 33.7557C29.524 33.7557 33.7557 29.524 33.7557 24.3039C33.7557 19.0838 29.524 14.8521 24.3039 14.8521C19.0838 14.8521 14.8521 19.0838 14.8521 24.3039C14.8521 29.524 19.0838 33.7557 24.3039 33.7557Z" stroke="#095972" stroke-width="2.1975"/></svg>
+    The numbers
+  </div>
+  <div class="nums">
+    <div class="num"><div class="big">3.2%</div><div class="cap">Current-quarter growth nowcast, still above trend</div></div>                       <!-- EDIT -->
+    <hr>
+    <div class="num"><div class="big">0.46pp</div><div class="cap">What stocks pay over a 10-year Treasury,<br>back above zero</div></div>       <!-- EDIT -->
+    <hr>
+    <div class="num"><div class="big">2.16 hikes</div><div class="cap">Quarter-point hikes priced through 2027,<br>down from 3.60 a month ago</div></div>  <!-- EDIT -->
+  </div>
+  <svg class="next" viewBox="0 0 43 23" fill="none"><path d="M1.25 11.1495H40.848M30.9485 21.049L40.848 11.1495L30.9485 1.25" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</section>
+
+<!-- 6 · QUESTION OF THE MONTH (black) -->
+<section class="slide black s6">
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="label plain">Question of the month</div>
+  <div class="qa">
+    <div class="q">“If AI stocks sold off, why are you still overweight technology?”</div>   <!-- EDIT -->
+    <hr>
+    <p class="a">Because estimates,<br>not price, set the view.</p>                          <!-- EDIT -->
+  </div>
+  <svg class="next" viewBox="0 0 43 23" fill="none"><path d="M1.25 11.1495H40.848M30.9485 21.049L40.848 11.1495L30.9485 1.25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</section>
+
+<!-- 7 · WHAT WE'RE WATCHING + CTA (gradient) -->
+<section class="slide grad s7">
+  <span class="logo" role="img" aria-label="Savvy"></span>
+  <div class="label plain">What we're watching</div>
+  <ul id="risks">
+    <li>Tighter credit slows growth or AI spending</li>          <!-- EDIT: risk titles -->
+    <li>Earnings estimates roll over</li>
+    <li>Yields rebound with the Fed</li>
+    <li>Data-center policy slows AI building</li>
+  </ul>
+  <div class="cta" id="cta">Read the full November Portfolio Perspectives    <!-- EDIT: month -->
+    <svg width="25" height="23" viewBox="0 0 25 23" fill="none"><path d="M1.25 11.1495H23.5464M13.6469 21.049L23.5464 11.1495L13.6469 1.25" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="byline">
+    <svg width="41" height="41" viewBox="0 0 41 41" fill="none"><path d="M20.0168 25.5758C13.6033 25.5758 7.96952 23.3539 4.80699 20.0272C8.08344 16.5741 13.8098 14.4576 20.0168 14.4576C26.2238 14.4576 32.0641 16.6795 35.2267 20.0062C31.9502 23.4593 26.2238 25.5758 20.0168 25.5758ZM20.0168 12.3494C13.3754 12.3494 7.18946 14.6304 3.49133 18.3619C2.6015 16.9706 2.10819 15.4441 2.10819 13.8421C2.10819 7.37424 10.141 2.10822 20.0166 2.10822C29.8921 2.10822 37.925 7.37008 37.925 13.8421H40.0334C40.0376 6.21074 31.056 0 20.0166 0C8.97717 0 0 6.21026 0 13.8419C0 21.4735 8.98157 27.684 20.0168 27.684C26.6582 27.684 32.8442 25.403 36.5423 21.6715C37.4321 23.0628 37.9255 24.5893 37.9255 26.1913C37.9255 32.6591 29.8926 37.9252 20.0171 37.9252C10.1415 37.9252 2.10844 32.6591 2.10844 26.1915H0C0 33.8229 8.98157 40.0336 20.0168 40.0336C31.0521 40.0336 40.0336 33.8231 40.0336 26.1915C40.0336 18.5599 31.0521 12.3494 20.0168 12.3494Z" fill="white" fill-opacity="0.9"/></svg>
+    <div><div class="nm">Anshul Sharma</div><div class="rl">Chief Investment Officer, Savvy Wealth</div></div>
+  </div>
+</section>
+
+</main>
+<script>
+/* subline / sub-headline sit 36–51px below their headline, whatever its length */
+document.querySelectorAll('.s1 h1, .s3 h1').forEach(h => {
+  const sub = h.parentElement.querySelector('.sub');
+  sub.style.top = (h.offsetTop + h.offsetHeight + (h.closest('.s1') ? 36 : 51)) + 'px';
+});
+/* risks: the button sits 85px under the last risk */
+const ul = document.getElementById('risks');
+document.getElementById('cta').style.top = (ul.offsetTop + ul.offsetHeight + 85) + 'px';
+
+/* where we stand: arrow per row + the marker line (one marker per row, above = up, below = down) */
+const UP = '<svg width="27" height="19" viewBox="0 0 28 19"><path d="M13.5 0L27 18.3H0Z" fill="#175242"/></svg>';
+const DOWN = '<svg width="27" height="19" viewBox="0 0 28 19"><path d="M13.5 18.3L27 0H0Z" fill="#B63D35"/></svg>';
+const FLAT = '<svg width="27" height="19" viewBox="0 0 28 19"><rect x="2" y="8" width="23" height="3" fill="#B4AC9E"/></svg>';
+const rows = [...document.querySelectorAll('.s4 li')];
+rows.forEach(li => li.innerHTML = ({up:UP,down:DOWN,flat:FLAT})[li.dataset.dir] + `<span>${li.innerHTML}</span>`);
+const n = rows.length, x0 = 82, x1 = 997, y = 1124, step = (x1 - x0) / (n + 1);
+let svg = `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="#C4C2BD" stroke-width="1.5"/>`;
+for (let i = 0; i <= n + 1; i++) { const x = x0 + step * i; svg += `<line x1="${x}" y1="${y-10}" x2="${x}" y2="${y+10}" stroke="#C4C2BD" stroke-width="1.5"/>`; }
+rows.forEach((li, i) => {
+  const x = x0 + step * (i + 1), d = li.dataset.dir;
+  const c = d === 'down' ? '#B63D35' : d === 'up' ? '#175242' : '#B4AC9E';
+  if (d === 'flat') { svg += `<circle cx="${x}" cy="${y}" r="23" fill="#F5F2EC" stroke="${c}" stroke-width="1.5"/>`; return; }
+  const cy = d === 'up' ? y - 80 : y + 80, l1 = d === 'up' ? y - 57 : y + 10, l2 = d === 'up' ? y - 10 : y + 57;
+  svg += `<line x1="${x}" y1="${l1}" x2="${x}" y2="${l2}" stroke="${c}" stroke-width="1.5" stroke-dasharray="4 4"/><circle cx="${x}" cy="${cy}" r="23" fill="#F5F2EC" stroke="${c}" stroke-width="1.5"/>`;
+});
+document.getElementById('stand-line').innerHTML = svg;
+</script>
+</body>
+</html>

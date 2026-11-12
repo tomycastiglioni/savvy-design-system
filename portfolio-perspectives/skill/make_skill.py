@@ -16,9 +16,9 @@ FILES = {
     'templates/carousel.html': PP / 'template' / 'carousel.html',
     'scripts/build.py': PP / 'template' / 'build.py',
     'scripts/export_pdf.py': PP / 'template' / 'export_pdf.py',
-    'examples/2026-11-broader-not-weaker.pdf': PP / '2026-11-broader-not-weaker.pdf',
-    'examples/2026-11-broader-not-weaker-white-label.pdf': PP / '2026-11-broader-not-weaker-white-label.pdf',
-    'examples/2026-11-broader-not-weaker-carousel.pdf': PP / 'carousel' / '2026-11-broader-not-weaker-carousel.pdf',
+    'examples/2026-11-pace-not-demand.pdf': PP / '2026-11-pace-not-demand.pdf',
+    'examples/2026-11-pace-not-demand-white-label.pdf': PP / '2026-11-pace-not-demand-white-label.pdf',
+    'examples/2026-11-pace-not-demand-carousel.pdf': PP / 'carousel' / '2026-11-pace-not-demand-carousel.pdf',
 }
 for f in sorted((PP / 'assets').rglob('*')):
     if f.is_file():

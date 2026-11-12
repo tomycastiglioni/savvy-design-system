@@ -10,11 +10,27 @@ edition):
 
 | Deliverable | Template | Size |
 |---|---|---|
-| Report | `templates/report.html` | US Letter portrait, 816 × 1056 px pages, ~15 pages |
+| Report | `templates/report.html` | US Letter portrait, 816 × 1056 px pages, ~14–15 pages |
 | White label | same template, built with `--white-label` | same |
 | LinkedIn carousel | `templates/carousel.html` | 7 slides, 1080 × 1350 px |
 
 Examples of the finished November 2026 files are in `examples/`. Look at them before starting.
+
+## House rules (investment team, 2026-11-06 — keep in every future version)
+
+1. **The Macro Dashboard sits on one page** so advisers see the whole picture at once.
+2. **Data rows never wrap.** If a value is long, widen the column or tighten spacing; never wrap. The template
+   does the tightening itself if a typeface runs wide: padding, then letter-spacing, then type size in 0.2px
+   steps (never below 8.6px). `export_pdf.py` reports any cell that still clips.
+3. **Every data row has its own icon**, unique within its table.
+4. **Typeface: ABC Diatype** (brand guidelines). Drop the licensed files into `assets/fonts/` as
+   `Diatype-<Weight>.woff2` (Light, Regular, Medium) and `build.py` embeds them. Until then the embedded **Inter**
+   is the fallback. Never let it fall to Helvetica Neue: its 300 weight is Thin and it sets tighter, which makes the
+   body copy look too light and tight.
+5. Following from these: Contents, Find the answer and nav page references fill automatically, and the nav
+   highlights the section you're on (Closing also lights Sources).
+6. **Optional event section** (e.g. Nov 2026: midterm results and the Nov 5 sell-off): its own page after the
+   Executive snapshot, with its own nav pill and Contents row. Edit the rest of the issue around it so nothing repeats.
 
 ## The one rule that matters most
 
@@ -50,15 +66,14 @@ Open `$W/YYYY-MM.html`. Every page is a `<section class="page">`, in this fixed 
 | # | Page (section id) | What goes there |
 |---|---|---|
 | 1 | Cover (`cover`) | eyebrow `Portfolio Perspectives · Month YYYY`, title, subtitle. Authors stay unless told otherwise |
-| 2 | Contents (`contents`) | section list; **update the page numbers** |
-| 3 | Find the answer (`questions`) | 4 cards. Q1 the positioning-change answer · Q2 three asset-class dots (Equities, Fixed Income, Alternatives) · Q3 the macro answer · Q4 the risk titles. Each links to its page; update "Page N →" |
+| 2 | Contents (`contents`) | section list. Page numbers fill automatically (`data-page-of`) |
+| 3 | Find the answer (`questions`) | 4 cards. Q1 the positioning-change answer · Q2 three asset-class dots (Equities, Fixed Income, Alternatives) · Q3 the macro answer · Q4 the risk titles. Each links to its page; page numbers fill automatically |
 | 4 | Executive snapshot (`snapshot`) | callout headline + short paragraph, then Verdict, Core driver and Portfolio stance bullets (stance rows carry dots) |
 | 5 | Core driver (`core-driver`) | the core driver body paragraphs, two columns |
 | 6 | Core driver (continued) (`core-driver-book`) | Equities / Fixed income / Real assets sub-sections |
 | 7 | Macro thoughts (`macro`) | the first macro sub-sections (h3 + paragraphs), in one two-column flow |
 | 8 | Macro thoughts (continued) (`macro-2`) | the remaining macro sub-sections |
-| 9 | The Savvy Macro Dashboard (`dashboard`) | Summary table: category, signal dots, portfolio signal |
-| 10 | Dashboard (continued) (`dashboard-data`) | Data table: indicator, current value, portfolio signal, grouped by pillar; source/date note |
+| 9 | The Savvy Macro Dashboard (`dashboard`) | **One page** (house rule): Summary table (icon, category, signal dots, portfolio signal) and Data table (icon, indicator, current value, portfolio signal, grouped by pillar) plus the source/date note. **Every row is one line and has its own icon** |
 | 11 | Question of the month (`qa`) | question + answer (add a second `.card` only if the month has two questions) |
 | 12 | Positioning (`positioning`) | the "No changes…" line (or the change text), legend, table of asset classes, sub-classes, then Sector views |
 | 13 | Risks we're watching (`risks`) | numbered risks, title + paragraph, 2-column grid |
@@ -114,9 +129,9 @@ Then check:
 ### 3. When copy doesn't fit
 
 In order of preference:
-1. Move a whole sub-section to the "(continued)" page that already exists (for example, a macro sub-section from page 7 to 8).
+1. (Not for the dashboard, which stays one page.) Move a whole sub-section to the "(continued)" page that already exists (for example, a macro sub-section from page 7 to 8).
 2. Add another "(continued)" page: copy the section, give it a new id and the same `data-section`, and title it
-   "<Section> <span style="color:var(--ink-3)">(continued)</span>". Then update every page number.
+   "<Section> <span style="color:var(--ink-3)">(continued)</span>". Page numbers update themselves.
 3. Small spacing changes on that page only (table cell padding, gaps). Never smaller than the current type sizes.
 
 Never cut, shorten or rephrase the copy.
@@ -156,7 +171,7 @@ which carousel lines came from the report rather than carousel copy.
 
 ## Design reference (don't change)
 
-- Fonts: ABC Diatype where installed, otherwise Inter (embedded by `build.py`).
+- Fonts: ABC Diatype when its files are in `assets/fonts/`, otherwise the embedded Inter. Never Helvetica Neue.
 - Colours: teal `#095972`, cream `#F5F2EC`, ecru `#C7BCA1`, light teal tint `#EEF4F6`; dot scale as above.
 - Report: page header with the Savvy logo and section nav; footer with the edition, page number and disclaimer on
   every inner page. The disclaimer is only in the footer, never repeated in the body.
