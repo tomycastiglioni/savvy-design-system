@@ -179,6 +179,9 @@ python3 "$SK/scripts/export_pdf.py" "$W/YYYY-MM-email-banner-src.html" "$W/out"
 This writes `out/YYYY-MM-email-banner-src.png` at 1200 × 300 (2×, rounded corners on a transparent background).
 Rename it to `YYYY-MM-email-banner.png`. Place it in the email at 600 px wide.
 
+The month pill hugs the month with **equal padding on all four sides**, measured to the letters (a general rule
+for email banners). The template handles this for any month length. Don't set a fixed pill width.
+
 ### 5. Deliver
 
 Give the user the six files: report PDF, white-label PDF, carousel PDF, email banner PNG and the two report HTMLs (the HTMLs are

@@ -21,9 +21,12 @@ body{background:#2B3135;-webkit-font-smoothing:antialiased}
 .banner .globe{position:absolute;left:0;top:0}
 .banner h1{position:absolute;left:27.5px;top:21.3px;width:222.5px;font-family:var(--display);font-weight:300;
   font-size:40.06px;line-height:1.05;letter-spacing:-.02em}
-.banner .month{position:absolute;left:452.8px;top:24.3px;width:120px;height:34px;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.1);border-radius:3.3px;font-family:var(--sans);font-weight:500;font-size:9.82px;line-height:1.05;
-  letter-spacing:.18em;text-transform:uppercase}
+.banner .month{position:absolute;right:27.2px;top:24.3px;padding:12.8px;display:flex;
+  background:rgba(255,255,255,.1);border-radius:3.3px;font-family:var(--sans);font-weight:500;font-size:9.82px;line-height:10px;
+  letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+/* equal padding on all four sides (email banner rule), measured to the letters: the line box is trimmed to the
+   capitals (text-box), and the trailing letter-spacing after the last character is cancelled */
+.banner .month span{display:block;margin-right:-.18em;text-box:trim-both cap alphabetic}
 </style>
 </head>
 <body>
@@ -36,7 +39,7 @@ body{background:#2B3135;-webkit-font-smoothing:antialiased}
     <ellipse cx="493" cy="236.6" rx="25.4" ry="254.1"/>
   </svg>
   <h1>Portfolio Perspectives</h1>
-  <div class="month">November 2026</div>   <!-- EDIT: month and year -->
+  <div class="month"><span>November 2026</span></div>   <!-- EDIT: month and year -->
 </section>
 </main>
 </body>
