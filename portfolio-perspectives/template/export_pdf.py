@@ -41,6 +41,14 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={'width': 1300, 'height': 1500})
     page.goto(src.as_uri(), wait_until='load')
     page.wait_for_timeout(600)
+    if page.query_selector('.banner'):  # email banner: one 2× PNG, no PDF
+        hi = browser.new_page(viewport={'width': 1300, 'height': 400}, device_scale_factor=2)
+        hi.goto(src.as_uri(), wait_until='load')
+        hi.wait_for_timeout(600)
+        hi.query_selector('.banner').screenshot(path=str(out / f'{stem}.png'), omit_background=True)
+        browser.close()
+        print(f'Wrote {out / (stem + ".png")} (2×)')
+        sys.exit(0)
     page.add_style_tag(content='.bar,.tip{display:none!important}')
     over = [(n, px) for n, px in page.evaluate(OVERFLOW_JS) if px > 0]
     clipped = page.evaluate(CLIP_JS)

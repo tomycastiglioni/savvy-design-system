@@ -1,6 +1,6 @@
 ---
 name: savvy-portfolio-perspectives
-description: Builds the monthly Savvy Portfolio Perspectives deliverables from that month's copy — the vertical (US Letter) PDF report, its white-label version (no Savvy logo) and the 7-slide LinkedIn carousel — using Savvy's approved templates. Use whenever someone asks to make, build, update or fix a Portfolio Perspectives report, white label or carousel for any month, or shares a Portfolio Perspectives copy doc, content.json or published issue to turn into those files.
+description: Builds the monthly Savvy Portfolio Perspectives deliverables from that month's copy — the vertical (US Letter) PDF report, its white-label version (no Savvy logo), the 7-slide LinkedIn carousel — using Savvy's approved templates. Use whenever someone asks to make, build, update or fix a Portfolio Perspectives report, white label or carousel for any month, or shares a Portfolio Perspectives copy doc, content.json or published issue to turn into those files.
 ---
 
 # Savvy Portfolio Perspectives — monthly report, white label and carousel
@@ -13,6 +13,7 @@ edition):
 | Report | `templates/report.html` | US Letter portrait, 816 × 1056 px pages, ~14–15 pages |
 | White label | same template, built with `--white-label` | same |
 | LinkedIn carousel | `templates/carousel.html` | 7 slides, 1080 × 1350 px |
+| Email banner | `templates/email-banner.html` | 600 × 150 px, exported as a 1200 × 300 PNG (2×) |
 
 Examples of the finished November 2026 files are in `examples/`. Look at them before starting.
 
@@ -23,10 +24,12 @@ Examples of the finished November 2026 files are in `examples/`. Look at them be
    does the tightening itself if a typeface runs wide: padding, then letter-spacing, then type size in 0.2px
    steps (never below 8.6px). `export_pdf.py` reports any cell that still clips.
 3. **Every data row has its own icon**, unique within its table.
-4. **Typeface: ABC Diatype** (brand guidelines). Drop the licensed files into `assets/fonts/` as
-   `Diatype-<Weight>.woff2` (Light, Regular, Medium) and `build.py` embeds them. Until then the embedded **Inter**
-   is the fallback. Never let it fall to Helvetica Neue: its 300 weight is Thin and it sets tighter, which makes the
-   body copy look too light and tight.
+4. **Typeface: ABC Diatype** (brand guidelines). The licensed files are included in `assets/fonts/`
+   (`ABCDiatype-Light/Regular/Medium/Bold.otf`) and `build.py` embeds them. If they are ever missing, the embedded
+   **Inter** is the fallback. Never let it fall to Helvetica Neue: its 300 weight is Thin and it sets tighter, which
+   makes the body copy look too light and tight. Don't use `tabular-nums` with Diatype: it switches the figures to
+   a monospaced style. The font files are licensed to Savvy: keep this skill internal and never upload the fonts or
+   the built HTML (which embeds them) anywhere public.
 5. Following from these: Contents, Find the answer and nav page references fill automatically, and the nav
    highlights the section you're on (Closing also lights Sources).
 6. **Optional event section** (e.g. Nov 2026: midterm results and the Nov 5 sell-off): its own page after the
@@ -163,15 +166,29 @@ python3 "$SK/scripts/export_pdf.py" "$W/YYYY-MM-<slug>-carousel.html" "$W/out"
 
 LinkedIn takes the PDF as a document post. The PNGs (`…-pNN.png`) are the individual slides.
 
+### 4b. Email banner
+
+The header image for the monthly email. Only the month changes: edit the `<!-- EDIT -->` line in a copy of
+`templates/email-banner.html` (e.g. `November 2026`; it is set in capitals by the style), then:
+
+```bash
+python3 "$SK/scripts/build.py" "$W/YYYY-MM-email-banner.html" "$W/YYYY-MM-email-banner-src.html"
+python3 "$SK/scripts/export_pdf.py" "$W/YYYY-MM-email-banner-src.html" "$W/out"
+```
+
+This writes `out/YYYY-MM-email-banner-src.png` at 1200 × 300 (2×, rounded corners on a transparent background).
+Rename it to `YYYY-MM-email-banner.png`. Place it in the email at 600 px wide.
+
 ### 5. Deliver
 
-Give the user the five files: report PDF, white-label PDF, carousel PDF and the two report HTMLs (the HTMLs are
+Give the user the six files: report PDF, white-label PDF, carousel PDF, email banner PNG and the two report HTMLs (the HTMLs are
 interactive, with clickable contents and a page nav). Say which pages, if any, needed a "(continued)" split. Also say
 which carousel lines came from the report rather than carousel copy.
 
 ## Design reference (don't change)
 
-- Fonts: ABC Diatype when its files are in `assets/fonts/`, otherwise the embedded Inter. Never Helvetica Neue.
+- Fonts: ABC Diatype (embedded from `assets/fonts/`), with Inter as the fallback. Never Helvetica Neue. The email
+  banner's month label is Inter Medium, as in the Figma master.
 - Colours: teal `#095972`, cream `#F5F2EC`, ecru `#C7BCA1`, light teal tint `#EEF4F6`; dot scale as above.
 - Report: page header with the Savvy logo and section nav; footer with the edition, page number and disclaimer on
   every inner page. The disclaimer is only in the footer, never repeated in the body.

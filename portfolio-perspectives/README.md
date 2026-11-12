@@ -29,8 +29,10 @@ Their deliberate changes, now in `template/template.html` and `skill/SKILL.md`:
 2. Data rows **never wrap**: widen the column or tighten spacing. The template auto-tightens if a font runs wide,
    and `export_pdf.py` flags any clipped cell.
 3. **Every data row has its own icon.**
-4. Typeface **ABC Diatype**: drop the licensed `Diatype-<Weight>.woff2` files into `assets/fonts/` and `build.py`
-   embeds them. Until then the embedded Inter is the fallback, never Helvetica Neue.
+4. Typeface **ABC Diatype**. The licensed `ABCDiatype-*.otf` files go in `assets/fonts/`. They're **git-ignored
+   because this repo is public**: keep them locally and they ship only inside the private skill zip.
+   `build.py` embeds them (no `tabular-nums`: Diatype's tabular figures are monospaced). The embedded Inter is the
+   fallback, never Helvetica Neue. Don't commit HTML built with Diatype either, because it embeds the full fonts.
 5. Page numbers in Contents, Find the answer and nav fill automatically. The nav highlights the current section.
 6. Optional **event section** after the Executive snapshot (November 2026: midterms and the November 5 sell-off).
 
@@ -142,3 +144,8 @@ overflow rules and carousel slots.
 - Package it: `python3 portfolio-perspectives/skill/make_skill.py` → `skill/savvy-portfolio-perspectives.zip`.
 - Install it in Claude: **Settings › Capabilities › Skills › Upload skill**, with code execution turned on.
 - Re-run `make_skill.py` and share the new zip whenever the template, the scripts or SKILL.md change.
+
+## Email banner
+
+`template/email-banner.html` is the monthly email header (600 × 150, Figma `XYp5xl61nCXvKUjuc4jLEL` node
+`32544:195`). Change the month, build, then `export_pdf.py` writes a 1200 × 300 PNG. Outputs live in `email/`.

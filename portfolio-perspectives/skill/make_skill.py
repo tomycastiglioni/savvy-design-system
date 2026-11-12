@@ -4,7 +4,8 @@ Usage (from the repo root):
     python3 portfolio-perspectives/skill/make_skill.py
 
 Writes portfolio-perspectives/skill/savvy-portfolio-perspectives.zip from the current template, scripts, assets and
-the latest example PDFs. Re-run it whenever the template changes, then share the new zip.
+the latest example PDFs. The licensed ABC Diatype files in assets/fonts (git-ignored, never committed: the repo is
+public) are included when present, so the zip must stay internal. It is git-ignored too. Re-run it whenever the template changes, then share the new zip.
 """
 import pathlib, zipfile
 
@@ -14,11 +15,13 @@ FILES = {
     'SKILL.md': PP / 'skill' / 'SKILL.md',
     'templates/report.html': PP / 'template' / 'template.html',
     'templates/carousel.html': PP / 'template' / 'carousel.html',
+    'templates/email-banner.html': PP / 'template' / 'email-banner.html',
     'scripts/build.py': PP / 'template' / 'build.py',
     'scripts/export_pdf.py': PP / 'template' / 'export_pdf.py',
     'examples/2026-11-pace-not-demand.pdf': PP / '2026-11-pace-not-demand.pdf',
     'examples/2026-11-pace-not-demand-white-label.pdf': PP / '2026-11-pace-not-demand-white-label.pdf',
     'examples/2026-11-pace-not-demand-carousel.pdf': PP / 'carousel' / '2026-11-pace-not-demand-carousel.pdf',
+    'examples/2026-11-email-banner.png': PP / 'email' / '2026-11-email-banner.png',
 }
 for f in sorted((PP / 'assets').rglob('*')):
     if f.is_file():

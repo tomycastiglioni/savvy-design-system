@@ -41,15 +41,20 @@ if font.exists():
             "src:url(data:font/woff2;base64," + base64.b64encode(font.read_bytes()).decode() + ") format('woff2')}</style>")
     lines = [l for l in html.split('\n') if 'fonts.googleapis.com' not in l and 'fonts.gstatic.com' not in l]
     html = '\n'.join(lines).replace('</head>', face + '\n</head>', 1)
-# Diatype is the brand face (Ani 2026-11-06). Licensed files are not in the repo; drop them in
-# assets/fonts as Diatype-<Weight>.woff2 (e.g. Diatype-Light.woff2) and they embed here. Without
-# them the CSS stack falls back to the embedded Inter (never Helvetica Neue: its 300 is Thin and tight).
+# ABC Diatype is the brand face. Its licensed files live in assets/fonts (OTF, WOFF2 or WOFF, e.g.
+# ABCDiatype-Light.otf); they are git-ignored because the repo is public and ship only in the private skill
+# zip. Any found here are embedded. Without them the CSS stack falls back to the embedded Inter (never
+# Helvetica Neue: its 300 is Thin and sets too tight).
 WEIGHTS = {'thin': 100, 'light': 300, 'regular': 400, 'medium': 500, 'bold': 700}
-for f in sorted((ASSETS / 'fonts').glob('*Diatype*.woff2')):
+FMT = {'.woff2': ('font/woff2', 'woff2'), '.woff': ('font/woff', 'woff'), '.otf': ('font/otf', 'opentype')}
+for f in sorted((ASSETS / 'fonts').glob('*Diatype*')):
+    if f.suffix.lower() not in FMT:
+        continue
+    mime, fmt = FMT[f.suffix.lower()]
     w = next((v for k, v in WEIGHTS.items() if k in f.stem.lower()), 400)
     html = html.replace('</head>', "<style>@font-face{font-family:'ABC Diatype';font-style:normal;"
-                        f"font-weight:{w};font-display:block;src:url(data:font/woff2;base64,"
-                        + base64.b64encode(f.read_bytes()).decode() + ") format('woff2')}</style>\n</head>", 1)
+                        f"font-weight:{w};font-display:block;src:url(data:{mime};base64,"
+                        + base64.b64encode(f.read_bytes()).decode() + f") format('{fmt}')}}</style>\n</head>", 1)
 if '%%' in html:
     i = html.index('%%')
     sys.exit(f'Unknown placeholder left in {src}: ' + html[i:i + 30])

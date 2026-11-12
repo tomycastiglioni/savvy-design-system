@@ -1,0 +1,4 @@
+
+# Licensed brand fonts: never commit (public repo). They ship only in the private skill zip.
+portfolio-perspectives/assets/fonts/*Diatype*
+portfolio-perspectives/skill/*.zip
