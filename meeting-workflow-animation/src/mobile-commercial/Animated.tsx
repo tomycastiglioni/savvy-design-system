@@ -8,6 +8,7 @@ import { HomeIndicator, StatusBar } from "../mobile-prep/components/SystemUI";
 import { BUTTON_BG, C, FONT, H, PAD, SCALE, W } from "../mobile-prep/layout";
 import { AGENDA, CLOCK, MEETING, PLAN, RECAP } from "./content";
 import { Avatar, Button, LATER, Nav, Pill, PlanChart, Recorded, SUMMARY_ROWS, Tick, Tile } from "./Screens";
+import { CommercialNotification, NOTIFY_T } from "./LockScreen";
 
 // The commercial's three phone screens, animated (1080×2348, 60 fps, a 3×
 // iPhone screen recording like the earlier mobile videos): 1A and 2A only
@@ -266,6 +267,7 @@ export const CommercialRecap: React.FC = () => (
 export const COMMERCIAL_SCREENS = {
   meeting: { Component: CommercialMeeting, seconds: MEETING_T.end, file: "commercial-01-meeting" },
   plan: { Component: CommercialPlan, seconds: PLAN_T.end, file: "commercial-02-retirement-plan" },
+  notification: { Component: CommercialNotification, seconds: NOTIFY_T.end, file: "commercial-03-0-notification" }, // just before the follow-up
   recap: { Component: CommercialRecap, seconds: RECAP_T.end, file: "commercial-03-follow-up" },
 } as const;
 export type CommercialScreen = keyof typeof COMMERCIAL_SCREENS;

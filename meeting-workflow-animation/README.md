@@ -219,7 +219,11 @@ retire 5 years later?" appears and the plan redraws for retiring at 70
 (94% → 99%), untouched; on 3 the recap builds in, "Send follow-up" is pressed
 (no finger, as in a recording), it turns to "Follow-up sent." and a check fills
 the screen. Each holds at the end for the edit. `scripts/mobile-commercial-export.sh`
-renders ProRes masters, MP4s with sound and silent MP4s. The status bar takes an optional
+renders ProRes masters, MP4s with sound and silent MP4s.
+`MobileCommercial-notification` (`LockScreen.tsx`, 2 s) is the lock screen just
+before the follow-up: a "Savvy" / "Notification" banner rises in at 0.2 s
+with a chime; the app icon is the S mark on white
+(`public/mobile-commercial/savvy-app-icon-mark.png`). The status bar takes an optional
 `time` and a `light` variant (`src/mobile-prep/components/SystemUI.tsx`).
 
 `Hero-board-*` (folder "Hero-storyboards", `src/hero/`) are the storyboards for

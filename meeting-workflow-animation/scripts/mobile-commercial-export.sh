@@ -9,7 +9,9 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 OUT=out/mobile-commercial/export
 mkdir -p "$OUT/mov" "$OUT/mp4" "$OUT/silent"
-for pair in meeting:commercial-01-meeting plan:commercial-02-retirement-plan recap:commercial-03-follow-up; do
+pairs=(meeting:commercial-01-meeting plan:commercial-02-retirement-plan notification:commercial-03-0-notification recap:commercial-03-follow-up)
+[ $# -gt 0 ] && pairs=("$@")   # e.g. notification:commercial-03-0-notification
+for pair in "${pairs[@]}"; do
   key=${pair%%:*}
   name=${pair#*:}
   npx remotion render "MobileCommercial-$key" "$OUT/mov/$name.mov" --codec=prores --prores-profile=hq --log=error
