@@ -10,21 +10,21 @@ import { AGENDA, MEETING, PLAN, RECAP, SUMMARY } from "./content";
 // out in iOS points (360 wide) like the earlier mobile videos. Each takes the
 // state it shows, so the chosen ones can be animated.
 
-const Nav: React.FC<{ readonly label: string; readonly light?: boolean }> = ({ label, light = false }) => (
+export const Nav: React.FC<{ readonly label: string; readonly light?: boolean }> = ({ label, light = false }) => (
   <div style={{ position: "absolute", left: PAD - 8, top: SAFE_TOP + 6, display: "flex", alignItems: "center", gap: 2, color: light ? "rgba(255,255,255,0.85)" : BUTTON_BG, fontSize: 16.5, fontWeight: 500 }}>
     <ChevronLeft size={24} strokeWidth={2.2} /> {label}
   </div>
 );
 
-const Pill: React.FC<{ readonly children: React.ReactNode; readonly style?: React.CSSProperties }> = ({ children, style }) => (
+export const Pill: React.FC<{ readonly children: React.ReactNode; readonly style?: React.CSSProperties }> = ({ children, style }) => (
   <div style={{ display: "inline-flex", alignItems: "center", gap: 6, height: 28, padding: "0 11px", borderRadius: 14, background: C.green50, color: C.green, fontSize: 12.5, fontWeight: 600, whiteSpace: "nowrap", ...style }}>{children}</div>
 );
 
-const Tile: React.FC<{ readonly kind: keyof typeof TILE; readonly size?: number; readonly children: React.ReactNode }> = ({ kind, size = 38, children }) => (
+export const Tile: React.FC<{ readonly kind: keyof typeof TILE; readonly size?: number; readonly children: React.ReactNode }> = ({ kind, size = 38, children }) => (
   <div style={{ width: size, height: size, borderRadius: size * 0.29, background: TILE[kind].bg, color: TILE[kind].fg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{children}</div>
 );
 
-const Button: React.FC<{ readonly top: number; readonly children: React.ReactNode; readonly done?: boolean }> = ({ top, children, done = false }) => (
+export const Button: React.FC<{ readonly top: number; readonly children: React.ReactNode; readonly done?: boolean }> = ({ top, children, done = false }) => (
   <div
     style={{
       position: "absolute",
@@ -48,7 +48,7 @@ const Button: React.FC<{ readonly top: number; readonly children: React.ReactNod
 );
 
 // The household summary's three lines, with their icons.
-const SUMMARY_ROWS = [
+export const SUMMARY_ROWS = [
   { kind: "summary" as const, Icon: TrendingUp, ...SUMMARY.changes },
   { kind: "task" as const, Icon: SquareCheck, ...SUMMARY.task },
   { kind: "flagged" as const, Icon: Flag, ...SUMMARY.flagged },
@@ -215,15 +215,29 @@ export const MeetingC: React.FC = () => (
 // Dave's projection: assets grow to retirement at 65, hold through his
 // seventies and taper gently, still well funded at 95; a band of likely
 // outcomes around it. `build` draws it in.
-export const PlanChart: React.FC<{ readonly w: number; readonly h: number; readonly build?: number; readonly dark?: boolean; readonly labels?: boolean }> = ({ w, h, build = 1, dark = false, labels = true }) => {
+// `scenario` (0–1) draws the what-if of retiring 5 years later (at 70) over it,
+// the current plan turning to a dashed line.
+export const LATER = 5;
+export const PlanChart: React.FC<{ readonly w: number; readonly h: number; readonly build?: number; readonly dark?: boolean; readonly labels?: boolean; readonly scenario?: number }> = ({
+  w,
+  h,
+  build = 1,
+  dark = false,
+  labels = true,
+  scenario = 0,
+}) => {
   const uid = useId().replace(/:/g, "");
   const [a0, a1, ret] = [58, 95, PLAN.retireAt];
   const v = (a: number) => (a <= ret ? 1.7 + 1.2 * ((a - a0) / (ret - a0)) ** 1.25 : 2.9 + 0.32 * Math.sin(Math.min(1, (a - ret) / 14) * Math.PI * 0.5) - 0.0016 * Math.max(0, a - 72) ** 2);
   const band = (a: number) => 0.06 + 0.018 * (a - a0);
+  const ret2 = ret + LATER;
+  const v2 = (a: number) =>
+    a <= ret ? v(a) : a <= ret2 ? v(ret) + 0.16 * (a - ret) : v(ret) + 0.16 * LATER + 0.25 * Math.sin(Math.min(1, (a - ret2) / 14) * Math.PI * 0.5) - 0.0016 * Math.max(0, a - 77) ** 2;
   const X = (a: number) => ((a - a0) / (a1 - a0)) * w;
-  const Y = (m: number) => h - 18 - (m / 3.8) * (h - 30);
+  const Y = (m: number) => h - 18 - (m / 4.3) * (h - 30);
   const ages = Array.from({ length: 69 }, (_, i) => a0 + (i / 68) * (a1 - a0));
   const line = ages.map((a, i) => `${i ? "L" : "M"}${X(a).toFixed(1)} ${Y(v(a)).toFixed(1)}`).join(" ");
+  const line2 = ages.map((a, i) => `${i ? "L" : "M"}${X(a).toFixed(1)} ${Y(v2(a)).toFixed(1)}`).join(" ");
   const up = ages.map((a, i) => `${i ? "L" : "M"}${X(a).toFixed(1)} ${Y(v(a) + band(a)).toFixed(1)}`).join(" ");
   const down = [...ages].reverse().map((a) => `L${X(a).toFixed(1)} ${Y(Math.max(0.05, v(a) - band(a))).toFixed(1)}`).join(" ");
   const stroke = dark ? "#ffffff" : C.green;
@@ -239,10 +253,29 @@ export const PlanChart: React.FC<{ readonly w: number; readonly h: number; reado
       <line x1={0} x2={w} y1={h - 18} y2={h - 18} stroke={dark ? "rgba(255,255,255,0.18)" : C.borderSoft} />
       <line x1={X(ret)} x2={X(ret)} y1={10} y2={h - 18} stroke={dark ? "rgba(255,255,255,0.35)" : "#c7cdd4"} strokeDasharray="3 4" />
       <g clipPath={`url(#pc-${uid})`}>
-        <path d={`${up} ${down} Z`} fill={dark ? "rgba(205,232,217,0.16)" : "rgba(23,82,66,0.09)"} />
-        <path d={line} fill="none" stroke={stroke} strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={`${up} ${down} Z`} fill={dark ? "rgba(205,232,217,0.16)" : "rgba(23,82,66,0.09)"} opacity={1 - 0.6 * scenario} />
+        <path d={line} fill="none" stroke={scenario > 0 ? (dark ? "rgba(255,255,255,0.55)" : "#b8c0c9") : stroke} strokeWidth={scenario > 0 ? 2 : 2.8} strokeDasharray={scenario > 0 ? "5 5" : undefined} strokeLinecap="round" strokeLinejoin="round" />
       </g>
-      {build > 0 ? <circle cx={X(tip)} cy={Y(v(tip))} r={5} fill={dark ? BUTTON_BG : C.white} stroke={stroke} strokeWidth={2.6} /> : null}
+      {scenario > 0 ? (
+        <>
+          <clipPath id={`ps-${uid}`}>
+            <rect x={X(ret) - 2} y={-20} width={(w - X(ret) + 8) * scenario + 2} height={h + 40} />
+          </clipPath>
+          <line x1={X(ret2)} x2={X(ret2)} y1={10} y2={h - 18} stroke={dark ? "rgba(255,255,255,0.35)" : "#c7cdd4"} strokeDasharray="3 4" opacity={scenario} />
+          <path d={line2} fill="none" stroke={stroke} strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" clipPath={`url(#ps-${uid})`} />
+          {(() => {
+            const a = ret + (a1 - ret) * scenario;
+            return <circle cx={X(a)} cy={Y(v2(a))} r={5} fill={dark ? BUTTON_BG : C.white} stroke={stroke} strokeWidth={2.6} />;
+          })()}
+          {labels ? (
+            <text x={X(ret2) + 6} y={h - 26} fontSize={11.5} fontWeight={600} fill={stroke} fontFamily="DM Sans" opacity={scenario}>
+              Retire at {ret2}
+            </text>
+          ) : null}
+        </>
+      ) : build > 0 ? (
+        <circle cx={X(tip)} cy={Y(v(tip))} r={5} fill={dark ? BUTTON_BG : C.white} stroke={stroke} strokeWidth={2.6} />
+      ) : null}
       {labels ? (
         <>
           <text x={X(ret) + 6} y={20} fontSize={11.5} fontWeight={600} fill={muted} fontFamily="DM Sans">
@@ -353,17 +386,17 @@ export const PlanC: React.FC<{ readonly build?: number; readonly result?: number
 // ——— Screen 3 · the follow-up ———
 // Each option takes `sent` (0 → 1): the recap ready to send, then sent.
 
-const Tick: React.FC<{ readonly size?: number }> = ({ size = 22 }) => (
+export const Tick: React.FC<{ readonly size?: number }> = ({ size = 22 }) => (
   <div style={{ width: size, height: size, borderRadius: size / 2, background: C.green50, color: C.green, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
     <Check size={size * 0.6} strokeWidth={3} />
   </div>
 );
-const Recorded: React.FC<{ readonly style?: React.CSSProperties }> = ({ style }) => (
+export const Recorded: React.FC<{ readonly style?: React.CSSProperties }> = ({ style }) => (
   <Pill style={style}>
     <Mic size={14} strokeWidth={2.4} /> Recorded · {RECAP.minutes} min
   </Pill>
 );
-const Avatar: React.FC<{ readonly initials: string; readonly you?: boolean }> = ({ initials, you = false }) => (
+export const Avatar: React.FC<{ readonly initials: string; readonly you?: boolean }> = ({ initials, you = false }) => (
   <div style={{ width: 30, height: 30, borderRadius: 15, background: you ? BUTTON_BG : C.green50, color: you ? C.white : C.green, fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
     {initials}
   </div>

@@ -30,6 +30,7 @@ import { MobilePrep } from "./mobile-prep/MobilePrep";
 import { MobileRecap } from "./mobile-recap/MobileRecap";
 import { MobileRecapOptions, OPTIONS as MOBILE_RECAP_OPTIONS } from "./mobile-recap/Options";
 import { boardSize as mobileCommercialBoardSize, MobileCommercialBoard, MobileCommercialOptions, OPTIONS as MOBILE_COMMERCIAL_OPTIONS } from "./mobile-commercial/Options";
+import { COMMERCIAL_SCREENS, CommercialScreen } from "./mobile-commercial/Animated";
 import { DURATION as MOBILE_RECAP_DURATION } from "./mobile-recap/timeline";
 import { DURATION as MOBILE_PREP_DURATION } from "./mobile-prep/timeline";
 import { Recap } from "./recap/Recap";
@@ -268,6 +269,9 @@ export const RemotionRoot: React.FC = () => {
         height={2348}
       />
       <Folder name="Mobile-commercial">
+        {(Object.keys(COMMERCIAL_SCREENS) as CommercialScreen[]).map((key) => (
+          <Composition key={key} id={`MobileCommercial-${key}`} component={COMMERCIAL_SCREENS[key].Component} durationInFrames={Math.round(COMMERCIAL_SCREENS[key].seconds * 60)} fps={60} width={1080} height={2348} />
+        ))}
         <Composition id="MobileCommercialOptions" component={MobileCommercialOptions} durationInFrames={MOBILE_COMMERCIAL_OPTIONS.length} fps={30} width={1080} height={2348} />
         {(["meeting", "plan", "recap"] as const).map((screen) => (
           <Still key={screen} id={`MobileCommercial-board-${screen}`} component={MobileCommercialBoard} defaultProps={{ screen }} width={Math.round(mobileCommercialBoardSize(screen).w)} height={Math.round(mobileCommercialBoardSize(screen).h)} />

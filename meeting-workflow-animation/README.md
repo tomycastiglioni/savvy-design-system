@@ -212,7 +212,14 @@ videos (1080×2348, iOS points ×3): the meeting (Annual review · Dave R. ·
 10:30 AM · Pebble Creek GC, household summary and agenda), Dave's retirement
 plan (on track, one result) and the follow-up (recap ready → sent). Each frame
 of `MobileCommercialOptions` is one option (`--frame=0` … `11`); the boards
-show each screen's options side by side. The status bar takes an optional
+show each screen's options side by side. `MobileCommercial-meeting`,
+`-plan` and `-recap` are the chosen ones animated (`Animated.tsx`, 60 fps,
+with the MobilePrep UI sounds): 1A builds in; 2A builds in, then "What if I
+retire 5 years later?" appears and the plan redraws for retiring at 70
+(94% → 99%), untouched; on 3 the recap builds in, "Send follow-up" is pressed
+(no finger, as in a recording), it turns to "Follow-up sent." and a check fills
+the screen. Each holds at the end for the edit. `scripts/mobile-commercial-export.sh`
+renders ProRes masters, MP4s with sound and silent MP4s. The status bar takes an optional
 `time` and a `light` variant (`src/mobile-prep/components/SystemUI.tsx`).
 
 `Hero-board-*` (folder "Hero-storyboards", `src/hero/`) are the storyboards for
