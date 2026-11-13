@@ -29,6 +29,7 @@ import { DURATION as MOBILE_HOUSEHOLD_DURATION } from "./mobile-household/timeli
 import { MobilePrep } from "./mobile-prep/MobilePrep";
 import { MobileRecap } from "./mobile-recap/MobileRecap";
 import { MobileRecapOptions, OPTIONS as MOBILE_RECAP_OPTIONS } from "./mobile-recap/Options";
+import { boardSize as mobileCommercialBoardSize, MobileCommercialBoard, MobileCommercialOptions, OPTIONS as MOBILE_COMMERCIAL_OPTIONS } from "./mobile-commercial/Options";
 import { DURATION as MOBILE_RECAP_DURATION } from "./mobile-recap/timeline";
 import { DURATION as MOBILE_PREP_DURATION } from "./mobile-prep/timeline";
 import { Recap } from "./recap/Recap";
@@ -266,6 +267,12 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={2348}
       />
+      <Folder name="Mobile-commercial">
+        <Composition id="MobileCommercialOptions" component={MobileCommercialOptions} durationInFrames={MOBILE_COMMERCIAL_OPTIONS.length} fps={30} width={1080} height={2348} />
+        {(["meeting", "plan", "recap"] as const).map((screen) => (
+          <Still key={screen} id={`MobileCommercial-board-${screen}`} component={MobileCommercialBoard} defaultProps={{ screen }} width={Math.round(mobileCommercialBoardSize(screen).w)} height={Math.round(mobileCommercialBoardSize(screen).h)} />
+        ))}
+      </Folder>
     </>
   );
 };

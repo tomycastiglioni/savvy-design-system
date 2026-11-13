@@ -205,6 +205,16 @@ story/reel overlays) and fit each graphic to the room left (per-format sizes
 in `src/ads/layout.ts` and the scenes). Render with
 `npx remotion render AdPrep4x5 out/ads/meeting-steps/4x5/savvy-meeting-steps-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
 
+`MobileCommercialOptions` and `MobileCommercial-board-*` (folder
+"Mobile-commercial", `src/mobile-commercial/`) are the static options for the
+commercial's three phone screens, three each, laid out like the earlier mobile
+videos (1080×2348, iOS points ×3): the meeting (Annual review · Dave R. ·
+10:30 AM · Pebble Creek GC, household summary and agenda), Dave's retirement
+plan (on track, one result) and the follow-up (recap ready → sent). Each frame
+of `MobileCommercialOptions` is one option (`--frame=0` … `11`); the boards
+show each screen's options side by side. The status bar takes an optional
+`time` and a `light` variant (`src/mobile-prep/components/SystemUI.tsx`).
+
 `Hero-board-*` (folder "Hero-storyboards", `src/hero/`) are the storyboards for
 the website hero's pill graphics, one per pill, 620×360 (the hero's graphic
 area, ~1.72:1), in the bento cards' style and transparent: `scenarios`
