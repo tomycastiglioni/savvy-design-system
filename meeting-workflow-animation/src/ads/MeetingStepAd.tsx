@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AbsoluteFill, Img, Sequence, staticFile, useVideoConfig } from "remotion";
 import { loadAdFonts } from "./fonts";
-import { Format, FormatContext, FORMATS, MARGIN_X } from "./layout";
+import { Format, FormatContext, FORMATS, LANDSCAPE, MARGIN_X } from "./layout";
 import { AdCapture } from "./scenes/AdCapture";
 import { AdDeliver } from "./scenes/AdDeliver";
 import { AdMeet } from "./scenes/AdMeet";
@@ -12,7 +12,9 @@ import { AdPrep } from "./scenes/AdPrep";
 // Diatype Light headline, body copy) on the step's gradient, with that step's
 // workflow animation playing under it, laid out for the frame: bigger than on
 // the website, left edge on the text margin, free to run off the right and
-// bottom (src/ads/scenes/, sizes per format in src/ads/layout.ts).
+// bottom (src/ads/scenes/, sizes per format in src/ads/layout.ts). 1200×628
+// is landscape: the text block on the left, centred top to bottom, and the
+// graphic's 1080-wide canvas scaled into the right of the frame.
 
 type Workflow = "prep" | "meet" | "capture" | "deliver";
 // Each step's graphic, laid out for the ad (src/ads/scenes/).
@@ -50,53 +52,67 @@ export const MeetingStepAd: React.FC<AdSpec> = (spec) => {
   const { fps } = useVideoConfig();
   const Animation = WORKFLOWS[workflow];
   const f = FORMATS[format];
-  return (
-    <FormatContext.Provider value={format}>
-    <AbsoluteFill style={{ background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`, overflow: "hidden" }}>
-      <Sequence from={-Math.round(start * fps)}>
-        <Animation />
-      </Sequence>
-      <div
-        style={{
-          position: "absolute",
-          left: MARGIN_X,
-          top: f.textTop,
-          width: column,
-          display: "flex",
-          flexDirection: "column",
-          gap: 50.967,
-          fontFamily: '"ABC Diatype", sans-serif',
-          scale: f.textScale,
-          transformOrigin: "0 0",
-        }}
-      >
-        <Img src={staticFile("ads/savvy-logo.svg")} style={{ width: LOGO.w, height: LOGO.h, display: "block" }} />
-        <div style={{ display: "flex", flexDirection: "column", gap: 42.776 }}>
-          <div
-            style={{
-              width: headlineWidth ?? column,
-              fontSize: headlineSize,
-              fontWeight: 300,
-              lineHeight: 1,
-              letterSpacing: -0.02 * headlineSize,
-              color: "#000000",
-            }}
-          >
-            {headline.map((line, i) => (
-              <React.Fragment key={line}>
-                {i ? <br /> : null}
-                {line}
-              </React.Fragment>
-            ))}
-          </div>
-          <div style={{ width: bodyWidth ?? column, fontSize: BODY, fontWeight: 400, lineHeight: 1.35, letterSpacing: 0.005 * BODY, color: "rgba(0, 0, 0, 0.78)" }}>
-            {body.map((p) => (
-              <div key={p}>{p}</div>
-            ))}
-          </div>
+  const landscape = format === "1200x628";
+  const graphic = (
+    <Sequence from={-Math.round(start * fps)}>
+      <Animation />
+    </Sequence>
+  );
+  const text = (
+    <div
+      style={{
+        width: column,
+        display: "flex",
+        flexDirection: "column",
+        gap: 50.967,
+        fontFamily: '"ABC Diatype", sans-serif',
+        scale: f.textScale,
+        transformOrigin: landscape ? "0 50%" : "0 0",
+      }}
+    >
+      <Img src={staticFile("ads/savvy-logo.svg")} style={{ width: LOGO.w, height: LOGO.h, display: "block" }} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 42.776 }}>
+        <div
+          style={{
+            width: headlineWidth ?? column,
+            fontSize: headlineSize,
+            fontWeight: 300,
+            lineHeight: 1,
+            letterSpacing: -0.02 * headlineSize,
+            color: "#000000",
+          }}
+        >
+          {headline.map((line, i) => (
+            <React.Fragment key={line}>
+              {i ? <br /> : null}
+              {line}
+            </React.Fragment>
+          ))}
+        </div>
+        <div style={{ width: bodyWidth ?? column, fontSize: BODY, fontWeight: 400, lineHeight: 1.35, letterSpacing: 0.005 * BODY, color: "rgba(0, 0, 0, 0.78)" }}>
+          {body.map((p) => (
+            <div key={p}>{p}</div>
+          ))}
         </div>
       </div>
-    </AbsoluteFill>
+    </div>
+  );
+  return (
+    <FormatContext.Provider value={format}>
+      <AbsoluteFill style={{ background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`, overflow: "hidden" }}>
+        {landscape ? (
+          <>
+            {/* the scenes' canvas, its right edge on the frame's */}
+            <div style={{ position: "absolute", left: LANDSCAPE.w - f.w * LANDSCAPE.view, top: 0, width: f.w, height: f.h, scale: LANDSCAPE.view, transformOrigin: "0 0", overflow: "hidden" }}>{graphic}</div>
+            <div style={{ position: "absolute", left: LANDSCAPE.textLeft, top: 0, height: LANDSCAPE.h, display: "flex", alignItems: "center" }}>{text}</div>
+          </>
+        ) : (
+          <>
+            {graphic}
+            <div style={{ position: "absolute", left: MARGIN_X, top: f.textTop }}>{text}</div>
+          </>
+        )}
+      </AbsoluteFill>
     </FormatContext.Provider>
   );
 };

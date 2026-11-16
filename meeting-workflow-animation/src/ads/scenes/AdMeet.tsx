@@ -27,10 +27,12 @@ const ROW = { top: 30, track: 36 };
 // copy and the safe bottom while it is the slot / compact graph, then up to
 // the graphic line as it grows to show the what-if controls.
 const meetLayout = (lay: AdLayout) => {
-  const K = byFormat(lay.format, { "4x5": 1.25, "1x1": 1.05, "9x16": 1.3 });
+  const K = byFormat(lay.format, { "4x5": 1.25, "1x1": 1.05, "9x16": 1.3, "1200x628": 1.5 });
   const W = INNER_W / K;
   const COL_W = (W - 2 * PAD - COL_GAP) / 2;
-  const TOP = { compact: (lay.textBottom + lay.safeBottom) / 2 - (CHART_H.compact * K) / 2, split: lay.top };
+  // (landscape centres the grown card in the frame too)
+  const split = lay.format === "1200x628" ? (lay.h - (CHART_H.split + SLIDERS_H) * K) / 2 : lay.top;
+  const TOP = { compact: (lay.textBottom + lay.safeBottom) / 2 - (CHART_H.compact * K) / 2, split };
   const knob = (slider: number, p: number) => ({
     x: PAD + SHOWN.indexOf(slider) * (COL_W + COL_GAP) + p * COL_W,
     y: CHART_H.split + ROW.top + ROW.track + 2,

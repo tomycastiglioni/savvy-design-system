@@ -1,6 +1,6 @@
 import "./shared/fonts";
 import { adFrames, ADS, MeetingStepAd } from "./ads/MeetingStepAd";
-import { FORMATS } from "./ads/layout";
+import { frameSize } from "./ads/layout";
 import { EMAIL_UIS, EmailHeader, EmailQuestionStill, EmailUI, EmailUIStill, emailUISize, HEADER as EMAIL_HEADER, QUESTION_SIZE } from "./email/EmailAssets";
 import { BENTO_ADS, BENTO_FORMATS, BentoAd, BentoFormat, bentoSeconds } from "./ads/bento/BentoAd";
 import { Composition, Folder, Still } from "remotion";
@@ -72,7 +72,7 @@ export const RemotionRoot: React.FC = () => {
           height={900}
         />
       </Folder>
-      {(["4x5", "1x1", "9x16"] as const).map((format) => (
+      {(["4x5", "1x1", "9x16", "1200x628"] as const).map((format) => (
         <Folder key={format} name={`Ads-${format}`}>
           {(
             [
@@ -89,8 +89,8 @@ export const RemotionRoot: React.FC = () => {
               defaultProps={{ ...spec, format }}
               durationInFrames={adFrames(spec, seconds)}
               fps={60}
-              width={FORMATS[format].w}
-              height={FORMATS[format].h}
+              width={frameSize(format).w}
+              height={frameSize(format).h}
             />
           ))}
         </Folder>

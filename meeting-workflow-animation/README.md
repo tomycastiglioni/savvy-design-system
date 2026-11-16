@@ -181,8 +181,8 @@ the recap). Both skip stretches where nothing moves and crossfade into their
 own first frame, so they loop without a seam.
 
 `AdPrep4x5`, `AdMeet4x5`, `AdCapture4x5` and `AdDeliver4x5` (1080×1350,
-60 fps, no sound), with `…1x1` (1080×1080) and `…9x16` (1080×1920) versions,
-are the Innovation Campaign ads "01 — Meeting steps (4x5) v3" from Figma,
+60 fps, no sound), with `…1x1` (1080×1080), `…9x16` (1080×1920) and
+`…1200x628` (landscape link ads) versions, are the Innovation Campaign ads "01 — Meeting steps (4x5) v3" from Figma,
 animated: the v3 layout (Savvy logo, ABC Diatype Light
 headline, body copy, the step's gradient) with that step's workflow laid out
 for the 4:5 frame (`src/ads/`, copy and sizes as in Figma): bigger than on the
@@ -202,8 +202,14 @@ Deliver starts 3.25 s in, on the suggested tasks.
 1:1 and 9:16 reuse the Figma text block (75% in 1:1; in 9:16 it starts 250 px
 down, and clicked buttons and centred cards stay above 1600 px, clear of the
 story/reel overlays) and fit each graphic to the room left (per-format sizes
-in `src/ads/layout.ts` and the scenes). Render with
-`npx remotion render AdPrep4x5 out/ads/meeting-steps/4x5/savvy-meeting-steps-01-prep-4x5.mp4 --codec=h264 --crf=18 --muted`.
+in `src/ads/layout.ts` and the scenes). 1200×628 is landscape: the text block
+at 58% on the left, centred top to bottom, and the graphic on the right. The
+scenes lay out on their usual 1080-wide canvas with the graphic line near its
+top, shown at 0.6× against the frame's right edge (`LANDSCAPE` in
+`src/ads/layout.ts`); Prep's home and Meet's card are centred top to bottom,
+the documents open on the graphic line and run off the bottom. Render all 16
+with `scripts/meeting-steps-ads.sh` (or `scripts/meeting-steps-ads.sh 1200x628`)
+to `out/ads/meeting-steps/<format>/`.
 
 `MobileCommercialOptions` and `MobileCommercial-board-*` (folder
 "Mobile-commercial", `src/mobile-commercial/`) are the static options for the
@@ -249,7 +255,7 @@ also render alone on transparent backgrounds for Figma: `Email-ui-prep`,
 `-shadow` (the video's card shadow, padded), and `Email-ui-question` (the
 client's what-if bubble).
 
-`AdBento-07-say-4x5` … `AdBento-13-summary-9x16` (folder "Ads-bento") are the
+`AdBento-07-say-4x5` … `AdBento-13-summary-1200x628` (folder "Ads-bento") are the
 Innovation Campaign's feature-bento ads ("03 — Feature bento (4x5) v3" in
 Figma): the Figma copy (logo, Diatype Light headline, body; three typos
 fixed: you’re, prospect’s, clients’, with the two headlines widened so they
@@ -263,7 +269,10 @@ down to the ad's bottom edge and runs off it. Each ad is one seamless loop of
 its card (10–13 s). Ad 13 (Every household, summarized before the call) has a card of its own, `src/more-ways/cards/HouseholdSummary.tsx`: the Chans' household summary filling in section by section, then marked as updated after the last meeting. The copy is measured once the fonts load, so the graphic
 follows the line breaks. 1:1 sets the copy at 75% across the full width with
 balanced headlines; 9:16 keeps the 4:5 copy, starts at 250 px and centres copy
-and card between there and 1650 px. Render all 18 with `scripts/bento-ads.sh`
+and card between there and 1650 px; 1200×628 (landscape) sets the copy at 56%
+on the left, centred top to bottom, and the card in the right panel (612–1144
+px), as wide as the panel allows, centred top to bottom when whole (the PDF
+hunt runs off the bottom). Render all 28 with `scripts/bento-ads.sh`
 (or `scripts/bento-ads.sh 4x5`) to `out/ads/bento/<format>/`.
 
 `Launch30Storyboard` (19 static frames, 1920×1080, in order F01 … F15 with F07

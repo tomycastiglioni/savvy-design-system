@@ -36,11 +36,13 @@ const prepLayout = (lay: AdLayout) => {
   const TOP = lay.top;
   // Home scale: 1.05× in 4:5; in 1:1 and 9:16 the home fills the room between
   // the graphic line and the safe bottom (60 px margin in 1:1).
-  const K = byFormat(lay.format, { "4x5": 1.05, "1x1": (lay.safeBottom - 60 - TOP) / (H.cardY + H.cardH), "9x16": 1.3 });
+  const K = byFormat(lay.format, { "4x5": 1.05, "1x1": (lay.safeBottom - 60 - TOP) / (H.cardY + H.cardH), "9x16": 1.3, "1200x628": 1.3 });
   const W = INNER_W / K; // home width, design px
-  const BUTTON = { x: MARGIN_X + H.button.x * K, y: TOP + (H.cardY + H.button.y) * K, w: H.button.w * K, h: H.button.h * K };
+  // Landscape centres the home top to bottom (the document still opens on the graphic line).
+  const HOME_TOP = lay.format === "1200x628" ? (lay.h - (H.cardY + H.cardH) * K) / 2 : TOP;
+  const BUTTON = { x: MARGIN_X + H.button.x * K, y: HOME_TOP + (H.cardY + H.button.y) * K, w: H.button.w * K, h: H.button.h * K };
   // The document: tab bar top-left on the text margin.
-  const DOC = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, byFormat(lay.format, { "4x5": 1.25, "1x1": 1.1, "9x16": 1.4 }));
+  const DOC = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, byFormat(lay.format, { "4x5": 1.25, "1x1": 1.1, "9x16": 1.4, "1200x628": 1.3 }));
   // "Loading household…" card, centred across the frame and between the copy
   // and the safe bottom.
   const LOADING = { x: (lay.w - 620) / 2, w: 620, h: 440, y: (lay.textBottom + lay.safeBottom) / 2 - 220 };
@@ -48,6 +50,7 @@ const prepLayout = (lay: AdLayout) => {
   return {
     lay,
     TOP,
+    HOME_TOP,
     K,
     W,
     BUTTON,
@@ -66,7 +69,7 @@ const usePrepLayout = () => {
 };
 
 const AdHome: React.FC = () => {
-  const { TOP, K, W, lay } = usePrepLayout();
+  const { HOME_TOP: TOP, K, W, lay } = usePrepLayout();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const click = T.clickReview;

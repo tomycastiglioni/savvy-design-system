@@ -21,10 +21,10 @@ const deliverLayout = (lay: AdLayout) => {
   const mid = (lay.textBottom + lay.safeBottom) / 2;
   const RECAP = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 1.15);
   // The editor fits down to its Save button, 60 px above the safe bottom.
-  const editS = Math.min(byFormat(lay.format, { "4x5": 1, "1x1": 1, "9x16": 1.15 }), (lay.safeBottom - 60 - TOP) / 668);
+  const editS = Math.min(byFormat(lay.format, { "4x5": 1, "1x1": 1, "9x16": 1.15, "1200x628": 1.15 }), (lay.safeBottom - 60 - TOP) / 668);
   const EDIT = anchor(EDITOR.x, EDITOR.y, MARGIN_X, TOP, editS);
   const RECAP_WIDE = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, TOP, 0.94);
-  const LOADER = anchor(LOADING_BOX.x + LOADING_BOX.w / 2, LOADING_BOX.y + LOADING_BOX.h / 2, lay.w / 2, mid, byFormat(lay.format, { "4x5": 1.1, "1x1": 0.95, "9x16": 1.2 }));
+  const LOADER = anchor(LOADING_BOX.x + LOADING_BOX.w / 2, LOADING_BOX.y + LOADING_BOX.h / 2, lay.w / 2, mid, byFormat(lay.format, { "4x5": 1.1, "1x1": 0.95, "9x16": 1.2, "1200x628": 1.2 }));
   // The email card fits between the side margins, and between the copy and the
   // safe bottom with at least the format's gap above and below.
   const mailS = Math.min(INNER_W / EMAIL.w, (lay.safeBottom - lay.textBottom - 2 * lay.gap) / EMAIL.h);

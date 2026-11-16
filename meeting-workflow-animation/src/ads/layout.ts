@@ -2,9 +2,10 @@ import { createContext, useContext } from "react";
 
 // Shared ad geometry. The 4:5 layout is the Figma one ("01 — Meeting steps
 // (4x5) v3"); 1:1 and 9:16 reuse its text block, scaled, and fit each graphic
-// to the room left under it.
+// to the room left under it. 1200×628 is landscape: the copy on the left, the
+// graphic on the right (LANDSCAPE below).
 
-export type Format = "4x5" | "1x1" | "9x16";
+export type Format = "4x5" | "1x1" | "9x16" | "1200x628";
 type Spec = {
   readonly w: number;
   readonly h: number;
@@ -14,12 +15,29 @@ type Spec = {
   // Key UI (clicked buttons, centred cards) stays above this line; graphics
   // may still run past it. 9:16 keeps clear of the story/reel overlays.
   readonly safeBottom: number;
+  // Landscape only: the graphic line, with no copy above it.
+  readonly graphicTop?: number;
 };
+
+// 1200×628 (1.91:1 link ads): the text block, scaled, sits on the left,
+// centred top to bottom; the scenes lay out on a virtual canvas 1080 wide, as
+// in the other formats, with the graphic line near its top, and the ad shows
+// that canvas at `view` scale against the frame's right edge, so the graphic
+// fills the right of the frame and may run off its bottom.
+export const LANDSCAPE = { w: 1200, h: 628, textLeft: 56, textScale: 0.58, view: 0.6 };
+const VIEW_H = LANDSCAPE.h / LANDSCAPE.view;
+const VIEW_TOP = 96; // the graphic line, virtual px (≈ 58 px in the frame)
+
 export const FORMATS: Record<Format, Spec> = {
   "4x5": { w: 1080, h: 1350, textTop: 86.48, textScale: 1, gap: 80, safeBottom: 1350 },
   "1x1": { w: 1080, h: 1080, textTop: 74.57, textScale: 0.75, gap: 56, safeBottom: 1080 },
   "9x16": { w: 1080, h: 1920, textTop: 250, textScale: 1, gap: 96, safeBottom: 1600 },
+  // the virtual canvas; its gap mirrors the graphic line, so things centred
+  // "between the copy and the bottom" centre in the frame
+  "1200x628": { w: 1080, h: VIEW_H, textTop: 0, textScale: LANDSCAPE.textScale, gap: VIEW_TOP, safeBottom: VIEW_H, graphicTop: VIEW_TOP },
 };
+// The rendered frame of each format.
+export const frameSize = (format: Format) => (format === "1200x628" ? { w: LANDSCAPE.w, h: LANDSCAPE.h } : { w: FORMATS[format].w, h: FORMATS[format].h });
 
 // The text column's left edge; graphics line up with it and may only run off
 // the right and bottom edges.
@@ -46,6 +64,7 @@ export type AdLayout = Spec & {
 };
 export const adLayout = (format: Format, step: Step): AdLayout => {
   const f = FORMATS[format];
+  if (f.graphicTop !== undefined) return { ...f, format, textBottom: f.graphicTop - f.gap, top: f.graphicTop };
   const textBottom = f.textTop + (BLOCK_H_BY_FORMAT[format]?.[step] ?? BLOCK_H[step]) * f.textScale;
   return { ...f, format, textBottom, top: textBottom + f.gap };
 };

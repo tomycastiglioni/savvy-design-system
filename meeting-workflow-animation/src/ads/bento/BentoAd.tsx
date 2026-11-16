@@ -17,9 +17,10 @@ import { loadAdFonts } from "../fonts";
 // under the copy: left edge on the text margin, sized to the room left. A
 // graphic that fits ends with its own edge; one that doesn't runs off the
 // bottom. One loop per ad, so the ads loop seamlessly. 4:5 is the Figma
-// layout; 1:1 and 9:16 re-fit it.
+// layout; 1:1 and 9:16 re-fit it; 1200×628 is landscape, the copy on the left
+// and the graphic on the right.
 
-export type BentoFormat = "4x5" | "1x1" | "9x16";
+export type BentoFormat = "4x5" | "1x1" | "9x16" | "1200x628";
 type Spec = {
   readonly w: number;
   readonly h: number;
@@ -31,6 +32,11 @@ type Spec = {
   readonly fitBottom: number; // a graphic that ends above this is shown whole
   readonly center: boolean; // centre copy + a whole graphic between textTop and fitBottom
   readonly balance: boolean; // even headline lines (1:1's full-width column)
+  // Landscape: the copy at `textLeft`, centred top to bottom; the graphic in
+  // the panel from `left` to `right`, sized to its width (or to show its
+  // essential part from `top` down) and centred top to bottom when whole, else
+  // running off the bottom from `top`.
+  readonly side?: { readonly textLeft: number; readonly left: number; readonly right: number; readonly top: number };
 };
 export const BENTO_FORMATS: Record<BentoFormat, Spec> = {
   "4x5": { w: 1080, h: 1350, textTop: 86, textScale: 1, column: 1, gap: 80, safeBottom: 1350, fitBottom: 1290, center: false, balance: false },
@@ -38,6 +44,7 @@ export const BENTO_FORMATS: Record<BentoFormat, Spec> = {
   "1x1": { w: 1080, h: 1080, textTop: 74.57, textScale: 0.75, column: 2, gap: 56, safeBottom: 1080, fitBottom: 1020, center: false, balance: true },
   // key content stays clear of the story/reel overlays at the top and bottom
   "9x16": { w: 1080, h: 1920, textTop: 250, textScale: 1, column: 1, gap: 96, safeBottom: 1650, fitBottom: 1650, center: true, balance: false },
+  "1200x628": { w: 1200, h: 628, textTop: 0, textScale: 0.56, column: 1, gap: 0, safeBottom: 628, fitBottom: 572, center: true, balance: false, side: { textLeft: 56, left: 612, right: 1144, top: 56 } },
 };
 const MARGIN = 75;
 const INNER = 1080 - 2 * MARGIN;
@@ -160,9 +167,20 @@ export const BentoAd: React.FC<BentoAdSpec & { readonly format?: BentoFormat }> 
   const { ref, height } = useMeasuredHeight();
   const col = Math.min(column * f.column, INNER / f.textScale);
   const textH = (height ?? 0) * f.textScale;
-  let textTop = f.textTop;
+  let textTop = f.side ? (f.h - textH) / 2 : f.textTop;
   let placed: React.ReactNode = null;
-  if (g && height !== null) {
+  if (g && height !== null && f.side) {
+    const { left, right, top: panelTop } = f.side;
+    const s = Math.min(g.maxScale, (right - left) / g.box.w, (f.safeBottom - panelTop) / g.essential);
+    const whole = panelTop + g.full * s <= f.fitBottom;
+    const top = (whole ? (f.h - g.full * s) / 2 : panelTop) - g.box.y * s;
+    const frameH = whole ? g.box.y + g.full + END_PAD : Math.max(CARDS[card].h, Math.ceil((f.h - top) / s));
+    placed = (
+      <div style={{ position: "absolute", left: left - g.box.x * s, top, width: CARDS[card].w, scale: s, transformOrigin: "0 0" }}>
+        <g.Loop h={frameH} />
+      </div>
+    );
+  } else if (g && height !== null) {
     let graphicTop = f.textTop + textH + f.gap;
     const s = Math.min(g.maxScale, INNER / g.box.w, (f.safeBottom - graphicTop) / g.essential);
     const whole = graphicTop + g.full * s <= f.fitBottom;
@@ -188,7 +206,7 @@ export const BentoAd: React.FC<BentoAdSpec & { readonly format?: BentoFormat }> 
         ref={ref}
         style={{
           position: "absolute",
-          left: MARGIN,
+          left: f.side?.textLeft ?? MARGIN,
           top: textTop,
           width: col,
           scale: f.textScale,

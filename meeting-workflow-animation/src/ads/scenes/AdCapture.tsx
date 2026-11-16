@@ -23,10 +23,10 @@ const PROFILE = { w: 480, h: 238 };
 const SYNC = { in: 0.1, notes: [0.6, 4.6] as const, synced: T.toNotes, out: T.growStart - 0.35 };
 
 const captureLayout = (lay: AdLayout) => {
-  const phoneS = byFormat(lay.format, { "4x5": 1.15, "1x1": 0.95, "9x16": 1.3 });
+  const phoneS = byFormat(lay.format, { "4x5": 1.15, "1x1": 0.95, "9x16": 1.3, "1200x628": 1.3 });
   const phoneTop = lay.top + 30;
   const PHONE_VIEW = { x: lay.w - MARGIN_X - (PHONE.x + PHONE.w) * phoneS, y: phoneTop - PHONE.y * phoneS, s: phoneS };
-  const DESK_VIEW = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, lay.top, byFormat(lay.format, { "4x5": 1.2, "1x1": 1.05, "9x16": 1.35 }));
+  const DESK_VIEW = anchor(DOC_PANEL.x, TABS_BAR.y, MARGIN_X, lay.top, byFormat(lay.format, { "4x5": 1.2, "1x1": 1.05, "9x16": 1.35, "1200x628": 1.3 }));
   const KEYS: CameraKey[] = [
     { t: 0, ...PHONE_VIEW },
     { t: T.growStart, ...PHONE_VIEW },
