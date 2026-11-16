@@ -155,7 +155,14 @@ overflow rules and carousel slots.
 `template/blog-thumbnail.html` is the Webflow blog Thumbnail and Main image (548 × 210, Figma `XYp5xl61nCXvKUjuc4jLEL`
 node `32544:204`). Change the month, build, then `export_pdf.py` writes a 1096 × 420 PNG.
 
-## Blog from a finished report
+## Blog source of truth: the DOCX
+
+The blog always follows the investment team's **DOCX** copy doc, never the PDF or the report HTML. They carry the
+same content in a different layout, and the DOCX is the final word. Convert it with
+`blog/docx_to_copy.py "<the month's>.docx" copy/YYYY-MM-report.md`, then run `build_blog.py`. The converter needs
+pandoc and keeps every word as written. Wait for the final DOCX before building the post.
+
+## Blog from a finished report (fallback only)
 
 When the month's copy arrives as the investment team's finished report, run
 `blog/report_to_copy.py template/YYYY-MM-<slug>.html copy/YYYY-MM-report.md` to make the copy doc, then

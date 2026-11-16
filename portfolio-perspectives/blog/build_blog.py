@@ -40,7 +40,7 @@ def bold_only(line):
 def parse(md):
     """Return title, byline lines, and ordered sections {name: [blocks]}."""
     lines = md.splitlines()
-    title, sections, cur = None, [], None
+    title, sections, cur, intro = None, [], None, []
     for ln in lines:
         if ln.startswith('# '):
             title = plain(ln[2:])
@@ -49,7 +49,9 @@ def parse(md):
             sections.append(cur)
         elif cur is not None:
             cur[1].append(ln)
-    return title, sections
+        elif title and ln.strip():
+            intro.append(ln.strip())   # dek between the title and the first section
+    return title, sections, intro
 
 
 def blocks(lines):
@@ -176,10 +178,10 @@ def render_generic(bl, sub='h3'):
 
 
 def build(md, meta_description):
-    title, sections = parse(md)
+    title, sections, intro = parse(md)
     month_year = re.search(r'(%s) (\d{4})' % '|'.join(MONTHS), md).group(0)
     month, year = month_year.split()
-    body, bottom = [f'<h1>{title}</h1>', SPACER], ''
+    body, bottom = [f'<h1>{title}</h1>'] + [f'<p>{clean(x)}</p>' for x in intro] + [SPACER], ''
     for name, lines in sections:
         bl = blocks(lines)
         low = name.lower()
