@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "skills": {
+    "brainstorming": {
+      "source": "../../../../../root/.npm/_npx/e572041604e6c4c9/node_modules/@pixel-point/toolcraft/toolcraft-skills",
+      "sourceType": "local",
+      "computedHash": "06b5a0fc1905427057555537f5f75e0071e90c792f5f55155a7b946b7e607c8c",
+      "installMode": "copy"
+    },
+    "browser": {
+      "source": "../../../../../root/.npm/_npx/e572041604e6c4c9/node_modules/@pixel-point/toolcraft/toolcraft-skills",
+      "sourceType": "local",
+      "computedHash": "dd80ddc4437a59fcaf5dbb34d1fc80fe9ee0e449fabc869abeac64cf77f6ed06",
+      "installMode": "copy"
+    },
+    "figma": {
+      "source": "../../../../../root/.npm/_npx/e572041604e6c4c9/node_modules/@pixel-point/toolcraft/toolcraft-skills",
+      "sourceType": "local",
+      "computedHash": "33acf89d60dce455390710720f6a8aff1394de0a252bc6f7bbf375772c2cc808",
+      "installMode": "copy"
+    },
+    "figma-implement-design": {
+      "source": "../../../../../root/.npm/_npx/e572041604e6c4c9/node_modules/@pixel-point/toolcraft/toolcraft-skills",
+      "sourceType": "local",
+      "computedHash": "2909b5f755624915b05d8b1988b9c53f44e9c2ef0e09ec50f7d36db85bce92f4",
+      "installMode": "copy"
+    },
+    "systematic-debugging": {
+      "source": "../../../../../root/.npm/_npx/e572041604e6c4c9/node_modules/@pixel-point/toolcraft/toolcraft-skills",
+      "sourceType": "local",
+      "computedHash": "8efc1f41f605b85ecd2f1d4ee4f19b33eae04dd1e4d523b574534c771e7e8205",
+      "installMode": "copy"
+    },
+    "writing-plans": {
+      "source": "../../../../../root/.npm/_npx/e572041604e6c4c9/node_modules/@pixel-point/toolcraft/toolcraft-skills",
+      "sourceType": "local",
+      "computedHash": "f8dbb1e13d6b249c84f38cf6f746bb5ecbb6d4082335484f38c49d8d12bbb5d2",
+      "installMode": "copy"
+    }
+  }
+}
