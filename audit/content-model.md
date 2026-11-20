@@ -13,9 +13,10 @@ Nothing here has been built in Webflow.
 | Main | **Lead Magnets** | Guides, e-books, calculators, reports, advisor campaigns |
 | Reference | **Content Types** | The 6 blog types. Holds listing intro text, SEO and hub placement. Does not generate pages |
 | Reference | **Topics** | Subject tags (Tax, Retirement, Estate...) |
+| Reference | **Series** | Recurring programs (Global Markets Recap, Portfolio Perspectives, Inside the Markets...). Used to filter and group |
 | Reference | **People** | Authors and event speakers |
 
-Fields that are NOT collections: Audience (two switches), FAQ, Disclosure. Series are Topics. Blog has no Format field: video, GIF, charts and downloads are components in the body.
+Fields that are NOT collections: Audience (two switches), FAQ, Disclosure. Series is its own reference collection. Blog has no Format field: video, GIF, charts and downloads are components in the body.
 
 ## Blog
 
@@ -27,12 +28,13 @@ Fields that are NOT collections: Audience (two switches), FAQ, Disclosure. Serie
 | | Hero image | Image | |
 | | Thumbnail | Image | Card image |
 | Routing | Content type | Reference (one) to Content Types | Required |
-| | Topics | Multi-reference to Topics | Includes series such as Global Markets Recap |
+| | Topics | Multi-reference to Topics | |
+| | Series | Reference (one) to Series | Optional |
 | | Show on Advisors hub | Switch | |
 | | Show on Clients hub | Switch | Both on = shared item, one entry |
 | Display | Featured on Advisors hub | Switch | Pins to the top slot, sorted by date |
 | | Featured on Clients hub | Switch | |
-| | Show as banner until | Date | Empty = no banner. Banner disappears after this date |
+| | Highlight until | Date | Highlights the post (banner or top strip on the hubs). Empty = not highlighted. Stops highlighting after this date |
 | SEO | Meta title | Text | About 55 characters |
 | | Meta description | Text | About 150 characters |
 | | Canonical URL | Text | Only if different |
@@ -134,9 +136,13 @@ This is what lets editors reorder the hub rails without a designer. Listing page
 
 ## Topics (reference)
 
-Name, Slug, Description, Meta title, Meta description, Sort order, Topic kind (option: Subject or Series, so filters can list subjects only).
+Name, Slug, Description, Meta title, Meta description, Sort order.
 
-Topics include series: Global Markets Recap, Portfolio Perspectives, Inside the Markets, Capability stories, Under the hood, Why Savvy.
+## Series (reference)
+
+Name, Slug, Description, Cover image, Meta title, Meta description.
+
+Starting series: Global Markets Recap, Portfolio Perspectives, Inside the Markets, Capability stories, Under the hood, Why Savvy.
 
 ## People (reference)
 
