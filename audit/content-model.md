@@ -15,7 +15,7 @@ Nothing here has been built in Webflow.
 | Reference | **Topics** | Subject tags (Tax, Retirement, Estate...) |
 | Reference | **People** | Authors and event speakers |
 
-Fields that are NOT collections: Audience (two switches), Series (option), Format (option), FAQ, CTA, Disclosure.
+Fields that are NOT collections: Audience (two switches), FAQ, Disclosure. Series are Topics. Blog has no Format field: video, GIF, charts and downloads are components in the body.
 
 ## Blog
 
@@ -23,42 +23,29 @@ Fields that are NOT collections: Audience (two switches), Series (option), Forma
 |---|---|---|---|
 | Basics | Name | Text | Title / H1 |
 | | Slug | Text | |
+| | Subtext | Text | Shown below the headline. Write it as a direct 1 to 2 sentence answer |
+| | Hero image | Image | |
+| | Thumbnail | Image | Card image |
 | Routing | Content type | Reference (one) to Content Types | Required |
-| | Topics | Multi-reference to Topics | |
+| | Topics | Multi-reference to Topics | Includes series such as Global Markets Recap |
 | | Show on Advisors hub | Switch | |
 | | Show on Clients hub | Switch | Both on = shared item, one entry |
-| | Series | Option | Global Markets Recap, Portfolio Perspectives, Inside the Markets, Capability stories, Under the hood, Why Savvy |
-| | Format | Option | Article, Video, Podcast, Guide, Report, Calculator, Recap, Demo |
-| Display | Featured on Advisors hub | Switch | |
+| Display | Featured on Advisors hub | Switch | Pins to the top slot, sorted by date |
 | | Featured on Clients hub | Switch | |
-| | Feature rank | Number | Order among featured |
-| | Show as announcement banner | Switch | |
-| | Banner end date | Date | |
-| | Thumbnail | Image | Card image |
+| | Show as banner until | Date | Empty = no banner. Banner disappears after this date |
 | SEO | Meta title | Text | About 55 characters |
 | | Meta description | Text | About 150 characters |
 | | Canonical URL | Text | Only if different |
-| Top of page | Quick answer | Text | 40 to 60 words |
-| | Key takeaways | Rich text | 3 to 5 bullets |
-| | Hero image | Image | |
-| | Hero video | Video link | YouTube, Vimeo, Loom |
 | Credibility | Authors | Multi-reference to People | |
-| | Reviewed by | Reference to People | Optional |
 | | Published date | Date | |
 | | Updated date | Date | |
-| Body | Body | Rich text | With components (see below) |
+| Body | Body | Rich text | With components: video, GIF or demo, charts, callout, table, quote, download, image gallery |
 | FAQ | FAQ 1 to 5, question | Text | 5 pairs |
 | | FAQ 1 to 5, answer | Text | |
 | Sources | Sources | Rich text | List of titles with links |
 | Related | Related posts | Multi-reference to Blog | Default is same topic |
-| CTA | CTA heading | Text | |
-| | CTA text | Text | |
-| | CTA button label | Text | |
-| | CTA button link | Link | |
 | Compliance | Disclosure type | Option | None, Standard, Investment, Testimonial. The legal text lives once in the template |
-| Product only | Demo video | Video link | Loom or video |
-| | Demo GIFs | Multi-image | |
-| | Series number | Number | Shipped no. 5 |
+| Product only | Series number | Number | Shipped no. 5 |
 | | Who it's for | Text | |
 | Case Study only | Customer name | Text | |
 | | Firm size or AUM | Text | |
@@ -67,11 +54,8 @@ Fields that are NOT collections: Audience (two switches), Series (option), Forma
 | | Pull quote | Text | |
 | | Quote attribution | Text | |
 | Investment only | Period | Text | "November 2026" |
-| | Data file or PDF | File | |
-| | Chart images | Multi-image | |
-| Announcement only | Press release link | Link | |
 
-Webflow can't hide fields by type, so editors will see the "only" groups on every post. Putting them in field groups with help text ("Product posts only") keeps that manageable.
+Webflow can't hide fields by type, so editors will see the "only" groups on every post. Field groups with help text ("Product posts only") keep that manageable.
 
 ## Events
 
@@ -81,7 +65,6 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Show on Advisors hub | Switch | |
 | Show on Clients hub | Switch | |
 | Topics | Multi-reference to Topics | |
-| Series | Option | Inside the Markets, etc. |
 | Event format | Option | Webinar, In person, Open house |
 | Start date and time | Date | Upcoming or past is computed from this |
 | End date and time | Date | |
@@ -99,7 +82,6 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Recap post | Reference to Blog | Optional |
 | Also show on Product listing | Switch | Savvy Intelligence Open House |
 | Featured on Advisors hub, Featured on Clients hub | Switch | |
-| Feature rank | Number | |
 | FAQ 1 to 3, question and answer | Text | 3 pairs |
 | Disclosure type | Option | |
 | Meta title, Meta description | Text | |
@@ -130,7 +112,6 @@ Hub display rule: the Advisors hub shows the advisors link, else the general lin
 | Campaign name | Text | UTM or tracking |
 | Authors | Multi-reference to People | Optional |
 | Featured on Advisors hub, Featured on Clients hub | Switch | |
-| Feature rank | Number | |
 | FAQ 1 to 3, question and answer | Text | 3 pairs |
 | Disclosure type | Option | |
 | Meta title, Meta description | Text | |
@@ -153,7 +134,9 @@ This is what lets editors reorder the hub rails without a designer. Listing page
 
 ## Topics (reference)
 
-Name, Slug, Description, Meta title, Meta description, Sort order.
+Name, Slug, Description, Meta title, Meta description, Sort order, Topic kind (option: Subject or Series, so filters can list subjects only).
+
+Topics include series: Global Markets Recap, Portfolio Perspectives, Inside the Markets, Capability stories, Under the hood, Why Savvy.
 
 ## People (reference)
 
