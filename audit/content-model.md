@@ -70,7 +70,8 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Topics | Multi-reference to Topics | |
 | Series | Reference (one) to Series | Optional. Added back for Inside the Markets, to confirm |
 | Event format | Option | Webinar, In person, Open house |
-| Start date and time | Date | Decides before or after the event |
+| Start date and time | Date | Used for sorting and display |
+| Event ended | Switch | Editors turn on after the event. Swaps the registration form for the recording form |
 | End date and time | Date | |
 | Time zone | Option | |
 | Location | Text | In-person only |
@@ -89,9 +90,8 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Meta title, Meta description | Text | |
 
 How the page behaves:
-- Before the start date it shows the registration form. After the event it shows the recording form, if one is filled.
+- While Event ended is off it shows the registration form. When it is on it shows the recording form, if one is filled.
 - When both the advisors and clients forms are filled (Inside the Markets), the page shows both, labeled. Hub cards can link with `?audience=advisors` or `?audience=clients` so a small script shows only the matching form. Without the script, both are shown.
-- Webflow can't compare a date to today on its own, so switching the form after the event needs a small script or an "Event ended" switch. To decide with the builder.
 
 ## Lead Magnets
 
@@ -166,8 +166,8 @@ Each content type has one listing page, not one per audience. The listing has an
 | Advisors hub | `/resources/advisors` | Static page |
 | Clients hub | `/resources/clients` | Static page |
 | Blog type listings | `/resources/product`, `/case-studies`, `/investment`, `/announcements`, `/advisor-blog`, `/client-blog` | Content Types collection template, so a new type is a new item |
-| All reads | `/blog` | Static page, every Blog item, filterable |
-| Blog items | `/blog/{slug}` | Blog collection template |
+| All articles | `/articles` | Static page, every Blog item, filterable |
+| Blog items | `/articles/{slug}` | Blog collection template |
 | Events listing | `/events` | Static page with audience filter |
 | Event items | `/events/{slug}` | Events collection template. Existing `/events/*` URLs stay |
 | Guides and Tools listing | `/guides` | Static page with audience filter |
@@ -177,7 +177,7 @@ Each content type has one listing page, not one per audience. The listing has an
 Reserved slugs: `advisors` and `clients` can't be content types, because they share the `/resources/` folder. The site already uses the same pattern for `/press`: a static page plus a collection template under one name. Confirm on staging.
 
 Redirects needed:
-- `/blog-posts/*` to `/blog/*` (one wildcard rule, 267 live posts).
+- `/blog-posts/*` to `/articles/*` (one wildcard rule, 267 live posts).
 - Today's `/resources` (the client hub) moves to `/resources/clients`.
 - `/advisors/resources` to `/resources/advisors`, `/advisors/blog` to `/resources/advisor-blog`.
 - `/category/{slug}` to the matching type listing or topic.
@@ -193,4 +193,4 @@ Redirects needed:
 ## Open decisions for Mary
 1. **Topic list** (11 suggested) and **UVA's Economic Insights** (60 posts).
 2. **Advisor Blog and Client Blog:** two types, or one type with the audience switches?
-3. **Naming:** `/blog` holds all six types, not only blog posts.
+3. **Naming:** `/articles` holds all six types, not only blog posts.
