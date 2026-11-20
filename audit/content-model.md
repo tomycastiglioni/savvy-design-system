@@ -66,9 +66,11 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Name, Slug | Text | |
 | Show on Advisors hub | Switch | |
 | Show on Clients hub | Switch | |
+| Featured on Advisors hub, Featured on Clients hub | Switch | |
 | Topics | Multi-reference to Topics | |
+| Series | Reference (one) to Series | Optional. Added back for Inside the Markets, to confirm |
 | Event format | Option | Webinar, In person, Open house |
-| Start date and time | Date | Upcoming or past is computed from this |
+| Start date and time | Date | Decides before or after the event |
 | End date and time | Date | |
 | Time zone | Option | |
 | Location | Text | In-person only |
@@ -76,19 +78,20 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Summary | Text | Card text |
 | Description | Rich text | |
 | Speakers | Multi-reference to People | |
-| Registration link, general | Link | Used when there is one link |
-| Registration link, advisors | Link | Optional second link |
-| Registration link, clients | Link | Optional second link |
-| Registration button label | Text | Default "Register" |
-| Recording link | Video link | After the event |
-| Recap post | Reference to Blog | Optional |
+| Registration form | Text | Form embed script or form ID, shown before the event |
+| Registration form, advisors | Text | Optional, for events with separate advisor tracking |
+| Registration form, clients | Text | Optional, for events with separate client tracking |
+| Recording form | Text | Form embed script or ID, shown after the event |
+| Recording link | Link | Revealed after the recording form is submitted |
 | Also show on Product listing | Switch | Savvy Intelligence Open House |
-| Featured on Advisors hub, Featured on Clients hub | Switch | |
 | FAQ 1 to 3, question and answer | Text | 3 pairs |
 | Disclosure type | Option | |
 | Meta title, Meta description | Text | |
 
-Hub display rule: the Advisors hub shows the advisors link, else the general link. The Clients hub shows the clients link, else the general link.
+How the page behaves:
+- Before the start date it shows the registration form. After the event it shows the recording form, if one is filled.
+- When both the advisors and clients forms are filled (Inside the Markets), the page shows both, labeled. Hub cards can link with `?audience=advisors` or `?audience=clients` so a small script shows only the matching form. Without the script, both are shown.
+- Webflow can't compare a date to today on its own, so switching the form after the event needs a small script or an "Event ended" switch. To decide with the builder.
 
 ## Lead Magnets
 
@@ -96,23 +99,20 @@ Hub display rule: the Advisors hub shows the advisors link, else the general lin
 |---|---|---|
 | Name, Slug | Text | |
 | Format | Option | Guide, E-book, Checklist, Template, Report, Calculator or tool, Webinar replay |
-| Show on Advisors hub | Switch | |
+| Show on Advisors hub | Switch | Both off = not listed anywhere, for one-off advisor campaigns |
 | Show on Clients hub | Switch | |
 | Topics | Multi-reference to Topics | |
-| Hide from listings | Switch | On for one-off advisor campaign pages |
 | Cover image | Image | |
 | Summary | Text | Card text |
 | Description | Rich text | |
 | What's inside | Rich text | Bullets |
-| Gated | Switch | |
-| HubSpot form ID | Text | |
-| Download file | File | Delivered after the form |
+| Gated | Switch | On = the form comes first, then the resource. Off = no form, the resource is available directly |
+| HubSpot form ID | Text | Gated only |
+| Download file | File | Shown directly, or after the form when gated |
 | Tool link | Link | For calculators |
-| Thank-you message | Text | |
-| Thank-you next step, label and link | Text, Link | |
-| Advisor | Reference to Advisor Directory | Optional, for advisor campaigns |
+| Thank-you message | Text | Gated only |
+| Advisor | Reference to Advisor Directory | The advisor behind a campaign page, also acts as the author |
 | Campaign name | Text | UTM or tracking |
-| Authors | Multi-reference to People | Optional |
 | Featured on Advisors hub, Featured on Clients hub | Switch | |
 | FAQ 1 to 3, question and answer | Text | 3 pairs |
 | Disclosure type | Option | |
@@ -136,7 +136,9 @@ This is what lets editors reorder the hub rails without a designer. Listing page
 
 ## Topics (reference)
 
-Name, Slug, Description, Meta title, Meta description, Sort order.
+Name, Slug, Description, Color, Meta title, Meta description, Sort order.
+
+Color is a color field, used for the dot next to the topic name on cards and filters.
 
 ## Series (reference)
 
@@ -154,35 +156,39 @@ Editors build the body of Blog, Events and Lead Magnets posts with components in
 
 ## URLs
 
-Item pages sit under one fixed prefix per collection, so audience and type can't be in the item URL. Breadcrumbs on the page show the path (Resources > Advisors > Product > Title), using a Primary audience field for shared items.
+Blog item pages sit under one fixed prefix, so audience and type can't be in the item URL. Breadcrumbs on the page show the path (Resources > Advisors > Product > Title), using a Primary audience field for shared items.
+
+Each content type has one listing page, not one per audience. The listing has an audience filter (All, Advisors, Clients). Hub rails link to it with the audience preselected.
 
 | Page | URL | Built as |
 |---|---|---|
 | Resources hub | `/resources` | Static page |
 | Advisors hub | `/resources/advisors` | Static page |
 | Clients hub | `/resources/clients` | Static page |
-| Advisors listings | `/resources/advisors/product`, `/case-studies`, `/investment`, `/announcements`, `/advisor-blog`, `/events` | Static pages, each a list filtered to one type and the Advisors switch |
-| Clients listings | `/resources/clients/investment`, `/announcements`, `/client-blog`, `/events`, `/guides-and-tools` | Static pages, same pattern |
-| All reads | `/blog` | Static page: every Blog item, filterable by audience, type and topic |
+| Blog type listings | `/resources/product`, `/case-studies`, `/investment`, `/announcements`, `/advisor-blog`, `/client-blog` | Content Types collection template, so a new type is a new item |
+| All reads | `/blog` | Static page, every Blog item, filterable |
 | Blog items | `/blog/{slug}` | Blog collection template |
-| Event items | `/events/{slug}` | Events collection template. Existing `/events/*` pages keep their URLs |
+| Events listing | `/events` | Static page with audience filter |
+| Event items | `/events/{slug}` | Events collection template. Existing `/events/*` URLs stay |
+| Guides and Tools listing | `/guides` | Static page with audience filter |
 | Lead magnet items | `/guides/{slug}` | Lead Magnets collection template |
-| Topics, People | `/topics/{slug}`, `/authors/{slug}` | Collection pages, after launch. At launch People only feeds the byline and schema |
+| Topics, People | `/topics/{slug}`, `/authors/{slug}` | After launch |
+
+Reserved slugs: `advisors` and `clients` can't be content types, because they share the `/resources/` folder. The site already uses the same pattern for `/press`: a static page plus a collection template under one name. Confirm on staging.
 
 Redirects needed:
 - `/blog-posts/*` to `/blog/*` (one wildcard rule, 267 live posts).
-- `/category/{slug}` to the matching listing or topic page.
-- `/resources` today is the client hub, so its content moves to `/resources/clients`.
-- `/advisors/resources` to `/resources/advisors`, `/advisors/blog` to `/resources/advisors/advisor-blog`.
-- Existing static guide and landing pages to their Lead Magnet URLs.
-
-Shared types (Investment, Announcements, Events) have a listing under each hub, but the item pages are the same single URLs.
+- Today's `/resources` (the client hub) moves to `/resources/clients`.
+- `/advisors/resources` to `/resources/advisors`, `/advisors/blog` to `/resources/advisor-blog`.
+- `/category/{slug}` to the matching type listing or topic.
+- Existing static guide and landing pages to their `/guides/{slug}` URLs.
 
 ## Decided
 - Item URLs use one fixed prefix per collection (option 1); breadcrumbs show the audience and type path.
 - Lead magnets live at `/guides/{slug}`.
 - Topic and author pages are post-launch.
-- Two-link events are **one entry**. Hub cards show only the matching audience link (advisors link, clients link, else general). The event page itself shows both links, labeled "Advisors register" and "Clients register", because one URL can't know which hub the visitor came from.
+- Two-audience events are **one entry**. The page shows both registration forms, labeled, or only the matching one when the hub card link carries `?audience=`.
+- Events register through an embedded form, not a link.
 
 ## Open decisions for Mary
 1. **Topic list** (11 suggested) and **UVA's Economic Insights** (60 posts).
