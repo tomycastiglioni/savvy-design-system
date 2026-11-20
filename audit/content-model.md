@@ -11,9 +11,9 @@ Nothing here has been built in Webflow.
 | Main | **Blog** | Every article-shaped item: Product, Case Study, Investment, Announcement, Advisor Blog, Client Blog |
 | Main | **Events** | Webinars, open houses, recaps |
 | Main | **Lead Magnets** | Guides, e-books, calculators, reports, advisor campaigns |
-| Reference | **Content Types** | The 6 blog types. Each item generates a listing page and controls hub placement |
-| Reference | **Topics** | Subject tags (Tax, Retirement, Estate...). Each item generates a topic page |
-| Reference | **People** | Authors and event speakers. Each item generates an author page |
+| Reference | **Content Types** | The 6 blog types. Holds listing intro text, SEO and hub placement. Does not generate pages |
+| Reference | **Topics** | Subject tags (Tax, Retirement, Estate...) |
+| Reference | **People** | Authors and event speakers |
 
 Fields that are NOT collections: Audience (two switches), Series (option), Format (option), FAQ, CTA, Disclosure.
 
@@ -149,7 +149,7 @@ Hub display rule: the Advisors hub shows the advisors link, else the general lin
 | Clients hub order | Number | Rail order |
 | Items shown on hub | Number | Advisor Blog gets 3 |
 
-This is what lets editors reorder the hub rails without a designer, and what makes a new type a new item, not a new page.
+This is what lets editors reorder the hub rails without a designer. Listing pages are static pages under each hub (see URLs), so a new type also needs a listing page duplicated under each hub that shows it.
 
 ## Topics (reference)
 
@@ -163,8 +163,35 @@ Name, Slug, Role, Credentials (CFP, CPWA), Photo, Short bio, LinkedIn URL, Advis
 
 Editors build the body of Blog, Events and Lead Magnets posts with components inside the rich text: video, GIF or demo, callout, stat row, table, quote, step list, download, CTA, image gallery. This depends on Webflow's rich-text component support and needs confirming with whoever builds it.
 
+## URLs
+
+Item pages sit under one fixed prefix per collection, so audience and type can't be in the item URL. Breadcrumbs on the page show the path (Resources > Advisors > Product > Title), using a Primary audience field for shared items.
+
+| Page | URL | Built as |
+|---|---|---|
+| Resources hub | `/resources` | Static page |
+| Advisors hub | `/resources/advisors` | Static page |
+| Clients hub | `/resources/clients` | Static page |
+| Advisors listings | `/resources/advisors/product`, `/case-studies`, `/investment`, `/announcements`, `/advisor-blog`, `/events` | Static pages, each a list filtered to one type and the Advisors switch |
+| Clients listings | `/resources/clients/investment`, `/announcements`, `/client-blog`, `/events`, `/guides-and-tools` | Static pages, same pattern |
+| All reads | `/blog` | Static page: every Blog item, filterable by audience, type and topic |
+| Blog items | `/blog/{slug}` | Blog collection template |
+| Event items | `/events/{slug}` | Events collection template. Existing `/events/*` pages keep their URLs |
+| Lead magnet items | to decide (`/guides/{slug}`?) | Lead Magnets collection template |
+| Topics, People | to decide (`/topics/{slug}`, `/authors/{slug}`) | Optional collection pages |
+
+Redirects needed:
+- `/blog-posts/*` to `/blog/*` (one wildcard rule, 267 live posts).
+- `/category/{slug}` to the matching listing or topic page.
+- `/resources` today is the client hub, so its content moves to `/resources/clients`.
+- `/advisors/resources` to `/resources/advisors`, `/advisors/blog` to `/resources/advisors/advisor-blog`.
+- Existing static guide and landing pages to their Lead Magnet URLs.
+
+Shared types (Investment, Announcements, Events) have a listing under each hub, but the item pages are the same single URLs.
+
 ## Open decisions
-1. **URL prefixes.** Each collection needs its own prefix. If Content Types generates `/resources/{type}`, posts can't also sit at `/resources/{slug}`. Choose between static listing pages with posts at `/resources/{slug}`, or generated listing pages with posts under another prefix.
+1. **Lead magnet and Topics/People prefixes.** Confirm `/guides/{slug}`, `/topics/{slug}` and `/authors/{slug}`.
 2. **Two-link events.** The event page has one URL. Show both labeled links, or two entries for Inside the Markets?
 3. **Topic list and UVA's Economic Insights** (60 posts).
 4. **Advisor Blog and Client Blog:** two types, or one type with the audience switches?
+5. **Naming.** `/blog` will hold Product, Case Study, Investment and Announcement items, not only blog posts. Fine if "blog" reads as "reads" for visitors.
