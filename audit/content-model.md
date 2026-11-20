@@ -177,8 +177,8 @@ Item pages sit under one fixed prefix per collection, so audience and type can't
 | All reads | `/blog` | Static page: every Blog item, filterable by audience, type and topic |
 | Blog items | `/blog/{slug}` | Blog collection template |
 | Event items | `/events/{slug}` | Events collection template. Existing `/events/*` pages keep their URLs |
-| Lead magnet items | to decide (`/guides/{slug}`?) | Lead Magnets collection template |
-| Topics, People | to decide (`/topics/{slug}`, `/authors/{slug}`) | Optional collection pages |
+| Lead magnet items | `/guides/{slug}` | Lead Magnets collection template |
+| Topics, People | `/topics/{slug}`, `/authors/{slug}` | Collection pages, after launch. At launch People only feeds the byline and schema |
 
 Redirects needed:
 - `/blog-posts/*` to `/blog/*` (one wildcard rule, 267 live posts).
@@ -189,9 +189,13 @@ Redirects needed:
 
 Shared types (Investment, Announcements, Events) have a listing under each hub, but the item pages are the same single URLs.
 
-## Open decisions
-1. **Lead magnet and Topics/People prefixes.** Confirm `/guides/{slug}`, `/topics/{slug}` and `/authors/{slug}`.
-2. **Two-link events.** The event page has one URL. Show both labeled links, or two entries for Inside the Markets?
-3. **Topic list and UVA's Economic Insights** (60 posts).
-4. **Advisor Blog and Client Blog:** two types, or one type with the audience switches?
-5. **Naming.** `/blog` will hold Product, Case Study, Investment and Announcement items, not only blog posts. Fine if "blog" reads as "reads" for visitors.
+## Decided
+- Item URLs use one fixed prefix per collection (option 1); breadcrumbs show the audience and type path.
+- Lead magnets live at `/guides/{slug}`.
+- Topic and author pages are post-launch.
+- Two-link events are **one entry**. Hub cards show only the matching audience link (advisors link, clients link, else general). The event page itself shows both links, labeled "Advisors register" and "Clients register", because one URL can't know which hub the visitor came from.
+
+## Open decisions for Mary
+1. **Topic list** (11 suggested) and **UVA's Economic Insights** (60 posts).
+2. **Advisor Blog and Client Blog:** two types, or one type with the audience switches?
+3. **Naming:** `/blog` holds all six types, not only blog posts.
