@@ -80,8 +80,6 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 | Description | Rich text | |
 | Speakers | Multi-reference to People | |
 | Registration form | Text | Form embed script or form ID, shown before the event |
-| Registration form, advisors | Text | Optional, for events with separate advisor tracking |
-| Registration form, clients | Text | Optional, for events with separate client tracking |
 | Recording form | Text | Form embed script or ID, shown after the event |
 | Recording link | Link | Revealed after the recording form is submitted |
 | Also show on Product listing | Switch | Savvy Intelligence Open House |
@@ -91,7 +89,6 @@ Webflow can't hide fields by type, so editors will see the "only" groups on ever
 
 How the page behaves:
 - While Event ended is off it shows the registration form. When it is on it shows the recording form, if one is filled.
-- When both the advisors and clients forms are filled (Inside the Markets), the page shows both, labeled. Hub cards can link with `?audience=advisors` or `?audience=clients` so a small script shows only the matching form. Without the script, both are shown.
 
 ## Lead Magnets
 
@@ -188,7 +185,7 @@ Redirects needed:
 - Events switch from registration form to recording form with an "Event ended" switch.
 - Lead magnets live at `/guides/{slug}`.
 - Topic and author pages are post-launch.
-- Two-audience events are **one entry**. The page shows both registration forms, labeled, or only the matching one when the hub card link carries `?audience=`.
+- Events that serve both audiences (Inside the Markets) are **two separate entries**, one per audience, each with its own registration form.
 - Events register through an embedded form, not a link.
 
 ## Open decisions for Mary
