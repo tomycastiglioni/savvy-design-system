@@ -11,7 +11,7 @@ Nothing here has been built in Webflow.
 | Main | **Blog** | Every article-shaped item: Product, Case Study, Investment, Announcement, Advisor Blog, Client Blog |
 | Main | **Events** | Webinars, open houses, recaps |
 | Main | **Lead Magnets** | Guides, e-books, calculators, reports, advisor campaigns |
-| Reference | **Content Types** | The 6 blog types. Holds listing intro text, SEO and hub placement. Does not generate pages |
+| Reference | **Content Types** | The 6 blog types. Generates the `/resources/{type}` listing pages. Holds listing intro text, SEO and hub placement |
 | Reference | **Topics** | Subject tags (Tax, Retirement, Estate...) |
 | Reference | **Series** | Recurring programs (Global Markets Recap, Portfolio Perspectives, Inside the Markets...). Used to filter and group |
 | Reference | **People** | Authors and event speakers |
@@ -132,7 +132,7 @@ How the page behaves:
 | Clients hub order | Number | Rail order |
 | Items shown on hub | Number | Advisor Blog gets 3 |
 
-This is what lets editors reorder the hub rails without a designer. Listing pages are static pages under each hub (see URLs), so a new type also needs a listing page duplicated under each hub that shows it.
+This is what lets editors reorder the hub rails without a designer. Each item also generates its `/resources/{type}` listing page, so a new type is a new item, not a new page.
 
 ## Topics (reference)
 
@@ -184,7 +184,8 @@ Redirects needed:
 - Existing static guide and landing pages to their `/guides/{slug}` URLs.
 
 ## Decided
-- Item URLs use one fixed prefix per collection (option 1); breadcrumbs show the audience and type path.
+- Item URLs use one fixed prefix per collection (option 1); breadcrumbs show the audience and type path. Articles live at `/articles/{slug}`.
+- Events switch from registration form to recording form with an "Event ended" switch.
 - Lead magnets live at `/guides/{slug}`.
 - Topic and author pages are post-launch.
 - Two-audience events are **one entry**. The page shows both registration forms, labeled, or only the matching one when the hub card link carries `?audience=`.
@@ -193,4 +194,3 @@ Redirects needed:
 ## Open decisions for Mary
 1. **Topic list** (11 suggested) and **UVA's Economic Insights** (60 posts).
 2. **Advisor Blog and Client Blog:** two types, or one type with the audience switches?
-3. **Naming:** `/articles` holds all six types, not only blog posts.
