@@ -27,6 +27,7 @@ HDR_CSS = """
   h1{font-weight:300;font-size:__FS__px;line-height:__LH__px;letter-spacing:-.04em;white-space:nowrap}
   h1 .serif{font-family:'Big Caslon',Georgia,serif;font-weight:400;letter-spacing:-.01em}
   .sub{font-weight:300;font-size:14px;line-height:20px;color:rgba(255,255,255,.82);white-space:nowrap}
+  .art{position:absolute;left:0;top:0}
   .right{position:absolute;right:40px;top:40px;bottom:__RB__px;width:236px;display:flex;flex-direction:column;justify-content:center}
   .card{background:#fff;color:#000;border-radius:8px;padding:6px 16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
   .li{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #E6E6E6;font-size:11.5px;line-height:15px;font-weight:400}
@@ -56,6 +57,8 @@ def tiles(labels):
     return '<div class="tiles">' + "".join(f'<div class="tile"><span>{l}</span>{ARROW}</div>' for l in labels) + '</div>'
 
 
+ART4 = '''<svg class="art" width="600" height="336" viewBox="0 0 600 336" fill="none" stroke-width="1.5"><g><circle cx="455" cy="95" r="26" stroke="#fff" stroke-opacity=".9"/><circle cx="455" cy="95" r="50" stroke="#C7BCA1" stroke-opacity=".8"/><circle cx="455" cy="95" r="74" stroke="#C7BCA1" stroke-opacity=".45"/></g><g><circle cx="392" cy="236" r="44" stroke="#C7BCA1" stroke-opacity=".3"/><circle cx="392.0" cy="192.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="414.0" cy="197.9" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="430.1" cy="214.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="436.0" cy="236.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="430.1" cy="258.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="414.0" cy="274.1" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="392.0" cy="280.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="370.0" cy="274.1" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="353.9" cy="258.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="348.0" cy="236.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="353.9" cy="214.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="370.0" cy="197.9" r="6" stroke="#fff" stroke-opacity=".85"/></g><g><circle cx="540" cy="304" r="14" stroke="#fff" stroke-opacity="0.9"/><circle cx="540" cy="288" r="30" stroke="#C7BCA1" stroke-opacity="0.85"/><circle cx="540" cy="272" r="46" stroke="#C7BCA1" stroke-opacity="0.6"/><circle cx="540" cy="256" r="62" stroke="#C7BCA1" stroke-opacity="0.4"/></g></svg>'''
+
 HEADERS = {
     2: dict(eyebrow="Meet the team", h1="The people<br>behind <span class='serif'>SWIM</span>", fs=40,
             sub="A quick introduction to the team<br>behind your clients&rsquo; portfolios.",
@@ -67,7 +70,7 @@ HEADERS = {
             alt="What SWIM gives your practice. The benefits behind the numbers."),
     4: dict(eyebrow="Strategies", h1="The strategies<br>behind <span class='serif'>SWIM</span>", fs=37,
             sub="A closer look at three of the<br>strategies you can offer.",
-            graphic=list_card([("clock", "Savvy Total Portfolios", 0), ("globe", "Direct Indexing", 0), ("circles", "Savvy Fixed Income", 1)]),
+            art=ART4,
             alt="The strategies behind SWIM. A closer look at three of the strategies you can offer."),
     5: dict(eyebrow="Straight answers", h1="Questions<br>about <span class='serif'>SWIM</span>", fs=40,
             sub="Time, taxes, and how SWIM<br>fits your approach.",
@@ -96,7 +99,8 @@ def header_html(n, c):
     <h1>{c['h1']}</h1>
     <div class="sub">{c['sub']}</div>
   </div>
-  <div class="right">{c['graphic']}</div>
+  {c.get('art','')}
+  <div class="right">{c.get('graphic','')}</div>
 </div>
 </body></html>
 """
@@ -415,9 +419,9 @@ def fy(label, text):
 new_tag = f'<span style="display:inline-block;margin-left:8px;padding:3px 6px;border:1px solid {GOLD};border-radius:3px;font-size:10px;line-height:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:{GOLD};vertical-align:3px;">New</span>'
 e4 = intro(["SWIM gives you a range of investment strategies to match to your clients. Here is a closer look at 3 of them, including our newest, Savvy Fixed Income."])
 e4 += items([
-    dict(icon="clock", title="Savvy Total Portfolios", body=p("Actively managed portfolios from our investment team, led by our CIO.") + fy("For you:", "the SWIM team handles day-to-day management, so you spend less time on portfolio upkeep.") + fy("For your clients:", "a professionally managed portfolio, designed by an in-house team and managed on an ongoing basis.")),
+    dict(icon="concentric", title="Savvy Total Portfolios", body=p("Actively managed portfolios from our investment team, led by our CIO.") + fy("For you:", "the SWIM team handles day-to-day management, so you spend less time on portfolio upkeep.") + fy("For your clients:", "a professionally managed portfolio, designed by an in-house team and managed on an ongoing basis.")),
     dict(icon="globe", title="Direct Indexing", body=p("Lets a client hold the individual stocks of an index instead of a fund.") + fy("For you:", "a way to offer more personalized portfolios without building them yourself.") + fy("For your clients:", "a portfolio that can reflect their preferences.")),
-    dict(icon="circles", title="Savvy Fixed Income" + new_tag, body=p("Our newest strategy, built for the fixed income part of a client&rsquo;s portfolio.") + fy("For you:", "the SWIM team manages the bond allocation, so you don&rsquo;t have to build and maintain it yourself.") + fy("For your clients:", "a professionally managed fixed income allocation that fits alongside the rest of their portfolio.")),
+    dict(icon="layers", title="Savvy Fixed Income" + new_tag, body=p("Our newest strategy, built for the fixed income part of a client&rsquo;s portfolio.") + fy("For you:", "the SWIM team manages the bond allocation, so you don&rsquo;t have to build and maintain it yourself.") + fy("For your clients:", "a professionally managed fixed income allocation that fits alongside the rest of their portfolio.")),
 ])
 e4 += band("Your next step", "Ready to see one in action?", "You can submit a portfolio review task any time.", [("See all SWIM strategies", "primary")])
 e4 += section(f'<div style="font-family:{SANS};font-size:16px;line-height:25px;color:#000000;">[Sign-off pending approval],<br>The SWIM team</div>', pad="48px 48px 56px")
