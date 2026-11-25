@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <title>Email 1 header image</title>
-<!-- Source for assets/header-swim.png. Rendered at 600x360 @2x (1200x720) with Playwright. Edit here, re-render, replace the PNG. -->
+<!--
+  Source for assets/header-swim.png. Rendered at 600x360 @2x (1200x720) with Playwright.
+  Brand fonts: ABC Diatype (Light/Regular/Medium) + Big Caslon Regular, loaded from ./fonts/
+  (licensed files, git-ignored; copy them from the savvy-one-pagers skill assets/fonts before re-rendering).
+  Edit here, re-render, replace the PNG.
+-->
 <style>
+  @font-face{font-family:'ABC Diatype';font-weight:300;src:url('fonts/ABCDiatype-Light.otf')}
+  @font-face{font-family:'ABC Diatype';font-weight:400;src:url('fonts/ABCDiatype-Regular.otf')}
+  @font-face{font-family:'ABC Diatype';font-weight:500;src:url('fonts/ABCDiatype-Medium.otf')}
+  @font-face{font-family:'Big Caslon';font-weight:400;src:url('fonts/BigCaslon-Regular.otf')}
   *{box-sizing:border-box;margin:0}
   body{background:#fff}
-  #hdr{position:relative;width:600px;height:360px;overflow:hidden;font-family:'Inter',Arial,sans-serif;color:#fff;
+  #hdr{position:relative;width:600px;height:360px;overflow:hidden;font-family:'ABC Diatype',Arial,sans-serif;color:#fff;
        background:linear-gradient(135deg,#0F3B2E 0%,#175242 55%,#215F4D 100%)}
   .logo{position:absolute;top:36px;right:40px;width:84px}
-  .left{position:absolute;left:40px;top:0;bottom:0;width:228px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px}
-  .eyebrow{border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:8px 14px;font-size:9.5px;line-height:10px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-  h1{font-weight:300;font-size:44px;line-height:44px;letter-spacing:-.04em;white-space:nowrap}
-  h1 b{font-weight:500}
-  .sub{font-weight:300;font-size:14px;line-height:20px;color:rgba(255,255,255,.82)}
-  .right{position:absolute;right:40px;top:100px;width:272px}
+  .left{position:absolute;left:40px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px}
+  .eyebrow{border:1px solid rgba(199,188,161,.55);border-radius:999px;padding:7.25px 14px 6.75px;font-size:9.5px;line-height:10px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:#C7BCA1}
+  h1{font-weight:300;font-size:46px;line-height:46px;letter-spacing:-.04em;white-space:nowrap}
+  h1 .serif{font-family:'Big Caslon',Georgia,serif;font-weight:400;letter-spacing:-.01em}
+  .sub{font-weight:300;font-size:14px;line-height:20px;color:rgba(255,255,255,.82);white-space:nowrap}
+  .right{position:absolute;right:40px;top:104px;width:236px}
   .tags{display:flex;gap:8px;margin-bottom:12px}
-  .tag{display:flex;align-items:center;gap:7px;background:#fff;color:#000;border-radius:4px;padding:0 10px;height:24px;font-size:11px;font-weight:500}
+  .tag{display:flex;align-items:center;gap:7px;background:#fff;color:#000;border-radius:4px;padding:0 10px;height:24px;font-size:10.5px;font-weight:500}
   .dot{width:8px;height:8px;border-radius:2px}
-  .card{background:#fff;color:#000;border-radius:8px;padding:16px 16px 10px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
-  .ct{display:flex;align-items:baseline;gap:6px;font-size:12px;font-weight:500;margin-bottom:8px}
-  .ct i{font-style:normal;font-weight:400;font-size:9.5px;color:#8a8a8a}
-  .row{display:flex;align-items:center;height:26px;font-size:10.5px;white-space:nowrap}
+  .card{background:#fff;color:#000;border-radius:8px;padding:14px 14px 8px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+  .ct{display:flex;align-items:baseline;gap:6px;font-size:11.5px;font-weight:500;margin-bottom:6px}
+  .ct i{font-style:normal;font-weight:400;font-size:9px;color:#8a8a8a}
+  .row{display:flex;align-items:center;height:25px;font-size:10px;white-space:nowrap}
   .row .l{flex:1}
-  .track{position:relative;width:48px;height:10px;border-radius:3px;background:#EEEAE3;margin-right:10px}
-  .track span{position:absolute;top:0;height:10px;width:24px;border-radius:3px}
-  .row .r{width:50px;font-weight:500}
+  .track{position:relative;width:38px;height:9px;border-radius:3px;background:#EEEAE3;margin-right:9px}
+  .track span{position:absolute;top:0;height:9px;width:20px;border-radius:3px}
+  .row .r{width:46px;font-weight:500}
 </style></head><body>
 <div id="hdr">
   <img class="logo" src="assets/savvy-wordmark-white.png" alt="Savvy">
   <div class="left">
     <div class="eyebrow">Savvy Investment Management</div>
-    <h1>Meet <b>SWIM</b></h1>
-    <div class="sub">Day-to-day investment management, so you can focus on clients.</div>
+    <h1>Meet <span class="serif">SWIM</span></h1>
+    <div class="sub">Day-to-day investment management,<br>so you can focus on clients.</div>
   </div>
   <div class="right">
     <div class="tags">
