@@ -336,7 +336,7 @@ def member(last=False):
         <tr><td style="border-top:1px solid {DIV};padding:{pad};">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
             <td class="stack" width="88" valign="top" style="width:88px;padding-right:24px;">
-              <table role="presentation" width="64" height="64" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" bgcolor="#F5F2EC" style="width:64px;height:64px;background:#F5F2EC;border:1px dashed #C7BCA1;border-radius:50%;font-family:{SANS};font-size:10px;line-height:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4D4D4D;">Photo</td></tr></table>
+              <table role="presentation" width="64" height="64" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#F5F2EC" style="width:64px;height:64px;background:#F5F2EC;border-radius:50%;font-size:1px;line-height:1px;">&nbsp;</td></tr></table>
             </td>
             <td class="stack" valign="top" style="font-family:{SANS};">
               <div style="font-weight:500;font-size:18px;line-height:26px;letter-spacing:-0.01em;color:#000000;">[Team member name]</div>
@@ -348,8 +348,7 @@ def member(last=False):
 
 
 spotlight = (eyebrow("The SWIM team") + '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">'
-             + member() + member() + member(True) + '</table>'
-             + note("Replace with 3 SWIM team members. Names, titles, and bios must be confirmed by each person and the SWIM team. Add no credentials or tenure until verified.", label="Team spotlight"))
+             + member() + member() + member(True) + '</table>')
 e2 += section(spotlight, pad="16px 48px 0")
 e2 += band("Your next step", "Want to talk it through?",
            "Book time with the SWIM team to ask questions before you decide anything, or get to know the team first.",
