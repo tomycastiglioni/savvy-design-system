@@ -40,7 +40,7 @@ HDR_CSS = """
   .tile svg{width:14px;height:14px;flex:none}
 """
 
-ICON = {"clock": "assets/icon-clock.png", "globe": "assets/icon-globe.png", "circles": "assets/icon-circles.png", "orbit": "assets/icon-orbit.png", "pair": "assets/icon-pair.png", "chain": "assets/icon-chain.png"}
+ICON = {"clock": "assets/icon-clock.png", "globe": "assets/icon-globe.png", "circles": "assets/icon-circles.png", "orbit": "assets/icon-orbit.png", "pair": "assets/icon-pair.png", "chain": "assets/icon-chain.png", "transfer": "assets/icon-transfer.png"}
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg>'
 
 
@@ -87,10 +87,10 @@ HEADERS = {
             sub="A closer look at three of the<br>strategies you can offer.",
             graphic=fixed_income_card(),
             alt="The strategies behind SWIM. A closer look at three of the strategies you can offer, including our newest, Savvy Fixed Income."),
-    5: dict(eyebrow="Straight answers", h1="Questions<br>about <span class='serif'>SWIM</span>", fs=40,
+    5: dict(eyebrow="Straight answers", h1="Questions advisors<br>ask about <span class='serif'>SWIM</span>", fs=31,
             sub="Time, taxes, and how SWIM<br>fits your approach.",
-            graphic=list_card([("clock", "More time with my clients", 0), ("globe", "Taxes when I move a client", 0), ("circles", "Using my own approach", 0)]),
-            alt="Questions about SWIM. Time, taxes, and how SWIM fits your approach."),
+            graphic=list_card([("clock", "More time with my clients", 0), ("transfer", "Taxes when I move a client", 0), ("circles", "Using my own approach", 0)]),
+            alt="Questions advisors ask about SWIM. Time, taxes, and how SWIM fits your approach."),
     6: dict(eyebrow="Quick check-in", h1="What would<br>help <span class='serif'>you</span>?", fs=40,
             sub="Pick a next step, or tell us<br>when to check back.",
             graphic=tiles(["Help choosing my first clients", "Materials to talk to my clients", "Hear from an advisor using SWIM", "A call with the SWIM team"]),
@@ -457,8 +457,8 @@ process = f"""      {eyebrow('The process')}
 e5 = intro(["Advisors tell us the same few things come up when they think about SWIM. Here are straight answers."])
 e5 += items([
     dict(icon="clock", title="Will I get more time with my clients?", body=p("Yes. The SWIM team takes over the back-office work of investment management, like research, rebalancing, and trading, so you have more time for client conversations. You still choose which clients to enroll and when, and your clients stay your clients.")),
-    dict(icon="globe", title="What about taxes when I move a client?", body=p("SWIM portfolios are tax-aware. Moving a client into a new portfolio can have tax implications, so before you decide, the SWIM team can prepare a transition analysis that shows what a move would involve.") + btn_light("Request a transition analysis") + note("Confirm availability, wording, and the request link with the SWIM team and compliance.")),
-    dict(icon="circles", title="Can I still use my own approach for some clients?", body=p("Yes. You decide client by client. SWIM sits alongside how you manage other clients today, and advisor custom models are available when a client needs a more tailored approach.") + note("Confirm with the SWIM team.")),
+    dict(icon="transfer", title="What about taxes when I move a client?", body=p("SWIM portfolios are tax-aware. Moving a client into a new portfolio can have tax implications, so before you decide, the SWIM team can prepare a transition analysis that shows what a move would involve.") + btn_light("Request a transition analysis")),
+    dict(icon="circles", title="Can I still use my own approach for some clients?", body=p("Yes. You decide client by client. SWIM sits alongside how you manage other clients today, and advisor custom models are available when a client needs a more tailored approach.")),
 ])
 e5 += f'\n    <tr><td style="padding:40px 0 0;"></td></tr>\n' + section(process, pad="56px 48px 56px", bg="#FFF8F1")
 e5 += band("Your next step", "We&rsquo;re here when you&rsquo;re ready", "Have a question about taxes, timing, or how SWIM fits with your approach? The SWIM team can walk you through it.", [("Talk to the SWIM team", "primary")], top_gap=0)
