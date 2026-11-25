@@ -486,7 +486,7 @@ opts = [("Help me find investment opportunities for my clients", "The SWIM team 
         ("Send me materials to talk to my clients", "Get the client conversation toolkit, with explainers and answers to common client questions."),
         ("Connect me with an advisor using SWIM", "Hear from an advisor who has already enrolled clients and ask what it was like."),
         ("Set up a call with the SWIM team", "Talk through your questions, your timing, or anything else on your mind.")]
-e6_opts = eyebrow("What would help most?") + '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">' + "".join(option(t, d, i == 3) for i, (t, d) in enumerate(opts)) + '</table>' + note("Confirm each option exists and who fulfills it (SWIM team, toolkit, advisor intros need advisor consent and compliance review). Link each to a tracked page or form so every click records interest.")
+e6_opts = eyebrow("What would help most?") + '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">' + "".join(option(t, d, i == 3) for i, (t, d) in enumerate(opts)) + '</table>'
 e6 = intro(["You&rsquo;ve been part of Savvy for a few months now, and we wanted to check in on your investment management experience.",
             "Every advisor&rsquo;s path to SWIM is unique. Some start with a few clients, some enroll in bulk during their transition, and others take their time. We&rsquo;d like to know where we can help you most."])
 e6 += section(e6_opts, pad="56px 48px 0")
