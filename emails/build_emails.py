@@ -372,7 +372,7 @@ stats = f"""      <table role="presentation" width="100%" cellpadding="0" cellsp
         <tr>{stat('75%', 'of Savvy advisors have enrolled clients in SWIM')}{stat('$4.6B', 'in client assets enrolled in SWIM', border_left=True, pad_left=28)}</tr>
         <tr>{stat('9 hrs', 'a week back, on average, reported by advisors who outsource investment management')}{stat('12', 'strategies, on average, in each SWIM advisor&rsquo;s practice, all managed by the SWIM team', border_left=True, pad_left=28)}</tr>
       </table>
-      <div style="margin-top:4px;font-family:{SANS};font-size:12px;line-height:19px;color:#4D4D4D;">Savvy figures are internal data as of November 2026. 9 hours a week: AssetMark / 8 Acre Perspective, &ldquo;The Impact of Outsourcing,&rdquo; 697 advisors surveyed January to March 2024. Not specific to Savvy advisors.</div>"""
+      <div style="margin-top:32px;font-family:{SANS};font-size:12px;line-height:19px;color:#4D4D4D;">Savvy figures are internal data as of November 2026. 9 hours a week: AssetMark / 8 Acre Perspective, &ldquo;The Impact of Outsourcing,&rdquo; 697 advisors surveyed January to March 2024. Not specific to Savvy advisors.</div>"""
 
 
 def quote(img, alt, text, name, title, first=False):
