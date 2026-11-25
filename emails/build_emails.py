@@ -57,7 +57,26 @@ def tiles(labels):
     return '<div class="tiles">' + "".join(f'<div class="tile"><span>{l}</span>{ARROW}</div>' for l in labels) + '</div>'
 
 
-ART4 = '''<svg class="art" width="600" height="336" viewBox="0 0 600 336" fill="none" stroke-width="1.5"><g><circle cx="455" cy="95" r="26" stroke="#fff" stroke-opacity=".9"/><circle cx="455" cy="95" r="50" stroke="#C7BCA1" stroke-opacity=".8"/><circle cx="455" cy="95" r="74" stroke="#C7BCA1" stroke-opacity=".45"/></g><g><circle cx="392" cy="236" r="44" stroke="#C7BCA1" stroke-opacity=".3"/><circle cx="392.0" cy="192.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="414.0" cy="197.9" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="430.1" cy="214.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="436.0" cy="236.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="430.1" cy="258.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="414.0" cy="274.1" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="392.0" cy="280.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="370.0" cy="274.1" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="353.9" cy="258.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="348.0" cy="236.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="353.9" cy="214.0" r="6" stroke="#fff" stroke-opacity=".85"/><circle cx="370.0" cy="197.9" r="6" stroke="#fff" stroke-opacity=".85"/></g><g><circle cx="540" cy="304" r="14" stroke="#fff" stroke-opacity="0.9"/><circle cx="540" cy="288" r="30" stroke="#C7BCA1" stroke-opacity="0.85"/><circle cx="540" cy="272" r="46" stroke="#C7BCA1" stroke-opacity="0.6"/><circle cx="540" cy="256" r="62" stroke="#C7BCA1" stroke-opacity="0.4"/></g></svg>'''
+def _seg(w, c): return f'<td width="{w}" bgcolor="{c}" style="width:{w}px;background:{c};height:10px;font-size:0;line-height:0;">&nbsp;</td>'
+
+
+def strategy_card():
+    G, T, E, GOLD_ = "#175242", "#095972", "#C7BCA1", "#8E7E57"
+    seg = (f'<div style="display:flex;gap:2px;height:10px;"><div style="flex:45;background:{G};border-radius:3px;"></div>'
+           f'<div style="flex:30;background:{T};border-radius:3px;"></div><div style="flex:25;background:{E};border-radius:3px;"></div></div>')
+    pat = [G, G, T, G, E, G, G, T, G, G, E, G, T, G, G, E, G, G]
+    dots = '<div style="display:flex;gap:4px;">' + "".join(f'<div style="width:8px;height:8px;border-radius:2px;background:{c};"></div>' for c in pat) + '</div>'
+    hs = [5, 8, 11, 14, 17, 20, 23]
+    stairs = '<div style="display:flex;align-items:flex-end;gap:6px;height:23px;">' + "".join(f'<div style="width:20px;height:{h}px;border-radius:2px;background:{G if i % 2 == 0 else T};"></div>' for i, h in enumerate(hs)) + '</div>'
+
+    def row(label, visual, first=False, new=False):
+        tag = '<span style="display:inline-block;margin-left:6px;padding:2px 4px;background:#175242;border-radius:2px;font-size:7.5px;line-height:8px;letter-spacing:.08em;text-transform:uppercase;color:#fff;font-weight:500;vertical-align:1px;">New</span>' if new else ''
+        bt = '' if first else 'border-top:1px solid #E6E6E6;'
+        return f'<div style="padding:12px 0;{bt}"><div style="font-size:10.5px;line-height:13px;">{label}{tag}</div><div style="margin-top:9px;">{visual}</div></div>'
+    return ('<div class="card" style="padding:14px 16px 2px;">'
+            '<div style="display:flex;align-items:baseline;gap:6px;font-size:11.5px;font-weight:500;margin-bottom:10px;">Strategies for your clients <span style="font-weight:400;font-size:9px;color:#8a8a8a;">illustrative</span></div>'
+            + row("Savvy Total Portfolios", seg, first=True) + row("Direct Indexing", dots) + row("Savvy Fixed Income", stairs, new=True) + '</div>')
+
 
 HEADERS = {
     2: dict(eyebrow="Meet the team", h1="The people<br>behind <span class='serif'>SWIM</span>", fs=40,
@@ -70,7 +89,7 @@ HEADERS = {
             alt="What SWIM gives your practice. The benefits behind the numbers."),
     4: dict(eyebrow="Strategies", h1="The strategies<br>behind <span class='serif'>SWIM</span>", fs=37,
             sub="A closer look at three of the<br>strategies you can offer.",
-            art=ART4,
+            graphic=strategy_card(),
             alt="The strategies behind SWIM. A closer look at three of the strategies you can offer."),
     5: dict(eyebrow="Straight answers", h1="Questions<br>about <span class='serif'>SWIM</span>", fs=40,
             sub="Time, taxes, and how SWIM<br>fits your approach.",
