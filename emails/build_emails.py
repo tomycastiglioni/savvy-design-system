@@ -41,7 +41,7 @@ HDR_CSS = """
 """
 
 ICON = {"clock": "assets/icon-clock.png", "globe": "assets/icon-globe.png", "circles": "assets/icon-circles.png", "orbit": "assets/icon-orbit.png", "pair": "assets/icon-pair.png", "chain": "assets/icon-chain.png", "transfer": "assets/icon-transfer.png"}
-ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg>'
+ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8H12.5M8.5 4L12.5 8L8.5 12"/></svg>'
 
 
 def list_card(rows):
@@ -476,7 +476,7 @@ def option(title, desc, last=False):
               <a href="#" style="font-weight:500;font-size:20px;line-height:28px;letter-spacing:-0.01em;color:#000000;">{title}</a>
               <div style="margin-top:8px;font-size:16px;line-height:25px;color:{TXT};">{desc}</div>
             </td>
-            <td width="40" align="right" valign="top" style="width:40px;font-family:{SANS};font-size:22px;line-height:28px;color:{GOLD};"><a href="#" style="color:{GOLD};">&rarr;</a></td>
+            <td width="40" align="right" valign="top" style="width:40px;"><a href="#"><img src="./assets/icon-arrow.png" width="24" height="24" alt="" style="width:24px;height:24px;margin-top:2px;margin-left:auto;"></a></td>
           </tr></table>
         </td></tr>
 """
