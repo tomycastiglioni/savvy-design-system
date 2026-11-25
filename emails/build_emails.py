@@ -61,7 +61,7 @@ HEADERS = {
             sub="A quick introduction to the team<br>behind your clients&rsquo; portfolios.",
             graphic=list_card([("clock", "Guided by our CIO", 0), ("globe", "A team that works alongside you", 0), ("circles", "Questions welcome", 0)]),
             alt="The people behind SWIM. A quick introduction to the team behind your clients' portfolios."),
-    3: dict(eyebrow="What you get", h1="What SWIM gives<br>your <span class='serif'>practice</span>", fs=32,
+    3: dict(eyebrow="What you get", h1="What SWIM gives<br><span class='serif'>your practice</span>", fs=32,
             sub="The benefits behind the numbers.",
             graphic=list_card([("clock", "Time back for what matters", 0), ("globe", "Investment strategies that fit your clients&rsquo; goals", 0), ("circles", "One place, full picture", 0)]),
             alt="What SWIM gives your practice. The benefits behind the numbers."),
