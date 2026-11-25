@@ -358,7 +358,7 @@ build(2, "Meet the people behind SWIM", "A quick introduction to the team behind
       [DISCLOSURE])
 
 # ---- Email 3: What advisors get back (by the numbers + quotes)
-STAT_NUM = f"font-family:{SANS};font-weight:300;font-size:48px;line-height:52px;letter-spacing:-0.04em;color:#000000;"
+STAT_NUM = f"font-family:{SANS};font-weight:300;font-size:48px;line-height:52px;letter-spacing:-0.04em;color:#175242;"
 STAT_LAB = f"margin-top:8px;font-family:{SANS};font-size:15px;line-height:22px;color:{TXT};"
 
 
