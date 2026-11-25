@@ -40,7 +40,7 @@ HDR_CSS = """
   .tile svg{width:14px;height:14px;flex:none}
 """
 
-ICON = {"clock": "assets/icon-clock.png", "globe": "assets/icon-globe.png", "circles": "assets/icon-circles.png"}
+ICON = {"clock": "assets/icon-clock.png", "globe": "assets/icon-globe.png", "circles": "assets/icon-circles.png", "orbit": "assets/icon-orbit.png", "pair": "assets/icon-pair.png", "chain": "assets/icon-chain.png"}
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg>'
 
 
@@ -62,7 +62,7 @@ ART4 = '''<svg class="art" width="600" height="336" viewBox="0 0 600 336" fill="
 HEADERS = {
     2: dict(eyebrow="Meet the team", h1="The people<br>behind <span class='serif'>SWIM</span>", fs=40,
             sub="A quick introduction to the team<br>behind your clients&rsquo; portfolios.",
-            graphic=list_card([("clock", "Guided by our CIO", 0), ("globe", "A team that works alongside you", 0), ("circles", "Questions welcome", 0)]),
+            graphic=list_card([("orbit", "Guided by our CIO", 0), ("pair", "A team that works alongside you", 0), ("chain", "Questions welcome", 0)]),
             alt="The people behind SWIM. A quick introduction to the team behind your clients' portfolios."),
     3: dict(eyebrow="What you get", h1="What SWIM gives<br><span class='serif'>your practice</span>", fs=32,
             sub="The benefits behind the numbers.",
@@ -330,9 +330,9 @@ def build(n, subject, preheader, middle, lead, notes=None):
 # ---- Email 2: Meet the people behind SWIM
 e2 = intro(["When you consider a new investment solution for your clients, it helps to know who is behind it. Here is a quick introduction to the SWIM team."])
 e2 += items([
-    dict(icon="clock", title="Guided by our CIO", body=p("Anshul Sharma, our Chief Investment Officer, leads Savvy&rsquo;s investment strategy and portfolio design. SWIM portfolios are designed in-house by our own team.")),
-    dict(icon="globe", title="A team that works alongside you", body=p("The SWIM team manages the portfolios for the clients you choose to enroll, and reviews portfolios you send in. You decide which clients to enroll, and when.")),
-    dict(icon="circles", title="Questions welcome", body=p("If you want to talk through a strategy before deciding anything, the SWIM team is glad to help.")),
+    dict(icon="orbit", title="Guided by our CIO", body=p("Anshul Sharma, our Chief Investment Officer, leads Savvy&rsquo;s investment strategy and portfolio design. SWIM portfolios are designed in-house by our own team.")),
+    dict(icon="pair", title="A team that works alongside you", body=p("The SWIM team manages the portfolios for the clients you choose to enroll, and reviews portfolios you send in. You decide which clients to enroll, and when.")),
+    dict(icon="chain", title="Questions welcome", body=p("If you want to talk through a strategy before deciding anything, the SWIM team is glad to help.")),
 ])
 def member(last=False):
     pad = "28px 0 0" if last else "28px 0 28px"
