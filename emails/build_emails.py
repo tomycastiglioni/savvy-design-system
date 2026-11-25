@@ -91,10 +91,10 @@ HEADERS = {
             sub="Time, taxes, and how SWIM<br>fits your approach.",
             graphic=list_card([("clock", "More time with my clients", 0), ("transfer", "Taxes when I move a client", 0), ("circles", "Using my own approach", 0)]),
             alt="Questions advisors ask about SWIM. Time, taxes, and how SWIM fits your approach."),
-    6: dict(eyebrow="Quick check-in", h1="What would<br>help <span class='serif'>you</span>?", fs=40,
+    6: dict(eyebrow="Quick check-in", h1="What would help<br>you <span class='serif'>get started?</span>", fs=31,
             sub="Pick a next step, or tell us<br>when to check back.",
             graphic=tiles(["Help choosing my first clients", "Materials to talk to my clients", "Hear from an advisor using SWIM", "A call with the SWIM team"]),
-            alt="What would help you? Pick a next step, or tell us when to check back."),
+            alt="What would help you get started? Pick a next step, or tell us when to check back."),
 }
 HDR_H, HDR_RB = 336, 51
 
