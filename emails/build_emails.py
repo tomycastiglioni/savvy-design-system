@@ -416,7 +416,7 @@ def fy(label, text):
     return f'<div style="margin-top:10px;font-size:16px;line-height:25px;color:{TXT};"><span style="font-weight:500;color:#000000;">{label}</span> {text}</div>'
 
 
-new_tag = f'<span style="display:inline-block;margin-left:8px;padding:3px 6px;border:1px solid {GOLD};border-radius:3px;font-size:10px;line-height:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:{GOLD};vertical-align:3px;">New</span>'
+new_tag = f'<span style="display:inline-block;margin-left:8px;padding:4px 7px;background:#175242;border-radius:3px;font-size:10px;line-height:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF;vertical-align:3px;">New</span>'
 e4 = intro(["SWIM gives you a range of investment strategies to match to your clients. Here is a closer look at 3 of them, including our newest, Savvy Fixed Income."])
 e4 += items([
     dict(icon="concentric", title="Savvy Total Portfolios", body=p("Actively managed portfolios from our investment team, led by our CIO.") + fy("For you:", "the SWIM team handles day-to-day management, so you spend less time on portfolio upkeep.") + fy("For your clients:", "a professionally managed portfolio, designed by an in-house team and managed on an ongoing basis.")),
