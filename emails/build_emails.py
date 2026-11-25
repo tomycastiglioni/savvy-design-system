@@ -237,8 +237,8 @@ def band(kicker, headline, body, buttons, top_gap=40):
     <tr><td style="padding:{top_gap}px 0 0;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#175242" style="background:#175242;">
         <tr><td class="px" style="padding:56px 48px;">
-          {eyebrow(kicker, "#C7BCA1")}
-          <h2 style="margin:16px 0 0;font-family:{SANS};font-weight:300;font-size:32px;line-height:34px;letter-spacing:-0.02em;color:#FFFFFF;">{headline}</h2>
+          {eyebrow(kicker, "#C7BCA1") if kicker else ""}
+          <h2 style="margin:{16 if kicker else 0}px 0 0;font-family:{SANS};font-weight:300;font-size:32px;line-height:34px;letter-spacing:-0.02em;color:#FFFFFF;">{headline}</h2>
           <p style="margin:16px 0 0;font-family:{SANS};font-size:16px;line-height:25px;color:rgba(255,255,255,0.85);">{body}</p>
           <div style="margin-top:16px;">{btns}</div>
         </td></tr>
@@ -401,7 +401,7 @@ quotes = (eyebrow("From advisors on Savvy") +
 e3 = intro(["A quick look at how advisors across Savvy use SWIM today."])
 e3 += section(stats, pad="48px 48px 0")
 e3 += section(quotes, pad="64px 48px 56px")
-e3 += band("Your next step", "Ready to see it with your own clients?",
+e3 += band(None, "Ready to see it with your own clients?",
            "Choose a household you would like the SWIM team to review. You pick the client and the timing.",
            [("Review a household today", "primary"), ("See why advisors enroll", "secondary")], top_gap=0)
 build(3, "Here is what advisors get back when they enroll clients in SWIM", "75% of Savvy advisors have enrolled clients in SWIM. Here is what they get back.", e3,
