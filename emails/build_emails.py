@@ -423,7 +423,7 @@ e4 += items([
     dict(icon="globe", title="Direct Indexing", body=p("Lets a client hold the individual stocks of an index instead of a fund.") + fy("For you:", "a way to offer more personalized portfolios without building them yourself.") + fy("For your clients:", "a portfolio that can reflect their preferences.")),
     dict(icon="layers", title="Savvy Fixed Income" + new_tag, body=p("Our newest strategy, built for the fixed income part of a client&rsquo;s portfolio.") + fy("For you:", "the SWIM team manages the bond allocation, so you don&rsquo;t have to build and maintain it yourself.") + fy("For your clients:", "a professionally managed fixed income allocation that fits alongside the rest of their portfolio.")),
 ])
-e4 += band("Your next step", "Ready to see one in action?", "You can submit a portfolio review task any time.", [("See all SWIM strategies", "primary")])
+e4 += band(None, "Ready to see one in action?", "You can submit a portfolio review task any time.", [("See all SWIM strategies", "primary")])
 e4 += section(f'<div style="font-family:{SANS};font-size:16px;line-height:25px;color:#000000;">[Sign-off pending approval],<br>The SWIM team</div>', pad="48px 48px 56px")
 build(4, "The strategies behind SWIM", "A closer look at 3 SWIM strategies, including our newest, Savvy Fixed Income.", e4, CHOOSE,
       [DISCLOSURE])
