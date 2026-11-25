@@ -303,13 +303,10 @@ def footer(lead=None, notes=None):
 """
 
 
-DISCLOSURE = f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td bgcolor="#F5F2EC" style="background:#F5F2EC;border:1px dashed #C7BCA1;padding:16px;font-family:{SANS};font-size:11px;line-height:17px;color:#4D4D4D;">
-        <div style="font-weight:500;color:#000000;letter-spacing:0.08em;text-transform:uppercase;font-size:10px;line-height:12px;">Disclosures (placeholder)</div>
-        <div style="margin-top:8px;">[Standard Savvy email disclosure. Copy to be provided and approved by compliance.]</div>
-        <div style="margin-top:8px;">[SWIM disclosure. Copy to be provided and approved by compliance.]</div>
-      </td>
-    </tr></table>"""
+DISCLOSURE = f"""<div style="font-family:{SANS};font-size:11px;line-height:17px;color:#4D4D4D;text-align:center;">
+        <div>[Standard Savvy email disclosure]</div>
+        <div style="margin-top:8px;">[SWIM disclosure]</div>
+      </div>"""
 
 CHOOSE = '<a href="#" style="color:#4D4D4D;text-decoration:underline;">Not the right time? Choose when to hear from us</a>'
 
