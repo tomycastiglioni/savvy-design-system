@@ -380,7 +380,7 @@ def quote(img, alt, text, name, title, first=False):
     return f"""
         <tr><td style="{bt}padding:32px 0;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-            <td class="stack" width="88" valign="top" style="width:88px;padding-right:24px;"><img src="./assets/{img}" width="64" height="64" alt="{alt}" style="width:64px;height:64px;border-radius:50%;"></td>
+            <td class="stack" width="120" valign="top" style="width:120px;padding-right:24px;"><img src="./assets/{img}" width="96" height="96" alt="{alt}" style="width:96px;height:96px;border-radius:50%;"></td>
             <td class="stack" valign="top" style="font-family:{SANS};">
               <div style="font-weight:300;font-size:19px;line-height:29px;letter-spacing:-0.01em;color:#000000;">&ldquo;{text}&rdquo;</div>
               <div style="margin-top:16px;font-weight:500;font-size:15px;line-height:20px;color:#000000;">{name}</div>
