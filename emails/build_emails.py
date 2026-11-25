@@ -349,7 +349,7 @@ def member(last=False):
 
 spotlight = (eyebrow("The SWIM team") + '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">'
              + member() + member() + member(True) + '</table>')
-e2 += section(spotlight, pad="16px 48px 0")
+e2 += section(spotlight, pad="48px 48px 56px")
 e2 += band("Your next step", "Want to talk it through?",
            "Book time with the SWIM team to ask questions before you decide anything, or get to know the team first.",
            [("Chat with the SWIM team", "primary"), ("Get to know the SWIM team", "secondary")])
