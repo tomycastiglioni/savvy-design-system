@@ -303,6 +303,14 @@ def footer(lead=None, notes=None):
 """
 
 
+DISCLOSURE = f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td bgcolor="#F5F2EC" style="background:#F5F2EC;border:1px dashed #C7BCA1;padding:16px;font-family:{SANS};font-size:11px;line-height:17px;color:#4D4D4D;">
+        <div style="font-weight:500;color:#000000;letter-spacing:0.08em;text-transform:uppercase;font-size:10px;line-height:12px;">Disclosures (placeholder)</div>
+        <div style="margin-top:8px;">[Standard Savvy email disclosure. Copy to be provided and approved by compliance.]</div>
+        <div style="margin-top:8px;">[SWIM disclosure. Copy to be provided and approved by compliance.]</div>
+      </td>
+    </tr></table>"""
+
 CHOOSE = '<a href="#" style="color:#4D4D4D;text-decoration:underline;">Not the right time? Choose when to hear from us</a>'
 
 
@@ -351,7 +359,7 @@ e2 += band("Your next step", "Want to talk it through?",
            [("Chat with the SWIM team", "primary"), ("Get to know the SWIM team", "secondary")])
 e2 += cio_block() + signoff()
 build(2, "Meet the people behind SWIM", "A quick introduction to the team behind your clients' portfolios.", e2, CHOOSE,
-      [note("standard Savvy email disclosure plus the SWIM disclosure.", label="Disclosures")])
+      [DISCLOSURE])
 
 # ---- Email 3: What advisors get back (by the numbers + quotes)
 STAT_NUM = f"font-family:{SANS};font-weight:300;font-size:48px;line-height:52px;letter-spacing:-0.04em;color:#000000;"
@@ -418,7 +426,7 @@ e4 += items([
 e4 += band("Your next step", "Ready to see one in action?", "You can submit a portfolio review task any time.", [("See all SWIM strategies", "primary")])
 e4 += section(f'<div style="font-family:{SANS};font-size:16px;line-height:25px;color:#000000;">[Sign-off pending approval],<br>The SWIM team</div>', pad="48px 48px 56px")
 build(4, "The strategies behind SWIM", "A closer look at 3 SWIM strategies, including our newest, Savvy Fixed Income.", e4, CHOOSE,
-      [note("standard Savvy email disclosure plus the SWIM disclosure.", label="Disclosures")])
+      [DISCLOSURE])
 
 # ---- Email 5: Questions advisors ask
 step_items = [
