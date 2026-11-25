@@ -325,7 +325,27 @@ e2 += items([
     dict(icon="globe", title="A team that works alongside you", body=p("The SWIM team manages the portfolios for the clients you choose to enroll, and reviews portfolios you send in. You decide which clients to enroll, and when.")),
     dict(icon="circles", title="Questions welcome", body=p("If you want to talk through a strategy before deciding anything, the SWIM team is glad to help.")),
 ])
-e2 += section(note("2 to 3 SWIM team members, each with name, title, and a one-line bio confirmed by that person and the SWIM team. Add no credentials or tenure until verified.", label="Team spotlight"), pad="32px 48px 0")
+def member(last=False):
+    pad = "28px 0 0" if last else "28px 0 28px"
+    return f"""
+        <tr><td style="border-top:1px solid {DIV};padding:{pad};">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td class="stack" width="88" valign="top" style="width:88px;padding-right:24px;">
+              <table role="presentation" width="64" height="64" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" bgcolor="#F5F2EC" style="width:64px;height:64px;background:#F5F2EC;border:1px dashed #C7BCA1;border-radius:50%;font-family:{SANS};font-size:10px;line-height:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4D4D4D;">Photo</td></tr></table>
+            </td>
+            <td class="stack" valign="top" style="font-family:{SANS};">
+              <div style="font-weight:500;font-size:18px;line-height:26px;letter-spacing:-0.01em;color:#000000;">[Team member name]</div>
+              <div style="margin-top:2px;font-size:14px;line-height:20px;color:#8E7E57;">[Title]</div>
+              <div style="margin-top:10px;font-size:15px;line-height:23px;color:{TXT};">[One-line bio, confirmed by that person and the SWIM team]</div>
+            </td>
+          </tr></table>
+        </td></tr>"""
+
+
+spotlight = (eyebrow("The SWIM team") + '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">'
+             + member() + member() + member(True) + '</table>'
+             + note("Replace with 3 SWIM team members. Names, titles, and bios must be confirmed by each person and the SWIM team. Add no credentials or tenure until verified.", label="Team spotlight"))
+e2 += section(spotlight, pad="16px 48px 0")
 e2 += band("Your next step", "Want to talk it through?",
            "Book time with the SWIM team to ask questions before you decide anything, or get to know the team first.",
            [("Chat with the SWIM team", "primary"), ("Get to know the SWIM team", "secondary")])
