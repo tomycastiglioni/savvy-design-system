@@ -199,10 +199,11 @@ def item(icon, title, body_html, first=False, last=False, kicker=None, border=DI
     pad = "28px 0 8px" if last else "28px 0 36px"
     k = eyebrow(kicker) if kicker else ""
     ttl_mt = 10 if kicker else 0
+    icon_td = f'<td width="72" valign="top" style="width:72px;"><img src="./assets/icon-{icon}.png" width="48" height="48" alt="" style="width:48px;height:48px;"></td>' if icon else ""
     return f"""
         <tr><td style="border-top:{top};padding:{pad};">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-            <td width="72" valign="top" style="width:72px;"><img src="./assets/icon-{icon}.png" width="48" height="48" alt="" style="width:48px;height:48px;"></td>
+            {icon_td}
             <td valign="top" style="font-family:{SANS};">
               {k}
               <div style="margin-top:{ttl_mt}px;font-weight:500;font-size:20px;line-height:28px;letter-spacing:-0.01em;color:#000000;">{title}</div>
@@ -445,9 +446,9 @@ build(4, "The strategies behind SWIM", "A closer look at 3 SWIM strategies, incl
 
 # ---- Email 5: Questions advisors ask
 step_items = [
-    dict(icon="globe", kicker="Step 1", title="You submit a request", body=p("Choose the clients you want to enroll and submit your enrollment request.")),
-    dict(icon="circles", kicker="Step 2", title="We handle the setup", body=p("The SWIM team handles the implementation for each client you enroll.")),
-    dict(icon="clock", kicker="Step 3", title="We manage day to day", body=p("Research, rebalancing, and trading continue with the SWIM team.")),
+    dict(icon=None, kicker="Step 1", title="You submit a request", body=p("Choose the clients you want to enroll and submit your enrollment request.")),
+    dict(icon=None, kicker="Step 2", title="We handle the setup", body=p("The SWIM team handles the implementation for each client you enroll.")),
+    dict(icon=None, kicker="Step 3", title="We manage day to day", body=p("Research, rebalancing, and trading continue with the SWIM team.")),
 ]
 steps_html = "".join(item(r["icon"], r["title"], r["body"], last=(i == 2), kicker=r["kicker"]) for i, r in enumerate(step_items))
 process = f"""      {eyebrow('The process')}
